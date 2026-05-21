@@ -29,6 +29,12 @@ public sealed partial class SprayPainterComponent : Component
     [DataField, AutoNetworkedField]
     public string? PickedColor;
 
+    [DataField, AutoNetworkedField]
+    public bool PickedCustomColor;
+
+    [DataField, AutoNetworkedField]
+    public Color CustomColor = Color.White;
+
     /// <summary>
     /// Pipe colors that can be selected.
     /// </summary>
@@ -41,4 +47,10 @@ public sealed partial class SprayPainterComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public int Index;
+
+    [DataField, AutoNetworkedField]
+    public SprayPainterWallMode WallMode = SprayPainterWallMode.PaintWall;
+
+    [DataField, AutoNetworkedField]
+    public SprayPainterAirlockMode AirlockMode = SprayPainterAirlockMode.ApplyStyle;
 }

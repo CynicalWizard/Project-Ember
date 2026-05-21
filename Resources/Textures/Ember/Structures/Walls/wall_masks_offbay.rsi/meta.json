@@ -1,0 +1,813 @@
+{
+    "version": 1,
+    "license": null,
+    "copyright": null,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": ""
+        },
+        {
+            "name": "solid"
+        },
+        {
+            "name": "solid0",
+            "directions": 4
+        },
+        {
+            "name": "solid1",
+            "directions": 4
+        },
+        {
+            "name": "solid2",
+            "directions": 4
+        },
+        {
+            "name": "solid3",
+            "directions": 4
+        },
+        {
+            "name": "solid4",
+            "directions": 4
+        },
+        {
+            "name": "solid5",
+            "directions": 4
+        },
+        {
+            "name": "solid6",
+            "directions": 4
+        },
+        {
+            "name": "solid7",
+            "directions": 4
+        },
+        {
+            "name": "solid_other0",
+            "directions": 4
+        },
+        {
+            "name": "solid_other1",
+            "directions": 4
+        },
+        {
+            "name": "solid_other2",
+            "directions": 4
+        },
+        {
+            "name": "solid_other3",
+            "directions": 4
+        },
+        {
+            "name": "solid_other4",
+            "directions": 4
+        },
+        {
+            "name": "solid_other5",
+            "directions": 4
+        },
+        {
+            "name": "solid_other6",
+            "directions": 4
+        },
+        {
+            "name": "solid_other7",
+            "directions": 4
+        },
+        {
+            "name": "fwall_open"
+        },
+        {
+            "name": "solid_paint0",
+            "directions": 4
+        },
+        {
+            "name": "solid_paint1",
+            "directions": 4
+        },
+        {
+            "name": "solid_paint2",
+            "directions": 4
+        },
+        {
+            "name": "solid_paint3",
+            "directions": 4
+        },
+        {
+            "name": "solid_paint4",
+            "directions": 4
+        },
+        {
+            "name": "solid_paint5",
+            "directions": 4
+        },
+        {
+            "name": "solid_paint6",
+            "directions": 4
+        },
+        {
+            "name": "solid_paint7",
+            "directions": 4
+        },
+        {
+            "name": "solid_stripe0",
+            "directions": 4
+        },
+        {
+            "name": "solid_stripe1",
+            "directions": 4
+        },
+        {
+            "name": "solid_stripe2",
+            "directions": 4
+        },
+        {
+            "name": "solid_stripe3",
+            "directions": 4
+        },
+        {
+            "name": "solid_stripe4",
+            "directions": 4
+        },
+        {
+            "name": "solid_stripe5",
+            "directions": 4
+        },
+        {
+            "name": "solid_stripe6",
+            "directions": 4
+        },
+        {
+            "name": "solid_stripe7",
+            "directions": 4
+        },
+        {
+            "name": "reinf_over"
+        },
+        {
+            "name": "reinf_over0",
+            "directions": 4
+        },
+        {
+            "name": "reinf_over1",
+            "directions": 4
+        },
+        {
+            "name": "reinf_over2",
+            "directions": 4
+        },
+        {
+            "name": "reinf_over3",
+            "directions": 4
+        },
+        {
+            "name": "reinf_over4",
+            "directions": 4
+        },
+        {
+            "name": "reinf_over5",
+            "directions": 4
+        },
+        {
+            "name": "reinf_over6",
+            "directions": 4
+        },
+        {
+            "name": "reinf_over7",
+            "directions": 4
+        },
+        {
+            "name": "solidfwall_open"
+        },
+        {
+            "name": "solidfwall_opening",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "solidfwall_closing",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "stone"
+        },
+        {
+            "name": "stone0",
+            "directions": 4
+        },
+        {
+            "name": "stone1",
+            "directions": 4
+        },
+        {
+            "name": "stone2",
+            "directions": 4
+        },
+        {
+            "name": "stone3",
+            "directions": 4
+        },
+        {
+            "name": "stone4",
+            "directions": 4
+        },
+        {
+            "name": "stone5",
+            "directions": 4
+        },
+        {
+            "name": "stone6",
+            "directions": 4
+        },
+        {
+            "name": "stone7",
+            "directions": 4
+        },
+        {
+            "name": "stone_other0",
+            "directions": 4
+        },
+        {
+            "name": "stone_other1",
+            "directions": 4
+        },
+        {
+            "name": "stone_other2",
+            "directions": 4
+        },
+        {
+            "name": "stone_other3",
+            "directions": 4
+        },
+        {
+            "name": "stone_other4",
+            "directions": 4
+        },
+        {
+            "name": "stone_other5",
+            "directions": 4
+        },
+        {
+            "name": "stone_other6",
+            "directions": 4
+        },
+        {
+            "name": "stone_other7",
+            "directions": 4
+        },
+        {
+            "name": "stonefwall_open"
+        },
+        {
+            "name": "stonefwall_opening",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "stonefwall_closing",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "metal"
+        },
+        {
+            "name": "metal0",
+            "directions": 4
+        },
+        {
+            "name": "metal1",
+            "directions": 4
+        },
+        {
+            "name": "metal2",
+            "directions": 4
+        },
+        {
+            "name": "metal3",
+            "directions": 4
+        },
+        {
+            "name": "metal4",
+            "directions": 4
+        },
+        {
+            "name": "metal5",
+            "directions": 4
+        },
+        {
+            "name": "metal6",
+            "directions": 4
+        },
+        {
+            "name": "metal7",
+            "directions": 4
+        },
+        {
+            "name": "metal_other0",
+            "directions": 4
+        },
+        {
+            "name": "metal_other1",
+            "directions": 4
+        },
+        {
+            "name": "metal_other2",
+            "directions": 4
+        },
+        {
+            "name": "metal_other3",
+            "directions": 4
+        },
+        {
+            "name": "metal_other4",
+            "directions": 4
+        },
+        {
+            "name": "metal_other5",
+            "directions": 4
+        },
+        {
+            "name": "metal_other6",
+            "directions": 4
+        },
+        {
+            "name": "metal_other7",
+            "directions": 4
+        },
+        {
+            "name": "metal_paint0",
+            "directions": 4
+        },
+        {
+            "name": "metal_paint1",
+            "directions": 4
+        },
+        {
+            "name": "metal_paint2",
+            "directions": 4
+        },
+        {
+            "name": "metal_paint3",
+            "directions": 4
+        },
+        {
+            "name": "metal_paint4",
+            "directions": 4
+        },
+        {
+            "name": "metal_paint5",
+            "directions": 4
+        },
+        {
+            "name": "metal_paint6",
+            "directions": 4
+        },
+        {
+            "name": "metal_paint7",
+            "directions": 4
+        },
+        {
+            "name": "metalfwall_open"
+        },
+        {
+            "name": "metalfwall_opening",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "metalfwall_closing",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "wood"
+        },
+        {
+            "name": "wood0",
+            "directions": 4
+        },
+        {
+            "name": "wood1",
+            "directions": 4
+        },
+        {
+            "name": "wood2",
+            "directions": 4
+        },
+        {
+            "name": "wood3",
+            "directions": 4
+        },
+        {
+            "name": "wood4",
+            "directions": 4
+        },
+        {
+            "name": "wood5",
+            "directions": 4
+        },
+        {
+            "name": "wood6",
+            "directions": 4
+        },
+        {
+            "name": "wood7",
+            "directions": 4
+        },
+        {
+            "name": "wood_other0",
+            "directions": 4
+        },
+        {
+            "name": "wood_other1",
+            "directions": 4
+        },
+        {
+            "name": "wood_other2",
+            "directions": 4
+        },
+        {
+            "name": "wood_other3",
+            "directions": 4
+        },
+        {
+            "name": "wood_other4",
+            "directions": 4
+        },
+        {
+            "name": "wood_other5",
+            "directions": 4
+        },
+        {
+            "name": "wood_other6",
+            "directions": 4
+        },
+        {
+            "name": "wood_other7",
+            "directions": 4
+        },
+        {
+            "name": "woodfwall_open"
+        },
+        {
+            "name": "wood_paint0",
+            "directions": 4
+        },
+        {
+            "name": "wood_paint1",
+            "directions": 4
+        },
+        {
+            "name": "wood_paint2",
+            "directions": 4
+        },
+        {
+            "name": "wood_paint3",
+            "directions": 4
+        },
+        {
+            "name": "wood_paint4",
+            "directions": 4
+        },
+        {
+            "name": "wood_paint5",
+            "directions": 4
+        },
+        {
+            "name": "wood_paint6",
+            "directions": 4
+        },
+        {
+            "name": "wood_paint7",
+            "directions": 4
+        },
+        {
+            "name": "wood_stripe0",
+            "directions": 4
+        },
+        {
+            "name": "wood_stripe1",
+            "directions": 4
+        },
+        {
+            "name": "wood_stripe2",
+            "directions": 4
+        },
+        {
+            "name": "wood_stripe3",
+            "directions": 4
+        },
+        {
+            "name": "wood_stripe4",
+            "directions": 4
+        },
+        {
+            "name": "wood_stripe5",
+            "directions": 4
+        },
+        {
+            "name": "wood_stripe6",
+            "directions": 4
+        },
+        {
+            "name": "wood_stripe7",
+            "directions": 4
+        },
+        {
+            "name": "generic"
+        },
+        {
+            "name": "cult"
+        },
+        {
+            "name": "cult0",
+            "directions": 4
+        },
+        {
+            "name": "cult1",
+            "directions": 4
+        },
+        {
+            "name": "cult2",
+            "directions": 4
+        },
+        {
+            "name": "cult3",
+            "directions": 4
+        },
+        {
+            "name": "cult4",
+            "directions": 4
+        },
+        {
+            "name": "cult5",
+            "directions": 4
+        },
+        {
+            "name": "cult6",
+            "directions": 4
+        },
+        {
+            "name": "cult7",
+            "directions": 4
+        },
+        {
+            "name": "cult_other0",
+            "directions": 4
+        },
+        {
+            "name": "cult_other1",
+            "directions": 4
+        },
+        {
+            "name": "cult_other2",
+            "directions": 4
+        },
+        {
+            "name": "cult_other3",
+            "directions": 4
+        },
+        {
+            "name": "cult_other4",
+            "directions": 4
+        },
+        {
+            "name": "cult_other5",
+            "directions": 4
+        },
+        {
+            "name": "cult_other6",
+            "directions": 4
+        },
+        {
+            "name": "cult_other7",
+            "directions": 4
+        },
+        {
+            "name": "reinf_cult"
+        },
+        {
+            "name": "blank"
+        },
+        {
+            "name": "reinf_metal"
+        },
+        {
+            "name": "reinf_construct-5"
+        },
+        {
+            "name": "reinf_construct-4"
+        },
+        {
+            "name": "reinf_construct-3"
+        },
+        {
+            "name": "reinf_construct-2"
+        },
+        {
+            "name": "reinf_construct-1"
+        },
+        {
+            "name": "reinf_construct-0"
+        },
+        {
+            "name": "debug0",
+            "directions": 4
+        },
+        {
+            "name": "debug1",
+            "directions": 4
+        },
+        {
+            "name": "debug2",
+            "directions": 4
+        },
+        {
+            "name": "debug3",
+            "directions": 4
+        },
+        {
+            "name": "debug4",
+            "directions": 4
+        },
+        {
+            "name": "debug5",
+            "directions": 4
+        },
+        {
+            "name": "debug6",
+            "directions": 4
+        },
+        {
+            "name": "debug7",
+            "directions": 4
+        },
+        {
+            "name": "rdebug"
+        },
+        {
+            "name": "stripe0",
+            "directions": 4
+        },
+        {
+            "name": "stripe1",
+            "directions": 4
+        },
+        {
+            "name": "stripe2",
+            "directions": 4
+        },
+        {
+            "name": "stripe3",
+            "directions": 4
+        },
+        {
+            "name": "stripe4",
+            "directions": 4
+        },
+        {
+            "name": "stripe5",
+            "directions": 4
+        },
+        {
+            "name": "stripe6",
+            "directions": 4
+        },
+        {
+            "name": "stripe7",
+            "directions": 4
+        },
+        {
+            "name": "stripe_other0",
+            "directions": 4
+        },
+        {
+            "name": "stripe_other1",
+            "directions": 4
+        },
+        {
+            "name": "stripe_other2",
+            "directions": 4
+        },
+        {
+            "name": "stripe_other3",
+            "directions": 4
+        },
+        {
+            "name": "stripe_other4",
+            "directions": 4
+        },
+        {
+            "name": "stripe_other5",
+            "directions": 4
+        },
+        {
+            "name": "stripe_other6",
+            "directions": 4
+        },
+        {
+            "name": "stripe_other7",
+            "directions": 4
+        },
+        {
+            "name": "plastic"
+        },
+        {
+            "name": "plastic0",
+            "directions": 4
+        },
+        {
+            "name": "plastic1",
+            "directions": 4
+        },
+        {
+            "name": "plastic2",
+            "directions": 4
+        },
+        {
+            "name": "plastic3",
+            "directions": 4
+        },
+        {
+            "name": "plastic4",
+            "directions": 4
+        },
+        {
+            "name": "plastic5",
+            "directions": 4
+        },
+        {
+            "name": "plastic6",
+            "directions": 4
+        },
+        {
+            "name": "plastic7",
+            "directions": 4
+        },
+        {
+            "name": "woodneric"
+        },
+        {
+            "name": "titanium"
+        },
+        {
+            "name": "r_generic"
+        },
+        {
+            "name": "r_ocp"
+        },
+        {
+            "name": "ocp"
+        },
+        {
+            "name": "r_titanium"
+        }
+    ]
+}

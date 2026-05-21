@@ -5,6 +5,8 @@
   components:
   - type: Sprite
     sprite: DeltaV/Structures/Doors/Airlocks/Standard/justice.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockJustice
   - type: PaintableAirlock
     department: Justice
 
@@ -15,6 +17,8 @@
   components:
   - type: Sprite
     sprite: DeltaV/Structures/Doors/Airlocks/Standard/roboticist.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockRoboticist
 
 # Glass
 
@@ -25,6 +29,9 @@
   components:
   - type: Sprite
     sprite: DeltaV/Structures/Doors/Airlocks/Glass/justice.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockJustice
+    glass: true
   - type: PaintableAirlock
     department: Justice
 
@@ -35,3 +42,6 @@
   components:
   - type: Sprite
     sprite: DeltaV/Structures/Doors/Airlocks/Glass/roboticist.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockRoboticist
+    glass: true

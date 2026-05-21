@@ -1,0 +1,20 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from SierraBay12 window_full_damage state, converted from DMI to RSI and adapted as a Robust damage overlay.",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "DamageOverlay_5"
+        },
+        {
+            "name": "DamageOverlay_10"
+        },
+        {
+            "name": "DamageOverlay_20"
+        }
+    ]
+}

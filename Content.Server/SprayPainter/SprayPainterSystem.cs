@@ -47,10 +47,10 @@ public sealed class SprayPainterSystem : SharedSprayPainterSystem
         if (args.Handled)
             return;
 
-        if (!TryComp<SprayPainterComponent>(args.Used, out var painter) || painter.PickedColor is not {} colorName)
+        if (!TryComp<SprayPainterComponent>(args.Used, out var painter))
             return;
 
-        if (!painter.ColorPalette.TryGetValue(colorName, out var color))
+        if (!SprayPainterColorSelection.TryGetPickedColor(painter, out var color))
             return;
 
         var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, painter.PipeSprayTime, new SprayPainterPipeDoAfterEvent(color), args.Used, target: ent, used: args.Used)

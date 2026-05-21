@@ -39,6 +39,17 @@ mapping-grid-vv-tooltip = Просмотреть переменные сетки
 
 mapping-pipes-color-tooltip = Покрасить трубы
                               Щелкните по трубе, чтобы покрасить её в текущий выбранный цвет
+mapping-ember-paint-tooltip = Покрасить стены и шлюзы
+mapping-ember-paint-mode-wall = Цвет стены / low wall
+mapping-ember-paint-mode-wallclear = Сбросить цвет стены / low wall
+mapping-ember-paint-mode-stripe = Цвет stripe стены
+mapping-ember-paint-mode-stripeclear = Сбросить stripe стены
+mapping-ember-paint-mode-airlockdoor = Цвет корпуса шлюза
+mapping-ember-paint-mode-airlockdoorclear = Сбросить цвет корпуса шлюза
+mapping-ember-paint-mode-airlockstripe = Цвет stripe шлюза
+mapping-ember-paint-mode-airlockstripeclear = Сбросить stripe шлюза
+mapping-ember-paint-mode-airlockwindow = Цвет окна шлюза
+mapping-ember-paint-mode-airlockwindowclear = Сбросить цвет окна шлюза
 
 mapping-chat-button-tooltip = Переключить видимость чата
 

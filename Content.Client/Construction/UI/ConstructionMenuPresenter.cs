@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using Content.Client.Ember.Construction;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Systems.MenuBar.Widgets;
 using Content.Shared.Construction.Prototypes;
@@ -33,6 +34,7 @@ namespace Content.Client.Construction.UI
 
         private readonly IConstructionMenuView _constructionView;
         private readonly EntityWhitelistSystem _whitelistSystem;
+        private readonly EmberProceduralIconSystem _emberProceduralIcons;
         private readonly SpriteSystem _spriteSystem;
 
         private ConstructionSystem? _constructionSystem;
@@ -87,6 +89,7 @@ namespace Content.Client.Construction.UI
             IoCManager.InjectDependencies(this);
             _constructionView = new ConstructionMenu();
             _whitelistSystem = _entManager.System<EntityWhitelistSystem>();
+            _emberProceduralIcons = _entManager.System<EmberProceduralIconSystem>();
             _spriteSystem = _entManager.System<SpriteSystem>();
 
             // This is required so that if we load after the system is initialized, we can bind to it immediately
@@ -231,7 +234,7 @@ namespace Content.Client.Construction.UI
                 {
                     var itemButton = new TextureButton
                     {
-                        TextureNormal = _spriteSystem.Frame0(recipe.Icon),
+                        TextureNormal = GetRecipeIcon(recipe),
                         VerticalAlignment = Control.VAlignment.Center,
                         Name = recipe.Name,
                         ToolTip = recipe.Name,
@@ -336,7 +339,7 @@ namespace Content.Client.Construction.UI
             _constructionView.ClearRecipeInfo();
 
             _constructionView.SetRecipeInfo(
-                prototype.Name, prototype.Description, _spriteSystem.Frame0(prototype.Icon),
+                prototype.Name, prototype.Description, GetRecipeIcon(prototype),
                 prototype.Type != ConstructionType.Item,
                 !_favoritedRecipes.Contains(prototype));
 
@@ -375,10 +378,17 @@ namespace Content.Client.Construction.UI
             {
                 Metadata = recipe,
                 Text = recipe.Name,
-                Icon = _spriteSystem.Frame0(recipe.Icon),
+                Icon = GetRecipeIcon(recipe),
                 TooltipEnabled = true,
                 TooltipText = recipe.Description,
             };
+        }
+
+        private Texture GetRecipeIcon(ConstructionPrototype recipe)
+        {
+            return _emberProceduralIcons.TryGetConstructionIcon(recipe, out var texture)
+                ? texture
+                : _spriteSystem.Frame0(recipe.Icon);
         }
 
         private void BuildButtonToggled(bool pressed)

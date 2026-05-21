@@ -4,10 +4,11 @@
   parent: Window
   components:
   - type: Sprite
-    drawdepth: WallTops
-    sprite: Structures/Windows/reinforced_window.rsi
+    drawdepth: Objects
+    sprite: Ember/Structures/Windows/window.rsi
   - type: Icon
-    sprite: Structures/Windows/reinforced_window.rsi
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow_full
   - type: Repairable
     fuelCost: 10
     doAfterDelay: 2
@@ -43,8 +44,12 @@
             max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: IconSmooth
-    base: rwindow
+  - type: EmberProceduralStructure
+    role: Window
+    material: EmberBorosilicateGlass
+    stateBase: rwindow
+    alpha: 0.7058824
+    sprite: /Textures/Ember/Structures/Windows/window.rsi
   - type: Construction
     graph: Window
     node: reinforcedWindow
@@ -54,7 +59,7 @@
     damageDivisor: 3
     trackAllDamage: true
     damageOverlay:
-      sprite: Structures/Windows/cracks.rsi
+      sprite: Ember/Structures/Windows/window_damage_overlay.rsi
 
 - type: entity
   id: WindowReinforcedDirectional
@@ -67,11 +72,14 @@
     - Window
   components:
   - type: Sprite
-    sprite: Structures/Windows/directional.rsi
-    state: reinforced_window
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow
+  - type: EmberMaterialTint
+    material: EmberBorosilicateGlass
+    alpha: 0.7058824
   - type: Icon
-    sprite: Structures/Windows/directional.rsi
-    state: reinforced_window
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow
   - type: Construction
     graph: WindowDirectional
     node: windowReinforcedDirectional
@@ -126,7 +134,7 @@
     - Window
   components:
   - type: Sprite
-    drawdepth: WallTops
+    drawdepth: Objects
     sprite: Structures/Windows/reinforced_window_diagonal.rsi
     state: state0
   - type: Tag

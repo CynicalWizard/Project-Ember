@@ -9,10 +9,10 @@
   components:
   - type: StationAiWhitelist
   - type: Sprite
-    sprite: Structures/Doors/Shutters/shutters.rsi
+    sprite: Ember/Structures/Doors/rapid_pdoor.rsi
     drawdepth: BlastDoors
     layers:
-    - state: closed
+    - state: shutter1
       map: ["enum.DoorVisualLayers.Base"]
   - type: AnimationPlayer
   - type: Physics
@@ -38,6 +38,10 @@
     tags:
     - ForceNoFixRotations # Don't want the fixrotations command to target these
   - type: Door
+    openSpriteState: shutter0
+    closedSpriteState: shutter1
+    openingSpriteState: shutterc0
+    closingSpriteState: shutterc1
     openDrawDepth: BlastDoors
     closedDrawDepth: BlastDoors
     bumpOpen: false
@@ -132,9 +136,9 @@
   description: A relatively fragile set of shutters, made of radiation blocking lead plates.
   components:
   - type: Sprite
-    sprite: Structures/Doors/Shutters/shutters_radiation.rsi
+    sprite: Ember/Structures/Doors/rapid_pdoor.rsi
     layers:
-    - state: closed
+    - state: shutter1
       map: ["enum.DoorVisualLayers.Base"]
   - type: Occluder
   - type: Construction
@@ -176,9 +180,9 @@
   description: The Best (TM) place to see your friends explode!
   components:
   - type: Sprite
-    sprite: Structures/Doors/Shutters/shutters_window.rsi
+    sprite: Ember/Structures/Doors/rapid_pdoor.rsi
     layers:
-    - state: closed
+    - state: shutter1
       map: ["enum.DoorVisualLayers.Base"]
   - type: Construction
     graph: Shutters
@@ -210,8 +214,8 @@
   description: A frame for constructing a shutter.
   components:
   - type: Sprite
-    sprite: Structures/Doors/Shutters/shutters.rsi
-    state: frame
+    sprite: Ember/Structures/Doors/rapid_pdoor.rsi
+    state: shutter1
   - type: Construction
     graph: Shutters
     node: frame1

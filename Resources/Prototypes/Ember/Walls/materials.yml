@@ -1,0 +1,100 @@
+- type: emberWallMaterial
+  id: EmberWallSteel
+  stateBase: solid
+  color: "#696969"
+  reinforcementStateBase: reinf_over
+  reinforcementColor: "#696969"
+
+- type: emberWallMaterial
+  id: EmberWallPlasteel
+  stateBase: solid
+  color: "#A8A9B2"
+  reinforcementStateBase: reinf_over
+  reinforcementColor: "#A8A9B2"
+
+- type: emberWallMaterial
+  id: EmberWallRustedSteel
+  stateBase: solid
+  color: "#8A5A34"
+  reinforcementStateBase: reinf_over
+  reinforcementColor: "#7A4A2A"
+
+- type: emberWallMaterial
+  id: EmberWallDiamond
+  stateBase: stone
+  color: "#9DD6E0"
+
+- type: emberWallMaterial
+  id: EmberWallGold
+  stateBase: metal
+  color: "#FFD700"
+
+- type: emberWallMaterial
+  id: EmberWallPlasma
+  stateBase: solid
+  color: "#7D3C98"
+
+- type: emberWallMaterial
+  id: EmberWallPlastic
+  stateBase: solid
+  color: "#D8D8D8"
+
+- type: emberWallMaterial
+  id: EmberWallSandstone
+  stateBase: stone
+  color: "#D9C179"
+
+- type: emberWallMaterial
+  id: EmberWallSilver
+  stateBase: metal
+  color: "#D1E6E3"
+
+- type: emberWallMaterial
+  id: EmberWallUranium
+  stateBase: stone
+  color: "#007A00"
+
+- type: emberWallMaterial
+  id: EmberWallWood
+  stateBase: wood
+  color: "#7A4D2A"
+
+- type: emberWallMaterial
+  id: EmberWallStone
+  stateBase: stone
+  color: "#A8A090"
+
+- type: emberWallMaterial
+  id: EmberGlass
+  stateBase: solid
+  color: "#AACCFFB0"
+
+- type: emberWallMaterial
+  id: EmberBorosilicateGlass
+  stateBase: solid
+  color: "#899EBDB0"
+
+- type: emberWallMaterial
+  id: EmberPlasmaGlass
+  stateBase: solid
+  color: "#B85BFFB0"
+
+- type: emberWallMaterial
+  id: EmberUraniumGlass
+  stateBase: solid
+  color: "#66CC66B0"
+
+- type: emberWallMaterial
+  id: EmberShuttleGlass
+  stateBase: solid
+  color: "#AACCFFB0"
+
+- type: emberWallMaterial
+  id: EmberBrassGlass
+  stateBase: solid
+  color: "#B08D28B0"
+
+- type: emberWallMaterial
+  id: EmberMiningGlass
+  stateBase: solid
+  color: "#D6B56DB0"

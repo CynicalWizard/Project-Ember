@@ -1,4 +1,5 @@
 using Content.Client.UserInterface.Controls;
+using Content.Client.Ember.Construction;
 using Content.Shared.Popups;
 using Content.Shared.RCD;
 using Content.Shared.RCD.Components;
@@ -21,6 +22,7 @@ public sealed partial class RCDMenu : RadialMenu
     [Dependency] private readonly IPlayerManager _playerManager = default!;
 
     private SharedPopupSystem _popup;
+    private EmberProceduralIconSystem _emberProceduralIcons;
     private SpriteSystem _sprites;
 
     public event Action<ProtoId<RCDPrototype>>? SendRCDSystemMessageAction;
@@ -33,6 +35,7 @@ public sealed partial class RCDMenu : RadialMenu
         RobustXamlLoader.Load(this);
 
         _popup = _entManager.System<SharedPopupSystem>();
+        _emberProceduralIcons = _entManager.System<EmberProceduralIconSystem>();
         _sprites = _entManager.System<SpriteSystem>();
 
         OnChildAdded += AddRCDMenuButtonOnClickActions;
@@ -85,7 +88,9 @@ public sealed partial class RCDMenu : RadialMenu
                 {
                     VerticalAlignment = VAlignment.Center,
                     HorizontalAlignment = HAlignment.Center,
-                    Texture = _sprites.Frame0(proto.Sprite),
+                    Texture = _emberProceduralIcons.TryGetPrototypeIcon(proto.Prototype, out var proceduralTexture)
+                        ? proceduralTexture
+                        : _sprites.Frame0(proto.Sprite),
                     TextureScale = new Vector2(2f, 2f),
                 };
 

@@ -32,6 +32,39 @@ public sealed class SprayPainterColorPickedMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
+public sealed class SprayPainterCustomColorPickedMessage : BoundUserInterfaceMessage
+{
+    public readonly Color Color;
+
+    public SprayPainterCustomColorPickedMessage(Color color)
+    {
+        Color = color;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed class SprayPainterWallModePickedMessage : BoundUserInterfaceMessage
+{
+    public readonly SprayPainterWallMode Mode;
+
+    public SprayPainterWallModePickedMessage(SprayPainterWallMode mode)
+    {
+        Mode = mode;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed class SprayPainterAirlockModePickedMessage : BoundUserInterfaceMessage
+{
+    public readonly SprayPainterAirlockMode Mode;
+
+    public SprayPainterAirlockModePickedMessage(SprayPainterAirlockMode mode)
+    {
+        Mode = mode;
+    }
+}
+
+[Serializable, NetSerializable]
 public sealed partial class SprayPainterDoorDoAfterEvent : DoAfterEvent
 {
     /// <summary>
@@ -46,10 +79,30 @@ public sealed partial class SprayPainterDoorDoAfterEvent : DoAfterEvent
     [DataField]
     public string? Department;
 
-    public SprayPainterDoorDoAfterEvent(string sprite, string? department)
+    /// <summary>
+    /// Spray painter style name selected in the UI.
+    /// </summary>
+    [DataField]
+    public string StyleName;
+
+    [DataField]
+    public SprayPainterAirlockMode Mode;
+
+    [DataField]
+    public Color? Color;
+
+    public SprayPainterDoorDoAfterEvent(
+        string sprite,
+        string? department,
+        string styleName,
+        SprayPainterAirlockMode mode = SprayPainterAirlockMode.ApplyStyle,
+        Color? color = null)
     {
         Sprite = sprite;
         Department = department;
+        StyleName = styleName;
+        Mode = mode;
+        Color = color;
     }
 
     public override DoAfterEvent Clone() => this;
@@ -66,6 +119,24 @@ public sealed partial class SprayPainterPipeDoAfterEvent : DoAfterEvent
 
     public SprayPainterPipeDoAfterEvent(Color color)
     {
+        Color = color;
+    }
+
+    public override DoAfterEvent Clone() => this;
+}
+
+[Serializable, NetSerializable]
+public sealed partial class SprayPainterWallDoAfterEvent : DoAfterEvent
+{
+    [DataField]
+    public SprayPainterWallMode Mode;
+
+    [DataField]
+    public Color? Color;
+
+    public SprayPainterWallDoAfterEvent(SprayPainterWallMode mode, Color? color)
+    {
+        Mode = mode;
         Color = color;
     }
 

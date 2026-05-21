@@ -1,0 +1,154 @@
+{
+    "version": 1,
+    "license": null,
+    "copyright": null,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": ""
+        },
+        {
+            "name": "grille"
+        },
+        {
+            "name": "broken"
+        },
+        {
+            "name": "grille0",
+            "directions": 4
+        },
+        {
+            "name": "grille1",
+            "directions": 4
+        },
+        {
+            "name": "grille2",
+            "directions": 4
+        },
+        {
+            "name": "grille3",
+            "directions": 4
+        },
+        {
+            "name": "grille4",
+            "directions": 4
+        },
+        {
+            "name": "grille5",
+            "directions": 4
+        },
+        {
+            "name": "grille6",
+            "directions": 4
+        },
+        {
+            "name": "grille7",
+            "directions": 4
+        },
+        {
+            "name": "grille_other0",
+            "directions": 4
+        },
+        {
+            "name": "grille_other1",
+            "directions": 4
+        },
+        {
+            "name": "grille_other2",
+            "directions": 4
+        },
+        {
+            "name": "grille_other3",
+            "directions": 4
+        },
+        {
+            "name": "grille_other4",
+            "directions": 4
+        },
+        {
+            "name": "grille_other5",
+            "directions": 4
+        },
+        {
+            "name": "grille_other6",
+            "directions": 4
+        },
+        {
+            "name": "grille_other7",
+            "directions": 4
+        },
+        {
+            "name": "grille_onframe"
+        },
+        {
+            "name": "broken_onframe"
+        },
+        {
+            "name": "grille_onframe0",
+            "directions": 4
+        },
+        {
+            "name": "grille_onframe1",
+            "directions": 4
+        },
+        {
+            "name": "grille_onframe2",
+            "directions": 4
+        },
+        {
+            "name": "grille_onframe3",
+            "directions": 4
+        },
+        {
+            "name": "grille_onframe4",
+            "directions": 4
+        },
+        {
+            "name": "grille_onframe5",
+            "directions": 4
+        },
+        {
+            "name": "grille_onframe6",
+            "directions": 4
+        },
+        {
+            "name": "grille_onframe7",
+            "directions": 4
+        },
+        {
+            "name": "grille_other_onframe0",
+            "directions": 4
+        },
+        {
+            "name": "grille_other_onframe1",
+            "directions": 4
+        },
+        {
+            "name": "grille_other_onframe2",
+            "directions": 4
+        },
+        {
+            "name": "grille_other_onframe3",
+            "directions": 4
+        },
+        {
+            "name": "grille_other_onframe4",
+            "directions": 4
+        },
+        {
+            "name": "grille_other_onframe5",
+            "directions": 4
+        },
+        {
+            "name": "grille_other_onframe6",
+            "directions": 4
+        },
+        {
+            "name": "grille_other_onframe7",
+            "directions": 4
+        }
+    ]
+}

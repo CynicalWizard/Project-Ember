@@ -141,6 +141,7 @@ public sealed class MappingState : GameplayStateBase
         Screen.MoveGrid.OnPressed += OnMoveGridPressed;
         Screen.GridVV.OnPressed += OnGridVVPressed;
         Screen.PipesColor.OnPressed += OnPipesColorPressed;
+        Screen.EmberPaint.OnPressed += OnEmberPaintPressed;
         Screen.ChatButton.OnPressed += OnChatButtonPressed;
         _placement.PlacementChanged += OnPlacementChanged;
         _mapping.OnFavoritePrototypesLoaded += OnFavoritesLoaded;
@@ -192,6 +193,7 @@ public sealed class MappingState : GameplayStateBase
         Screen.MoveGrid.OnPressed -= OnMoveGridPressed;
         Screen.GridVV.OnPressed -= OnGridVVPressed;
         Screen.PipesColor.OnPressed -= OnPipesColorPressed;
+        Screen.EmberPaint.OnPressed -= OnEmberPaintPressed;
         Screen.ChatButton.OnPressed -= OnChatButtonPressed;
         _placement.PlacementChanged -= OnPlacementChanged;
         _prototypeManager.PrototypesReloaded -= OnPrototypesReloaded;
@@ -1012,6 +1014,21 @@ public sealed class MappingState : GameplayStateBase
         }
     }
 
+    private void OnEmberPaintPressed(ButtonEventArgs args)
+    {
+        if (args.Button.Pressed)
+        {
+            Deselect();
+            Meta.State = CursorState.Entity;
+            Meta.Color = PickColor;
+            Screen.UnPressActionsExcept(args.Button);
+        }
+        else
+        {
+            Meta.State = CursorState.None;
+        }
+    }
+
     private void OnChatButtonPressed(ButtonEventArgs args)
     {
         Screen.Chat.Visible = args.Button.Pressed;
@@ -1232,6 +1249,14 @@ public sealed class MappingState : GameplayStateBase
             Meta.State = CursorState.None;
             if (GetHoveredEntity() is { } entity)
                 _consoleHost.ExecuteCommand($"colornetwork {_entityManager.GetNetEntity(entity).Id} Pipe {Screen.DecalColor.ToHex()}");
+
+            return true;
+        }
+
+        if (Screen.EmberPaint.Pressed)
+        {
+            if (GetHoveredEntity() is { } entity)
+                _consoleHost.ExecuteCommand($"emberpaint {_entityManager.GetNetEntity(entity).Id} {Screen.SelectedEmberPaintMode} {Screen.DecalColor.ToHex()}");
 
             return true;
         }

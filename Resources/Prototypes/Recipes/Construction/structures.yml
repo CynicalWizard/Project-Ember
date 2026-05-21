@@ -287,6 +287,150 @@
   - !type:TileNotBlocked
 
 - type: construction
+  name: low wall
+  id: WallFrame
+  graph: WallFrame
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: reinforced low wall
+  id: WallFrameReinforced
+  graph: WallFrameReinforced
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A reinforced low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: gold low wall
+  id: WallFrameGold
+  graph: WallFrameGold
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A gold low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: silver low wall
+  id: WallFrameSilver
+  graph: WallFrameSilver
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A silver low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: plasma low wall
+  id: WallFramePlasma
+  graph: WallFramePlasma
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A plasma low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: uranium low wall
+  id: WallFrameUranium
+  graph: WallFrameUranium
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A uranium low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: plastic low wall
+  id: WallFramePlastic
+  graph: WallFramePlastic
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A plastic low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: wood low wall
+  id: WallFrameWood
+  graph: WallFrameWood
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A wood low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
   name: grille
   id: Grille
   graph: Grille
@@ -298,7 +442,7 @@
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
-    sprite: Structures/Walls/grille.rsi
+    sprite: Ember/Structures/Grilles/grille.rsi
     state: grille
   objectType: Structure
   placementMode: SnapgridCenter
@@ -334,8 +478,8 @@
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
-    sprite: Structures/Walls/grille.rsi
-    state: grille_diagonal
+    sprite: Ember/Structures/Grilles/grille.rsi
+    state: grille
   objectType: Structure
   placementMode: SnapgridCenter
 
@@ -369,8 +513,8 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/window.rsi
-    state: full
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window_full
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -406,8 +550,8 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/reinforced_window.rsi
-    state: full
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow_full
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -443,8 +587,8 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/tinted_window.rsi
-    state: full
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow_full
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -499,8 +643,8 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/plasma_window.rsi
-    state: full
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window_full
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -518,8 +662,8 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/reinforced_plasma_window.rsi
-    state: full
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow_full
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -592,7 +736,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/directional.rsi
+    sprite: Ember/Structures/Windows/window.rsi
     state: window
   objectType: Structure
   placementMode: SnapgridCenter
@@ -610,8 +754,8 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/directional.rsi
-    state: reinforced_window
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow
   objectType: Structure
   placementMode: SnapgridCenter
 
@@ -628,8 +772,8 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/directional.rsi
-    state: clock_window
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow
   objectType: Structure
   placementMode: SnapgridCenter
 
@@ -646,8 +790,8 @@
   - !type:EmptyOrWindowValidInTile
   - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/directional.rsi
-    state: plasma_window
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window
   objectType: Structure
   placementMode: SnapgridCenter
 
@@ -664,8 +808,8 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/directional.rsi
-    state: plasma_reinforced_window
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow
   objectType: Structure
   placementMode: SnapgridCenter
 
@@ -682,8 +826,8 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/uranium_window.rsi
-    state: full
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window_full
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -701,8 +845,8 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/reinforced_uranium_window.rsi
-    state: full
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow_full
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -841,8 +985,8 @@
   category: construction-category-structures
   description: This is a shutter - connect it to a button to open and close it.
   icon:
-    sprite: Structures/Doors/Shutters/shutters.rsi
-    state: closed
+    sprite: Ember/Structures/Doors/rapid_pdoor.rsi
+    state: shutter1
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
@@ -856,8 +1000,8 @@
   category: construction-category-structures
   description: This is a shutter - connect it to a button to open and close it.
   icon:
-    sprite: Structures/Doors/Shutters/shutters_window.rsi
-    state: closed
+    sprite: Ember/Structures/Doors/rapid_pdoor.rsi
+    state: shutter1
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
@@ -871,8 +1015,8 @@
   category: construction-category-structures
   description: This is a shutter - connect it to a button to open and close it.
   icon:
-    sprite: Structures/Doors/Shutters/shutters_radiation.rsi
-    state: closed
+    sprite: Ember/Structures/Doors/rapid_pdoor.rsi
+    state: shutter1
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
@@ -886,8 +1030,8 @@
   category: construction-category-structures
   description: This one says 'BLAST DONGER'.
   icon:
-    sprite: Structures/Doors/Shutters/blastdoor.rsi
-    state: closed
+    sprite: Ember/Structures/Doors/rapid_pdoor.rsi
+    state: pdoor1
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true

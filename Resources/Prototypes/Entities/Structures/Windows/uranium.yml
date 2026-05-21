@@ -4,11 +4,11 @@
   parent: WindowRCDResistant
   components:
   - type: Sprite
-    drawdepth: WallTops
-    sprite: Structures/Windows/uranium_window.rsi
+    drawdepth: Objects
+    sprite: Ember/Structures/Windows/window.rsi
   - type: Icon
-    sprite: Structures/Windows/uranium_window.rsi
-    state: full
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window_full
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Glass
@@ -34,8 +34,12 @@
             max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: IconSmooth
-    base: uwindow
+  - type: EmberProceduralStructure
+    role: Window
+    material: EmberUraniumGlass
+    stateBase: window
+    alpha: 0.7058824
+    sprite: /Textures/Ember/Structures/Windows/window.rsi
   - type: Construction
     graph: Window
     node: uraniumWindow
@@ -45,7 +49,7 @@
     damageDivisor: 3
     trackAllDamage: true
     damageOverlay:
-      sprite: Structures/Windows/cracks.rsi
+      sprite: Ember/Structures/Windows/window_damage_overlay.rsi
   - type: StaticPrice
     price: 200
   - type: RadiationBlocker
@@ -62,11 +66,14 @@
     - Window
   components:
   - type: Sprite
-    sprite: Structures/Windows/directional.rsi
-    state: uranium_window
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window
+  - type: EmberMaterialTint
+    material: EmberUraniumGlass
+    alpha: 0.7058824
   - type: Icon
-    sprite: Structures/Windows/directional.rsi
-    state: uranium_window
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window
   - type: Construction
     graph: WindowDirectional
     node: uraniumWindowDirectional
@@ -114,7 +121,7 @@
     - Window
   components:
   - type: Sprite
-    drawdepth: WallTops
+    drawdepth: Objects
     sprite: Structures/Windows/uranium_window_diagonal.rsi
     state: state0
   - type: Tag

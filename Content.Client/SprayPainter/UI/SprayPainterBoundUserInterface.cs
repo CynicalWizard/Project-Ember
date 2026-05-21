@@ -22,10 +22,21 @@ public sealed class SprayPainterBoundUserInterface : BoundUserInterface
 
         _window.OnSpritePicked = OnSpritePicked;
         _window.OnColorPicked = OnColorPicked;
+        _window.OnCustomColorPicked = OnCustomColorPicked;
+        _window.OnWallModePicked = OnWallModePicked;
+        _window.OnAirlockModePicked = OnAirlockModePicked;
 
         if (EntMan.TryGetComponent(Owner, out SprayPainterComponent? comp))
         {
-            _window.Populate(EntMan.System<SprayPainterSystem>().Entries, comp.Index, comp.PickedColor, comp.ColorPalette);
+            _window.Populate(
+                EntMan.System<SprayPainterSystem>().Entries,
+                comp.Index,
+                comp.WallMode,
+                comp.AirlockMode,
+                comp.PickedColor,
+                comp.PickedCustomColor,
+                comp.CustomColor,
+                comp.ColorPalette);
         }
     }
 
@@ -38,5 +49,26 @@ public sealed class SprayPainterBoundUserInterface : BoundUserInterface
     {
         var key = _window?.IndexToColorKey(args.ItemIndex);
         SendMessage(new SprayPainterColorPickedMessage(key));
+    }
+
+    private void OnCustomColorPicked(Color color)
+    {
+        SendMessage(new SprayPainterCustomColorPickedMessage(color));
+    }
+
+    private void OnWallModePicked(ItemList.ItemListSelectedEventArgs args)
+    {
+        if (_window == null)
+            return;
+
+        SendMessage(new SprayPainterWallModePickedMessage(_window.IndexToWallMode(args.ItemIndex)));
+    }
+
+    private void OnAirlockModePicked(ItemList.ItemListSelectedEventArgs args)
+    {
+        if (_window == null)
+            return;
+
+        SendMessage(new SprayPainterAirlockModePickedMessage(_window.IndexToAirlockMode(args.ItemIndex)));
     }
 }

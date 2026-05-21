@@ -258,9 +258,10 @@
     tags:
       - Wall
   - type: Sprite
-    sprite: Structures/Walls/diamond.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/diamond.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
   - type: RCDDeconstructable
     cost: 6
     delay: 8
@@ -278,9 +279,8 @@
             max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: IconSmooth
-    key: walls
-    base: diamond
+  - type: EmberProceduralWall
+    material: EmberWallDiamond
 
 - type: entity
   parent: BaseWall
@@ -291,9 +291,10 @@
     tags:
       - Wall
   - type: Sprite
-    sprite: Structures/Walls/gold.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/gold.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
   - type: Construction
     graph: Girder
     node: goldWall
@@ -323,9 +324,8 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: IconSmooth
-    key: walls
-    base: gold
+  - type: EmberProceduralWall
+    material: EmberWallGold
 
 - type: entity
   parent: BaseWall
@@ -365,9 +365,10 @@
     tags:
       - Wall
   - type: Sprite
-    sprite: Structures/Walls/plasma.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/plasma.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: solid
   - type: Construction
     graph: Girder
     node: plasmaWall
@@ -397,9 +398,8 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: IconSmooth
-    key: walls
-    base: plasma
+  - type: EmberProceduralWall
+    material: EmberWallPlasma
   - type: RadiationBlocker
     resistance: 7
 
@@ -412,9 +412,10 @@
     tags:
       - Wall
   - type: Sprite
-    sprite: Structures/Walls/plastic.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/plastic.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: plastic
   - type: Construction
     graph: Girder
     node: plasticWall
@@ -444,9 +445,8 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: IconSmooth
-    key: walls
-    base: plastic
+  - type: EmberProceduralWall
+    material: EmberWallPlastic
 
 - type: entity
   parent: BaseWall
@@ -587,10 +587,10 @@
   name: reinforced wall
   components:
   - type: Sprite
-    sprite: Structures/Walls/solid.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/solid.rsi
-    state: rgeneric
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: solid
   - type: Construction
     graph: Girder
     node: reinforcedWall
@@ -619,9 +619,9 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: IconSmooth
-    key: walls
-    base: reinf_over
+  - type: EmberProceduralWall
+    material: EmberWallSteel
+    reinforced: true
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -646,16 +646,16 @@
   suffix: rusted
   components:
   - type: Sprite
-    sprite: Structures/Walls/solid_rust.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/solid_rust.rsi
-    state: rgeneric
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: solid
   - type: Construction
     graph: Girder
     node: reinforcedWallRust
-  - type: IconSmooth
-    key: walls
-    base: reinf_over
+  - type: EmberProceduralWall
+    material: EmberWallRustedSteel
+    reinforced: true
   - type: Destructible
     thresholds:
     - trigger:
@@ -749,9 +749,10 @@
     tags:
       - Wall
   - type: Sprite
-    sprite: Structures/Walls/sandstone.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/sandstone.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
   - type: RCDDeconstructable
     cost: 6
     delay: 8
@@ -769,9 +770,8 @@
             max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: IconSmooth
-    key: walls
-    base: sandstone
+  - type: EmberProceduralWall
+    material: EmberWallSandstone
 
 - type: entity
   parent: BaseWall
@@ -782,9 +782,10 @@
     tags:
       - Wall
   - type: Sprite
-    sprite: Structures/Walls/silver.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/silver.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
   - type: Construction
     graph: Girder
     node: silverWall
@@ -814,9 +815,8 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: IconSmooth
-    key: walls
-    base: silver
+  - type: EmberProceduralWall
+    material: EmberWallSilver
 
 #shuttle walls
 - type: entity
@@ -964,13 +964,14 @@
     tags:
       - Wall
   - type: Sprite
-    sprite: Structures/Walls/solid.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: WallReplacementMarker
   - type: Construction
     graph: Girder
     node: wall
   - type: Icon
-    sprite: Structures/Walls/solid.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: solid
   - type: RCDDeconstructable
     cost: 6
     delay: 8
@@ -997,9 +998,8 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: IconSmooth
-    key: walls
-    base: solid
+  - type: EmberProceduralWall
+    material: EmberWallSteel
 
 - type: entity
   parent: WallShuttleDiagonal
@@ -1029,16 +1029,15 @@
   suffix: rusted
   components:
   - type: Sprite
-    sprite: Structures/Walls/solid_rust.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/solid_rust.rsi
-    state: full
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: solid
   - type: Construction
     graph: Girder
     node: wallrust
-  - type: IconSmooth
-    key: walls
-    base: solid
+  - type: EmberProceduralWall
+    material: EmberWallRustedSteel
   - type: Destructible
     thresholds:
     - trigger:
@@ -1068,9 +1067,10 @@
   name: uranium wall
   components:
   - type: Sprite
-    sprite: Structures/Walls/uranium.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/uranium.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
   - type: Construction
     graph: Girder
     node: uraniumWall
@@ -1096,9 +1096,8 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: IconSmooth
-    key: walls
-    base: uranium
+  - type: EmberProceduralWall
+    material: EmberWallUranium
   - type: RadiationBlocker
     resistance: 10
 
@@ -1109,9 +1108,10 @@
   description: The traditional greytide defense.
   components:
   - type: Sprite
-    sprite: Structures/Walls/wood.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/wood.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: wood
   - type: Construction
     graph: Barricade
     node: woodWall
@@ -1137,9 +1137,8 @@
         node: Barricade
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: IconSmooth
-    key: woods
-    base: wood
+  - type: EmberProceduralWall
+    material: EmberWallWood
 
 - type: entity
   parent: BaseWall

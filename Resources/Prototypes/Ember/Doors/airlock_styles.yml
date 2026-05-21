@@ -1,0 +1,91 @@
+- type: emberAirlockStyle
+  id: EmberAirlockBasic
+
+- type: emberAirlockStyle
+  id: EmberAirlockCommand
+  doorDepartment: Command
+
+- type: emberAirlockStyle
+  id: EmberAirlockSecurity
+  doorDepartment: Security
+
+- type: emberAirlockStyle
+  id: EmberAirlockEngineering
+  doorDepartment: Engineering
+
+- type: emberAirlockStyle
+  id: EmberAirlockAtmospherics
+  doorDepartment: Engineering
+  stripeColor: "#00ffff"
+
+- type: emberAirlockStyle
+  id: EmberAirlockLogistics
+  doorDepartment: Logistics
+
+- type: emberAirlockStyle
+  id: EmberAirlockMining
+  doorDepartment: Logistics
+  stripeColor: "#663300"
+
+- type: emberAirlockStyle
+  id: EmberAirlockMedical
+  doorColor: "#ffffff"
+  stripeDepartment: Medical
+
+- type: emberAirlockStyle
+  id: EmberAirlockVirology
+  doorColor: "#ffffff"
+  stripeColor: "#008000"
+
+- type: emberAirlockStyle
+  id: EmberAirlockEpistemics
+  doorColor: "#ffffff"
+  stripeDepartment: Epistemics
+
+- type: emberAirlockStyle
+  id: EmberAirlockFreezer
+  doorColor: "#ffffff"
+
+- type: emberAirlockStyle
+  id: EmberAirlockMaintenance
+  stripeColor: "#ffbf00"
+
+- type: emberAirlockStyle
+  id: EmberAirlockSyndicate
+  doorColor: "#9d2300"
+  stripeColor: "#333333"
+
+- type: emberAirlockStyle
+  id: EmberAirlockCentralCommand
+  doorColor: "#0c344d"
+  stripeColor: "#ffbf00"
+
+- type: emberAirlockStyle
+  id: EmberAirlockJustice
+  doorDepartment: Justice
+
+- type: emberAirlockStyle
+  id: EmberAirlockRoboticist
+  doorColor: "#ffffff"
+  stripeDepartment: Epistemics
+
+- type: emberAirlockStyle
+  id: EmberAirlockHatch
+
+- type: emberAirlockStyle
+  id: EmberAirlockHatchMaintenance
+  stripeColor: "#ffbf00"
+
+- type: emberAirlockStyle
+  id: EmberAirlockHatchSyndicate
+  stripeColor: "#9d2300"
+
+- type: emberAirlockStyle
+  id: EmberAirlockExternal
+  doorColor: "#9d2300"
+
+- type: emberAirlockStyle
+  id: EmberAirlockSecure
+
+- type: emberAirlockStyle
+  id: EmberAirlockVault

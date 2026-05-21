@@ -1,0 +1,216 @@
+- type: constructionGraph
+  id: WallFrame
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Steel
+        amount: 3
+        doAfter: 1
+
+  - node: wallFrame
+    entity: WallFrame
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2
+
+- type: constructionGraph
+  id: WallFrameReinforced
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Plasteel
+        amount: 3
+        doAfter: 1
+  - node: wallFrame
+    entity: WallFrameReinforced
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetPlasteel1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2
+
+- type: constructionGraph
+  id: WallFrameGold
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Gold
+        amount: 3
+        doAfter: 1
+  - node: wallFrame
+    entity: WallFrameGold
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: IngotGold1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2
+
+- type: constructionGraph
+  id: WallFrameSilver
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Silver
+        amount: 3
+        doAfter: 1
+  - node: wallFrame
+    entity: WallFrameSilver
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: IngotSilver1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2
+
+- type: constructionGraph
+  id: WallFramePlasma
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Plasma
+        amount: 3
+        doAfter: 1
+  - node: wallFrame
+    entity: WallFramePlasma
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetPlasma1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2
+
+- type: constructionGraph
+  id: WallFrameUranium
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Uranium
+        amount: 3
+        doAfter: 1
+  - node: wallFrame
+    entity: WallFrameUranium
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetUranium1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2
+
+- type: constructionGraph
+  id: WallFramePlastic
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Plastic
+        amount: 3
+        doAfter: 1
+  - node: wallFrame
+    entity: WallFramePlastic
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetPlastic1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2
+
+- type: constructionGraph
+  id: WallFrameWood
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: WoodPlank
+        amount: 3
+        doAfter: 1
+  - node: wallFrame
+    entity: WallFrameWood
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialWoodPlank1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2

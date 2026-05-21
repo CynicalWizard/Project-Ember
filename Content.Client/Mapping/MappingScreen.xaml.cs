@@ -34,6 +34,19 @@ public sealed partial class MappingScreen : InGameScreen
     private bool _decalCleanable;
 
     private bool _decalAuto;
+    private readonly string[] _emberPaintModes =
+    [
+        "wall",
+        "wallclear",
+        "stripe",
+        "stripeclear",
+        "airlockdoor",
+        "airlockdoorclear",
+        "airlockstripe",
+        "airlockstripeclear",
+        "airlockwindow",
+        "airlockwindowclear",
+    ];
 
     public override ChatBox ChatBox => GetWidget<ChatBox>()!;
 
@@ -96,6 +109,7 @@ public sealed partial class MappingScreen : InGameScreen
             _decalZIndex = args.Value;
             UpdateDecal();
         };
+        EmberPaintMode.OnItemSelected += args => EmberPaintMode.SelectId(args.Id);
 
         for (var i = 0; i < EntitySpawnWindow.InitOpts.Length; i++)
         {
@@ -113,8 +127,18 @@ public sealed partial class MappingScreen : InGameScreen
         MoveGrid.Texture.TexturePath = "/Textures/Interface/VerbIcons/point.svg.192dpi.png";
         GridVV.Texture.TexturePath = "/Textures/Interface/VerbIcons/vv.svg.192dpi.png";
         PipesColor.Texture.TexturePath = "/Textures/Interface/VerbIcons/paint-roller-solid.svg.192dpi.png";
+        EmberPaint.Texture.TexturePath = "/Textures/Interface/VerbIcons/paint-roller-solid.svg.192dpi.png";
         ChatButton.Texture.TexturePath = "/Textures/Interface/VerbIcons/comment-dots-regular.svg.192dpi.png";
+
+        for (var i = 0; i < _emberPaintModes.Length; i++)
+        {
+            EmberPaintMode.AddItem(Loc.GetString($"mapping-ember-paint-mode-{_emberPaintModes[i]}"), i);
+        }
+
+        EmberPaintMode.SelectId(0);
     }
+
+    public string SelectedEmberPaintMode => _emberPaintModes[EmberPaintMode.SelectedId];
 
     private void FlipSides()
     {
@@ -274,6 +298,7 @@ public sealed partial class MappingScreen : InGameScreen
         MoveGrid.Pressed = MoveGrid == except;
         GridVV.Pressed = GridVV == except;
         PipesColor.Pressed = PipesColor == except;
+        EmberPaint.Pressed = EmberPaint == except;
 
         EraseEntityButton.Pressed = EraseEntityButton == except;
         EraseDecalButton.Pressed = EraseDecalButton == except;

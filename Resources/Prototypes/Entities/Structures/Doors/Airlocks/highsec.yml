@@ -57,6 +57,8 @@
     containers:
       board: !type:Container
   - type: Door
+    openingAnimationTime: 1.2
+    closingAnimationTime: 1.2
     crushDamage:
       types:
         Blunt: 50
@@ -70,6 +72,10 @@
     fuel: 10
     time: 10
   - type: Airlock
+  - type: EmberProceduralAirlock
+    style: EmberAirlockSecure
+    doorSprite: /Textures/Ember/Structures/Doors/Airlocks/Secure/door.rsi
+    steelFillSprite: /Textures/Ember/Structures/Doors/Airlocks/Secure/fill_steel.rsi
   - type: NavMapDoor
   - type: DoorBolt
   - type: AccessReader

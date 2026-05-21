@@ -409,6 +409,10 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsVault ]
+  - type: EmberProceduralAirlock
+    style: EmberAirlockVault
+    doorSprite: /Textures/Ember/Structures/Doors/Airlocks/Vault/door.rsi
+    steelFillSprite: /Textures/Ember/Structures/Doors/Airlocks/Vault/fill_steel.rsi
 
 - type: entity
   parent: AirlockCommand
@@ -1273,3 +1277,5 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsSyndicateAgent ]
+  - type: EmberProceduralAirlock
+    style: EmberAirlockHatchSyndicate

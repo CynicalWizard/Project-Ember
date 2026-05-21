@@ -4,10 +4,11 @@
   parent: WindowRCDResistant
   components:
   - type: Sprite
-    drawdepth: WallTops
-    sprite: Structures/Windows/shuttle_window.rsi
+    drawdepth: Objects
+    sprite: Ember/Structures/Windows/window.rsi
   - type: Icon
-    sprite: Structures/Windows/shuttle_window.rsi
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow_full
   - type: Repairable
     fuelCost: 15
     doAfterDelay: 3
@@ -39,8 +40,12 @@
             max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: IconSmooth
-    base: swindow
+  - type: EmberProceduralStructure
+    role: Window
+    material: EmberShuttleGlass
+    stateBase: rwindow
+    alpha: 0.7058824
+    sprite: /Textures/Ember/Structures/Windows/window.rsi
   - type: Construction
     graph: Window
     node: shuttleWindow
@@ -55,7 +60,7 @@
     damageDivisor: 20
     trackAllDamage: true
     damageOverlay:
-      sprite: Structures/Windows/cracks.rsi
+      sprite: Ember/Structures/Windows/window_damage_overlay.rsi
   - type: StaticPrice
     price: 150
 
@@ -69,7 +74,7 @@
     - Window
   components:
   - type: Sprite
-    drawdepth: WallTops
+    drawdepth: Objects
     sprite: Structures/Windows/shuttle_window_diagonal.rsi
     state: state0
   - type: Tag

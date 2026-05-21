@@ -1,0 +1,320 @@
+{
+    "version": 1,
+    "license": null,
+    "copyright": null,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "window_full"
+        },
+        {
+            "name": "window",
+            "directions": 4
+        },
+        {
+            "name": "window0",
+            "directions": 4
+        },
+        {
+            "name": "window1",
+            "directions": 4
+        },
+        {
+            "name": "window2",
+            "directions": 4
+        },
+        {
+            "name": "window3",
+            "directions": 4
+        },
+        {
+            "name": "window4",
+            "directions": 4
+        },
+        {
+            "name": "window5",
+            "directions": 4
+        },
+        {
+            "name": "window6",
+            "directions": 4
+        },
+        {
+            "name": "window7",
+            "directions": 4
+        },
+        {
+            "name": "window_other0",
+            "directions": 4
+        },
+        {
+            "name": "window_other1",
+            "directions": 4
+        },
+        {
+            "name": "window_other2",
+            "directions": 4
+        },
+        {
+            "name": "window_other3",
+            "directions": 4
+        },
+        {
+            "name": "window_other4",
+            "directions": 4
+        },
+        {
+            "name": "window_other5",
+            "directions": 4
+        },
+        {
+            "name": "window_other6",
+            "directions": 4
+        },
+        {
+            "name": "window_other7",
+            "directions": 4
+        },
+        {
+            "name": "window_onframe0",
+            "directions": 4
+        },
+        {
+            "name": "window_onframe1",
+            "directions": 4
+        },
+        {
+            "name": "window_onframe2",
+            "directions": 4
+        },
+        {
+            "name": "window_onframe3",
+            "directions": 4
+        },
+        {
+            "name": "window_onframe4",
+            "directions": 4
+        },
+        {
+            "name": "window_onframe5",
+            "directions": 4
+        },
+        {
+            "name": "window_onframe6",
+            "directions": 4
+        },
+        {
+            "name": "window_onframe7",
+            "directions": 4
+        },
+        {
+            "name": "window_other_onframe0",
+            "directions": 4
+        },
+        {
+            "name": "window_other_onframe1",
+            "directions": 4
+        },
+        {
+            "name": "window_other_onframe2",
+            "directions": 4
+        },
+        {
+            "name": "window_other_onframe3",
+            "directions": 4
+        },
+        {
+            "name": "window_other_onframe4",
+            "directions": 4
+        },
+        {
+            "name": "window_other_onframe5",
+            "directions": 4
+        },
+        {
+            "name": "window_other_onframe6",
+            "directions": 4
+        },
+        {
+            "name": "window_other_onframe7",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_full"
+        },
+        {
+            "name": "rwindow",
+            "directions": 4
+        },
+        {
+            "name": "rwindow0",
+            "directions": 4
+        },
+        {
+            "name": "rwindow1",
+            "directions": 4
+        },
+        {
+            "name": "rwindow2",
+            "directions": 4
+        },
+        {
+            "name": "rwindow3",
+            "directions": 4
+        },
+        {
+            "name": "rwindow4",
+            "directions": 4
+        },
+        {
+            "name": "rwindow5",
+            "directions": 4
+        },
+        {
+            "name": "rwindow6",
+            "directions": 4
+        },
+        {
+            "name": "rwindow7",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_other0",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_other1",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_other2",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_other3",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_other4",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_other5",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_other6",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_other7",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_onframe0",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_onframe1",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_onframe2",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_onframe3",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_onframe4",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_onframe5",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_onframe6",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_onframe7",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_other_onframe0",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_other_onframe1",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_other_onframe2",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_other_onframe3",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_other_onframe4",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_other_onframe5",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_other_onframe6",
+            "directions": 4
+        },
+        {
+            "name": "rwindow_other_onframe7",
+            "directions": 4
+        },
+        {
+            "name": "window_full_damage"
+        },
+        {
+            "name": "window0_damage",
+            "directions": 4
+        },
+        {
+            "name": "window_onframe0_damage",
+            "directions": 4
+        },
+        {
+            "name": "window_onframe1_damage",
+            "directions": 4
+        },
+        {
+            "name": "window_onframe_2_damage",
+            "directions": 4
+        },
+        {
+            "name": "window_onframe3_damage",
+            "directions": 4
+        },
+        {
+            "name": "window_onframe4_damage",
+            "directions": 4
+        },
+        {
+            "name": "window_onframe5_damage",
+            "directions": 4
+        },
+        {
+            "name": "window_onframe6_damage",
+            "directions": 4
+        },
+        {
+            "name": "window_onframe7_damage",
+            "directions": 4
+        }
+    ]
+}

@@ -1,51 +1,64 @@
 #Atmospherics
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyAtmospherics
   suffix: Atmospherics
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/atmospherics.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_steel.rsi
+      state: construction
 
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyAtmosphericsGlass
   suffix: Atmospherics, Glass
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/atmospherics.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_glass.rsi
+      state: construction
 
 #Cargo
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyCargo
   suffix: Cargo
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/cargo.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_steel.rsi
+      state: construction
 
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyCargoGlass
   suffix: Cargo, Glass
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/cargo.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_glass.rsi
+      state: construction
 
 #Clockwork
 - type: entity
   id: PinionAirlockAssembly
   name: airlock assembly
   suffix: Pinion, Clockwork
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/clockwork_pinion.rsi
-    state: "assembly"
+    layers:
+    - state: assembly
   - type: Construction
     graph: PinionAirlock
     node: assembly
@@ -53,287 +66,370 @@
     mode: SnapgridCenter
 
 - type: entity
-  parent: PinionAirlockAssembly
+  parent: BaseAirlockAssembly
   id: PinionAirlockAssemblyGlass
   suffix: Pinion, Clockwork, Glass
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/clockwork_pinion.rsi
-    state: "assembly"
+    layers:
+    - state: assembly
+  - type: Construction
+    graph: PinionAirlock
+    node: assembly
 
 #Command
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyCommand
   suffix: Command
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/command.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_steel.rsi
+      state: construction
 
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyCommandGlass
   suffix: Command, Glass
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/command.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_glass.rsi
+      state: construction
 
 #Engineering
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyEngineering
   suffix: Engineering
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/engineering.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_steel.rsi
+      state: construction
 
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyEngineeringGlass
   suffix: Engineering, Glass
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/engineering.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_glass.rsi
+      state: construction
 
 #External
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyExternal
   suffix: External
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/external.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/External/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/External/fill_steel.rsi
+      state: construction
 
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyExternalGlass
   suffix: External, Glass
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/external.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/External/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/External/fill_glass.rsi
+      state: construction
 
 #Public (Glass Airlock)
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyGlass
   suffix: Glass
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/glass.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_glass.rsi
+      state: construction
 
 #Freezer
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyFreezer
   suffix: Freezer
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/freezer.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_steel.rsi
+      state: construction
 
 #Maintenance
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyMaintenance
   suffix: Maintenance
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/maint.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_steel.rsi
+      state: construction
 
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyMaintenanceGlass
   suffix: Maintenance, Glass
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/maint.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_glass.rsi
+      state: construction
 
 #Medical
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyMedical
   suffix: Medical
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/medical.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_steel.rsi
+      state: construction
 
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyMedicalGlass
   suffix: Medical, Glass
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/medical.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_glass.rsi
+      state: construction
 
 #Science
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyScience
   suffix: Science
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/science.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_steel.rsi
+      state: construction
 
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyScienceGlass
   suffix: Science, Glass
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/science.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_glass.rsi
+      state: construction
 
 #Security
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblySecurity
   suffix: Security
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/security.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_steel.rsi
+      state: construction
 
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblySecurityGlass
   suffix: Security, Glass
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/security.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_glass.rsi
+      state: construction
 
 #Shuttle
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyShuttle
   suffix: Shuttle
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/shuttle.rsi
-    state: "assembly"
+    layers:
+    - state: assembly
 
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyShuttleGlass
   suffix: Shuttle, Glass
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/shuttle.rsi
-    state: "assembly"
+    layers:
+    - state: assembly
 
 #Virology
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyVirology
   suffix: Virology
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/virology.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_steel.rsi
+      state: construction
 
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyVirologyGlass
   suffix: Virology, Glass
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/virology.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_glass.rsi
+      state: construction
 
 #CentralCommand
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyCentralCommand
   suffix: CentralCommand
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/centcomm.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_steel.rsi
+      state: construction
 
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyCentralCommandGlass
   suffix: CentralCommand, Glass
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/centcomm.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_glass.rsi
+      state: construction
 
 #Mining
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyMining
   suffix: Mining
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/mining.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_steel.rsi
+      state: construction
 
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyMiningGlass
   suffix: Mining, Glass
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/mining.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_glass.rsi
+      state: construction
 
 #Syndicate
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblySyndicate
   suffix: Syndicate
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/syndicate.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_steel.rsi
+      state: construction
 
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblySyndicateGlass
   suffix: Syndicate, Glass
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/syndicate.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_glass.rsi
+      state: construction
 
 #ShuttleSyndicate
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyShuttleSyndicate
   suffix: ShuttleSyndicate
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/shuttle_syndicate.rsi
-    state: "assembly"
+    layers:
+    - state: assembly
 
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyShuttleSyndicateGlass
   suffix: ShuttleSyndicate, Glass
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/shuttle_syndicate.rsi
-    state: "assembly"
+    layers:
+    - state: assembly
 
 #High Security
 - type: entity
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   id: AirlockAssemblyHighSec
   suffix: HighSec
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/highsec/highsec.rsi
-    state: "assembly"
+    sprite: Ember/Structures/Doors/Airlocks/Secure/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Secure/fill_steel.rsi
+      state: construction

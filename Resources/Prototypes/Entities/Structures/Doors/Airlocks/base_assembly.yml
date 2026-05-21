@@ -1,14 +1,12 @@
 #Base
 - type: entity
-  id: AirlockAssembly
+  id: BaseAirlockAssembly
+  abstract: true
   name: airlock assembly
   description: It opens, it closes, and maybe crushes you.
   components:
   - type: Clickable
   - type: InteractionOutline
-  - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/basic.rsi
-    state: "assembly"
   - type: Physics
   - type: Fixtures
     fixtures:
@@ -47,3 +45,14 @@
     node: assembly
   placement:
     mode: SnapgridCenter
+
+- type: entity
+  parent: BaseAirlockAssembly
+  id: AirlockAssembly
+  components:
+  - type: Sprite
+    sprite: Ember/Structures/Doors/Airlocks/Station/door.rsi
+    layers:
+    - state: construction
+    - sprite: Ember/Structures/Doors/Airlocks/Station/fill_steel.rsi
+      state: construction

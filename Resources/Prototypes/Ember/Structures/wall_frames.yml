@@ -1,0 +1,130 @@
+- type: entity
+  id: WallFrame
+  parent: BaseStructure
+  name: low wall
+  description: A low wall section which serves as the base of windows, amongst other things.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    drawdepth: Walls
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  - type: EmberProceduralStructure
+    role: WallFrame
+    material: EmberWallSteel
+    stateBase: frame
+    sprite: /Textures/Ember/Structures/WallFrames/wall_frame_offbay.rsi
+  - type: CanBuildWindowOnTop
+  - type: RCDDeconstructable
+    cost: 4
+    delay: 2
+    fx: EffectRCDDeconstruct2
+  - type: Construction
+    graph: WallFrame
+    node: wallFrame
+    deconstructionTarget: start
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Physics
+    bodyType: Static
+  - type: Climbable
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+
+- type: entity
+  id: WallFrameReinforced
+  parent: WallFrame
+  name: reinforced low wall
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallPlasteel
+  - type: Construction
+    graph: WallFrameReinforced
+    node: wallFrame
+
+- type: entity
+  id: WallFrameGold
+  parent: WallFrame
+  name: gold low wall
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallGold
+  - type: Construction
+    graph: WallFrameGold
+    node: wallFrame
+
+- type: entity
+  id: WallFrameSilver
+  parent: WallFrame
+  name: silver low wall
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallSilver
+  - type: Construction
+    graph: WallFrameSilver
+    node: wallFrame
+
+- type: entity
+  id: WallFramePlasma
+  parent: WallFrame
+  name: plasma low wall
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallPlasma
+  - type: Construction
+    graph: WallFramePlasma
+    node: wallFrame
+
+- type: entity
+  id: WallFrameUranium
+  parent: WallFrame
+  name: uranium low wall
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallUranium
+  - type: Construction
+    graph: WallFrameUranium
+    node: wallFrame
+
+- type: entity
+  id: WallFramePlastic
+  parent: WallFrame
+  name: plastic low wall
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallPlastic
+  - type: Construction
+    graph: WallFramePlastic
+    node: wallFrame
+
+- type: entity
+  id: WallFrameWood
+  parent: WallFrame
+  name: wood low wall
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallWood
+  - type: Construction
+    graph: WallFrameWood
+    node: wallFrame

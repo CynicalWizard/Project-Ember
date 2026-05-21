@@ -20,11 +20,11 @@
       - Window
       - WeldbotFixableStructure
   - type: Sprite
-    drawdepth: WallTops
-    sprite: Structures/Windows/window.rsi
+    drawdepth: Objects
+    sprite: Ember/Structures/Windows/window.rsi
   - type: Icon
-    sprite: Structures/Windows/window.rsi
-    state: full
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window_full
   - type: Physics
     bodyType: Static
   - type: Fixtures
@@ -72,9 +72,12 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Airtight
-  - type: IconSmooth
-    key: walls
-    base: window
+  - type: EmberProceduralStructure
+    role: Window
+    material: EmberGlass
+    stateBase: window
+    alpha: 0.7058824
+    sprite: /Textures/Ember/Structures/Windows/window.rsi
   - type: Construction
     graph: Window
     node: window
@@ -84,7 +87,7 @@
     damageDivisor: 2
     trackAllDamage: true
     damageOverlay:
-      sprite: Structures/Windows/cracks.rsi
+      sprite: Ember/Structures/Windows/window_damage_overlay.rsi
   - type: StaticPrice
     price: 100
   - type: BlockWeather
@@ -98,12 +101,18 @@
   name: tinted window
   components:
   - type: Sprite
-    drawdepth: WallTops
-    sprite: Structures/Windows/tinted_window.rsi
+    drawdepth: Objects
+    sprite: Ember/Structures/Windows/window.rsi
   - type: Icon
-    sprite: Structures/Windows/tinted_window.rsi
-  - type: IconSmooth
-    base: twindow
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow_full
+  - type: EmberProceduralStructure
+    role: Window
+    material: EmberGlass
+    stateBase: rwindow
+    color: "#222222"
+    alpha: 0.7058824
+    sprite: /Textures/Ember/Structures/Windows/window.rsi
   - type: Construction
     graph: Window
     node: tintedWindow
@@ -142,10 +151,13 @@
         collection: GlassSmack
   - type: Sprite
     drawdepth: Mobs
-    sprite: Structures/Windows/directional.rsi
+    sprite: Ember/Structures/Windows/window.rsi
     state: window
+  - type: EmberMaterialTint
+    material: EmberGlass
+    alpha: 0.7058824
   - type: Icon
-    sprite: Structures/Windows/directional.rsi
+    sprite: Ember/Structures/Windows/window.rsi
     state: window
   - type: Physics
   - type: Fixtures
@@ -232,11 +244,14 @@
     - Window
   components:
   - type: Sprite
-    sprite: Structures/Windows/directional.rsi
-    state: frosted_window
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window
+  - type: EmberMaterialTint
+    material: EmberGlass
+    alpha: 0.7058824
   - type: Icon
-    sprite: Structures/Windows/directional.rsi
-    state: frosted_window
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window
   - type: StaticPrice
     price: 35
 
@@ -250,7 +265,7 @@
     - Window
   components:
   - type: Sprite
-    drawdepth: WallTops
+    drawdepth: Objects
     sprite: Structures/Windows/window_diagonal.rsi
     state: state0
   - type: Tag

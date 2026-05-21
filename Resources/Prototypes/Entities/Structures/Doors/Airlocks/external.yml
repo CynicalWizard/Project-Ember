@@ -5,6 +5,8 @@
   description: It opens, it closes, it might crush you, and there might be only space behind it.
   components:
   - type: Door
+    openingAnimationTime: 1.2
+    closingAnimationTime: 1.2
     crushDamage:
       types:
         Blunt: 15
@@ -16,6 +18,17 @@
       path: /Audio/Machines/airlock_deny.ogg
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/external.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockExternal
+    doorSprite: /Textures/Ember/Structures/Doors/Airlocks/External/door.rsi
+    colorSprite: /Textures/Ember/Structures/Doors/Airlocks/External/color.rsi
+    colorFillSprite: /Textures/Ember/Structures/Doors/Airlocks/External/fill_color.rsi
+    steelFillSprite: /Textures/Ember/Structures/Doors/Airlocks/External/fill_steel.rsi
+    glassFillSprite: /Textures/Ember/Structures/Doors/Airlocks/External/fill_glass.rsi
+    greenLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/External/lights_green.rsi
+    denyLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/External/lights_deny.rsi
+    boltLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/External/lights_bolts.rsi
+    emagSprite: /Textures/Ember/Structures/Doors/Airlocks/External/emag.rsi
   - type: PaintableAirlock
     group: External
     department: null
@@ -29,10 +42,24 @@
   components:
   - type: Door
     occludes: false
+    openingAnimationTime: 1.2
+    closingAnimationTime: 1.2
   - type: Occluder
     enabled: false
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/external.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockExternal
+    glass: true
+    doorSprite: /Textures/Ember/Structures/Doors/Airlocks/External/door.rsi
+    colorSprite: /Textures/Ember/Structures/Doors/Airlocks/External/color.rsi
+    colorFillSprite: /Textures/Ember/Structures/Doors/Airlocks/External/fill_color.rsi
+    steelFillSprite: /Textures/Ember/Structures/Doors/Airlocks/External/fill_steel.rsi
+    glassFillSprite: /Textures/Ember/Structures/Doors/Airlocks/External/fill_glass.rsi
+    greenLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/External/lights_green.rsi
+    denyLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/External/lights_deny.rsi
+    boltLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/External/lights_bolts.rsi
+    emagSprite: /Textures/Ember/Structures/Doors/Airlocks/External/emag.rsi
   - type: PaintableAirlock
     group: ExternalGlass
   - type: Fixtures

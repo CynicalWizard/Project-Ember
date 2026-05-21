@@ -5,10 +5,11 @@
   parent: Window
   components:
   - type: Sprite
-    drawdepth: WallTops
-    sprite: Structures/Windows/clockwork_window.rsi
+    drawdepth: Objects
+    sprite: Ember/Structures/Windows/window.rsi
   - type: Icon
-    sprite: Structures/Windows/clockwork_window.rsi
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow_full
   - type: Repairable
     fuelCost: 10
     doAfterDelay: 2
@@ -40,8 +41,12 @@
             max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: IconSmooth
-    base: cwindow
+  - type: EmberProceduralStructure
+    role: Window
+    material: EmberBrassGlass
+    stateBase: rwindow
+    alpha: 0.7058824
+    sprite: /Textures/Ember/Structures/Windows/window.rsi
   - type: Construction
     graph: Window
     node: clockworkWindow
@@ -51,7 +56,7 @@
     damageDivisor: 3
     trackAllDamage: true
     damageOverlay:
-      sprite: Structures/Windows/cracks.rsi
+      sprite: Ember/Structures/Windows/window_damage_overlay.rsi
 
 - type: entity
   id: WindowClockworkDirectional
@@ -64,11 +69,14 @@
     - Window
   components:
   - type: Sprite
-    sprite: Structures/Windows/directional.rsi
-    state: clock_window
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow
+  - type: EmberMaterialTint
+    material: EmberBrassGlass
+    alpha: 0.7058824
   - type: Icon
-    sprite: Structures/Windows/directional.rsi
-    state: clock_window
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow
   - type: Construction
     graph: WindowDirectional
     node: windowClockworkDirectional
@@ -119,7 +127,7 @@
     - Window
   components:
   - type: Sprite
-    drawdepth: WallTops
+    drawdepth: Objects
     sprite: Structures/Windows/clockwork_diagonal.rsi
     state: state0
   - type: Tag

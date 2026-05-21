@@ -7,18 +7,44 @@
                   VerticalExpand="True"
                   SeparationOverride="4"
                   MinWidth="450">
-        <BoxContainer Orientation="Vertical"
+        <TabContainer Name="ModeTabs"
                       HorizontalExpand="True"
                       VerticalExpand="True"
-                      SeparationOverride="4"
-                      MinWidth="200">
-            <Label Name="SelectedSpriteLabel"
-                   Text="{Loc 'spray-painter-selected-style'}">
-            </Label>
-            <ItemList Name="SpriteList"
-                      SizeFlagsStretchRatio="8"
-                      VerticalExpand="True"/>
-        </BoxContainer>
+                      MinWidth="220">
+            <BoxContainer Orientation="Vertical"
+                          HorizontalExpand="True"
+                          VerticalExpand="True"
+                          SeparationOverride="4">
+                <Label Name="SelectedSpriteLabel"
+                       Text="{Loc 'spray-painter-selected-style'}">
+                </Label>
+                <ItemList Name="SpriteList"
+                          SizeFlagsStretchRatio="5"
+                          VerticalExpand="True"/>
+                <Label Name="SelectedAirlockActionLabel"
+                       Text="{Loc 'spray-painter-selected-airlock-action'}"/>
+                <ItemList Name="AirlockActionList"
+                          SizeFlagsStretchRatio="3"
+                          VerticalExpand="True"/>
+            </BoxContainer>
+            <BoxContainer Orientation="Vertical"
+                          HorizontalExpand="True"
+                          VerticalExpand="True"
+                          SeparationOverride="4">
+                <Label Name="SelectedWallActionLabel"
+                       Text="{Loc 'spray-painter-selected-wall-action'}"/>
+                <ItemList Name="WallActionList"
+                          SizeFlagsStretchRatio="8"
+                          VerticalExpand="True"/>
+            </BoxContainer>
+            <BoxContainer Orientation="Vertical"
+                          HorizontalExpand="True"
+                          VerticalExpand="True"
+                          SeparationOverride="4">
+                <Label Name="SelectedPipeActionLabel"
+                       Text="{Loc 'spray-painter-pipes-use-selected-color'}"/>
+            </BoxContainer>
+        </TabContainer>
         <BoxContainer Orientation="Vertical"
                       HorizontalExpand="True"
                       VerticalExpand="True"
@@ -29,6 +55,13 @@
             <ItemList Name="ColorList"
                       SizeFlagsStretchRatio="8"
                       VerticalExpand="True"/>
+            <Button Name="PaletteButton"
+                    Text="{Loc 'decal-placer-window-palette'}"/>
+            <Label Name="CustomColorLabel"
+                   Text="{Loc 'spray-painter-custom-color'}"/>
+            <ColorSelectorSliders Name="CustomColorPicker"
+                                  IsAlphaVisible="False"
+                                  HorizontalExpand="True"/>
         </BoxContainer>
     </BoxContainer>
 </DefaultWindow>
