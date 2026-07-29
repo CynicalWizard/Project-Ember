@@ -46,8 +46,8 @@
   id: Plasma
   stackEntity: SheetPlasma1
   name: materials-plasma
-  icon: { sprite: Objects/Materials/Sheets/other.rsi, state: plasma }
-  color: "#7e009e"
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: sheet-phoron }
+  color: "#e37108"
   price: 0.35 # $35 for 1 unit
 
 - type: material

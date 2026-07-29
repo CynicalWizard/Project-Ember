@@ -1,0 +1,89 @@
+{
+    "version": 1,
+    "license": null,
+    "copyright": null,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": ""
+        },
+        {
+            "name": "shards"
+        },
+        {
+            "name": "large"
+        },
+        {
+            "name": "medium"
+        },
+        {
+            "name": "small"
+        },
+        {
+            "name": "phoronlarge"
+        },
+        {
+            "name": "phoronmedium"
+        },
+        {
+            "name": "phoronsmall"
+        },
+        {
+            "name": "shrapnellarge"
+        },
+        {
+            "name": "shrapnelmedium"
+        },
+        {
+            "name": "shrapnelsmall"
+        },
+        {
+            "name": "shardlarge"
+        },
+        {
+            "name": "shardmedium"
+        },
+        {
+            "name": "shardsmall"
+        },
+        {
+            "name": "splinterslarge"
+        },
+        {
+            "name": "splintersmedium"
+        },
+        {
+            "name": "splinterssmall"
+        },
+        {
+            "name": "piecelarge"
+        },
+        {
+            "name": "piecemedium"
+        },
+        {
+            "name": "piecesmall"
+        },
+        {
+            "name": "caltrop"
+        },
+        {
+            "name": "tack0"
+        },
+        {
+            "name": "tack1"
+        },
+        {
+            "name": "tack2"
+        },
+        {
+            "name": "tack3"
+        },
+        {
+            "name": "tack4"
+        }
+    ]
+}

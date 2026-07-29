@@ -23,6 +23,12 @@
               amount: 1
               doAfter: 2
 
+        - to: borosilicateWindowDirectional
+          steps:
+            - material: BorosilicateGlass
+              amount: 1
+              doAfter: 2
+
         - to: plasmaReinforcedWindowDirectional
           steps:
             - material: ReinforcedPlasmaGlass
@@ -88,6 +94,25 @@
           completed:
             - !type:SpawnPrototype
               prototype: SheetPGlass1
+              amount: 1
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 2
+            - tool: Prying
+              doAfter: 3
+            - tool: Screwing
+              doAfter: 2
+            - tool: Anchoring
+              doAfter: 3
+
+    - node: borosilicateWindowDirectional
+      entity: BorosilicateWindowDirectional
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: EmberSheetBorosilicateGlass1
               amount: 1
             - !type:DeleteEntity {}
           steps:

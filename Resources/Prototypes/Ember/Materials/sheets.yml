@@ -1,0 +1,646 @@
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: EmberMaterialStackBase
+  description: A processed stack of material.
+  components:
+  - type: Sprite
+    sprite: Ember/Objects/Materials/materials.rsi
+    layers:
+    - state: sheet
+      map: ["base"]
+  - type: Item
+    sprite: Ember/Objects/Materials/materials.rsi
+    size: Normal
+  - type: Appearance
+  - type: Tag
+    tags:
+    - Sheet
+    - NoPaint
+  - type: UserInterface
+    interfaces:
+      enum.RadialSelectorUiKey.Key:
+        type: RadialSelectorMenuBUI
+  - type: ActivatableUI
+    key: enum.RadialSelectorUiKey.Key
+    inHandsOnly: true
+    requireActiveHand: false
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberIngotIron1
+  name: iron ingot
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Iron
+    count: 1
+    baseLayer: base
+    layerStates: [ ingot, ingot-mult, ingot-max ]
+  - type: EmberMaterialStack
+    material: Iron
+  - type: ShortConstruction
+    entries:
+    - prototype: WallFrameIron
+
+- type: entity
+  parent: EmberIngotIron1
+  id: EmberIngotIron
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberSheetAluminium1
+  name: aluminium sheet
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: EmberAluminium
+    count: 1
+    baseLayer: base
+    layerStates: [ sheet-sheen, sheet-sheen-mult, sheet-sheen-max ]
+  - type: EmberMaterialStack
+    material: Aluminium
+  - type: ShortConstruction
+    entries:
+    - prototype: WallFrameAluminium
+
+- type: entity
+  parent: EmberSheetAluminium1
+  id: EmberSheetAluminium
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberSheetTitanium1
+  name: titanium sheet
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Titanium
+    count: 1
+    baseLayer: base
+    layerStates: [ sheet-reinf, sheet-reinf-mult, sheet-reinf-max ]
+  - type: EmberMaterialStack
+    material: Titanium
+  - type: ShortConstruction
+    entries:
+    - prototype: WallFrameTitanium
+
+- type: entity
+  parent: EmberSheetTitanium1
+  id: EmberSheetTitanium
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberSheetTitanium1
+  id: EmberSheetOCP1
+  name: osmium-carbide plasteel sheet
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: OsmiumCarbidePlasteel
+  - type: EmberMaterialStack
+    material: OsmiumCarbidePlasteel
+  - type: ShortConstruction
+    entries:
+    - prototype: WallFrameOCP
+
+- type: entity
+  parent: EmberSheetOCP1
+  id: EmberSheetOCP
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberIngotIron1
+  id: EmberIngotOsmium1
+  name: osmium ingot
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Osmium
+  - type: EmberMaterialStack
+    material: Osmium
+  - type: ShortConstruction
+    entries:
+    - prototype: WallFrameOsmium
+
+- type: entity
+  parent: EmberIngotOsmium1
+  id: EmberIngotOsmium
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberIngotIron1
+  id: EmberIngotElectrum1
+  name: electrum ingot
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Electrum
+  - type: EmberMaterialStack
+    material: Electrum
+  - type: ShortConstruction
+    entries:
+    - prototype: WallFrameElectrum
+
+- type: entity
+  parent: EmberIngotElectrum1
+  id: EmberIngotElectrum
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberIngotIron1
+  id: EmberIngotCopper1
+  name: copper ingot
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: EmberCopper
+  - type: EmberMaterialStack
+    material: Copper
+  - type: ShortConstruction
+    entries:
+    - prototype: WallFrameCopper
+
+- type: entity
+  parent: EmberIngotCopper1
+  id: EmberIngotCopper
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberIngotIron1
+  id: EmberIngotBronze1
+  name: bronze ingot
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Bronze
+  - type: EmberMaterialStack
+    material: Bronze
+  - type: ShortConstruction
+    entries:
+    - prototype: WallFrameBronze
+
+- type: entity
+  parent: EmberIngotBronze1
+  id: EmberIngotBronze
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberIngotIron1
+  id: EmberIngotPlatinum1
+  name: platinum ingot
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Platinum
+  - type: EmberMaterialStack
+    material: Platinum
+  - type: ShortConstruction
+    entries:
+    - prototype: WallFramePlatinum
+
+- type: entity
+  parent: EmberIngotPlatinum1
+  id: EmberIngotPlatinum
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberPuckDeuterium1
+  name: deuterium puck
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Deuterium
+    count: 1
+    baseLayer: base
+    layerStates: [ puck, puck-mult, puck-max ]
+  - type: EmberMaterialStack
+    material: Deuterium
+
+- type: entity
+  parent: EmberPuckDeuterium1
+  id: EmberPuckDeuterium
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberPuckDeuterium1
+  id: EmberPuckTritium1
+  name: tritium puck
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Tritium
+  - type: EmberMaterialStack
+    material: Tritium
+
+- type: entity
+  parent: EmberPuckTritium1
+  id: EmberPuckTritium
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberSheetMHydrogen1
+  name: metallic hydrogen sheet
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: MetallicHydrogen
+    count: 1
+    baseLayer: base
+    layerStates: [ sheet-mythril, sheet-mythril, sheet-mythril ]
+  - type: EmberMaterialStack
+    material: MetallicHydrogen
+
+- type: entity
+  parent: EmberSheetMHydrogen1
+  id: EmberSheetMHydrogen
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberSheetBorosilicateGlass1
+  name: borosilicate glass sheet
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: BorosilicateGlass
+    count: 1
+    baseLayer: base
+    layerStates: [ sheet-clear, sheet-clear-mult, sheet-clear-max ]
+  - type: EmberMaterialStack
+    material: BorosilicateGlass
+  - type: ShortConstruction
+    entries:
+    - prototype: BorosilicateWindow
+    - prototype: BorosilicateWindowDiagonal
+    - prototype: BorosilicateWindowDirectional
+
+- type: entity
+  parent: EmberSheetBorosilicateGlass1
+  id: EmberSheetBorosilicateGlass
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberBrickSandstone1
+  name: sandstone brick
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Sandstone
+    count: 1
+    baseLayer: base
+    layerStates: [ brick, brick-mult, brick-max ]
+  - type: EmberMaterialStack
+    material: Sandstone
+  - type: ShortConstruction
+    entries:
+    - prototype: WallFrameSandstone
+
+- type: entity
+  parent: EmberBrickSandstone1
+  id: EmberBrickSandstone
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberBrickSandstone1
+  id: EmberBrickMarble1
+  name: marble brick
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Marble
+  - type: EmberMaterialStack
+    material: Marble
+  - type: ShortConstruction
+    entries:
+    - prototype: WallFrameMarble
+
+- type: entity
+  parent: EmberBrickMarble1
+  id: EmberBrickMarble
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberBrickSandstone1
+  id: EmberBrickConcrete1
+  name: concrete brick
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Concrete
+  - type: EmberMaterialStack
+    material: Concrete
+  - type: ShortConstruction
+    entries:
+    - prototype: WallFrameConcrete
+
+- type: entity
+  parent: EmberBrickConcrete1
+  id: EmberBrickConcrete
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberBrickSandstone1
+  id: EmberBrickBorax1
+  name: borax brick
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Borax
+  - type: EmberMaterialStack
+    material: Borax
+
+- type: entity
+  parent: EmberBrickBorax1
+  id: EmberBrickBorax
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberBrickSandstone1
+  id: EmberBrickPitchblende1
+  name: pitchblende brick
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Pitchblende
+  - type: EmberMaterialStack
+    material: Pitchblende
+
+- type: entity
+  parent: EmberBrickPitchblende1
+  id: EmberBrickPitchblende
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberSheetGraphite1
+  name: graphite sheet
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Graphite
+    count: 1
+    baseLayer: base
+    layerStates: [ sheet, sheet-mult, sheet-max ]
+  - type: EmberMaterialStack
+    material: Graphite
+
+- type: entity
+  parent: EmberSheetGraphite1
+  id: EmberSheetGraphite
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberBrickSandstone1
+  id: EmberBrickQuartz1
+  name: quartz brick
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Quartz
+  - type: EmberMaterialStack
+    material: Quartz
+
+- type: entity
+  parent: EmberBrickQuartz1
+  id: EmberBrickQuartz
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberBrickSandstone1
+  id: EmberBrickPyrite1
+  name: pyrite brick
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Pyrite
+  - type: EmberMaterialStack
+    material: Pyrite
+
+- type: entity
+  parent: EmberBrickPyrite1
+  id: EmberBrickPyrite
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberBrickSandstone1
+  id: EmberBrickSpodumene1
+  name: spodumene brick
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Spodumene
+  - type: EmberMaterialStack
+    material: Spodumene
+
+- type: entity
+  parent: EmberBrickSpodumene1
+  id: EmberBrickSpodumene
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberBrickSandstone1
+  id: EmberBrickCinnabar1
+  name: cinnabar brick
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Cinnabar
+  - type: EmberMaterialStack
+    material: Cinnabar
+
+- type: entity
+  parent: EmberBrickCinnabar1
+  id: EmberBrickCinnabar
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberBrickSandstone1
+  id: EmberBrickPhosphorite1
+  name: phosphorite brick
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Phosphorite
+  - type: EmberMaterialStack
+    material: Phosphorite
+
+- type: entity
+  parent: EmberBrickPhosphorite1
+  id: EmberBrickPhosphorite
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberBrickSandstone1
+  id: EmberBrickRockSalt1
+  name: rock salt brick
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: RockSalt
+  - type: EmberMaterialStack
+    material: RockSalt
+
+- type: entity
+  parent: EmberBrickRockSalt1
+  id: EmberBrickRockSalt
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberBrickSandstone1
+  id: EmberBrickPotash1
+  name: potash brick
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Potash
+  - type: EmberMaterialStack
+    material: Potash
+
+- type: entity
+  parent: EmberBrickPotash1
+  id: EmberBrickPotash
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberBrickSandstone1
+  id: EmberBrickBauxite1
+  name: bauxite brick
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Bauxite
+  - type: EmberMaterialStack
+    material: Bauxite
+
+- type: entity
+  parent: EmberBrickBauxite1
+  id: EmberBrickBauxite
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberDustSand1
+  name: sand
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Sand
+    count: 1
+    baseLayer: base
+    layerStates: [ sheet, sheet-mult, sheet-max ]
+  - type: EmberMaterialStack
+    material: Sand
+
+- type: entity
+  parent: EmberDustSand1
+  id: EmberDustSand
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberBrickSandstone1
+  id: EmberBrickRutile1
+  name: rutile brick
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Rutile
+  - type: EmberMaterialStack
+    material: Rutile
+
+- type: entity
+  parent: EmberBrickRutile1
+  id: EmberBrickRutile
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30

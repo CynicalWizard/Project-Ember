@@ -80,10 +80,12 @@ public sealed class EmberProceduralWallSystem : EntitySystem
 
         _generation++;
         var spriteQuery = GetEntityQuery<SpriteComponent>();
+        var structureQuery = GetEntityQuery<EmberProceduralStructureComponent>();
+        var doorQuery = GetEntityQuery<DoorComponent>();
 
         while (_dirty.TryDequeue(out var uid))
         {
-            UpdateSprite(uid, spriteQuery, wallQuery, xformQuery);
+            UpdateSprite(uid, spriteQuery, wallQuery, xformQuery, structureQuery, doorQuery);
         }
     }
 
@@ -110,7 +112,9 @@ public sealed class EmberProceduralWallSystem : EntitySystem
         EntityUid uid,
         EntityQuery<SpriteComponent> spriteQuery,
         EntityQuery<EmberProceduralWallComponent> wallQuery,
-        EntityQuery<TransformComponent> xformQuery)
+        EntityQuery<TransformComponent> xformQuery,
+        EntityQuery<EmberProceduralStructureComponent> structureQuery,
+        EntityQuery<DoorComponent> doorQuery)
     {
         if (!wallQuery.TryGetComponent(uid, out var wall) ||
             !wall.Running ||
@@ -131,7 +135,7 @@ public sealed class EmberProceduralWallSystem : EntitySystem
 
         var (cornerNE, cornerNW, cornerSW, cornerSE) = grid == null
             ? (CornerFill.None, CornerFill.None, CornerFill.None, CornerFill.None)
-            : CalculateCornerFill(grid, visuals, xform);
+            : CalculateCornerFill(grid, visuals, xform, wallQuery, structureQuery, doorQuery);
 
         SetCorner(sprite, EmberWallLayer.BaseNE, WallLayerKind.Base, visuals, cornerNE);
         SetCorner(sprite, EmberWallLayer.BaseSE, WallLayerKind.Base, visuals, cornerSE);
@@ -188,6 +192,11 @@ public sealed class EmberProceduralWallSystem : EntitySystem
             pos = oldPos;
         }
 
+        Dirty8Way(grid, pos);
+    }
+
+    private void Dirty8Way(MapGridComponent grid, Vector2i pos)
+    {
         DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(1, 0)));
         DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(-1, 0)));
         DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(0, 1)));
@@ -224,30 +233,26 @@ public sealed class EmberProceduralWallSystem : EntitySystem
             pos = oldPos;
         }
 
-        DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(1, 0)));
-        DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(-1, 0)));
-        DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(0, 1)));
-        DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(0, -1)));
-        DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(1, 1)));
-        DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(-1, -1)));
-        DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(-1, 1)));
-        DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(1, -1)));
+        Dirty8Way(grid, pos);
     }
 
     private (CornerFill ne, CornerFill nw, CornerFill sw, CornerFill se) CalculateCornerFill(
         MapGridComponent grid,
         EmberProceduralWallLayerVisuals visuals,
-        TransformComponent xform)
+        TransformComponent xform,
+        EntityQuery<EmberProceduralWallComponent> wallQuery,
+        EntityQuery<EmberProceduralStructureComponent> structureQuery,
+        EntityQuery<DoorComponent> doorQuery)
     {
         var pos = grid.TileIndicesFor(xform.Coordinates);
-        var n = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.North)));
-        var ne = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.NorthEast)));
-        var e = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.East)));
-        var se = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.SouthEast)));
-        var s = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.South)));
-        var sw = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.SouthWest)));
-        var w = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.West)));
-        var nw = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.NorthWest)));
+        var n = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.North)), wallQuery, structureQuery, doorQuery);
+        var ne = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.NorthEast)), wallQuery, structureQuery, doorQuery);
+        var e = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.East)), wallQuery, structureQuery, doorQuery);
+        var se = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.SouthEast)), wallQuery, structureQuery, doorQuery);
+        var s = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.South)), wallQuery, structureQuery, doorQuery);
+        var sw = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.SouthWest)), wallQuery, structureQuery, doorQuery);
+        var w = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.West)), wallQuery, structureQuery, doorQuery);
+        var nw = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.NorthWest)), wallQuery, structureQuery, doorQuery);
 
         var cornerNE = CornerFill.None;
         var cornerSE = CornerFill.None;
@@ -299,14 +304,19 @@ public sealed class EmberProceduralWallSystem : EntitySystem
         };
     }
 
-    private bool MatchingEntity(EmberProceduralWallLayerVisuals visuals, AnchoredEntitiesEnumerator candidates)
+    private bool MatchingEntity(
+        EmberProceduralWallLayerVisuals visuals, 
+        AnchoredEntitiesEnumerator candidates,
+        EntityQuery<EmberProceduralWallComponent> wallQuery,
+        EntityQuery<EmberProceduralStructureComponent> structureQuery,
+        EntityQuery<DoorComponent> doorQuery)
     {
         while (candidates.MoveNext(out var entity))
         {
-            if (HasComp<EmberProceduralStructureComponent>(entity) || HasComp<DoorComponent>(entity))
+            if (structureQuery.HasComponent(entity) || doorQuery.HasComponent(entity))
                 return true;
 
-            if (!TryComp<EmberProceduralWallComponent>(entity, out var other) ||
+            if (!wallQuery.TryGetComponent(entity, out var other) ||
                 !_prototype.TryIndex(other.Material, out EmberWallMaterialPrototype? otherMaterial))
                 continue;
 

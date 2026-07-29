@@ -2,9 +2,9 @@ materials-glass = стекло
 
 materials-reinforced-glass = бронестекло
 
-materials-plasma-glass = плазменное стекло
+materials-plasma-glass = фороновое стекло
 
-materials-reinforced-plasma-glass = плазменное бронестекло
+materials-reinforced-plasma-glass = фороновое бронестекло
 
 materials-steel = сталь
 
@@ -30,7 +30,8 @@ materials-cloth = ткань
 
 materials-durathread = дюраткань
 
-materials-plasma = плазма
+materials-plasma = форон
+materials-phoron = форон
 
 materials-plastic = пластик
 
@@ -58,7 +59,7 @@ materials-bluespace = блюспейс
 
 materials-normality = нормальность
 
-materials-raw-iron = необработанное железо
+materials-raw-iron = гематит
 
 materials-raw-quartz = необработанный кварц
 
@@ -66,7 +67,8 @@ materials-raw-gold = необработанное золото
 
 materials-raw-silver = необработанная серебра
 
-materials-raw-plasma = необработанная плазма
+materials-raw-plasma = необработанный форон
+materials-raw-phoron = необработанный форон
 
 materials-raw-uranium = необработанный уран
 

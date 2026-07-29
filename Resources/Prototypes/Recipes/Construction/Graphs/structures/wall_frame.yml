@@ -214,3 +214,327 @@
       steps:
       - tool: Anchoring
         doAfter: 2
+
+- type: constructionGraph
+  id: WallFrameIron
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Iron
+        amount: 3
+        doAfter: 1
+  - node: wallFrame
+    entity: WallFrameIron
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberIngotIron1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2
+
+- type: constructionGraph
+  id: WallFrameAluminium
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: EmberAluminium
+        amount: 3
+        doAfter: 1
+  - node: wallFrame
+    entity: WallFrameAluminium
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberSheetAluminium1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2
+
+- type: constructionGraph
+  id: WallFrameTitanium
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Titanium
+        amount: 3
+        doAfter: 1
+  - node: wallFrame
+    entity: WallFrameTitanium
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberSheetTitanium1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2
+
+- type: constructionGraph
+  id: WallFrameOCP
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: OsmiumCarbidePlasteel
+        amount: 3
+        doAfter: 1
+  - node: wallFrame
+    entity: WallFrameOCP
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberSheetOCP1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2
+
+- type: constructionGraph
+  id: WallFrameOsmium
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Osmium
+        amount: 3
+        doAfter: 1
+  - node: wallFrame
+    entity: WallFrameOsmium
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberIngotOsmium1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2
+
+- type: constructionGraph
+  id: WallFrameElectrum
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Electrum
+        amount: 3
+        doAfter: 1
+  - node: wallFrame
+    entity: WallFrameElectrum
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberIngotElectrum1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2
+
+- type: constructionGraph
+  id: WallFrameCopper
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: EmberCopper
+        amount: 3
+        doAfter: 1
+  - node: wallFrame
+    entity: WallFrameCopper
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberIngotCopper1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2
+
+- type: constructionGraph
+  id: WallFrameBronze
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Bronze
+        amount: 3
+        doAfter: 1
+  - node: wallFrame
+    entity: WallFrameBronze
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberIngotBronze1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2
+
+- type: constructionGraph
+  id: WallFramePlatinum
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Platinum
+        amount: 3
+        doAfter: 1
+  - node: wallFrame
+    entity: WallFramePlatinum
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberIngotPlatinum1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2
+
+- type: constructionGraph
+  id: WallFrameMarble
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Marble
+        amount: 3
+        doAfter: 1
+  - node: wallFrame
+    entity: WallFrameMarble
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberBrickMarble1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2
+
+- type: constructionGraph
+  id: WallFrameSandstone
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Sandstone
+        amount: 3
+        doAfter: 1
+  - node: wallFrame
+    entity: WallFrameSandstone
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberBrickSandstone1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2
+
+- type: constructionGraph
+  id: WallFrameConcrete
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wallFrame
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Concrete
+        amount: 3
+        doAfter: 1
+  - node: wallFrame
+    entity: WallFrameConcrete
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberBrickConcrete1
+        amount: 3
+      - !type:DeleteEntity
+      steps:
+      - tool: Anchoring
+        doAfter: 2

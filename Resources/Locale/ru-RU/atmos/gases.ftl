@@ -10,7 +10,7 @@ gas-nitrous-oxide-abbreviation = N₂O
 
 gas-oxygen-abbreviation = O₂
 
-gas-plasma-abbreviation = P
+gas-plasma-abbreviation = Ф
 
 gas-tritium-abbreviation = T
 

@@ -64,6 +64,105 @@
     node: wallFrame
 
 - type: entity
+  id: WallFrameIron
+  parent: WallFrame
+  name: iron low wall
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallIron
+  - type: Construction
+    graph: WallFrameIron
+    node: wallFrame
+
+- type: entity
+  id: WallFrameAluminium
+  parent: WallFrame
+  name: aluminium low wall
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallAluminium
+  - type: Construction
+    graph: WallFrameAluminium
+    node: wallFrame
+
+- type: entity
+  id: WallFrameTitanium
+  parent: WallFrame
+  name: titanium low wall
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallTitanium
+  - type: Construction
+    graph: WallFrameTitanium
+    node: wallFrame
+
+- type: entity
+  id: WallFrameOCP
+  parent: WallFrame
+  name: osmium-carbide plasteel low wall
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallOCP
+  - type: Construction
+    graph: WallFrameOCP
+    node: wallFrame
+
+- type: entity
+  id: WallFrameOsmium
+  parent: WallFrame
+  name: osmium low wall
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallOsmium
+  - type: Construction
+    graph: WallFrameOsmium
+    node: wallFrame
+
+- type: entity
+  id: WallFrameElectrum
+  parent: WallFrame
+  name: electrum low wall
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallElectrum
+  - type: Construction
+    graph: WallFrameElectrum
+    node: wallFrame
+
+- type: entity
+  id: WallFrameCopper
+  parent: WallFrame
+  name: copper low wall
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallCopper
+  - type: Construction
+    graph: WallFrameCopper
+    node: wallFrame
+
+- type: entity
+  id: WallFrameBronze
+  parent: WallFrame
+  name: bronze low wall
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallBronze
+  - type: Construction
+    graph: WallFrameBronze
+    node: wallFrame
+
+- type: entity
+  id: WallFramePlatinum
+  parent: WallFrame
+  name: platinum low wall
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallPlatinum
+  - type: Construction
+    graph: WallFramePlatinum
+    node: wallFrame
+
+- type: entity
   id: WallFrameGold
   parent: WallFrame
   name: gold low wall
@@ -88,7 +187,7 @@
 - type: entity
   id: WallFramePlasma
   parent: WallFrame
-  name: plasma low wall
+  name: phoron low wall
   components:
   - type: EmberProceduralStructure
     material: EmberWallPlasma
@@ -127,4 +226,37 @@
     material: EmberWallWood
   - type: Construction
     graph: WallFrameWood
+    node: wallFrame
+
+- type: entity
+  id: WallFrameSandstone
+  parent: WallFrame
+  name: sandstone low wall
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallSandstone
+  - type: Construction
+    graph: WallFrameSandstone
+    node: wallFrame
+
+- type: entity
+  id: WallFrameMarble
+  parent: WallFrame
+  name: marble low wall
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallMarble
+  - type: Construction
+    graph: WallFrameMarble
+    node: wallFrame
+
+- type: entity
+  id: WallFrameConcrete
+  parent: WallFrame
+  name: concrete low wall
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallConcrete
+  - type: Construction
+    graph: WallFrameConcrete
     node: wallFrame

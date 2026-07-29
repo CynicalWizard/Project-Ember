@@ -49,15 +49,19 @@
     stackType: Steel
     baseLayer: base
     layerStates:
-    - steel
-    - steel_2
-    - steel_3
+    - sheet
+    - sheet-mult
+    - sheet-max
+  - type: EmberMaterialStack
+    material: Steel
   - type: Sprite
-    state: steel_3
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet-max
     layers:
-    - state: steel_3
+    - state: sheet-max
       map: ["base"]
   - type: Item
+    sprite: Ember/Objects/Materials/materials.rsi
     heldPrefix: steel
   - type: Appearance
   - type: FloorTile
@@ -159,7 +163,8 @@
   suffix: 10
   components:
   - type: Sprite
-    state: steel
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet
   - type: Stack
     stackType: Steel
     count: 10
@@ -171,7 +176,8 @@
   suffix: Single
   components:
   - type: Sprite
-    state: steel
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet
   - type: Stack
     stackType: Steel
     count: 1
@@ -263,15 +269,19 @@
     stackType: Plasteel
     baseLayer: base
     layerStates:
-    - plasteel
-    - plasteel_2
-    - plasteel_3
+    - sheet-reinf
+    - sheet-reinf-mult
+    - sheet-reinf-max
+  - type: EmberMaterialStack
+    material: Plasteel
   - type: Sprite
-    state: plasteel_3
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet-reinf-max
     layers:
-    - state: plasteel_3
+    - state: sheet-reinf-max
       map: ["base"]
   - type: Item
+    sprite: Ember/Objects/Materials/materials.rsi
     heldPrefix: plasteel
   - type: Appearance
   - type: Extractable
@@ -308,7 +318,8 @@
   suffix: 10
   components:
   - type: Sprite
-    state: plasteel
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet-reinf
   - type: Stack
     stackType: Plasteel
     count: 10
@@ -320,7 +331,8 @@
   suffix: Single
   components:
   - type: Sprite
-    state: plasteel
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet-reinf
   - type: Stack
     stackType: Plasteel
     count: 1

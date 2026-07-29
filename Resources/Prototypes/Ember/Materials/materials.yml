@@ -1,0 +1,1066 @@
+- type: emberMaterial
+  id: Steel
+  key: steel
+  displayName: steel
+  category: metal
+  color: "#A8B0B2"
+  stackEntity: SheetSteel1
+  wallName: bulkhead
+  wallIconBase: solid
+  wallIconReinforced: reinf_over
+  wallPaintableStripe: true
+  wallHasEdges: true
+  wallBlendIcons:
+    wood: true
+    stone: true
+  bruteArmor: 7
+  burnArmor: 7
+  hardness: 60
+  weight: 20
+  oreSmeltsTo: Steel
+  alloyProduct: true
+  alloyMaterials:
+    Hematite: 1875
+    Graphite: 1875
+  constructionDifficulty: 1
+  salePrice: 1
+  value: 4
+
+- type: emberMaterial
+  id: Iron
+  key: iron
+  displayName: iron
+  category: metal
+  color: "#5C5454"
+  stackEntity: EmberIngotIron1
+  sheetIconBase: ingot
+  sheetSingularName: ingot
+  sheetPluralName: ingots
+  wallName: bulkhead
+  constructionDifficulty: 1
+  salePrice: 1
+  value: 5
+
+- type: emberMaterial
+  id: Aluminium
+  key: aluminium
+  displayName: aluminium
+  category: metal
+  color: "#CCCDCC"
+  stackEntity: EmberSheetAluminium1
+  stackType: EmberAluminium
+  sheetIconBase: sheet-sheen
+  wallName: bulkhead
+  wallIconBase: solid
+  wallIconReinforced: reinf_over
+  wallPaintableStripe: true
+  wallHasEdges: true
+  wallBlendIcons:
+    wood: true
+    stone: true
+  integrity: 125
+  weight: 18
+  salePrice: 1
+
+- type: emberMaterial
+  id: Plasteel
+  key: plasteel
+  displayName: plasteel
+  category: metal
+  color: "#A8A9B2"
+  stackEntity: SheetPlasteel1
+  sheetIconBase: sheet-reinf
+  wallName: bulkhead
+  wallIconBase: solid
+  wallIconReinforced: reinf_over
+  wallPaintableStripe: true
+  wallHasEdges: true
+  wallBlendIcons:
+    wood: true
+    stone: true
+  integrity: 400
+  meltingPoint: 6000
+  explosionResistance: 7.5
+  bruteArmor: 8
+  burnArmor: 10
+  hardness: 80
+  weight: 23
+  oreSmeltsTo: Plasteel
+  alloyProduct: true
+  alloyMaterials:
+    Steel: 2500
+    Platinum: 1250
+  constructionDifficulty: 2
+  salePrice: 2
+  value: 12
+
+- type: emberMaterial
+  id: Titanium
+  key: titanium
+  displayName: titanium
+  category: metal
+  color: "#D1E6E3"
+  stackEntity: EmberSheetTitanium1
+  sheetIconBase: sheet-reinf
+  wallName: bulkhead
+  wallIconBase: metal
+  wallBlendIcons:
+    wood: true
+    stone: true
+  doorIconBase: metal
+  wallIconReinforced: reinf_metal
+  integrity: 200
+  meltingPoint: 3000
+  bruteArmor: 10
+  burnArmor: 8
+  hardness: 80
+  weight: 18
+  constructionDifficulty: 3
+  value: 30
+
+- type: emberMaterial
+  id: OsmiumCarbidePlasteel
+  key: osmium-carbide plasteel
+  displayName: osmium-carbide plasteel
+  category: metal
+  color: "#9BC6F2"
+  stackEntity: EmberSheetOCP1
+  stackType: OsmiumCarbidePlasteel
+  sheetIconBase: sheet-reinf
+  wallName: bulkhead
+  wallIconBase: solid
+  wallIconReinforced: reinf_over
+  wallPaintableStripe: true
+  wallHasEdges: true
+  wallBlendIcons:
+    wood: true
+    stone: true
+  integrity: 200
+  meltingPoint: 12000
+  bruteArmor: 4
+  burnArmor: 20
+  weight: 27
+  alloyProduct: true
+  alloyMaterials:
+    Plasteel: 7500
+    Osmium: 3750
+  constructionDifficulty: 3
+  salePrice: 3
+
+- type: emberMaterial
+  id: Osmium
+  key: osmium
+  displayName: osmium
+  category: metal
+  color: "#9999FF"
+  stackEntity: EmberIngotOsmium1
+  sheetIconBase: ingot
+  sheetSingularName: ingot
+  sheetPluralName: ingots
+  wallName: bulkhead
+  oreSmeltsTo: Osmium
+  constructionDifficulty: 3
+  salePrice: 3
+  value: 30
+  weight: 29
+
+- type: emberMaterial
+  id: Gold
+  key: gold
+  displayName: gold
+  category: metal
+  color: "#FFCC33"
+  stackEntity: IngotGold1
+  sheetIconBase: ingot
+  sheetSingularName: ingot
+  sheetPluralName: ingots
+  wallName: bulkhead
+  integrity: 100
+  hardness: 25
+  weight: 25
+  oreName: native gold
+  oreSmeltsTo: Gold
+  oreResultAmount: 5
+  oreSpreadChance: 10
+  oreScanIcon: mineral_uncommon
+  oreIconOverlay: nugget
+  constructionDifficulty: 2
+  salePrice: 3
+  value: 40
+
+- type: emberMaterial
+  id: Silver
+  key: silver
+  displayName: silver
+  category: metal
+  color: "#D1E6E3"
+  stackEntity: IngotSilver1
+  sheetIconBase: ingot
+  sheetSingularName: ingot
+  sheetPluralName: ingots
+  wallName: bulkhead
+  hardness: 30
+  weight: 22
+  oreName: native silver
+  oreSmeltsTo: Silver
+  oreResultAmount: 5
+  oreSpreadChance: 10
+  oreScanIcon: mineral_uncommon
+  oreIconOverlay: shiny
+  constructionDifficulty: 2
+  salePrice: 2
+  value: 35
+
+- type: emberMaterial
+  id: Electrum
+  key: electrum
+  displayName: electrum
+  category: metal
+  color: "#E7C697"
+  stackEntity: EmberIngotElectrum1
+  sheetIconBase: ingot
+  sheetSingularName: ingot
+  sheetPluralName: ingots
+  integrity: 100
+  hardness: 30
+  weight: 22
+  oreName: electrum
+  oreSmeltsTo: Electrum
+  oreResultAmount: 3
+  oreSpreadChance: 10
+  oreScanIcon: mineral_uncommon
+  oreIconOverlay: shiny
+  constructionDifficulty: 2
+  salePrice: 3
+  value: 37
+
+- type: emberMaterial
+  id: Copper
+  key: copper
+  displayName: copper
+  category: metal
+  color: "#B87333"
+  stackEntity: EmberIngotCopper1
+  stackType: EmberCopper
+  sheetIconBase: ingot
+  sheetSingularName: ingot
+  sheetPluralName: ingots
+  wallName: bulkhead
+  hardness: 30
+  weight: 15
+  oreName: tetrahedrite
+  oreSmeltsTo: Copper
+  oreResultAmount: 5
+  oreSpreadChance: 10
+  oreScanIcon: mineral_common
+  oreIconOverlay: shiny
+  constructionDifficulty: 2
+  salePrice: 1
+
+- type: emberMaterial
+  id: Bronze
+  key: bronze
+  displayName: bronze
+  category: metal
+  color: "#EDD12F"
+  stackEntity: EmberIngotBronze1
+  constructionDifficulty: 2
+
+- type: emberMaterial
+  id: Platinum
+  key: platinum
+  displayName: platinum
+  category: metal
+  color: "#DEDDFF"
+  stackEntity: EmberIngotPlatinum1
+  sheetIconBase: ingot
+  sheetSingularName: ingot
+  sheetPluralName: ingots
+  wallName: bulkhead
+  weight: 27
+  oreName: raw platinum
+  oreSmeltsTo: Platinum
+  oreCompressesTo: Osmium
+  oreResultAmount: 5
+  oreSpreadChance: 10
+  oreScanIcon: mineral_rare
+  oreIconOverlay: shiny
+  constructionDifficulty: 2
+  salePrice: 5
+  value: 80
+
+- type: emberMaterial
+  id: Uranium
+  key: uranium
+  displayName: uranium
+  category: metal
+  color: "#007A00"
+  stackEntity: SheetUranium1
+  sheetIconBase: puck
+  wallName: bulkhead
+  wallIconBase: stone
+  wallIconReinforced: reinf_stone
+  wallPaintableMain: false
+  wallBlendIcons:
+    solid: true
+    wood: true
+    metal: true
+  doorIconBase: stone
+  tableIconBase: stone
+  tableIconReinforced: reinf_stone
+  radioactivity: 12
+  weight: 22
+  constructionDifficulty: 2
+  salePrice: 2
+  value: 100
+
+- type: emberMaterial
+  id: Deuterium
+  key: deuterium
+  displayName: deuterium
+  category: fuel
+  color: "#999999"
+  stackEntity: EmberPuckDeuterium1
+  sheetIconBase: puck
+  sheetSingularName: ingot
+  sheetPluralName: ingots
+  wallName: bulkhead
+  constructionDifficulty: 2
+
+- type: emberMaterial
+  id: Tritium
+  key: tritium
+  displayName: tritium
+  category: fuel
+  color: "#777777"
+  stackEntity: EmberPuckTritium1
+  sheetIconBase: puck
+  sheetSingularName: ingot
+  sheetPluralName: ingots
+  wallName: bulkhead
+  constructionDifficulty: 2
+  value: 300
+
+- type: emberMaterial
+  id: MetallicHydrogen
+  key: hydrogen
+  displayName: metallic hydrogen
+  category: fuel
+  color: "#E6C5DE"
+  stackEntity: EmberSheetMHydrogen1
+  stackType: MetallicHydrogen
+  sheetIconBase: sheet-mythril
+  sheetHasPluralIcon: false
+  wallName: bulkhead
+  oreName: raw hydrogen
+  oreSmeltsTo: Tritium
+  oreCompressesTo: MetallicHydrogen
+  oreScanIcon: mineral_rare
+  oreIconOverlay: gems
+  constructionDifficulty: 2
+  salePrice: 5
+  value: 100
+
+- type: emberMaterial
+  id: Phoron
+  key: phoron
+  displayName: phoron
+  category: mineral
+  color: "#E37108"
+  stackEntity: SheetPlasma1
+  stackType: Plasma
+  sheetIconBase: sheet-phoron
+  sheetSingularName: crystal
+  sheetPluralName: crystals
+  wallIconBase: stone
+  wallIconReinforced: reinf_stone
+  doorIconBase: stone
+  tableIconBase: stone
+  oreName: phoron
+  oreCompressesTo: Phoron
+  oreScanIcon: mineral_rare
+  oreIconOverlay: gems
+  hardness: 40
+  constructionDifficulty: 2
+  value: 80
+
+- type: emberMaterial
+  id: Supermatter
+  key: supermatter
+  displayName: supermatter
+  category: mineral
+  color: "#FFFF00"
+  hiddenFromCodex: true
+
+- type: emberMaterial
+  id: Glass
+  key: glass
+  displayName: glass
+  category: glass
+  color: "#AACCFF"
+  opacity: 0.3
+  stackEntity: SheetGlass1
+  sheetIconBase: sheet-clear
+  brittle: true
+  hardness: 50
+  doorIconBase: stone
+  oreSmeltsTo: Glass
+  constructionDifficulty: 1
+
+- type: emberMaterial
+  id: BorosilicateGlass
+  key: borosilicate glass
+  displayName: borosilicate glass
+  category: glass
+  color: "#899EBD"
+  stackEntity: EmberSheetBorosilicateGlass1
+  stackType: BorosilicateGlass
+  opacity: 0.3
+  sheetIconBase: sheet-clear
+  brittle: true
+  hardness: 60
+  alloyProduct: true
+  alloyMaterials:
+    Sand: 2500
+    Borax: 500
+  constructionDifficulty: 2
+
+- type: emberMaterial
+  id: Diamond
+  key: diamond
+  displayName: diamond
+  category: stone
+  color: "#D8D4EA"
+  opacity: 0.4
+  stackEntity: MaterialDiamond1
+  sheetIconBase: diamond
+  unmeltable: true
+  hardness: 100
+  oreCompressesTo: Diamond
+  constructionDifficulty: 3
+
+- type: emberMaterial
+  id: Crystal
+  key: crystal
+  displayName: crystal
+  category: stone
+  color: "#D8D4EA"
+  hardness: 80
+  hiddenFromCodex: true
+
+- type: emberMaterial
+  id: Sandstone
+  key: sandstone
+  displayName: sandstone
+  category: stone
+  color: "#D9C179"
+  stackEntity: EmberBrickSandstone1
+  wallIconBase: stone
+  wallIconReinforced: reinf_stone
+  doorIconBase: stone
+  tableIconBase: stone
+  tableIconReinforced: reinf_stone
+  hardness: 55
+  constructionDifficulty: 1
+
+- type: emberMaterial
+  id: Marble
+  key: marble
+  displayName: marble
+  category: stone
+  color: "#AAAAAA"
+  stackEntity: EmberBrickMarble1
+  wallIconBase: stone
+  wallIconReinforced: reinf_stone
+  doorIconBase: stone
+  tableIconBase: stone
+  tableIconReinforced: reinf_stone
+  hardness: 60
+  constructionDifficulty: 2
+
+- type: emberMaterial
+  id: Concrete
+  key: concrete
+  displayName: concrete
+  category: stone
+  color: "#808080"
+  stackEntity: EmberBrickConcrete1
+  sheetIconBase: brick
+  wallIconBase: stone
+
+- type: emberMaterial
+  id: Plastic
+  key: plastic
+  displayName: plastic
+  category: organic
+  color: "#FFFFFF"
+  stackEntity: SheetPlastic1
+  sheetIconBase: sheet-plastic
+  wallIconBase: solid
+  wallIconReinforced: reinf_over
+  wallPaintableStripe: true
+  wallHasEdges: true
+  doorIconBase: plastic
+  integrity: 100
+  hardness: 20
+  weight: 10
+
+- type: emberMaterial
+  id: Cardboard
+  key: cardboard
+  displayName: cardboard
+  category: organic
+  color: "#AAAAAA"
+  stackEntity: MaterialCardboard1
+  sheetIconBase: sheet-card
+  wallIconBase: solid
+  wallIconReinforced: reinf_over
+  wallPaintableStripe: true
+  wallHasEdges: true
+  doorIconBase: wood
+  brittle: true
+  integrity: 50
+  hardness: 10
+
+- type: emberMaterial
+  id: Cloth
+  key: cloth
+  displayName: cotton
+  category: organic
+  color: "#FFFFFF"
+  stackEntity: MaterialCloth1
+  sheetIconBase: sheet-cloth
+  doorIconBase: wood
+  padding: true
+  hardness: 10
+  constructionDifficulty: 1
+
+- type: emberMaterial
+  id: Carpet
+  key: carpet
+  displayName: red
+  category: organic
+  color: "#9D2300"
+  padding: true
+  constructionDifficulty: 1
+
+- type: emberMaterial
+  id: Wood
+  key: wood
+  displayName: wood
+  category: wood
+  color: "#D5A66E"
+  stackEntity: MaterialWoodPlank1
+  sheetIconBase: sheet-wood
+  wallIconBase: wood
+  wallIconReinforced: reinf_metal
+  wallPaintableStripe: true
+  wallHasEdges: true
+  doorIconBase: wood
+  tableIconBase: wood
+  tableIconReinforced: reinf_metal
+  ignitionPoint: 400
+  hardness: 30
+  weight: 18
+  constructionDifficulty: 1
+
+- type: emberMaterial
+  id: Mahogany
+  key: mahogany
+  displayName: mahogany
+  category: wood
+  color: "#792F27"
+  stackEntity: MaterialWoodPlank1
+  wallIconBase: wood
+  doorIconBase: wood
+  constructionDifficulty: 2
+
+- type: emberMaterial
+  id: Maple
+  key: maple
+  displayName: maple
+  category: wood
+  color: "#D2BC9D"
+  stackEntity: MaterialWoodPlank1
+  wallIconBase: wood
+  doorIconBase: wood
+
+- type: emberMaterial
+  id: Ebony
+  key: ebony
+  displayName: ebony
+  category: wood
+  color: "#332521"
+  stackEntity: MaterialWoodPlank1
+  wallIconBase: wood
+  doorIconBase: wood
+  constructionDifficulty: 3
+
+- type: emberMaterial
+  id: Walnut
+  key: walnut
+  displayName: walnut
+  category: wood
+  color: "#543C30"
+  stackEntity: MaterialWoodPlank1
+  wallIconBase: wood
+  doorIconBase: wood
+  constructionDifficulty: 2
+
+- type: emberMaterial
+  id: Bamboo
+  key: bamboo
+  displayName: bamboo
+  category: wood
+  color: "#E6D2BA"
+  stackEntity: MaterialWoodPlank1
+  wallIconBase: wood
+  doorIconBase: wood
+  hardness: 40
+
+- type: emberMaterial
+  id: Yew
+  key: yew
+  displayName: yew
+  category: wood
+  color: "#E3994E"
+  stackEntity: MaterialWoodPlank1
+  wallIconBase: wood
+  doorIconBase: wood
+
+- type: emberMaterial
+  id: VoxBioresin
+  key: vox bioresin
+  displayName: vox bioresin
+  category: wood
+  color: "#3A4E1B"
+  stackEntity: MaterialWoodPlank1
+  wallIconBase: wood
+  doorIconBase: wood
+  constructionDifficulty: 1
+  hardness: 20
+
+- type: emberMaterial
+  id: Borax
+  key: borax
+  displayName: borax
+  category: mineral
+  color: "#9DD6E0"
+  stackEntity: EmberBrickBorax1
+  wallIconBase: stone
+  doorIconBase: stone
+  oreCompressesTo: Borax
+
+- type: emberMaterial
+  id: Pitchblende
+  key: pitchblende
+  displayName: pitchblende
+  category: mineral
+  color: "#917D1A"
+  stackEntity: EmberBrickPitchblende1
+  wallIconBase: stone
+  doorIconBase: stone
+  oreSmeltsTo: Uranium
+  oreCompressesTo: Pitchblende
+
+- type: emberMaterial
+  id: Graphite
+  key: graphite
+  displayName: graphite
+  category: mineral
+  color: "#444444"
+  stackEntity: EmberSheetGraphite1
+  oreSmeltsTo: Plastic
+  oreCompressesTo: Graphite
+
+- type: emberMaterial
+  id: Quartz
+  key: quartz
+  displayName: quartz
+  category: mineral
+  color: "#EFFFFE"
+  stackEntity: EmberBrickQuartz1
+  opacity: 0.5
+  wallIconBase: stone
+  doorIconBase: stone
+  oreCompressesTo: Quartz
+
+- type: emberMaterial
+  id: Pyrite
+  key: pyrite
+  displayName: pyrite
+  category: mineral
+  color: "#CCC9A3"
+  stackEntity: EmberBrickPyrite1
+  wallIconBase: stone
+  doorIconBase: stone
+  oreCompressesTo: Pyrite
+
+- type: emberMaterial
+  id: Spodumene
+  key: spodumene
+  displayName: spodumene
+  category: mineral
+  color: "#E5BECB"
+  stackEntity: EmberBrickSpodumene1
+  wallIconBase: stone
+  doorIconBase: stone
+  oreCompressesTo: Spodumene
+
+- type: emberMaterial
+  id: Cinnabar
+  key: cinnabar
+  displayName: cinnabar
+  category: mineral
+  color: "#E54E4E"
+  stackEntity: EmberBrickCinnabar1
+  wallIconBase: stone
+  doorIconBase: stone
+  oreCompressesTo: Cinnabar
+
+- type: emberMaterial
+  id: Phosphorite
+  key: phosphorite
+  displayName: phosphorite
+  category: mineral
+  color: "#ACAD95"
+  stackEntity: EmberBrickPhosphorite1
+  wallIconBase: stone
+  doorIconBase: stone
+  oreCompressesTo: Phosphorite
+
+- type: emberMaterial
+  id: RockSalt
+  key: rock salt
+  displayName: rock salt
+  category: mineral
+  color: "#D1C0BC"
+  stackEntity: EmberBrickRockSalt1
+  wallIconBase: stone
+  doorIconBase: stone
+  oreCompressesTo: RockSalt
+
+- type: emberMaterial
+  id: Potash
+  key: potash
+  displayName: potash
+  category: mineral
+  color: "#B77464"
+  stackEntity: EmberBrickPotash1
+  wallIconBase: stone
+  doorIconBase: stone
+  oreCompressesTo: Potash
+
+- type: emberMaterial
+  id: Bauxite
+  key: bauxite
+  displayName: bauxite
+  category: mineral
+  color: "#D8AD97"
+  stackEntity: EmberBrickBauxite1
+  wallIconBase: stone
+  doorIconBase: stone
+  oreSmeltsTo: Aluminium
+  oreCompressesTo: Bauxite
+
+- type: emberMaterial
+  id: Sand
+  key: sand
+  displayName: sand
+  category: mineral
+  color: "#E2DBB5"
+  stackEntity: EmberDustSand1
+  oreSmeltsTo: Glass
+  oreCompressesTo: Sandstone
+
+- type: emberMaterial
+  id: Hematite
+  key: hematite
+  displayName: hematite
+  category: ore
+  color: "#AA6666"
+  oreName: hematite
+  oreSmeltsTo: Iron
+  oreResultAmount: 5
+  oreSpreadChance: 25
+  oreScanIcon: mineral_common
+  oreIconOverlay: lump
+  salePrice: 1
+
+- type: emberMaterial
+  id: Rutile
+  key: rutile
+  displayName: rutile
+  category: ore
+  color: "#D8AD97"
+  stackEntity: EmberBrickRutile1
+  oreName: rutile
+  oreSmeltsTo: Titanium
+  oreResultAmount: 5
+  oreSpreadChance: 15
+  oreScanIcon: mineral_uncommon
+  oreIconOverlay: lump
+  salePrice: 2
+
+- type: emberMaterial
+  id: Waste
+  key: waste
+  displayName: waste
+  category: other
+  color: "#2E3A07"
+  hiddenFromCodex: true
+
+- type: emberMaterial
+  id: CultStone
+  key: cult
+  displayName: disturbing stone
+  category: special
+  color: "#402821"
+  wallIconBase: cult
+  wallIconReinforced: reinf_cult
+  doorIconBase: cult
+  tableIconBase: cult
+  constructionDifficulty: 1
+
+- type: emberMaterial
+  id: ReinforcedCultStone
+  key: cult2
+  displayName: runic inscriptions
+  category: special
+  color: "#402821"
+  wallIconBase: cult
+  wallIconReinforced: reinf_cult
+
+- type: emberMaterial
+  id: VoxAlloy
+  key: voxalloy
+  displayName: durable alloy
+  category: special
+  color: "#6C7364"
+  wallName: bulkhead
+  sheetIconBase: vox
+  integrity: 1200
+  meltingPoint: 6000
+  explosionResistance: 200
+  hardness: 500
+  weight: 500
+  constructionDifficulty: 2
+  hiddenFromCodex: true
+  value: 100
+
+- type: emberMaterial
+  id: Elevatorium
+  key: elevatorium
+  displayName: elevator panelling
+  category: special
+  color: "#666666"
+  wallName: bulkhead
+  constructionDifficulty: 2
+  hiddenFromCodex: true
+
+- type: emberMaterial
+  id: AlienAlloy
+  key: aliumium
+  displayName: alien alloy
+  category: special
+  color: "#6C7364"
+  wallName: bulkhead
+  sheetSingularName: chunk
+  sheetPluralName: chunks
+  wallIconBase: metal
+  wallIconReinforced: reinf_metal
+  doorIconBase: metal
+  constructionDifficulty: 3
+  hiddenFromCodex: true
+
+- type: emberMaterial
+  id: Skin
+  key: skin
+  displayName: skin
+  category: organic
+  color: "#9E8C72"
+  sheetIconBase: skin
+  padding: true
+  hardness: 10
+  constructionDifficulty: 1
+
+- type: emberMaterial
+  id: LizardSkin
+  key: lizardskin
+  displayName: lizardskin
+  category: organic
+  color: "#626952"
+  padding: true
+  hardness: 20
+
+- type: emberMaterial
+  id: Chitin
+  key: chitin
+  displayName: chitin
+  category: organic
+  color: "#7A726D"
+  padding: true
+  hardness: 40
+
+- type: emberMaterial
+  id: Fur
+  key: brown fur
+  displayName: brown fur
+  category: organic
+  color: "#7A726D"
+  padding: true
+
+- type: emberMaterial
+  id: GrayFur
+  key: gray fur
+  displayName: gray fur
+  category: organic
+  color: "#7A726D"
+  padding: true
+
+- type: emberMaterial
+  id: WhiteFur
+  key: white fur
+  displayName: white fur
+  category: organic
+  color: "#FFFFFF"
+  padding: true
+
+- type: emberMaterial
+  id: OrangeFur
+  key: orange fur
+  displayName: orange fur
+  category: organic
+  color: "#FF9900"
+  padding: true
+
+- type: emberMaterial
+  id: BlackFur
+  key: black fur
+  displayName: black fur
+  category: organic
+  color: "#333333"
+  padding: true
+
+- type: emberMaterial
+  id: HeavyFur
+  key: heavy fur
+  displayName: heavy fur
+  category: organic
+  color: "#545C68"
+  padding: true
+
+- type: emberMaterial
+  id: GoatHide
+  key: goathide
+  displayName: goathide
+  category: organic
+  color: "#C0C0C0"
+  padding: true
+
+- type: emberMaterial
+  id: CowHide
+  key: cowhide
+  displayName: cowhide
+  category: organic
+  color: "#666666"
+  padding: true
+
+- type: emberMaterial
+  id: SharkSkin
+  key: sharkskin
+  displayName: sharkskin
+  category: organic
+  color: "#A2819E"
+  padding: true
+
+- type: emberMaterial
+  id: FishSkin
+  key: fishskin
+  displayName: fishskin
+  category: organic
+  color: "#1F6B4F"
+  padding: true
+
+- type: emberMaterial
+  id: PurpleFishSkin
+  key: purple fishskin
+  displayName: purple fishskin
+  category: organic
+  color: "#BDA2BA"
+  padding: true
+
+- type: emberMaterial
+  id: Bone
+  key: bone
+  displayName: bone
+  category: organic
+  color: "#AAAAAA"
+  sheetIconBase: bone
+  hardness: 40
+  constructionDifficulty: 1
+
+- type: emberMaterial
+  id: FishBone
+  key: fishbone
+  displayName: fishbone
+  category: organic
+  color: "#AAAAAA"
+  sheetIconBase: bone
+  hardness: 20
+
+- type: emberMaterial
+  id: Cartilage
+  key: cartilage
+  displayName: cartilage
+  category: organic
+  color: "#AAAAAA"
+  sheetIconBase: bone
+
+- type: emberMaterial
+  id: Leather
+  key: leather
+  displayName: leather
+  category: organic
+  color: "#7A726D"
+  sheetIconBase: sheet-leather
+  padding: true
+  hardness: 20
+  constructionDifficulty: 1
+
+- type: emberMaterial
+  id: ScaledHide
+  key: scaled hide
+  displayName: scaled hide
+  category: organic
+  color: "#626952"
+  sheetIconBase: sheet-leather
+  padding: true
+  hardness: 40
+
+- type: emberMaterial
+  id: FurredHide
+  key: furred hide
+  displayName: furred hide
+  category: organic
+  color: "#7A726D"
+  sheetIconBase: sheet-leather
+  padding: true
+
+- type: emberMaterial
+  id: TreatedChitin
+  key: treated chitin
+  displayName: treated chitin
+  category: organic
+  color: "#7A726D"
+  sheetIconBase: sheet-leather
+  padding: true
+  hardness: 60
+
+- type: emberMaterial
+  id: Growth
+  key: growth
+  displayName: growth
+  category: special
+  color: "#FFFFFF"
+  hiddenFromCodex: true

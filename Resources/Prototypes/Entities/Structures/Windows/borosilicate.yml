@@ -1,0 +1,41 @@
+- type: entity
+  parent: PlasmaWindow
+  id: BorosilicateWindow
+  name: borosilicate window
+  components:
+  - type: EmberProceduralStructure
+    role: Window
+    material: EmberBorosilicateGlass
+    stateBase: window
+    alpha: 0.7058824
+    sprite: /Textures/Ember/Structures/Windows/window.rsi
+  - type: Construction
+    graph: Window
+    node: borosilicateWindow
+
+- type: entity
+  parent: PlasmaWindowDirectional
+  id: BorosilicateWindowDirectional
+  name: directional borosilicate window
+  components:
+  - type: EmberMaterialTint
+    material: EmberBorosilicateGlass
+    alpha: 0.7058824
+  - type: Construction
+    graph: WindowDirectional
+    node: borosilicateWindowDirectional
+
+- type: entity
+  parent: PlasmaWindowDiagonal
+  id: BorosilicateWindowDiagonal
+  name: diagonal borosilicate window
+  components:
+  - type: EmberProceduralStructure
+    role: Window
+    material: EmberBorosilicateGlass
+    stateBase: window
+    alpha: 0.7058824
+    sprite: /Textures/Ember/Structures/Windows/window.rsi
+  - type: Construction
+    graph: WindowDiagonal
+    node: borosilicateWindowDiagonal

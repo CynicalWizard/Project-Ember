@@ -89,6 +89,24 @@
     - !type:TileNotBlocked
 
 - type: construction
+  name: osmium-carbide plasteel wall
+  id: WallOCP
+  graph: Girder
+  startNode: start
+  targetNode: ocpWall
+  category: construction-category-structures
+  description: Keeps the air in and the greytide out.
+  icon:
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: solid
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
   name: clock wall
   id: WallClock
   graph: ClockworkGirder
@@ -431,6 +449,222 @@
   canRotate: false
 
 - type: construction
+  name: iron low wall
+  id: WallFrameIron
+  graph: WallFrameIron
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: aluminium low wall
+  id: WallFrameAluminium
+  graph: WallFrameAluminium
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: titanium low wall
+  id: WallFrameTitanium
+  graph: WallFrameTitanium
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: osmium-carbide plasteel low wall
+  id: WallFrameOCP
+  graph: WallFrameOCP
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: osmium low wall
+  id: WallFrameOsmium
+  graph: WallFrameOsmium
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: electrum low wall
+  id: WallFrameElectrum
+  graph: WallFrameElectrum
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: copper low wall
+  id: WallFrameCopper
+  graph: WallFrameCopper
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: bronze low wall
+  id: WallFrameBronze
+  graph: WallFrameBronze
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: platinum low wall
+  id: WallFramePlatinum
+  graph: WallFramePlatinum
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: marble low wall
+  id: WallFrameMarble
+  graph: WallFrameMarble
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: sandstone low wall
+  id: WallFrameSandstone
+  graph: WallFrameSandstone
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: concrete low wall
+  id: WallFrameConcrete
+  graph: WallFrameConcrete
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
   name: grille
   id: Grille
   graph: Grille
@@ -650,6 +884,25 @@
   canRotate: false
 
 - type: construction
+  name: borosilicate window
+  id: BorosilicateWindow
+  graph: Window
+  startNode: start
+  targetNode: borosilicateWindow
+  category: construction-category-structures
+  canBuildInImpassable: true
+  description: Clear, fire resistant glass.
+  conditions:
+    - !type:EmptyOrWindowValidInTile
+    - !type:NoWindowsInTile
+  icon:
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window_full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
   name: reinforced plasma window
   id: ReinforcedPlasmaWindow
   graph: Window
@@ -702,6 +955,24 @@
   icon:
     sprite: Structures/Windows/plasma_diagonal.rsi
     state: state1
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: diagonal borosilicate window
+  id: BorosilicateWindowDiagonal
+  graph: WindowDiagonal
+  startNode: start
+  targetNode: borosilicateWindowDiagonal
+  category: construction-category-structures
+  canBuildInImpassable: true
+  description: Clear, fire resistant glass.
+  conditions:
+    - !type:EmptyOrWindowValidInTile
+    - !type:NoWindowsInTile
+  icon:
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window
   objectType: Structure
   placementMode: SnapgridCenter
 
@@ -786,6 +1057,24 @@
   category: construction-category-structures
   canBuildInImpassable: true
   description: Clear, with a purple tint.
+  conditions:
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
+  icon:
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: directional borosilicate window
+  id: BorosilicateWindowDirectional
+  graph: WindowDirectional
+  startNode: start
+  targetNode: borosilicateWindowDirectional
+  category: construction-category-structures
+  canBuildInImpassable: true
+  description: Clear, fire resistant glass.
   conditions:
   - !type:EmptyOrWindowValidInTile
   - !type:NoWindowsInTile

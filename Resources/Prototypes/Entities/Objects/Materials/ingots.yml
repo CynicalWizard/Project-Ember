@@ -40,15 +40,19 @@
     stackType: Gold
     baseLayer: base
     layerStates:
-    - gold
-    - gold_2
-    - gold_3
+    - ingot
+    - ingot-mult
+    - ingot-max
+  - type: EmberMaterialStack
+    material: Gold
   - type: Sprite
-    state: gold_3
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: ingot-max
     layers:
-    - state: gold_3
+    - state: ingot-max
       map: ["base"]
   - type: Item
+    sprite: Ember/Objects/Materials/materials.rsi
     heldPrefix: gold
   - type: Appearance
   - type: Extractable
@@ -67,7 +71,8 @@
   suffix: Single
   components:
   - type: Sprite
-    state: gold
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: ingot
   - type: Stack
     count: 1
 
@@ -85,15 +90,19 @@
     stackType: Silver
     baseLayer: base
     layerStates:
-    - silver
-    - silver_2
-    - silver_3
+    - ingot
+    - ingot-mult
+    - ingot-max
+  - type: EmberMaterialStack
+    material: Silver
   - type: Sprite
-    state: silver_3
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: ingot-max
     layers:
-    - state: silver_3
+    - state: ingot-max
       map: ["base"]
   - type: Item
+    sprite: Ember/Objects/Materials/materials.rsi
     heldPrefix: silver
   - type: Appearance
   - type: Extractable
@@ -112,7 +121,8 @@
   suffix: Single
   components:
   - type: Sprite
-    state: silver
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: ingot
   - type: Stack
     count: 1
 

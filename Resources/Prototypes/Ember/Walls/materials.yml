@@ -6,11 +6,33 @@
   reinforcementColor: "#696969"
 
 - type: emberWallMaterial
+  id: EmberWallIron
+  stateBase: metal
+  color: "#5C5454"
+
+- type: emberWallMaterial
+  id: EmberWallAluminium
+  stateBase: metal
+  color: "#CCCDCC"
+
+- type: emberWallMaterial
+  id: EmberWallTitanium
+  stateBase: metal
+  color: "#D1E6E3"
+
+- type: emberWallMaterial
   id: EmberWallPlasteel
   stateBase: solid
   color: "#A8A9B2"
   reinforcementStateBase: reinf_over
   reinforcementColor: "#A8A9B2"
+
+- type: emberWallMaterial
+  id: EmberWallOCP
+  stateBase: solid
+  color: "#9BC6F2"
+  reinforcementStateBase: reinf_over
+  reinforcementColor: "#9BC6F2"
 
 - type: emberWallMaterial
   id: EmberWallRustedSteel
@@ -30,9 +52,39 @@
   color: "#FFD700"
 
 - type: emberWallMaterial
+  id: EmberWallOsmium
+  stateBase: metal
+  color: "#9999FF"
+
+- type: emberWallMaterial
+  id: EmberWallElectrum
+  stateBase: metal
+  color: "#E7C697"
+
+- type: emberWallMaterial
+  id: EmberWallCopper
+  stateBase: metal
+  color: "#B87333"
+
+- type: emberWallMaterial
+  id: EmberWallBronze
+  stateBase: metal
+  color: "#EDD12F"
+
+- type: emberWallMaterial
+  id: EmberWallPlatinum
+  stateBase: metal
+  color: "#DEDDFF"
+
+- type: emberWallMaterial
   id: EmberWallPlasma
   stateBase: solid
-  color: "#7D3C98"
+  color: "#E37108"
+
+- type: emberWallMaterial
+  id: EmberWallPhoron
+  stateBase: solid
+  color: "#E37108"
 
 - type: emberWallMaterial
   id: EmberWallPlastic
@@ -43,6 +95,16 @@
   id: EmberWallSandstone
   stateBase: stone
   color: "#D9C179"
+
+- type: emberWallMaterial
+  id: EmberWallMarble
+  stateBase: stone
+  color: "#AAAAAA"
+
+- type: emberWallMaterial
+  id: EmberWallConcrete
+  stateBase: stone
+  color: "#808080"
 
 - type: emberWallMaterial
   id: EmberWallSilver
@@ -77,7 +139,12 @@
 - type: emberWallMaterial
   id: EmberPlasmaGlass
   stateBase: solid
-  color: "#B85BFFB0"
+  color: "#E37108B0"
+
+- type: emberWallMaterial
+  id: EmberPhoronGlass
+  stateBase: solid
+  color: "#E37108B0"
 
 - type: emberWallMaterial
   id: EmberUraniumGlass

@@ -1,0 +1,87 @@
+- type: entity
+  id: EmberOreUnloader
+  parent: BaseMachinePowered
+  name: ore unloading machine
+  description: Pulls ore from an ore box or nearby loose ore and places it onto the output tile.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: Ember/Structures/Machines/mining_machines.rsi
+    layers:
+    - state: unloader
+  - type: EmberMineralMachine
+    input: West
+    output: East
+  - type: EmberOreUnloader
+
+- type: entity
+  id: EmberOreProcessor
+  parent: BaseMachinePowered
+  name: ore processing unit
+  description: Processes stored ore into sheets or alloys according to the linked console settings.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: Ember/Structures/Machines/mining_machines.rsi
+    layers:
+    - state: furnace_0
+      map: [ "base" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.EmberOreProcessorVisuals.Active:
+        base:
+          True: { state: furnace_1 }
+          False: { state: furnace_0 }
+  - type: EmberMineralMachine
+    input: North
+    output: South
+  - type: EmberMaterialProcessor
+    sheetsPerTick: 10
+
+- type: entity
+  id: EmberOreStacker
+  parent: BaseMachinePowered
+  name: stacking machine
+  description: Combines processed sheets into configured output stacks.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: Ember/Structures/Machines/mining_machines.rsi
+    layers:
+    - state: stacker
+  - type: EmberMineralMachine
+    input: East
+    output: West
+  - type: EmberOreStacker
+
+- type: entity
+  id: EmberOreConsole
+  parent: BaseComputer
+  name: ore processing console
+  description: Links to an adjacent ore machine and controls its processing settings.
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wallmount
+  components:
+  - type: Sprite
+    drawdepth: WallMountedItems
+    sprite: Ember/Structures/Machines/mining_machines.rsi
+    layers:
+    - state: console
+      shader: unshaded
+  - type: Fixtures
+  - type: WallMount
+    arc: 360
+  - type: ActivatableUI
+    key: enum.EmberOreProcessingConsoleUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.EmberOreProcessingConsoleUiKey.Key:
+        type: EmberOreProcessingConsoleBoundUserInterface
+  - type: EmberOreProcessingConsole

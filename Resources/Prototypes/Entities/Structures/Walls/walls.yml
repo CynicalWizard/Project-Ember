@@ -679,6 +679,40 @@
       - !type:DoActsBehavior
         acts: ["Destruction"]
 
+- type: entity
+  parent: WallReinforced
+  id: WallOCP
+  name: osmium-carbide plasteel wall
+  components:
+  - type: Construction
+    graph: Girder
+    node: ocpWall
+  - type: EmberProceduralWall
+    material: EmberWallOCP
+    reinforced: true
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 700
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger:
+        !type:DamageTrigger
+        damage: 450
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: reinforcedGirder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
 
 - type: entity
   parent: WallShuttleDiagonal

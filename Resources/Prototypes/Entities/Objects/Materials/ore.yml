@@ -26,10 +26,36 @@
 
 - type: entity
   parent: OreBase
+  id: EmberWasteOre
+  name: slag
+  suffix: Full
+  components:
+  - type: EmberOre
+    material: Waste
+  - type: Stack
+    stackType: EmberWasteOre
+  - type: Sprite
+    sprite: Ember/Objects/Materials/ore.rsi
+    state: dust
+  - type: Item
+    sprite: Ember/Objects/Materials/ore.rsi
+
+- type: entity
+  parent: EmberWasteOre
+  id: EmberWasteOre1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: OreBase
   id: GoldOre
   name: gold ore
   suffix: Full
   components:
+  - type: EmberOre
+    material: Gold
   - type: Stack
     stackType: GoldOre
   - type: Sprite
@@ -63,6 +89,8 @@
   name: diamond ore
   suffix: Full
   components:
+  - type: EmberOre
+    material: Diamond
   - type: Stack
     stackType: DiamondOre
   - type: Sprite
@@ -93,9 +121,11 @@
 - type: entity
   parent: OreBase
   id: SteelOre
-  name: iron ore
+  name: hematite
   suffix: Full
   components:
+  - type: EmberOre
+    material: Hematite
   - type: Stack
     stackType: SteelOre
   - type: Sprite
@@ -126,9 +156,11 @@
 - type: entity
   parent: OreBase
   id: PlasmaOre
-  name: plasma ore
+  name: phoron ore
   suffix: Full
   components:
+  - type: EmberOre
+    material: Phoron
   - type: Stack
     stackType: PlasmaOre
   - type: Sprite
@@ -141,7 +173,7 @@
     radius: 1.2
     energy: 0.6
     castShadows: false
-    color: "#e592e7"
+    color: "#e37108"
   - type: Extractable
     grindableSolutionName: plasmaore
   - type: SolutionContainerManager
@@ -167,6 +199,8 @@
   name: silver ore
   suffix: Full
   components:
+  - type: EmberOre
+    material: Silver
   - type: Stack
     stackType: SilverOre
   - type: Sprite
@@ -200,6 +234,8 @@
   name: space quartz
   suffix: Full
   components:
+  - type: EmberOre
+    material: Quartz
   - type: Stack
     stackType: SpaceQuartz
   - type: Sprite
@@ -233,6 +269,8 @@
   name: uranium ore
   suffix: Full
   components:
+  - type: EmberOre
+    material: Pitchblende
   - type: Stack
     stackType: UraniumOre
   - type: Sprite
@@ -316,6 +354,8 @@
   name: coal
   suffix: Full
   components:
+  - type: EmberOre
+    material: Graphite
   - type: Stack
     stackType: Coal
   - type: Sprite
@@ -381,6 +421,8 @@
   name: salt
   suffix: Full
   components:
+  - type: EmberOre
+    material: RockSalt
   - type: Stack
     stackType: SaltOre
   - type: Sprite
@@ -476,6 +518,239 @@
 - type: entity
   parent: TungstenOre
   id: TungstenOre1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  abstract: true
+  parent: OreBase
+  id: EmberOreBase
+  suffix: Full
+  components:
+  - type: Sprite
+    sprite: Ember/Objects/Materials/ore.rsi
+    state: lump
+  - type: Item
+    sprite: Ember/Objects/Materials/ore.rsi
+
+- type: entity
+  parent: EmberOreBase
+  id: EmberSandOre
+  components:
+  - type: EmberOre
+    material: Sand
+  - type: Stack
+    stackType: SandOre
+
+- type: entity
+  parent: EmberSandOre
+  id: EmberSandOre1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: EmberOreBase
+  id: EmberPlatinumOre
+  components:
+  - type: EmberOre
+    material: Platinum
+  - type: Stack
+    stackType: PlatinumOre
+
+- type: entity
+  parent: EmberPlatinumOre
+  id: EmberPlatinumOre1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: EmberOreBase
+  id: EmberHydrogenOre
+  components:
+  - type: EmberOre
+    material: MetallicHydrogen
+  - type: Stack
+    stackType: HydrogenOre
+
+- type: entity
+  parent: EmberHydrogenOre
+  id: EmberHydrogenOre1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: EmberOreBase
+  id: EmberBauxiteOre
+  components:
+  - type: EmberOre
+    material: Bauxite
+  - type: Stack
+    stackType: BauxiteOre
+
+- type: entity
+  parent: EmberBauxiteOre
+  id: EmberBauxiteOre1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: EmberOreBase
+  id: EmberRutileOre
+  components:
+  - type: EmberOre
+    material: Rutile
+  - type: Stack
+    stackType: RutileOre
+
+- type: entity
+  parent: EmberRutileOre
+  id: EmberRutileOre1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: EmberOreBase
+  id: EmberCopperOre
+  components:
+  - type: EmberOre
+    material: Copper
+  - type: Stack
+    stackType: EmberCopperOre
+
+- type: entity
+  parent: EmberCopperOre
+  id: EmberCopperOre1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: EmberOreBase
+  id: EmberElectrumOre
+  components:
+  - type: EmberOre
+    material: Electrum
+  - type: Stack
+    stackType: ElectrumOre
+
+- type: entity
+  parent: EmberElectrumOre
+  id: EmberElectrumOre1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: EmberOreBase
+  id: EmberBoraxOre
+  components:
+  - type: EmberOre
+    material: Borax
+  - type: Stack
+    stackType: BoraxOre
+
+- type: entity
+  parent: EmberBoraxOre
+  id: EmberBoraxOre1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: EmberOreBase
+  id: EmberPyriteOre
+  components:
+  - type: EmberOre
+    material: Pyrite
+  - type: Stack
+    stackType: PyriteOre
+
+- type: entity
+  parent: EmberPyriteOre
+  id: EmberPyriteOre1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: EmberOreBase
+  id: EmberSpodumeneOre
+  components:
+  - type: EmberOre
+    material: Spodumene
+  - type: Stack
+    stackType: SpodumeneOre
+
+- type: entity
+  parent: EmberSpodumeneOre
+  id: EmberSpodumeneOre1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: EmberOreBase
+  id: EmberCinnabarOre
+  components:
+  - type: EmberOre
+    material: Cinnabar
+  - type: Stack
+    stackType: CinnabarOre
+
+- type: entity
+  parent: EmberCinnabarOre
+  id: EmberCinnabarOre1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: EmberOreBase
+  id: EmberPhosphoriteOre
+  components:
+  - type: EmberOre
+    material: Phosphorite
+  - type: Stack
+    stackType: PhosphoriteOre
+
+- type: entity
+  parent: EmberPhosphoriteOre
+  id: EmberPhosphoriteOre1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: EmberOreBase
+  id: EmberPotashOre
+  components:
+  - type: EmberOre
+    material: Potash
+  - type: Stack
+    stackType: PotashOre
+
+- type: entity
+  parent: EmberPotashOre
+  id: EmberPotashOre1
   suffix: Single
   components:
   - type: Stack

@@ -4,7 +4,8 @@ gases-nitrogen = Азот
 
 gases-co2 = Диоксид углерода
 
-gases-plasma = Плазма
+gases-plasma = Форон
+gases-phoron = Форон
 
 gases-tritium = Тритий
 

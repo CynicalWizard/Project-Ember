@@ -82,7 +82,7 @@
 - type: entity
   parent: SheetOtherBase
   id: SheetPlasma
-  name: plasma
+  name: phoron
   suffix: Full
   components:
   - type: Material
@@ -93,16 +93,20 @@
     stackType: Plasma
     baseLayer: base
     layerStates:
-    - plasma
-    - plasma_2
-    - plasma_3
+    - sheet-phoron
+    - sheet-phoron-mult
+    - sheet-phoron-max
+  - type: EmberMaterialStack
+    material: Phoron
+    tint: false
   - type: Sprite
-    state: plasma_3
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet-phoron-max
     layers:
-    - state: plasma_3
+    - state: sheet-phoron-max
       map: ["base"]
   - type: Item
-    heldPrefix: plasma
+    heldPrefix: phoron
   - type: Appearance
   - type: Extractable
     grindableSolutionName: plasma
@@ -137,18 +141,20 @@
   suffix: 10
   components:
   - type: Sprite
-    state: plasma
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet-phoron
   - type: Stack
     count: 10
 
 - type: entity
   parent: SheetPlasma
   id: SheetPlasma1
-  name: plasma
+  name: phoron
   suffix: Single
   components:
   - type: Sprite
-    state: plasma
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet-phoron
   - type: Stack
     count: 1
 
@@ -171,15 +177,19 @@
     stackType: Plastic
     baseLayer: base
     layerStates:
-    - plastic
-    - plastic_2
-    - plastic_3
+    - sheet-plastic
+    - sheet-plastic-mult
+    - sheet-plastic-max
+  - type: EmberMaterialStack
+    material: Plastic
   - type: Sprite
-    state: plastic_3
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet-plastic-max
     layers:
-    - state: plastic_3
+    - state: sheet-plastic-max
       map: ["base"]
   - type: Item
+    sprite: Ember/Objects/Materials/materials.rsi
     heldPrefix: plastic
   - type: Appearance
   - type: Extractable
@@ -212,7 +222,8 @@
   suffix: 10
   components:
   - type: Sprite
-    state: plastic
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet-plastic
   - type: Stack
     count: 10
 
@@ -223,7 +234,8 @@
   suffix: Single
   components:
   - type: Sprite
-    state: plastic
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet-plastic
   - type: Stack
     count: 1
 

@@ -14,7 +14,7 @@ namespace Content.Client.Ember.Doors;
 
 public sealed class EmberProceduralAirlockSystem : EntitySystem
 {
-    private static readonly object[] SierraOrientedLayers =
+    private static readonly object[] DirectionalViewLayers =
     {
         DoorVisualLayers.Base,
         DoorVisualLayers.BaseUnlit,
@@ -74,7 +74,7 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
         SetupLayer(sprite, EmberAirlockLayer.BoltLights, component.BoltLightsSprite, "closed");
         SetupLayer(sprite, EmberAirlockLayer.Emag, component.EmagSprite, "deny");
 
-        ApplySierraOrientation(uid, sprite);
+        ApplyDirectionalView(uid, sprite);
         UpdateVisuals(uid, component, sprite);
     }
 
@@ -97,7 +97,7 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
         if (!TryComp<SpriteComponent>(uid, out var sprite))
             return;
 
-        ApplySierraOrientation(uid, sprite);
+        ApplyDirectionalView(uid, sprite);
     }
 
     private void OnAfterAutoHandleState(EntityUid uid, EmberProceduralAirlockComponent component, ref AfterAutoHandleStateEvent args)
@@ -135,7 +135,7 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
         var stateName = EmberProceduralAirlockVisuals.SpriteStateFor(state);
         var animateState = EmberProceduralAirlockVisuals.IsTransitionState(state);
 
-        ApplySierraOrientation(uid, sprite);
+        ApplyDirectionalView(uid, sprite);
 
         SetSpriteState(sprite, DoorVisualLayers.Base, component.DoorSprite, stateName, animateState);
         SetSpriteState(sprite, DoorVisualLayers.BaseUnlit, component.DoorSprite, "blank");
@@ -227,13 +227,13 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
         sprite.LayerSetAutoAnimated(layer, autoAnimated);
     }
 
-    private void ApplySierraOrientation(EntityUid uid, SpriteComponent sprite)
+    private void ApplyDirectionalView(EntityUid uid, SpriteComponent sprite)
     {
         sprite.EnableDirectionOverride = false;
         sprite.NoRotation = true;
         sprite.GranularLayersRendering = true;
 
-        foreach (var layer in SierraOrientedLayers)
+        foreach (var layer in DirectionalViewLayers)
         {
             if (!sprite.LayerMapTryGet(layer, out _))
                 continue;
