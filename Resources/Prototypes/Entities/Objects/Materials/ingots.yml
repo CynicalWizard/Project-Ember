@@ -44,6 +44,7 @@
     - ingot-mult
     - ingot-max
   - type: EmberMaterialStack
+    renameEntity: false
     material: Gold
   - type: Sprite
     sprite: Ember/Objects/Materials/materials.rsi
@@ -94,6 +95,7 @@
     - ingot-mult
     - ingot-max
   - type: EmberMaterialStack
+    renameEntity: false
     material: Silver
   - type: Sprite
     sprite: Ember/Objects/Materials/materials.rsi
@@ -132,6 +134,9 @@
   name: tungsten-carbide bar
   suffix: Full
   components:
+  - type: EmberMaterialStack
+    renameEntity: false
+    material: Titanium
   - type: Material
   - type: PhysicalComposition
     materialComposition:
@@ -140,15 +145,17 @@
     stackType: Tungsten
     baseLayer: base
     layerStates:
-    - tungsten_1
-    - tungsten_2
-    - tungsten_3
+    - ingot
+    - ingot-mult
+    - ingot-max
   - type: Sprite
-    state: tungsten_3
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: ingot-max
     layers:
-    - state: tungsten_3
+    - state: ingot-max
       map: ["base"]
   - type: Item
+    sprite: Ember/Objects/Materials/materials.rsi
     heldPrefix: tungsten
   - type: Appearance
 
@@ -159,6 +166,7 @@
   suffix: Single
   components:
   - type: Sprite
-    state: tungsten_1
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: ingot
   - type: Stack
     count: 1

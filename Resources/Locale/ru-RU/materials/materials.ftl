@@ -1,95 +1,89 @@
-materials-glass = стекло
-
-materials-reinforced-glass = бронестекло
-
-materials-plasma-glass = фороновое стекло
-
-materials-reinforced-plasma-glass = фороновое бронестекло
-
-materials-steel = сталь
-
-materials-gold = золото
-
-materials-silver = серебро
-
-materials-plasteel = пласталь
-
-materials-aluminium = алюминий
-
-materials-copper = медь
-
-materials-tungsten = карбид вольфрама
-
-materials-lead = свинец
-
-materials-biomass = биомасса
-
-materials-cardboard = картон
-
-materials-cloth = ткань
-
-materials-durathread = дюраткань
-
-materials-plasma = форон
-materials-phoron = форон
-
-materials-plastic = пластик
-
-materials-wood = дерево
-
-materials-paper = бумага
-
-materials-uranium = уран
-
-materials-bananium = бананиум
-
-materials-meat = мясо
-
-materials-web = шёлк
-
-materials-bones = кости
-
-materials-coal = уголь
-
-materials-diamond = алмазы
-
-materials-gunpowder = чёрный порох
-
-materials-bluespace = блюспейс
-
-materials-normality = нормальность
-
-materials-raw-iron = гематит
-
-materials-raw-quartz = необработанный кварц
-
-materials-raw-gold = необработанное золото
-
-materials-raw-silver = необработанная серебра
-
-materials-raw-plasma = необработанный форон
-materials-raw-phoron = необработанный форон
-
-materials-raw-uranium = необработанный уран
-
-materials-raw-bananium = необработанный бананиум
-
-materials-raw-salt = каменная соль
-
-materials-raw-diamond = необработанный алмаз
-
-materials-raw-bluespace = необработанное синее пространство
-
-materials-raw-normality = необработанная нормальность
-
-materials-raw-aluminium = необработанный алюминий
-
-materials-raw-lead = необработанный свинец
-
-materials-raw-sulfur = необработанная сера
-
-materials-raw-copper = необработанная медь
-
-materials-raw-tungsten = необработанный вольфрам
-
-material-reclaimer-upgrade-process-rate = скорость обработки
+materials-steel-display-name = сталь
+materials-iron-display-name = железо
+materials-aluminium-display-name = алюминий
+materials-plasteel-display-name = пласталь
+materials-titanium-display-name = титан
+materials-osmiumcarbideplasteel-display-name = осмиево-карбидная пласталь
+materials-osmium-display-name = осмий
+materials-gold-display-name = золото
+materials-gold-ore-name = самородное золото
+materials-silver-display-name = серебро
+materials-silver-ore-name = самородное серебро
+materials-electrum-display-name = электрум
+materials-electrum-ore-name = электрум
+materials-copper-display-name = медь
+materials-copper-ore-name = тетраэдрит
+materials-bronze-display-name = бронза
+materials-platinum-display-name = платина
+materials-platinum-ore-name = самородная платина
+materials-uranium-display-name = уран
+materials-deuterium-display-name = дейтерий
+materials-tritium-display-name = тритий
+materials-metallichydrogen-display-name = металлический водород
+materials-metallichydrogen-ore-name = сырой водород
+materials-phoron-display-name = форон
+materials-phoron-ore-name = форон
+materials-supermatter-display-name = суперматерия
+materials-glass-display-name = стекло
+materials-borosilicateglass-display-name = боросиликатное стекло
+materials-diamond-display-name = алмаз
+materials-crystal-display-name = кристалл
+materials-sandstone-display-name = песчаник
+materials-marble-display-name = мрамор
+materials-concrete-display-name = бетон
+materials-plastic-display-name = пластик
+materials-cardboard-display-name = картон
+materials-cloth-display-name = хлопок
+materials-carpet-display-name = красный ковер
+materials-wood-display-name = дерево
+materials-mahogany-display-name = красное дерево
+materials-maple-display-name = клён
+materials-ebony-display-name = эбеновое дерево
+materials-walnut-display-name = орех
+materials-bamboo-display-name = бамбук
+materials-yew-display-name = тис
+materials-voxbioresin-display-name = биосмола воксов
+materials-borax-display-name = бура
+materials-pitchblende-display-name = настуран
+materials-graphite-display-name = графит
+materials-quartz-display-name = кварц
+materials-pyrite-display-name = пирит
+materials-spodumene-display-name = сподумен
+materials-cinnabar-display-name = киноварь
+materials-phosphorite-display-name = фосфорит
+materials-rocksalt-display-name = каменная соль
+materials-potash-display-name = поташ
+materials-bauxite-display-name = боксит
+materials-sand-display-name = песок
+materials-hematite-display-name = гематит
+materials-hematite-ore-name = гематит
+materials-rutile-display-name = рутил
+materials-rutile-ore-name = рутил
+materials-waste-display-name = шлак
+materials-cultstone-display-name = тревожный камень
+materials-reinforcedcultstone-display-name = рунические надписи
+materials-voxalloy-display-name = прочный сплав
+materials-elevatorium-display-name = панели лифта
+materials-alienalloy-display-name = инопланетный сплав
+materials-skin-display-name = кожа
+materials-lizardskin-display-name = кожа ящерицы
+materials-chitin-display-name = хитин
+materials-fur-display-name = коричневый мех
+materials-grayfur-display-name = серый мех
+materials-whitefur-display-name = белый мех
+materials-orangefur-display-name = оранжевый мех
+materials-blackfur-display-name = черный мех
+materials-heavyfur-display-name = густой мех
+materials-goathide-display-name = козья шкура
+materials-cowhide-display-name = коровья шкура
+materials-sharkskin-display-name = акулья кожа
+materials-fishskin-display-name = рыбья кожа
+materials-purplefishskin-display-name = пурпурная рыбья кожа
+materials-bone-display-name = кость
+materials-fishbone-display-name = рыбья кость
+materials-cartilage-display-name = хрящ
+materials-leather-display-name = выделанная кожа
+materials-scaledhide-display-name = чешуйчатая шкура
+materials-furredhide-display-name = меховая шкура
+materials-treatedchitin-display-name = обработанный хитин
+materials-growth-display-name = нарост

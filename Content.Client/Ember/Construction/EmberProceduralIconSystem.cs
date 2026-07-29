@@ -25,6 +25,7 @@ public sealed class EmberProceduralIconSystem : EntitySystem
         "EmberProceduralWall",
         "EmberProceduralStructure",
         "EmberMaterialTint",
+        "EmberMaterialStack",
         "EmberProceduralAirlock",
     };
 

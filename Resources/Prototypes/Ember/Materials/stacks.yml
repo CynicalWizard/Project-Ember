@@ -1,202 +1,173 @@
 - type: stack
   id: Iron
-  name: iron
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: ingot }
   spawn: EmberIngotIron1
   maxCount: 30
 
 - type: stack
   id: EmberAluminium
-  name: aluminium
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: sheet-sheen }
   spawn: EmberSheetAluminium1
   maxCount: 30
 
 - type: stack
   id: Titanium
-  name: titanium
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: sheet-reinf }
   spawn: EmberSheetTitanium1
   maxCount: 30
 
 - type: stack
   id: OsmiumCarbidePlasteel
-  name: osmium-carbide plasteel
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: sheet-reinf }
   spawn: EmberSheetOCP1
   maxCount: 30
 
 - type: stack
   id: Osmium
-  name: osmium
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: ingot }
   spawn: EmberIngotOsmium1
   maxCount: 30
 
 - type: stack
   id: Electrum
-  name: electrum
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: ingot }
   spawn: EmberIngotElectrum1
   maxCount: 30
 
 - type: stack
   id: EmberCopper
-  name: copper
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: ingot }
   spawn: EmberIngotCopper1
   maxCount: 30
 
 - type: stack
   id: Bronze
-  name: bronze
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: ingot }
   spawn: EmberIngotBronze1
   maxCount: 30
 
 - type: stack
   id: Platinum
-  name: platinum
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: ingot }
   spawn: EmberIngotPlatinum1
   maxCount: 30
 
 - type: stack
   id: Deuterium
-  name: deuterium
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: puck }
   spawn: EmberPuckDeuterium1
   maxCount: 30
 
 - type: stack
   id: Tritium
-  name: tritium
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: puck }
   spawn: EmberPuckTritium1
   maxCount: 30
 
 - type: stack
   id: MetallicHydrogen
-  name: metallic hydrogen
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: sheet-mythril }
   spawn: EmberSheetMHydrogen1
   maxCount: 30
 
 - type: stack
   id: BorosilicateGlass
-  name: borosilicate glass
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: sheet-clear }
   spawn: EmberSheetBorosilicateGlass1
   maxCount: 30
 
 - type: stack
   id: Sandstone
-  name: sandstone
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: brick }
   spawn: EmberBrickSandstone1
   maxCount: 30
 
 - type: stack
   id: Marble
-  name: marble
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: brick }
   spawn: EmberBrickMarble1
   maxCount: 30
 
 - type: stack
   id: Concrete
-  name: concrete
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: brick }
   spawn: EmberBrickConcrete1
   maxCount: 30
 
 - type: stack
   id: Borax
-  name: borax
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: brick }
   spawn: EmberBrickBorax1
   maxCount: 30
 
 - type: stack
   id: Pitchblende
-  name: pitchblende
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: brick }
   spawn: EmberBrickPitchblende1
   maxCount: 30
 
 - type: stack
   id: Graphite
-  name: graphite
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: sheet }
   spawn: EmberSheetGraphite1
   maxCount: 30
 
 - type: stack
   id: Quartz
-  name: quartz
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: brick }
   spawn: EmberBrickQuartz1
   maxCount: 30
 
 - type: stack
   id: Pyrite
-  name: pyrite
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: brick }
   spawn: EmberBrickPyrite1
   maxCount: 30
 
 - type: stack
   id: Spodumene
-  name: spodumene
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: brick }
   spawn: EmberBrickSpodumene1
   maxCount: 30
 
 - type: stack
   id: Cinnabar
-  name: cinnabar
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: brick }
   spawn: EmberBrickCinnabar1
   maxCount: 30
 
 - type: stack
   id: Phosphorite
-  name: phosphorite
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: brick }
   spawn: EmberBrickPhosphorite1
   maxCount: 30
 
 - type: stack
   id: RockSalt
-  name: rock salt
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: brick }
   spawn: EmberBrickRockSalt1
   maxCount: 30
 
 - type: stack
   id: Potash
-  name: potash
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: brick }
   spawn: EmberBrickPotash1
   maxCount: 30
 
 - type: stack
   id: Bauxite
-  name: bauxite
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: brick }
   spawn: EmberBrickBauxite1
   maxCount: 30
 
 - type: stack
   id: Sand
-  name: sand
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: sheet }
   spawn: EmberDustSand1
   maxCount: 30
 
 - type: stack
   id: Rutile
-  name: rutile
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: brick }
   spawn: EmberBrickRutile1
   maxCount: 30

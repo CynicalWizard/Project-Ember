@@ -97,6 +97,7 @@
     - sheet-phoron-mult
     - sheet-phoron-max
   - type: EmberMaterialStack
+    renameEntity: false
     material: Phoron
     tint: false
   - type: Sprite
@@ -181,6 +182,7 @@
     - sheet-plastic-mult
     - sheet-plastic-max
   - type: EmberMaterialStack
+    renameEntity: false
     material: Plastic
   - type: Sprite
     sprite: Ember/Objects/Materials/materials.rsi
@@ -245,6 +247,9 @@
   name: uranium
   suffix: Full
   components:
+  - type: EmberMaterialStack
+    renameEntity: false
+    material: Uranium
   - type: Material
   - type: Food
     transferAmount: 10
@@ -256,16 +261,18 @@
     stackType: Uranium
     baseLayer: base
     layerStates:
-    - uranium
-    - uranium_2
-    - uranium_3
+    - puck
+    - puck-mult
+    - puck-max
   - type: Sprite
-    state: uranium_3
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: puck-max
     layers:
-    - state: uranium_3
+    - state: puck-max
       map: ["base"]
   - type: Appearance
   - type: Item
+    sprite: Ember/Objects/Materials/materials.rsi
     heldPrefix: uranium
   - type: Extractable
     grindableSolutionName: food
@@ -298,6 +305,9 @@
   name: uranium
   suffix: Single
   components:
+  - type: Sprite
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: puck
   - type: Stack
     count: 1
 

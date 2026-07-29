@@ -1,4 +1,5 @@
 using Robust.Shared.Prototypes;
+using Content.Shared.Ember.Materials;
 
 namespace Content.Shared.Ember.Walls;
 
@@ -22,4 +23,7 @@ public sealed partial class EmberWallMaterialPrototype : IPrototype
 
     [DataField]
     public Color? ReinforcementColor;
+    
+    [DataField]
+    public ProtoId<EmberMaterialPrototype>? PhysicalMaterial;
 }

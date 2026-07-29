@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Numerics;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Construction.Prototypes;
@@ -11,6 +11,7 @@ using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 // ReSharper disable InconsistentNaming
 
@@ -125,7 +126,7 @@ public sealed class RadialSelectorMenuBUI : BoundUserInterface
     private List<Texture> GetTextures(RadialSelectorEntry entry)
     {
         var result = new List<Texture>();
-        if (entry.Icon is not null)
+        if (entry.Icon is not null && entry.Icon != SpriteSpecifier.Invalid)
         {
             result.Add(_spriteSystem.Frame0(entry.Icon));
             return result;
@@ -139,7 +140,10 @@ public sealed class RadialSelectorMenuBUI : BoundUserInterface
 
         if (_protoManager.TryIndex(entry.Prototype!, out ConstructionPrototype? constructionProto))
         {
-            result.Add(_spriteSystem.Frame0(constructionProto.Icon));
+            if (constructionProto.Icon != SpriteSpecifier.Invalid)
+            {
+                result.Add(_spriteSystem.Frame0(constructionProto.Icon));
+            }
             return result;
         }
 
@@ -177,6 +181,20 @@ public sealed class RadialSelectorMenuBUI : BoundUserInterface
             StyleClasses = { "RadialMenuButton" },
             SetSize = ItemSize
         };
+
+        if (icons.Count == 0)
+        {
+            var transparentScale = ItemSize / Texture.Transparent.Size;
+            var transparentTexture = new TextureRect
+            {
+                VerticalAlignment = Control.VAlignment.Center,
+                HorizontalAlignment = Control.HAlignment.Center,
+                Texture = Texture.Transparent,
+                TextureScale = transparentScale
+            };
+            button.AddChild(transparentTexture);
+            return button;
+        }
 
         var iconScale = ItemSize / icons[0].Size;
         var texture = new LayeredTextureRect

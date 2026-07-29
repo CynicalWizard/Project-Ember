@@ -5,10 +5,13 @@
   name: glass
   description: A sheet of glass, used often on the station in various applications.
   components:
+  - type: EmberMaterialStack
+    renameEntity: false
+    material: Glass
   - type: Sprite
-    sprite: Objects/Materials/Sheets/glass.rsi
+    sprite: Ember/Objects/Materials/materials.rsi
   - type: Item
-    sprite: Objects/Materials/Sheets/glass.rsi
+    sprite: Ember/Objects/Materials/materials.rsi
     size: Normal
   - type: StaticPrice
     price: 0
@@ -69,13 +72,13 @@
     stackType: Glass
     baseLayer: base
     layerStates:
-    - glass
-    - glass_2
-    - glass_3
+    - sheet-clear
+    - sheet-clear-mult
+    - sheet-clear-max
   - type: Sprite
-    state: glass_3
+    state: sheet-clear-max
     layers:
-    - state: glass_3
+    - state: sheet-clear-max
       map: ["base"]
   - type: Item
     heldPrefix: glass
@@ -105,7 +108,6 @@
     entries:
     - prototype: Window
     - prototype: WindowDirectional
-    - prototype: WindowDiagonal
     - prototype: SheetRGlass
     - prototype: SheetPGlass
     - prototype: SheetUGlass
@@ -116,7 +118,7 @@
   suffix: 10
   components:
   - type: Sprite
-    state: glass
+    state: sheet-clear
   - type: Stack
     stackType: Glass
     count: 10
@@ -127,7 +129,7 @@
   suffix: Single
   components:
   - type: Sprite
-    state: glass
+    state: sheet-clear
   - type: Stack
     stackType: Glass
     count: 1
@@ -148,6 +150,9 @@
   description: A reinforced sheet of glass.
   suffix: Full
   components:
+  - type: EmberMaterialStack
+    renameEntity: false
+    material: Glass
   - type: PhysicalComposition
     materialComposition:
       ReinforcedGlass: 100
@@ -155,13 +160,13 @@
     stackType: ReinforcedGlass
     baseLayer: base
     layerStates:
-    - rglass
-    - rglass_2
-    - rglass_3
+    - sheet-glass-reinf
+    - sheet-glass-reinf-mult
+    - sheet-glass-reinf-max
   - type: Sprite
-    state: rglass_3
+    state: sheet-glass-reinf-max
     layers:
-    - state: rglass_3
+    - state: sheet-glass-reinf-max
       map: ["base"]
   - type: Item
     heldPrefix: rglass
@@ -208,7 +213,6 @@
     - prototype: SheetRPGlass1
     - prototype: SheetRUGlass1
     - prototype: ReinforcedWindow
-    - prototype: ReinforcedWindowDiagonal
     - prototype: WindowReinforcedDirectional
 
 - type: entity
@@ -218,7 +222,7 @@
   suffix: Single
   components:
   - type: Sprite
-    state: rglass
+    state: sheet-glass-reinf
   - type: Stack
     stackType: ReinforcedGlass
     count: 1
@@ -243,7 +247,7 @@
   suffix: Single
   components:
   - type: Sprite
-    state: rglass
+    state: sheet-glass-reinf
   - type: Stack
     stackType: ReinforcedGlass
     count: 10
@@ -255,6 +259,9 @@
   description: A sheet of translucent plasma.
   suffix: Full
   components:
+  - type: EmberMaterialStack
+    renameEntity: false
+    material: Phoron
   - type: PhysicalComposition
     materialComposition:
       PlasmaGlass: 100
@@ -262,13 +269,13 @@
     stackType: PlasmaGlass
     baseLayer: base
     layerStates:
-    - pglass
-    - pglass_2
-    - pglass_3
+    - sheet-clear
+    - sheet-clear-mult
+    - sheet-clear-max
   - type: Sprite
-    state: pglass_3
+    state: sheet-clear-max
     layers:
-    - state: pglass_3
+    - state: sheet-clear-max
       map: ["base"]
   - type: Item
     heldPrefix: pglass
@@ -311,7 +318,6 @@
     entries:
     - prototype: SheetRPGlass0
     - prototype: PlasmaWindow
-    - prototype: PlasmaWindowDiagonal
     - prototype: PlasmaWindowDirectional
 
 - type: entity
@@ -321,7 +327,7 @@
   suffix: Single
   components:
   - type: Sprite
-    state: pglass
+    state: sheet-clear
   - type: Stack
     stackType: PlasmaGlass
     count: 1
@@ -344,7 +350,7 @@
   suffix: 10
   components:
   - type: Sprite
-    state: pglass
+    state: sheet-clear
   - type: Stack
     stackType: PlasmaGlass
     count: 10
@@ -356,6 +362,9 @@
   description: A reinforced sheet of translucent plasma.
   suffix: Full
   components:
+  - type: EmberMaterialStack
+    renameEntity: false
+    material: Phoron
   - type: PhysicalComposition
     materialComposition:
       ReinforcedPlasmaGlass: 100
@@ -363,13 +372,13 @@
     stackType: ReinforcedPlasmaGlass
     baseLayer: base
     layerStates:
-    - rpglass
-    - rpglass_2
-    - rpglass_3
+    - sheet-glass-reinf
+    - sheet-glass-reinf-mult
+    - sheet-glass-reinf-max
   - type: Sprite
-    state: rpglass_3
+    state: sheet-glass-reinf-max
     layers:
-    - state: rpglass_3
+    - state: sheet-glass-reinf-max
       map: ["base"]
   - type: Item
     heldPrefix: rpglass
@@ -402,7 +411,6 @@
   - type: ShortConstruction
     entries:
     - prototype: ReinforcedPlasmaWindow
-    - prototype: ReinforcedPlasmaWindowDiagonal
     - prototype: PlasmaReinforcedWindowDirectional
 
 - type: entity
@@ -412,7 +420,7 @@
   suffix: Single
   components:
   - type: Sprite
-    state: rpglass
+    state: sheet-glass-reinf
   - type: Stack
     stackType: ReinforcedPlasmaGlass
     count: 1
@@ -424,7 +432,7 @@
   suffix: Single
   components:
   - type: Sprite
-    state: rpglass
+    state: sheet-glass-reinf
   - type: Stack
     stackType: ReinforcedPlasmaGlass
     count: 10
@@ -436,6 +444,9 @@
   description: A sheet of uranium glass.
   suffix: Full
   components:
+  - type: EmberMaterialStack
+    renameEntity: false
+    material: Uranium
   - type: PhysicalComposition
     materialComposition:
       UraniumGlass: 100
@@ -443,13 +454,13 @@
     stackType: UraniumGlass
     baseLayer: base
     layerStates:
-    - uglass
-    - uglass_2
-    - uglass_3
+    - sheet-clear
+    - sheet-clear-mult
+    - sheet-clear-max
   - type: Sprite
-    state: uglass_3
+    state: sheet-clear-max
     layers:
-    - state: uglass_3
+    - state: sheet-clear-max
       map: ["base"]
   - type: Item
     heldPrefix: uglass
@@ -503,7 +514,6 @@
     entries:
     - prototype: SheetRUGlass0
     - prototype: UraniumWindow
-    - prototype: UraniumWindowDiagonal
     - prototype: UraniumWindowDirectional
 
 - type: entity
@@ -513,7 +523,7 @@
   suffix: Single
   components:
   - type: Sprite
-    state: uglass
+    state: sheet-clear
   - type: Stack
     stackType: UraniumGlass
     count: 1
@@ -525,7 +535,7 @@
   suffix: 10
   components:
   - type: Sprite
-    state: uglass
+    state: sheet-clear
   - type: Stack
     stackType: UraniumGlass
     count: 10
@@ -536,6 +546,9 @@
   name: reinforced uranium glass
   description: A reinforced sheet of uranium.
   components:
+  - type: EmberMaterialStack
+    renameEntity: false
+    material: Uranium
   - type: PhysicalComposition
     materialComposition:
       ReinforcedUraniumGlass: 100
@@ -543,13 +556,13 @@
     stackType: ReinforcedUraniumGlass
     baseLayer: base
     layerStates:
-    - ruglass
-    - ruglass_2
-    - ruglass_3
+    - sheet-glass-reinf
+    - sheet-glass-reinf-mult
+    - sheet-glass-reinf-max
   - type: Sprite
-    state: ruglass_3
+    state: sheet-glass-reinf-max
     layers:
-    - state: ruglass_3
+    - state: sheet-glass-reinf-max
       map: ["base"]
   - type: Item
     heldPrefix: ruglass
@@ -582,7 +595,6 @@
   - type: ShortConstruction
     entries:
     - prototype: ReinforcedUraniumWindow
-    - prototype: ReinforcedUraniumWindowDiagonal
     - prototype: UraniumReinforcedWindowDirectional
 
 - type: entity
@@ -592,7 +604,7 @@
   suffix: Single
   components:
   - type: Sprite
-    state: ruglass
+    state: sheet-glass-reinf
   - type: Stack
     stackType: ReinforcedUraniumGlass
     count: 1
@@ -604,7 +616,7 @@
   suffix: 10
   components:
   - type: Sprite
-    state: ruglass
+    state: sheet-glass-reinf
   - type: Stack
     stackType: ReinforcedUraniumGlass
     count: 10
@@ -616,6 +628,9 @@
   description: A sheet of brass-hardened glass, primarily used by clockwork enthusiasts and remnants of Ratvarian cults.
   suffix: Full
   components:
+  - type: EmberMaterialStack
+    renameEntity: false
+    material: Bronze
   - type: PhysicalComposition
     materialComposition:
       BrassGlass: 100
@@ -623,13 +638,13 @@
     stackType: ClockworkGlass
     baseLayer: base
     layerStates:
-    - cglass
-    - cglass_2
-    - cglass_3
+    - sheet-clear
+    - sheet-clear-mult
+    - sheet-clear-max
   - type: Sprite
-    state: cglass_3
+    state: sheet-clear-max
     layers:
-    - state: cglass_3
+    - state: sheet-clear-max
       map: ["base"]
   - type: Item
     heldPrefix: cglass
@@ -681,7 +696,7 @@
   suffix: Single
   components:
   - type: Sprite
-    state: cglass
+    state: sheet-clear
   - type: Stack
     stackType: ClockworkGlass
     count: 1
@@ -693,7 +708,7 @@
   suffix: 10
   components:
   - type: Sprite
-    state: cglass
+    state: sheet-clear
   - type: Stack
     stackType: ClockworkGlass
     count: 10

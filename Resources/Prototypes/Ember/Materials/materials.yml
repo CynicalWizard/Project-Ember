@@ -1,7 +1,7 @@
 - type: emberMaterial
   id: Steel
   key: steel
-  displayName: steel
+  displayName: materials-steel-display-name
   category: metal
   color: "#A8B0B2"
   stackEntity: SheetSteel1
@@ -13,23 +13,25 @@
   wallBlendIcons:
     wood: true
     stone: true
-  bruteArmor: 7
-  burnArmor: 7
-  hardness: 60
-  weight: 20
   oreSmeltsTo: Steel
   alloyProduct: true
   alloyMaterials:
     Hematite: 1875
     Graphite: 1875
-  constructionDifficulty: 1
   salePrice: 1
   value: 4
-
+  hardness: 60
+  meltingPoint: 1800
+  bruteArmor: 7
+  burnArmor: 7
+  integrity: 150
+  weight: 20
+  constructionDifficulty: 1
+  explosionResistance: 5
 - type: emberMaterial
   id: Iron
   key: iron
-  displayName: iron
+  displayName: materials-iron-display-name
   category: metal
   color: "#5C5454"
   stackEntity: EmberIngotIron1
@@ -37,14 +39,20 @@
   sheetSingularName: ingot
   sheetPluralName: ingots
   wallName: bulkhead
-  constructionDifficulty: 1
   salePrice: 1
   value: 5
-
+  hardness: 60
+  meltingPoint: 1800
+  bruteArmor: 2
+  burnArmor: 2
+  integrity: 150
+  weight: 22
+  constructionDifficulty: 1
+  explosionResistance: 5
 - type: emberMaterial
   id: Aluminium
   key: aluminium
-  displayName: aluminium
+  displayName: materials-aluminium-display-name
   category: metal
   color: "#CCCDCC"
   stackEntity: EmberSheetAluminium1
@@ -58,14 +66,19 @@
   wallBlendIcons:
     wood: true
     stone: true
+  salePrice: 1
+  hardness: 60
+  meltingPoint: 1800
+  bruteArmor: 2
+  burnArmor: 2
   integrity: 125
   weight: 18
-  salePrice: 1
-
+  constructionDifficulty: 0
+  explosionResistance: 5
 - type: emberMaterial
   id: Plasteel
   key: plasteel
-  displayName: plasteel
+  displayName: materials-plasteel-display-name
   category: metal
   color: "#A8A9B2"
   stackEntity: SheetPlasteel1
@@ -78,26 +91,25 @@
   wallBlendIcons:
     wood: true
     stone: true
-  integrity: 400
-  meltingPoint: 6000
-  explosionResistance: 7.5
-  bruteArmor: 8
-  burnArmor: 10
-  hardness: 80
-  weight: 23
   oreSmeltsTo: Plasteel
   alloyProduct: true
   alloyMaterials:
     Steel: 2500
     Platinum: 1250
-  constructionDifficulty: 2
   salePrice: 2
   value: 12
-
+  hardness: 80
+  meltingPoint: 6000
+  bruteArmor: 8
+  burnArmor: 10
+  integrity: 400
+  weight: 23
+  constructionDifficulty: 2
+  explosionResistance: 7.5
 - type: emberMaterial
   id: Titanium
   key: titanium
-  displayName: titanium
+  displayName: materials-titanium-display-name
   category: metal
   color: "#D1E6E3"
   stackEntity: EmberSheetTitanium1
@@ -109,19 +121,19 @@
     stone: true
   doorIconBase: metal
   wallIconReinforced: reinf_metal
-  integrity: 200
+  value: 30
+  hardness: 80
   meltingPoint: 3000
   bruteArmor: 10
   burnArmor: 8
-  hardness: 80
+  integrity: 200
   weight: 18
   constructionDifficulty: 3
-  value: 30
-
+  explosionResistance: 7.5
 - type: emberMaterial
   id: OsmiumCarbidePlasteel
   key: osmium-carbide plasteel
-  displayName: osmium-carbide plasteel
+  displayName: materials-osmiumcarbideplasteel-display-name
   category: metal
   color: "#9BC6F2"
   stackEntity: EmberSheetOCP1
@@ -135,22 +147,23 @@
   wallBlendIcons:
     wood: true
     stone: true
-  integrity: 200
-  meltingPoint: 12000
-  bruteArmor: 4
-  burnArmor: 20
-  weight: 27
   alloyProduct: true
   alloyMaterials:
     Plasteel: 7500
     Osmium: 3750
-  constructionDifficulty: 3
   salePrice: 3
-
+  hardness: 80
+  meltingPoint: 12000
+  bruteArmor: 4
+  burnArmor: 20
+  integrity: 200
+  weight: 27
+  constructionDifficulty: 3
+  explosionResistance: 7.5
 - type: emberMaterial
   id: Osmium
   key: osmium
-  displayName: osmium
+  displayName: materials-osmium-display-name
   category: metal
   color: "#9999FF"
   stackEntity: EmberIngotOsmium1
@@ -159,15 +172,20 @@
   sheetPluralName: ingots
   wallName: bulkhead
   oreSmeltsTo: Osmium
-  constructionDifficulty: 3
   salePrice: 3
   value: 30
+  hardness: 60
+  meltingPoint: 1800
+  bruteArmor: 2
+  burnArmor: 2
+  integrity: 150
   weight: 29
-
+  constructionDifficulty: 3
+  explosionResistance: 5
 - type: emberMaterial
   id: Gold
   key: gold
-  displayName: gold
+  displayName: materials-gold-display-name
   category: metal
   color: "#FFCC33"
   stackEntity: IngotGold1
@@ -175,23 +193,26 @@
   sheetSingularName: ingot
   sheetPluralName: ingots
   wallName: bulkhead
-  integrity: 100
-  hardness: 25
-  weight: 25
-  oreName: native gold
+  oreName: materials-gold-ore-name
   oreSmeltsTo: Gold
   oreResultAmount: 5
   oreSpreadChance: 10
   oreScanIcon: mineral_uncommon
   oreIconOverlay: nugget
-  constructionDifficulty: 2
   salePrice: 3
   value: 40
-
+  hardness: 25
+  meltingPoint: 1800
+  bruteArmor: 2
+  burnArmor: 2
+  integrity: 100
+  weight: 25
+  constructionDifficulty: 2
+  explosionResistance: 5
 - type: emberMaterial
   id: Silver
   key: silver
-  displayName: silver
+  displayName: materials-silver-display-name
   category: metal
   color: "#D1E6E3"
   stackEntity: IngotSilver1
@@ -199,45 +220,52 @@
   sheetSingularName: ingot
   sheetPluralName: ingots
   wallName: bulkhead
-  hardness: 30
-  weight: 22
-  oreName: native silver
+  oreName: materials-silver-ore-name
   oreSmeltsTo: Silver
   oreResultAmount: 5
   oreSpreadChance: 10
   oreScanIcon: mineral_uncommon
   oreIconOverlay: shiny
-  constructionDifficulty: 2
   salePrice: 2
   value: 35
-
+  hardness: 30
+  meltingPoint: 1800
+  bruteArmor: 2
+  burnArmor: 2
+  integrity: 150
+  weight: 22
+  constructionDifficulty: 2
+  explosionResistance: 5
 - type: emberMaterial
   id: Electrum
   key: electrum
-  displayName: electrum
+  displayName: materials-electrum-display-name
   category: metal
   color: "#E7C697"
   stackEntity: EmberIngotElectrum1
   sheetIconBase: ingot
   sheetSingularName: ingot
   sheetPluralName: ingots
-  integrity: 100
-  hardness: 30
-  weight: 22
-  oreName: electrum
+  oreName: materials-electrum-ore-name
   oreSmeltsTo: Electrum
   oreResultAmount: 3
   oreSpreadChance: 10
   oreScanIcon: mineral_uncommon
   oreIconOverlay: shiny
-  constructionDifficulty: 2
   salePrice: 3
   value: 37
-
+  hardness: 30
+  meltingPoint: 1800
+  bruteArmor: 2
+  burnArmor: 2
+  integrity: 100
+  weight: 22
+  constructionDifficulty: 2
+  explosionResistance: 5
 - type: emberMaterial
   id: Copper
   key: copper
-  displayName: copper
+  displayName: materials-copper-display-name
   category: metal
   color: "#B87333"
   stackEntity: EmberIngotCopper1
@@ -246,21 +274,25 @@
   sheetSingularName: ingot
   sheetPluralName: ingots
   wallName: bulkhead
-  hardness: 30
-  weight: 15
-  oreName: tetrahedrite
+  oreName: materials-copper-ore-name
   oreSmeltsTo: Copper
   oreResultAmount: 5
   oreSpreadChance: 10
   oreScanIcon: mineral_common
   oreIconOverlay: shiny
-  constructionDifficulty: 2
   salePrice: 1
-
+  hardness: 30
+  meltingPoint: 1800
+  bruteArmor: 2
+  burnArmor: 2
+  integrity: 150
+  weight: 15
+  constructionDifficulty: 2
+  explosionResistance: 5
 - type: emberMaterial
   id: Bronze
   key: bronze
-  displayName: bronze
+  displayName: materials-bronze-display-name
   category: metal
   color: "#EDD12F"
   stackEntity: EmberIngotBronze1
@@ -269,7 +301,7 @@
 - type: emberMaterial
   id: Platinum
   key: platinum
-  displayName: platinum
+  displayName: materials-platinum-display-name
   category: metal
   color: "#DEDDFF"
   stackEntity: EmberIngotPlatinum1
@@ -277,22 +309,27 @@
   sheetSingularName: ingot
   sheetPluralName: ingots
   wallName: bulkhead
-  weight: 27
-  oreName: raw platinum
+  oreName: materials-platinum-ore-name
   oreSmeltsTo: Platinum
   oreCompressesTo: Osmium
   oreResultAmount: 5
   oreSpreadChance: 10
   oreScanIcon: mineral_rare
   oreIconOverlay: shiny
-  constructionDifficulty: 2
   salePrice: 5
   value: 80
-
+  hardness: 60
+  meltingPoint: 1800
+  bruteArmor: 2
+  burnArmor: 2
+  integrity: 150
+  weight: 27
+  constructionDifficulty: 2
+  explosionResistance: 5
 - type: emberMaterial
   id: Uranium
   key: uranium
-  displayName: uranium
+  displayName: materials-uranium-display-name
   category: metal
   color: "#007A00"
   stackEntity: SheetUranium1
@@ -308,16 +345,21 @@
   doorIconBase: stone
   tableIconBase: stone
   tableIconReinforced: reinf_stone
-  radioactivity: 12
-  weight: 22
-  constructionDifficulty: 2
   salePrice: 2
   value: 100
-
+  hardness: 60
+  meltingPoint: 1800
+  bruteArmor: 2
+  burnArmor: 2
+  integrity: 150
+  weight: 22
+  constructionDifficulty: 2
+  explosionResistance: 5
+  radioactivity: 12
 - type: emberMaterial
   id: Deuterium
   key: deuterium
-  displayName: deuterium
+  displayName: materials-deuterium-display-name
   category: fuel
   color: "#999999"
   stackEntity: EmberPuckDeuterium1
@@ -325,12 +367,18 @@
   sheetSingularName: ingot
   sheetPluralName: ingots
   wallName: bulkhead
+  hardness: 60
+  meltingPoint: 1800
+  bruteArmor: 2
+  burnArmor: 2
+  integrity: 150
+  weight: 20
   constructionDifficulty: 2
-
+  explosionResistance: 5
 - type: emberMaterial
   id: Tritium
   key: tritium
-  displayName: tritium
+  displayName: materials-tritium-display-name
   category: fuel
   color: "#777777"
   stackEntity: EmberPuckTritium1
@@ -338,13 +386,19 @@
   sheetSingularName: ingot
   sheetPluralName: ingots
   wallName: bulkhead
-  constructionDifficulty: 2
   value: 300
-
+  hardness: 60
+  meltingPoint: 1800
+  bruteArmor: 2
+  burnArmor: 2
+  integrity: 150
+  weight: 20
+  constructionDifficulty: 2
+  explosionResistance: 5
 - type: emberMaterial
   id: MetallicHydrogen
   key: hydrogen
-  displayName: metallic hydrogen
+  displayName: materials-metallichydrogen-display-name
   category: fuel
   color: "#E6C5DE"
   stackEntity: EmberSheetMHydrogen1
@@ -352,19 +406,25 @@
   sheetIconBase: sheet-mythril
   sheetHasPluralIcon: false
   wallName: bulkhead
-  oreName: raw hydrogen
+  oreName: materials-metallichydrogen-ore-name
   oreSmeltsTo: Tritium
   oreCompressesTo: MetallicHydrogen
   oreScanIcon: mineral_rare
   oreIconOverlay: gems
-  constructionDifficulty: 2
   salePrice: 5
   value: 100
-
+  hardness: 60
+  meltingPoint: 1800
+  bruteArmor: 2
+  burnArmor: 2
+  integrity: 150
+  weight: 20
+  constructionDifficulty: 2
+  explosionResistance: 5
 - type: emberMaterial
   id: Phoron
   key: phoron
-  displayName: phoron
+  displayName: materials-phoron-display-name
   category: mineral
   color: "#E37108"
   stackEntity: SheetPlasma1
@@ -376,41 +436,61 @@
   wallIconReinforced: reinf_stone
   doorIconBase: stone
   tableIconBase: stone
-  oreName: phoron
+  oreName: materials-phoron-ore-name
   oreCompressesTo: Phoron
   oreScanIcon: mineral_rare
   oreIconOverlay: gems
-  hardness: 40
-  constructionDifficulty: 2
   value: 80
-
+  hardness: 40
+  meltingPoint: 1800
+  bruteArmor: 2
+  burnArmor: 2
+  integrity: 150
+  weight: 20
+  constructionDifficulty: 2
+  explosionResistance: 5
 - type: emberMaterial
   id: Supermatter
   key: supermatter
-  displayName: supermatter
+  displayName: materials-supermatter-display-name
   category: mineral
   color: "#FFFF00"
   hiddenFromCodex: true
-
+  hardness: 60
+  meltingPoint: 1800
+  bruteArmor: 2
+  burnArmor: 2
+  integrity: 150
+  weight: 20
+  constructionDifficulty: 0
+  explosionResistance: 5
+  radioactivity: 20
+  luminescence: 3
 - type: emberMaterial
   id: Glass
   key: glass
-  displayName: glass
+  displayName: materials-glass-display-name
   category: glass
   color: "#AACCFF"
   opacity: 0.3
   stackEntity: SheetGlass1
   sheetIconBase: sheet-clear
   brittle: true
-  hardness: 50
   doorIconBase: stone
   oreSmeltsTo: Glass
   constructionDifficulty: 1
-
+  hardness: 50
+  meltingPoint: 373
+  bruteArmor: 1
+  burnArmor: 2
+  integrity: 50
+  weight: 14
+  conductive: false
+  explosionResistance: 5
 - type: emberMaterial
   id: BorosilicateGlass
   key: borosilicate glass
-  displayName: borosilicate glass
+  displayName: materials-borosilicateglass-display-name
   category: glass
   color: "#899EBD"
   stackEntity: EmberSheetBorosilicateGlass1
@@ -418,40 +498,60 @@
   opacity: 0.3
   sheetIconBase: sheet-clear
   brittle: true
-  hardness: 60
   alloyProduct: true
   alloyMaterials:
     Sand: 2500
     Borax: 500
   constructionDifficulty: 2
-
+  hardness: 60
+  meltingPoint: 4273
+  bruteArmor: 2
+  burnArmor: 5
+  integrity: 70
+  weight: 14
+  conductive: false
+  explosionResistance: 5
 - type: emberMaterial
   id: Diamond
   key: diamond
-  displayName: diamond
+  displayName: materials-diamond-display-name
   category: stone
   color: "#D8D4EA"
-  opacity: 0.4
   stackEntity: MaterialDiamond1
   sheetIconBase: diamond
-  unmeltable: true
-  hardness: 100
   oreCompressesTo: Diamond
+  hardness: 100
+  meltingPoint: 1800
+  bruteArmor: 10
+  burnArmor: 50
+  integrity: 150
+  weight: 20
   constructionDifficulty: 3
-
+  explosionResistance: 5
+  conductive: false
+  opacity: 0.4
+  unmeltable: true
 - type: emberMaterial
   id: Crystal
   key: crystal
-  displayName: crystal
+  displayName: materials-crystal-display-name
   category: stone
   color: "#D8D4EA"
-  hardness: 80
   hiddenFromCodex: true
-
+  hardness: 80
+  meltingPoint: 1800
+  bruteArmor: 10
+  burnArmor: 50
+  integrity: 150
+  weight: 20
+  constructionDifficulty: 3
+  explosionResistance: 5
+  conductive: false
+  opacity: 0.4
 - type: emberMaterial
   id: Sandstone
   key: sandstone
-  displayName: sandstone
+  displayName: materials-sandstone-display-name
   category: stone
   color: "#D9C179"
   stackEntity: EmberBrickSandstone1
@@ -461,12 +561,18 @@
   tableIconBase: stone
   tableIconReinforced: reinf_stone
   hardness: 55
+  meltingPoint: 1800
+  bruteArmor: 3
+  burnArmor: 3
+  integrity: 150
+  weight: 22
   constructionDifficulty: 1
-
+  explosionResistance: 5
+  conductive: false
 - type: emberMaterial
   id: Marble
   key: marble
-  displayName: marble
+  displayName: materials-marble-display-name
   category: stone
   color: "#AAAAAA"
   stackEntity: EmberBrickMarble1
@@ -476,22 +582,36 @@
   tableIconBase: stone
   tableIconReinforced: reinf_stone
   hardness: 60
+  meltingPoint: 1800
+  bruteArmor: 3
+  burnArmor: 3
+  integrity: 201
+  weight: 26
   constructionDifficulty: 2
-
+  explosionResistance: 5
+  conductive: false
 - type: emberMaterial
   id: Concrete
   key: concrete
-  displayName: concrete
+  displayName: materials-concrete-display-name
   category: stone
   color: "#808080"
   stackEntity: EmberBrickConcrete1
   sheetIconBase: brick
   wallIconBase: stone
-
+  hardness: 55
+  meltingPoint: 1800
+  bruteArmor: 3
+  burnArmor: 3
+  integrity: 150
+  weight: 22
+  constructionDifficulty: 1
+  explosionResistance: 5
+  conductive: false
 - type: emberMaterial
   id: Plastic
   key: plastic
-  displayName: plastic
+  displayName: materials-plastic-display-name
   category: organic
   color: "#FFFFFF"
   stackEntity: SheetPlastic1
@@ -501,14 +621,19 @@
   wallPaintableStripe: true
   wallHasEdges: true
   doorIconBase: plastic
-  integrity: 100
   hardness: 20
-  weight: 10
-
+  meltingPoint: 644
+  bruteArmor: 2
+  burnArmor: 2
+  integrity: 150
+  weight: 5
+  constructionDifficulty: 1
+  explosionResistance: 5
+  conductive: false
 - type: emberMaterial
   id: Cardboard
   key: cardboard
-  displayName: cardboard
+  displayName: materials-cardboard-display-name
   category: organic
   color: "#AAAAAA"
   stackEntity: MaterialCardboard1
@@ -519,35 +644,57 @@
   wallHasEdges: true
   doorIconBase: wood
   brittle: true
-  integrity: 50
   hardness: 10
-
+  meltingPoint: 505
+  bruteArmor: 1
+  burnArmor: 1
+  integrity: 10
+  weight: 1
+  constructionDifficulty: 0
+  explosionResistance: 5
+  conductive: false
+  ignitionPoint: 505
 - type: emberMaterial
   id: Cloth
   key: cloth
-  displayName: cotton
+  displayName: materials-cloth-display-name
   category: organic
   color: "#FFFFFF"
   stackEntity: MaterialCloth1
   sheetIconBase: sheet-cloth
   doorIconBase: wood
   padding: true
-  hardness: 10
+  hardness: 60
+  meltingPoint: 573
+  bruteArmor: 1
+  burnArmor: 1
+  integrity: 150
+  weight: 20
   constructionDifficulty: 1
-
+  explosionResistance: 5
+  conductive: false
+  ignitionPoint: 505
 - type: emberMaterial
   id: Carpet
   key: carpet
-  displayName: red
+  displayName: materials-carpet-display-name
   category: organic
   color: "#9D2300"
   padding: true
+  hardness: 60
+  meltingPoint: 573
+  bruteArmor: 2
+  burnArmor: 2
+  integrity: 150
+  weight: 20
   constructionDifficulty: 1
-
+  explosionResistance: 5
+  conductive: false
+  ignitionPoint: 505
 - type: emberMaterial
   id: Wood
   key: wood
-  displayName: wood
+  displayName: materials-wood-display-name
   category: wood
   color: "#D5A66E"
   stackEntity: MaterialWoodPlank1
@@ -559,91 +706,146 @@
   doorIconBase: wood
   tableIconBase: wood
   tableIconReinforced: reinf_metal
-  ignitionPoint: 400
   hardness: 30
+  meltingPoint: 573
+  bruteArmor: 1
+  burnArmor: 1
+  integrity: 75
   weight: 18
   constructionDifficulty: 1
-
+  explosionResistance: 2
+  conductive: false
+  ignitionPoint: 561
 - type: emberMaterial
   id: Mahogany
   key: mahogany
-  displayName: mahogany
+  displayName: materials-mahogany-display-name
   category: wood
   color: "#792F27"
   stackEntity: MaterialWoodPlank1
   wallIconBase: wood
   doorIconBase: wood
+  hardness: 30
+  meltingPoint: 573
+  bruteArmor: 1
+  burnArmor: 1
+  integrity: 75
+  weight: 18
   constructionDifficulty: 2
-
+  explosionResistance: 2
+  conductive: false
 - type: emberMaterial
   id: Maple
   key: maple
-  displayName: maple
+  displayName: materials-maple-display-name
   category: wood
   color: "#D2BC9D"
   stackEntity: MaterialWoodPlank1
   wallIconBase: wood
   doorIconBase: wood
-
+  hardness: 30
+  meltingPoint: 573
+  bruteArmor: 1
+  burnArmor: 1
+  integrity: 75
+  weight: 18
+  constructionDifficulty: 1
+  explosionResistance: 2
+  conductive: false
 - type: emberMaterial
   id: Ebony
   key: ebony
-  displayName: ebony
+  displayName: materials-ebony-display-name
   category: wood
   color: "#332521"
   stackEntity: MaterialWoodPlank1
   wallIconBase: wood
   doorIconBase: wood
+  hardness: 30
+  meltingPoint: 573
+  bruteArmor: 1
+  burnArmor: 1
+  integrity: 100
+  weight: 22
   constructionDifficulty: 3
-
+  explosionResistance: 2
+  conductive: false
 - type: emberMaterial
   id: Walnut
   key: walnut
-  displayName: walnut
+  displayName: materials-walnut-display-name
   category: wood
   color: "#543C30"
   stackEntity: MaterialWoodPlank1
   wallIconBase: wood
   doorIconBase: wood
+  hardness: 30
+  meltingPoint: 573
+  bruteArmor: 1
+  burnArmor: 1
+  integrity: 75
+  weight: 20
   constructionDifficulty: 2
-
+  explosionResistance: 2
+  conductive: false
 - type: emberMaterial
   id: Bamboo
   key: bamboo
-  displayName: bamboo
+  displayName: materials-bamboo-display-name
   category: wood
   color: "#E6D2BA"
   stackEntity: MaterialWoodPlank1
   wallIconBase: wood
   doorIconBase: wood
   hardness: 40
-
+  meltingPoint: 573
+  bruteArmor: 1
+  burnArmor: 1
+  integrity: 75
+  weight: 16
+  constructionDifficulty: 1
+  explosionResistance: 2
+  conductive: false
 - type: emberMaterial
   id: Yew
   key: yew
-  displayName: yew
+  displayName: materials-yew-display-name
   category: wood
   color: "#E3994E"
   stackEntity: MaterialWoodPlank1
   wallIconBase: wood
   doorIconBase: wood
-
+  hardness: 30
+  meltingPoint: 573
+  bruteArmor: 1
+  burnArmor: 1
+  integrity: 75
+  weight: 18
+  constructionDifficulty: 1
+  explosionResistance: 2
+  conductive: false
 - type: emberMaterial
   id: VoxBioresin
   key: vox bioresin
-  displayName: vox bioresin
+  displayName: materials-voxbioresin-display-name
   category: wood
   color: "#3A4E1B"
   stackEntity: MaterialWoodPlank1
   wallIconBase: wood
   doorIconBase: wood
-  constructionDifficulty: 1
   hardness: 20
-
+  meltingPoint: 573
+  bruteArmor: 1
+  burnArmor: 1
+  integrity: 60
+  weight: 12
+  constructionDifficulty: 1
+  explosionResistance: 2
+  ignitionPoint: 573
 - type: emberMaterial
   id: Borax
   key: borax
-  displayName: borax
+  displayName: materials-borax-display-name
   category: mineral
   color: "#9DD6E0"
   stackEntity: EmberBrickBorax1
@@ -654,7 +856,7 @@
 - type: emberMaterial
   id: Pitchblende
   key: pitchblende
-  displayName: pitchblende
+  displayName: materials-pitchblende-display-name
   category: mineral
   color: "#917D1A"
   stackEntity: EmberBrickPitchblende1
@@ -666,7 +868,7 @@
 - type: emberMaterial
   id: Graphite
   key: graphite
-  displayName: graphite
+  displayName: materials-graphite-display-name
   category: mineral
   color: "#444444"
   stackEntity: EmberSheetGraphite1
@@ -676,19 +878,26 @@
 - type: emberMaterial
   id: Quartz
   key: quartz
-  displayName: quartz
+  displayName: materials-quartz-display-name
   category: mineral
   color: "#EFFFFE"
   stackEntity: EmberBrickQuartz1
-  opacity: 0.5
   wallIconBase: stone
   doorIconBase: stone
   oreCompressesTo: Quartz
-
+  hardness: 60
+  meltingPoint: 1800
+  bruteArmor: 2
+  burnArmor: 2
+  integrity: 150
+  weight: 20
+  constructionDifficulty: 0
+  explosionResistance: 5
+  opacity: 0.5
 - type: emberMaterial
   id: Pyrite
   key: pyrite
-  displayName: pyrite
+  displayName: materials-pyrite-display-name
   category: mineral
   color: "#CCC9A3"
   stackEntity: EmberBrickPyrite1
@@ -699,7 +908,7 @@
 - type: emberMaterial
   id: Spodumene
   key: spodumene
-  displayName: spodumene
+  displayName: materials-spodumene-display-name
   category: mineral
   color: "#E5BECB"
   stackEntity: EmberBrickSpodumene1
@@ -710,7 +919,7 @@
 - type: emberMaterial
   id: Cinnabar
   key: cinnabar
-  displayName: cinnabar
+  displayName: materials-cinnabar-display-name
   category: mineral
   color: "#E54E4E"
   stackEntity: EmberBrickCinnabar1
@@ -721,7 +930,7 @@
 - type: emberMaterial
   id: Phosphorite
   key: phosphorite
-  displayName: phosphorite
+  displayName: materials-phosphorite-display-name
   category: mineral
   color: "#ACAD95"
   stackEntity: EmberBrickPhosphorite1
@@ -732,7 +941,7 @@
 - type: emberMaterial
   id: RockSalt
   key: rock salt
-  displayName: rock salt
+  displayName: materials-rocksalt-display-name
   category: mineral
   color: "#D1C0BC"
   stackEntity: EmberBrickRockSalt1
@@ -743,7 +952,7 @@
 - type: emberMaterial
   id: Potash
   key: potash
-  displayName: potash
+  displayName: materials-potash-display-name
   category: mineral
   color: "#B77464"
   stackEntity: EmberBrickPotash1
@@ -754,7 +963,7 @@
 - type: emberMaterial
   id: Bauxite
   key: bauxite
-  displayName: bauxite
+  displayName: materials-bauxite-display-name
   category: mineral
   color: "#D8AD97"
   stackEntity: EmberBrickBauxite1
@@ -766,7 +975,7 @@
 - type: emberMaterial
   id: Sand
   key: sand
-  displayName: sand
+  displayName: materials-sand-display-name
   category: mineral
   color: "#E2DBB5"
   stackEntity: EmberDustSand1
@@ -776,10 +985,10 @@
 - type: emberMaterial
   id: Hematite
   key: hematite
-  displayName: hematite
+  displayName: materials-hematite-display-name
   category: ore
   color: "#AA6666"
-  oreName: hematite
+  oreName: materials-hematite-ore-name
   oreSmeltsTo: Iron
   oreResultAmount: 5
   oreSpreadChance: 25
@@ -790,11 +999,11 @@
 - type: emberMaterial
   id: Rutile
   key: rutile
-  displayName: rutile
+  displayName: materials-rutile-display-name
   category: ore
   color: "#D8AD97"
   stackEntity: EmberBrickRutile1
-  oreName: rutile
+  oreName: materials-rutile-ore-name
   oreSmeltsTo: Titanium
   oreResultAmount: 5
   oreSpreadChance: 15
@@ -805,7 +1014,7 @@
 - type: emberMaterial
   id: Waste
   key: waste
-  displayName: waste
+  displayName: materials-waste-display-name
   category: other
   color: "#2E3A07"
   hiddenFromCodex: true
@@ -813,7 +1022,7 @@
 - type: emberMaterial
   id: CultStone
   key: cult
-  displayName: disturbing stone
+  displayName: materials-cultstone-display-name
   category: special
   color: "#402821"
   wallIconBase: cult
@@ -825,7 +1034,7 @@
 - type: emberMaterial
   id: ReinforcedCultStone
   key: cult2
-  displayName: runic inscriptions
+  displayName: materials-reinforcedcultstone-display-name
   category: special
   color: "#402821"
   wallIconBase: cult
@@ -834,7 +1043,7 @@
 - type: emberMaterial
   id: VoxAlloy
   key: voxalloy
-  displayName: durable alloy
+  displayName: materials-voxalloy-display-name
   category: special
   color: "#6C7364"
   wallName: bulkhead
@@ -851,7 +1060,7 @@
 - type: emberMaterial
   id: Elevatorium
   key: elevatorium
-  displayName: elevator panelling
+  displayName: materials-elevatorium-display-name
   category: special
   color: "#666666"
   wallName: bulkhead
@@ -861,7 +1070,7 @@
 - type: emberMaterial
   id: AlienAlloy
   key: aliumium
-  displayName: alien alloy
+  displayName: materials-alienalloy-display-name
   category: special
   color: "#6C7364"
   wallName: bulkhead
@@ -876,7 +1085,7 @@
 - type: emberMaterial
   id: Skin
   key: skin
-  displayName: skin
+  displayName: materials-skin-display-name
   category: organic
   color: "#9E8C72"
   sheetIconBase: skin
@@ -887,7 +1096,7 @@
 - type: emberMaterial
   id: LizardSkin
   key: lizardskin
-  displayName: lizardskin
+  displayName: materials-lizardskin-display-name
   category: organic
   color: "#626952"
   padding: true
@@ -896,7 +1105,7 @@
 - type: emberMaterial
   id: Chitin
   key: chitin
-  displayName: chitin
+  displayName: materials-chitin-display-name
   category: organic
   color: "#7A726D"
   padding: true
@@ -905,7 +1114,7 @@
 - type: emberMaterial
   id: Fur
   key: brown fur
-  displayName: brown fur
+  displayName: materials-fur-display-name
   category: organic
   color: "#7A726D"
   padding: true
@@ -913,7 +1122,7 @@
 - type: emberMaterial
   id: GrayFur
   key: gray fur
-  displayName: gray fur
+  displayName: materials-grayfur-display-name
   category: organic
   color: "#7A726D"
   padding: true
@@ -921,7 +1130,7 @@
 - type: emberMaterial
   id: WhiteFur
   key: white fur
-  displayName: white fur
+  displayName: materials-whitefur-display-name
   category: organic
   color: "#FFFFFF"
   padding: true
@@ -929,7 +1138,7 @@
 - type: emberMaterial
   id: OrangeFur
   key: orange fur
-  displayName: orange fur
+  displayName: materials-orangefur-display-name
   category: organic
   color: "#FF9900"
   padding: true
@@ -937,7 +1146,7 @@
 - type: emberMaterial
   id: BlackFur
   key: black fur
-  displayName: black fur
+  displayName: materials-blackfur-display-name
   category: organic
   color: "#333333"
   padding: true
@@ -945,7 +1154,7 @@
 - type: emberMaterial
   id: HeavyFur
   key: heavy fur
-  displayName: heavy fur
+  displayName: materials-heavyfur-display-name
   category: organic
   color: "#545C68"
   padding: true
@@ -953,7 +1162,7 @@
 - type: emberMaterial
   id: GoatHide
   key: goathide
-  displayName: goathide
+  displayName: materials-goathide-display-name
   category: organic
   color: "#C0C0C0"
   padding: true
@@ -961,7 +1170,7 @@
 - type: emberMaterial
   id: CowHide
   key: cowhide
-  displayName: cowhide
+  displayName: materials-cowhide-display-name
   category: organic
   color: "#666666"
   padding: true
@@ -969,7 +1178,7 @@
 - type: emberMaterial
   id: SharkSkin
   key: sharkskin
-  displayName: sharkskin
+  displayName: materials-sharkskin-display-name
   category: organic
   color: "#A2819E"
   padding: true
@@ -977,7 +1186,7 @@
 - type: emberMaterial
   id: FishSkin
   key: fishskin
-  displayName: fishskin
+  displayName: materials-fishskin-display-name
   category: organic
   color: "#1F6B4F"
   padding: true
@@ -985,7 +1194,7 @@
 - type: emberMaterial
   id: PurpleFishSkin
   key: purple fishskin
-  displayName: purple fishskin
+  displayName: materials-purplefishskin-display-name
   category: organic
   color: "#BDA2BA"
   padding: true
@@ -993,7 +1202,7 @@
 - type: emberMaterial
   id: Bone
   key: bone
-  displayName: bone
+  displayName: materials-bone-display-name
   category: organic
   color: "#AAAAAA"
   sheetIconBase: bone
@@ -1003,7 +1212,7 @@
 - type: emberMaterial
   id: FishBone
   key: fishbone
-  displayName: fishbone
+  displayName: materials-fishbone-display-name
   category: organic
   color: "#AAAAAA"
   sheetIconBase: bone
@@ -1012,7 +1221,7 @@
 - type: emberMaterial
   id: Cartilage
   key: cartilage
-  displayName: cartilage
+  displayName: materials-cartilage-display-name
   category: organic
   color: "#AAAAAA"
   sheetIconBase: bone
@@ -1020,7 +1229,7 @@
 - type: emberMaterial
   id: Leather
   key: leather
-  displayName: leather
+  displayName: materials-leather-display-name
   category: organic
   color: "#7A726D"
   sheetIconBase: sheet-leather
@@ -1031,7 +1240,7 @@
 - type: emberMaterial
   id: ScaledHide
   key: scaled hide
-  displayName: scaled hide
+  displayName: materials-scaledhide-display-name
   category: organic
   color: "#626952"
   sheetIconBase: sheet-leather
@@ -1041,7 +1250,7 @@
 - type: emberMaterial
   id: FurredHide
   key: furred hide
-  displayName: furred hide
+  displayName: materials-furredhide-display-name
   category: organic
   color: "#7A726D"
   sheetIconBase: sheet-leather
@@ -1050,7 +1259,7 @@
 - type: emberMaterial
   id: TreatedChitin
   key: treated chitin
-  displayName: treated chitin
+  displayName: materials-treatedchitin-display-name
   category: organic
   color: "#7A726D"
   sheetIconBase: sheet-leather
@@ -1060,7 +1269,7 @@
 - type: emberMaterial
   id: Growth
   key: growth
-  displayName: growth
+  displayName: materials-growth-display-name
   category: special
   color: "#FFFFFF"
   hiddenFromCodex: true

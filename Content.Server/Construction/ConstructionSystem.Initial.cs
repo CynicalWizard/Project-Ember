@@ -115,7 +115,10 @@ namespace Content.Server.Construction
             var containers = new Dictionary<string, Container>();
 
             var doAfterTime = 0f;
+            var difficulty = GetConstructionDifficulty(edge);
+            var speedMod = GetConstructionSpeedModifier(user, difficulty);
 
+            // EMBER-TODO: refactor this container madness, possibly use a dedicated construction container component.
             // HOLY SHIT THIS IS SOME HACKY CODE.
             // But I'd rather do this shit than risk having collisions with other containers.
             Container GetContainer(string name)
@@ -171,7 +174,7 @@ namespace Content.Server.Construction
 
             foreach (var step in edge.Steps)
             {
-                doAfterTime += step.DoAfter;
+                doAfterTime += step.DoAfter * speedMod;
 
                 var handled = false;
 
@@ -267,6 +270,15 @@ namespace Content.Server.Construction
             if (await _doAfterSystem.WaitDoAfter(doAfterArgs) == DoAfterStatus.Cancelled)
             {
                 FailCleanup();
+                return null;
+            }
+            
+            if (TryConstructionFail(user, difficulty))
+            {
+                _popup.PopupEntity(Loc.GetString("construction-system-construct-failed"), user, user);
+                // SierraBay logic: materials are consumed (ruined) on fail, so we don't return them to user.
+                // We just shutdown the containers which deletes the inserted materials.
+                ShutdownContainers();
                 return null;
             }
 

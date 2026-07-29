@@ -41,6 +41,7 @@
     - sheet-card-mult
     - sheet-card-max
   - type: EmberMaterialStack
+    renameEntity: false
     material: Cardboard
   - type: Sprite
     sprite: Ember/Objects/Materials/materials.rsi
@@ -113,6 +114,7 @@
     - sheet-cloth
     - sheet-cloth
   - type: EmberMaterialStack
+    renameEntity: false
     material: Cloth
   - type: Material
   - type: PhysicalComposition
@@ -253,6 +255,7 @@
     - sheet-wood-mult
     - sheet-wood-max
   - type: EmberMaterialStack
+    renameEntity: false
     material: Wood
   - type: Sprite
     sprite: Ember/Objects/Materials/materials.rsi
@@ -384,6 +387,7 @@
     - diamond-mult
     - diamond-max
   - type: EmberMaterialStack
+    renameEntity: false
     material: Diamond
   - type: Sprite
     sprite: Ember/Objects/Materials/materials.rsi

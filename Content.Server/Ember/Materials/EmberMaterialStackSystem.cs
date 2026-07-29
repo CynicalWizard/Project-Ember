@@ -17,9 +17,12 @@ public sealed class EmberMaterialStackSystem : EntitySystem
 
     private void OnStartup(EntityUid uid, EmberMaterialStackComponent component, ComponentStartup args)
     {
+        if (!component.RenameEntity)
+            return;
+
         if (!_prototype.TryIndex(component.Material, out EmberMaterialPrototype? material))
             return;
 
-        _metaData.SetEntityName(uid, material.DisplayName);
+        _metaData.SetEntityName(uid, Loc.GetString(material.DisplayName));
     }
 }

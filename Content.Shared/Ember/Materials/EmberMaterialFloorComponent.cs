@@ -3,7 +3,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared.Ember.Materials;
 
 [RegisterComponent]
-public sealed partial class EmberMaterialStackComponent : Component
+public sealed partial class EmberMaterialFloorComponent : Component
 {
     [DataField(required: true)]
     public ProtoId<EmberMaterialPrototype> Material;

@@ -1,3 +1,4 @@
+#pragma warning disable RA0039
 using System.Collections.Generic;
 using Content.Shared.Ember.Materials;
 using NUnit.Framework;
@@ -350,3 +351,4 @@ public sealed class EmberMaterialProcessingTest
         });
     }
 }
+
