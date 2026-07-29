@@ -118,6 +118,13 @@ namespace Content.Shared.Damage.Systems
                     component.SoundHit, component.SoundNoDamage);
             }
 
+            if (TerminatingOrDeleted(args.Target))
+            {
+                LandAfterImpact(thrown, args.Component, physics);
+                component.HitQuantity += 1;
+                return;
+            }
+
             if (modifiedDamage is { Empty: false })
                 _color.RaiseEffect(Color.Red, new List<EntityUid>() { args.Target }, Filter.Pvs(args.Target, entityManager: EntityManager));
 

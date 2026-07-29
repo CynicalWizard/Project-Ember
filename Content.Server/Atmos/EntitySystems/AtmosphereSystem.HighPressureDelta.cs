@@ -180,9 +180,8 @@ public sealed partial class AtmosphereSystem
         if (!alwaysThrow && pVecLength < coefficientOfFriction)
             return;
 
-        // Yes this technically increases the magnitude by a small amount... I detest having to swap between "World" and "Local" vectors.
-        // ThrowingSystem increments linear velocity by a given vector, but we have to do this anyways because reasons.
-        var velocity = _transformSystem.GetWorldRotation(uid).ToWorldVec() + pressureVector;
+        // We just use the pressureVector as the throw direction.
+        var velocity = pressureVector;
 
         _throwing.TryThrow(uid, velocity, physics, xform, projectileQuery,
             1, doSpin: physics.AngularVelocity < SpaceWindMaxAngularVelocity);
