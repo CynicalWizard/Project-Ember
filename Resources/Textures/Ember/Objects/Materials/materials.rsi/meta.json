@@ -1,236 +1,236 @@
 {
-    "version": 1,
-    "license": null,
-    "copyright": null,
-    "size": {
-        "x": 32,
-        "y": 32
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from SierraBay (Baystation12)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": ""
     },
-    "states": [
-        {
-            "name": ""
-        },
-        {
-            "name": "sheet-cloth"
-        },
-        {
-            "name": "sheet-torn"
-        },
-        {
-            "name": "sheet-mythril"
-        },
-        {
-            "name": "sheet-leather"
-        },
-        {
-            "name": "sheet-wood"
-        },
-        {
-            "name": "sheet-wood-mult"
-        },
-        {
-            "name": "sheet-wood-max"
-        },
-        {
-            "name": "diamond"
-        },
-        {
-            "name": "diamond-mult"
-        },
-        {
-            "name": "diamond-max"
-        },
-        {
-            "name": "sheet-plastic"
-        },
-        {
-            "name": "sheet-plastic-mult"
-        },
-        {
-            "name": "sheet-plastic-max"
-        },
-        {
-            "name": "sheet-phoron"
-        },
-        {
-            "name": "sheet-phoron-mult"
-        },
-        {
-            "name": "sheet-phoron-max"
-        },
-        {
-            "name": "ingot"
-        },
-        {
-            "name": "ingot-mult"
-        },
-        {
-            "name": "ingot-max"
-        },
-        {
-            "name": "sheet-card"
-        },
-        {
-            "name": "sheet-card-mult"
-        },
-        {
-            "name": "sheet-card-max"
-        },
-        {
-            "name": "brick"
-        },
-        {
-            "name": "brick-mult"
-        },
-        {
-            "name": "brick-max"
-        },
-        {
-            "name": "rod"
-        },
-        {
-            "name": "rod-mult"
-        },
-        {
-            "name": "rod-max"
-        },
-        {
-            "name": "sheet"
-        },
-        {
-            "name": "sheet-mult"
-        },
-        {
-            "name": "sheet-max"
-        },
-        {
-            "name": "sheet-reinf"
-        },
-        {
-            "name": "sheet-reinf-mult"
-        },
-        {
-            "name": "sheet-reinf-max"
-        },
-        {
-            "name": "sheet-clear"
-        },
-        {
-            "name": "sheet-clear-mult"
-        },
-        {
-            "name": "sheet-clear-max"
-        },
-        {
-            "name": "sheet-sheen"
-        },
-        {
-            "name": "sheet-sheen-mult"
-        },
-        {
-            "name": "sheet-sheen-max"
-        },
-        {
-            "name": "sheet-faery-uranium",
-            "delays": [
-                [
-                    0.32999998,
-                    0.32999998,
-                    0.32999998,
-                    0.32999998,
-                    0.34,
-                    0.34
-                ]
-            ]
-        },
-        {
-            "name": "sheet-faery-uranium-mult",
-            "delays": [
-                [
-                    0.32999998,
-                    0.34,
-                    0.32999998,
-                    0.32999998,
-                    0.34,
-                    0.34
-                ]
-            ]
-        },
-        {
-            "name": "sheet-faery-uranium-max",
-            "delays": [
-                [
-                    0.32999998,
-                    0.34,
-                    0.32999998,
-                    0.32999998,
-                    0.34,
-                    0.34
-                ]
-            ]
-        },
-        {
-            "name": "puck"
-        },
-        {
-            "name": "puck-mult"
-        },
-        {
-            "name": "puck-max"
-        },
-        {
-            "name": "sheet-glass-reinf"
-        },
-        {
-            "name": "sheet-glass-reinf-mult"
-        },
-        {
-            "name": "sheet-glass-reinf-max"
-        },
-        {
-            "name": "skin"
-        },
-        {
-            "name": "skin-mult"
-        },
-        {
-            "name": "skin-max"
-        },
-        {
-            "name": "bone"
-        },
-        {
-            "name": "bone-mult"
-        },
-        {
-            "name": "bone-max"
-        },
-        {
-            "name": "vox"
-        },
-        {
-            "name": "vox-mult"
-        },
-        {
-            "name": "vox-max"
-        },
-        {
-            "name": "reinf-overlay"
-        },
-        {
-            "name": "reinf-overlay-mult"
-        },
-        {
-            "name": "reinf-overlay-max"
-        },
-        {
-            "name": "reinf-clear-overlay"
-        },
-        {
-            "name": "reinf-clear-overlay-mult"
-        },
-        {
-            "name": "reinf-clear-overlay-max"
-        }
-    ]
+    {
+      "name": "sheet-cloth"
+    },
+    {
+      "name": "sheet-torn"
+    },
+    {
+      "name": "sheet-mythril"
+    },
+    {
+      "name": "sheet-leather"
+    },
+    {
+      "name": "sheet-wood"
+    },
+    {
+      "name": "sheet-wood-mult"
+    },
+    {
+      "name": "sheet-wood-max"
+    },
+    {
+      "name": "diamond"
+    },
+    {
+      "name": "diamond-mult"
+    },
+    {
+      "name": "diamond-max"
+    },
+    {
+      "name": "sheet-plastic"
+    },
+    {
+      "name": "sheet-plastic-mult"
+    },
+    {
+      "name": "sheet-plastic-max"
+    },
+    {
+      "name": "sheet-phoron"
+    },
+    {
+      "name": "sheet-phoron-mult"
+    },
+    {
+      "name": "sheet-phoron-max"
+    },
+    {
+      "name": "ingot"
+    },
+    {
+      "name": "ingot-mult"
+    },
+    {
+      "name": "ingot-max"
+    },
+    {
+      "name": "sheet-card"
+    },
+    {
+      "name": "sheet-card-mult"
+    },
+    {
+      "name": "sheet-card-max"
+    },
+    {
+      "name": "brick"
+    },
+    {
+      "name": "brick-mult"
+    },
+    {
+      "name": "brick-max"
+    },
+    {
+      "name": "rod"
+    },
+    {
+      "name": "rod-mult"
+    },
+    {
+      "name": "rod-max"
+    },
+    {
+      "name": "sheet"
+    },
+    {
+      "name": "sheet-mult"
+    },
+    {
+      "name": "sheet-max"
+    },
+    {
+      "name": "sheet-reinf"
+    },
+    {
+      "name": "sheet-reinf-mult"
+    },
+    {
+      "name": "sheet-reinf-max"
+    },
+    {
+      "name": "sheet-clear"
+    },
+    {
+      "name": "sheet-clear-mult"
+    },
+    {
+      "name": "sheet-clear-max"
+    },
+    {
+      "name": "sheet-sheen"
+    },
+    {
+      "name": "sheet-sheen-mult"
+    },
+    {
+      "name": "sheet-sheen-max"
+    },
+    {
+      "name": "sheet-faery-uranium",
+      "delays": [
+        [
+          0.32999998,
+          0.32999998,
+          0.32999998,
+          0.32999998,
+          0.34,
+          0.34
+        ]
+      ]
+    },
+    {
+      "name": "sheet-faery-uranium-mult",
+      "delays": [
+        [
+          0.32999998,
+          0.34,
+          0.32999998,
+          0.32999998,
+          0.34,
+          0.34
+        ]
+      ]
+    },
+    {
+      "name": "sheet-faery-uranium-max",
+      "delays": [
+        [
+          0.32999998,
+          0.34,
+          0.32999998,
+          0.32999998,
+          0.34,
+          0.34
+        ]
+      ]
+    },
+    {
+      "name": "puck"
+    },
+    {
+      "name": "puck-mult"
+    },
+    {
+      "name": "puck-max"
+    },
+    {
+      "name": "sheet-glass-reinf"
+    },
+    {
+      "name": "sheet-glass-reinf-mult"
+    },
+    {
+      "name": "sheet-glass-reinf-max"
+    },
+    {
+      "name": "skin"
+    },
+    {
+      "name": "skin-mult"
+    },
+    {
+      "name": "skin-max"
+    },
+    {
+      "name": "bone"
+    },
+    {
+      "name": "bone-mult"
+    },
+    {
+      "name": "bone-max"
+    },
+    {
+      "name": "vox"
+    },
+    {
+      "name": "vox-mult"
+    },
+    {
+      "name": "vox-max"
+    },
+    {
+      "name": "reinf-overlay"
+    },
+    {
+      "name": "reinf-overlay-mult"
+    },
+    {
+      "name": "reinf-overlay-max"
+    },
+    {
+      "name": "reinf-clear-overlay"
+    },
+    {
+      "name": "reinf-clear-overlay-mult"
+    },
+    {
+      "name": "reinf-clear-overlay-max"
+    }
+  ]
 }
