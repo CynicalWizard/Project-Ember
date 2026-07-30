@@ -22,8 +22,11 @@ public sealed partial class AtmosphereSystem
 {
     private EntProtoId _spaceWindProto = "SpaceWindVisual";
     private readonly HashSet<Entity<MovedByPressureComponent>> _activePressures = new();
+    private readonly List<Entity<MovedByPressureComponent>> _activePressuresToRemove = new();
+
     private void UpdateHighPressure(float frameTime)
     {
+        _activePressuresToRemove.Clear();
         foreach (var ent in _activePressures)
         {
             if (!ent.Comp.Throwing || _gameTiming.CurTime < ent.Comp.ThrowingCutoffTarget
@@ -40,6 +43,11 @@ public sealed partial class AtmosphereSystem
             _physics.SetSleepingAllowed(ent.Owner, physics, true);
 
             ent.Comp.Throwing = false;
+            _activePressuresToRemove.Add(ent);
+        }
+
+        foreach (var ent in _activePressuresToRemove)
+        {
             _activePressures.Remove(ent);
         }
     }
