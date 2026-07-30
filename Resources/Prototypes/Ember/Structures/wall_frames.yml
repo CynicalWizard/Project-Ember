@@ -185,14 +185,14 @@
     node: wallFrame
 
 - type: entity
-  id: WallFramePlasma
+  id: WallFramePhoron
   parent: WallFrame
   name: phoron low wall
   components:
   - type: EmberProceduralStructure
-    material: EmberWallPlasma
+    material: EmberWallPhoron
   - type: Construction
-    graph: WallFramePlasma
+    graph: WallFramePhoron
     node: wallFrame
 
 - type: entity

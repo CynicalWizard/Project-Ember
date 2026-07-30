@@ -4,7 +4,7 @@
   graph:
     - node: start
       edges:
-        - to: plasmaWindow
+        - to: phoronWindow
           steps:
             - material: PlasmaGlass
               amount: 2
@@ -123,8 +123,8 @@
             - tool: Anchoring
               doAfter: 2
 
-    - node: plasmaWindow
-      entity: PlasmaWindow
+    - node: phoronWindow
+      entity: PhoronWindow
       edges:
         - to: start
           completed:

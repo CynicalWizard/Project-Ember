@@ -197,11 +197,11 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: plasma wall
-  id: PlasmaWall
+  name: phoron wall
+  id: PhoronWall
   graph: Girder
   startNode: start
-  targetNode: plasmaWall
+  targetNode: phoronWall
   category: construction-category-structures
   description: Keeps the air in and the greytide out.
   icon:
@@ -359,13 +359,13 @@
   canRotate: false
 
 - type: construction
-  name: plasma low wall
-  id: WallFramePlasma
-  graph: WallFramePlasma
+  name: phoron low wall
+  id: WallFramePhoron
+  graph: WallFramePhoron
   startNode: start
   targetNode: wallFrame
   category: construction-category-structures
-  description: A plasma low wall section which serves as the base of windows, amongst other things.
+  description: A phoron low wall section which serves as the base of windows, amongst other things.
   conditions:
     - !type:TileNotBlocked
       failIfSpace: false
@@ -759,11 +759,11 @@
   canRotate: false
 
 - type: construction
-  name: plasma window
-  id: PlasmaWindow
+  name: phoron window
+  id: PhoronWindow
   graph: Window
   startNode: start
-  targetNode: plasmaWindow
+  targetNode: phoronWindow
   category: construction-category-structures
   canBuildInImpassable: true
   description: Clear, with a purple tint.
@@ -797,7 +797,7 @@
   canRotate: false
 
 - type: construction
-  name: reinforced plasma window
+  name: reinforced phoron window
   id: ReinforcedPlasmaWindow
   graph: Window
   startNode: start
@@ -889,7 +889,7 @@
   placementMode: SnapgridCenter
 
 - type: construction
-  name: directional plasma window
+  name: directional phoron window
   id: PlasmaWindowDirectional
   graph: WindowDirectional
   startNode: start
@@ -925,7 +925,7 @@
   placementMode: SnapgridCenter
 
 - type: construction
-  name: directional reinforced plasma window
+  name: directional reinforced phoron window
   id: PlasmaReinforcedWindowDirectional
   graph: WindowDirectional
   startNode: start
@@ -1819,11 +1819,11 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: plasma door
-  id: PlasmaDoor
+  name: phoron door
+  id: PhoronDoor
   graph: DoorGraph
   startNode: start
-  targetNode: plasmaDoor
+  targetNode: phoronDoor
   category: construction-category-structures
   description: A primitive door with manual operation like the cavemen used.
   objectType: Structure

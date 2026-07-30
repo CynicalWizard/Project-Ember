@@ -91,7 +91,7 @@
   color: "#DEDDFF"
 
 - type: emberWallMaterial
-  id: EmberWallPlasma
+  id: EmberWallPhoron
   physicalMaterial: Plasma
   stateBase: solid
   color: "#E37108"
@@ -161,7 +161,7 @@
   color: "#899EBDB0"
 
 - type: emberWallMaterial
-  id: EmberPlasmaGlass
+  id: EmberPhoronGlass
   stateBase: solid
   color: "#E37108B0"
 

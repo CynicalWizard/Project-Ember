@@ -44,7 +44,7 @@
         acts: [ "Destruction" ]
   - type: EmberProceduralStructure
     role: Window
-    material: EmberPlasmaGlass
+    material: EmberPhoronGlass
     stateBase: rwindow
     alpha: 0.7058824
     sprite: /Textures/Ember/Structures/Windows/window.rsi
@@ -77,7 +77,7 @@
     sprite: Ember/Structures/Windows/window.rsi
     state: rwindow
   - type: EmberMaterialTint
-    material: EmberPlasmaGlass
+    material: EmberPhoronGlass
     alpha: 0.7058824
   - type: Icon
     sprite: Ember/Structures/Windows/window.rsi

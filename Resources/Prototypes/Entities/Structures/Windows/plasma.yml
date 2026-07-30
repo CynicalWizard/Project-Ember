@@ -1,5 +1,5 @@
 - type: entity
-  id: PlasmaWindow
+  id: PhoronWindow
   name: phoron window
   parent: WindowRCDResistant
   components:
@@ -39,13 +39,13 @@
         acts: [ "Destruction" ]
   - type: EmberProceduralStructure
     role: Window
-    material: EmberPlasmaGlass
+    material: EmberPhoronGlass
     stateBase: window
     alpha: 0.7058824
     sprite: /Textures/Ember/Structures/Windows/window.rsi
   - type: Construction
     graph: Window
-    node: plasmaWindow
+    node: phoronWindow
   - type: Appearance
   - type: DamageVisuals
     thresholds: [5, 10, 20]
@@ -74,7 +74,7 @@
     sprite: Ember/Structures/Windows/window.rsi
     state: window
   - type: EmberMaterialTint
-    material: EmberPlasmaGlass
+    material: EmberPhoronGlass
     alpha: 0.7058824
   - type: Icon
     sprite: Ember/Structures/Windows/window.rsi
@@ -120,7 +120,7 @@
     resistance: 1
 
 - type: entity
-  parent: PlasmaWindow
+  parent: PhoronWindow
   id: PlasmaWindowDiagonal
   suffix: diagonal
   placement:

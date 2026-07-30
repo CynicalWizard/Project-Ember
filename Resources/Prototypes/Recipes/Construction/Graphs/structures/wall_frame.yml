@@ -108,7 +108,7 @@
         doAfter: 2
 
 - type: constructionGraph
-  id: WallFramePlasma
+  id: WallFramePhoron
   start: start
   graph:
   - node: start
@@ -122,7 +122,7 @@
         amount: 3
         doAfter: 1
   - node: wallFrame
-    entity: WallFramePlasma
+    entity: WallFramePhoron
     edges:
     - to: start
       completed:

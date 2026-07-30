@@ -1,5 +1,5 @@
 - type: entity
-  parent: PlasmaWindow
+  parent: PhoronWindow
   id: BorosilicateWindow
   name: borosilicate window
   components:

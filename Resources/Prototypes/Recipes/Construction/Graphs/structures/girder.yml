@@ -86,7 +86,7 @@
               amount: 2
               doAfter: 2
 
-        - to: plasmaWall
+        - to: phoronWall
           completed:
             - !type:SnapToGrid
               southRotation: true
@@ -197,8 +197,8 @@
             - tool: Prying
               doAfter: 10
 
-    - node: plasmaWall
-      entity: WallPlasma
+    - node: phoronWall
+      entity: WallPhoron
       edges:
         - to: girder
           completed:
