@@ -13,6 +13,7 @@ namespace Content.Server.Ember.Mapping;
 public sealed class EmberPaintCommand : IConsoleCommand
 {
     [Dependency] private readonly IEntityManager _entity = default!;
+    [Dependency] private readonly IAdminManager _adminManager = default!;
 
     public string Command => "emberpaint";
     public string Description => "Paints Ember procedural walls, low walls, and airlocks for mapping.";
@@ -21,8 +22,7 @@ public sealed class EmberPaintCommand : IConsoleCommand
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
         var sandboxManager = _entity.System<SandboxSystem>();
-        var adminManager = IoCManager.Resolve<IAdminManager>();
-        if (shell.IsClient && (!sandboxManager.IsSandboxEnabled && !adminManager.HasAdminFlag(shell.Player!, AdminFlags.Mapping)))
+        if (shell.IsClient && (!sandboxManager.IsSandboxEnabled && !_adminManager.HasAdminFlag(shell.Player!, AdminFlags.Mapping)))
         {
             shell.WriteError("You are not currently able to use mapping commands.");
             return;

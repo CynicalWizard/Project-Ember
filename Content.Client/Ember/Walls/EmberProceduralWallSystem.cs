@@ -15,13 +15,21 @@ public sealed class EmberProceduralWallSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
 
-    private readonly Queue<EntityUid> _dirty = new();
-    private readonly Queue<EntityUid> _anchorChanged = new();
-    private int _generation;
+    private EntityQuery<TransformComponent> _xformQuery;
+    private EntityQuery<EmberProceduralWallComponent> _wallQuery;
+    private EntityQuery<SpriteComponent> _spriteQuery;
+    private EntityQuery<EmberProceduralStructureComponent> _structureQuery;
+    private EntityQuery<DoorComponent> _doorQuery;
 
     public override void Initialize()
     {
         base.Initialize();
+
+        _xformQuery = GetEntityQuery<TransformComponent>();
+        _wallQuery = GetEntityQuery<EmberProceduralWallComponent>();
+        _spriteQuery = GetEntityQuery<SpriteComponent>();
+        _structureQuery = GetEntityQuery<EmberProceduralStructureComponent>();
+        _doorQuery = GetEntityQuery<DoorComponent>();
 
         SubscribeLocalEvent<EmberProceduralWallComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<EmberProceduralWallComponent, ComponentShutdown>(OnShutdown);
@@ -66,26 +74,20 @@ public sealed class EmberProceduralWallSystem : EntitySystem
     {
         base.FrameUpdate(frameTime);
 
-        var xformQuery = GetEntityQuery<TransformComponent>();
-        var wallQuery = GetEntityQuery<EmberProceduralWallComponent>();
-
         while (_anchorChanged.TryDequeue(out var uid))
         {
-            if (xformQuery.TryGetComponent(uid, out var xform))
-                DirtyNeighbours(uid, transform: xform, wallQuery: wallQuery);
+            if (_xformQuery.TryGetComponent(uid, out var xform))
+                DirtyNeighbours(uid, transform: xform, wallQuery: _wallQuery);
         }
 
         if (_dirty.Count == 0)
             return;
 
         _generation++;
-        var spriteQuery = GetEntityQuery<SpriteComponent>();
-        var structureQuery = GetEntityQuery<EmberProceduralStructureComponent>();
-        var doorQuery = GetEntityQuery<DoorComponent>();
 
         while (_dirty.TryDequeue(out var uid))
         {
-            UpdateSprite(uid, spriteQuery, wallQuery, xformQuery, structureQuery, doorQuery);
+            UpdateSprite(uid, _spriteQuery, _wallQuery, _xformQuery, _structureQuery, _doorQuery);
         }
     }
 

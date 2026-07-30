@@ -276,8 +276,14 @@ namespace Content.Server.Construction
             if (TryConstructionFail(user, difficulty))
             {
                 _popup.PopupEntity(Loc.GetString("construction-system-construct-failed"), user, user);
-                // SierraBay logic: materials are consumed (ruined) on fail, so we don't return them to user.
-                // We just shutdown the containers which deletes the inserted materials.
+                // SierraBay logic: materials are consumed (ruined) on fail.
+                foreach (var entity in container.ContainedEntities.ToArray())
+                    QueueDel(entity);
+                foreach (var c in containers.Values)
+                {
+                    foreach (var entity in c.ContainedEntities.ToArray())
+                        QueueDel(entity);
+                }
                 ShutdownContainers();
                 return null;
             }

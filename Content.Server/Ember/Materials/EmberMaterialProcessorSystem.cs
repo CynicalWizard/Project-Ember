@@ -323,19 +323,24 @@ public sealed class EmberMaterialProcessorSystem : EntitySystem
         return new List<EntityUid>(_entities);
     }
 
-    private bool TryGetMaterialByStackType(string stackType, out EmberMaterialPrototype material)
+    private readonly Dictionary<string, EmberMaterialPrototype> _stackTypeCache = new();
+
+    private void BuildStackTypeCache()
     {
+        _stackTypeCache.Clear();
         foreach (var prototype in _prototype.EnumeratePrototypes<EmberMaterialPrototype>())
         {
-            if ((prototype.StackType ?? prototype.ID) == stackType)
-            {
-                material = prototype;
-                return true;
-            }
+            var key = prototype.StackType ?? prototype.ID;
+            _stackTypeCache[key] = prototype;
         }
+    }
 
-        material = default!;
-        return false;
+    private bool TryGetMaterialByStackType(string stackType, out EmberMaterialPrototype material)
+    {
+        if (_stackTypeCache.Count == 0)
+            BuildStackTypeCache();
+
+        return _stackTypeCache.TryGetValue(stackType, out material!);
     }
 
     private void ReleaseStacks(EmberOreStackerComponent stacker, EntityCoordinates output, int amount)
@@ -658,7 +663,8 @@ public sealed class EmberMaterialProcessorSystem : EntitySystem
 
     private void UpdateProcessorAppearance(EntityUid uid, EmberMaterialProcessorComponent processor)
     {
-        _appearance.SetData(uid, EmberOreProcessorVisuals.Active, processor.Active);
+        if (TryComp<AppearanceComponent>(uid, out var appearance))
+            _appearance.SetData(uid, EmberOreProcessorVisuals.Active, processor.Active, appearance);
     }
 
     private void OnConsoleSetProcessorMode(EntityUid uid, EmberOreProcessingConsoleComponent component, EmberOreConsoleSetProcessorModeMessage args)
