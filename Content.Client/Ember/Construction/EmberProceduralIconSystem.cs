@@ -155,7 +155,7 @@ public sealed class EmberProceduralIconSystem : EntitySystem
             while (_queue.TryDequeue(out var queued))
             {
                 if (_entity.EntityExists(queued.Entity))
-                    _entity.DeleteEntity(queued.Entity);
+                    _entity.QueueDeleteEntity(queued.Entity);
             }
         }
 
@@ -178,7 +178,7 @@ public sealed class EmberProceduralIconSystem : EntitySystem
                         overrideDirection: Direction.South);
                 }, Color.Transparent);
 
-                _entity.DeleteEntity(queued.Entity);
+                _entity.QueueDeleteEntity(queued.Entity);
             }
         }
     }

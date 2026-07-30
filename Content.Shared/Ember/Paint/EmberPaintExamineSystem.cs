@@ -69,7 +69,7 @@ public sealed class EmberPaintExamineSystem : EntitySystem
         var key = GetColorNameKey(color);
         var name = Robust.Shared.Localization.Loc.GetString(key);
         var displayColor = GetReadableDisplayColor(color);
-        return $"[color=#{displayColor.ToHex()}]{name}[/color]";
+        return $"[color=#{displayColor.ToHexNoAlpha()}]{name}[/color]";
     }
 
     public static Color GetReadableDisplayColor(Color color)

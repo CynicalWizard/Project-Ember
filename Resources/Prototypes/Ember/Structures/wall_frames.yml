@@ -1,5 +1,7 @@
 - type: entity
   id: WallFrame
+  name: steel low wall
+  description: A low wall section which serves as the base of windows, amongst other things.
   parent: BaseStructure
   placement:
     mode: SnapgridCenter
@@ -52,6 +54,7 @@
 
 - type: entity
   id: WallFrameReinforced
+  name: reinforced wall frame
   parent: WallFrame
   components:
   - type: EmberProceduralStructure
@@ -62,6 +65,7 @@
 
 - type: entity
   id: WallFrameIron
+  name: iron wall frame
   parent: WallFrame
   components:
   - type: EmberProceduralStructure
@@ -72,6 +76,7 @@
 
 - type: entity
   id: WallFrameAluminium
+  name: aluminium wall frame
   parent: WallFrame
   components:
   - type: EmberProceduralStructure
@@ -82,6 +87,7 @@
 
 - type: entity
   id: WallFrameTitanium
+  name: titanium wall frame
   parent: WallFrame
   components:
   - type: EmberProceduralStructure
@@ -92,6 +98,7 @@
 
 - type: entity
   id: WallFrameOCP
+  name: OCP wall frame
   parent: WallFrame
   components:
   - type: EmberProceduralStructure
@@ -102,6 +109,7 @@
 
 - type: entity
   id: WallFrameOsmium
+  name: osmium wall frame
   parent: WallFrame
   components:
   - type: EmberProceduralStructure
@@ -112,6 +120,7 @@
 
 - type: entity
   id: WallFrameElectrum
+  name: electrum wall frame
   parent: WallFrame
   components:
   - type: EmberProceduralStructure
@@ -122,6 +131,7 @@
 
 - type: entity
   id: WallFrameCopper
+  name: copper wall frame
   parent: WallFrame
   components:
   - type: EmberProceduralStructure
@@ -132,6 +142,7 @@
 
 - type: entity
   id: WallFrameBronze
+  name: bronze wall frame
   parent: WallFrame
   components:
   - type: EmberProceduralStructure
@@ -142,6 +153,7 @@
 
 - type: entity
   id: WallFramePlatinum
+  name: platinum wall frame
   parent: WallFrame
   components:
   - type: EmberProceduralStructure
@@ -152,6 +164,7 @@
 
 - type: entity
   id: WallFrameGold
+  name: gold wall frame
   parent: WallFrame
   components:
   - type: EmberProceduralStructure
@@ -162,6 +175,7 @@
 
 - type: entity
   id: WallFrameSilver
+  name: silver wall frame
   parent: WallFrame
   components:
   - type: EmberProceduralStructure
@@ -172,6 +186,7 @@
 
 - type: entity
   id: WallFramePhoron
+  name: phoron wall frame
   parent: WallFrame
   components:
   - type: EmberProceduralStructure
@@ -182,6 +197,7 @@
 
 - type: entity
   id: WallFrameUranium
+  name: uranium wall frame
   parent: WallFrame
   components:
   - type: EmberProceduralStructure
@@ -192,6 +208,7 @@
 
 - type: entity
   id: WallFramePlastic
+  name: plastic wall frame
   parent: WallFrame
   components:
   - type: EmberProceduralStructure
@@ -202,6 +219,7 @@
 
 - type: entity
   id: WallFrameWood
+  name: wood wall frame
   parent: WallFrame
   components:
   - type: EmberProceduralStructure
@@ -212,6 +230,7 @@
 
 - type: entity
   id: WallFrameSandstone
+  name: sandstone wall frame
   parent: WallFrame
   components:
   - type: EmberProceduralStructure
@@ -222,6 +241,7 @@
 
 - type: entity
   id: WallFrameMarble
+  name: marble wall frame
   parent: WallFrame
   components:
   - type: EmberProceduralStructure
@@ -232,6 +252,7 @@
 
 - type: entity
   id: WallFrameConcrete
+  name: concrete wall frame
   parent: WallFrame
   components:
   - type: EmberProceduralStructure
