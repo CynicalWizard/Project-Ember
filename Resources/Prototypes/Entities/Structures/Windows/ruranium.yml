@@ -91,13 +91,13 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 150
+        damage: 100
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
     - trigger:
         !type:DamageTrigger
-        damage: 75
+        damage: 50
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -117,50 +117,3 @@
   - type: RadiationBlocker
     resistance: 2.5
 
-- type: entity
-  parent: ReinforcedUraniumWindow
-  id: ReinforcedUraniumWindowDiagonal
-  suffix: diagonal
-  placement:
-    mode: SnapgridCenter
-    snap:
-    - Window
-  components:
-  - type: Sprite
-    drawdepth: Objects
-    sprite: Structures/Windows/reinforced_uranium_diagonal.rsi
-    state: state0
-  - type: Tag
-    tags:
-    - Diagonal
-  - type: IconSmooth
-    mode: Diagonal
-    key: walls
-    base: state
-  - type: Icon
-    sprite: Structures/Windows/reinforced_uranium_diagonal.rsi
-    state: state0
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PolygonShape
-            vertices:
-            - "-0.5,-0.5"
-            - "0.5,0.5"
-            - "0.5,-0.5"
-        mask:
-        - FullTileMask
-        layer:
-        - GlassLayer
-  - type: Airtight
-    noAirWhenFullyAirBlocked: false
-    airBlockedDirection:
-    - South
-    - East
-  - type: DamageVisuals
-    damageOverlay:
-      sprite: Structures/Windows/cracks_diagonal.rsi
-  - type: Construction
-    graph: WindowDiagonal
-    node: reinforcedUraniumWindowDiagonal
