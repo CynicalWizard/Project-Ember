@@ -427,6 +427,8 @@
   displayName: materials-phoron-display-name
   category: mineral
   color: "#E37108"
+  # NOTE: stackType remains "Plasma" — this is the SS14 internal material ID.
+  # The player-visible name is "phoron" via FTL localization.
   stackEntity: SheetPlasma1
   stackType: Plasma
   sheetIconBase: sheet-phoron
