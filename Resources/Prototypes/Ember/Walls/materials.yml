@@ -2,9 +2,9 @@
   id: EmberWallSteel
   physicalMaterial: Steel
   stateBase: solid
-  color: "#696969"
+  color: "#a8b0b2"
   reinforcementStateBase: reinf_over
-  reinforcementColor: "#696969"
+  reinforcementColor: "#a8a9b2"
 
 - type: emberWallMaterial
   id: EmberWallIron
@@ -52,13 +52,13 @@
   id: EmberWallDiamond
   physicalMaterial: Diamond
   stateBase: stone
-  color: "#9DD6E0"
+  color: "#D8D4EA"
 
 - type: emberWallMaterial
   id: EmberWallGold
   physicalMaterial: Gold
   stateBase: metal
-  color: "#FFD700"
+  color: "#FFCC33"
 
 - type: emberWallMaterial
   id: EmberWallOsmium
