@@ -49,6 +49,7 @@ public sealed class EmberMaterialProcessorSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
         SubscribeLocalEvent<EmberOreProcessingConsoleComponent, MapInitEvent>(OnConsoleMapInit);
         SubscribeLocalEvent<EmberMaterialProcessorComponent, ComponentStartup>(OnProcessorStartup);
         SubscribeLocalEvent<EmberOreProcessingConsoleComponent, ActivateInWorldEvent>(OnConsoleActivate);
@@ -62,6 +63,11 @@ public sealed class EmberMaterialProcessorSystem : EntitySystem
         SubscribeLocalEvent<EmberOreProcessingConsoleComponent, EmberOreConsoleSetProcessorModeMessage>(OnConsoleSetProcessorMode);
         SubscribeLocalEvent<EmberOreProcessingConsoleComponent, EmberOreConsolePresetModesMessage>(OnConsolePresetModes);
         SubscribeLocalEvent<EmberOreProcessingConsoleComponent, EmberOreConsoleSetStackAmountMessage>(OnConsoleSetStackAmount);
+    }
+
+    private void OnPrototypesReloaded(PrototypesReloadedEventArgs args)
+    {
+        _stackTypeCache.Clear();
     }
 
     private void OnProcessorStartup(EntityUid uid, EmberMaterialProcessorComponent component, ComponentStartup args)
