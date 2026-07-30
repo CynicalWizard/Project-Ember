@@ -15,6 +15,10 @@ public sealed class EmberProceduralWallSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
 
+    private readonly Queue<EntityUid> _dirty = new();
+    private readonly Queue<EntityUid> _anchorChanged = new();
+    private int _generation;
+
     private EntityQuery<TransformComponent> _xformQuery;
     private EntityQuery<EmberProceduralWallComponent> _wallQuery;
     private EntityQuery<SpriteComponent> _spriteQuery;
