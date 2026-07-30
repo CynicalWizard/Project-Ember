@@ -296,6 +296,9 @@
   category: metal
   color: "#EDD12F"
   stackEntity: EmberIngotBronze1
+  hardness: 25
+  weight: 25
+  integrity: 100
   constructionDifficulty: 2
 
 - type: emberMaterial
@@ -458,13 +461,13 @@
   category: mineral
   color: "#FFFF00"
   hiddenFromCodex: true
-  hardness: 60
+  hardness: 40
   meltingPoint: 1800
   bruteArmor: 2
   burnArmor: 2
   integrity: 150
   weight: 20
-  constructionDifficulty: 0
+  constructionDifficulty: 2
   explosionResistance: 5
   radioactivity: 20
   luminescence: 3
