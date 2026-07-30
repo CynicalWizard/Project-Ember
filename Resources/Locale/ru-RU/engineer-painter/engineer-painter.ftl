@@ -26,7 +26,7 @@ spray-painter-airlock-mode-paint-door = Покрасить корпус шлюз
 
 spray-painter-airlock-mode-clear-door = Удалить покраску корпуса
 
-spray-painter-airlock-mode-paint-stripe = Покрасить stripe шлюза
+spray-painter-airlock-mode-paint-stripe = Покрасить полосу шлюза
 
 spray-painter-airlock-mode-clear-stripe = Удалить покраску stripe
 
@@ -38,7 +38,7 @@ spray-painter-wall-mode-paint-wall = Покрасить стену
 
 spray-painter-wall-mode-clear-wall-paint = Удалить покраску стены
 
-spray-painter-wall-mode-paint-stripe = Покрасить stripe
+spray-painter-wall-mode-paint-stripe = Покрасить полосу
 
 spray-painter-wall-mode-clear-stripe = Удалить цвет stripe
 
