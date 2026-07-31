@@ -58,7 +58,7 @@
     damageOverlay:
       sprite: Ember/Structures/Windows/window_damage_overlay.rsi
   - type: StaticPrice
-    price: 132
+    price: 230
   - type: ExplosionResistance
     damageCoefficient: 0.2
 

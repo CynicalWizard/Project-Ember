@@ -62,7 +62,7 @@
     damageOverlay:
       sprite: Ember/Structures/Windows/window_damage_overlay.rsi
   - type: StaticPrice
-    price: 150
+    price: 290
 
 
 - type: entity

@@ -54,7 +54,7 @@
     damageOverlay:
       sprite: Ember/Structures/Windows/window_damage_overlay.rsi
   - type: StaticPrice
-    price: 215
+    price: 430
   - type: RadiationBlocker
     resistance: 10
 

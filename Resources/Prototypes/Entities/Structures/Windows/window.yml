@@ -118,7 +118,7 @@
     node: tintedWindow
   - type: Occluder
   - type: StaticPrice
-    price: 70
+    price: 90
 
 - type: entity
   id: WindowRCDResistant
