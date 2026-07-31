@@ -50,9 +50,53 @@
   - type: DamageVisuals
     thresholds: [5, 10, 20]
     damageDivisor: 4
-
     trackAllDamage: true
     damageOverlay:
       sprite: Ember/Structures/Windows/window_damage_overlay.rsi
   - type: StaticPrice
     price: 100
+
+- type: entity
+  parent: ShuttleWindow
+  id: MiningWindowDiagonal
+  suffix: diagonal
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    drawdepth: Objects
+    sprite: Structures/Windows/mining_diagonal.rsi
+    state: state0
+  - type: Tag
+    tags:
+    - Diagonal
+  - type: IconSmooth
+    mode: Diagonal
+    key: walls
+    base: state
+  - type: Icon
+    sprite: Structures/Windows/mining_diagonal.rsi
+    state: state0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PolygonShape
+            vertices:
+            - "-0.5,-0.5"
+            - "0.5,0.5"
+            - "0.5,-0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: Airtight
+    noAirWhenFullyAirBlocked: false
+    airBlockedDirection:
+    - South
+    - East
+  - type: DamageVisuals
+    damageOverlay:
+      sprite: Structures/Windows/cracks_diagonal.rsi

@@ -1,5 +1,5 @@
 - type: entity
-  id: PhoronWindow
+  id: PlasmaWindow
   name: phoron window
   parent: WindowRCDResistant
   components:
@@ -39,13 +39,13 @@
         acts: [ "Destruction" ]
   - type: EmberProceduralStructure
     role: Window
-    material: EmberPhoronGlass
+    material: EmberPlasmaGlass
     stateBase: window
     alpha: 0.7058824
     sprite: /Textures/Ember/Structures/Windows/window.rsi
   - type: Construction
     graph: Window
-    node: phoronWindow
+    node: plasmaWindow
   - type: Appearance
   - type: DamageVisuals
     thresholds: [5, 10, 20]
@@ -74,7 +74,7 @@
     sprite: Ember/Structures/Windows/window.rsi
     state: window
   - type: EmberMaterialTint
-    material: EmberPhoronGlass
+    material: EmberPlasmaGlass
     alpha: 0.7058824
   - type: Icon
     sprite: Ember/Structures/Windows/window.rsi
@@ -119,3 +119,50 @@
   - type: RadiationBlocker
     resistance: 1
 
+- type: entity
+  parent: PlasmaWindow
+  id: PlasmaWindowDiagonal
+  suffix: diagonal
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    drawdepth: Objects
+    sprite: Structures/Windows/plasma_diagonal.rsi
+    state: state0
+  - type: Tag
+    tags:
+    - Diagonal
+  - type: IconSmooth
+    mode: Diagonal
+    key: walls
+    base: state
+  - type: Icon
+    sprite: Structures/Windows/plasma_diagonal.rsi
+    state: state0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PolygonShape
+            vertices:
+            - "-0.5,-0.5"
+            - "0.5,0.5"
+            - "0.5,-0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: Airtight
+    noAirWhenFullyAirBlocked: false
+    airBlockedDirection:
+    - South
+    - East
+  - type: DamageVisuals
+    damageOverlay:
+      sprite: Structures/Windows/cracks_diagonal.rsi
+  - type: Construction
+    graph: WindowDiagonal
+    node: plasmaWindowDiagonal
