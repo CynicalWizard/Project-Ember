@@ -6,6 +6,8 @@ using Content.Shared.Ember.Structures;
 using Content.Shared.Ember.Walls;
 using Content.Shared.SprayPainter;
 using Robust.Shared.Console;
+using Robust.Shared.Prototypes;
+using Content.Shared.Ember.Mapping;
 
 namespace Content.Server.Ember.Mapping;
 
@@ -14,10 +16,11 @@ public sealed class EmberPaintCommand : IConsoleCommand
 {
     [Dependency] private readonly IEntityManager _entity = default!;
     [Dependency] private readonly IAdminManager _adminManager = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     public string Command => "emberpaint";
     public string Description => "Paints Ember procedural walls, low walls, and airlocks for mapping.";
-    public string Help => "emberpaint <netEntity> <mode> <#RRGGBB>. Modes: wall, wallclear, stripe, stripeclear, airlockdoor, airlockdoorclear, airlockstripe, airlockstripeclear, airlockwindow, airlockwindowclear.";
+    public string Help => "emberpaint <netEntity> <mode> <value>. Modes: preset, wall, wallclear, stripe, stripeclear, airlockdoor, airlockdoorclear, airlockstripe, airlockstripeclear, airlockwindow, airlockwindowclear.";
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
@@ -41,6 +44,29 @@ public sealed class EmberPaintCommand : IConsoleCommand
             return;
         }
 
+        var mode = args[1].ToLowerInvariant();
+
+        if (mode == "preset")
+        {
+            if (!_prototypeManager.TryIndex<EmberPaintPresetPrototype>(args[2], out var preset))
+            {
+                shell.WriteError("Invalid paint preset ID.");
+                return;
+            }
+
+            if (preset.PaintColor != null)
+                TryPaint(uid.Value, "wall", preset.PaintColor.Value.WithAlpha(1f));
+            else
+                TryPaint(uid.Value, "wallclear", Color.White);
+
+            if (preset.StripeColor != null)
+                TryPaint(uid.Value, "stripe", preset.StripeColor.Value.WithAlpha(1f));
+            else
+                TryPaint(uid.Value, "stripeclear", Color.White);
+
+            return;
+        }
+
         var color = Color.TryFromHex(args[2]);
         if (!color.HasValue)
         {
@@ -48,7 +74,7 @@ public sealed class EmberPaintCommand : IConsoleCommand
             return;
         }
 
-        if (!TryPaint(uid.Value, args[1].ToLowerInvariant(), color.Value.WithAlpha(1f)))
+        if (!TryPaint(uid.Value, mode, color.Value.WithAlpha(1f)))
             shell.WriteError("Target cannot use that Ember paint mode.");
     }
 

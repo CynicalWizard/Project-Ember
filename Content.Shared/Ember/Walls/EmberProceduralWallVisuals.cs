@@ -17,6 +17,7 @@ public static class EmberProceduralWallVisuals
     {
         var stateBase = material.StateBase;
         var baseColor = wall.PaintColor ?? material.Color;
+        
         var paintColor = wall.PaintColor;
         var reinforcementStateBase = wall.Reinforced ? material.ReinforcementStateBase : null;
         Color? reinforcementColor = reinforcementStateBase != null

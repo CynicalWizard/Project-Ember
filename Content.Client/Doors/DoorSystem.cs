@@ -11,6 +11,7 @@ public sealed class DoorSystem : SharedDoorSystem
 {
     [Dependency] private readonly AnimationPlayerSystem _animationSystem = default!;
     [Dependency] private readonly IResourceCache _resourceCache = default!;
+    [Dependency] private readonly SpriteSystem _spriteSystem = default!;
 
     public override void Initialize()
     {
@@ -81,10 +82,7 @@ public sealed class DoorSystem : SharedDoorSystem
             {
                 Log.Error("Unable to load RSI '{0}'. Trace:\n{1}", baseRsi, Environment.StackTrace);
             }
-            foreach (var layer in args.Sprite.AllLayers)
-            {
-                layer.Rsi = res?.RSI;
-            }
+            _spriteSystem.SetBaseRsi((uid, args.Sprite), res?.RSI);
         }
 
         TryComp<AnimationPlayerComponent>(uid, out var animPlayer);

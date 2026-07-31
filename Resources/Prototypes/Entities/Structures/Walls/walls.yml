@@ -549,6 +549,10 @@
   - type: Icon
     sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
     state: solid
+  - type: EmberProceduralWall
+    material: EmberWallSteel
+    reinforced: true
+    reinforcementMaterial: EmberWallPlasteel
   - type: Construction
     graph: Girder
     node: reinforcedWall
@@ -575,9 +579,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: EmberProceduralWall
-    material: EmberWallSteel
-    reinforced: true
+
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -643,6 +645,7 @@
   - type: EmberProceduralWall
     material: EmberWallOCP
     reinforced: true
+    reinforcementMaterial: EmberWallOCP
   - type: Destructible
     thresholds:
     - trigger: !type:DamageTrigger
@@ -936,6 +939,8 @@
   - type: Sprite
     sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
     state: solid
+  - type: EmberProceduralWall
+    material: EmberWallSteel
   - type: WallReplacementMarker
   - type: Construction
     graph: Girder
@@ -967,8 +972,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: EmberProceduralWall
-    material: EmberWallSteel
+
 
 - type: entity
   parent: WallShuttleDiagonal

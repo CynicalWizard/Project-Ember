@@ -9,6 +9,7 @@
   - type: Sprite
     drawdepth: Walls
     sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
   - type: Icon
     sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
     state: frame

@@ -23,6 +23,9 @@ public sealed partial class EmberProceduralWallComponent : Component
     [DataField, AutoNetworkedField]
     public bool Reinforced;
 
+    [DataField, AutoNetworkedField]
+    public ProtoId<EmberWallMaterialPrototype>? ReinforcementMaterial;
+
     [DataField]
     public ResPath Sprite = new("/Textures/Ember/Structures/Walls/wall_masks_offbay.rsi");
 }

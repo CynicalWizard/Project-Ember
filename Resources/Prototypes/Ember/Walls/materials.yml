@@ -52,7 +52,7 @@
   id: EmberWallDiamond
   physicalMaterial: Diamond
   stateBase: stone
-  color: "#D8D4EA"
+  color: "#9DD6E0"
 
 - type: emberWallMaterial
   id: EmberWallGold

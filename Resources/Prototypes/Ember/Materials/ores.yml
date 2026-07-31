@@ -1,0 +1,130 @@
+- type: entity
+  id: EmberBaseOre
+  parent: BaseItem
+  name: ore
+  components:
+  - type: Sprite
+    sprite: Ember/Objects/Materials/ore.rsi
+    state: base
+  - type: Item
+    size: Small
+
+- type: entity
+  id: EmberOrePitchblende
+  parent: EmberBaseOre
+  name: pitchblende ore
+  description: A chunk of pitchblende.
+  components:
+  - type: Sprite
+    color: '#917D1A'
+  - type: Material
+    materials:
+      Pitchblende: 100
+
+- type: entity
+  id: EmberOreGraphite
+  parent: EmberBaseOre
+  name: graphite ore
+  description: A chunk of graphite.
+  components:
+  - type: Sprite
+    color: '#444444'
+  - type: Material
+    materials:
+      Graphite: 100
+
+- type: entity
+  id: EmberOreBauxite
+  parent: EmberBaseOre
+  name: bauxite ore
+  description: A chunk of bauxite.
+  components:
+  - type: Sprite
+    color: '#D8AD97'
+  - type: Material
+    materials:
+      Bauxite: 100
+
+- type: entity
+  id: EmberOreHematite
+  parent: EmberBaseOre
+  name: hematite ore
+  description: A chunk of hematite.
+  components:
+  - type: Sprite
+    color: '#AA6666'
+  - type: Material
+    materials:
+      Hematite: 100
+
+- type: entity
+  id: EmberOreRutile
+  parent: EmberBaseOre
+  name: rutile ore
+  description: A chunk of rutile.
+  components:
+  - type: Sprite
+    color: '#D8AD97'
+  - type: Material
+    materials:
+      Rutile: 100
+
+- type: entity
+  id: EmberOreGold
+  parent: EmberBaseOre
+  name: gold ore
+  description: A chunk of gold.
+  components:
+  - type: Sprite
+    color: '#FFCC33'
+  - type: Material
+    materials:
+      Gold: 100
+
+- type: entity
+  id: EmberOreSilver
+  parent: EmberBaseOre
+  name: silver ore
+  description: A chunk of silver.
+  components:
+  - type: Sprite
+    color: '#D1E6E3'
+  - type: Material
+    materials:
+      Silver: 100
+
+- type: entity
+  id: EmberOreDiamond
+  parent: EmberBaseOre
+  name: diamond ore
+  description: A chunk of diamond.
+  components:
+  - type: Sprite
+    color: '#D8D4EA'
+  - type: Material
+    materials:
+      Diamond: 100
+
+- type: entity
+  id: EmberOrePhoron
+  parent: EmberBaseOre
+  name: phoron ore
+  description: A chunk of phoron.
+  components:
+  - type: Sprite
+    color: '#E37108'
+  - type: Material
+    materials:
+      Phoron: 100
+
+- type: entity
+  id: EmberOreSand
+  parent: EmberBaseOre
+  name: sand ore
+  description: A chunk of sand.
+  components:
+  - type: Sprite
+    color: '#E2DBB5'
+  - type: Material
+    materials:
+      Sand: 100

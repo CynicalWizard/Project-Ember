@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.Linq;
 using Content.Client.Ember.Walls;
 using Content.Shared.Doors.Components;
 using Content.Shared.Ember.Structures;
@@ -126,6 +127,11 @@ public sealed class EmberProceduralStructureSystem : EntitySystem
     {
         if (!TryComp<SpriteComponent>(uid, out var sprite))
             return;
+
+        for (var i = 0; i < sprite.AllLayers.Count(); i++)
+        {
+            sprite.LayerSetVisible(i, false);
+        }
 
         foreach (var layer in AllLayers)
         {

@@ -1,6 +1,7 @@
 using Content.Shared.Doors.Components;
 using Content.Shared.Ember.Structures;
 using System.Numerics;
+using System.Linq;
 using Content.Shared.Ember.Walls;
 using Robust.Client.GameObjects;
 using Robust.Shared.Map.Components;
@@ -102,6 +103,12 @@ public sealed class EmberProceduralWallSystem : EntitySystem
             return;
 
         var visuals = EmberProceduralWallVisuals.Resolve(component, material);
+
+        // Hide default base layers if they exist (usually layer 0 defined in YAML)
+        for (var i = 0; i < sprite.AllLayers.Count(); i++)
+        {
+            sprite.LayerSetVisible(i, false);
+        }
 
         foreach (var layer in AllLayers)
         {
