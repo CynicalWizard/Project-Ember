@@ -60,11 +60,8 @@
     damageCoefficient: 0.5
 
 - type: entity
-  id: PlasmaWindow
-  parent: PhoronWindow
-
-- type: entity
-  id: PlasmaWindowDirectional
+  id: PhoronWindowDirectional
+  parent: WindowDirectionalRCDResistant
   placement:
     mode: SnapgridCenter
     snap:
@@ -118,8 +115,4 @@
     price: 50
   - type: RadiationBlocker
     resistance: 1
-
-- type: entity
-  id: PhoronWindowDirectional
-  parent: PlasmaWindowDirectional
 
