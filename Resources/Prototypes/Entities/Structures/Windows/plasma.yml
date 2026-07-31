@@ -66,8 +66,9 @@
 
 - type: entity
   id: PlasmaWindow
-  parent: PhoronWindowDirectional
-  parent: WindowDirectionalRCDResistant
+  parent:
+  - PhoronWindowDirectional
+  - WindowDirectionalRCDResistant
   name: directional phoron window
   description: Don't smudge up the glass down there.
   placement:
