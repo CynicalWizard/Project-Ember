@@ -1,0 +1,48 @@
+- type: material
+  id: Pitchblende
+  stackEntity: EmberBrickPitchblende1
+  name: materials-pitchblende
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: brick }
+  price: 0.5
+
+- type: material
+  id: Graphite
+  stackEntity: EmberSheetGraphite1
+  name: materials-graphite
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: sheet }
+  price: 0.2
+
+- type: material
+  id: Bauxite
+  stackEntity: EmberBrickBauxite1
+  name: materials-bauxite
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: brick }
+  price: 0.2
+
+- type: material
+  id: Hematite
+  stackEntity: SteelOre1
+  name: materials-hematite
+  icon: { sprite: Ember/Objects/Materials/ore.rsi, state: base }
+  price: 0.2
+
+- type: material
+  id: Rutile
+  stackEntity: EmberBrickRutile1
+  name: materials-rutile
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: brick }
+  price: 0.4
+
+- type: material
+  id: Phoron
+  stackEntity: SheetPlasma1
+  name: materials-phoron
+  icon: { sprite: Objects/Materials/Sheets/other.rsi, state: plasma }
+  price: 0.35
+
+- type: material
+  id: Sand
+  stackEntity: EmberDustSand1
+  name: materials-sand
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: sheet }
+  price: 0.05
