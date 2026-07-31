@@ -152,30 +152,30 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
         SetSpriteState(sprite, EmberAirlockLayer.BoltLights, component.BoltLightsSprite, "closed");
         SetSpriteState(sprite, EmberAirlockLayer.Emag, component.EmagSprite, "deny", state == DoorState.Emagging);
 
-        sprite.LayerSetColor(EmberAirlockLayer.Color, visuals.DoorColor ?? Color.White);
-        sprite.LayerSetColor(EmberAirlockLayer.Fill, visuals.FillColor);
-        sprite.LayerSetColor(EmberAirlockLayer.Stripe, visuals.StripeColor ?? Color.White);
-        sprite.LayerSetColor(EmberAirlockLayer.StripeFill, visuals.StripeColor ?? Color.White);
+        SetLayerColorSafely(sprite, EmberAirlockLayer.Color, visuals.DoorColor ?? Color.White);
+        SetLayerColorSafely(sprite, EmberAirlockLayer.Fill, visuals.FillColor);
+        SetLayerColorSafely(sprite, EmberAirlockLayer.Stripe, visuals.StripeColor ?? Color.White);
+        SetLayerColorSafely(sprite, EmberAirlockLayer.StripeFill, visuals.StripeColor ?? Color.White);
 
-        sprite.LayerSetVisible(EmberAirlockLayer.Color, visuals.DoorColor != null);
-        sprite.LayerSetVisible(EmberAirlockLayer.Fill, true);
-        sprite.LayerSetVisible(EmberAirlockLayer.Stripe, visuals.StripeColor != null);
-        sprite.LayerSetVisible(EmberAirlockLayer.StripeFill, visuals.ShowStripeFill);
-        sprite.LayerSetVisible(DoorVisualLayers.BaseUnlit, false);
-        sprite.LayerSetVisible(DoorVisualLayers.BaseBolted, false);
-        sprite.LayerSetVisible(DoorVisualLayers.BaseEmergencyAccess, false);
+        SetLayerVisibleSafely(sprite, EmberAirlockLayer.Color, visuals.DoorColor != null);
+        SetLayerVisibleSafely(sprite, EmberAirlockLayer.Fill, true);
+        SetLayerVisibleSafely(sprite, EmberAirlockLayer.Stripe, visuals.StripeColor != null);
+        SetLayerVisibleSafely(sprite, EmberAirlockLayer.StripeFill, visuals.ShowStripeFill);
+        SetLayerVisibleSafely(sprite, DoorVisualLayers.BaseUnlit, false);
+        SetLayerVisibleSafely(sprite, DoorVisualLayers.BaseBolted, false);
+        SetLayerVisibleSafely(sprite, DoorVisualLayers.BaseEmergencyAccess, false);
 
         var greenVisible = powered && (state == DoorState.Opening || state == DoorState.Closing);
         var greenState = state == DoorState.Closing ? "closing" : "opening";
         SetSpriteState(sprite, EmberAirlockLayer.GreenLights, component.GreenLightsSprite, greenState, greenVisible);
-        sprite.LayerSetVisible(EmberAirlockLayer.GreenLights, greenVisible);
+        SetLayerVisibleSafely(sprite, EmberAirlockLayer.GreenLights, greenVisible);
 
-        sprite.LayerSetVisible(EmberAirlockLayer.DenyLights, powered && state == DoorState.Denying);
-        sprite.LayerSetVisible(EmberAirlockLayer.BoltLights,
+        SetLayerVisibleSafely(sprite, EmberAirlockLayer.DenyLights, powered && state == DoorState.Denying);
+        SetLayerVisibleSafely(sprite, EmberAirlockLayer.BoltLights,
             powered &&
             boltLights &&
             (state == DoorState.Closed || state == DoorState.Welded));
-        sprite.LayerSetVisible(EmberAirlockLayer.Emag, powered && state == DoorState.Emagging);
+        SetLayerVisibleSafely(sprite, EmberAirlockLayer.Emag, powered && state == DoorState.Emagging);
     }
 
     private DepartmentPrototype? ResolveDepartment(ProtoId<DepartmentPrototype>? id)
@@ -186,6 +186,18 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
         return _prototype.TryIndex(departmentId, out DepartmentPrototype? department)
             ? department
             : null;
+    }
+
+    private static void SetLayerColorSafely(SpriteComponent sprite, object layer, Color color)
+    {
+        if (sprite.LayerMapTryGet(layer, out _))
+            sprite.LayerSetColor(layer, color);
+    }
+
+    private static void SetLayerVisibleSafely(SpriteComponent sprite, object layer, bool visible)
+    {
+        if (sprite.LayerMapTryGet(layer, out _))
+            sprite.LayerSetVisible(layer, visible);
     }
 
     private static void SetupMappedLayer(

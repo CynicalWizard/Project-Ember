@@ -12,6 +12,7 @@
   - type: Item
     sprite: Ember/Objects/Materials/materials.rsi
     size: Normal
+  - type: Material
   - type: Appearance
   - type: Tag
     tags:

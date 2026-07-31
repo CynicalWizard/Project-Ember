@@ -113,3 +113,7 @@
     damageContainer: StructuralInorganic
     damageModifierSet: RGlass
 
+
+- type: entity
+  id: PlastitaniumWindowDiagonal
+  parent: PlastitaniumWindow

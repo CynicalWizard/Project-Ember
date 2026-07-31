@@ -124,3 +124,7 @@
   - type: StaticPrice
     price: 22.5
 
+
+- type: entity
+  id: ReinforcedWindowDiagonal
+  parent: ReinforcedWindow

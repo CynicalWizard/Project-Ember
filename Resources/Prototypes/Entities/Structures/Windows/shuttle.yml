@@ -64,3 +64,7 @@
   - type: StaticPrice
     price: 150
 
+
+- type: entity
+  id: ShuttleWindowDiagonal
+  parent: ShuttleWindow

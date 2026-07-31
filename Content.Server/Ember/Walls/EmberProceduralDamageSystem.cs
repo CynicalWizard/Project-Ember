@@ -27,7 +27,7 @@ public sealed class EmberProceduralDamageSystem : EntitySystem
 
     private void RecalculateDamage(EntityUid uid, EmberProceduralWallComponent component)
     {
-        if (!_prototypeManager.TryIndex(component.Material, out var wallMaterial))
+        if (string.IsNullOrEmpty(component.Material.Id) || !_prototypeManager.TryIndex(component.Material, out var wallMaterial))
             return;
 
         if (wallMaterial.PhysicalMaterial == null || !_prototypeManager.TryIndex(wallMaterial.PhysicalMaterial.Value, out var baseMaterial))
@@ -63,7 +63,7 @@ public sealed class EmberProceduralDamageSystem : EntitySystem
 
     private void OnDamageModify(EntityUid uid, EmberProceduralWallComponent component, DamageModifyEvent args)
     {
-        if (!_prototypeManager.TryIndex(component.Material, out var wallMaterial))
+        if (string.IsNullOrEmpty(component.Material.Id) || !_prototypeManager.TryIndex(component.Material, out var wallMaterial))
             return;
 
         if (wallMaterial.PhysicalMaterial == null || !_prototypeManager.TryIndex(wallMaterial.PhysicalMaterial.Value, out var baseMaterial))

@@ -74,6 +74,8 @@
     layers:
     - state: console
       shader: unshaded
+  - type: Physics
+    canCollide: false
   - type: Fixtures
   - type: WallMount
     arc: 360

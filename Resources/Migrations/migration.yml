@@ -505,3 +505,12 @@ FelinidCube: TajaranCube
 # Ember Phoron window migrations
 PlasmaWindow: PhoronWindow
 PlasmaWindowDirectional: PhoronWindowDirectional
+
+# Ember diagonal windows & doors migrations
+ReinforcedWindowDiagonal: ReinforcedWindow
+ReinforcedPlasmaWindowDiagonal: ReinforcedPlasmaWindow
+PlasmaDoor: AirlockGlass
+PlasmaWindowDiagonal: PhoronWindowDirectional
+WindowDiagonal: WindowDirectional
+ShuttleWindowDiagonal: ShuttleWindow
+PlastitaniumWindowDiagonal: PlastitaniumWindow

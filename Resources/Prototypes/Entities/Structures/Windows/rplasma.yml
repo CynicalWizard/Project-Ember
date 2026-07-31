@@ -119,3 +119,7 @@
   - type: StaticPrice
     price: 66
 
+
+- type: entity
+  id: ReinforcedPlasmaWindowDiagonal
+  parent: ReinforcedPlasmaWindow

@@ -145,7 +145,7 @@
         amount: 2
         doAfter: 2
 
-    - to: walliron
+    - to: ironWall
       completed:
       - !type:SnapToGrid
         southRotation: true
@@ -156,7 +156,7 @@
         amount: 2
       - tool: Welding
         doAfter: 10
-    - to: wallaluminium
+    - to: aluminiumWall
       completed:
       - !type:SnapToGrid
         southRotation: true
@@ -167,7 +167,7 @@
         amount: 2
       - tool: Welding
         doAfter: 10
-    - to: walltitanium
+    - to: titaniumWall
       completed:
       - !type:SnapToGrid
         southRotation: true
@@ -178,7 +178,7 @@
         amount: 2
       - tool: Welding
         doAfter: 10
-    - to: wallosmium
+    - to: osmiumWall
       completed:
       - !type:SnapToGrid
         southRotation: true
@@ -189,7 +189,7 @@
         amount: 2
       - tool: Welding
         doAfter: 10
-    - to: wallelectrum
+    - to: electrumWall
       completed:
       - !type:SnapToGrid
         southRotation: true
@@ -200,7 +200,7 @@
         amount: 2
       - tool: Welding
         doAfter: 10
-    - to: wallcopper
+    - to: copperWall
       completed:
       - !type:SnapToGrid
         southRotation: true
@@ -211,7 +211,7 @@
         amount: 2
       - tool: Welding
         doAfter: 10
-    - to: wallbronze
+    - to: bronzeWall
       completed:
       - !type:SnapToGrid
         southRotation: true
@@ -222,7 +222,7 @@
         amount: 2
       - tool: Welding
         doAfter: 10
-    - to: wallplatinum
+    - to: platinumWall
       completed:
       - !type:SnapToGrid
         southRotation: true
@@ -233,7 +233,7 @@
         amount: 2
       - tool: Welding
         doAfter: 10
-    - to: wallmarble
+    - to: marbleWall
       completed:
       - !type:SnapToGrid
         southRotation: true
@@ -244,7 +244,7 @@
         amount: 2
       - tool: Welding
         doAfter: 10
-    - to: wallconcrete
+    - to: concreteWall
       completed:
       - !type:SnapToGrid
         southRotation: true
@@ -653,7 +653,7 @@
       steps:
       - tool: Welding
         doAfter: 5
-  - node: walliron
+  - node: ironWall
     entity: WallIron
     edges:
     - to: girder
@@ -666,7 +666,7 @@
         doAfter: 10
       - tool: Prying
         doAfter: 10
-  - node: wallaluminium
+  - node: aluminiumWall
     entity: WallAluminium
     edges:
     - to: girder
@@ -679,7 +679,7 @@
         doAfter: 10
       - tool: Prying
         doAfter: 10
-  - node: walltitanium
+  - node: titaniumWall
     entity: WallTitanium
     edges:
     - to: girder
@@ -692,7 +692,7 @@
         doAfter: 10
       - tool: Prying
         doAfter: 10
-  - node: wallosmium
+  - node: osmiumWall
     entity: WallOsmium
     edges:
     - to: girder
@@ -705,7 +705,7 @@
         doAfter: 10
       - tool: Prying
         doAfter: 10
-  - node: wallelectrum
+  - node: electrumWall
     entity: WallElectrum
     edges:
     - to: girder
@@ -718,7 +718,7 @@
         doAfter: 10
       - tool: Prying
         doAfter: 10
-  - node: wallcopper
+  - node: copperWall
     entity: WallCopper
     edges:
     - to: girder
@@ -731,7 +731,7 @@
         doAfter: 10
       - tool: Prying
         doAfter: 10
-  - node: wallbronze
+  - node: bronzeWall
     entity: WallBronze
     edges:
     - to: girder
@@ -744,7 +744,7 @@
         doAfter: 10
       - tool: Prying
         doAfter: 10
-  - node: wallplatinum
+  - node: platinumWall
     entity: WallPlatinum
     edges:
     - to: girder
@@ -757,7 +757,7 @@
         doAfter: 10
       - tool: Prying
         doAfter: 10
-  - node: wallmarble
+  - node: marbleWall
     entity: WallMarble
     edges:
     - to: girder
@@ -770,7 +770,7 @@
         doAfter: 10
       - tool: Prying
         doAfter: 10
-  - node: wallconcrete
+  - node: concreteWall
     entity: WallConcrete
     edges:
     - to: girder

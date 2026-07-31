@@ -17,6 +17,9 @@ public sealed class EmberOreSystem : EntitySystem
 
     private void OnStartup(EntityUid uid, EmberOreComponent component, ComponentStartup args)
     {
+        if (string.IsNullOrEmpty(component.Material))
+            return;
+
         if (!_prototype.TryIndex(component.Material, out EmberMaterialPrototype? material))
             return;
 
