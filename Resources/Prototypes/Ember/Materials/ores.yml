@@ -18,7 +18,8 @@
   - type: Sprite
     color: '#917D1A'
   - type: Material
-    materials:
+  - type: PhysicalComposition
+    materialComposition:
       Pitchblende: 100
 
 - type: entity
@@ -30,7 +31,8 @@
   - type: Sprite
     color: '#444444'
   - type: Material
-    materials:
+  - type: PhysicalComposition
+    materialComposition:
       Graphite: 100
 
 - type: entity
@@ -42,7 +44,8 @@
   - type: Sprite
     color: '#D8AD97'
   - type: Material
-    materials:
+  - type: PhysicalComposition
+    materialComposition:
       Bauxite: 100
 
 - type: entity
@@ -54,7 +57,8 @@
   - type: Sprite
     color: '#AA6666'
   - type: Material
-    materials:
+  - type: PhysicalComposition
+    materialComposition:
       Hematite: 100
 
 - type: entity
@@ -66,7 +70,8 @@
   - type: Sprite
     color: '#D8AD97'
   - type: Material
-    materials:
+  - type: PhysicalComposition
+    materialComposition:
       Rutile: 100
 
 - type: entity
@@ -78,7 +83,8 @@
   - type: Sprite
     color: '#FFCC33'
   - type: Material
-    materials:
+  - type: PhysicalComposition
+    materialComposition:
       Gold: 100
 
 - type: entity
@@ -90,7 +96,8 @@
   - type: Sprite
     color: '#D1E6E3'
   - type: Material
-    materials:
+  - type: PhysicalComposition
+    materialComposition:
       Silver: 100
 
 - type: entity
@@ -102,7 +109,8 @@
   - type: Sprite
     color: '#D8D4EA'
   - type: Material
-    materials:
+  - type: PhysicalComposition
+    materialComposition:
       Diamond: 100
 
 - type: entity
@@ -114,7 +122,8 @@
   - type: Sprite
     color: '#E37108'
   - type: Material
-    materials:
+  - type: PhysicalComposition
+    materialComposition:
       Phoron: 100
 
 - type: entity
@@ -126,5 +135,6 @@
   - type: Sprite
     color: '#E2DBB5'
   - type: Material
-    materials:
+  - type: PhysicalComposition
+    materialComposition:
       Sand: 100

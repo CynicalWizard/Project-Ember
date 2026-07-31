@@ -1278,3 +1278,27 @@
   category: special
   color: "#FFFFFF"
   hiddenFromCodex: true
+
+- type: emberMaterial
+  id: OCP
+  key: ocp
+  displayName: materials-ocp
+  category: metal
+  color: "#9BC6F2"
+  stackEntity: SheetPlasteel1
+
+- type: emberMaterial
+  id: RustedSteel
+  key: rustedsteel
+  displayName: materials-steel
+  category: metal
+  color: "#8A5A34"
+  stackEntity: SheetSteel1
+
+- type: emberMaterial
+  id: Stone
+  key: stone
+  displayName: materials-stone
+  category: mineral
+  color: "#808080"
+  stackEntity: MaterialStone1
