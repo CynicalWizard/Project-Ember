@@ -255,6 +255,17 @@
         amount: 2
       - tool: Welding
         doAfter: 10
+    - to: stoneWall
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      conditions:
+      - !type:EntityAnchored {}
+      steps:
+      - material: Sandstone
+        amount: 2
+      - tool: Welding
+        doAfter: 10
   - node: wall
     entity: WallSolid
     edges:
@@ -777,6 +788,20 @@
       completed:
       - !type:GivePrototype
         prototype: EmberBrickConcrete1
+        amount: 2
+      steps:
+      - tool: Welding
+        doAfter: 10
+      - tool: Prying
+        doAfter: 10
+
+  - node: stoneWall
+    entity: WallStone
+    edges:
+    - to: girder
+      completed:
+      - !type:GivePrototype
+        prototype: EmberBrickSandstone1
         amount: 2
       steps:
       - tool: Welding

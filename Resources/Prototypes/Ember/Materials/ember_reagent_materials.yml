@@ -46,3 +46,10 @@
   name: materials-sand
   icon: { sprite: Ember/Objects/Materials/materials.rsi, state: sheet }
   price: 0.05
+
+- type: material
+  id: Stone
+  stackEntity: EmberBrickSandstone1
+  name: materials-stone
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: brick }
+  price: 0.1
