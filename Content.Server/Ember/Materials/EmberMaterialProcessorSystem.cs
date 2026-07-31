@@ -145,7 +145,7 @@ public sealed class EmberMaterialProcessorSystem : EntitySystem
         if (!processor.Active || !_power.IsPowered(uid))
             return;
 
-        if (machine.Input != null && TryGetMachineTile(uid) is {} input)
+        if (machine.Input != null && TryGetAdjacent(uid, machine.Input.Value) is {} input)
         {
             foreach (var entity in GetMachineInputEntities(uid, input))
             {

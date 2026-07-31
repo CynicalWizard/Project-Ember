@@ -21,9 +21,9 @@ public sealed class EmberOreSystem : EntitySystem
             return;
 
         if (!string.IsNullOrEmpty(material.OreName))
-            _metaData.SetEntityName(uid, material.OreName);
+            _metaData.SetEntityName(uid, Loc.GetString(material.OreName));
 
         if (!string.IsNullOrEmpty(material.OreDescription))
-            _metaData.SetEntityDescription(uid, material.OreDescription);
+            _metaData.SetEntityDescription(uid, Loc.GetString(material.OreDescription));
     }
 }

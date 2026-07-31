@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Client.Administration.Managers;
 using Content.Client.ContextMenu.UI;
 using Content.Client.Decals;
@@ -1256,7 +1256,13 @@ public sealed class MappingState : GameplayStateBase
         if (Screen.EmberPaint.Pressed)
         {
             if (GetHoveredEntity() is { } entity)
-                _consoleHost.ExecuteCommand($"emberpaint {_entityManager.GetNetEntity(entity).Id} {Screen.SelectedEmberPaintMode} {Screen.DecalColor.ToHex()}");
+            {
+                var mode = Screen.SelectedEmberPaintMode;
+                var value = mode == "preset"
+                    ? Screen.SelectedEmberPaintPreset ?? ""
+                    : Screen.DecalColor.ToHex();
+                _consoleHost.ExecuteCommand($"emberpaint {_entityManager.GetNetEntity(entity).Id} {mode} {value}");
+            }
 
             return true;
         }

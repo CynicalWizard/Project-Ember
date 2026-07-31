@@ -1,7 +1,7 @@
 - type: emberMaterial
   id: Steel
   key: steel
-  displayName: materials-steel-display-name
+  displayName: materials-steel
   category: metal
   color: "#A8B0B2"
   stackEntity: SheetSteel1
@@ -31,7 +31,7 @@
 - type: emberMaterial
   id: Iron
   key: iron
-  displayName: materials-iron-display-name
+  displayName: materials-iron
   category: metal
   color: "#5C5454"
   stackEntity: EmberIngotIron1
@@ -52,7 +52,7 @@
 - type: emberMaterial
   id: Aluminium
   key: aluminium
-  displayName: materials-aluminium-display-name
+  displayName: materials-aluminium
   category: metal
   color: "#CCCDCC"
   stackEntity: EmberSheetAluminium1
@@ -78,7 +78,7 @@
 - type: emberMaterial
   id: Plasteel
   key: plasteel
-  displayName: materials-plasteel-display-name
+  displayName: materials-plasteel
   category: metal
   color: "#A8A9B2"
   stackEntity: SheetPlasteel1
@@ -109,7 +109,7 @@
 - type: emberMaterial
   id: Titanium
   key: titanium
-  displayName: materials-titanium-display-name
+  displayName: materials-titanium
   category: metal
   color: "#D1E6E3"
   stackEntity: EmberSheetTitanium1
@@ -133,7 +133,7 @@
 - type: emberMaterial
   id: OsmiumCarbidePlasteel
   key: osmium-carbide plasteel
-  displayName: materials-osmiumcarbideplasteel-display-name
+  displayName: materials-osmiumcarbideplasteel
   category: metal
   color: "#9BC6F2"
   stackEntity: EmberSheetOCP1
@@ -163,7 +163,7 @@
 - type: emberMaterial
   id: Osmium
   key: osmium
-  displayName: materials-osmium-display-name
+  displayName: materials-osmium
   category: metal
   color: "#9999FF"
   stackEntity: EmberIngotOsmium1
@@ -185,7 +185,7 @@
 - type: emberMaterial
   id: Gold
   key: gold
-  displayName: materials-gold-display-name
+  displayName: materials-gold
   category: metal
   color: "#FFCC33"
   stackEntity: IngotGold1
@@ -212,7 +212,7 @@
 - type: emberMaterial
   id: Silver
   key: silver
-  displayName: materials-silver-display-name
+  displayName: materials-silver
   category: metal
   color: "#D1E6E3"
   stackEntity: IngotSilver1
@@ -239,7 +239,7 @@
 - type: emberMaterial
   id: Electrum
   key: electrum
-  displayName: materials-electrum-display-name
+  displayName: materials-electrum
   category: metal
   color: "#E7C697"
   stackEntity: EmberIngotElectrum1
@@ -265,7 +265,7 @@
 - type: emberMaterial
   id: Copper
   key: copper
-  displayName: materials-copper-display-name
+  displayName: materials-copper
   category: metal
   color: "#B87333"
   stackEntity: EmberIngotCopper1
@@ -292,7 +292,7 @@
 - type: emberMaterial
   id: Bronze
   key: bronze
-  displayName: materials-bronze-display-name
+  displayName: materials-bronze
   category: metal
   color: "#EDD12F"
   stackEntity: EmberIngotBronze1
@@ -304,7 +304,7 @@
 - type: emberMaterial
   id: Platinum
   key: platinum
-  displayName: materials-platinum-display-name
+  displayName: materials-platinum
   category: metal
   color: "#DEDDFF"
   stackEntity: EmberIngotPlatinum1
@@ -332,7 +332,7 @@
 - type: emberMaterial
   id: Uranium
   key: uranium
-  displayName: materials-uranium-display-name
+  displayName: materials-uranium
   category: metal
   color: "#007A00"
   stackEntity: SheetUranium1
@@ -362,7 +362,7 @@
 - type: emberMaterial
   id: Deuterium
   key: deuterium
-  displayName: materials-deuterium-display-name
+  displayName: materials-deuterium
   category: fuel
   color: "#999999"
   stackEntity: EmberPuckDeuterium1
@@ -381,7 +381,7 @@
 - type: emberMaterial
   id: Tritium
   key: tritium
-  displayName: materials-tritium-display-name
+  displayName: materials-tritium
   category: fuel
   color: "#777777"
   stackEntity: EmberPuckTritium1
@@ -401,7 +401,7 @@
 - type: emberMaterial
   id: MetallicHydrogen
   key: hydrogen
-  displayName: materials-metallichydrogen-display-name
+  displayName: materials-metallichydrogen
   category: fuel
   color: "#E6C5DE"
   stackEntity: EmberSheetMHydrogen1
@@ -427,7 +427,7 @@
 - type: emberMaterial
   id: Phoron
   key: phoron
-  displayName: materials-phoron-display-name
+  displayName: materials-phoron
   category: mineral
   color: "#E37108"
   # NOTE: stackType remains "Plasma" — this is the SS14 internal material ID.
@@ -457,7 +457,7 @@
 - type: emberMaterial
   id: Supermatter
   key: supermatter
-  displayName: materials-supermatter-display-name
+  displayName: materials-supermatter
   category: mineral
   color: "#FFFF00"
   hiddenFromCodex: true
@@ -474,7 +474,7 @@
 - type: emberMaterial
   id: Glass
   key: glass
-  displayName: materials-glass-display-name
+  displayName: materials-glass
   category: glass
   color: "#AACCFF"
   opacity: 0.3
@@ -495,7 +495,7 @@
 - type: emberMaterial
   id: BorosilicateGlass
   key: borosilicate glass
-  displayName: materials-borosilicateglass-display-name
+  displayName: materials-borosilicateglass
   category: glass
   color: "#899EBD"
   stackEntity: EmberSheetBorosilicateGlass1
@@ -519,7 +519,7 @@
 - type: emberMaterial
   id: Diamond
   key: diamond
-  displayName: materials-diamond-display-name
+  displayName: materials-diamond
   category: stone
   color: "#D8D4EA"
   stackEntity: MaterialDiamond1
@@ -539,7 +539,7 @@
 - type: emberMaterial
   id: Crystal
   key: crystal
-  displayName: materials-crystal-display-name
+  displayName: materials-crystal
   category: stone
   color: "#D8D4EA"
   hiddenFromCodex: true
@@ -556,7 +556,7 @@
 - type: emberMaterial
   id: Sandstone
   key: sandstone
-  displayName: materials-sandstone-display-name
+  displayName: materials-sandstone
   category: stone
   color: "#D9C179"
   stackEntity: EmberBrickSandstone1
@@ -577,7 +577,7 @@
 - type: emberMaterial
   id: Marble
   key: marble
-  displayName: materials-marble-display-name
+  displayName: materials-marble
   category: stone
   color: "#AAAAAA"
   stackEntity: EmberBrickMarble1
@@ -598,7 +598,7 @@
 - type: emberMaterial
   id: Concrete
   key: concrete
-  displayName: materials-concrete-display-name
+  displayName: materials-concrete
   category: stone
   color: "#808080"
   stackEntity: EmberBrickConcrete1
@@ -616,7 +616,7 @@
 - type: emberMaterial
   id: Plastic
   key: plastic
-  displayName: materials-plastic-display-name
+  displayName: materials-plastic
   category: organic
   color: "#FFFFFF"
   stackEntity: SheetPlastic1
@@ -638,7 +638,7 @@
 - type: emberMaterial
   id: Cardboard
   key: cardboard
-  displayName: materials-cardboard-display-name
+  displayName: materials-cardboard
   category: organic
   color: "#AAAAAA"
   stackEntity: MaterialCardboard1
@@ -662,7 +662,7 @@
 - type: emberMaterial
   id: Cloth
   key: cloth
-  displayName: materials-cloth-display-name
+  displayName: materials-cloth
   category: organic
   color: "#FFFFFF"
   stackEntity: MaterialCloth1
@@ -682,7 +682,7 @@
 - type: emberMaterial
   id: Carpet
   key: carpet
-  displayName: materials-carpet-display-name
+  displayName: materials-carpet
   category: organic
   color: "#9D2300"
   padding: true
@@ -699,7 +699,7 @@
 - type: emberMaterial
   id: Wood
   key: wood
-  displayName: materials-wood-display-name
+  displayName: materials-wood
   category: wood
   color: "#D5A66E"
   stackEntity: MaterialWoodPlank1
@@ -724,7 +724,7 @@
 - type: emberMaterial
   id: Mahogany
   key: mahogany
-  displayName: materials-mahogany-display-name
+  displayName: materials-mahogany
   category: wood
   color: "#792F27"
   stackEntity: MaterialWoodPlank1
@@ -742,7 +742,7 @@
 - type: emberMaterial
   id: Maple
   key: maple
-  displayName: materials-maple-display-name
+  displayName: materials-maple
   category: wood
   color: "#D2BC9D"
   stackEntity: MaterialWoodPlank1
@@ -760,7 +760,7 @@
 - type: emberMaterial
   id: Ebony
   key: ebony
-  displayName: materials-ebony-display-name
+  displayName: materials-ebony
   category: wood
   color: "#332521"
   stackEntity: MaterialWoodPlank1
@@ -778,7 +778,7 @@
 - type: emberMaterial
   id: Walnut
   key: walnut
-  displayName: materials-walnut-display-name
+  displayName: materials-walnut
   category: wood
   color: "#543C30"
   stackEntity: MaterialWoodPlank1
@@ -796,7 +796,7 @@
 - type: emberMaterial
   id: Bamboo
   key: bamboo
-  displayName: materials-bamboo-display-name
+  displayName: materials-bamboo
   category: wood
   color: "#E6D2BA"
   stackEntity: MaterialWoodPlank1
@@ -814,7 +814,7 @@
 - type: emberMaterial
   id: Yew
   key: yew
-  displayName: materials-yew-display-name
+  displayName: materials-yew
   category: wood
   color: "#E3994E"
   stackEntity: MaterialWoodPlank1
@@ -832,7 +832,7 @@
 - type: emberMaterial
   id: VoxBioresin
   key: vox bioresin
-  displayName: materials-voxbioresin-display-name
+  displayName: materials-voxbioresin
   category: wood
   color: "#3A4E1B"
   stackEntity: MaterialWoodPlank1
@@ -850,7 +850,7 @@
 - type: emberMaterial
   id: Borax
   key: borax
-  displayName: materials-borax-display-name
+  displayName: materials-borax
   category: mineral
   color: "#9DD6E0"
   stackEntity: EmberBrickBorax1
@@ -861,7 +861,7 @@
 - type: emberMaterial
   id: Pitchblende
   key: pitchblende
-  displayName: materials-pitchblende-display-name
+  displayName: materials-pitchblende
   category: mineral
   color: "#917D1A"
   stackEntity: EmberBrickPitchblende1
@@ -873,7 +873,7 @@
 - type: emberMaterial
   id: Graphite
   key: graphite
-  displayName: materials-graphite-display-name
+  displayName: materials-graphite
   category: mineral
   color: "#444444"
   stackEntity: EmberSheetGraphite1
@@ -883,7 +883,7 @@
 - type: emberMaterial
   id: Quartz
   key: quartz
-  displayName: materials-quartz-display-name
+  displayName: materials-quartz
   category: mineral
   color: "#EFFFFE"
   stackEntity: EmberBrickQuartz1
@@ -902,7 +902,7 @@
 - type: emberMaterial
   id: Pyrite
   key: pyrite
-  displayName: materials-pyrite-display-name
+  displayName: materials-pyrite
   category: mineral
   color: "#CCC9A3"
   stackEntity: EmberBrickPyrite1
@@ -913,7 +913,7 @@
 - type: emberMaterial
   id: Spodumene
   key: spodumene
-  displayName: materials-spodumene-display-name
+  displayName: materials-spodumene
   category: mineral
   color: "#E5BECB"
   stackEntity: EmberBrickSpodumene1
@@ -924,7 +924,7 @@
 - type: emberMaterial
   id: Cinnabar
   key: cinnabar
-  displayName: materials-cinnabar-display-name
+  displayName: materials-cinnabar
   category: mineral
   color: "#E54E4E"
   stackEntity: EmberBrickCinnabar1
@@ -935,7 +935,7 @@
 - type: emberMaterial
   id: Phosphorite
   key: phosphorite
-  displayName: materials-phosphorite-display-name
+  displayName: materials-phosphorite
   category: mineral
   color: "#ACAD95"
   stackEntity: EmberBrickPhosphorite1
@@ -946,7 +946,7 @@
 - type: emberMaterial
   id: RockSalt
   key: rock salt
-  displayName: materials-rocksalt-display-name
+  displayName: materials-rocksalt
   category: mineral
   color: "#D1C0BC"
   stackEntity: EmberBrickRockSalt1
@@ -957,7 +957,7 @@
 - type: emberMaterial
   id: Potash
   key: potash
-  displayName: materials-potash-display-name
+  displayName: materials-potash
   category: mineral
   color: "#B77464"
   stackEntity: EmberBrickPotash1
@@ -968,7 +968,7 @@
 - type: emberMaterial
   id: Bauxite
   key: bauxite
-  displayName: materials-bauxite-display-name
+  displayName: materials-bauxite
   category: mineral
   color: "#D8AD97"
   stackEntity: EmberBrickBauxite1
@@ -980,7 +980,7 @@
 - type: emberMaterial
   id: Sand
   key: sand
-  displayName: materials-sand-display-name
+  displayName: materials-sand
   category: mineral
   color: "#E2DBB5"
   stackEntity: EmberDustSand1
@@ -990,7 +990,7 @@
 - type: emberMaterial
   id: Hematite
   key: hematite
-  displayName: materials-hematite-display-name
+  displayName: materials-hematite
   category: ore
   color: "#AA6666"
   oreName: materials-hematite-ore-name
@@ -1004,7 +1004,7 @@
 - type: emberMaterial
   id: Rutile
   key: rutile
-  displayName: materials-rutile-display-name
+  displayName: materials-rutile
   category: ore
   color: "#D8AD97"
   stackEntity: EmberBrickRutile1
@@ -1019,7 +1019,7 @@
 - type: emberMaterial
   id: Waste
   key: waste
-  displayName: materials-waste-display-name
+  displayName: materials-waste
   category: other
   color: "#2E3A07"
   hiddenFromCodex: true
@@ -1027,7 +1027,7 @@
 - type: emberMaterial
   id: CultStone
   key: cult
-  displayName: materials-cultstone-display-name
+  displayName: materials-cultstone
   category: special
   color: "#402821"
   wallIconBase: cult
@@ -1039,7 +1039,7 @@
 - type: emberMaterial
   id: ReinforcedCultStone
   key: cult2
-  displayName: materials-reinforcedcultstone-display-name
+  displayName: materials-reinforcedcultstone
   category: special
   color: "#402821"
   wallIconBase: cult
@@ -1048,7 +1048,7 @@
 - type: emberMaterial
   id: VoxAlloy
   key: voxalloy
-  displayName: materials-voxalloy-display-name
+  displayName: materials-voxalloy
   category: special
   color: "#6C7364"
   wallName: bulkhead
@@ -1065,7 +1065,7 @@
 - type: emberMaterial
   id: Elevatorium
   key: elevatorium
-  displayName: materials-elevatorium-display-name
+  displayName: materials-elevatorium
   category: special
   color: "#666666"
   wallName: bulkhead
@@ -1075,7 +1075,7 @@
 - type: emberMaterial
   id: AlienAlloy
   key: aliumium
-  displayName: materials-alienalloy-display-name
+  displayName: materials-alienalloy
   category: special
   color: "#6C7364"
   wallName: bulkhead
@@ -1090,7 +1090,7 @@
 - type: emberMaterial
   id: Skin
   key: skin
-  displayName: materials-skin-display-name
+  displayName: materials-skin
   category: organic
   color: "#9E8C72"
   sheetIconBase: skin
@@ -1101,7 +1101,7 @@
 - type: emberMaterial
   id: LizardSkin
   key: lizardskin
-  displayName: materials-lizardskin-display-name
+  displayName: materials-lizardskin
   category: organic
   color: "#626952"
   padding: true
@@ -1110,7 +1110,7 @@
 - type: emberMaterial
   id: Chitin
   key: chitin
-  displayName: materials-chitin-display-name
+  displayName: materials-chitin
   category: organic
   color: "#7A726D"
   padding: true
@@ -1119,7 +1119,7 @@
 - type: emberMaterial
   id: Fur
   key: brown fur
-  displayName: materials-fur-display-name
+  displayName: materials-fur
   category: organic
   color: "#7A726D"
   padding: true
@@ -1127,7 +1127,7 @@
 - type: emberMaterial
   id: GrayFur
   key: gray fur
-  displayName: materials-grayfur-display-name
+  displayName: materials-grayfur
   category: organic
   color: "#7A726D"
   padding: true
@@ -1135,7 +1135,7 @@
 - type: emberMaterial
   id: WhiteFur
   key: white fur
-  displayName: materials-whitefur-display-name
+  displayName: materials-whitefur
   category: organic
   color: "#FFFFFF"
   padding: true
@@ -1143,7 +1143,7 @@
 - type: emberMaterial
   id: OrangeFur
   key: orange fur
-  displayName: materials-orangefur-display-name
+  displayName: materials-orangefur
   category: organic
   color: "#FF9900"
   padding: true
@@ -1151,7 +1151,7 @@
 - type: emberMaterial
   id: BlackFur
   key: black fur
-  displayName: materials-blackfur-display-name
+  displayName: materials-blackfur
   category: organic
   color: "#333333"
   padding: true
@@ -1159,7 +1159,7 @@
 - type: emberMaterial
   id: HeavyFur
   key: heavy fur
-  displayName: materials-heavyfur-display-name
+  displayName: materials-heavyfur
   category: organic
   color: "#545C68"
   padding: true
@@ -1167,7 +1167,7 @@
 - type: emberMaterial
   id: GoatHide
   key: goathide
-  displayName: materials-goathide-display-name
+  displayName: materials-goathide
   category: organic
   color: "#C0C0C0"
   padding: true
@@ -1175,7 +1175,7 @@
 - type: emberMaterial
   id: CowHide
   key: cowhide
-  displayName: materials-cowhide-display-name
+  displayName: materials-cowhide
   category: organic
   color: "#666666"
   padding: true
@@ -1183,7 +1183,7 @@
 - type: emberMaterial
   id: SharkSkin
   key: sharkskin
-  displayName: materials-sharkskin-display-name
+  displayName: materials-sharkskin
   category: organic
   color: "#A2819E"
   padding: true
@@ -1191,7 +1191,7 @@
 - type: emberMaterial
   id: FishSkin
   key: fishskin
-  displayName: materials-fishskin-display-name
+  displayName: materials-fishskin
   category: organic
   color: "#1F6B4F"
   padding: true
@@ -1199,7 +1199,7 @@
 - type: emberMaterial
   id: PurpleFishSkin
   key: purple fishskin
-  displayName: materials-purplefishskin-display-name
+  displayName: materials-purplefishskin
   category: organic
   color: "#BDA2BA"
   padding: true
@@ -1207,7 +1207,7 @@
 - type: emberMaterial
   id: Bone
   key: bone
-  displayName: materials-bone-display-name
+  displayName: materials-bone
   category: organic
   color: "#AAAAAA"
   sheetIconBase: bone
@@ -1217,7 +1217,7 @@
 - type: emberMaterial
   id: FishBone
   key: fishbone
-  displayName: materials-fishbone-display-name
+  displayName: materials-fishbone
   category: organic
   color: "#AAAAAA"
   sheetIconBase: bone
@@ -1226,7 +1226,7 @@
 - type: emberMaterial
   id: Cartilage
   key: cartilage
-  displayName: materials-cartilage-display-name
+  displayName: materials-cartilage
   category: organic
   color: "#AAAAAA"
   sheetIconBase: bone
@@ -1234,7 +1234,7 @@
 - type: emberMaterial
   id: Leather
   key: leather
-  displayName: materials-leather-display-name
+  displayName: materials-leather
   category: organic
   color: "#7A726D"
   sheetIconBase: sheet-leather
@@ -1245,7 +1245,7 @@
 - type: emberMaterial
   id: ScaledHide
   key: scaled hide
-  displayName: materials-scaledhide-display-name
+  displayName: materials-scaledhide
   category: organic
   color: "#626952"
   sheetIconBase: sheet-leather
@@ -1255,7 +1255,7 @@
 - type: emberMaterial
   id: FurredHide
   key: furred hide
-  displayName: materials-furredhide-display-name
+  displayName: materials-furredhide
   category: organic
   color: "#7A726D"
   sheetIconBase: sheet-leather
@@ -1264,7 +1264,7 @@
 - type: emberMaterial
   id: TreatedChitin
   key: treated chitin
-  displayName: materials-treatedchitin-display-name
+  displayName: materials-treatedchitin
   category: organic
   color: "#7A726D"
   sheetIconBase: sheet-leather
@@ -1274,7 +1274,7 @@
 - type: emberMaterial
   id: Growth
   key: growth
-  displayName: materials-growth-display-name
+  displayName: materials-growth
   category: special
   color: "#FFFFFF"
   hiddenFromCodex: true
