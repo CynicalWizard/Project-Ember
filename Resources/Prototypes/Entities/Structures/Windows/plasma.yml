@@ -1,6 +1,5 @@
 - type: entity
   id: PhoronWindow
-  name: phoron window
   parent: WindowRCDResistant
   components:
   - type: Sprite
@@ -63,8 +62,9 @@
 - type: entity
   id: PlasmaWindow
   parent: PhoronWindow
-  name: directional phoron window
-  description: Don't smudge up the glass down there.
+
+- type: entity
+  id: PlasmaWindowDirectional
   placement:
     mode: SnapgridCenter
     snap:
@@ -118,4 +118,8 @@
     price: 50
   - type: RadiationBlocker
     resistance: 1
+
+- type: entity
+  id: PhoronWindowDirectional
+  parent: PlasmaWindowDirectional
 
