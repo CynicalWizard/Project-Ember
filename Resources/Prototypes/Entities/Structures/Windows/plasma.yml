@@ -61,14 +61,8 @@
     damageCoefficient: 0.5
 
 - type: entity
-  id: PhoronWindow
-  noLint: true
-
-- type: entity
   id: PlasmaWindow
-  parent:
-  - PhoronWindowDirectional
-  - WindowDirectionalRCDResistant
+  parent: PhoronWindow
   name: directional phoron window
   description: Don't smudge up the glass down there.
   placement:
