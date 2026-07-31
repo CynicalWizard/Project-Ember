@@ -14,7 +14,7 @@
     node: borosilicateWindow
 
 - type: entity
-  parent: PlasmaWindowDirectional
+  parent: PhoronWindowDirectional
   id: BorosilicateWindowDirectional
   name: directional borosilicate window
   components:

@@ -318,7 +318,7 @@
     entries:
     - prototype: SheetRPGlass0
     - prototype: PhoronWindow
-    - prototype: PlasmaWindowDirectional
+    - prototype: PhoronWindowDirectional
 
 - type: entity
   parent: SheetPGlass

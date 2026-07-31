@@ -890,7 +890,7 @@
 
 - type: construction
   name: directional phoron window
-  id: PlasmaWindowDirectional
+  id: PhoronWindowDirectional
   graph: WindowDirectional
   startNode: start
   targetNode: plasmaWindowDirectional
