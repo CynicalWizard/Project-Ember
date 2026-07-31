@@ -1,5 +1,5 @@
 - type: entity
-  parent: PlasmaWindow
+  parent: PhoronWindow
   id: BorosilicateWindow
   name: borosilicate window
   components:
@@ -25,17 +25,3 @@
     graph: WindowDirectional
     node: borosilicateWindowDirectional
 
-- type: entity
-  parent: PlasmaWindowDiagonal
-  id: BorosilicateWindowDiagonal
-  name: diagonal borosilicate window
-  components:
-  - type: EmberProceduralStructure
-    role: Window
-    material: EmberBorosilicateGlass
-    stateBase: window
-    alpha: 0.7058824
-    sprite: /Textures/Ember/Structures/Windows/window.rsi
-  - type: Construction
-    graph: WindowDiagonal
-    node: borosilicateWindowDiagonal
