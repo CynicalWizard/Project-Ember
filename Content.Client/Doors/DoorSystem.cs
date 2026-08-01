@@ -114,8 +114,10 @@ public sealed class DoorSystem : SharedDoorSystem
                     _animationSystem.Play((uid, animPlayer), (Animation)comp.ClosingAnimation, DoorComponent.AnimationKey);
                 break;
             case DoorState.Denying:
-                if (animPlayer != null)
-                    _animationSystem.Play((uid, animPlayer), (Animation)comp.DenyingAnimation, DoorComponent.AnimationKey);
+                // Only AirlockSystem populates DenyingAnimation, but doors without an airlock (firelocks, shutters)
+                // reach this state too, so it can legitimately be null.
+                if (animPlayer != null && comp.DenyingAnimation is Animation denyingAnimation)
+                    _animationSystem.Play((uid, animPlayer), denyingAnimation, DoorComponent.AnimationKey);
                 break;
             case DoorState.Welded:
                 break;

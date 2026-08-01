@@ -87,3 +87,16 @@ materials-scaledhide = чешуйчатая шкура
 materials-furredhide = меховая шкура
 materials-treatedchitin = обработанный хитин
 materials-growth = нарост
+
+# Названия руд, ключи берутся из oreName в Ember/Materials/materials.yml
+materials-gold-ore-name = самородное золото
+materials-silver-ore-name = самородное серебро
+materials-electrum-ore-name = электрум
+materials-copper-ore-name = тетраэдрит
+materials-platinum-ore-name = самородная платина
+materials-metallichydrogen-ore-name = сырой водород
+materials-phoron-ore-name = форон
+materials-hematite-ore-name = гематит
+materials-rutile-ore-name = рутил
+materials-rustedsteel = ржавая сталь
+materials-stone = камень

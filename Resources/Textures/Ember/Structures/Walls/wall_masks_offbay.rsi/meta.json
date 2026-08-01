@@ -301,6 +301,38 @@
       ]
     },
     {
+      "name": "stone_paint0",
+      "directions": 4
+    },
+    {
+      "name": "stone_paint1",
+      "directions": 4
+    },
+    {
+      "name": "stone_paint2",
+      "directions": 4
+    },
+    {
+      "name": "stone_paint3",
+      "directions": 4
+    },
+    {
+      "name": "stone_paint4",
+      "directions": 4
+    },
+    {
+      "name": "stone_paint5",
+      "directions": 4
+    },
+    {
+      "name": "stone_paint6",
+      "directions": 4
+    },
+    {
+      "name": "stone_paint7",
+      "directions": 4
+    },
+    {
       "name": "metal"
     },
     {

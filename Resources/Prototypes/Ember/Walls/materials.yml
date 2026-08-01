@@ -34,7 +34,7 @@
 
 - type: emberWallMaterial
   id: EmberWallOCP
-  physicalMaterial: OCP
+  physicalMaterial: OsmiumCarbidePlasteel
   stateBase: solid
   color: "#9BC6F2"
   reinforcementStateBase: reinf_over

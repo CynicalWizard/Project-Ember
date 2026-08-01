@@ -1,3 +1,4 @@
+using Content.Client.Ember.Doors;
 using Content.Shared.Doors.Components;
 using Content.Shared.Ember.Structures;
 using System.Numerics;
@@ -15,6 +16,7 @@ namespace Content.Client.Ember.Walls;
 public sealed class EmberProceduralWallSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly EmberProceduralFirelockSystem _firelocks = default!;
 
     private readonly Queue<EntityUid> _dirty = new();
     private readonly Queue<EntityUid> _anchorChanged = new();
@@ -210,6 +212,10 @@ public sealed class EmberProceduralWallSystem : EntitySystem
 
     private void Dirty8Way(MapGridComponent grid, Vector2i pos)
     {
+        // Walls, low walls, windows and doors all reach this sweep, and every one of them can flip which way a
+        // Bay hazard shutter faces.
+        _firelocks.DirtyFirelocksAround(grid, pos);
+
         DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(1, 0)));
         DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(-1, 0)));
         DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(0, 1)));

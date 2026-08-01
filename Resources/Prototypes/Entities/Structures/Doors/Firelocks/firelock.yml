@@ -35,23 +35,26 @@
       - !type:DoActsBehavior
         acts: ["Destruction"]
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/firelock.rsi
+    # EmberProceduralFirelock picks which of the four RSI directions to draw from the surrounding walls, like Bay
+    # does; snapCardinals keeps the sprite upright whatever rotation the mapper left on the entity.
+    sprite: Ember/Structures/Doors/Firelocks/firelock.rsi
     snapCardinals: true
     layers:
     - state: closed
       map: ["enum.DoorVisualLayers.Base"]
-    - state: closed_unlit
+    - state: palert
       shader: unshaded
       map: ["enum.DoorVisualLayers.BaseUnlit"]
       visible: false
     - state: welded
       map: ["enum.WeldableLayers.BaseWelded"]
-    - state: bolted_unlit
+    - state: blank
       shader: unshaded
       map: ["enum.DoorVisualLayers.BaseBolted"]
       visible: false
     - state: panel_open
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: EmberProceduralFirelock
   - type: AnimationPlayer
   - type: Fixtures
     fixtures:
@@ -149,8 +152,7 @@
   name: glass firelock
   components:
   - type: StationAiWhitelist
-  - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/firelock.rsi
+  # Bay's hazard shutter is never opaque, so the glass variant shares the same sheet.
   - type: Occluder
     enabled: false
   - type: Fixtures
@@ -175,9 +177,28 @@
   name: firelock
   components:
   - type: StationAiWhitelist
+  # Edge firelocks are a directional SS14 addition with no Bay counterpart, so they keep the vanilla sheet and
+  # the vanilla unlit handling.
+  - type: EmberProceduralFirelock
+    enabled: false
   - type: Sprite
     sprite: Structures/Doors/edge_door_hazard.rsi
     snapCardinals: false
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: closed_unlit
+      shader: unshaded
+      map: ["enum.DoorVisualLayers.BaseUnlit"]
+      visible: false
+    - state: welded
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: bolted_unlit
+      shader: unshaded
+      map: ["enum.DoorVisualLayers.BaseBolted"]
+      visible: false
+    - state: panel_open
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: Airtight
     airBlocked: false
     noAirWhenFullyAirBlocked: false
