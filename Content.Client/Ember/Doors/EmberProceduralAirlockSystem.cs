@@ -132,9 +132,6 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
         var stateName = EmberProceduralAirlockVisuals.SpriteStateFor(state);
         var animateState = EmberProceduralAirlockVisuals.IsTransitionState(state);
 
-        // Swapping a layer's sprite resets its rendering strategy, so the layer setup has to be reapplied here.
-        ApplyLayerRendering(sprite);
-
         SetSpriteState(sprite, DoorVisualLayers.Base, component.DoorSprite, stateName, animateState);
         SetSpriteState(sprite, DoorVisualLayers.BaseUnlit, component.DoorSprite, "blank");
         SetSpriteState(sprite, DoorVisualLayers.BaseBolted, component.DoorSprite, "blank");
@@ -238,9 +235,9 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
     }
 
     /// <summary>
-    /// Keeps every stacked layer drawn upright and unrotated. Which RSI direction each layer picks is left to
-    /// <see cref="EmberProceduralDoorFacingSystem"/>, which sets the sprite's direction override from the
-    /// surrounding walls.
+    /// Keeps every stacked layer drawn upright and unrotated. Nothing later resets these, so this only needs to
+    /// run once the layers exist. Which RSI direction each layer picks is left to
+    /// <see cref="EmberProceduralDoorFacingSystem"/>.
     /// </summary>
     private static void ApplyLayerRendering(SpriteComponent sprite)
     {

@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Shared.Doors.Components;
 using Content.Shared.Ember.Doors;
 using Content.Shared.Ember.Structures;
@@ -63,7 +64,7 @@ public sealed class EmberProceduralDoorFacingSystem : EntitySystem
             !xform.Anchored ||
             !TryComp<MapGridComponent>(xform.GridUid, out var grid))
         {
-            sprite.EnableDirectionOverride = false;
+            ApplyOffset(sprite, EmberDoorDirOffset.None);
             return;
         }
 
@@ -73,8 +74,29 @@ public sealed class EmberProceduralDoorFacingSystem : EntitySystem
         var horizontal = Blends(uid, grid, pos.Offset(Direction.East), targets)
                          || Blends(uid, grid, pos.Offset(Direction.West), targets);
 
-        sprite.EnableDirectionOverride = true;
-        sprite.DirectionOverride = EmberProceduralDoorFacing.FacingFor(vertical, horizontal);
+        // The neighbour scan is in grid space, so the offset is measured against the entity's grid-local
+        // rotation. The renderer then adds the grid and eye rotation on top, which is what keeps the door
+        // square to its wall while the player spins the camera.
+        var facing = EmberProceduralDoorFacing.FacingFor(vertical, horizontal);
+        var offset = EmberProceduralDoorFacing.OffsetFor(xform.LocalRotation.GetCardinalDir(), facing);
+
+        ApplyOffset(sprite, offset);
+    }
+
+    private static void ApplyOffset(SpriteComponent sprite, EmberDoorDirOffset offset)
+    {
+        var value = offset switch
+        {
+            EmberDoorDirOffset.Clockwise => SpriteComponent.DirectionOffset.Clockwise,
+            EmberDoorDirOffset.CounterClockwise => SpriteComponent.DirectionOffset.CounterClockwise,
+            EmberDoorDirOffset.Flip => SpriteComponent.DirectionOffset.Flip,
+            _ => SpriteComponent.DirectionOffset.None,
+        };
+
+        for (var i = 0; i < sprite.AllLayers.Count(); i++)
+        {
+            sprite.LayerSetDirOffset(i, value);
+        }
     }
 
     /// <summary>

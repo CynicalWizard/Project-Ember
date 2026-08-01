@@ -23,6 +23,17 @@ public enum EmberDoorBlendTargets : byte
     Firelock = WallFrames | Windows | Firelocks,
 }
 
+/// <summary>
+/// Quarter turns to add to a sprite's direction, mirroring the client's <c>DirectionOffset</c>.
+/// </summary>
+public enum EmberDoorDirOffset : byte
+{
+    None = 0,
+    Clockwise = 1,
+    Flip = 2,
+    CounterClockwise = 3,
+}
+
 public static class EmberProceduralDoorFacing
 {
     /// <summary>
@@ -34,5 +45,32 @@ public static class EmberProceduralDoorFacing
     public static Direction FacingFor(bool vertical, bool horizontal)
     {
         return vertical && !horizontal ? Direction.East : Direction.South;
+    }
+
+    /// <summary>
+    /// The offset that turns a door drawn at <paramref name="from"/> into one drawn at <paramref name="to"/>.
+    /// </summary>
+    /// <remarks>
+    /// This is deliberately an offset rather than an outright direction override. The renderer picks a layer's
+    /// direction from the entity's rotation plus the eye rotation and only then applies the offset, so an offset
+    /// keeps working when the player spins the camera, where an override would pin the door to one frame and
+    /// leave it skewed against the wall it sits in.
+    /// </remarks>
+    public static EmberDoorDirOffset OffsetFor(Direction from, Direction to)
+    {
+        var steps = (to.GetClockwiseIndex() - from.GetClockwiseIndex() + 4) % 4;
+        return (EmberDoorDirOffset) steps;
+    }
+
+    private static int GetClockwiseIndex(this Direction direction)
+    {
+        return direction switch
+        {
+            Direction.North => 0,
+            Direction.East => 1,
+            Direction.South => 2,
+            Direction.West => 3,
+            _ => 2,
+        };
     }
 }
