@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Content.Shared.Ember.Materials;
+using Content.Shared.Materials;
+using Content.Shared.Stacks;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Localization;
 using Robust.Shared.Prototypes;
@@ -91,6 +93,50 @@ public sealed class EmberMaterialNamingTest
 
         Assert.That(offenders, Is.Empty,
             "These Ember material entities fall back to a generic name:\n  " + string.Join("\n  ", offenders));
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    /// An ore with no PhysicalComposition is inert to the reclaimer and to material storage. Half the ported set
+    /// shipped that way because the material prototypes they needed did not exist yet.
+    /// </summary>
+    [Test]
+    public async Task EveryEmberOreReclaimsIntoAnExistingMaterial()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var protoManager = pair.Server.ResolveDependency<IPrototypeManager>();
+        var componentFactory = pair.Server.ResolveDependency<IComponentFactory>();
+        var oreComponent = componentFactory.GetComponentName<EmberOreComponent>();
+
+        var problems = new List<string>();
+
+        foreach (var proto in protoManager.EnumeratePrototypes<EntityPrototype>())
+        {
+            if (proto.Abstract || !proto.ID.StartsWith("Ember") || !proto.Components.ContainsKey(oreComponent))
+                continue;
+
+            // Slag is worthless by design: /material/waste has stack_type = null in Bay, so there is nothing to
+            // reclaim it into.
+            if (proto.ID.Contains("Waste"))
+                continue;
+
+            if (!proto.Components.TryGetComponent("PhysicalComposition", out var raw) ||
+                raw is not PhysicalCompositionComponent composition ||
+                composition.MaterialComposition.Count == 0)
+            {
+                problems.Add($"{proto.ID} has no PhysicalComposition");
+                continue;
+            }
+
+            foreach (var material in composition.MaterialComposition.Keys)
+            {
+                if (!protoManager.HasIndex<MaterialPrototype>(material))
+                    problems.Add($"{proto.ID} reclaims into '{material}', which is not a material prototype");
+            }
+        }
+
+        Assert.That(problems, Is.Empty, string.Join("; ", problems));
 
         await pair.CleanReturnAsync();
     }

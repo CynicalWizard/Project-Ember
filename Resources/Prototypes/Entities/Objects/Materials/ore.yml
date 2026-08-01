@@ -568,6 +568,10 @@
     material: Platinum
   - type: Stack
     stackType: PlatinumOre
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Platinum: 100
 
 - type: entity
   parent: EmberPlatinumOre
@@ -587,6 +591,10 @@
     material: MetallicHydrogen
   - type: Stack
     stackType: HydrogenOre
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      MetallicHydrogen: 100
 
 - type: entity
   parent: EmberHydrogenOre
@@ -652,6 +660,10 @@
     material: Copper
   - type: Stack
     stackType: EmberCopperOre
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      EmberCopper: 100
 
 - type: entity
   parent: EmberCopperOre
@@ -671,6 +683,10 @@
     material: Electrum
   - type: Stack
     stackType: ElectrumOre
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Electrum: 100
 
 - type: entity
   parent: EmberElectrumOre
@@ -690,6 +706,10 @@
     material: Borax
   - type: Stack
     stackType: BoraxOre
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Borax: 100
 
 - type: entity
   parent: EmberBoraxOre
@@ -709,6 +729,10 @@
     material: Pyrite
   - type: Stack
     stackType: PyriteOre
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Pyrite: 100
 
 - type: entity
   parent: EmberPyriteOre
@@ -728,6 +752,10 @@
     material: Spodumene
   - type: Stack
     stackType: SpodumeneOre
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Spodumene: 100
 
 - type: entity
   parent: EmberSpodumeneOre
@@ -747,6 +775,10 @@
     material: Cinnabar
   - type: Stack
     stackType: CinnabarOre
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Cinnabar: 100
 
 - type: entity
   parent: EmberCinnabarOre
@@ -766,6 +798,10 @@
     material: Phosphorite
   - type: Stack
     stackType: PhosphoriteOre
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Phosphorite: 100
 
 - type: entity
   parent: EmberPhosphoriteOre
@@ -785,6 +821,10 @@
     material: Potash
   - type: Stack
     stackType: PotashOre
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Potash: 100
 
 - type: entity
   parent: EmberPotashOre

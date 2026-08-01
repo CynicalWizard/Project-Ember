@@ -53,3 +53,78 @@
   name: materials-stone
   icon: { sprite: Ember/Objects/Materials/materials.rsi, state: brick }
   price: 0.1
+
+# Minerals the ore line produces that had no material prototype, so nothing could reclaim or store them.
+
+- type: material
+  id: Platinum
+  stackEntity: EmberIngotPlatinum1
+  name: materials-platinum
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: ingot }
+  price: 0.8
+
+- type: material
+  id: Electrum
+  stackEntity: EmberIngotElectrum1
+  name: materials-electrum
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: ingot }
+  price: 0.4
+
+- type: material
+  id: MetallicHydrogen
+  stackEntity: EmberSheetMHydrogen1
+  name: materials-metallichydrogen
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: sheet-mythril }
+  price: 1.0
+
+- type: material
+  id: Borax
+  stackEntity: EmberBrickBorax1
+  name: materials-borax
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: brick }
+  price: 0.2
+
+- type: material
+  id: Pyrite
+  stackEntity: EmberBrickPyrite1
+  name: materials-pyrite
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: brick }
+  price: 0.2
+
+- type: material
+  id: Spodumene
+  stackEntity: EmberBrickSpodumene1
+  name: materials-spodumene
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: brick }
+  price: 0.2
+
+- type: material
+  id: Cinnabar
+  stackEntity: EmberBrickCinnabar1
+  name: materials-cinnabar
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: brick }
+  price: 0.2
+
+- type: material
+  id: Phosphorite
+  stackEntity: EmberBrickPhosphorite1
+  name: materials-phosphorite
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: brick }
+  price: 0.2
+
+- type: material
+  id: Potash
+  stackEntity: EmberBrickPotash1
+  name: materials-potash
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: brick }
+  price: 0.2
+
+# EMBER-TODO: only called EmberCopper because _Nuclear14 owns both the Copper and RawCopper material ids and
+# points them at its own ingots. Rename this to Copper once that module is dropped, along with the
+# materialComposition on EmberCopperOre.
+- type: material
+  id: EmberCopper
+  stackEntity: EmberIngotCopper1
+  name: materials-copper
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: ingot }
+  price: 0.2
