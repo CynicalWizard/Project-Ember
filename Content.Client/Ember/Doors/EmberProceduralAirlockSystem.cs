@@ -34,6 +34,7 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
 
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly EmberProceduralDoorFacingSystem _facing = default!;
 
     public override void Initialize()
     {
@@ -45,7 +46,7 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
         SubscribeLocalEvent<EmberProceduralAirlockComponent, AppearanceChangeEvent>(
             OnAppearanceChange,
             after: [typeof(DoorSystem), typeof(AirlockSystem), typeof(WiresVisualizerSystem)]);
-        SubscribeLocalEvent<EmberProceduralAirlockComponent, MoveEvent>(OnMove);
+        SubscribeLocalEvent<EmberProceduralAirlockComponent, AnchorStateChangedEvent>(OnAnchorChanged);
         SubscribeLocalEvent<EmberProceduralAirlockComponent, AfterAutoHandleStateEvent>(OnAfterAutoHandleState);
     }
 
@@ -74,7 +75,8 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
         SetupLayer(sprite, EmberAirlockLayer.BoltLights, component.BoltLightsSprite, "closed");
         SetupLayer(sprite, EmberAirlockLayer.Emag, component.EmagSprite, "deny");
 
-        ApplyDirectionalView(uid, sprite);
+        ApplyLayerRendering(sprite);
+        _facing.UpdateFacing(uid);
         UpdateVisuals(uid, component, sprite);
     }
 
@@ -89,15 +91,10 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
         UpdateVisuals(uid, component, args.Sprite, args.Component);
     }
 
-    private void OnMove(EntityUid uid, EmberProceduralAirlockComponent component, ref MoveEvent args)
+    private void OnAnchorChanged(EntityUid uid, EmberProceduralAirlockComponent component, ref AnchorStateChangedEvent args)
     {
-        if (!component.Enabled)
-            return;
-
-        if (!TryComp<SpriteComponent>(uid, out var sprite))
-            return;
-
-        ApplyDirectionalView(uid, sprite);
+        if (component.Enabled)
+            _facing.DirtyDoor(uid);
     }
 
     private void OnAfterAutoHandleState(EntityUid uid, EmberProceduralAirlockComponent component, ref AfterAutoHandleStateEvent args)
@@ -135,7 +132,8 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
         var stateName = EmberProceduralAirlockVisuals.SpriteStateFor(state);
         var animateState = EmberProceduralAirlockVisuals.IsTransitionState(state);
 
-        ApplyDirectionalView(uid, sprite);
+        // Swapping a layer's sprite resets its rendering strategy, so the layer setup has to be reapplied here.
+        ApplyLayerRendering(sprite);
 
         SetSpriteState(sprite, DoorVisualLayers.Base, component.DoorSprite, stateName, animateState);
         SetSpriteState(sprite, DoorVisualLayers.BaseUnlit, component.DoorSprite, "blank");
@@ -239,9 +237,13 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
         sprite.LayerSetAutoAnimated(layer, autoAnimated);
     }
 
-    private void ApplyDirectionalView(EntityUid uid, SpriteComponent sprite)
+    /// <summary>
+    /// Keeps every stacked layer drawn upright and unrotated. Which RSI direction each layer picks is left to
+    /// <see cref="EmberProceduralDoorFacingSystem"/>, which sets the sprite's direction override from the
+    /// surrounding walls.
+    /// </summary>
+    private static void ApplyLayerRendering(SpriteComponent sprite)
     {
-        sprite.EnableDirectionOverride = false;
         sprite.NoRotation = true;
         sprite.GranularLayersRendering = true;
 

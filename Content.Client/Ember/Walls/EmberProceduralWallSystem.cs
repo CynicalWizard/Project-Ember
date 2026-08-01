@@ -1,6 +1,8 @@
 using Content.Client.Ember.Doors;
 using Content.Shared.Doors.Components;
+using Content.Shared.Ember.Materials;
 using Content.Shared.Ember.Structures;
+using Content.Shared.Tag;
 using System.Numerics;
 using System.Linq;
 using Content.Shared.Ember.Walls;
@@ -15,8 +17,14 @@ namespace Content.Client.Ember.Walls;
 
 public sealed class EmberProceduralWallSystem : EntitySystem
 {
+    /// <summary>
+    /// Bay's <c>wall_noblend_objects</c>. Windoors sit on a tile like a full window but must not be smoothed into.
+    /// </summary>
+    private static readonly ProtoId<TagPrototype> NoBlendTag = "EmberWallNoBlend";
+
     [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly EmberProceduralFirelockSystem _firelocks = default!;
+    [Dependency] private readonly EmberProceduralDoorFacingSystem _doorFacing = default!;
+    [Dependency] private readonly TagSystem _tag = default!;
 
     private readonly Queue<EntityUid> _dirty = new();
     private readonly Queue<EntityUid> _anchorChanged = new();
@@ -104,7 +112,7 @@ public sealed class EmberProceduralWallSystem : EntitySystem
             !_prototype.TryIndex(component.Material, out EmberWallMaterialPrototype? material))
             return;
 
-        var visuals = EmberProceduralWallVisuals.Resolve(component, material);
+        var visuals = EmberProceduralWallVisuals.Resolve(component, material, ResolvePhysical(material));
 
         // Hide default base layers if they exist (usually layer 0 defined in YAML)
         for (var i = 0; i < sprite.AllLayers.Count(); i++)
@@ -139,7 +147,7 @@ public sealed class EmberProceduralWallSystem : EntitySystem
             return;
 
         wall.UpdateGeneration = _generation;
-        var visuals = EmberProceduralWallVisuals.Resolve(wall, material);
+        var visuals = EmberProceduralWallVisuals.Resolve(wall, material, ResolvePhysical(material));
 
         if (!xformQuery.TryGetComponent(uid, out var xform))
             return;
@@ -148,9 +156,12 @@ public sealed class EmberProceduralWallSystem : EntitySystem
         if (xform.Anchored && !TryComp(xform.GridUid, out grid))
             return;
 
-        var (cornerNE, cornerNW, cornerSW, cornerSE) = grid == null
-            ? (CornerFill.None, CornerFill.None, CornerFill.None, CornerFill.None)
-            : CalculateCornerFill(grid, visuals, xform, wallQuery, structureQuery, doorQuery);
+        var connections = grid == null
+            ? default
+            : CalculateCornerFill(uid, grid, visuals, xform, wallQuery, structureQuery, doorQuery);
+
+        var (cornerNE, cornerNW, cornerSW, cornerSE) = connections.Wall;
+        var (otherNE, otherNW, otherSW, otherSE) = connections.Other;
 
         SetCorner(sprite, EmberWallLayer.BaseNE, WallLayerKind.Base, visuals, cornerNE);
         SetCorner(sprite, EmberWallLayer.BaseSE, WallLayerKind.Base, visuals, cornerSE);
@@ -171,6 +182,12 @@ public sealed class EmberProceduralWallSystem : EntitySystem
         SetCorner(sprite, EmberWallLayer.ReinforcementSE, WallLayerKind.Reinforcement, visuals, cornerSE);
         SetCorner(sprite, EmberWallLayer.ReinforcementSW, WallLayerKind.Reinforcement, visuals, cornerSW);
         SetCorner(sprite, EmberWallLayer.ReinforcementNW, WallLayerKind.Reinforcement, visuals, cornerNW);
+
+        // The seam layer runs off its own connection set, so it gets the "other" corners rather than the wall ones.
+        SetCorner(sprite, EmberWallLayer.EdgeNE, WallLayerKind.Edge, visuals, otherNE);
+        SetCorner(sprite, EmberWallLayer.EdgeSE, WallLayerKind.Edge, visuals, otherSE);
+        SetCorner(sprite, EmberWallLayer.EdgeSW, WallLayerKind.Edge, visuals, otherSW);
+        SetCorner(sprite, EmberWallLayer.EdgeNW, WallLayerKind.Edge, visuals, otherNW);
 
         ApplyColors(sprite, visuals);
     }
@@ -213,8 +230,8 @@ public sealed class EmberProceduralWallSystem : EntitySystem
     private void Dirty8Way(MapGridComponent grid, Vector2i pos)
     {
         // Walls, low walls, windows and doors all reach this sweep, and every one of them can flip which way a
-        // Bay hazard shutter faces.
-        _firelocks.DirtyFirelocksAround(grid, pos);
+        // Bay airlock or hazard shutter faces.
+        _doorFacing.DirtyDoorsAround(grid, pos);
 
         DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(1, 0)));
         DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(-1, 0)));
@@ -255,7 +272,13 @@ public sealed class EmberProceduralWallSystem : EntitySystem
         Dirty8Way(grid, pos);
     }
 
-    private (CornerFill ne, CornerFill nw, CornerFill sw, CornerFill se) CalculateCornerFill(
+    /// <summary>
+    /// Bay's <c>update_connections</c> builds two connection sets: everything the wall joins to, and the subset
+    /// of those joins that get a visible seam. The base, paint, stripe and reinforcement layers use the first;
+    /// the <c>_other</c> seam layer uses the second.
+    /// </summary>
+    private WallConnections CalculateCornerFill(
+        EntityUid uid,
         MapGridComponent grid,
         EmberProceduralWallLayerVisuals visuals,
         TransformComponent xform,
@@ -264,87 +287,175 @@ public sealed class EmberProceduralWallSystem : EntitySystem
         EntityQuery<DoorComponent> doorQuery)
     {
         var pos = grid.TileIndicesFor(xform.Coordinates);
-        var n = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.North)), wallQuery, structureQuery, doorQuery);
-        var ne = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.NorthEast)), wallQuery, structureQuery, doorQuery);
-        var e = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.East)), wallQuery, structureQuery, doorQuery);
-        var se = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.SouthEast)), wallQuery, structureQuery, doorQuery);
-        var s = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.South)), wallQuery, structureQuery, doorQuery);
-        var sw = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.SouthWest)), wallQuery, structureQuery, doorQuery);
-        var w = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.West)), wallQuery, structureQuery, doorQuery);
-        var nw = MatchingEntity(visuals, grid.GetAnchoredEntitiesEnumerator(pos.Offset(Direction.NorthWest)), wallQuery, structureQuery, doorQuery);
 
+        EmberWallJoin Join(Direction dir) => JoinAt(
+            uid,
+            visuals,
+            grid.GetAnchoredEntitiesEnumerator(pos.Offset(dir)),
+            wallQuery,
+            structureQuery,
+            doorQuery);
+
+        var n = Join(Direction.North);
+        var ne = Join(Direction.NorthEast);
+        var e = Join(Direction.East);
+        var se = Join(Direction.SouthEast);
+        var s = Join(Direction.South);
+        var sw = Join(Direction.SouthWest);
+        var w = Join(Direction.West);
+        var nw = Join(Direction.NorthWest);
+
+        var wall = BuildCorners(n, ne, e, se, s, sw, w, nw, join => join != EmberWallJoin.None);
+        var other = BuildCorners(n, ne, e, se, s, sw, w, nw, join => join == EmberWallJoin.Edge);
+
+        var dir = xform.LocalRotation.GetCardinalDir();
+        return new WallConnections(Rotate(wall, dir), Rotate(other, dir));
+    }
+
+    private static CornerSet BuildCorners(
+        EmberWallJoin n,
+        EmberWallJoin ne,
+        EmberWallJoin e,
+        EmberWallJoin se,
+        EmberWallJoin s,
+        EmberWallJoin sw,
+        EmberWallJoin w,
+        EmberWallJoin nw,
+        Func<EmberWallJoin, bool> counts)
+    {
         var cornerNE = CornerFill.None;
         var cornerSE = CornerFill.None;
         var cornerSW = CornerFill.None;
         var cornerNW = CornerFill.None;
 
-        if (n)
+        if (counts(n))
         {
             cornerNE |= CornerFill.CounterClockwise;
             cornerNW |= CornerFill.Clockwise;
         }
 
-        if (ne)
+        if (counts(ne))
             cornerNE |= CornerFill.Diagonal;
 
-        if (e)
+        if (counts(e))
         {
             cornerNE |= CornerFill.Clockwise;
             cornerSE |= CornerFill.CounterClockwise;
         }
 
-        if (se)
+        if (counts(se))
             cornerSE |= CornerFill.Diagonal;
 
-        if (s)
+        if (counts(s))
         {
             cornerSE |= CornerFill.Clockwise;
             cornerSW |= CornerFill.CounterClockwise;
         }
 
-        if (sw)
+        if (counts(sw))
             cornerSW |= CornerFill.Diagonal;
 
-        if (w)
+        if (counts(w))
         {
             cornerSW |= CornerFill.Clockwise;
             cornerNW |= CornerFill.CounterClockwise;
         }
 
-        if (nw)
+        if (counts(nw))
             cornerNW |= CornerFill.Diagonal;
 
-        return xform.LocalRotation.GetCardinalDir() switch
+        return new CornerSet(cornerNE, cornerNW, cornerSW, cornerSE);
+    }
+
+    private static CornerSet Rotate(CornerSet corners, Direction dir)
+    {
+        var (ne, nw, sw, se) = corners;
+
+        return dir switch
         {
-            Direction.North => (cornerSW, cornerSE, cornerNE, cornerNW),
-            Direction.West => (cornerSE, cornerNE, cornerNW, cornerSW),
-            Direction.South => (cornerNE, cornerNW, cornerSW, cornerSE),
-            _ => (cornerNW, cornerSW, cornerSE, cornerNE),
+            Direction.North => new CornerSet(sw, se, ne, nw),
+            Direction.West => new CornerSet(se, ne, nw, sw),
+            Direction.South => new CornerSet(ne, nw, sw, se),
+            _ => new CornerSet(nw, sw, se, ne),
         };
     }
 
-    private bool MatchingEntity(
-        EmberProceduralWallLayerVisuals visuals, 
+    /// <summary>
+    /// Returns the strongest join offered by anything anchored on the neighbouring tile.
+    /// </summary>
+    private EmberWallJoin JoinAt(
+        EntityUid uid,
+        EmberProceduralWallLayerVisuals visuals,
         AnchoredEntitiesEnumerator candidates,
         EntityQuery<EmberProceduralWallComponent> wallQuery,
         EntityQuery<EmberProceduralStructureComponent> structureQuery,
         EntityQuery<DoorComponent> doorQuery)
     {
+        var best = EmberWallJoin.None;
+
         while (candidates.MoveNext(out var entity))
         {
-            if (structureQuery.HasComponent(entity) || doorQuery.HasComponent(entity))
-                return true;
-
-            if (!wallQuery.TryGetComponent(entity, out var other) ||
-                !_prototype.TryIndex(other.Material, out EmberWallMaterialPrototype? otherMaterial))
+            if (entity == uid)
                 continue;
 
-            var otherVisuals = EmberProceduralWallVisuals.Resolve(other, otherMaterial);
-            if (otherVisuals.SmoothKey == visuals.SmoothKey)
-                return true;
+            var join = JoinWith(entity.Value, visuals, wallQuery, structureQuery, doorQuery);
+
+            // Seamless wins over a seam, which wins over nothing: Bay stops at the first blend match per tile,
+            // but taking the strongest keeps the result independent of anchored-entity ordering.
+            if (join > best)
+                best = join;
+
+            if (best == EmberWallJoin.Seamless)
+                break;
         }
 
-        return false;
+        return best;
+    }
+
+    private EmberWallJoin JoinWith(
+        EntityUid entity,
+        EmberProceduralWallLayerVisuals visuals,
+        EntityQuery<EmberProceduralWallComponent> wallQuery,
+        EntityQuery<EmberProceduralStructureComponent> structureQuery,
+        EntityQuery<DoorComponent> doorQuery)
+    {
+        if (_tag.HasTag(entity, NoBlendTag))
+            return EmberWallJoin.None;
+
+        if (structureQuery.TryGetComponent(entity, out var structure))
+        {
+            return EmberProceduralWallBlending.ClassifyStructure(
+                structure.Role == EmberProceduralStructureRole.WallFrame
+                    ? EmberStructureBlend.Full
+                    : EmberStructureBlend.Edge);
+        }
+
+        if (wallQuery.TryGetComponent(entity, out var other) &&
+            _prototype.TryIndex(other.Material, out EmberWallMaterialPrototype? otherMaterial))
+        {
+            var otherVisuals = EmberProceduralWallVisuals.Resolve(
+                other,
+                otherMaterial,
+                ResolvePhysical(otherMaterial));
+
+            return EmberProceduralWallBlending.Classify(
+                visuals.SmoothKey,
+                visuals.BlendKeys,
+                visuals.PaintColor,
+                otherVisuals.SmoothKey,
+                otherVisuals.PaintColor);
+        }
+
+        // Doors are on Bay's blend list but not its full-blend list, so they always take a seam.
+        return doorQuery.HasComponent(entity) ? EmberWallJoin.Edge : EmberWallJoin.None;
+    }
+
+    private EmberMaterialPrototype? ResolvePhysical(EmberWallMaterialPrototype material)
+    {
+        if (material.PhysicalMaterial is not { } id)
+            return null;
+
+        return _prototype.TryIndex(id, out EmberMaterialPrototype? physical) ? physical : null;
     }
 
     private static void ApplyColors(SpriteComponent sprite, EmberProceduralWallLayerVisuals visuals)
@@ -353,6 +464,7 @@ public sealed class EmberProceduralWallSystem : EntitySystem
         SetLayerGroup(sprite, PaintLayers, visuals.PaintColor ?? Color.White, visuals.PaintColor != null);
         SetLayerGroup(sprite, StripeLayers, visuals.StripeColor ?? Color.White, visuals.StripeColor != null);
         SetLayerGroup(sprite, ReinforcementLayers, visuals.ReinforcementColor ?? Color.White, visuals.ReinforcementColor != null);
+        SetLayerGroup(sprite, EdgeLayers, visuals.EdgeColor, visuals.HasEdges);
     }
 
     private static void SetLayerGroup(SpriteComponent sprite, IEnumerable<EmberWallLayer> layers, Color color, bool visible)
@@ -387,6 +499,7 @@ public sealed class EmberProceduralWallSystem : EntitySystem
             WallLayerKind.Paint => EmberProceduralWallStates.Paint(visuals.StateBase, corner, visuals.PaintColor != null),
             WallLayerKind.Stripe => EmberProceduralWallStates.Stripe(corner, visuals.StripeColor != null),
             WallLayerKind.Reinforcement => EmberProceduralWallStates.Reinforcement(visuals.ReinforcementStateBase, corner),
+            WallLayerKind.Edge => EmberProceduralWallStates.Other(visuals.StateBase, corner, visuals.HasEdges),
             _ => throw new ArgumentOutOfRangeException(nameof(kind), kind, null),
         };
     }
@@ -423,6 +536,14 @@ public sealed class EmberProceduralWallSystem : EntitySystem
         EmberWallLayer.ReinforcementSW,
     ];
 
+    private static readonly EmberWallLayer[] EdgeLayers =
+    [
+        EmberWallLayer.EdgeSE,
+        EmberWallLayer.EdgeNE,
+        EmberWallLayer.EdgeNW,
+        EmberWallLayer.EdgeSW,
+    ];
+
     private static readonly WallLayerDefinition[] AllLayers =
     [
         new(EmberWallLayer.BaseSE, DirectionOffset.None, WallLayerKind.Base),
@@ -441,6 +562,10 @@ public sealed class EmberProceduralWallSystem : EntitySystem
         new(EmberWallLayer.ReinforcementNE, DirectionOffset.CounterClockwise, WallLayerKind.Reinforcement),
         new(EmberWallLayer.ReinforcementNW, DirectionOffset.Flip, WallLayerKind.Reinforcement),
         new(EmberWallLayer.ReinforcementSW, DirectionOffset.Clockwise, WallLayerKind.Reinforcement),
+        new(EmberWallLayer.EdgeSE, DirectionOffset.None, WallLayerKind.Edge),
+        new(EmberWallLayer.EdgeNE, DirectionOffset.CounterClockwise, WallLayerKind.Edge),
+        new(EmberWallLayer.EdgeNW, DirectionOffset.Flip, WallLayerKind.Edge),
+        new(EmberWallLayer.EdgeSW, DirectionOffset.Clockwise, WallLayerKind.Edge),
     ];
 
     private readonly record struct WallLayerDefinition(
@@ -466,6 +591,10 @@ public sealed class EmberProceduralWallSystem : EntitySystem
         ReinforcementNE,
         ReinforcementNW,
         ReinforcementSW,
+        EdgeSE,
+        EdgeNE,
+        EdgeNW,
+        EdgeSW,
     }
 
     private enum WallLayerKind : byte
@@ -474,7 +603,12 @@ public sealed class EmberProceduralWallSystem : EntitySystem
         Paint,
         Stripe,
         Reinforcement,
+        Edge,
     }
+
+    private readonly record struct CornerSet(CornerFill NE, CornerFill NW, CornerFill SW, CornerFill SE);
+
+    private readonly record struct WallConnections(CornerSet Wall, CornerSet Other);
 
     [Flags]
     private enum CornerFill : byte

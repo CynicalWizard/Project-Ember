@@ -24,4 +24,12 @@ public static class EmberProceduralWallStates
     {
         return stateBase != null ? $"{stateBase}{corner}" : Blank;
     }
+
+    /// <summary>
+    /// The seam Bay draws along joins with a different material, built from its own connection set.
+    /// </summary>
+    public static string Other(string stateBase, int corner, bool visible)
+    {
+        return visible ? $"{stateBase}_other{corner}" : Blank;
+    }
 }

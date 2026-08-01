@@ -93,7 +93,7 @@
 - type: emberWallMaterial
   id: EmberWallPhoron
   physicalMaterial: Phoron
-  stateBase: solid
+  stateBase: stone # /material/phoron is wall_icon_base "stone" in Bay, and its blend table assumes that
   color: "#E37108"
 
 - type: emberWallMaterial

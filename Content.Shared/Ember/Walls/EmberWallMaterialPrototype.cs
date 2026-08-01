@@ -26,4 +26,17 @@ public sealed partial class EmberWallMaterialPrototype : IPrototype
     
     [DataField]
     public ProtoId<EmberMaterialPrototype>? PhysicalMaterial;
+
+    /// <summary>
+    /// Overrides the physical material's <see cref="EmberMaterialPrototype.WallBlendIcons"/>. Only needed for
+    /// wall materials that have no physical material to inherit from.
+    /// </summary>
+    [DataField]
+    public Dictionary<string, bool>? BlendKeys;
+
+    /// <summary>
+    /// Overrides the physical material's <see cref="EmberMaterialPrototype.WallHasEdges"/>.
+    /// </summary>
+    [DataField]
+    public bool? HasEdges;
 }

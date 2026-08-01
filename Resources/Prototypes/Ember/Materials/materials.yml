@@ -9,10 +9,6 @@
   wallIconBase: solid
   wallIconReinforced: reinf_over
   wallPaintableStripe: true
-  wallHasEdges: true
-  wallBlendIcons:
-    wood: true
-    stone: true
   oreSmeltsTo: Steel
   alloyProduct: true
   alloyMaterials:
@@ -28,6 +24,11 @@
   weight: 20
   constructionDifficulty: 1
   explosionResistance: 5
+  wallHasEdges: true
+  wallBlendIcons:
+    wood: true
+    stone: true
+
 - type: emberMaterial
   id: Iron
   key: iron
@@ -62,10 +63,6 @@
   wallIconBase: solid
   wallIconReinforced: reinf_over
   wallPaintableStripe: true
-  wallHasEdges: true
-  wallBlendIcons:
-    wood: true
-    stone: true
   salePrice: 1
   hardness: 60
   meltingPoint: 1800
@@ -75,6 +72,11 @@
   weight: 18
   constructionDifficulty: 0
   explosionResistance: 5
+  wallHasEdges: true
+  wallBlendIcons:
+    wood: true
+    stone: true
+
 - type: emberMaterial
   id: Plasteel
   key: plasteel
@@ -87,10 +89,6 @@
   wallIconBase: solid
   wallIconReinforced: reinf_over
   wallPaintableStripe: true
-  wallHasEdges: true
-  wallBlendIcons:
-    wood: true
-    stone: true
   oreSmeltsTo: Plasteel
   alloyProduct: true
   alloyMaterials:
@@ -106,6 +104,11 @@
   weight: 23
   constructionDifficulty: 2
   explosionResistance: 7.5
+  wallHasEdges: true
+  wallBlendIcons:
+    wood: true
+    stone: true
+
 - type: emberMaterial
   id: Titanium
   key: titanium
@@ -116,9 +119,6 @@
   sheetIconBase: sheet-reinf
   wallName: bulkhead
   wallIconBase: metal
-  wallBlendIcons:
-    wood: true
-    stone: true
   doorIconBase: metal
   wallIconReinforced: reinf_metal
   value: 30
@@ -130,6 +130,10 @@
   weight: 18
   constructionDifficulty: 3
   explosionResistance: 7.5
+  wallBlendIcons:
+    wood: true
+    stone: true
+
 - type: emberMaterial
   id: OsmiumCarbidePlasteel
   key: osmium-carbide plasteel
@@ -143,10 +147,6 @@
   wallIconBase: solid
   wallIconReinforced: reinf_over
   wallPaintableStripe: true
-  wallHasEdges: true
-  wallBlendIcons:
-    wood: true
-    stone: true
   alloyProduct: true
   alloyMaterials:
     Plasteel: 7500
@@ -160,6 +160,11 @@
   weight: 27
   constructionDifficulty: 3
   explosionResistance: 7.5
+  wallHasEdges: true
+  wallBlendIcons:
+    wood: true
+    stone: true
+
 - type: emberMaterial
   id: Osmium
   key: osmium
@@ -341,10 +346,6 @@
   wallIconBase: stone
   wallIconReinforced: reinf_stone
   wallPaintableMain: false
-  wallBlendIcons:
-    solid: true
-    wood: true
-    metal: true
   doorIconBase: stone
   tableIconBase: stone
   tableIconReinforced: reinf_stone
@@ -359,6 +360,11 @@
   constructionDifficulty: 2
   explosionResistance: 5
   radioactivity: 12
+  wallBlendIcons:
+    solid: true
+    wood: true
+    metal: true
+
 - type: emberMaterial
   id: Deuterium
   key: deuterium
@@ -454,6 +460,11 @@
   weight: 20
   constructionDifficulty: 2
   explosionResistance: 5
+  wallBlendIcons:
+    solid: true
+    wood: true
+    metal: true
+
 - type: emberMaterial
   id: Supermatter
   key: supermatter
@@ -574,6 +585,11 @@
   constructionDifficulty: 1
   explosionResistance: 5
   conductive: false
+  wallBlendIcons:
+    solid: true
+    wood: true
+    metal: true
+
 - type: emberMaterial
   id: Marble
   key: marble
@@ -595,6 +611,11 @@
   constructionDifficulty: 2
   explosionResistance: 5
   conductive: false
+  wallBlendIcons:
+    solid: true
+    wood: true
+    metal: true
+
 - type: emberMaterial
   id: Concrete
   key: concrete
@@ -613,6 +634,11 @@
   constructionDifficulty: 1
   explosionResistance: 5
   conductive: false
+  wallBlendIcons:
+    solid: true
+    wood: true
+    metal: true
+
 - type: emberMaterial
   id: Plastic
   key: plastic
@@ -624,7 +650,6 @@
   wallIconBase: solid
   wallIconReinforced: reinf_over
   wallPaintableStripe: true
-  wallHasEdges: true
   doorIconBase: plastic
   hardness: 20
   meltingPoint: 644
@@ -635,6 +660,10 @@
   constructionDifficulty: 1
   explosionResistance: 5
   conductive: false
+  wallBlendIcons:
+    wood: true
+    stone: true
+
 - type: emberMaterial
   id: Cardboard
   key: cardboard
@@ -646,7 +675,6 @@
   wallIconBase: solid
   wallIconReinforced: reinf_over
   wallPaintableStripe: true
-  wallHasEdges: true
   doorIconBase: wood
   brittle: true
   hardness: 10
@@ -659,6 +687,11 @@
   explosionResistance: 5
   conductive: false
   ignitionPoint: 505
+  wallHasEdges: true
+  wallBlendIcons:
+    wood: true
+    stone: true
+
 - type: emberMaterial
   id: Cloth
   key: cloth
@@ -707,7 +740,6 @@
   wallIconBase: wood
   wallIconReinforced: reinf_metal
   wallPaintableStripe: true
-  wallHasEdges: true
   doorIconBase: wood
   tableIconBase: wood
   tableIconReinforced: reinf_metal
@@ -721,6 +753,12 @@
   explosionResistance: 2
   conductive: false
   ignitionPoint: 561
+  wallHasEdges: true
+  wallBlendIcons:
+    solid: true
+    stone: true
+    metal: true
+
 - type: emberMaterial
   id: Mahogany
   key: mahogany
@@ -739,6 +777,12 @@
   constructionDifficulty: 2
   explosionResistance: 2
   conductive: false
+  wallHasEdges: true
+  wallBlendIcons:
+    solid: true
+    stone: true
+    metal: true
+
 - type: emberMaterial
   id: Maple
   key: maple
@@ -757,6 +801,12 @@
   constructionDifficulty: 1
   explosionResistance: 2
   conductive: false
+  wallHasEdges: true
+  wallBlendIcons:
+    solid: true
+    stone: true
+    metal: true
+
 - type: emberMaterial
   id: Ebony
   key: ebony
@@ -775,6 +825,12 @@
   constructionDifficulty: 3
   explosionResistance: 2
   conductive: false
+  wallHasEdges: true
+  wallBlendIcons:
+    solid: true
+    stone: true
+    metal: true
+
 - type: emberMaterial
   id: Walnut
   key: walnut
@@ -793,6 +849,12 @@
   constructionDifficulty: 2
   explosionResistance: 2
   conductive: false
+  wallHasEdges: true
+  wallBlendIcons:
+    solid: true
+    stone: true
+    metal: true
+
 - type: emberMaterial
   id: Bamboo
   key: bamboo
@@ -811,6 +873,12 @@
   constructionDifficulty: 1
   explosionResistance: 2
   conductive: false
+  wallHasEdges: true
+  wallBlendIcons:
+    solid: true
+    stone: true
+    metal: true
+
 - type: emberMaterial
   id: Yew
   key: yew
@@ -829,6 +897,12 @@
   constructionDifficulty: 1
   explosionResistance: 2
   conductive: false
+  wallHasEdges: true
+  wallBlendIcons:
+    solid: true
+    stone: true
+    metal: true
+
 - type: emberMaterial
   id: VoxBioresin
   key: vox bioresin
@@ -857,6 +931,11 @@
   wallIconBase: stone
   doorIconBase: stone
   oreCompressesTo: Borax
+  wallBlendIcons:
+    solid: true
+    wood: true
+    metal: true
+    brick: true
 
 - type: emberMaterial
   id: Pitchblende
@@ -899,6 +978,11 @@
   constructionDifficulty: 0
   explosionResistance: 5
   opacity: 0.5
+  wallBlendIcons:
+    solid: true
+    wood: true
+    metal: true
+
 - type: emberMaterial
   id: Pyrite
   key: pyrite
@@ -909,6 +993,10 @@
   wallIconBase: stone
   doorIconBase: stone
   oreCompressesTo: Pyrite
+  wallBlendIcons:
+    solid: true
+    wood: true
+    metal: true
 
 - type: emberMaterial
   id: Spodumene
@@ -920,6 +1008,10 @@
   wallIconBase: stone
   doorIconBase: stone
   oreCompressesTo: Spodumene
+  wallBlendIcons:
+    solid: true
+    wood: true
+    metal: true
 
 - type: emberMaterial
   id: Cinnabar
@@ -931,6 +1023,10 @@
   wallIconBase: stone
   doorIconBase: stone
   oreCompressesTo: Cinnabar
+  wallBlendIcons:
+    solid: true
+    wood: true
+    metal: true
 
 - type: emberMaterial
   id: Phosphorite
@@ -942,6 +1038,10 @@
   wallIconBase: stone
   doorIconBase: stone
   oreCompressesTo: Phosphorite
+  wallBlendIcons:
+    solid: true
+    wood: true
+    metal: true
 
 - type: emberMaterial
   id: RockSalt
@@ -953,6 +1053,10 @@
   wallIconBase: stone
   doorIconBase: stone
   oreCompressesTo: RockSalt
+  wallBlendIcons:
+    solid: true
+    wood: true
+    metal: true
 
 - type: emberMaterial
   id: Potash
@@ -964,6 +1068,10 @@
   wallIconBase: stone
   doorIconBase: stone
   oreCompressesTo: Potash
+  wallBlendIcons:
+    solid: true
+    wood: true
+    metal: true
 
 - type: emberMaterial
   id: Bauxite
@@ -976,6 +1084,10 @@
   doorIconBase: stone
   oreSmeltsTo: Aluminium
   oreCompressesTo: Bauxite
+  wallBlendIcons:
+    solid: true
+    wood: true
+    metal: true
 
 - type: emberMaterial
   id: Sand
@@ -1035,6 +1147,11 @@
   doorIconBase: cult
   tableIconBase: cult
   constructionDifficulty: 1
+  wallBlendIcons:
+    solid: true
+    wood: true
+    metal: true
+    stone: true
 
 - type: emberMaterial
   id: ReinforcedCultStone
@@ -1044,6 +1161,11 @@
   color: "#402821"
   wallIconBase: cult
   wallIconReinforced: reinf_cult
+  wallBlendIcons:
+    solid: true
+    wood: true
+    metal: true
+    stone: true
 
 - type: emberMaterial
   id: VoxAlloy
@@ -1086,6 +1208,9 @@
   doorIconBase: metal
   constructionDifficulty: 3
   hiddenFromCodex: true
+  wallBlendIcons:
+    wood: true
+    stone: true
 
 - type: emberMaterial
   id: Skin
@@ -1278,6 +1403,11 @@
   category: special
   color: "#FFFFFF"
   hiddenFromCodex: true
+  wallBlendIcons:
+    solid: true
+    wood: true
+    metal: true
+    stone: true
 
 - type: emberMaterial
   id: RustedSteel
@@ -1286,6 +1416,10 @@
   category: metal
   color: "#8A5A34"
   stackEntity: SheetSteel1
+  wallHasEdges: true
+  wallBlendIcons:
+    wood: true
+    stone: true
 
 - type: emberMaterial
   id: Stone
@@ -1294,3 +1428,8 @@
   category: mineral
   color: "#808080"
   stackEntity: EmberBrickSandstone1
+  wallBlendIcons:
+    solid: true
+    wood: true
+    metal: true
+
