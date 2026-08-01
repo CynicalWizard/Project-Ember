@@ -200,9 +200,6 @@
   wallName: bulkhead
   oreName: materials-gold-ore-name
   oreSmeltsTo: Gold
-  oreResultAmount: 5
-  oreSpreadChance: 10
-  oreScanIcon: mineral_uncommon
   oreIconOverlay: nugget
   salePrice: 3
   value: 40
@@ -214,6 +211,10 @@
   weight: 25
   constructionDifficulty: 2
   explosionResistance: 5
+  oreSpreadChance: 10
+  oreResultAmount: 5
+  oreScanIcon: mineral_uncommon
+
 - type: emberMaterial
   id: Silver
   key: silver
@@ -227,9 +228,6 @@
   wallName: bulkhead
   oreName: materials-silver-ore-name
   oreSmeltsTo: Silver
-  oreResultAmount: 5
-  oreSpreadChance: 10
-  oreScanIcon: mineral_uncommon
   oreIconOverlay: shiny
   salePrice: 2
   value: 35
@@ -241,6 +239,10 @@
   weight: 22
   constructionDifficulty: 2
   explosionResistance: 5
+  oreSpreadChance: 10
+  oreResultAmount: 5
+  oreScanIcon: mineral_uncommon
+
 - type: emberMaterial
   id: Electrum
   key: electrum
@@ -253,9 +255,6 @@
   sheetPluralName: ingots
   oreName: materials-electrum-ore-name
   oreSmeltsTo: Electrum
-  oreResultAmount: 3
-  oreSpreadChance: 10
-  oreScanIcon: mineral_uncommon
   oreIconOverlay: shiny
   salePrice: 3
   value: 37
@@ -267,6 +266,10 @@
   weight: 22
   constructionDifficulty: 2
   explosionResistance: 5
+  oreSpreadChance: 10
+  oreResultAmount: 3
+  oreScanIcon: mineral_uncommon
+
 - type: emberMaterial
   id: Copper
   key: copper
@@ -281,9 +284,6 @@
   wallName: bulkhead
   oreName: materials-copper-ore-name
   oreSmeltsTo: Copper
-  oreResultAmount: 5
-  oreSpreadChance: 10
-  oreScanIcon: mineral_common
   oreIconOverlay: shiny
   salePrice: 1
   hardness: 30
@@ -294,6 +294,10 @@
   weight: 15
   constructionDifficulty: 2
   explosionResistance: 5
+  oreSpreadChance: 10
+  oreResultAmount: 5
+  oreScanIcon: mineral_common
+
 - type: emberMaterial
   id: Bronze
   key: bronze
@@ -320,9 +324,6 @@
   oreName: materials-platinum-ore-name
   oreSmeltsTo: Platinum
   oreCompressesTo: Osmium
-  oreResultAmount: 5
-  oreSpreadChance: 10
-  oreScanIcon: mineral_rare
   oreIconOverlay: shiny
   salePrice: 5
   value: 80
@@ -334,6 +335,10 @@
   weight: 27
   constructionDifficulty: 2
   explosionResistance: 5
+  oreSpreadChance: 10
+  oreResultAmount: 5
+  oreScanIcon: mineral_rare
+
 - type: emberMaterial
   id: Uranium
   key: uranium
@@ -418,7 +423,6 @@
   oreName: materials-metallichydrogen-ore-name
   oreSmeltsTo: Tritium
   oreCompressesTo: MetallicHydrogen
-  oreScanIcon: mineral_rare
   oreIconOverlay: gems
   salePrice: 5
   value: 100
@@ -430,6 +434,8 @@
   weight: 20
   constructionDifficulty: 2
   explosionResistance: 5
+  oreScanIcon: mineral_rare
+
 - type: emberMaterial
   id: Phoron
   key: phoron
@@ -449,7 +455,6 @@
   tableIconBase: stone
   oreName: materials-phoron-ore-name
   oreCompressesTo: Phoron
-  oreScanIcon: mineral_rare
   oreIconOverlay: gems
   value: 80
   hardness: 40
@@ -464,6 +469,9 @@
     solid: true
     wood: true
     metal: true
+  oreSpreadChance: 25
+  oreResultAmount: 5
+  oreScanIcon: mineral_uncommon
 
 - type: emberMaterial
   id: Supermatter
@@ -547,6 +555,12 @@
   conductive: false
   opacity: 0.4
   unmeltable: true
+  oreName: materials-diamond-ore-name
+  oreIconOverlay: gems
+  oreSpreadChance: 10
+  oreResultAmount: 5
+  oreScanIcon: mineral_rare
+
 - type: emberMaterial
   id: Crystal
   key: crystal
@@ -936,6 +950,9 @@
     wood: true
     metal: true
     brick: true
+  oreSpreadChance: 15
+  oreResultAmount: 3
+  oreScanIcon: material_common
 
 - type: emberMaterial
   id: Pitchblende
@@ -948,6 +965,11 @@
   doorIconBase: stone
   oreSmeltsTo: Uranium
   oreCompressesTo: Pitchblende
+  oreName: materials-pitchblende-ore-name
+  oreIconOverlay: nugget
+  oreSpreadChance: 10
+  oreResultAmount: 5
+  oreScanIcon: mineral_uncommon
 
 - type: emberMaterial
   id: Graphite
@@ -958,6 +980,11 @@
   stackEntity: EmberSheetGraphite1
   oreSmeltsTo: Plastic
   oreCompressesTo: Graphite
+  oreName: materials-graphite-ore-name
+  oreIconOverlay: lump
+  oreSpreadChance: 25
+  oreResultAmount: 5
+  oreScanIcon: mineral_common
 
 - type: emberMaterial
   id: Quartz
@@ -982,6 +1009,9 @@
     solid: true
     wood: true
     metal: true
+  oreSpreadChance: 10
+  oreResultAmount: 10
+  oreScanIcon: mineral_common
 
 - type: emberMaterial
   id: Pyrite
@@ -997,6 +1027,9 @@
     solid: true
     wood: true
     metal: true
+  oreSpreadChance: 10
+  oreResultAmount: 10
+  oreScanIcon: mineral_common
 
 - type: emberMaterial
   id: Spodumene
@@ -1012,6 +1045,9 @@
     solid: true
     wood: true
     metal: true
+  oreSpreadChance: 10
+  oreResultAmount: 10
+  oreScanIcon: mineral_common
 
 - type: emberMaterial
   id: Cinnabar
@@ -1027,6 +1063,9 @@
     solid: true
     wood: true
     metal: true
+  oreSpreadChance: 10
+  oreResultAmount: 10
+  oreScanIcon: mineral_common
 
 - type: emberMaterial
   id: Phosphorite
@@ -1042,6 +1081,9 @@
     solid: true
     wood: true
     metal: true
+  oreSpreadChance: 10
+  oreResultAmount: 10
+  oreScanIcon: mineral_common
 
 - type: emberMaterial
   id: RockSalt
@@ -1057,6 +1099,9 @@
     solid: true
     wood: true
     metal: true
+  oreSpreadChance: 10
+  oreResultAmount: 10
+  oreScanIcon: mineral_common
 
 - type: emberMaterial
   id: Potash
@@ -1072,6 +1117,9 @@
     solid: true
     wood: true
     metal: true
+  oreSpreadChance: 10
+  oreResultAmount: 10
+  oreScanIcon: mineral_common
 
 - type: emberMaterial
   id: Bauxite
@@ -1088,6 +1136,11 @@
     solid: true
     wood: true
     metal: true
+  oreName: materials-bauxite-ore-name
+  oreIconOverlay: lump
+  oreSpreadChance: 10
+  oreResultAmount: 10
+  oreScanIcon: mineral_common
 
 - type: emberMaterial
   id: Sand
@@ -1095,9 +1148,11 @@
   displayName: materials-sand
   category: mineral
   color: "#E2DBB5"
-  stackEntity: EmberDustSand1
+  # No stackEntity on purpose: /material/sand in Bay has stack_type = null, so sand never takes sheet form.
   oreSmeltsTo: Glass
   oreCompressesTo: Sandstone
+  oreName: materials-sand-ore-name
+  oreIconOverlay: dust
 
 - type: emberMaterial
   id: Hematite
@@ -1107,11 +1162,11 @@
   color: "#AA6666"
   oreName: materials-hematite-ore-name
   oreSmeltsTo: Iron
-  oreResultAmount: 5
-  oreSpreadChance: 25
-  oreScanIcon: mineral_common
   oreIconOverlay: lump
   salePrice: 1
+  oreSpreadChance: 25
+  oreResultAmount: 5
+  oreScanIcon: mineral_common
 
 - type: emberMaterial
   id: Rutile
@@ -1122,11 +1177,11 @@
   stackEntity: EmberBrickRutile1
   oreName: materials-rutile-ore-name
   oreSmeltsTo: Titanium
-  oreResultAmount: 5
-  oreSpreadChance: 15
-  oreScanIcon: mineral_uncommon
   oreIconOverlay: lump
   salePrice: 2
+  oreSpreadChance: 15
+  oreResultAmount: 5
+  oreScanIcon: mineral_uncommon
 
 - type: emberMaterial
   id: Waste

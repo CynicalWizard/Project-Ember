@@ -333,6 +333,27 @@
   id: OreProcessorMachineCircuitboard
   result: OreProcessorMachineCircuitboard
 
+# Ember ore processing line, ported from SierraBay's mineral machinery.
+- type: latheRecipe
+  parent: BaseCircuitboardRecipe
+  id: EmberOreUnloaderMachineCircuitboard
+  result: EmberOreUnloaderMachineCircuitboard
+
+- type: latheRecipe
+  parent: BaseCircuitboardRecipe
+  id: EmberOreProcessorMachineCircuitboard
+  result: EmberOreProcessorMachineCircuitboard
+
+- type: latheRecipe
+  parent: BaseCircuitboardRecipe
+  id: EmberOreStackerMachineCircuitboard
+  result: EmberOreStackerMachineCircuitboard
+
+- type: latheRecipe
+  parent: BaseCircuitboardRecipe
+  id: EmberOreConsoleCircuitboard
+  result: EmberOreConsoleCircuitboard
+
 - type: latheRecipe
   parent: BaseGoldCircuitboardRecipe
   id: OreProcessorIndustrialMachineCircuitboard

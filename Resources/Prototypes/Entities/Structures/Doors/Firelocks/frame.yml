@@ -4,6 +4,9 @@
   name: firelock frame
   description: That is a firelock frame.
   components:
+  # EMBER-TODO: still on the vanilla sheet. Bay's hazard set only has a single "construction" state, so the four
+  # assembly stages need drawing before this can move to Ember/Structures/Doors/Firelocks/firelock.rsi like the
+  # finished firelock did.
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/firelock.rsi
     layers:

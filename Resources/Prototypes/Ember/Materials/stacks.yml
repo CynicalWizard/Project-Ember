@@ -161,12 +161,6 @@
   maxCount: 30
 
 - type: stack
-  id: Sand
-  icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: sheet }
-  spawn: EmberDustSand1
-  maxCount: 30
-
-- type: stack
   id: Rutile
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: brick }
   spawn: EmberBrickRutile1

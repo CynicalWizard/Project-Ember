@@ -538,11 +538,17 @@
 - type: entity
   parent: EmberOreBase
   id: EmberSandOre
+  name: sand
+  description: A pile of fine silicate sand.
   components:
   - type: EmberOre
     material: Sand
   - type: Stack
     stackType: SandOre
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Sand: 100
 
 - type: entity
   parent: EmberSandOre
@@ -555,6 +561,8 @@
 - type: entity
   parent: EmberOreBase
   id: EmberPlatinumOre
+  name: raw platinum
+  description: A chunk of raw platinum.
   components:
   - type: EmberOre
     material: Platinum
@@ -572,6 +580,8 @@
 - type: entity
   parent: EmberOreBase
   id: EmberHydrogenOre
+  name: raw hydrogen
+  description: A lump of metallic hydrogen ice.
   components:
   - type: EmberOre
     material: MetallicHydrogen
@@ -589,11 +599,17 @@
 - type: entity
   parent: EmberOreBase
   id: EmberBauxiteOre
+  name: bauxite
+  description: A chunk of bauxite.
   components:
   - type: EmberOre
     material: Bauxite
   - type: Stack
     stackType: BauxiteOre
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Bauxite: 100
 
 - type: entity
   parent: EmberBauxiteOre
@@ -606,11 +622,17 @@
 - type: entity
   parent: EmberOreBase
   id: EmberRutileOre
+  name: rutile
+  description: A chunk of rutile.
   components:
   - type: EmberOre
     material: Rutile
   - type: Stack
     stackType: RutileOre
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Rutile: 100
 
 - type: entity
   parent: EmberRutileOre
@@ -623,6 +645,8 @@
 - type: entity
   parent: EmberOreBase
   id: EmberCopperOre
+  name: tetrahedrite
+  description: A chunk of tetrahedrite.
   components:
   - type: EmberOre
     material: Copper
@@ -640,6 +664,8 @@
 - type: entity
   parent: EmberOreBase
   id: EmberElectrumOre
+  name: electrum
+  description: A chunk of native electrum.
   components:
   - type: EmberOre
     material: Electrum
@@ -657,6 +683,8 @@
 - type: entity
   parent: EmberOreBase
   id: EmberBoraxOre
+  name: borax
+  description: A chunk of borax.
   components:
   - type: EmberOre
     material: Borax
@@ -674,6 +702,8 @@
 - type: entity
   parent: EmberOreBase
   id: EmberPyriteOre
+  name: pyrite
+  description: A chunk of pyrite.
   components:
   - type: EmberOre
     material: Pyrite
@@ -691,6 +721,8 @@
 - type: entity
   parent: EmberOreBase
   id: EmberSpodumeneOre
+  name: spodumene
+  description: A chunk of spodumene.
   components:
   - type: EmberOre
     material: Spodumene
@@ -708,6 +740,8 @@
 - type: entity
   parent: EmberOreBase
   id: EmberCinnabarOre
+  name: cinnabar
+  description: A chunk of cinnabar.
   components:
   - type: EmberOre
     material: Cinnabar
@@ -725,6 +759,8 @@
 - type: entity
   parent: EmberOreBase
   id: EmberPhosphoriteOre
+  name: phosphorite
+  description: A chunk of phosphorite.
   components:
   - type: EmberOre
     material: Phosphorite
@@ -742,6 +778,8 @@
 - type: entity
   parent: EmberOreBase
   id: EmberPotashOre
+  name: potash
+  description: A chunk of potash.
   components:
   - type: EmberOre
     material: Potash

@@ -15,6 +15,10 @@ ember-ore-processing-window-preset-alloy = Сплав
 ember-ore-processing-window-preset-disable = Отключить всё
 ember-ore-processing-window-no-stored-ore = Руда не загружена.
 ember-ore-processing-window-no-stored-sheets = Листы не загружены.
+ember-ore-processing-window-release = Выгрузить
+ember-ore-processing-window-release-all = Выгрузить всё
+ember-ore-processing-window-stack-entry = {$material}: {$amount} / {$threshold}
+ember-ore-processing-window-no-modes = Этот материал нельзя переплавить, спрессовать или использовать в сплаве.
 ember-ore-processing-window-material-entry = {$material}: {$amount}
 
 ember-ore-processing-mode-disabled = Выкл.

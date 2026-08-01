@@ -23,6 +23,7 @@ public sealed class EmberOreProcessingConsoleBoundUserInterface : BoundUserInter
         _window.OnPreset += preset => SendMessage(new EmberOreConsolePresetModesMessage(preset));
         _window.OnOreModeChanged += (material, mode) => SendMessage(new EmberOreConsoleSetProcessorModeMessage(material, mode));
         _window.OnStackAmountChanged += amount => SendMessage(new EmberOreConsoleSetStackAmountMessage(amount));
+        _window.OnReleaseStack += material => SendMessage(new EmberOreConsoleReleaseStackMessage(material));
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)

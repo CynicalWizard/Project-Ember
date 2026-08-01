@@ -1,0 +1,57 @@
+- type: entity
+  id: EmberOreUnloaderMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: ore unloading machine board
+  description: A machine printed circuit board for an ore unloading machine.
+  components:
+  - type: Sprite
+    state: supply
+  - type: MachineBoard
+    prototype: EmberOreUnloader
+    machinePartRequirements:
+      Manipulator: 2
+    stackRequirements:
+      Steel: 2
+
+- type: entity
+  id: EmberOreProcessorMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: ore processing unit machine board
+  description: A machine printed circuit board for an ore processing unit.
+  components:
+  - type: Sprite
+    state: supply
+  - type: MachineBoard
+    prototype: EmberOreProcessor
+    machinePartRequirements:
+      MatterBin: 2
+      Manipulator: 2
+    stackRequirements:
+      Glass: 1
+
+- type: entity
+  id: EmberOreStackerMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: stacking machine board
+  description: A machine printed circuit board for a sheet stacking machine.
+  components:
+  - type: Sprite
+    state: supply
+  - type: MachineBoard
+    prototype: EmberOreStacker
+    machinePartRequirements:
+      MatterBin: 2
+      Manipulator: 1
+    stackRequirements:
+      Steel: 2
+
+- type: entity
+  id: EmberOreConsoleCircuitboard
+  parent: BaseComputerCircuitboard
+  name: ore processing console board
+  description: A computer printed circuit board for an ore processing console.
+  components:
+  - type: Sprite
+    state: cpu_supply
+  - type: ComputerBoard
+    prototype: EmberOreConsole

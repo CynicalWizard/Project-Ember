@@ -1,6 +1,6 @@
 - type: entity
   id: EmberOreUnloader
-  parent: BaseMachinePowered
+  parent: [ BaseMachinePowered, ConstructibleMachine ]
   name: ore unloading machine
   description: Pulls ore from an ore box or nearby loose ore and places it onto the output tile.
   placement:
@@ -10,6 +10,8 @@
     sprite: Ember/Structures/Machines/mining_machines.rsi
     layers:
     - state: unloader
+  - type: Machine
+    board: EmberOreUnloaderMachineCircuitboard
   - type: EmberMineralMachine
     input: West
     output: East
@@ -17,7 +19,7 @@
 
 - type: entity
   id: EmberOreProcessor
-  parent: BaseMachinePowered
+  parent: [ BaseMachinePowered, ConstructibleMachine ]
   name: ore processing unit
   description: Processes stored ore into sheets or alloys according to the linked console settings.
   placement:
@@ -35,6 +37,8 @@
         base:
           True: { state: furnace_1 }
           False: { state: furnace_0 }
+  - type: Machine
+    board: EmberOreProcessorMachineCircuitboard
   - type: EmberMineralMachine
     input: North
     output: South
@@ -43,7 +47,7 @@
 
 - type: entity
   id: EmberOreStacker
-  parent: BaseMachinePowered
+  parent: [ BaseMachinePowered, ConstructibleMachine ]
   name: stacking machine
   description: Combines processed sheets into configured output stacks.
   placement:
@@ -53,6 +57,8 @@
     sprite: Ember/Structures/Machines/mining_machines.rsi
     layers:
     - state: stacker
+  - type: Machine
+    board: EmberOreStackerMachineCircuitboard
   - type: EmberMineralMachine
     input: East
     output: West
@@ -68,17 +74,26 @@
     snap:
     - Wallmount
   components:
+  # Bay's mining console overrides on_update_icon to draw nothing but its own flat sprite, so this drops the
+  # generic computer screen and key layers instead of inheriting them.
   - type: Sprite
     drawdepth: WallMountedItems
     sprite: Ember/Structures/Machines/mining_machines.rsi
     layers:
     - state: console
       shader: unshaded
+  - type: Transform
+    anchored: true
+  # It hangs on a wall, so it must not block the tile. The default WallMount arc is the important part: with the
+  # 360 degree arc this used to carry, the obstruction exemption applied from every side and the console could be
+  # operated through the wall it is mounted on.
+  - type: WallMount
   - type: Physics
     canCollide: false
   - type: Fixtures
-  - type: WallMount
-    arc: 360
+  - type: Appearance
+  - type: Computer
+    board: EmberOreConsoleCircuitboard
   - type: ActivatableUI
     key: enum.EmberOreProcessingConsoleUiKey.Key
   - type: ActivatableUIRequiresPower

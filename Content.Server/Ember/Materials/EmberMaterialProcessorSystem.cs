@@ -44,6 +44,7 @@ public sealed class EmberMaterialProcessorSystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
 
     private readonly HashSet<EntityUid> _entities = new();
+    private readonly HashSet<EntityUid> _rangeResults = new();
 
     public override void Initialize()
     {
@@ -63,6 +64,7 @@ public sealed class EmberMaterialProcessorSystem : EntitySystem
         SubscribeLocalEvent<EmberOreProcessingConsoleComponent, EmberOreConsoleSetProcessorModeMessage>(OnConsoleSetProcessorMode);
         SubscribeLocalEvent<EmberOreProcessingConsoleComponent, EmberOreConsolePresetModesMessage>(OnConsolePresetModes);
         SubscribeLocalEvent<EmberOreProcessingConsoleComponent, EmberOreConsoleSetStackAmountMessage>(OnConsoleSetStackAmount);
+        SubscribeLocalEvent<EmberOreProcessingConsoleComponent, EmberOreConsoleReleaseStackMessage>(OnConsoleReleaseStack);
     }
 
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs args)
@@ -114,10 +116,12 @@ public sealed class EmberMaterialProcessorSystem : EntitySystem
 
     private void ProcessUnloader(EntityUid uid, EmberMineralMachineComponent machine, EmberOreUnloaderComponent unloader)
     {
+        // Bay's unloading_machine draws from input_turf, the tile the configured input direction points at, not
+        // from the tile the machine itself stands on.
         if (!_power.IsPowered(uid) ||
             machine.Input == null ||
             machine.Output == null ||
-            TryGetMachineTile(uid) is not {} input ||
+            TryGetAdjacent(uid, machine.Input.Value) is not {} input ||
             TryGetAdjacent(uid, machine.Output.Value) is not {} output ||
             CountTileContents(output) >= unloader.MaxOutputContents)
         {
@@ -213,7 +217,7 @@ public sealed class EmberMaterialProcessorSystem : EntitySystem
         if (!_power.IsPowered(uid))
             return;
 
-        if (machine.Input != null && TryGetMachineTile(uid) is {} input)
+        if (machine.Input != null && TryGetAdjacent(uid, machine.Input.Value) is {} input)
         {
             foreach (var entity in GetMachineInputEntities(uid, input))
             {
@@ -320,12 +324,18 @@ public sealed class EmberMaterialProcessorSystem : EntitySystem
                 _entities.Add(entity);
         }
 
-        foreach (var entity in _lookup.GetEntitiesInRange(machine, 0.65f, LookupFlags.Dynamic | LookupFlags.Sundries))
+        // Tile lookups can miss an item that came to rest slightly off centre, so sweep the input tile itself as
+        // well. Anchored to the input tile rather than the machine, or the machine would eat anything dropped on
+        // top of it no matter which way its input is pointed.
+        _lookup.GetEntitiesInRange(coords, 0.35f, _rangeResults, LookupFlags.Dynamic | LookupFlags.Sundries);
+
+        foreach (var entity in _rangeResults)
         {
             if (CanHandleLooseItem(machine, entity))
                 _entities.Add(entity);
         }
 
+        _rangeResults.Clear();
         return new List<EntityUid>(_entities);
     }
 
@@ -402,12 +412,6 @@ public sealed class EmberMaterialProcessorSystem : EntitySystem
 
         var tile = _map.TileIndicesFor(gridUid, grid, xform.Coordinates).Offset(direction);
         return _map.GridTileToLocal(gridUid, grid, tile);
-    }
-
-    private EntityCoordinates? TryGetMachineTile(EntityUid uid)
-    {
-        var xform = Transform(uid);
-        return xform.GridUid == null ? null : xform.Coordinates;
     }
 
     private bool CanHandleLooseItem(EntityUid? machine, EntityUid entity)
@@ -718,6 +722,32 @@ public sealed class EmberMaterialProcessorSystem : EntitySystem
             return;
 
         stacker.StackAmount = Math.Clamp(args.Amount, 1, 60);
+        UpdateConsoleUi(uid, component);
+    }
+
+    private void OnConsoleReleaseStack(EntityUid uid, EmberOreProcessingConsoleComponent component, EmberOreConsoleReleaseStackMessage args)
+    {
+        if (GetConsoleTarget(component, EmberOreMachineKind.Stacker) is not {} target ||
+            !TryComp<EmberOreStackerComponent>(target, out var stacker) ||
+            !TryComp<EmberMineralMachineComponent>(target, out var machine))
+        {
+            return;
+        }
+
+        var materialId = new ProtoId<EmberMaterialPrototype>(args.Material);
+
+        if (!stacker.StoredMaterials.TryGetValue(materialId, out var stored) ||
+            stored <= 0 ||
+            machine.Output == null ||
+            TryGetAdjacent(target, machine.Output.Value) is not {} output ||
+            !_prototype.TryIndex(materialId, out EmberMaterialPrototype? material) ||
+            material.StackEntity == null)
+        {
+            return;
+        }
+
+        _stack.SpawnMultiple(material.StackEntity.Value, stored, output);
+        stacker.StoredMaterials.Remove(materialId);
         UpdateConsoleUi(uid, component);
     }
 

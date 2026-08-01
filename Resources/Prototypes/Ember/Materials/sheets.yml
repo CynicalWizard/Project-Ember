@@ -632,29 +632,6 @@
     count: 30
 
 - type: entity
-  parent: EmberMaterialStackBase
-  id: EmberDustSand1
-  name: sand stack
-  description: A stack of sand.
-  suffix: Single
-  components:
-  - type: Stack
-    stackType: Sand
-    count: 1
-    baseLayer: base
-    layerStates: [ sheet, sheet-mult, sheet-max ]
-  - type: EmberMaterialStack
-    material: Sand
-
-- type: entity
-  parent: EmberDustSand1
-  id: EmberDustSand
-  suffix: Full
-  components:
-  - type: Stack
-    count: 30
-
-- type: entity
   parent: EmberBrickSandstone1
   id: EmberBrickRutile1
   name: rutile block

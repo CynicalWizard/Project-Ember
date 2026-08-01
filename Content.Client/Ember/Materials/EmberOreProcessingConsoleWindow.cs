@@ -2,6 +2,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Shared.Ember.Materials;
 using Robust.Client.UserInterface;
+using Robust.Shared.Prototypes;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 
@@ -18,6 +19,12 @@ public sealed class EmberOreProcessingConsoleWindow : DefaultWindow
         null,
     };
 
+    [Dependency] private readonly IPrototypeManager _prototype = default!;
+
+    private HashSet<string>? _alloyIngredients;
+
+    private static readonly Color DisabledPanelTint = new(0.6f, 0.6f, 0.6f);
+
     private readonly MachinePanel _unloader;
     private readonly MachinePanel _processor;
     private readonly MachinePanel _stacker;
@@ -30,9 +37,12 @@ public sealed class EmberOreProcessingConsoleWindow : DefaultWindow
     public event Action<EmberOreConsolePreset>? OnPreset;
     public event Action<string, EmberMaterialProcessingMode>? OnOreModeChanged;
     public event Action<int>? OnStackAmountChanged;
+    public event Action<string>? OnReleaseStack;
 
     public EmberOreProcessingConsoleWindow()
     {
+        IoCManager.InjectDependencies(this);
+
         Title = Loc.GetString("ember-ore-processing-window-title");
         MinSize = new Vector2(520, 560);
 
@@ -173,12 +183,26 @@ public sealed class EmberOreProcessingConsoleWindow : DefaultWindow
 
     private void UpdateMachine(MachinePanel panel, EmberOreMachineConsoleState state)
     {
-        panel.Status.Text = state.ConnectedName == null
-            ? Loc.GetString("ember-ore-processing-window-no-linked-machine")
-            : Loc.GetString("ember-ore-processing-window-linked-machine", ("machine", state.ConnectedName));
+        var linked = state.ConnectedName != null;
+
+        panel.Status.Text = linked
+            ? Loc.GetString("ember-ore-processing-window-linked-machine", ("machine", state.ConnectedName!))
+            : Loc.GetString("ember-ore-processing-window-no-linked-machine");
 
         panel.Input.SelectId(DirectionToId(state.Input));
         panel.Output.SelectId(DirectionToId(state.Output));
+
+        // Nothing in a panel does anything without a machine behind it, so make that visible rather than
+        // letting the player click dead controls.
+        panel.Input.Disabled = !linked;
+        panel.Output.Disabled = !linked;
+        panel.Body.Modulate = linked ? Color.White : DisabledPanelTint;
+
+        if (panel.ToggleProcessor != null)
+            panel.ToggleProcessor.Disabled = !linked;
+
+        if (panel.StackAmount != null)
+            panel.StackAmount.Disabled = !linked;
     }
 
     private void RebuildOres(EmberOreMachineConsoleState state)
@@ -206,14 +230,17 @@ public sealed class EmberOreProcessingConsoleWindow : DefaultWindow
         {
             var row = _processor.OreRows[material];
             row.Label.Text = Loc.GetString("ember-ore-processing-window-material-entry",
-                ("material", material),
+                ("material", MaterialName(material)),
                 ("amount", state.StoredOres[material]));
+            // TrySelectId, not SelectId: a mode the material cannot use was never added to the dropdown.
             row.Mode.TrySelectId((int) state.OreModes.GetValueOrDefault(material, EmberMaterialProcessingMode.Disabled));
         }
     }
 
     private void AddOreRow(BoxContainer list, string material)
     {
+        var supported = SupportedModes(material);
+
         var row = new BoxContainer
         {
             Orientation = BoxContainer.LayoutOrientation.Horizontal,
@@ -226,9 +253,22 @@ public sealed class EmberOreProcessingConsoleWindow : DefaultWindow
 
         var modes = new OptionButton();
         AddMode(modes, "ember-ore-processing-mode-disabled", EmberMaterialProcessingMode.Disabled);
-        AddMode(modes, "ember-ore-processing-mode-smelt", EmberMaterialProcessingMode.Smelt);
-        AddMode(modes, "ember-ore-processing-mode-compress", EmberMaterialProcessingMode.Compress);
-        AddMode(modes, "ember-ore-processing-mode-alloy", EmberMaterialProcessingMode.Alloy);
+
+        if ((supported & EmberMaterialProcessingModes.Smelt) != 0)
+            AddMode(modes, "ember-ore-processing-mode-smelt", EmberMaterialProcessingMode.Smelt);
+
+        if ((supported & EmberMaterialProcessingModes.Compress) != 0)
+            AddMode(modes, "ember-ore-processing-mode-compress", EmberMaterialProcessingMode.Compress);
+
+        if ((supported & EmberMaterialProcessingModes.Alloy) != 0)
+            AddMode(modes, "ember-ore-processing-mode-alloy", EmberMaterialProcessingMode.Alloy);
+
+        // Nothing but "off" to pick from means this is a dead-end material; say so rather than showing a
+        // dropdown that does nothing.
+        modes.Disabled = supported == EmberMaterialProcessingModes.None;
+        if (modes.Disabled)
+            modes.ToolTip = Loc.GetString("ember-ore-processing-window-no-modes");
+
         modes.OnItemSelected += args =>
         {
             modes.SelectId(args.Id);
@@ -243,23 +283,88 @@ public sealed class EmberOreProcessingConsoleWindow : DefaultWindow
     private void RebuildStacks(EmberOreMachineConsoleState state)
     {
         var list = _stacker.StoredStacks!;
-        list.RemoveAllChildren();
+        var keys = state.StoredMaterials.Keys.OrderBy(MaterialName).ToArray();
 
-        if (state.StoredMaterials.Count == 0)
+        // Only tear the list down when the set of materials actually changed. Rebuilding it every state update
+        // made the buttons flicker and drop the cursor mid-click.
+        if (_stacker.StackRows.Count != keys.Length ||
+            !_stacker.StackRows.Keys.OrderBy(MaterialName).SequenceEqual(keys))
         {
-            list.AddChild(new Label { Text = Loc.GetString("ember-ore-processing-window-no-stored-sheets") });
-            return;
-        }
+            list.RemoveAllChildren();
+            _stacker.StackRows.Clear();
 
-        foreach (var (material, amount) in state.StoredMaterials.OrderBy(pair => pair.Key))
-        {
-            list.AddChild(new Label
+            if (keys.Length == 0)
             {
-                Text = Loc.GetString("ember-ore-processing-window-material-entry",
-                    ("material", material),
-                    ("amount", amount)),
-            });
+                list.AddChild(new Label { Text = Loc.GetString("ember-ore-processing-window-no-stored-sheets") });
+                _stacker.ReleaseAll = null;
+                return;
+            }
+
+            foreach (var material in keys)
+                AddStackRow(list, material);
+
+            _stacker.ReleaseAll = new Button { Text = Loc.GetString("ember-ore-processing-window-release-all") };
+            _stacker.ReleaseAll.OnPressed += _ =>
+            {
+                foreach (var material in _stacker.StackRows.Keys.ToArray())
+                    OnReleaseStack?.Invoke(material);
+            };
+            list.AddChild(_stacker.ReleaseAll);
         }
+
+        foreach (var material in keys)
+        {
+            var amount = state.StoredMaterials[material];
+            var row = _stacker.StackRows[material];
+
+            // Showing the threshold makes it obvious why a pile is sitting there instead of popping out.
+            row.Label.Text = Loc.GetString("ember-ore-processing-window-stack-entry",
+                ("material", MaterialName(material)),
+                ("amount", amount),
+                ("threshold", state.StackAmount));
+            row.Release.Disabled = amount <= 0;
+        }
+    }
+
+    private void AddStackRow(BoxContainer list, string material)
+    {
+        var row = new BoxContainer
+        {
+            Orientation = BoxContainer.LayoutOrientation.Horizontal,
+            SeparationOverride = 4,
+            HorizontalExpand = true,
+        };
+
+        var label = new Label { HorizontalExpand = true };
+        row.AddChild(label);
+
+        var release = new Button { Text = Loc.GetString("ember-ore-processing-window-release") };
+        release.OnPressed += _ => OnReleaseStack?.Invoke(material);
+        row.AddChild(release);
+
+        list.AddChild(row);
+        _stacker.StackRows[material] = new StackRow(label, release);
+    }
+
+    /// <summary>
+    /// The console state carries prototype ids; players should see the material's own name.
+    /// </summary>
+    private string MaterialName(string material)
+    {
+        return _prototype.TryIndex(material, out EmberMaterialPrototype? proto) && proto.DisplayName != string.Empty
+            ? Loc.GetString(proto.DisplayName)
+            : material;
+    }
+
+    private EmberMaterialProcessingModes SupportedModes(string material)
+    {
+        if (!_prototype.TryIndex(material, out EmberMaterialPrototype? proto))
+            return EmberMaterialProcessingModes.None;
+
+        _alloyIngredients ??= EmberMaterialProcessing.GetAlloyIngredients(
+            _prototype.EnumeratePrototypes<EmberMaterialPrototype>());
+
+        return EmberMaterialProcessing.SupportedModes(proto, _alloyIngredients);
     }
 
     private static OptionButton BuildDirectionButton()
@@ -322,8 +427,12 @@ public sealed class EmberOreProcessingConsoleWindow : DefaultWindow
         public OptionButton? StackAmount;
         public BoxContainer? OreList;
         public BoxContainer? StoredStacks;
+        public Button? ReleaseAll;
         public readonly Dictionary<string, MaterialRow> OreRows = new();
+        public readonly Dictionary<string, StackRow> StackRows = new();
     }
 
     private sealed record MaterialRow(Label Label, OptionButton Mode);
+
+    private sealed record StackRow(Label Label, Button Release);
 }

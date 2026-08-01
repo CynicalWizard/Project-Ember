@@ -42,7 +42,7 @@
 
 - type: material
   id: Sand
-  stackEntity: EmberDustSand1
+  # Deliberately no stackEntity; sand has no sheet form. See the emberMaterial of the same name.
   name: materials-sand
   icon: { sprite: Ember/Objects/Materials/materials.rsi, state: sheet }
   price: 0.05

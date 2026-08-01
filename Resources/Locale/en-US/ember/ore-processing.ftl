@@ -15,6 +15,10 @@ ember-ore-processing-window-preset-alloy = Alloy
 ember-ore-processing-window-preset-disable = Stop all
 ember-ore-processing-window-no-stored-ore = No stored ore.
 ember-ore-processing-window-no-stored-sheets = No stored sheets.
+ember-ore-processing-window-release = Release
+ember-ore-processing-window-release-all = Release everything
+ember-ore-processing-window-stack-entry = {$material}: {$amount} / {$threshold}
+ember-ore-processing-window-no-modes = This material cannot be smelted, compressed or alloyed.
 ember-ore-processing-window-material-entry = {$material}: {$amount}
 
 ember-ore-processing-mode-disabled = Off

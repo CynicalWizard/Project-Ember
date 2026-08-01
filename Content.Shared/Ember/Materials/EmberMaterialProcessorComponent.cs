@@ -218,6 +218,22 @@ public sealed class EmberOreConsoleSetStackAmountMessage : BoundUserInterfaceMes
     }
 }
 
+/// <summary>
+/// Dumps everything the stacker is holding of one material, however far short of the stack size it is. Bay's
+/// stacking machine has the same per-material release link, without which anything below the threshold is stuck
+/// in the machine for good.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class EmberOreConsoleReleaseStackMessage : BoundUserInterfaceMessage
+{
+    public string Material { get; }
+
+    public EmberOreConsoleReleaseStackMessage(string material)
+    {
+        Material = material;
+    }
+}
+
 [Serializable, NetSerializable]
 public enum EmberOreConsolePreset : byte
 {

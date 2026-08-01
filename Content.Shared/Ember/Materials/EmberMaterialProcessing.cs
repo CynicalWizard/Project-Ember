@@ -22,8 +22,58 @@ public readonly record struct EmberMaterialProcessorTickResult(
     IReadOnlyList<EmberMaterialProcessorOutput> Outputs,
     int ProcessedSheets);
 
+/// <summary>
+/// Which processing modes a material can actually be put through. Offering the rest in the console just wastes
+/// the player's time, since the processor silently skips a mode the material has no recipe for.
+/// </summary>
+[Flags]
+public enum EmberMaterialProcessingModes : byte
+{
+    None = 0,
+    Smelt = 1 << 0,
+    Compress = 1 << 1,
+    Alloy = 1 << 2,
+}
+
 public static class EmberMaterialProcessing
 {
+    /// <summary>
+    /// Every material that some alloy recipe consumes. Only these are worth setting to
+    /// <see cref="EmberMaterialProcessingMode.Alloy"/>.
+    /// </summary>
+    public static HashSet<string> GetAlloyIngredients(IEnumerable<EmberMaterialPrototype> materials)
+    {
+        var ingredients = new HashSet<string>();
+
+        foreach (var material in materials)
+        {
+            foreach (var ingredient in material.AlloyMaterials.Keys)
+            {
+                ingredients.Add(ingredient);
+            }
+        }
+
+        return ingredients;
+    }
+
+    public static EmberMaterialProcessingModes SupportedModes(
+        EmberMaterialPrototype material,
+        IReadOnlySet<string> alloyIngredients)
+    {
+        var modes = EmberMaterialProcessingModes.None;
+
+        if (material.OreSmeltsTo != null)
+            modes |= EmberMaterialProcessingModes.Smelt;
+
+        if (material.OreCompressesTo != null)
+            modes |= EmberMaterialProcessingModes.Compress;
+
+        if (alloyIngredients.Contains(material.ID))
+            modes |= EmberMaterialProcessingModes.Alloy;
+
+        return modes;
+    }
+
     public static bool TrySmelt(
         EmberMaterialPrototype ore,
         EmberMaterialPrototype target,
