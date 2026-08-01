@@ -30,6 +30,8 @@
 - type: entity
   parent: EmberMaterialStackBase
   id: EmberIngotIron1
+  name: iron ingot
+  description: A refined ingot of iron.
   suffix: Single
   components:
   - type: Stack
@@ -54,6 +56,8 @@
 - type: entity
   parent: EmberMaterialStackBase
   id: EmberSheetAluminium1
+  name: aluminium sheet
+  description: A sheet of refined aluminium.
   suffix: Single
   components:
   - type: Stack
@@ -78,6 +82,8 @@
 - type: entity
   parent: EmberMaterialStackBase
   id: EmberSheetTitanium1
+  name: titanium sheet
+  description: A sheet of titanium.
   suffix: Single
   components:
   - type: Stack
@@ -102,6 +108,8 @@
 - type: entity
   parent: EmberSheetTitanium1
   id: EmberSheetOCP1
+  name: osmium-carbide plasteel sheet
+  description: A sheet of osmium-carbide plasteel.
   suffix: Single
   components:
   - type: Stack
@@ -123,6 +131,8 @@
 - type: entity
   parent: EmberIngotIron1
   id: EmberIngotOsmium1
+  name: osmium ingot
+  description: A refined ingot of osmium.
   suffix: Single
   components:
   - type: Stack
@@ -144,6 +154,8 @@
 - type: entity
   parent: EmberIngotIron1
   id: EmberIngotElectrum1
+  name: electrum ingot
+  description: A refined ingot of electrum.
   suffix: Single
   components:
   - type: Stack
@@ -165,6 +177,8 @@
 - type: entity
   parent: EmberIngotIron1
   id: EmberIngotCopper1
+  name: copper ingot
+  description: A refined ingot of copper.
   suffix: Single
   components:
   - type: Stack
@@ -186,6 +200,8 @@
 - type: entity
   parent: EmberIngotIron1
   id: EmberIngotBronze1
+  name: bronze ingot
+  description: A refined ingot of bronze.
   suffix: Single
   components:
   - type: Stack
@@ -207,6 +223,8 @@
 - type: entity
   parent: EmberIngotIron1
   id: EmberIngotPlatinum1
+  name: platinum ingot
+  description: A refined ingot of platinum.
   suffix: Single
   components:
   - type: Stack
@@ -228,6 +246,8 @@
 - type: entity
   parent: EmberMaterialStackBase
   id: EmberPuckDeuterium1
+  name: deuterium puck
+  description: A compressed puck of deuterium.
   suffix: Single
   components:
   - type: Stack
@@ -249,6 +269,8 @@
 - type: entity
   parent: EmberPuckDeuterium1
   id: EmberPuckTritium1
+  name: tritium puck
+  description: A compressed puck of tritium.
   suffix: Single
   components:
   - type: Stack
@@ -267,6 +289,8 @@
 - type: entity
   parent: EmberMaterialStackBase
   id: EmberSheetMHydrogen1
+  name: metallic hydrogen sheet
+  description: A sheet of metallic hydrogen.
   suffix: Single
   components:
   - type: Stack
@@ -288,6 +312,8 @@
 - type: entity
   parent: EmberMaterialStackBase
   id: EmberSheetBorosilicateGlass1
+  name: borosilicate glass sheet
+  description: A sheet of borosilicate glass.
   suffix: Single
   components:
   - type: Stack
@@ -313,6 +339,8 @@
 - type: entity
   parent: EmberMaterialStackBase
   id: EmberBrickSandstone1
+  name: sandstone brick
+  description: A compressed brick of sandstone.
   suffix: Single
   components:
   - type: Stack
@@ -337,6 +365,8 @@
 - type: entity
   parent: EmberBrickSandstone1
   id: EmberBrickMarble1
+  name: marble brick
+  description: A cut brick of marble.
   suffix: Single
   components:
   - type: Stack
@@ -358,6 +388,8 @@
 - type: entity
   parent: EmberBrickSandstone1
   id: EmberBrickConcrete1
+  name: concrete block
+  description: A solid block of concrete.
   suffix: Single
   components:
   - type: Stack
@@ -379,6 +411,8 @@
 - type: entity
   parent: EmberBrickSandstone1
   id: EmberBrickBorax1
+  name: borax block
+  description: A compressed block of borax.
   suffix: Single
   components:
   - type: Stack
@@ -397,6 +431,8 @@
 - type: entity
   parent: EmberBrickSandstone1
   id: EmberBrickPitchblende1
+  name: pitchblende block
+  description: A compressed block of pitchblende.
   suffix: Single
   components:
   - type: Stack
@@ -415,6 +451,8 @@
 - type: entity
   parent: EmberMaterialStackBase
   id: EmberSheetGraphite1
+  name: graphite sheet
+  description: A sheet of graphite.
   suffix: Single
   components:
   - type: Stack
@@ -436,6 +474,8 @@
 - type: entity
   parent: EmberBrickSandstone1
   id: EmberBrickQuartz1
+  name: quartz block
+  description: A compressed block of quartz.
   suffix: Single
   components:
   - type: Stack
@@ -454,6 +494,8 @@
 - type: entity
   parent: EmberBrickSandstone1
   id: EmberBrickPyrite1
+  name: pyrite block
+  description: A block of pyrite.
   suffix: Single
   components:
   - type: Stack
@@ -472,6 +514,8 @@
 - type: entity
   parent: EmberBrickSandstone1
   id: EmberBrickSpodumene1
+  name: spodumene block
+  description: A block of spodumene.
   suffix: Single
   components:
   - type: Stack
@@ -490,6 +534,8 @@
 - type: entity
   parent: EmberBrickSandstone1
   id: EmberBrickCinnabar1
+  name: cinnabar block
+  description: A block of cinnabar.
   suffix: Single
   components:
   - type: Stack
@@ -508,6 +554,8 @@
 - type: entity
   parent: EmberBrickSandstone1
   id: EmberBrickPhosphorite1
+  name: phosphorite block
+  description: A block of phosphorite.
   suffix: Single
   components:
   - type: Stack
@@ -526,6 +574,8 @@
 - type: entity
   parent: EmberBrickSandstone1
   id: EmberBrickRockSalt1
+  name: rock salt block
+  description: A block of rock salt.
   suffix: Single
   components:
   - type: Stack
@@ -544,6 +594,8 @@
 - type: entity
   parent: EmberBrickSandstone1
   id: EmberBrickPotash1
+  name: potash block
+  description: A block of potash.
   suffix: Single
   components:
   - type: Stack
@@ -562,6 +614,8 @@
 - type: entity
   parent: EmberBrickSandstone1
   id: EmberBrickBauxite1
+  name: bauxite block
+  description: A block of bauxite.
   suffix: Single
   components:
   - type: Stack
@@ -580,6 +634,8 @@
 - type: entity
   parent: EmberMaterialStackBase
   id: EmberDustSand1
+  name: sand stack
+  description: A stack of sand.
   suffix: Single
   components:
   - type: Stack
@@ -601,6 +657,8 @@
 - type: entity
   parent: EmberBrickSandstone1
   id: EmberBrickRutile1
+  name: rutile block
+  description: A block of rutile.
   suffix: Single
   components:
   - type: Stack
