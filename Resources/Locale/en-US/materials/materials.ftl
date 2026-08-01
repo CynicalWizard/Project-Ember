@@ -34,6 +34,13 @@ materials-diamond = diamond
 materials-gunpowder = gunpowder
 materials-bluespace = bluespace
 materials-normality = normality
+materials-pitchblende = pitchblende
+materials-graphite = graphite
+materials-bauxite = bauxite
+materials-hematite = hematite
+materials-rutile = rutile
+materials-sand = sand
+materials-stone = stone
 
 # Ores
 materials-raw-iron = hematite
