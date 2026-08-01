@@ -47,7 +47,7 @@
   id: Nomad
   name: NTCV Nomad
   description: A small shuttle for transporting up to 3 passengers with relative comfort.
-  price: 22500
+  price: 25000
   path: /Maps/Shuttles/DeltaV/ntcv-nomad.yml
   categories:
   - Civilian
