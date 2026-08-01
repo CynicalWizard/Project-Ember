@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: Airlock
   parent: BaseStructure
   name: airlock
@@ -63,6 +63,10 @@
   - type: AccessReader
     containerAccessProvider: board
   - type: Door
+    openTimeOne: 0.8
+    openTimeTwo: 0.4
+    closeTimeOne: 0.8
+    closeTimeTwo: 0.4
     openingAnimationTime: 1.2
     closingAnimationTime: 1.2
     crushDamage:
