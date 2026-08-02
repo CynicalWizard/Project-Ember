@@ -9,3 +9,6 @@ ember-shard-desc-shard = A small piece of { $material }. It looks sharp; you wou
 ember-shard-desc-shrapnel = A twisted sliver of { $material }, torn off something that gave way.
 ember-shard-desc-piece = A broken piece of { $material }, edges still rough.
 ember-shard-desc-splinters = Splinters of { $material }. Small, sharp, and impossible to see until you tread on them.
+
+ember-assemble-grille-occupied = There is already a grille here.
+ember-assemble-grille-not-enough = You need at least two rods for that.

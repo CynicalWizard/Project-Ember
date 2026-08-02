@@ -49,6 +49,12 @@
   - type: Construction
     graph: MetalRod
     node: MetalRod
+  # Ember: ties the vanilla steel rods to the material line, so putting them against a low wall assembles a
+  # steel grille the same way every other metal does. Not tinted, since the sprite is already steel.
+  - type: EmberMaterialStack
+    material: Steel
+    tint: false
+    renameEntity: false
   - type: Appearance
   - type: FloorTile
     outputs:

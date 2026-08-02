@@ -9,3 +9,6 @@ ember-shard-desc-shard = Небольшой осколок { $materialGenitive }
 ember-shard-desc-shrapnel = Рваная полоска { $materialGenitive }, оторванная от чего-то не выдержавшего.
 ember-shard-desc-piece = Обломок { $materialGenitive } с неровными краями.
 ember-shard-desc-splinters = Щепки { $materialGenitive }. Мелкие, острые и незаметные, пока не наступишь.
+
+ember-assemble-grille-occupied = Здесь уже есть решётка.
+ember-assemble-grille-not-enough = Нужно хотя бы два прута.

@@ -1,5 +1,7 @@
 - type: emberMaterial
   id: Steel
+  rodStack: MetalRod
+  grilleEntity: Grille
   key: steel
   displayName: materials-steel
   category: metal
@@ -31,6 +33,8 @@
 
 - type: emberMaterial
   id: Iron
+  rodStack: EmberRodIron
+  grilleEntity: GrilleIron
   key: iron
   displayName: materials-iron
   category: metal
@@ -52,6 +56,8 @@
   explosionResistance: 5
 - type: emberMaterial
   id: Aluminium
+  rodStack: EmberRodAluminium
+  grilleEntity: GrilleAluminium
   key: aluminium
   displayName: materials-aluminium
   category: metal
@@ -79,6 +85,8 @@
 
 - type: emberMaterial
   id: Plasteel
+  rodStack: EmberRodPlasteel
+  grilleEntity: GrillePlasteel
   key: plasteel
   displayName: materials-plasteel
   category: metal
@@ -111,6 +119,8 @@
 
 - type: emberMaterial
   id: Titanium
+  rodStack: EmberRodTitanium
+  grilleEntity: GrilleTitanium
   key: titanium
   displayName: materials-titanium
   category: metal
@@ -136,6 +146,8 @@
 
 - type: emberMaterial
   id: OsmiumCarbidePlasteel
+  rodStack: EmberRodOsmiumCarbidePlasteel
+  grilleEntity: GrilleOsmiumCarbidePlasteel
   key: osmium-carbide plasteel
   displayName: materials-osmiumcarbideplasteel
   category: metal
@@ -167,6 +179,8 @@
 
 - type: emberMaterial
   id: Osmium
+  rodStack: EmberRodOsmium
+  grilleEntity: GrilleOsmium
   key: osmium
   displayName: materials-osmium
   category: metal
@@ -189,6 +203,8 @@
   explosionResistance: 5
 - type: emberMaterial
   id: Gold
+  rodStack: EmberRodGold
+  grilleEntity: GrilleGold
   key: gold
   displayName: materials-gold
   category: metal
@@ -217,6 +233,8 @@
 
 - type: emberMaterial
   id: Silver
+  rodStack: EmberRodSilver
+  grilleEntity: GrilleSilver
   key: silver
   displayName: materials-silver
   category: metal
@@ -245,6 +263,8 @@
 
 - type: emberMaterial
   id: Electrum
+  rodStack: EmberRodElectrum
+  grilleEntity: GrilleElectrum
   key: electrum
   displayName: materials-electrum
   category: metal
@@ -272,6 +292,8 @@
 
 - type: emberMaterial
   id: Copper
+  rodStack: EmberRodCopper
+  grilleEntity: GrilleCopper
   key: copper
   displayName: materials-copper
   category: metal
@@ -300,6 +322,8 @@
 
 - type: emberMaterial
   id: Bronze
+  rodStack: EmberRodBronze
+  grilleEntity: GrilleBronze
   key: bronze
   displayName: materials-bronze
   category: metal
@@ -312,6 +336,8 @@
 
 - type: emberMaterial
   id: Platinum
+  rodStack: EmberRodPlatinum
+  grilleEntity: GrillePlatinum
   key: platinum
   displayName: materials-platinum
   category: metal
@@ -341,6 +367,8 @@
 
 - type: emberMaterial
   id: Uranium
+  rodStack: EmberRodUranium
+  grilleEntity: GrilleUranium
   key: uranium
   displayName: materials-uranium
   category: metal

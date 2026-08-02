@@ -1,3 +1,4 @@
+using Content.Shared.Stacks;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Ember.Materials;
@@ -112,6 +113,17 @@ public sealed partial class EmberMaterialPrototype : IPrototype
 
     [DataField]
     public float? Luminescence { get; set; }
+
+    /// <summary>
+    /// The stack this material's rods form, if it can be drawn into any. Used to tell a handful of rods from a
+    /// handful of sheets when someone puts them against a low wall.
+    /// </summary>
+    [DataField]
+    public ProtoId<StackPrototype>? RodStack { get; set; }
+
+    /// <summary>A grille of this material, for the rods to be assembled into.</summary>
+    [DataField]
+    public EntProtoId? GrilleEntity { get; set; }
 
     /// <summary>What this material leaves behind when something made of it is smashed.</summary>
     [DataField]
