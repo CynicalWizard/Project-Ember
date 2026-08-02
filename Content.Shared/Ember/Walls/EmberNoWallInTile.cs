@@ -19,6 +19,13 @@ namespace Content.Shared.Ember.Walls;
 [DataDefinition]
 public sealed partial class EmberNoWallInTile : IConstructionCondition
 {
+    /// <summary>
+    /// Whether a low wall is acceptable. Grilles and windows are meant to be built into one, so they set this;
+    /// anything that is itself a wall does not.
+    /// </summary>
+    [DataField]
+    public bool AllowLowWalls;
+
     public bool Condition(EntityUid user, EntityCoordinates location, Direction direction)
     {
         var entities = IoCManager.Resolve<IEntityManager>();
@@ -40,7 +47,8 @@ public sealed partial class EmberNoWallInTile : IConstructionCondition
             if (wallQuery.HasComponent(entity.Value))
                 return false;
 
-            if (structureQuery.TryGetComponent(entity.Value, out var structure) &&
+            if (!AllowLowWalls &&
+                structureQuery.TryGetComponent(entity.Value, out var structure) &&
                 structure.Role == EmberProceduralStructureRole.WallFrame)
             {
                 return false;

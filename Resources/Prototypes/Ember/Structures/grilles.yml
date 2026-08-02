@@ -1,0 +1,288 @@
+# A grille is a frame of rods, so it is made of whatever the rods were. Steel grilles stay as the plain
+# Grille and GrilleBroken; these are the other metals.
+
+- type: entity
+  parent: Grille
+  id: GrilleIron
+  name: iron grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallIron
+  - type: Construction
+    graph: GrilleIron
+    node: grille
+
+- type: entity
+  parent: GrilleBroken
+  id: GrilleBrokenIron
+  name: iron grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallIron
+  - type: Construction
+    graph: GrilleIron
+    node: grilleBroken
+
+- type: entity
+  parent: Grille
+  id: GrilleAluminium
+  name: aluminium grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallAluminium
+  - type: Construction
+    graph: GrilleAluminium
+    node: grille
+
+- type: entity
+  parent: GrilleBroken
+  id: GrilleBrokenAluminium
+  name: aluminium grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallAluminium
+  - type: Construction
+    graph: GrilleAluminium
+    node: grilleBroken
+
+- type: entity
+  parent: Grille
+  id: GrillePlasteel
+  name: plasteel grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallPlasteel
+  - type: Construction
+    graph: GrillePlasteel
+    node: grille
+
+- type: entity
+  parent: GrilleBroken
+  id: GrilleBrokenPlasteel
+  name: plasteel grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallPlasteel
+  - type: Construction
+    graph: GrillePlasteel
+    node: grilleBroken
+
+- type: entity
+  parent: Grille
+  id: GrilleTitanium
+  name: titanium grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallTitanium
+  - type: Construction
+    graph: GrilleTitanium
+    node: grille
+
+- type: entity
+  parent: GrilleBroken
+  id: GrilleBrokenTitanium
+  name: titanium grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallTitanium
+  - type: Construction
+    graph: GrilleTitanium
+    node: grilleBroken
+
+- type: entity
+  parent: Grille
+  id: GrilleOsmiumCarbidePlasteel
+  name: osmium-carbide plasteel grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallOCP
+  - type: Construction
+    graph: GrilleOsmiumCarbidePlasteel
+    node: grille
+
+- type: entity
+  parent: GrilleBroken
+  id: GrilleBrokenOsmiumCarbidePlasteel
+  name: osmium-carbide plasteel grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallOCP
+  - type: Construction
+    graph: GrilleOsmiumCarbidePlasteel
+    node: grilleBroken
+
+- type: entity
+  parent: Grille
+  id: GrilleOsmium
+  name: osmium grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallOsmium
+  - type: Construction
+    graph: GrilleOsmium
+    node: grille
+
+- type: entity
+  parent: GrilleBroken
+  id: GrilleBrokenOsmium
+  name: osmium grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallOsmium
+  - type: Construction
+    graph: GrilleOsmium
+    node: grilleBroken
+
+- type: entity
+  parent: Grille
+  id: GrilleGold
+  name: gold grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallGold
+  - type: Construction
+    graph: GrilleGold
+    node: grille
+
+- type: entity
+  parent: GrilleBroken
+  id: GrilleBrokenGold
+  name: gold grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallGold
+  - type: Construction
+    graph: GrilleGold
+    node: grilleBroken
+
+- type: entity
+  parent: Grille
+  id: GrilleSilver
+  name: silver grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallSilver
+  - type: Construction
+    graph: GrilleSilver
+    node: grille
+
+- type: entity
+  parent: GrilleBroken
+  id: GrilleBrokenSilver
+  name: silver grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallSilver
+  - type: Construction
+    graph: GrilleSilver
+    node: grilleBroken
+
+- type: entity
+  parent: Grille
+  id: GrilleElectrum
+  name: electrum grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallElectrum
+  - type: Construction
+    graph: GrilleElectrum
+    node: grille
+
+- type: entity
+  parent: GrilleBroken
+  id: GrilleBrokenElectrum
+  name: electrum grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallElectrum
+  - type: Construction
+    graph: GrilleElectrum
+    node: grilleBroken
+
+- type: entity
+  parent: Grille
+  id: GrilleCopper
+  name: copper grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallCopper
+  - type: Construction
+    graph: GrilleCopper
+    node: grille
+
+- type: entity
+  parent: GrilleBroken
+  id: GrilleBrokenCopper
+  name: copper grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallCopper
+  - type: Construction
+    graph: GrilleCopper
+    node: grilleBroken
+
+- type: entity
+  parent: Grille
+  id: GrilleBronze
+  name: bronze grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallBronze
+  - type: Construction
+    graph: GrilleBronze
+    node: grille
+
+- type: entity
+  parent: GrilleBroken
+  id: GrilleBrokenBronze
+  name: bronze grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallBronze
+  - type: Construction
+    graph: GrilleBronze
+    node: grilleBroken
+
+- type: entity
+  parent: Grille
+  id: GrillePlatinum
+  name: platinum grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallPlatinum
+  - type: Construction
+    graph: GrillePlatinum
+    node: grille
+
+- type: entity
+  parent: GrilleBroken
+  id: GrilleBrokenPlatinum
+  name: platinum grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallPlatinum
+  - type: Construction
+    graph: GrillePlatinum
+    node: grilleBroken
+
+- type: entity
+  parent: Grille
+  id: GrilleUranium
+  name: uranium grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallUranium
+  - type: Construction
+    graph: GrilleUranium
+    node: grille
+
+- type: entity
+  parent: GrilleBroken
+  id: GrilleBrokenUranium
+  name: uranium grille
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallUranium
+  - type: Construction
+    graph: GrilleUranium
+    node: grilleBroken

@@ -15,6 +15,14 @@
   - type: EmberMaterialStack
     material: Iron
     renameEntity: false
+  - type: Construction
+    graph: EmberRodIron
+    node: rod
+  # EMBER-TODO: lattice is a tile, and tile definitions bake their sprite, so every metal lays the same steel
+  # one. It follows the material once the Bay floor set is ported and the tints are baked per material.
+  - type: FloorTile
+    outputs:
+    - Lattice
 
 - type: entity
   parent: EmberRodIron1
@@ -39,6 +47,14 @@
   - type: EmberMaterialStack
     material: Aluminium
     renameEntity: false
+  - type: Construction
+    graph: EmberRodAluminium
+    node: rod
+  # EMBER-TODO: lattice is a tile, and tile definitions bake their sprite, so every metal lays the same steel
+  # one. It follows the material once the Bay floor set is ported and the tints are baked per material.
+  - type: FloorTile
+    outputs:
+    - Lattice
 
 - type: entity
   parent: EmberRodAluminium1
@@ -63,6 +79,14 @@
   - type: EmberMaterialStack
     material: Plasteel
     renameEntity: false
+  - type: Construction
+    graph: EmberRodPlasteel
+    node: rod
+  # EMBER-TODO: lattice is a tile, and tile definitions bake their sprite, so every metal lays the same steel
+  # one. It follows the material once the Bay floor set is ported and the tints are baked per material.
+  - type: FloorTile
+    outputs:
+    - Lattice
 
 - type: entity
   parent: EmberRodPlasteel1
@@ -87,6 +111,14 @@
   - type: EmberMaterialStack
     material: Titanium
     renameEntity: false
+  - type: Construction
+    graph: EmberRodTitanium
+    node: rod
+  # EMBER-TODO: lattice is a tile, and tile definitions bake their sprite, so every metal lays the same steel
+  # one. It follows the material once the Bay floor set is ported and the tints are baked per material.
+  - type: FloorTile
+    outputs:
+    - Lattice
 
 - type: entity
   parent: EmberRodTitanium1
@@ -111,6 +143,14 @@
   - type: EmberMaterialStack
     material: OsmiumCarbidePlasteel
     renameEntity: false
+  - type: Construction
+    graph: EmberRodOsmiumCarbidePlasteel
+    node: rod
+  # EMBER-TODO: lattice is a tile, and tile definitions bake their sprite, so every metal lays the same steel
+  # one. It follows the material once the Bay floor set is ported and the tints are baked per material.
+  - type: FloorTile
+    outputs:
+    - Lattice
 
 - type: entity
   parent: EmberRodOsmiumCarbidePlasteel1
@@ -135,6 +175,14 @@
   - type: EmberMaterialStack
     material: Osmium
     renameEntity: false
+  - type: Construction
+    graph: EmberRodOsmium
+    node: rod
+  # EMBER-TODO: lattice is a tile, and tile definitions bake their sprite, so every metal lays the same steel
+  # one. It follows the material once the Bay floor set is ported and the tints are baked per material.
+  - type: FloorTile
+    outputs:
+    - Lattice
 
 - type: entity
   parent: EmberRodOsmium1
@@ -159,6 +207,14 @@
   - type: EmberMaterialStack
     material: Gold
     renameEntity: false
+  - type: Construction
+    graph: EmberRodGold
+    node: rod
+  # EMBER-TODO: lattice is a tile, and tile definitions bake their sprite, so every metal lays the same steel
+  # one. It follows the material once the Bay floor set is ported and the tints are baked per material.
+  - type: FloorTile
+    outputs:
+    - Lattice
 
 - type: entity
   parent: EmberRodGold1
@@ -183,6 +239,14 @@
   - type: EmberMaterialStack
     material: Silver
     renameEntity: false
+  - type: Construction
+    graph: EmberRodSilver
+    node: rod
+  # EMBER-TODO: lattice is a tile, and tile definitions bake their sprite, so every metal lays the same steel
+  # one. It follows the material once the Bay floor set is ported and the tints are baked per material.
+  - type: FloorTile
+    outputs:
+    - Lattice
 
 - type: entity
   parent: EmberRodSilver1
@@ -207,6 +271,14 @@
   - type: EmberMaterialStack
     material: Electrum
     renameEntity: false
+  - type: Construction
+    graph: EmberRodElectrum
+    node: rod
+  # EMBER-TODO: lattice is a tile, and tile definitions bake their sprite, so every metal lays the same steel
+  # one. It follows the material once the Bay floor set is ported and the tints are baked per material.
+  - type: FloorTile
+    outputs:
+    - Lattice
 
 - type: entity
   parent: EmberRodElectrum1
@@ -231,6 +303,14 @@
   - type: EmberMaterialStack
     material: Copper
     renameEntity: false
+  - type: Construction
+    graph: EmberRodCopper
+    node: rod
+  # EMBER-TODO: lattice is a tile, and tile definitions bake their sprite, so every metal lays the same steel
+  # one. It follows the material once the Bay floor set is ported and the tints are baked per material.
+  - type: FloorTile
+    outputs:
+    - Lattice
 
 - type: entity
   parent: EmberRodCopper1
@@ -255,6 +335,14 @@
   - type: EmberMaterialStack
     material: Bronze
     renameEntity: false
+  - type: Construction
+    graph: EmberRodBronze
+    node: rod
+  # EMBER-TODO: lattice is a tile, and tile definitions bake their sprite, so every metal lays the same steel
+  # one. It follows the material once the Bay floor set is ported and the tints are baked per material.
+  - type: FloorTile
+    outputs:
+    - Lattice
 
 - type: entity
   parent: EmberRodBronze1
@@ -279,6 +367,14 @@
   - type: EmberMaterialStack
     material: Platinum
     renameEntity: false
+  - type: Construction
+    graph: EmberRodPlatinum
+    node: rod
+  # EMBER-TODO: lattice is a tile, and tile definitions bake their sprite, so every metal lays the same steel
+  # one. It follows the material once the Bay floor set is ported and the tints are baked per material.
+  - type: FloorTile
+    outputs:
+    - Lattice
 
 - type: entity
   parent: EmberRodPlatinum1
@@ -303,6 +399,14 @@
   - type: EmberMaterialStack
     material: Uranium
     renameEntity: false
+  - type: Construction
+    graph: EmberRodUranium
+    node: rod
+  # EMBER-TODO: lattice is a tile, and tile definitions bake their sprite, so every metal lays the same steel
+  # one. It follows the material once the Bay floor set is ported and the tints are baked per material.
+  - type: FloorTile
+    outputs:
+    - Lattice
 
 - type: entity
   parent: EmberRodUranium1

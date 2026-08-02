@@ -94,29 +94,51 @@ public sealed class EmberWallPlacementTest
     }
 
     /// <summary>
-    /// Windows and grilles are meant to share a tile with a low wall, so the check must be about walls only.
+    /// A grille goes into a low wall, so its check has to refuse a full wall while letting a low wall through.
+    /// It used to get that outcome by accident, through the very hole this fixture closes.
     /// </summary>
     [Test]
-    public async Task ALowWallStillAcceptsWhatIsBuiltIntoIt()
+    public async Task GrillesGoIntoLowWallsButNotThroughWalls()
     {
         await using var pair = await PoolManager.GetServerClient();
         var server = pair.Server;
         var entManager = server.ResolveDependency<IEntityManager>();
+        var protoManager = server.ResolveDependency<IPrototypeManager>();
         var map = await pair.CreateTestMap();
+
+        var problems = new List<string>();
 
         await server.WaitPost(() =>
         {
-            var grille = entManager.SpawnEntity("Grille", map.GridCoords);
+            var user = entManager.SpawnEntity(null, map.GridCoords);
 
-            Assert.That(entManager.HasComponent<EmberProceduralWallComponent>(grille), Is.False);
-            Assert.That(
-                entManager.TryGetComponent(grille, out EmberProceduralStructureComponent? structure) &&
-                structure.Role == EmberProceduralStructureRole.WallFrame,
-                Is.False,
-                "A grille counts as a low wall, so nothing could be built alongside one.");
+            foreach (var recipe in protoManager.EnumeratePrototypes<ConstructionPrototype>())
+            {
+                if (!recipe.ID.StartsWith("Grille"))
+                    continue;
 
-            entManager.DeleteEntity(grille);
+                var condition = recipe.Conditions.OfType<EmberNoWallInTile>().FirstOrDefault();
+                if (condition == null)
+                {
+                    problems.Add($"{recipe.ID} does not say whether it may go through a wall");
+                    continue;
+                }
+
+                var lowWall = entManager.SpawnEntity("WallFrame", map.GridCoords);
+                if (!condition.Condition(user, map.GridCoords, Direction.South))
+                    problems.Add($"{recipe.ID} refuses a low wall, which is where a grille belongs");
+                entManager.DeleteEntity(lowWall);
+
+                var wall = entManager.SpawnEntity("WallSolid", map.GridCoords);
+                if (condition.Condition(user, map.GridCoords, Direction.South))
+                    problems.Add($"{recipe.ID} may be built through a wall");
+                entManager.DeleteEntity(wall);
+            }
+
+            entManager.DeleteEntity(user);
         });
+
+        Assert.That(problems, Is.Empty, string.Join("\n", problems));
 
         await pair.CleanReturnAsync();
     }

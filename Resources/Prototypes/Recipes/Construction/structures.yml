@@ -690,6 +690,8 @@
   category: construction-category-structures
   description: A flimsy framework of iron rods.
   conditions:
+    - !type:EmberNoWallInTile
+      allowLowWalls: true
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
