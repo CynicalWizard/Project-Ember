@@ -25,6 +25,7 @@ public sealed class EmberProceduralWallSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly EmberProceduralDoorFacingSystem _doorFacing = default!;
     [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
 
     private readonly Queue<EntityUid> _dirty = new();
     private readonly Queue<EntityUid> _anchorChanged = new();
@@ -50,6 +51,26 @@ public sealed class EmberProceduralWallSystem : EntitySystem
         SubscribeLocalEvent<EmberProceduralWallComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<EmberProceduralWallComponent, AnchorStateChangedEvent>(OnAnchorChanged);
         SubscribeLocalEvent<EmberProceduralWallComponent, AfterAutoHandleStateEvent>(OnAfterAutoHandleState);
+        SubscribeLocalEvent<EmberProceduralWallComponent, AppearanceChangeEvent>(OnAppearanceChanged);
+    }
+
+    /// <summary>
+    /// Bay lays a darkening overlay over a damaged wall, stepped through sixteen levels of opacity. The mask was
+    /// greyscale for a multiply blend, which sprite layers here have no equivalent for, so it was converted to
+    /// black with the inverse alpha: drawn normally that comes out pixel for pixel the same.
+    /// </summary>
+    private void OnAppearanceChanged(EntityUid uid, EmberProceduralWallComponent component, ref AppearanceChangeEvent args)
+    {
+        if (args.Sprite is not { } sprite || !sprite.LayerMapTryGet(EmberWallLayer.Damage, out var index, false))
+            return;
+
+        if (!_appearance.TryGetData<float>(uid, EmberWallVisuals.DamageFraction, out var fraction, args.Component))
+            fraction = 0f;
+
+        var alpha = EmberWallMaterialStats.GetDamageOverlayAlpha(fraction);
+
+        sprite.LayerSetVisible(index, alpha > 0f);
+        sprite.LayerSetColor(index, Color.White.WithAlpha(alpha));
     }
 
     private void OnStartup(EntityUid uid, EmberProceduralWallComponent component, ComponentStartup args)
@@ -127,6 +148,14 @@ public sealed class EmberProceduralWallSystem : EntitySystem
             sprite.LayerMapSet(layer.Layer, index);
             sprite.LayerSetDirOffset(layer.Layer, layer.Offset);
         }
+
+        // The damage overlay covers the whole tile rather than a quarter, so it sits outside the corner layers
+        // and on top of all of them.
+        sprite.LayerMapRemove(EmberWallLayer.Damage);
+        var damageIndex = sprite.AddLayer(
+            new SpriteSpecifier.Rsi(component.Sprite, EmberProceduralWallStates.DamageOverlay));
+        sprite.LayerMapSet(EmberWallLayer.Damage, damageIndex);
+        sprite.LayerSetVisible(damageIndex, false);
 
         ApplyColors(sprite, visuals);
     }
@@ -591,6 +620,7 @@ public sealed class EmberProceduralWallSystem : EntitySystem
         EdgeNE,
         EdgeNW,
         EdgeSW,
+        Damage,
     }
 
     private enum WallLayerKind : byte

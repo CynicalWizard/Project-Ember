@@ -8,3 +8,9 @@ ember-structure-examined-paint = Нанесён слой {$color} краски.
 ember-airlock-examined-door = Дверь шлюза покрыта {$color} краской.
 ember-airlock-examined-stripe = На шлюз нанесена полоса {$color} краски.
 ember-airlock-examined-window = Окно шлюза тонировано {$color} краской.
+
+# Состояние стены выводится рядом со строками покраски, потому что осмотр стены собирается в одном месте.
+ember-wall-examined-damage-light = Поцарапана и помята.
+ember-wall-examined-damage-moderate = Заметно повреждена.
+ember-wall-examined-damage-heavy = Сильно погнута, обшивка отслаивается.
+ember-wall-examined-damage-critical = Держится на честном слове.

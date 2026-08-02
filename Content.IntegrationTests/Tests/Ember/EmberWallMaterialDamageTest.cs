@@ -4,6 +4,8 @@ using Content.Server.Destructible;
 using Content.Server.Destructible.Thresholds.Triggers;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Projectiles;
+using Content.Server.Radiation.Components;
 using Content.Shared.Ember.Materials;
 using Content.Shared.Ember.Walls;
 using Content.Shared.Radiation.Components;
@@ -89,6 +91,7 @@ public sealed class EmberWallMaterialDamageTest
         var map = await pair.CreateTestMap();
 
         var blunt = protoManager.Index<DamageTypePrototype>("Blunt");
+        var appearanceSystem = server.System<SharedAppearanceSystem>();
 
         await server.WaitPost(() =>
         {
@@ -102,10 +105,50 @@ public sealed class EmberWallMaterialDamageTest
 
             damageable.TryChangeDamage(wall, new DamageSpecifier(blunt, 100));
 
-            // Steel armour is 7, entering as 1 / (7 * 0.4), so the hit lands but most of it is absorbed.
             var taken = (float) damage.TotalDamage;
             Assert.That(taken, Is.GreaterThan(0f), "A solid hit did nothing.");
             Assert.That(taken, Is.LessThan(100f), "Wall armour absorbed nothing.");
+
+            // How battered the wall looks is published for the client, which cannot see the threshold itself.
+            Assert.That(
+                appearanceSystem.TryGetData<float>(wall, EmberWallVisuals.DamageFraction, out var fraction),
+                Is.True,
+                "A damaged wall published no damage fraction, so it will never show an overlay.");
+            Assert.That(fraction, Is.GreaterThan(0f).And.LessThanOrEqualTo(1f));
+
+            entManager.DeleteEntity(wall);
+        });
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    /// The floor is compared against the raw hit, which is what Bay does, and it is easy to get wrong: measured
+    /// after the wall's damage modifier set, a rifle round loses ten points to a flat reduction and lands under
+    /// the floor, leaving steel walls immune to gunfire.
+    /// </summary>
+    [Test]
+    public async Task RifleRoundsStillDamageASteelWall()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        var entManager = server.ResolveDependency<IEntityManager>();
+        var protoManager = server.ResolveDependency<IPrototypeManager>();
+        var damageable = server.System<DamageableSystem>();
+        var map = await pair.CreateTestMap();
+
+        var bullet = protoManager.Index<EntityPrototype>("BulletLightRifle");
+        var projectile = (ProjectileComponent) bullet.Components["Projectile"].Component;
+
+        await server.WaitPost(() =>
+        {
+            var wall = entManager.SpawnEntity("WallSolid", map.GridCoords);
+            var damage = entManager.GetComponent<DamageableComponent>(wall);
+
+            damageable.TryChangeDamage(wall, projectile.Damage);
+
+            Assert.That((float) damage.TotalDamage, Is.GreaterThan(0f),
+                $"A rifle round ({projectile.Damage.GetTotal()} raw) did nothing to a steel wall.");
 
             entManager.DeleteEntity(wall);
         });
@@ -134,8 +177,16 @@ public sealed class EmberWallMaterialDamageTest
             {
                 Assert.That(entManager.TryGetComponent(uranium, out RadiationSourceComponent? source), Is.True,
                     "A uranium wall emits no radiation.");
-                Assert.That(source!.Intensity,
-                    Is.EqualTo(12f * EmberWallMaterialStats.RadiationIntensityScale).Within(0.001f));
+
+                // The gridcast subtracts every blocker on the way out, the wall's own included, so the source
+                // has to carry that back or nothing escapes the tile it sits on.
+                var blocked = entManager.TryGetComponent(uranium, out RadiationBlockerComponent? blocker)
+                    ? blocker.RadResistance
+                    : 0f;
+
+                Assert.That(source!.Intensity - blocked,
+                    Is.EqualTo(12f * EmberWallMaterialStats.RadiationIntensityScale).Within(0.001f),
+                    "A uranium wall shields away its own radiation.");
 
                 Assert.That(entManager.HasComponent<RadiationSourceComponent>(steel), Is.False,
                     "An inert material gave its wall a radiation source.");

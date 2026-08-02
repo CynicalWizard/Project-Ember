@@ -1,3 +1,4 @@
+using Content.Server.Ember.Materials;
 using Content.Shared.Doors.Components;
 using Content.Shared.Ember.Doors;
 using Content.Shared.Ember.Materials;
@@ -41,6 +42,9 @@ public sealed class EmberProceduralMaterialDoorSystem : EntitySystem
             if (TryComp<DoorComponent>(uid, out var door))
                 door.Occludes = false;
         }
+
+        // A uranium door is as radioactive as a uranium bulkhead; Bay irradiates from the material either way.
+        EmberMaterialRadiation.Apply(EntityManager, uid, material.Radioactivity ?? 0f);
 
         if (material.Luminescence is not { } luminescence || luminescence <= 0f)
             return;

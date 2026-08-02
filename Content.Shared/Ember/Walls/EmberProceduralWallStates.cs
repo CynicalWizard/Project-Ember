@@ -5,6 +5,9 @@ public static class EmberProceduralWallStates
     public const string Blank = "blank";
     public const string StripeBase = "stripe";
 
+    /// <summary>Bay's <c>overlay_damage</c>, one mask covering the whole tile rather than a corner.</summary>
+    public const string DamageOverlay = "overlay_damage";
+
     public static string Base(string stateBase, int corner)
     {
         return $"{stateBase}{corner}";

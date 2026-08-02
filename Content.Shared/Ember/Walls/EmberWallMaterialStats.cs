@@ -29,6 +29,32 @@ public static class EmberWallMaterialStats
     /// </summary>
     public const float RadiationIntensityScale = 0.1f;
 
+    /// <summary>
+    /// Steel's brute and burn armour. Armour is expressed relative to it so a steel wall behaves exactly as it
+    /// did before any of this existed and only other materials move, the same way integrity is anchored.
+    /// </summary>
+    public const float ReferenceArmor = 7f;
+
+    /// <summary>Bay steps the damage overlay through sixteen levels of opacity.</summary>
+    public const int DamageOverlaySteps = 16;
+
+    /// <summary>
+    /// Bay: <c>damage_overlays[round(percent / 100 * 16) + 1]</c>, each step a sixteenth more opaque than the
+    /// last. Returns how opaque the overlay should be, or zero when the wall is unmarked.
+    /// </summary>
+    public static float GetDamageOverlayAlpha(float damageFraction)
+    {
+        if (damageFraction <= 0f)
+            return 0f;
+
+        var step = Math.Clamp(
+            (int) MathF.Round(damageFraction * DamageOverlaySteps) + 1,
+            1,
+            DamageOverlaySteps);
+
+        return (step * (256f / DamageOverlaySteps) - 1f) / 255f;
+    }
+
     public static EmberWallStats For(EmberMaterialPrototype material, EmberMaterialPrototype? reinforcement)
     {
         var integrity = material.Integrity * 1.5f;
@@ -37,16 +63,18 @@ public static class EmberWallMaterialStats
         // wall given enough patience. Bay checks it against the raw damage, before armour is applied.
         var minimumDamage = material.Hardness * 2.6f;
 
-        var brute = material.BruteArmor * 0.4f;
-        var burn = material.BurnArmor * 0.4f;
+        // Bay scales both armour values by 0.4 before inverting them. Expressed relative to steel that factor
+        // cancels out, so the sums stay raw here.
+        var brute = (float) material.BruteArmor;
+        var burn = (float) material.BurnArmor;
         var radioactivity = material.Radioactivity ?? 0f;
 
         if (reinforcement != null)
         {
             integrity += MathF.Round(reinforcement.Integrity * 0.75f);
             minimumDamage += MathF.Round(reinforcement.Hardness * 1.9f);
-            brute += reinforcement.BruteArmor * 0.4f;
-            burn += reinforcement.BurnArmor * 0.4f;
+            brute += reinforcement.BruteArmor;
+            burn += reinforcement.BurnArmor;
             radioactivity += (reinforcement.Radioactivity ?? 0f) / 2f;
         }
 
@@ -60,11 +88,22 @@ public static class EmberWallMaterialStats
     }
 
     /// <summary>
-    /// Materials carry armour as a divisor while the damage pipeline wants a multiplier, so Bay inverts it here.
+    /// Materials carry armour as a divisor while the damage pipeline wants a multiplier, so Bay inverts it. The
+    /// result is then expressed relative to steel.
     /// </summary>
+    /// <remarks>
+    /// Bay's raw <c>1 / (armour * 0.4)</c> would stack on top of the resistances SS14 walls already carry in
+    /// their damage modifier set, and a steel bulkhead would end up absorbing a rifle round almost entirely.
+    /// Anchoring to steel keeps the ratios between materials exactly as Bay has them — wood still takes seven
+    /// times what steel does — while leaving the balance of a plain steel wall where the rest of the game
+    /// expects it.
+    /// </remarks>
     private static float AsCoefficient(float armour)
     {
-        return armour > 0f ? MathF.Round(1f / armour, 2) : 1f;
+        // Bay would make an unarmoured wall immune here, dividing by zero and landing on a resistance of zero.
+        // No ported material has that, and the sensible reading of "no armour" is the weakest wall, not the
+        // strongest, so it is clamped to what a single point of armour would give.
+        return ReferenceArmor / MathF.Max(armour, 1f);
     }
 
     /// <summary>

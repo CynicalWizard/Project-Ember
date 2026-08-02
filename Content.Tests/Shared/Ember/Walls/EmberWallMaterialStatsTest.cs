@@ -24,7 +24,7 @@ public sealed class EmberWallMaterialStatsTest
         {
             Assert.That(stats.Integrity, Is.EqualTo(EmberWallMaterialStats.ReferenceIntegrity));
             Assert.That(stats.MinimumDamage, Is.EqualTo(16f)); // round(60 * 2.6 / 10)
-            Assert.That(stats.BruteCoefficient, Is.EqualTo(0.36f).Within(0.001f)); // 1 / (7 * 0.4)
+            Assert.That(stats.BruteCoefficient, Is.EqualTo(1f)); // steel is the anchor, so it is left alone
             Assert.That(stats.ExplosionCoefficient, Is.EqualTo(1f)); // steel's 5 is the break-even point
         });
     }
@@ -39,23 +39,56 @@ public sealed class EmberWallMaterialStatsTest
         {
             Assert.That(stats.Integrity, Is.EqualTo(225f + 300f));
             Assert.That(stats.MinimumDamage, Is.EqualTo(31f)); // round((60 * 2.6 + round(80 * 1.9)) / 10)
-            // 7 * 0.4 + 8 * 0.4 = 6, inverted to a multiplier.
-            Assert.That(stats.BruteCoefficient, Is.EqualTo(0.17f).Within(0.001f));
+            Assert.That(stats.BruteCoefficient, Is.EqualTo(7f / 15f).Within(0.001f));
         });
     }
 
     /// <summary>
-    /// Armour enters as a divisor, so no armour has to mean "take the full hit" rather than a division by zero.
+    /// The point of anchoring to steel is that the ratios between materials stay exactly Bay's: wood, at one
+    /// point of armour against steel's seven, still takes seven times what steel does.
     /// </summary>
     [Test]
-    public void NoArmourLeavesDamageUntouched()
+    public void MaterialsKeepTheirRatiosToSteel()
+    {
+        var wood = EmberWallMaterialStats.For(Material(armor: 1), null);
+        var titanium = EmberWallMaterialStats.For(Material(armor: 10), null);
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(wood.BruteCoefficient, Is.EqualTo(7f).Within(0.001f));
+            Assert.That(titanium.BruteCoefficient, Is.EqualTo(0.7f).Within(0.001f));
+        });
+    }
+
+    /// <summary>
+    /// Bay divides by the armour value and would make an unarmoured wall immune. Nothing ported has zero armour,
+    /// but the guard should read as "flimsiest wall", not "invincible".
+    /// </summary>
+    [Test]
+    public void NoArmourIsTheWeakestWallRatherThanTheStrongest()
     {
         var stats = EmberWallMaterialStats.For(Material(armor: 0), null);
 
         Assert.Multiple(() =>
         {
-            Assert.That(stats.BruteCoefficient, Is.EqualTo(1f));
-            Assert.That(stats.BurnCoefficient, Is.EqualTo(1f));
+            Assert.That(stats.BruteCoefficient, Is.EqualTo(EmberWallMaterialStats.ReferenceArmor));
+            Assert.That(stats.BurnCoefficient, Is.EqualTo(EmberWallMaterialStats.ReferenceArmor));
+        });
+    }
+
+    /// <summary>
+    /// Bay draws no overlay on an unmarked wall and the full one on a wall about to fall over.
+    /// </summary>
+    [Test]
+    public void DamageOverlayRunsFromInvisibleToOpaque()
+    {
+        Assert.Multiple(() =>
+        {
+            Assert.That(EmberWallMaterialStats.GetDamageOverlayAlpha(0f), Is.Zero);
+            Assert.That(EmberWallMaterialStats.GetDamageOverlayAlpha(1f), Is.EqualTo(1f).Within(0.001f));
+            Assert.That(
+                EmberWallMaterialStats.GetDamageOverlayAlpha(0.5f),
+                Is.GreaterThan(EmberWallMaterialStats.GetDamageOverlayAlpha(0.1f)));
         });
     }
 

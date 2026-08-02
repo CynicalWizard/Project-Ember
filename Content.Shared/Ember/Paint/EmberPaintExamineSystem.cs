@@ -33,6 +33,8 @@ public sealed class EmberPaintExamineSystem : EntitySystem
 
     private const float LightnessStep = 0.02f;
 
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -44,6 +46,10 @@ public sealed class EmberPaintExamineSystem : EntitySystem
 
     private void OnWallExamined(EntityUid uid, EmberProceduralWallComponent component, ExaminedEvent args)
     {
+        // The event bus allows one subscription per component and event, and this system already holds the one
+        // for walls, so the damage line is raised from here rather than from the system that computes it.
+        PushDamage(uid, args);
+
         if (component.PaintColor is { } paintColor)
         {
             var formattedColor = FormatColor(paintColor);
@@ -85,6 +91,28 @@ public sealed class EmberPaintExamineSystem : EntitySystem
             var formatted = FormatColor(windowColor);
             args.PushMarkup(Loc.GetString("ember-airlock-examined-window", ("color", formatted)));
         }
+    }
+
+    /// <summary>
+    /// Bay tells you how battered a wall is when you look at it, in words rather than numbers.
+    /// </summary>
+    private void PushDamage(EntityUid uid, ExaminedEvent args)
+    {
+        if (!_appearance.TryGetData<float>(uid, EmberWallVisuals.DamageFraction, out var fraction) ||
+            fraction <= 0f)
+        {
+            return;
+        }
+
+        var key = fraction switch
+        {
+            < 0.25f => "ember-wall-examined-damage-light",
+            < 0.5f => "ember-wall-examined-damage-moderate",
+            < 0.75f => "ember-wall-examined-damage-heavy",
+            _ => "ember-wall-examined-damage-critical",
+        };
+
+        args.PushMarkup(Loc.GetString(key));
     }
 
     public static string FormatColor(Color color)
