@@ -14,6 +14,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -32,6 +33,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -68,6 +70,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -86,6 +89,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -104,6 +108,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -122,6 +127,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -140,6 +146,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -158,6 +165,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -176,6 +184,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -194,6 +203,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -212,6 +222,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -230,6 +241,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -248,6 +260,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -266,6 +279,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -284,6 +298,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+  - !type:EmberNoWallInTile
   - !type:TileNotBlocked
 
 - type: construction
@@ -295,6 +310,7 @@
   category: construction-category-structures
   description: A low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
@@ -313,6 +329,7 @@
   category: construction-category-structures
   description: A reinforced low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
@@ -331,6 +348,7 @@
   category: construction-category-structures
   description: A gold low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
@@ -349,6 +367,7 @@
   category: construction-category-structures
   description: A silver low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
@@ -367,6 +386,7 @@
   category: construction-category-structures
   description: A phoron low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
@@ -385,6 +405,7 @@
   category: construction-category-structures
   description: A uranium low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
@@ -403,6 +424,7 @@
   category: construction-category-structures
   description: A plastic low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
@@ -421,6 +443,7 @@
   category: construction-category-structures
   description: A wood low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
@@ -439,6 +462,7 @@
   category: construction-category-structures
   description: A low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
@@ -457,6 +481,7 @@
   category: construction-category-structures
   description: A low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
@@ -475,6 +500,7 @@
   category: construction-category-structures
   description: A low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
@@ -493,6 +519,7 @@
   category: construction-category-structures
   description: A low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
@@ -511,6 +538,7 @@
   category: construction-category-structures
   description: A low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
@@ -529,6 +557,7 @@
   category: construction-category-structures
   description: A low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
@@ -547,6 +576,7 @@
   category: construction-category-structures
   description: A low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
@@ -565,6 +595,7 @@
   category: construction-category-structures
   description: A low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
@@ -583,6 +614,7 @@
   category: construction-category-structures
   description: A low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
@@ -601,6 +633,7 @@
   category: construction-category-structures
   description: A low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
@@ -619,6 +652,7 @@
   category: construction-category-structures
   description: A low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
@@ -637,6 +671,7 @@
   category: construction-category-structures
   description: A low wall section which serves as the base of windows, amongst other things.
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
