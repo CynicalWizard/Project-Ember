@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Content.Shared.Ember.Walls;
 using NUnit.Framework;
-using Robust.Shared.Maths;
 
 namespace Content.Tests.Shared.Ember.Walls;
 
@@ -18,26 +17,10 @@ public sealed class EmberProceduralWallBlendingTest
     private static readonly Dictionary<string, bool> NoBlends = new();
 
     [Test]
-    public void IdenticalUnpaintedWallsJoinSeamlessly()
+    public void IdenticalWallsJoinSeamlessly()
     {
         Assert.That(
-            EmberProceduralWallBlending.Classify("solid", SteelBlends, null, "solid", null),
-            Is.EqualTo(EmberWallJoin.Seamless));
-    }
-
-    [Test]
-    public void IdenticalWallsPaintedDifferentlyGetASeam()
-    {
-        Assert.That(
-            EmberProceduralWallBlending.Classify("solid", SteelBlends, Color.Red, "solid", Color.Blue),
-            Is.EqualTo(EmberWallJoin.Edge));
-    }
-
-    [Test]
-    public void IdenticalWallsPaintedTheSameStaySeamless()
-    {
-        Assert.That(
-            EmberProceduralWallBlending.Classify("solid", SteelBlends, Color.Red, "solid", Color.Red),
+            EmberProceduralWallBlending.Classify("solid", SteelBlends, "solid"),
             Is.EqualTo(EmberWallJoin.Seamless));
     }
 
@@ -45,7 +28,7 @@ public sealed class EmberProceduralWallBlendingTest
     public void ListedMaterialJoinsWithASeam()
     {
         Assert.That(
-            EmberProceduralWallBlending.Classify("solid", SteelBlends, null, "wood", null),
+            EmberProceduralWallBlending.Classify("solid", SteelBlends, "wood"),
             Is.EqualTo(EmberWallJoin.Edge));
     }
 
@@ -53,7 +36,7 @@ public sealed class EmberProceduralWallBlendingTest
     public void UnlistedMaterialDoesNotJoin()
     {
         Assert.That(
-            EmberProceduralWallBlending.Classify("solid", SteelBlends, null, "metal", null),
+            EmberProceduralWallBlending.Classify("solid", SteelBlends, "metal"),
             Is.EqualTo(EmberWallJoin.None));
     }
 
@@ -64,10 +47,10 @@ public sealed class EmberProceduralWallBlendingTest
         Assert.Multiple(() =>
         {
             Assert.That(
-                EmberProceduralWallBlending.Classify("solid", SteelBlends, null, "stone", null),
+                EmberProceduralWallBlending.Classify("solid", SteelBlends, "stone"),
                 Is.EqualTo(EmberWallJoin.Edge));
             Assert.That(
-                EmberProceduralWallBlending.Classify("stone", NoBlends, null, "solid", null),
+                EmberProceduralWallBlending.Classify("stone", NoBlends, "solid"),
                 Is.EqualTo(EmberWallJoin.None));
         });
     }
@@ -78,7 +61,7 @@ public sealed class EmberProceduralWallBlendingTest
         var selfListing = new Dictionary<string, bool> { ["stone"] = true };
 
         Assert.That(
-            EmberProceduralWallBlending.Classify("stone", selfListing, null, "stone", null),
+            EmberProceduralWallBlending.Classify("stone", selfListing, "stone"),
             Is.EqualTo(EmberWallJoin.Seamless));
     }
 
@@ -88,8 +71,19 @@ public sealed class EmberProceduralWallBlendingTest
         var disabled = new Dictionary<string, bool> { ["wood"] = false };
 
         Assert.That(
-            EmberProceduralWallBlending.Classify("solid", disabled, null, "wood", null),
+            EmberProceduralWallBlending.Classify("solid", disabled, "wood"),
             Is.EqualTo(EmberWallJoin.None));
+    }
+
+    /// <summary>
+    /// A tile can hold more than one thing a wall reacts to, and the strongest offer has to win so the result
+    /// does not depend on which anchored entity is enumerated first.
+    /// </summary>
+    [Test]
+    public void SeamlessOutranksASeamWhichOutranksNoJoin()
+    {
+        Assert.That(EmberWallJoin.Seamless, Is.GreaterThan(EmberWallJoin.Edge));
+        Assert.That(EmberWallJoin.Edge, Is.GreaterThan(EmberWallJoin.None));
     }
 
     [Test]

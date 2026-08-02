@@ -401,7 +401,9 @@ public sealed class EmberProceduralWallSystem : EntitySystem
             var join = JoinWith(entity.Value, visuals, wallQuery, structureQuery, doorQuery);
 
             // Seamless wins over a seam, which wins over nothing: Bay stops at the first blend match per tile,
-            // but taking the strongest keeps the result independent of anchored-entity ordering.
+            // so a tile holding both a low wall frame and a door lands wherever the iteration order falls.
+            // Taking the strongest offer instead makes the result independent of anchored-entity ordering, and
+            // EmberWallJoin is ordered so that a plain comparison says which is stronger.
             if (join > best)
                 best = join;
 
@@ -430,20 +432,14 @@ public sealed class EmberProceduralWallSystem : EntitySystem
                     : EmberStructureBlend.Edge);
         }
 
+        // Only the neighbour's smooth key matters, so there is no need to resolve its full visuals here.
         if (wallQuery.TryGetComponent(entity, out var other) &&
             _prototype.TryIndex(other.Material, out EmberWallMaterialPrototype? otherMaterial))
         {
-            var otherVisuals = EmberProceduralWallVisuals.Resolve(
-                other,
-                otherMaterial,
-                ResolvePhysical(otherMaterial));
-
             return EmberProceduralWallBlending.Classify(
                 visuals.SmoothKey,
                 visuals.BlendKeys,
-                visuals.PaintColor,
-                otherVisuals.SmoothKey,
-                otherVisuals.PaintColor);
+                EmberProceduralWallVisuals.SmoothKeyFor(otherMaterial));
         }
 
         // Doors are on Bay's blend list but not its full-blend list, so they always take a seam.

@@ -24,6 +24,15 @@ public static class EmberProceduralWallVisuals
 {
     private static readonly Dictionary<string, bool> NoBlending = new();
 
+    /// <summary>
+    /// Bay decides joins by comparing <c>wall_icon_base</c>, so the key a material smooths on defaults to the
+    /// state base it draws with.
+    /// </summary>
+    public static string SmoothKeyFor(EmberWallMaterialPrototype material)
+    {
+        return material.SmoothKey ?? material.StateBase;
+    }
+
     public static EmberProceduralWallLayerVisuals Resolve(
         EmberProceduralWallComponent wall,
         EmberWallMaterialPrototype material,
@@ -37,7 +46,7 @@ public static class EmberProceduralWallVisuals
         Color? reinforcementColor = reinforcementStateBase != null
             ? wall.PaintColor ?? material.ReinforcementColor ?? material.Color
             : null;
-        var smoothKey = material.SmoothKey ?? stateBase;
+        var smoothKey = SmoothKeyFor(material);
 
         // The blend table and the edge flag live on the physical material, which is where the Bay data was
         // ported to. Wall materials with no physical counterpart (the glass ones) can state them directly.
