@@ -128,3 +128,10 @@
   name: materials-copper
   icon: { sprite: Ember/Objects/Materials/materials.rsi, state: ingot }
   price: 0.2
+
+- type: material
+  id: Iron
+  stackEntity: EmberIngotIron1
+  name: materials-iron
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: ingot }
+  price: 0.1

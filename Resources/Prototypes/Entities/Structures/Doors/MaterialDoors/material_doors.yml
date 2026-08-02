@@ -28,10 +28,10 @@
     bumpOpen: false
     clickOpen: true
     canCrush: false
-    closeTimeOne: 0.2
-    closeTimeTwo: 0.6
-    openTimeOne: 0.6
-    openTimeTwo: 0.2
+    closeTimeOne: 0.3
+    closeTimeTwo: 0.9
+    openTimeOne: 0.9
+    openTimeTwo: 0.3
     openingAnimationTime: 1.2
     closingAnimationTime: 1.2
     openSound:
@@ -70,9 +70,16 @@
 
 - type: entity
   id: MetalDoor
-  name: metal door
+  name: steel door
   parent: BaseMaterialDoorNavMap
   components:
+  - type: Sprite
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
+    layers:
+    - state: metal
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: EmberProceduralMaterialDoor
+    material: Steel
   - type: Construction
     graph: DoorGraph
     node: metalDoor
@@ -84,17 +91,19 @@
   description: A door, where will it lead?
   components:
   - type: Sprite
-    sprite: Structures/Doors/MineralDoors/wood_door.rsi
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
     layers:
-    - state: closed
+    - state: wood
       map: ["enum.DoorVisualLayers.Base"]
+  - type: EmberProceduralMaterialDoor
+    material: Wood
   - type: Door
     bumpOpen: false
     clickOpen: true
-    closeTimeOne: 0.2
-    closeTimeTwo: 0.6
-    openTimeOne: 0.6
-    openTimeTwo: 0.2
+    closeTimeOne: 0.3
+    closeTimeTwo: 0.9
+    openTimeOne: 0.9
+    openTimeTwo: 0.3
     openSound:
       path: /Audio/Effects/door_open.ogg
     closeSound:
@@ -144,10 +153,12 @@
   description: A door, where will it lead?
   components:
   - type: Sprite
-    sprite: Structures/Doors/MineralDoors/plasma_door.rsi
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
     layers:
-    - state: closed
+    - state: stone
       map: ["enum.DoorVisualLayers.Base"]
+  - type: EmberProceduralMaterialDoor
+    material: Phoron
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
@@ -170,10 +181,12 @@
   description: A door, where will it lead?
   components:
   - type: Sprite
-    sprite: Structures/Doors/MineralDoors/gold_door.rsi
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
     layers:
-    - state: closed
+    - state: metal
       map: ["enum.DoorVisualLayers.Base"]
+  - type: EmberProceduralMaterialDoor
+    material: Gold
   - type: Construction
     graph: DoorGraph
     node: goldDoor
@@ -185,10 +198,12 @@
   description: A door, where will it lead?
   components:
   - type: Sprite
-    sprite: Structures/Doors/MineralDoors/silver_door.rsi
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
     layers:
-    - state: closed
+    - state: metal
       map: ["enum.DoorVisualLayers.Base"]
+  - type: EmberProceduralMaterialDoor
+    material: Silver
   - type: Construction
     graph: DoorGraph
     node: silverDoor
@@ -250,3 +265,156 @@
       path: /Audio/Effects/rustle1.ogg
     openSound:
       path: /Audio/Effects/rustle2.ogg
+
+# Material doors Bay has that this fork did not. They all ride the one shared sheet, so a new material
+# only costs a state name and a colour.
+
+- type: entity
+  id: IronDoor
+  name: iron door
+  parent: BaseMaterialDoorNavMap
+  description: A door, where will it lead?
+  components:
+  - type: Sprite
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
+    layers:
+    - state: metal
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: EmberProceduralMaterialDoor
+    material: Iron
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Construction
+    graph: DoorGraph
+    node: ironDoor
+
+- type: entity
+  id: SandstoneDoor
+  name: sandstone door
+  parent: BaseMaterialDoorNavMap
+  description: A door, where will it lead?
+  components:
+  - type: Sprite
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
+    layers:
+    - state: stone
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: EmberProceduralMaterialDoor
+    material: Sandstone
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Construction
+    graph: DoorGraph
+    node: sandstoneDoor
+
+- type: entity
+  id: UraniumDoor
+  name: uranium door
+  parent: BaseMaterialDoorNavMap
+  description: A door, where will it lead?
+  components:
+  - type: Sprite
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
+    layers:
+    - state: stone
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: EmberProceduralMaterialDoor
+    material: Uranium
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 250
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Construction
+    graph: DoorGraph
+    node: uraniumDoor
+
+- type: entity
+  id: DiamondDoor
+  name: diamond door
+  parent: BaseMaterialDoorNavMap
+  description: A door, where will it lead?
+  components:
+  - type: Sprite
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
+    layers:
+    - state: metal
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: EmberProceduralMaterialDoor
+    material: Diamond
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Construction
+    graph: DoorGraph
+    node: diamondDoor
+
+- type: entity
+  id: PlasticDoor
+  name: plastic door
+  parent: BaseMaterialDoorNavMap
+  description: A door, where will it lead?
+  components:
+  - type: Sprite
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
+    layers:
+    - state: plastic
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: EmberProceduralMaterialDoor
+    material: Plastic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Construction
+    graph: DoorGraph
+    node: plasticDoor
+
+- type: entity
+  id: GlassDoor
+  name: glass door
+  parent: BaseMaterialDoorNavMap
+  description: A door, where will it lead?
+  components:
+  - type: Sprite
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
+    layers:
+    - state: stone
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: EmberProceduralMaterialDoor
+    material: Glass
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 80
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Construction
+    graph: DoorGraph
+    node: glassDoor

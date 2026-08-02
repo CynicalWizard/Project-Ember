@@ -57,6 +57,13 @@
     containers:
       board: !type:Container
   - type: Door
+    # HighSecDoor hangs off BaseStructure rather than Airlock, so it never picked up the mechanical timings that
+    # were widened to match the 1.2s Bay sheet. Without these the door reaches Closed after 0.6s and the closing
+    # animation is cut halfway.
+    openTimeOne: 0.8
+    openTimeTwo: 0.4
+    closeTimeOne: 0.8
+    closeTimeTwo: 0.4
     openingAnimationTime: 1.2
     closingAnimationTime: 1.2
     crushDamage:

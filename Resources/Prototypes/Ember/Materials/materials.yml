@@ -1199,7 +1199,7 @@
   color: "#402821"
   wallIconBase: cult
   wallIconReinforced: reinf_cult
-  doorIconBase: cult
+  doorIconBase: stone # Bay says "cult" here, but material_doors.dmi has no such state
   tableIconBase: cult
   constructionDifficulty: 1
   wallBlendIcons:

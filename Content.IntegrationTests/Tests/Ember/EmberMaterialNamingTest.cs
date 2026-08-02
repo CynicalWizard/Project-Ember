@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Content.Shared.Ember.Doors;
 using Content.Shared.Ember.Materials;
 using Content.Shared.Materials;
 using Content.Shared.Stacks;
@@ -137,6 +138,40 @@ public sealed class EmberMaterialNamingTest
         }
 
         Assert.That(problems, Is.Empty, string.Join("; ", problems));
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    /// Every material door draws from the one shared sheet, so its material's door icon base has to be a base
+    /// that sheet actually contains. A missing base would silently swap the door for the error texture.
+    /// </summary>
+    [Test]
+    public async Task EveryMaterialDoorIconBaseExistsOnTheSharedSheet()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var protoManager = pair.Server.ResolveDependency<IPrototypeManager>();
+        var componentFactory = pair.Server.ResolveDependency<IComponentFactory>();
+        var doorComponent = componentFactory.GetComponentName<EmberProceduralMaterialDoorComponent>();
+
+        var problems = new List<string>();
+
+        foreach (var proto in protoManager.EnumeratePrototypes<EntityPrototype>())
+        {
+            if (proto.Abstract || !proto.Components.TryGetComponent(doorComponent, out var raw))
+                continue;
+
+            var door = (EmberProceduralMaterialDoorComponent) raw;
+
+            Assert.That(protoManager.TryIndex(door.Material, out EmberMaterialPrototype? material), Is.True,
+                $"{proto.ID} names material {door.Material}, which does not exist.");
+
+            if (!EmberMaterialDoorVisuals.KnownBases.Contains(material!.DoorIconBase))
+                problems.Add($"{proto.ID} uses icon base '{material.DoorIconBase}' from material {material.ID}");
+        }
+
+        Assert.That(problems, Is.Empty,
+            "Icon bases the shared door sheet does not have: " + string.Join("; ", problems));
 
         await pair.CleanReturnAsync();
     }

@@ -2004,3 +2004,104 @@
   conditions:
     - !type:TileNotBlocked
 
+- type: construction
+  name: iron door
+  id: IronDoor
+  graph: DoorGraph
+  startNode: start
+  targetNode: ironDoor
+  category: construction-category-structures
+  description: A primitive door with manual operation like the cavemen used.
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  icon:
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
+    state: metal
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: sandstone door
+  id: SandstoneDoor
+  graph: DoorGraph
+  startNode: start
+  targetNode: sandstoneDoor
+  category: construction-category-structures
+  description: A primitive door with manual operation like the cavemen used.
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  icon:
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
+    state: stone
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: uranium door
+  id: UraniumDoor
+  graph: DoorGraph
+  startNode: start
+  targetNode: uraniumDoor
+  category: construction-category-structures
+  description: A primitive door with manual operation like the cavemen used.
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  icon:
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
+    state: stone
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: diamond door
+  id: DiamondDoor
+  graph: DoorGraph
+  startNode: start
+  targetNode: diamondDoor
+  category: construction-category-structures
+  description: A primitive door with manual operation like the cavemen used.
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  icon:
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
+    state: metal
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: plastic door
+  id: PlasticDoor
+  graph: DoorGraph
+  startNode: start
+  targetNode: plasticDoor
+  category: construction-category-structures
+  description: A primitive door with manual operation like the cavemen used.
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  icon:
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
+    state: plastic
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: glass door
+  id: GlassDoor
+  graph: DoorGraph
+  startNode: start
+  targetNode: glassDoor
+  category: construction-category-structures
+  description: A primitive door with manual operation like the cavemen used.
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  icon:
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
+    state: stone
+  conditions:
+    - !type:TileNotBlocked
