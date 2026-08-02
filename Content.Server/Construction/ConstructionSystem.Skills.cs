@@ -1,12 +1,5 @@
 using Content.Shared.Construction;
-using System;
-using Content.Shared.Construction.Prototypes;
-using Content.Shared.Construction.Steps;
-using Content.Shared.Ember.Materials;
 using Content.Shared.Ember.Skills;
-using Content.Shared.Stacks;
-using Robust.Shared.Prototypes;
-using Content.Shared.Popups;
 using Robust.Shared.Random;
 
 namespace Content.Server.Construction
@@ -15,45 +8,32 @@ namespace Content.Server.Construction
     {
         [Dependency] private readonly SharedSkillsSystem _skillsSystem = default!;
 
-        /// <summary>
-        /// Retrieves the construction difficulty of the recipe based on the materials it requires.
-        /// Defaults to 1 (Basic) if no materials with difficulty are found.
-        /// </summary>
         private int GetConstructionDifficulty(ConstructionGraphEdge edge)
         {
-            var matDiff = 0;
-            foreach (var step in edge.Steps)
-            {
-                if (step is MaterialConstructionGraphStep matStep)
-                {
-                    if (PrototypeManager.TryIndex<StackPrototype>(matStep.MaterialPrototypeId, out var stackProto) &&
-                        PrototypeManager.TryIndex<EntityPrototype>(stackProto.Spawn, out var entProto) &&
-                        entProto.TryGetComponent<EmberMaterialStackComponent>(out var matStackComp, _factory) &&
-                        PrototypeManager.TryIndex<EmberMaterialPrototype>(matStackComp.Material, out var emberMatProto))
-                    {
-                        matDiff = Math.Max(matDiff, emberMatProto.ConstructionDifficulty);
-                    }
-                }
-            }
-            return Math.Clamp(1 + matDiff, 0, 3);
+            return EmberConstructionSkill.GetDifficulty(edge, PrototypeManager, _factory);
         }
 
-        private float GetConstructionSpeedModifier(EntityUid user, int difficulty)
+        /// <summary>
+        /// Bay's <c>skill_delay_mult</c>: every level below Trained costs 30% more time, every level above saves
+        /// the same. It applies to each step of a build as well as to raising the thing in the first place.
+        /// </summary>
+        private float GetConstructionSpeedModifier(EntityUid user)
         {
-            var currentSkill = (int)_skillsSystem.GetSkillValue(user, "construction");
-            // Bay formula: final_time = base_time * max(0, 1 + (3 - current_skill) * 0.3)
-            return Math.Max(0f, 1f + (3 - currentSkill) * 0.3f);
+            return _skillsSystem.GetSkillDelayMultiplier(user, EmberConstructionSkill.Skill);
         }
 
+        /// <summary>
+        /// Bay's <c>skill_fail_prob(SKILL_CONSTRUCTION, 90, recipe.difficulty)</c>. The third argument is the level
+        /// at which failure stops, which is why difficulty is measured on the skill scale.
+        /// </summary>
         private bool TryConstructionFail(EntityUid user, int difficulty)
         {
-            var currentSkill = (int)_skillsSystem.GetSkillValue(user, "construction");
+            var chance = _skillsSystem.GetSkillFailChance(
+                user,
+                EmberConstructionSkill.Skill,
+                EmberConstructionSkill.UnskilledFailChance,
+                EmberConstructionSkill.GetRequiredLevel(difficulty));
 
-            if (currentSkill >= difficulty)
-                return false;
-
-            // 90 * (2 ^ (1 - current_skill)) %
-            var chance = 90f * (float)Math.Pow(2, 1 - currentSkill);
             return _robustRandom.Prob(chance / 100f);
         }
     }

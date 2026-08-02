@@ -116,7 +116,7 @@ namespace Content.Server.Construction
 
             var doAfterTime = 0f;
             var difficulty = GetConstructionDifficulty(edge);
-            var speedMod = GetConstructionSpeedModifier(user, difficulty);
+            var speedMod = GetConstructionSpeedModifier(user);
 
             // EMBER-TODO: refactor this container madness, possibly use a dedicated construction container component.
             // HOLY SHIT THIS IS SOME HACKY CODE.

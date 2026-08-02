@@ -349,29 +349,16 @@ namespace Content.Client.Construction.UI
                 _entManager.TrySystem<SharedSkillsSystem>(out var skillsSys))
             {
                 var difficulty = 1;
-                if (_prototypeManager.TryIndex<ConstructionGraphPrototype>(prototype.Graph, out var graph))
+                if (_prototypeManager.TryIndex<ConstructionGraphPrototype>(prototype.Graph, out var graph) &&
+                    graph.Edge(prototype.StartNode, prototype.TargetNode) is { } edge)
                 {
-                    if (graph.Edge(prototype.StartNode, prototype.TargetNode) is { } edge)
-                    {
-                        var matDiff = 0;
-                        foreach (var step in edge.Steps)
-                        {
-                            if (step is MaterialConstructionGraphStep matStep)
-                            {
-                                if (_prototypeManager.TryIndex<StackPrototype>(matStep.MaterialPrototypeId, out var stackProto) &&
-                                    _prototypeManager.TryIndex<EntityPrototype>(stackProto.Spawn, out var entProto) &&
-                                    entProto.TryGetComponent<EmberMaterialStackComponent>(out var matStackComp, _entManager.ComponentFactory) &&
-                                    _prototypeManager.TryIndex<EmberMaterialPrototype>(matStackComp.Material, out var emberMatProto))
-                                {
-                                    matDiff = Math.Max(matDiff, emberMatProto.ConstructionDifficulty);
-                                }
-                            }
-                        }
-                        difficulty = Math.Clamp(1 + matDiff, 0, 3);
-                    }
+                    difficulty = EmberConstructionSkill.GetDifficulty(
+                        edge,
+                        _prototypeManager,
+                        _entManager.ComponentFactory);
                 }
 
-                var currentSkill = (int)skillsSys.GetSkillValue(localPlayer, "construction");
+                var currentSkill = (int) skillsSys.GetSkillValue(localPlayer, EmberConstructionSkill.Skill);
                 if (currentSkill < difficulty)
                 {
                     var diff = difficulty - currentSkill;
