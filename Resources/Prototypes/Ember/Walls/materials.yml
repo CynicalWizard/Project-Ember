@@ -2,7 +2,6 @@
   id: EmberWallSteel
   physicalMaterial: Steel
   stateBase: solid
-  color: "#a8b0b2"
   reinforcementStateBase: reinf_over
   reinforcementColor: "#a8a9b2"
 
@@ -10,25 +9,21 @@
   id: EmberWallIron
   physicalMaterial: Iron
   stateBase: metal
-  color: "#5C5454"
 
 - type: emberWallMaterial
   id: EmberWallAluminium
   physicalMaterial: Aluminium
   stateBase: metal
-  color: "#CCCDCC"
 
 - type: emberWallMaterial
   id: EmberWallTitanium
   physicalMaterial: Titanium
   stateBase: metal
-  color: "#D1E6E3"
 
 - type: emberWallMaterial
   id: EmberWallPlasteel
   physicalMaterial: Plasteel
   stateBase: solid
-  color: "#A8A9B2"
   reinforcementStateBase: reinf_over
   reinforcementColor: "#A8A9B2"
 
@@ -36,7 +31,6 @@
   id: EmberWallOCP
   physicalMaterial: OsmiumCarbidePlasteel
   stateBase: solid
-  color: "#9BC6F2"
   reinforcementStateBase: reinf_over
   reinforcementColor: "#9BC6F2"
 
@@ -44,7 +38,6 @@
   id: EmberWallRustedSteel
   physicalMaterial: RustedSteel
   stateBase: solid
-  color: "#8A5A34"
   reinforcementStateBase: reinf_over
   reinforcementColor: "#7A4A2A"
 
@@ -52,97 +45,81 @@
   id: EmberWallDiamond
   physicalMaterial: Diamond
   stateBase: stone
-  color: "#9DD6E0"
 
 - type: emberWallMaterial
   id: EmberWallGold
   physicalMaterial: Gold
   stateBase: metal
-  color: "#FFCC33"
 
 - type: emberWallMaterial
   id: EmberWallOsmium
   physicalMaterial: Osmium
   stateBase: metal
-  color: "#9999FF"
 
 - type: emberWallMaterial
   id: EmberWallElectrum
   physicalMaterial: Electrum
   stateBase: metal
-  color: "#E7C697"
 
 - type: emberWallMaterial
   id: EmberWallCopper
   physicalMaterial: Copper
   stateBase: metal
-  color: "#B87333"
 
 - type: emberWallMaterial
   id: EmberWallBronze
   physicalMaterial: Bronze
   stateBase: metal
-  color: "#EDD12F"
 
 - type: emberWallMaterial
   id: EmberWallPlatinum
   physicalMaterial: Platinum
   stateBase: metal
-  color: "#DEDDFF"
 
 - type: emberWallMaterial
   id: EmberWallPhoron
   physicalMaterial: Phoron
   stateBase: stone # /material/phoron is wall_icon_base "stone" in Bay, and its blend table assumes that
-  color: "#E37108"
 
 - type: emberWallMaterial
   id: EmberWallPlastic
   physicalMaterial: Plastic
   stateBase: solid
-  color: "#D8D8D8"
 
 - type: emberWallMaterial
   id: EmberWallSandstone
   physicalMaterial: Sandstone
   stateBase: stone
-  color: "#D9C179"
 
 - type: emberWallMaterial
   id: EmberWallMarble
   physicalMaterial: Marble
   stateBase: stone
-  color: "#AAAAAA"
 
 - type: emberWallMaterial
   id: EmberWallConcrete
   physicalMaterial: Concrete
   stateBase: stone
-  color: "#808080"
 
 - type: emberWallMaterial
   id: EmberWallSilver
   physicalMaterial: Silver
   stateBase: metal
-  color: "#D1E6E3"
 
 - type: emberWallMaterial
   id: EmberWallUranium
   physicalMaterial: Uranium
   stateBase: stone
-  color: "#007A00"
 
 - type: emberWallMaterial
   id: EmberWallWood
   physicalMaterial: Wood
   stateBase: wood
-  color: "#7A4D2A"
 
 - type: emberWallMaterial
   id: EmberWallStone
   physicalMaterial: Stone
   stateBase: stone
-  color: "#A8A090"
 
 - type: emberWallMaterial
   id: EmberGlass

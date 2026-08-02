@@ -1,4 +1,5 @@
 using Content.Shared.Ember.Structures;
+using Content.Shared.Ember.Materials;
 using Content.Shared.Ember.Walls;
 using Robust.Client.GameObjects;
 using Robust.Shared.Prototypes;
@@ -33,6 +34,20 @@ public sealed class EmberMaterialTintSystem : EntitySystem
             !_prototype.TryIndex(component.Material, out EmberWallMaterialPrototype? material))
             return;
 
-        sprite.Color = (component.Color ?? material.Color).WithAlpha(component.Alpha);
+        sprite.Color = (component.Color ?? ResolveColor(material)).WithAlpha(component.Alpha);
     }
+
+    /// <summary>
+    /// The colour lives on the physical material so everything built from it matches; a wall material may still
+    /// override it, which is how the glass ones get theirs.
+    /// </summary>
+    private Color ResolveColor(EmberWallMaterialPrototype material)
+    {
+        EmberMaterialPrototype? physical = null;
+        if (material.PhysicalMaterial is { } id)
+            _prototype.TryIndex(id, out physical);
+
+        return EmberProceduralWallVisuals.ColorOf(material, physical);
+    }
+
 }

@@ -3,6 +3,7 @@ using System.Linq;
 using Content.Client.Ember.Walls;
 using Content.Shared.Doors.Components;
 using Content.Shared.Ember.Structures;
+using Content.Shared.Ember.Materials;
 using Content.Shared.Ember.Walls;
 using Robust.Client.GameObjects;
 using Robust.Shared.Map.Components;
@@ -158,7 +159,7 @@ public sealed class EmberProceduralStructureSystem : EntitySystem
             return;
 
         component.UpdateGeneration = _generation;
-        var color = (component.Color ?? material.Color).WithAlpha(component.Alpha);
+        var color = (component.Color ?? ResolveColor(material)).WithAlpha(component.Alpha);
 
         MapGridComponent? grid = null;
         if (xform.Anchored && !TryComp(xform.GridUid, out grid))
@@ -449,4 +450,18 @@ public sealed class EmberProceduralStructureSystem : EntitySystem
         Full,
         Other,
     }
+
+    /// <summary>
+    /// The colour lives on the physical material so everything built from it matches; a wall material may still
+    /// override it, which is how the glass ones get theirs.
+    /// </summary>
+    private Color ResolveColor(EmberWallMaterialPrototype material)
+    {
+        EmberMaterialPrototype? physical = null;
+        if (material.PhysicalMaterial is { } id)
+            _prototype.TryIndex(id, out physical);
+
+        return EmberProceduralWallVisuals.ColorOf(material, physical);
+    }
+
 }

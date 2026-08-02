@@ -33,18 +33,27 @@ public static class EmberProceduralWallVisuals
         return material.SmoothKey ?? material.StateBase;
     }
 
+    /// <summary>
+    /// A wall is the colour of what it is made of, so anything else made of the same material matches it.
+    /// </summary>
+    public static Color ColorOf(EmberWallMaterialPrototype material, EmberMaterialPrototype? physical)
+    {
+        return material.Color ?? physical?.Color ?? Color.White;
+    }
+
     public static EmberProceduralWallLayerVisuals Resolve(
         EmberProceduralWallComponent wall,
         EmberWallMaterialPrototype material,
         EmberMaterialPrototype? physical = null)
     {
         var stateBase = material.StateBase;
-        var baseColor = wall.PaintColor ?? material.Color;
+        var materialColor = ColorOf(material, physical);
+        var baseColor = wall.PaintColor ?? materialColor;
 
         var paintColor = wall.PaintColor;
         var reinforcementStateBase = wall.Reinforced ? material.ReinforcementStateBase : null;
         Color? reinforcementColor = reinforcementStateBase != null
-            ? wall.PaintColor ?? material.ReinforcementColor ?? material.Color
+            ? wall.PaintColor ?? material.ReinforcementColor ?? materialColor
             : null;
         var smoothKey = SmoothKeyFor(material);
 
