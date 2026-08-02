@@ -258,6 +258,7 @@
             max: 1
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallDiamond
 
@@ -290,6 +291,7 @@
           collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
     - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
@@ -300,6 +302,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallGold
 
@@ -359,6 +362,7 @@
           collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
     - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
@@ -369,6 +373,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallPhoron
   - type: RadiationBlocker
@@ -400,6 +405,7 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
@@ -413,6 +419,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallPlastic
 
@@ -566,6 +573,7 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
@@ -579,6 +587,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
 
   - type: Appearance
   - type: GenericVisualizer
@@ -621,6 +630,7 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
@@ -634,6 +644,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
 
 - type: entity
   parent: WallReinforced
@@ -653,6 +664,7 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
@@ -666,6 +678,7 @@
         node: reinforcedGirder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
 
 
 - type: entity
@@ -753,6 +766,7 @@
             max: 1
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallSandstone
 
@@ -782,6 +796,7 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
@@ -795,6 +810,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallSilver
 
@@ -959,6 +975,7 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
@@ -972,6 +989,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
 
 
 - type: entity
@@ -1017,6 +1035,7 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
@@ -1030,6 +1049,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
 
 - type: entity
   parent: BaseWall
@@ -1050,6 +1070,7 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
@@ -1063,6 +1084,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallUranium
   - type: RadiationBlocker
@@ -1087,6 +1109,7 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
       - !type:PlaySoundBehavior
         sound:
           collection: WoodDestroyHeavy
@@ -1100,6 +1123,7 @@
         node: Barricade
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallWood
 
@@ -1440,6 +1464,7 @@
           collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
     - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
@@ -1450,6 +1475,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallIron
 
@@ -1485,6 +1511,7 @@
           collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
     - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
@@ -1495,6 +1522,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallAluminium
 
@@ -1530,6 +1558,7 @@
           collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
     - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
@@ -1540,6 +1569,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallTitanium
 
@@ -1575,6 +1605,7 @@
           collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
     - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
@@ -1585,6 +1616,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallOsmium
 
@@ -1620,6 +1652,7 @@
           collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
     - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
@@ -1630,6 +1663,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallElectrum
 
@@ -1665,6 +1699,7 @@
           collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
     - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
@@ -1675,6 +1710,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallCopper
 
@@ -1710,6 +1746,7 @@
           collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
     - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
@@ -1720,6 +1757,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallBronze
 
@@ -1755,6 +1793,7 @@
           collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
     - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
@@ -1765,6 +1804,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallPlatinum
 
@@ -1800,6 +1840,7 @@
           collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
     - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
@@ -1810,6 +1851,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallMarble
 
@@ -1845,6 +1887,7 @@
           collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
     - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
@@ -1855,6 +1898,7 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallConcrete
 
@@ -1890,6 +1934,7 @@
           collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
     - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
@@ -1900,5 +1945,6 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallStone

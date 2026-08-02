@@ -113,6 +113,17 @@ public sealed partial class EmberMaterialPrototype : IPrototype
     [DataField]
     public float? Luminescence { get; set; }
 
+    /// <summary>What this material leaves behind when something made of it is smashed.</summary>
+    [DataField]
+    public EmberShardType ShardType { get; set; } = EmberShardType.Shrapnel;
+
+    /// <summary>
+    /// Whether a welder turns the debris back into a sheet. Bay says no to splinters, since you cannot weld
+    /// wood back together.
+    /// </summary>
+    [DataField]
+    public bool ShardCanRepair { get; set; } = true;
+
     [DataField]
     public int ConstructionDifficulty { get; set; }
 

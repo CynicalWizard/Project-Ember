@@ -464,6 +464,7 @@
   integrity: 150
   weight: 20
   constructionDifficulty: 2
+  shardType: Shard
   explosionResistance: 5
   wallBlendIcons:
     solid: true
@@ -503,6 +504,7 @@
   doorIconBase: stone
   oreSmeltsTo: Glass
   constructionDifficulty: 1
+  shardType: Shard
   hardness: 50
   meltingPoint: 373
   bruteArmor: 1
@@ -527,6 +529,7 @@
     Sand: 2500
     Borax: 500
   constructionDifficulty: 2
+  shardType: Shard
   hardness: 60
   meltingPoint: 4273
   bruteArmor: 2
@@ -551,6 +554,7 @@
   integrity: 150
   weight: 20
   constructionDifficulty: 3
+  shardType: Shard
   explosionResistance: 5
   conductive: false
   opacity: 0.4
@@ -597,6 +601,7 @@
   integrity: 150
   weight: 22
   constructionDifficulty: 1
+  shardType: Piece
   explosionResistance: 5
   conductive: false
   wallBlendIcons:
@@ -623,6 +628,7 @@
   integrity: 201
   weight: 26
   constructionDifficulty: 2
+  shardType: Piece
   explosionResistance: 5
   conductive: false
   wallBlendIcons:
@@ -646,6 +652,7 @@
   integrity: 150
   weight: 22
   constructionDifficulty: 1
+  shardType: Piece
   explosionResistance: 5
   conductive: false
   wallBlendIcons:
@@ -764,6 +771,8 @@
   integrity: 75
   weight: 18
   constructionDifficulty: 1
+  shardType: Splinters
+  shardCanRepair: false
   explosionResistance: 2
   conductive: false
   ignitionPoint: 561
@@ -789,6 +798,8 @@
   integrity: 75
   weight: 18
   constructionDifficulty: 2
+  shardType: Splinters
+  shardCanRepair: false
   explosionResistance: 2
   conductive: false
   wallHasEdges: true
@@ -813,6 +824,8 @@
   integrity: 75
   weight: 18
   constructionDifficulty: 1
+  shardType: Splinters
+  shardCanRepair: false
   explosionResistance: 2
   conductive: false
   wallHasEdges: true
@@ -837,6 +850,8 @@
   integrity: 100
   weight: 22
   constructionDifficulty: 3
+  shardType: Splinters
+  shardCanRepair: false
   explosionResistance: 2
   conductive: false
   wallHasEdges: true
@@ -861,6 +876,8 @@
   integrity: 75
   weight: 20
   constructionDifficulty: 2
+  shardType: Splinters
+  shardCanRepair: false
   explosionResistance: 2
   conductive: false
   wallHasEdges: true
@@ -885,6 +902,8 @@
   integrity: 75
   weight: 16
   constructionDifficulty: 1
+  shardType: Splinters
+  shardCanRepair: false
   explosionResistance: 2
   conductive: false
   wallHasEdges: true
@@ -1202,6 +1221,7 @@
   doorIconBase: stone # Bay says "cult" here, but material_doors.dmi has no such state
   tableIconBase: cult
   constructionDifficulty: 1
+  shardType: Piece
   wallBlendIcons:
     solid: true
     wood: true
