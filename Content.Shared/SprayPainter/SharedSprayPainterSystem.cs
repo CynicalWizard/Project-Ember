@@ -3,6 +3,7 @@ using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Doors.Components;
 using Content.Shared.Ember.Doors;
+using Content.Shared.Ember.Materials;
 using Content.Shared.Ember.Structures;
 using Content.Shared.Ember.Walls;
 using Content.Shared.Interaction;
@@ -253,6 +254,21 @@ public abstract class SharedSprayPainterSystem : EntitySystem
         _adminLogger.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(args.User):user} is painting {ToPrettyString(ent):target} to '{style.Name}' at {Transform(ent).Coordinates:targetlocation}");
     }
 
+    /// <summary>
+    /// The paintable flags live on the physical material, which is where the Bay data was ported to.
+    /// </summary>
+    private EmberMaterialPrototype? GetPhysicalMaterial(ProtoId<EmberWallMaterialPrototype> id)
+    {
+        if (string.IsNullOrEmpty(id.Id) ||
+            !Proto.TryIndex(id, out EmberWallMaterialPrototype? wall) ||
+            wall.PhysicalMaterial is not { } physical)
+        {
+            return null;
+        }
+
+        return Proto.TryIndex(physical, out EmberMaterialPrototype? material) ? material : null;
+    }
+
     private void OnWallInteract(Entity<EmberProceduralWallComponent> ent, ref InteractUsingEvent args)
     {
         if (args.Handled)
@@ -261,6 +277,12 @@ public abstract class SharedSprayPainterSystem : EntitySystem
         if (!TryComp<SprayPainterComponent>(args.Used, out var painter) ||
             painter.AirlockDoAfter != null)
             return;
+
+        if (!SprayPainterWallPaint.CanApply(GetPhysicalMaterial(ent.Comp.Material), painter.WallMode))
+        {
+            _popup.PopupClient(Loc.GetString("spray-painter-wall-mode-not-available"), args.User, args.User);
+            return;
+        }
 
         Color? color = null;
         var pickedColor = default(Color);

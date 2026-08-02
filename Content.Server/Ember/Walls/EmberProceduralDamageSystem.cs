@@ -1,114 +1,133 @@
+using System.Diagnostics.CodeAnalysis;
 using Content.Server.Destructible;
 using Content.Server.Destructible.Thresholds.Triggers;
+using Content.Server.Explosion.EntitySystems;
 using Content.Shared.Damage;
-using Content.Shared.Ember.Walls;
+using Content.Shared.Damage.Prototypes;
 using Content.Shared.Ember.Materials;
+using Content.Shared.Ember.Walls;
+using Content.Shared.Explosion.Components;
+using Content.Shared.Radiation.Components;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Ember.Walls;
 
+/// <summary>
+/// Gives a procedural wall the toughness of what it is made of, following Bay's <c>calculate_damage_data</c>:
+/// integrity sets how much it takes to bring down, hardness sets the smallest hit that registers at all, and
+/// armour divides everything that gets through. Radioactive materials irradiate their surroundings on top.
+/// </summary>
 public sealed class EmberProceduralDamageSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly DamageableSystem _damageableSystem = default!;
+    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly ExplosionSystem _explosion = default!;
+
+    private static readonly ProtoId<DamageGroupPrototype> BruteGroup = "Brute";
+    private static readonly ProtoId<DamageGroupPrototype> BurnGroup = "Burn";
 
     public override void Initialize()
     {
         base.Initialize();
-        
+
         SubscribeLocalEvent<EmberProceduralWallComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<EmberProceduralWallComponent, DamageModifyEvent>(OnDamageModify);
     }
 
-    private void OnMapInit(EntityUid uid, EmberProceduralWallComponent component, MapInitEvent args)
+    private void OnMapInit(Entity<EmberProceduralWallComponent> ent, ref MapInitEvent args)
     {
-        RecalculateDamage(uid, component);
-    }
-
-    private void RecalculateDamage(EntityUid uid, EmberProceduralWallComponent component)
-    {
-        if (string.IsNullOrEmpty(component.Material.Id) || !_prototypeManager.TryIndex(component.Material, out var wallMaterial))
+        if (!TryGetStats(ent.Comp, out var stats))
             return;
 
-        if (wallMaterial.PhysicalMaterial == null || !_prototypeManager.TryIndex(wallMaterial.PhysicalMaterial.Value, out var baseMaterial))
-            return;
+        // A wall's materials are fixed by its prototype — reinforcing one replaces the entity rather than
+        // editing it — so this runs once per wall and the thresholds below never compound.
+        ApplyIntegrity(ent, stats.Integrity);
 
-        EmberMaterialPrototype? reinfMaterial = null;
-        if (component.ReinforcementMaterial != null && _prototypeManager.TryIndex(component.ReinforcementMaterial.Value, out var reinfWallMaterial))
+        var resistance = EnsureComp<ExplosionResistanceComponent>(ent);
+        _explosion.SetExplosionResistance(ent, stats.ExplosionCoefficient, resistance);
+
+        if (stats.Radioactivity > 0f)
         {
-            if (reinfWallMaterial.PhysicalMaterial != null)
-                _prototypeManager.TryIndex(reinfWallMaterial.PhysicalMaterial.Value, out reinfMaterial);
-        }
-
-        // Calculate Integrity
-        float baseIntegrity = baseMaterial.Integrity * 1.5f;
-        float reinfIntegrity = reinfMaterial != null ? reinfMaterial.Integrity * 0.75f : 0f;
-        float totalIntegrity = baseIntegrity + reinfIntegrity;
-
-        // SierraBay Steel (Integrity 150) base wall has 225 calculated integrity.
-        float integrityMultiplier = totalIntegrity / 225f;
-
-        if (TryComp<DestructibleComponent>(uid, out var destructible))
-        {
-            foreach (var threshold in destructible.Thresholds)
-            {
-                if (threshold.Trigger is DamageTrigger damageTrigger)
-                {
-                    // Scale damage. We use Math.Max to ensure it's at least 1.
-                    damageTrigger.Damage = Math.Max(1, (int)(damageTrigger.Damage * integrityMultiplier));
-                }
-            }
+            EnsureComp<RadiationSourceComponent>(ent).Intensity =
+                stats.Radioactivity * EmberWallMaterialStats.RadiationIntensityScale;
         }
     }
 
-    private void OnDamageModify(EntityUid uid, EmberProceduralWallComponent component, DamageModifyEvent args)
+    /// <summary>
+    /// Bay expresses integrity as an absolute health pool. SS14 walls carry their own destruction thresholds, so
+    /// scale those by how the material compares to steel and let the rest of the game keep its damage numbers.
+    /// </summary>
+    private void ApplyIntegrity(EntityUid uid, float integrity)
     {
-        if (string.IsNullOrEmpty(component.Material.Id) || !_prototypeManager.TryIndex(component.Material, out var wallMaterial))
+        if (!TryComp<DestructibleComponent>(uid, out var destructible))
             return;
 
-        if (wallMaterial.PhysicalMaterial == null || !_prototypeManager.TryIndex(wallMaterial.PhysicalMaterial.Value, out var baseMaterial))
-            return;
+        var scale = integrity / EmberWallMaterialStats.ReferenceIntegrity;
 
-        EmberMaterialPrototype? reinfMaterial = null;
-        if (component.ReinforcementMaterial != null && _prototypeManager.TryIndex(component.ReinforcementMaterial.Value, out var reinfWallMaterial))
+        foreach (var threshold in destructible.Thresholds)
         {
-            if (reinfWallMaterial.PhysicalMaterial != null)
-                _prototypeManager.TryIndex(reinfWallMaterial.PhysicalMaterial.Value, out reinfMaterial);
+            if (threshold.Trigger is DamageTrigger trigger)
+                trigger.Damage = Math.Max(1, (int) MathF.Round(trigger.Damage * scale));
+        }
+    }
+
+    private void OnDamageModify(Entity<EmberProceduralWallComponent> ent, ref DamageModifyEvent args)
+    {
+        if (!TryGetStats(ent.Comp, out var stats))
+            return;
+
+        // Bay tests the raw hit against the hardness floor before armour touches it, so a weak hit is not merely
+        // reduced, it is ignored outright.
+        if ((float) args.Damage.GetTotal() < stats.MinimumDamage)
+        {
+            args.Damage = new DamageSpecifier();
+            return;
         }
 
-        float baseBrute = baseMaterial.BruteArmor * 0.4f;
-        float baseBurn = baseMaterial.BurnArmor * 0.4f;
-        
-        float reinfBrute = reinfMaterial != null ? reinfMaterial.BruteArmor * 0.4f : 0f;
-        float reinfBurn = reinfMaterial != null ? reinfMaterial.BurnArmor * 0.4f : 0f;
+        Scale(args.Damage, BruteGroup, stats.BruteCoefficient);
+        Scale(args.Damage, BurnGroup, stats.BurnCoefficient);
+    }
 
-        float totalBruteArmor = baseBrute + reinfBrute;
-        float totalBurnArmor = baseBurn + reinfBurn;
+    /// <summary>
+    /// Reads the damage types out of the group prototype rather than listing them here, so a new brute type does
+    /// not quietly start ignoring wall armour.
+    /// </summary>
+    private void Scale(DamageSpecifier damage, ProtoId<DamageGroupPrototype> groupId, float coefficient)
+    {
+        if (coefficient == 1f || !_prototype.TryIndex(groupId, out var group))
+            return;
 
-        // In SierraBay, armor acts as a divisor: damage / (armor > 0 ? armor : 1) or similar.
-        // Usually, SS13 armor is a direct multiplier or percentage reduction.
-        // Assuming armor > 0 reduces damage (e.g., armor 10 reduces damage by factor of 10? No, SS13 formula is complex).
-        // Let's implement a simple SS14 percentage reduction: 
-        // 10 armor = 10% reduction. Cap at 90%.
-        
-        float bruteReduction = Math.Clamp(totalBruteArmor * 0.05f, 0f, 0.9f); // Example: 10 armor = 50% reduction
-        float burnReduction = Math.Clamp(totalBurnArmor * 0.05f, 0f, 0.9f);
+        foreach (var type in group.DamageTypes)
+        {
+            if (damage.DamageDict.TryGetValue(type, out var value))
+                damage.DamageDict[type] = value * coefficient;
+        }
+    }
 
-        // Apply reduction to Brute damage types
-        if (args.Damage.DamageDict.TryGetValue("Blunt", out var blunt))
-            args.Damage.DamageDict["Blunt"] = blunt * (1f - bruteReduction);
-            
-        if (args.Damage.DamageDict.TryGetValue("Slash", out var slash))
-            args.Damage.DamageDict["Slash"] = slash * (1f - bruteReduction);
-            
-        if (args.Damage.DamageDict.TryGetValue("Piercing", out var pierce))
-            args.Damage.DamageDict["Piercing"] = pierce * (1f - bruteReduction);
+    private bool TryGetStats(EmberProceduralWallComponent component, out EmberWallStats stats)
+    {
+        stats = default;
 
-        // Apply reduction to Burn damage types
-        if (args.Damage.DamageDict.TryGetValue("Heat", out var heat))
-            args.Damage.DamageDict["Heat"] = heat * (1f - burnReduction);
-            
-        if (args.Damage.DamageDict.TryGetValue("Shock", out var shock))
-            args.Damage.DamageDict["Shock"] = shock * (1f - burnReduction);
+        if (!TryGetPhysical(component.Material, out var material))
+            return false;
+
+        EmberMaterialPrototype? reinforcement = null;
+        if (component.ReinforcementMaterial is { } reinforcementId)
+            TryGetPhysical(reinforcementId, out reinforcement);
+
+        stats = EmberWallMaterialStats.For(material, reinforcement);
+        return true;
+    }
+
+    private bool TryGetPhysical(
+        ProtoId<EmberWallMaterialPrototype>? id,
+        [NotNullWhen(true)] out EmberMaterialPrototype? material)
+    {
+        material = null;
+
+        return id is { } wallId &&
+               !string.IsNullOrEmpty(wallId.Id) &&
+               _prototype.TryIndex(wallId, out EmberWallMaterialPrototype? wall) &&
+               wall.PhysicalMaterial is { } physical &&
+               _prototype.TryIndex(physical, out material);
     }
 }
