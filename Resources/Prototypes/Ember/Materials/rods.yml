@@ -1,0 +1,313 @@
+# Rods of every metal. Steel rods are vanilla PartRodMetal and are deliberately not repeated here.
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberRodIron1
+  name: iron rod
+  description: Some rods. Can be used for building, or something.
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: EmberRodIron
+    count: 1
+    baseLayer: base
+    layerStates: [ rod, rod-mult, rod-max ]
+  - type: EmberMaterialStack
+    material: Iron
+    renameEntity: false
+
+- type: entity
+  parent: EmberRodIron1
+  id: EmberRodIron
+  suffix: Full
+  components:
+  - type: Stack
+    count: 50
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberRodAluminium1
+  name: aluminium rod
+  description: Some rods. Can be used for building, or something.
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: EmberRodAluminium
+    count: 1
+    baseLayer: base
+    layerStates: [ rod, rod-mult, rod-max ]
+  - type: EmberMaterialStack
+    material: Aluminium
+    renameEntity: false
+
+- type: entity
+  parent: EmberRodAluminium1
+  id: EmberRodAluminium
+  suffix: Full
+  components:
+  - type: Stack
+    count: 50
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberRodPlasteel1
+  name: plasteel rod
+  description: Some rods. Can be used for building, or something.
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: EmberRodPlasteel
+    count: 1
+    baseLayer: base
+    layerStates: [ rod, rod-mult, rod-max ]
+  - type: EmberMaterialStack
+    material: Plasteel
+    renameEntity: false
+
+- type: entity
+  parent: EmberRodPlasteel1
+  id: EmberRodPlasteel
+  suffix: Full
+  components:
+  - type: Stack
+    count: 50
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberRodTitanium1
+  name: titanium rod
+  description: Some rods. Can be used for building, or something.
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: EmberRodTitanium
+    count: 1
+    baseLayer: base
+    layerStates: [ rod, rod-mult, rod-max ]
+  - type: EmberMaterialStack
+    material: Titanium
+    renameEntity: false
+
+- type: entity
+  parent: EmberRodTitanium1
+  id: EmberRodTitanium
+  suffix: Full
+  components:
+  - type: Stack
+    count: 50
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberRodOsmiumCarbidePlasteel1
+  name: osmium-carbide plasteel rod
+  description: Some rods. Can be used for building, or something.
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: EmberRodOsmiumCarbidePlasteel
+    count: 1
+    baseLayer: base
+    layerStates: [ rod, rod-mult, rod-max ]
+  - type: EmberMaterialStack
+    material: OsmiumCarbidePlasteel
+    renameEntity: false
+
+- type: entity
+  parent: EmberRodOsmiumCarbidePlasteel1
+  id: EmberRodOsmiumCarbidePlasteel
+  suffix: Full
+  components:
+  - type: Stack
+    count: 50
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberRodOsmium1
+  name: osmium rod
+  description: Some rods. Can be used for building, or something.
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: EmberRodOsmium
+    count: 1
+    baseLayer: base
+    layerStates: [ rod, rod-mult, rod-max ]
+  - type: EmberMaterialStack
+    material: Osmium
+    renameEntity: false
+
+- type: entity
+  parent: EmberRodOsmium1
+  id: EmberRodOsmium
+  suffix: Full
+  components:
+  - type: Stack
+    count: 50
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberRodGold1
+  name: gold rod
+  description: Some rods. Can be used for building, or something.
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: EmberRodGold
+    count: 1
+    baseLayer: base
+    layerStates: [ rod, rod-mult, rod-max ]
+  - type: EmberMaterialStack
+    material: Gold
+    renameEntity: false
+
+- type: entity
+  parent: EmberRodGold1
+  id: EmberRodGold
+  suffix: Full
+  components:
+  - type: Stack
+    count: 50
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberRodSilver1
+  name: silver rod
+  description: Some rods. Can be used for building, or something.
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: EmberRodSilver
+    count: 1
+    baseLayer: base
+    layerStates: [ rod, rod-mult, rod-max ]
+  - type: EmberMaterialStack
+    material: Silver
+    renameEntity: false
+
+- type: entity
+  parent: EmberRodSilver1
+  id: EmberRodSilver
+  suffix: Full
+  components:
+  - type: Stack
+    count: 50
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberRodElectrum1
+  name: electrum rod
+  description: Some rods. Can be used for building, or something.
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: EmberRodElectrum
+    count: 1
+    baseLayer: base
+    layerStates: [ rod, rod-mult, rod-max ]
+  - type: EmberMaterialStack
+    material: Electrum
+    renameEntity: false
+
+- type: entity
+  parent: EmberRodElectrum1
+  id: EmberRodElectrum
+  suffix: Full
+  components:
+  - type: Stack
+    count: 50
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberRodCopper1
+  name: copper rod
+  description: Some rods. Can be used for building, or something.
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: EmberRodCopper
+    count: 1
+    baseLayer: base
+    layerStates: [ rod, rod-mult, rod-max ]
+  - type: EmberMaterialStack
+    material: Copper
+    renameEntity: false
+
+- type: entity
+  parent: EmberRodCopper1
+  id: EmberRodCopper
+  suffix: Full
+  components:
+  - type: Stack
+    count: 50
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberRodBronze1
+  name: bronze rod
+  description: Some rods. Can be used for building, or something.
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: EmberRodBronze
+    count: 1
+    baseLayer: base
+    layerStates: [ rod, rod-mult, rod-max ]
+  - type: EmberMaterialStack
+    material: Bronze
+    renameEntity: false
+
+- type: entity
+  parent: EmberRodBronze1
+  id: EmberRodBronze
+  suffix: Full
+  components:
+  - type: Stack
+    count: 50
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberRodPlatinum1
+  name: platinum rod
+  description: Some rods. Can be used for building, or something.
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: EmberRodPlatinum
+    count: 1
+    baseLayer: base
+    layerStates: [ rod, rod-mult, rod-max ]
+  - type: EmberMaterialStack
+    material: Platinum
+    renameEntity: false
+
+- type: entity
+  parent: EmberRodPlatinum1
+  id: EmberRodPlatinum
+  suffix: Full
+  components:
+  - type: Stack
+    count: 50
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberRodUranium1
+  name: uranium rod
+  description: Some rods. Can be used for building, or something.
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: EmberRodUranium
+    count: 1
+    baseLayer: base
+    layerStates: [ rod, rod-mult, rod-max ]
+  - type: EmberMaterialStack
+    material: Uranium
+    renameEntity: false
+
+- type: entity
+  parent: EmberRodUranium1
+  id: EmberRodUranium
+  suffix: Full
+  components:
+  - type: Stack
+    count: 50
