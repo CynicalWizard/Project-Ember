@@ -1,6 +1,10 @@
+# $color подставляется одной фиксированной формой (см. colors.ftl), поэтому каждая фраза строится так,
+# чтобы цвет всегда относился к слову "краска": "слоем розовой краски", "розовой краской". Согласовывать
+# прилагательное с чем-то ещё ("розовой полоса") склонение не позволяет.
 ember-wall-examined-paint = Покрыта слоем {$color} краски.
-ember-wall-examined-stripe = Нанесена {$color} полоса.
-ember-structure-examined-paint = Покрыта слоем {$color} краски.
-ember-airlock-examined-door = Дверь шлюза окрашена в {$color} цвет.
-ember-airlock-examined-stripe = На шлюз нанесена {$color} полоса.
-ember-airlock-examined-window = Окно шлюза тонировано в {$color} цвет.
+ember-wall-examined-stripe = Нанесена полоса {$color} краски.
+# Структуры бывают любого рода (стол, решётка, окно), поэтому подлежащим здесь стоит "слой".
+ember-structure-examined-paint = Нанесён слой {$color} краски.
+ember-airlock-examined-door = Дверь шлюза покрыта {$color} краской.
+ember-airlock-examined-stripe = На шлюз нанесена полоса {$color} краски.
+ember-airlock-examined-window = Окно шлюза тонировано {$color} краской.
