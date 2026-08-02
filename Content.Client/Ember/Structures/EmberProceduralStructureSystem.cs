@@ -336,8 +336,19 @@ public sealed class EmberProceduralStructureSystem : EntitySystem
             !TryComp<MapGridComponent>(transform.GridUid, out var grid))
             return;
 
-        var pos = grid.TileIndicesFor(transform.Coordinates);
+        DirtyStructuresAround(grid, grid.TileIndicesFor(transform.Coordinates));
+    }
 
+    /// <summary>
+    /// Recalculates every structure that can see this tile.
+    /// </summary>
+    /// <remarks>
+    /// Structures already tell walls to redraw when one appears, but nothing told structures when a wall did, so
+    /// a grille kept the shape it had before the wall went up next to it while the wall smoothed into the
+    /// grille quite happily. It only looked right if you happened to build the grille last.
+    /// </remarks>
+    public void DirtyStructuresAround(MapGridComponent grid, Vector2i pos)
+    {
         DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos));
         DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(1, 0)));
         DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(-1, 0)));

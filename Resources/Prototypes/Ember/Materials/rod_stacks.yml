@@ -3,91 +3,91 @@
 
 - type: stack
   id: EmberRodIron
-  name: iron rod
+  name: ember-stack-rod-iron
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: rod }
   spawn: EmberRodIron1
   maxCount: 50
 
 - type: stack
   id: EmberRodAluminium
-  name: aluminium rod
+  name: ember-stack-rod-aluminium
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: rod }
   spawn: EmberRodAluminium1
   maxCount: 50
 
 - type: stack
   id: EmberRodPlasteel
-  name: plasteel rod
+  name: ember-stack-rod-plasteel
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: rod }
   spawn: EmberRodPlasteel1
   maxCount: 50
 
 - type: stack
   id: EmberRodTitanium
-  name: titanium rod
+  name: ember-stack-rod-titanium
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: rod }
   spawn: EmberRodTitanium1
   maxCount: 50
 
 - type: stack
   id: EmberRodOsmiumCarbidePlasteel
-  name: osmium-carbide plasteel rod
+  name: ember-stack-rod-osmiumcarbideplasteel
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: rod }
   spawn: EmberRodOsmiumCarbidePlasteel1
   maxCount: 50
 
 - type: stack
   id: EmberRodOsmium
-  name: osmium rod
+  name: ember-stack-rod-osmium
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: rod }
   spawn: EmberRodOsmium1
   maxCount: 50
 
 - type: stack
   id: EmberRodGold
-  name: gold rod
+  name: ember-stack-rod-gold
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: rod }
   spawn: EmberRodGold1
   maxCount: 50
 
 - type: stack
   id: EmberRodSilver
-  name: silver rod
+  name: ember-stack-rod-silver
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: rod }
   spawn: EmberRodSilver1
   maxCount: 50
 
 - type: stack
   id: EmberRodElectrum
-  name: electrum rod
+  name: ember-stack-rod-electrum
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: rod }
   spawn: EmberRodElectrum1
   maxCount: 50
 
 - type: stack
   id: EmberRodCopper
-  name: copper rod
+  name: ember-stack-rod-copper
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: rod }
   spawn: EmberRodCopper1
   maxCount: 50
 
 - type: stack
   id: EmberRodBronze
-  name: bronze rod
+  name: ember-stack-rod-bronze
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: rod }
   spawn: EmberRodBronze1
   maxCount: 50
 
 - type: stack
   id: EmberRodPlatinum
-  name: platinum rod
+  name: ember-stack-rod-platinum
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: rod }
   spawn: EmberRodPlatinum1
   maxCount: 50
 
 - type: stack
   id: EmberRodUranium
-  name: uranium rod
+  name: ember-stack-rod-uranium
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: rod }
   spawn: EmberRodUranium1
   maxCount: 50

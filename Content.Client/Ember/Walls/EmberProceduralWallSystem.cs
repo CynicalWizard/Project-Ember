@@ -1,4 +1,5 @@
 using Content.Client.Ember.Doors;
+using Content.Client.Ember.Structures;
 using Content.Shared.Doors.Components;
 using Content.Shared.Ember.Materials;
 using Content.Shared.Ember.Structures;
@@ -26,6 +27,7 @@ public sealed class EmberProceduralWallSystem : EntitySystem
     [Dependency] private readonly EmberProceduralDoorFacingSystem _doorFacing = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly EmberProceduralStructureSystem _structures = default!;
 
     private readonly Queue<EntityUid> _dirty = new();
     private readonly Queue<EntityUid> _anchorChanged = new();
@@ -261,6 +263,9 @@ public sealed class EmberProceduralWallSystem : EntitySystem
         // Walls, low walls, windows and doors all reach this sweep, and every one of them can flip which way a
         // Bay airlock or hazard shutter faces.
         _doorFacing.DirtyDoorsAround(grid, pos);
+
+        // Grilles and low walls smooth into walls too, and until this was here the traffic only went one way.
+        _structures.DirtyStructuresAround(grid, pos);
 
         DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(1, 0)));
         DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(-1, 0)));
