@@ -502,15 +502,24 @@ Biogenerator: null
 FloraGreyStalagmite: null
 FelinidCube: TajaranCube
 
-# Ember Phoron window migrations
-PlasmaWindow: PhoronWindow
-PlasmaWindowDirectional: PhoronWindowDirectional
+# Bay has no phoron glass; borosilicate is what its station windows are actually made of, so the maps move over
+# now, tier for tier. The phoron windows stay buildable until phoron glass has somewhere else to go.
+PlasmaWindow: BorosilicateWindow
+PlasmaWindowDirectional: BorosilicateWindowDirectional
+PhoronWindow: BorosilicateWindow
+PhoronWindowDirectional: BorosilicateWindowDirectional
+ReinforcedPlasmaWindow: ReinforcedBorosilicateWindow
+PlasmaReinforcedWindowDirectional: ReinforcedBorosilicateWindowDirectional
+
+# Bay dropped the shuttle hull as a material of its own and builds shuttles out of titanium instead.
+WallShuttle: WallTitanium
+WallShuttleDiagonal: WallTitanium
 
 # Ember diagonal windows & doors migrations
 ReinforcedWindowDiagonal: ReinforcedWindow
-ReinforcedPlasmaWindowDiagonal: ReinforcedPlasmaWindow
+ReinforcedPlasmaWindowDiagonal: ReinforcedBorosilicateWindow
 PlasmaDoor: AirlockGlass
-PlasmaWindowDiagonal: PhoronWindowDirectional
+PlasmaWindowDiagonal: BorosilicateWindowDirectional
 WindowDiagonal: WindowDirectional
 ShuttleWindowDiagonal: ShuttleWindow
 PlastitaniumWindowDiagonal: PlastitaniumWindow

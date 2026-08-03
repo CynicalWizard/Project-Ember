@@ -85,6 +85,7 @@ materials-alienalloy = alien alloy
 
 # Glass and stone
 materials-borosilicateglass = borosilicate glass
+materials-reinforcedborosilicateglass = reinforced borosilicate glass
 materials-crystal = crystal
 materials-sandstone = sandstone
 materials-marble = marble

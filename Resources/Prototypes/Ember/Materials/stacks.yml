@@ -90,6 +90,13 @@
   maxCount: 30
 
 - type: stack
+  id: ReinforcedBorosilicateGlass
+  name: materials-reinforcedborosilicateglass
+  icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: sheet-glass-reinf }
+  spawn: EmberSheetReinforcedBorosilicateGlass1
+  maxCount: 30
+
+- type: stack
   id: Sandstone
   name: materials-sandstone
   icon: { sprite: /Textures/Ember/Objects/Materials/materials.rsi, state: brick }

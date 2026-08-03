@@ -115,13 +115,3 @@
     price: 50
   - type: RadiationBlocker
     resistance: 1
-
-
-
-- type: entity
-  id: PlasmaWindow
-  parent: PhoronWindow
-
-- type: entity
-  id: PlasmaWindowDirectional
-  parent: PhoronWindowDirectional

@@ -1,0 +1,10 @@
+- type: construction
+  name: reinforced borosilicate glass
+  id: EmberReinforcedBorosilicateGlass
+  graph: EmberReinforcedBorosilicateGlass
+  startNode: start
+  targetNode: sheet
+  category: construction-category-materials
+  description: A sheet of borosilicate glass with a steel lattice running through it.
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: sheet-glass-reinf }
+  objectType: Item

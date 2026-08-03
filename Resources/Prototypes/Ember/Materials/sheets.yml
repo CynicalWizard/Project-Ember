@@ -327,10 +327,43 @@
     entries:
     - prototype: BorosilicateWindow
     - prototype: BorosilicateWindowDirectional
+    - prototype: EmberReinforcedBorosilicateGlass
 
 - type: entity
   parent: EmberSheetBorosilicateGlass1
   id: EmberSheetBorosilicateGlass
+  suffix: Full
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: EmberMaterialStackBase
+  id: EmberSheetReinforcedBorosilicateGlass1
+  name: reinforced borosilicate glass sheet
+  description: A sheet of borosilicate glass with a steel lattice running through it.
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: ReinforcedBorosilicateGlass
+    count: 1
+    baseLayer: base
+    layerStates: [ sheet-glass-reinf, sheet-glass-reinf-mult, sheet-glass-reinf-max ]
+  - type: EmberMaterialStack
+    material: BorosilicateGlass
+    # The lattice is what makes it reinforced, so the name has to survive being told what the glass is.
+    renameEntity: false
+  - type: Construction
+    graph: EmberReinforcedBorosilicateGlass
+    node: sheet
+  - type: ShortConstruction
+    entries:
+    - prototype: ReinforcedBorosilicateWindow
+    - prototype: ReinforcedBorosilicateWindowDirectional
+
+- type: entity
+  parent: EmberSheetReinforcedBorosilicateGlass1
+  id: EmberSheetReinforcedBorosilicateGlass
   suffix: Full
   components:
   - type: Stack

@@ -40,6 +40,7 @@ materials-supermatter = суперматерия
 materials-glass = стекло
 materials-glass-genitive = стекла
 materials-borosilicateglass = боросиликатное стекло
+materials-reinforcedborosilicateglass = укреплённое боросиликатное стекло
 materials-diamond = алмаз
 materials-diamond-genitive = алмаза
 materials-crystal = кристалл
