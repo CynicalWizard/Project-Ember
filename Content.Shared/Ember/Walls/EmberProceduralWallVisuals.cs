@@ -1,4 +1,5 @@
 using Content.Shared.Ember.Materials;
+using Content.Shared.SprayPainter;
 
 namespace Content.Shared.Ember.Walls;
 
@@ -48,12 +49,21 @@ public static class EmberProceduralWallVisuals
     {
         var stateBase = material.StateBase;
         var materialColor = ColorOf(material, physical);
-        var baseColor = wall.PaintColor ?? materialColor;
 
-        var paintColor = wall.PaintColor;
+        // Only draw what the sprayer would have been willing to apply. A wall keeps its colours through a
+        // prototype migration, so without this a wall repainted onto a material that takes no stripe would go on
+        // wearing one that nobody could have put there.
+        var paintColor = SprayPainterWallPaint.CanApply(physical, SprayPainterWallMode.PaintWall)
+            ? wall.PaintColor
+            : null;
+        var stripeColor = SprayPainterWallPaint.CanApply(physical, SprayPainterWallMode.PaintStripe)
+            ? wall.StripeColor
+            : null;
+
+        var baseColor = paintColor ?? materialColor;
         var reinforcementStateBase = wall.Reinforced ? material.ReinforcementStateBase : null;
         Color? reinforcementColor = reinforcementStateBase != null
-            ? wall.PaintColor ?? material.ReinforcementColor ?? materialColor
+            ? paintColor ?? material.ReinforcementColor ?? materialColor
             : null;
         var smoothKey = SmoothKeyFor(material);
 
@@ -66,7 +76,7 @@ public static class EmberProceduralWallVisuals
             stateBase,
             baseColor,
             paintColor,
-            wall.StripeColor,
+            stripeColor,
             reinforcementStateBase,
             reinforcementColor,
             smoothKey,

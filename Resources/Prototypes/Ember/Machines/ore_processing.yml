@@ -1,3 +1,8 @@
+# EMBER-TODO: these still wear the old mining sprites. SierraBay redrew them in its sierra_resprite mod
+# (mods/sierra_resprite/icons/mining.dmi, by Remission): furnace_0 for the processing unit, stacker, unloader and
+# console. Worth taking in one batch with the rest of that mod's machinery, with the authors credited, rather than
+# converting a single dmi here.
+
 - type: entity
   id: EmberOreUnloader
   parent: [ BaseMachinePowered, ConstructibleMachine ]
