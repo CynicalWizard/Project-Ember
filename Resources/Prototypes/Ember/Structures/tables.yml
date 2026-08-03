@@ -1,0 +1,54 @@
+# Bay draws every table from one sheet: a frame, the plating over it, whatever the plating is reinforced with and
+# felt on top. What a table is made of is data, so these carry a material rather than a sprite of their own.
+#
+# Holodeck tables are deliberately absent; they are a prop rather than a material.
+
+- type: entity
+  abstract: true
+  parent: BaseStructure
+  id: EmberTableBase
+  name: table
+  description: It's a table, for putting things on. Or standing on, if you really want to.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Animateable
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: PlaceableSurface
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 55
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+        - BulletImpassable
+  - type: SpriteFade
+  - type: Sprite
+    drawdepth: Objects
+    sprite: Ember/Structures/Tables/tables_offbay.rsi
+    state: frame
+  - type: Icon
+    sprite: Ember/Structures/Tables/tables_offbay.rsi
+    state: frame
+  - type: EmberProceduralTable
+  - type: Climbable
+  - type: Bonkable
+    bonkDamage:
+      types:
+        Blunt: 4
+  - type: Clickable
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepHull
+  - type: RequireProjectileTarget
+  - type: ThrownItemImmune
+  - type: Tag
+    tags:
+    - ForceFixRotations

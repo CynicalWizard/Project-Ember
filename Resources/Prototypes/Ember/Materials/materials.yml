@@ -521,6 +521,7 @@
   luminescence: 3
 - type: emberMaterial
   id: Glass
+  tableIconBase: solid
   key: glass
   displayName: materials-glass
   category: glass
@@ -543,6 +544,7 @@
   explosionResistance: 5
 - type: emberMaterial
   id: BorosilicateGlass
+  tableIconBase: solid
   key: borosilicate glass
   displayName: materials-borosilicateglass
   category: glass

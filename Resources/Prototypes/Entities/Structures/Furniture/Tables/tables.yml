@@ -157,14 +157,12 @@
 
 - type: entity
   id: Table
-  parent: TableBase
+  parent: EmberTableBase
   name: table
   description: A square piece of metal standing on four metal legs.
   components:
-  - type: Sprite
-    sprite: Structures/Furniture/Tables/generic.rsi
-  - type: Icon
-    sprite: Structures/Furniture/Tables/generic.rsi
+  - type: EmberProceduralTable
+    material: Steel
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Metallic
@@ -198,14 +196,13 @@
 
 - type: entity
   id: TableReinforced
-  parent: TableBase
+  parent: EmberTableBase
   name: reinforced table
   description: A square piece of metal standing on four metal legs. Extra robust.
   components:
-  - type: Sprite
-    sprite: Structures/Furniture/Tables/reinforced.rsi
-  - type: Icon
-    sprite: Structures/Furniture/Tables/reinforced.rsi
+  - type: EmberProceduralTable
+    material: Steel
+    reinforcement: Steel
   - type: Destructible
     thresholds:
     - trigger:
@@ -243,14 +240,12 @@
 
 - type: entity
   id: TableGlass
-  parent: TableBase
+  parent: EmberTableBase
   name: glass table
   description: A square piece of glass, standing on four metal legs.
   components:
-  - type: Sprite
-    sprite: Structures/Furniture/Tables/glass.rsi
-  - type: Icon
-    sprite: Structures/Furniture/Tables/glass.rsi
+  - type: EmberProceduralTable
+    material: Glass
   - type: GlassTable
     climberDamage:
       types:
@@ -295,14 +290,13 @@
 
 - type: entity
   id: TableReinforcedGlass
-  parent: TableBase
+  parent: EmberTableBase
   name: reinforced glass table
   description: A square piece of glass, standing on four metal legs. Extra robust.
   components:
-  - type: Sprite
-    sprite: Structures/Furniture/Tables/r_glass.rsi
-  - type: Icon
-    sprite: Structures/Furniture/Tables/r_glass.rsi
+  - type: EmberProceduralTable
+    material: Glass
+    reinforcement: Steel
   - type: GlassTable
     climberDamage:
       types:
@@ -350,14 +344,12 @@
 
 - type: entity
   id: TablePlasmaGlass
-  parent: TableBase
+  parent: EmberTableBase
   name: phoron glass table
   description: A square piece of phoron glass, standing on four metal legs. Pretty!
   components:
-  - type: Sprite
-    sprite: Structures/Furniture/Tables/plasma.rsi
-  - type: Icon
-    sprite: Structures/Furniture/Tables/plasma.rsi
+  - type: EmberProceduralTable
+    material: Phoron
   - type: GlassTable
     climberDamage:
       types:
@@ -405,14 +397,12 @@
 
 - type: entity
   id: TableBrass
-  parent: TableBase
+  parent: EmberTableBase
   name: brass table
   description: A shiny, corrosion resistant brass table. Steampunk!
   components:
-  - type: Sprite
-    sprite: Structures/Furniture/Tables/brass.rsi
-  - type: Icon
-    sprite: Structures/Furniture/Tables/brass.rsi
+  - type: EmberProceduralTable
+    material: Bronze
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Metallic
@@ -446,14 +436,12 @@
 
 - type: entity
   id: TableWood
-  parent: TableBase
+  parent: EmberTableBase
   name: wood table
   description: Do not apply fire to this. Rumour says it burns easily.
   components:
-  - type: Sprite
-    sprite: Structures/Furniture/Tables/wood.rsi
-  - type: Icon
-    sprite: Structures/Furniture/Tables/wood.rsi
+  - type: EmberProceduralTable
+    material: Wood
   - type: Damageable
     damageModifierSet: Wood
   - type: Destructible
@@ -493,14 +481,13 @@
 
 - type: entity
   id: TableCarpet
-  parent: TableBase
+  parent: EmberTableBase
   name: gambling table
   description: Play em' cowboy.
   components:
-  - type: Sprite
-    sprite: Structures/Furniture/Tables/carpet.rsi
-  - type: Icon
-    sprite: Structures/Furniture/Tables/carpet.rsi
+  - type: EmberProceduralTable
+    material: Wood
+    carpeted: true
   - type: Damageable
     damageModifierSet: Wood
   - type: Destructible
@@ -534,14 +521,12 @@
 
 - type: entity
   id: TableStone
-  parent: TableBase
+  parent: EmberTableBase
   name: stone table
   description: Literally the sturdiest thing you have ever seen.
   components:
-  - type: Sprite
-    sprite: Structures/Furniture/Tables/stone.rsi
-  - type: Icon
-    sprite: Structures/Furniture/Tables/stone.rsi
+  - type: EmberProceduralTable
+    material: Stone
   - type: Destructible
     thresholds:
     - trigger:

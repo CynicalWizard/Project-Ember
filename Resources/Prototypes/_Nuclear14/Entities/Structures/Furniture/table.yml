@@ -455,7 +455,9 @@
 
 - type: entity
   id: N14TableMetalGrate
-  parent: Table
+  # Ember: these have sprites of their own rather than a material, so they stay on the smoothing base the
+  # plain tables used to share. EMBER-LEGACY: goes with the rest of Nuclear14.
+  parent: TableBase
   name: metal table
   description: A cold handmade metal table made from grating.
   components:
@@ -469,7 +471,9 @@
 
 - type: entity
   id: N14TableWoodSettler
-  parent: Table
+  # Ember: these have sprites of their own rather than a material, so they stay on the smoothing base the
+  # plain tables used to share. EMBER-LEGACY: goes with the rest of Nuclear14.
+  parent: TableBase
   name: wooden table
   description: A wooden table used by settlers.
   components:
@@ -493,7 +497,9 @@
 #    sprite: _Nuclear14/Structures/Furniture/Tables/woodentablecraft.rsi
 
 - type: entity
-  parent: TableWood
+  # Ember: these have sprites of their own rather than a material, so they stay on the smoothing base the
+  # plain tables used to share. EMBER-LEGACY: goes with the rest of Nuclear14.
+  parent: TableBase
   id: N14TableCounterBar
   name: bar counter
   description: An alcohol stained bartop.
