@@ -23,7 +23,7 @@
 - type: entity
   parent: PartBase
   id: PartRodMetal
-  name: metal rod
+  name: steel rods
   suffix: Full
   components:
   - type: PhysicalComposition
@@ -32,16 +32,14 @@
   - type: Stack
     stackType: MetalRod
     baseLayer: base
-    layerStates:
-    - rods
-    - rods_2
-    - rods_3
-    - rods_4
-    - rods_5
+    layerStates: [ rod, rod-mult, rod-max ]
+  # Ember: the same sheet every other metal's rods are drawn from, so a pile of steel rods and a pile of copper
+  # ones are the same object in two colours rather than two unrelated sprites.
   - type: Sprite
-    state: rods_5
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: rod-max
     layers:
-    - state: rods_5
+    - state: rod-max
       map: ["base"]
   - type: Item
     size: Normal
@@ -50,11 +48,12 @@
     graph: MetalRod
     node: MetalRod
   # Ember: ties the vanilla steel rods to the material line, so putting them against a low wall assembles a
-  # steel grille the same way every other metal does. Not tinted, since the sprite is already steel.
+  # steel grille the same way every other metal does.
   - type: EmberMaterialStack
     material: Steel
-    tint: false
     renameEntity: false
+    countedName: ember-rod-steel
+    countedDescription: ember-rod-desc
   - type: Appearance
   - type: FloorTile
     outputs:
@@ -114,28 +113,28 @@
 - type: entity
   parent: PartRodMetal
   id: PartRodMetal10
-  name: metal rod
+  name: steel rods
   suffix: 10
   components:
   - type: Tag
     tags:
     - RodMetal1
   - type: Sprite
-    state: rods
+    state: rod-mult
   - type: Stack
     count: 10
 
 - type: entity
   parent: PartRodMetal
   id: PartRodMetal1
-  name: metal rod
+  name: steel rod
   suffix: Single
   components:
   - type: Tag
     tags:
     - RodMetal1
   - type: Sprite
-    state: rods
+    state: rod
   - type: Stack
     count: 1
 

@@ -1,7 +1,21 @@
 # Rods of every metal. Steel rods are vanilla PartRodMetal and are deliberately not repeated here.
 
 - type: entity
+  abstract: true
   parent: EmberMaterialStackBase
+  id: EmberRodBase
+  components:
+  # Held sprites are the one part of a material stack that is not procedural. Bay is no better off: its in-hand
+  # icons are ordinary drawn states (rods, sheet-metal, sheet-glass) that merely get the material colour
+  # multiplied over them, so there is no paintable set to port.
+  # EMBER-TODO: draw a greyscale in-hand mask in the Ember material sheet and tint it like everything else.
+  # Until then every metal is carried like steel.
+  - type: Item
+    sprite: Objects/Materials/parts.rsi
+    heldPrefix: rods
+
+- type: entity
+  parent: EmberRodBase
   id: EmberRodIron1
   name: iron rod
   description: Some rods. Can be used for building, or something.
@@ -15,6 +29,8 @@
   - type: EmberMaterialStack
     material: Iron
     renameEntity: false
+    countedName: ember-rod-iron
+    countedDescription: ember-rod-desc
   - type: Construction
     graph: EmberRodIron
     node: rod
@@ -33,7 +49,7 @@
     count: 50
 
 - type: entity
-  parent: EmberMaterialStackBase
+  parent: EmberRodBase
   id: EmberRodAluminium1
   name: aluminium rod
   description: Some rods. Can be used for building, or something.
@@ -47,6 +63,8 @@
   - type: EmberMaterialStack
     material: Aluminium
     renameEntity: false
+    countedName: ember-rod-aluminium
+    countedDescription: ember-rod-desc
   - type: Construction
     graph: EmberRodAluminium
     node: rod
@@ -65,7 +83,7 @@
     count: 50
 
 - type: entity
-  parent: EmberMaterialStackBase
+  parent: EmberRodBase
   id: EmberRodPlasteel1
   name: plasteel rod
   description: Some rods. Can be used for building, or something.
@@ -79,6 +97,8 @@
   - type: EmberMaterialStack
     material: Plasteel
     renameEntity: false
+    countedName: ember-rod-plasteel
+    countedDescription: ember-rod-desc
   - type: Construction
     graph: EmberRodPlasteel
     node: rod
@@ -97,7 +117,7 @@
     count: 50
 
 - type: entity
-  parent: EmberMaterialStackBase
+  parent: EmberRodBase
   id: EmberRodTitanium1
   name: titanium rod
   description: Some rods. Can be used for building, or something.
@@ -111,6 +131,8 @@
   - type: EmberMaterialStack
     material: Titanium
     renameEntity: false
+    countedName: ember-rod-titanium
+    countedDescription: ember-rod-desc
   - type: Construction
     graph: EmberRodTitanium
     node: rod
@@ -129,7 +151,7 @@
     count: 50
 
 - type: entity
-  parent: EmberMaterialStackBase
+  parent: EmberRodBase
   id: EmberRodOsmiumCarbidePlasteel1
   name: osmium-carbide plasteel rod
   description: Some rods. Can be used for building, or something.
@@ -143,6 +165,8 @@
   - type: EmberMaterialStack
     material: OsmiumCarbidePlasteel
     renameEntity: false
+    countedName: ember-rod-osmiumcarbideplasteel
+    countedDescription: ember-rod-desc
   - type: Construction
     graph: EmberRodOsmiumCarbidePlasteel
     node: rod
@@ -161,7 +185,7 @@
     count: 50
 
 - type: entity
-  parent: EmberMaterialStackBase
+  parent: EmberRodBase
   id: EmberRodOsmium1
   name: osmium rod
   description: Some rods. Can be used for building, or something.
@@ -175,6 +199,8 @@
   - type: EmberMaterialStack
     material: Osmium
     renameEntity: false
+    countedName: ember-rod-osmium
+    countedDescription: ember-rod-desc
   - type: Construction
     graph: EmberRodOsmium
     node: rod
@@ -193,7 +219,7 @@
     count: 50
 
 - type: entity
-  parent: EmberMaterialStackBase
+  parent: EmberRodBase
   id: EmberRodGold1
   name: gold rod
   description: Some rods. Can be used for building, or something.
@@ -207,6 +233,8 @@
   - type: EmberMaterialStack
     material: Gold
     renameEntity: false
+    countedName: ember-rod-gold
+    countedDescription: ember-rod-desc
   - type: Construction
     graph: EmberRodGold
     node: rod
@@ -225,7 +253,7 @@
     count: 50
 
 - type: entity
-  parent: EmberMaterialStackBase
+  parent: EmberRodBase
   id: EmberRodSilver1
   name: silver rod
   description: Some rods. Can be used for building, or something.
@@ -239,6 +267,8 @@
   - type: EmberMaterialStack
     material: Silver
     renameEntity: false
+    countedName: ember-rod-silver
+    countedDescription: ember-rod-desc
   - type: Construction
     graph: EmberRodSilver
     node: rod
@@ -257,7 +287,7 @@
     count: 50
 
 - type: entity
-  parent: EmberMaterialStackBase
+  parent: EmberRodBase
   id: EmberRodElectrum1
   name: electrum rod
   description: Some rods. Can be used for building, or something.
@@ -271,6 +301,8 @@
   - type: EmberMaterialStack
     material: Electrum
     renameEntity: false
+    countedName: ember-rod-electrum
+    countedDescription: ember-rod-desc
   - type: Construction
     graph: EmberRodElectrum
     node: rod
@@ -289,7 +321,7 @@
     count: 50
 
 - type: entity
-  parent: EmberMaterialStackBase
+  parent: EmberRodBase
   id: EmberRodCopper1
   name: copper rod
   description: Some rods. Can be used for building, or something.
@@ -303,6 +335,8 @@
   - type: EmberMaterialStack
     material: Copper
     renameEntity: false
+    countedName: ember-rod-copper
+    countedDescription: ember-rod-desc
   - type: Construction
     graph: EmberRodCopper
     node: rod
@@ -321,7 +355,7 @@
     count: 50
 
 - type: entity
-  parent: EmberMaterialStackBase
+  parent: EmberRodBase
   id: EmberRodBronze1
   name: bronze rod
   description: Some rods. Can be used for building, or something.
@@ -335,6 +369,8 @@
   - type: EmberMaterialStack
     material: Bronze
     renameEntity: false
+    countedName: ember-rod-bronze
+    countedDescription: ember-rod-desc
   - type: Construction
     graph: EmberRodBronze
     node: rod
@@ -353,7 +389,7 @@
     count: 50
 
 - type: entity
-  parent: EmberMaterialStackBase
+  parent: EmberRodBase
   id: EmberRodPlatinum1
   name: platinum rod
   description: Some rods. Can be used for building, or something.
@@ -367,6 +403,8 @@
   - type: EmberMaterialStack
     material: Platinum
     renameEntity: false
+    countedName: ember-rod-platinum
+    countedDescription: ember-rod-desc
   - type: Construction
     graph: EmberRodPlatinum
     node: rod
@@ -385,7 +423,7 @@
     count: 50
 
 - type: entity
-  parent: EmberMaterialStackBase
+  parent: EmberRodBase
   id: EmberRodUranium1
   name: uranium rod
   description: Some rods. Can be used for building, or something.
@@ -399,6 +437,8 @@
   - type: EmberMaterialStack
     material: Uranium
     renameEntity: false
+    countedName: ember-rod-uranium
+    countedDescription: ember-rod-desc
   - type: Construction
     graph: EmberRodUranium
     node: rod

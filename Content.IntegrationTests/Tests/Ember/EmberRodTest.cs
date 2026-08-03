@@ -7,6 +7,7 @@ using Content.Shared.Ember.Materials;
 using Content.Shared.Ember.Skills;
 using Content.Shared.Stacks;
 using Robust.Shared.GameObjects;
+using Robust.Shared.Localization;
 using Robust.Shared.Prototypes;
 
 namespace Content.IntegrationTests.Tests.Ember;
@@ -76,6 +77,48 @@ public sealed class EmberRodTest
         }
 
         Assert.That(found, Is.GreaterThan(0), "No rod recipes were found at all.");
+        Assert.That(problems, Is.Empty, string.Join("\n", problems));
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    /// One rod should not be called "rods". Every stack that names itself by count has to have both forms, in
+    /// every language, and they have to actually differ — a Fluent id with no variants would quietly hand back
+    /// the same word for one and for fifty.
+    /// </summary>
+    [Test]
+    public async Task StacksNamedByCountReadRightAtOneAndAtMany()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var protoManager = pair.Server.ResolveDependency<IPrototypeManager>();
+        var componentFactory = pair.Server.ResolveDependency<IComponentFactory>();
+        var loc = pair.Server.ResolveDependency<ILocalizationManager>();
+
+        var stackName = componentFactory.GetComponentName<EmberMaterialStackComponent>();
+        var problems = new List<string>();
+        var found = 0;
+
+        foreach (var entity in protoManager.EnumeratePrototypes<EntityPrototype>())
+        {
+            if (entity.Abstract || !entity.Components.TryGetComponent(stackName, out var raw))
+                continue;
+
+            if (((EmberMaterialStackComponent) raw).CountedName is not { } counted)
+                continue;
+
+            found++;
+
+            var one = loc.GetString(counted.Id, ("count", 1));
+            var many = loc.GetString(counted.Id, ("count", 5));
+
+            if (string.IsNullOrWhiteSpace(one) || one == counted.Id)
+                problems.Add($"{entity.ID} is named '{counted.Id}', which has no string");
+            else if (one == many)
+                problems.Add($"{entity.ID} calls one of them '{one}', the same as five");
+        }
+
+        Assert.That(found, Is.GreaterThan(0), "Nothing names itself by count at all.");
         Assert.That(problems, Is.Empty, string.Join("\n", problems));
 
         await pair.CleanReturnAsync();
