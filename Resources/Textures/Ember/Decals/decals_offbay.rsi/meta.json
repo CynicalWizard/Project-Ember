@@ -1,0 +1,1784 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from SierraBay (Baystation12)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "loadingarea_south"
+    },
+    {
+      "name": "loadingarea_north"
+    },
+    {
+      "name": "loadingarea_east"
+    },
+    {
+      "name": "loadingarea_west"
+    },
+    {
+      "name": "delivery"
+    },
+    {
+      "name": "warning_south"
+    },
+    {
+      "name": "warning_north"
+    },
+    {
+      "name": "warning_east"
+    },
+    {
+      "name": "warning_west"
+    },
+    {
+      "name": "warning_southeast"
+    },
+    {
+      "name": "warning_southwest"
+    },
+    {
+      "name": "warning_northeast"
+    },
+    {
+      "name": "warning_northwest"
+    },
+    {
+      "name": "warningcorner_south"
+    },
+    {
+      "name": "warningcorner_north"
+    },
+    {
+      "name": "warningcorner_east"
+    },
+    {
+      "name": "warningcorner_west"
+    },
+    {
+      "name": "warningfull"
+    },
+    {
+      "name": "warningcee_south"
+    },
+    {
+      "name": "warningcee_north"
+    },
+    {
+      "name": "warningcee_east"
+    },
+    {
+      "name": "warningcee_west"
+    },
+    {
+      "name": "warningfulltile"
+    },
+    {
+      "name": "overstripe_south"
+    },
+    {
+      "name": "overstripe_north"
+    },
+    {
+      "name": "overstripe_east"
+    },
+    {
+      "name": "overstripe_west"
+    },
+    {
+      "name": "stripe_south"
+    },
+    {
+      "name": "stripe_north"
+    },
+    {
+      "name": "stripe_east"
+    },
+    {
+      "name": "stripe_west"
+    },
+    {
+      "name": "stripe_southeast"
+    },
+    {
+      "name": "stripe_southwest"
+    },
+    {
+      "name": "stripe_northeast"
+    },
+    {
+      "name": "stripe_northwest"
+    },
+    {
+      "name": "overstripecorner_south"
+    },
+    {
+      "name": "overstripecorner_north"
+    },
+    {
+      "name": "overstripecorner_east"
+    },
+    {
+      "name": "overstripecorner_west"
+    },
+    {
+      "name": "stripecorner_south"
+    },
+    {
+      "name": "stripecorner_north"
+    },
+    {
+      "name": "stripecorner_east"
+    },
+    {
+      "name": "stripecorner_west"
+    },
+    {
+      "name": "stripeinner_south"
+    },
+    {
+      "name": "stripeinner_north"
+    },
+    {
+      "name": "stripeinner_east"
+    },
+    {
+      "name": "stripeinner_west"
+    },
+    {
+      "name": "overstripefull"
+    },
+    {
+      "name": "stripefull"
+    },
+    {
+      "name": "overstripecee_south"
+    },
+    {
+      "name": "overstripecee_north"
+    },
+    {
+      "name": "overstripecee_east"
+    },
+    {
+      "name": "overstripecee_west"
+    },
+    {
+      "name": "stripecee_south"
+    },
+    {
+      "name": "stripecee_north"
+    },
+    {
+      "name": "stripecee_east"
+    },
+    {
+      "name": "stripecee_west"
+    },
+    {
+      "name": "stripefulltile"
+    },
+    {
+      "name": "white_1"
+    },
+    {
+      "name": "white_2"
+    },
+    {
+      "name": "white_a"
+    },
+    {
+      "name": "white_b"
+    },
+    {
+      "name": "white_c"
+    },
+    {
+      "name": "white_d"
+    },
+    {
+      "name": "white_ex"
+    },
+    {
+      "name": "white_m"
+    },
+    {
+      "name": "white_cmo"
+    },
+    {
+      "name": "white_v"
+    },
+    {
+      "name": "white_p"
+    },
+    {
+      "name": "plaque"
+    },
+    {
+      "name": "L1"
+    },
+    {
+      "name": "L2"
+    },
+    {
+      "name": "L3"
+    },
+    {
+      "name": "L4"
+    },
+    {
+      "name": "L5"
+    },
+    {
+      "name": "L6"
+    },
+    {
+      "name": "L7"
+    },
+    {
+      "name": "L8"
+    },
+    {
+      "name": "L9"
+    },
+    {
+      "name": "L10"
+    },
+    {
+      "name": "L11"
+    },
+    {
+      "name": "L12"
+    },
+    {
+      "name": "L13"
+    },
+    {
+      "name": "L14"
+    },
+    {
+      "name": "L15"
+    },
+    {
+      "name": "L16"
+    },
+    {
+      "name": "derelict1"
+    },
+    {
+      "name": "derelict2"
+    },
+    {
+      "name": "derelict3"
+    },
+    {
+      "name": "derelict4"
+    },
+    {
+      "name": "derelict5"
+    },
+    {
+      "name": "derelict6"
+    },
+    {
+      "name": "derelict7"
+    },
+    {
+      "name": "derelict8"
+    },
+    {
+      "name": "derelict9"
+    },
+    {
+      "name": "derelict10"
+    },
+    {
+      "name": "derelict11"
+    },
+    {
+      "name": "derelict12"
+    },
+    {
+      "name": "derelict13"
+    },
+    {
+      "name": "derelict14"
+    },
+    {
+      "name": "derelict15"
+    },
+    {
+      "name": "derelict16"
+    },
+    {
+      "name": "asteroid_dug_overlay"
+    },
+    {
+      "name": "asteroid0"
+    },
+    {
+      "name": "asteroid1"
+    },
+    {
+      "name": "asteroid2"
+    },
+    {
+      "name": "asteroid3"
+    },
+    {
+      "name": "asteroid4"
+    },
+    {
+      "name": "asteroid5"
+    },
+    {
+      "name": "asteroid6"
+    },
+    {
+      "name": "asteroid7"
+    },
+    {
+      "name": "asteroid8"
+    },
+    {
+      "name": "asteroid9"
+    },
+    {
+      "name": "chapel_south"
+    },
+    {
+      "name": "chapel_north"
+    },
+    {
+      "name": "chapel_east"
+    },
+    {
+      "name": "chapel_west"
+    },
+    {
+      "name": "warningcorner_dust_south"
+    },
+    {
+      "name": "warningcorner_dust_north"
+    },
+    {
+      "name": "warningcorner_dust_east"
+    },
+    {
+      "name": "warningcorner_dust_west"
+    },
+    {
+      "name": "warning_dust_south"
+    },
+    {
+      "name": "warning_dust_north"
+    },
+    {
+      "name": "warning_dust_east"
+    },
+    {
+      "name": "warning_dust_west"
+    },
+    {
+      "name": "warning_dust_southeast"
+    },
+    {
+      "name": "warning_dust_southwest"
+    },
+    {
+      "name": "warning_dust_northeast"
+    },
+    {
+      "name": "warning_dust_northwest"
+    },
+    {
+      "name": "outline"
+    },
+    {
+      "name": "spline_fancy_south"
+    },
+    {
+      "name": "spline_fancy_north"
+    },
+    {
+      "name": "spline_fancy_east"
+    },
+    {
+      "name": "spline_fancy_west"
+    },
+    {
+      "name": "spline_fancy_southeast"
+    },
+    {
+      "name": "spline_fancy_southwest"
+    },
+    {
+      "name": "spline_fancy_northeast"
+    },
+    {
+      "name": "spline_fancy_northwest"
+    },
+    {
+      "name": "spline_fancy_corner"
+    },
+    {
+      "name": "spline_fancy_cee"
+    },
+    {
+      "name": "spline_fancy_full"
+    },
+    {
+      "name": "spline_plain_south"
+    },
+    {
+      "name": "spline_plain_north"
+    },
+    {
+      "name": "spline_plain_east"
+    },
+    {
+      "name": "spline_plain_west"
+    },
+    {
+      "name": "spline_plain_southeast"
+    },
+    {
+      "name": "spline_plain_southwest"
+    },
+    {
+      "name": "spline_plain_northeast"
+    },
+    {
+      "name": "spline_plain_northwest"
+    },
+    {
+      "name": "spline_plain_cee"
+    },
+    {
+      "name": "spline_plain_full"
+    },
+    {
+      "name": "solarpanel"
+    },
+    {
+      "name": "shutoff_south"
+    },
+    {
+      "name": "shutoff_north"
+    },
+    {
+      "name": "shutoff_east"
+    },
+    {
+      "name": "shutoff_west"
+    },
+    {
+      "name": "traction"
+    },
+    {
+      "name": "manydot"
+    },
+    {
+      "name": "manydot_tiled"
+    },
+    {
+      "name": "pryhole"
+    },
+    {
+      "name": "edge_south"
+    },
+    {
+      "name": "edge_north"
+    },
+    {
+      "name": "edge_east"
+    },
+    {
+      "name": "edge_west"
+    },
+    {
+      "name": "edge_southeast"
+    },
+    {
+      "name": "edge_southwest"
+    },
+    {
+      "name": "edge_northeast"
+    },
+    {
+      "name": "edge_northwest"
+    },
+    {
+      "name": "ntlogo_south"
+    },
+    {
+      "name": "ntlogo_north"
+    },
+    {
+      "name": "ntlogo_east"
+    },
+    {
+      "name": "ntlogo_west"
+    },
+    {
+      "name": "corner_white_south"
+    },
+    {
+      "name": "corner_white_north"
+    },
+    {
+      "name": "corner_white_east"
+    },
+    {
+      "name": "corner_white_west"
+    },
+    {
+      "name": "corner_white_southeast"
+    },
+    {
+      "name": "corner_white_southwest"
+    },
+    {
+      "name": "corner_white_northeast"
+    },
+    {
+      "name": "corner_white_northwest"
+    },
+    {
+      "name": "corner_white_diagonal_south"
+    },
+    {
+      "name": "corner_white_diagonal_north"
+    },
+    {
+      "name": "corner_white_diagonal_east"
+    },
+    {
+      "name": "corner_white_diagonal_west"
+    },
+    {
+      "name": "corner_white_three_quarters_south"
+    },
+    {
+      "name": "corner_white_three_quarters_north"
+    },
+    {
+      "name": "corner_white_three_quarters_east"
+    },
+    {
+      "name": "corner_white_three_quarters_west"
+    },
+    {
+      "name": "corner_white_full"
+    },
+    {
+      "name": "danger_south"
+    },
+    {
+      "name": "danger_north"
+    },
+    {
+      "name": "danger_east"
+    },
+    {
+      "name": "danger_west"
+    },
+    {
+      "name": "danger_southeast"
+    },
+    {
+      "name": "danger_southwest"
+    },
+    {
+      "name": "danger_northeast"
+    },
+    {
+      "name": "danger_northwest"
+    },
+    {
+      "name": "dangercorner_south"
+    },
+    {
+      "name": "dangercorner_north"
+    },
+    {
+      "name": "dangercorner_east"
+    },
+    {
+      "name": "dangercorner_west"
+    },
+    {
+      "name": "dangerfull"
+    },
+    {
+      "name": "dangercee_south"
+    },
+    {
+      "name": "dangercee_north"
+    },
+    {
+      "name": "dangercee_east"
+    },
+    {
+      "name": "dangercee_west"
+    },
+    {
+      "name": "techfloor_edges_south"
+    },
+    {
+      "name": "techfloor_edges_north"
+    },
+    {
+      "name": "techfloor_edges_east"
+    },
+    {
+      "name": "techfloor_edges_west"
+    },
+    {
+      "name": "techfloor_edges_southeast"
+    },
+    {
+      "name": "techfloor_edges_southwest"
+    },
+    {
+      "name": "techfloor_edges_northeast"
+    },
+    {
+      "name": "techfloor_edges_northwest"
+    },
+    {
+      "name": "techfloor_corners_south"
+    },
+    {
+      "name": "techfloor_corners_north"
+    },
+    {
+      "name": "techfloor_corners_east"
+    },
+    {
+      "name": "techfloor_corners_west"
+    },
+    {
+      "name": "techfloororange_edges_south"
+    },
+    {
+      "name": "techfloororange_edges_north"
+    },
+    {
+      "name": "techfloororange_edges_east"
+    },
+    {
+      "name": "techfloororange_edges_west"
+    },
+    {
+      "name": "techfloororange_edges_southeast"
+    },
+    {
+      "name": "techfloororange_edges_southwest"
+    },
+    {
+      "name": "techfloororange_edges_northeast"
+    },
+    {
+      "name": "techfloororange_edges_northwest"
+    },
+    {
+      "name": "techfloororange_corners"
+    },
+    {
+      "name": "techfloor_hole_left_south"
+    },
+    {
+      "name": "techfloor_hole_left_north"
+    },
+    {
+      "name": "techfloor_hole_left_east"
+    },
+    {
+      "name": "techfloor_hole_left_west"
+    },
+    {
+      "name": "techfloor_hole_right_south"
+    },
+    {
+      "name": "techfloor_hole_right_north"
+    },
+    {
+      "name": "techfloor_hole_right_east"
+    },
+    {
+      "name": "techfloor_hole_right_west"
+    },
+    {
+      "name": "corner_oldtile_south"
+    },
+    {
+      "name": "corner_oldtile_north"
+    },
+    {
+      "name": "corner_oldtile_east"
+    },
+    {
+      "name": "corner_oldtile_west"
+    },
+    {
+      "name": "corner_oldtile_southeast"
+    },
+    {
+      "name": "corner_oldtile_southwest"
+    },
+    {
+      "name": "corner_oldtile_northeast"
+    },
+    {
+      "name": "corner_oldtile_northwest"
+    },
+    {
+      "name": "corner_oldtile_diagonal_south"
+    },
+    {
+      "name": "corner_oldtile_diagonal_north"
+    },
+    {
+      "name": "corner_oldtile_diagonal_east"
+    },
+    {
+      "name": "corner_oldtile_diagonal_west"
+    },
+    {
+      "name": "corner_oldtile_full_south"
+    },
+    {
+      "name": "corner_oldtile_full_north"
+    },
+    {
+      "name": "corner_oldtile_full_east"
+    },
+    {
+      "name": "corner_oldtile_full_west"
+    },
+    {
+      "name": "corner_kafel_south"
+    },
+    {
+      "name": "corner_kafel_north"
+    },
+    {
+      "name": "corner_kafel_east"
+    },
+    {
+      "name": "corner_kafel_west"
+    },
+    {
+      "name": "corner_kafel_southeast"
+    },
+    {
+      "name": "corner_kafel_southwest"
+    },
+    {
+      "name": "corner_kafel_northeast"
+    },
+    {
+      "name": "corner_kafel_northwest"
+    },
+    {
+      "name": "corner_kafel_diagonal_south"
+    },
+    {
+      "name": "corner_kafel_diagonal_north"
+    },
+    {
+      "name": "corner_kafel_diagonal_east"
+    },
+    {
+      "name": "corner_kafel_diagonal_west"
+    },
+    {
+      "name": "corner_kafel_full_south"
+    },
+    {
+      "name": "corner_kafel_full_north"
+    },
+    {
+      "name": "corner_kafel_full_east"
+    },
+    {
+      "name": "corner_kafel_full_west"
+    },
+    {
+      "name": "rust"
+    },
+    {
+      "name": "mono_rusted1"
+    },
+    {
+      "name": "mono_rusted2"
+    },
+    {
+      "name": "mono_rusted3"
+    },
+    {
+      "name": "part_rusted1_south"
+    },
+    {
+      "name": "part_rusted1_north"
+    },
+    {
+      "name": "part_rusted1_east"
+    },
+    {
+      "name": "part_rusted1_west"
+    },
+    {
+      "name": "part_rusted2_south"
+    },
+    {
+      "name": "part_rusted2_north"
+    },
+    {
+      "name": "part_rusted2_east"
+    },
+    {
+      "name": "part_rusted2_west"
+    },
+    {
+      "name": "part_rusted3_south"
+    },
+    {
+      "name": "part_rusted3_north"
+    },
+    {
+      "name": "part_rusted3_east"
+    },
+    {
+      "name": "part_rusted3_west"
+    },
+    {
+      "name": "color_rusted_south"
+    },
+    {
+      "name": "color_rusted_north"
+    },
+    {
+      "name": "color_rusted_east"
+    },
+    {
+      "name": "color_rusted_west"
+    },
+    {
+      "name": "color_rusted_southeast"
+    },
+    {
+      "name": "color_rusted_southwest"
+    },
+    {
+      "name": "color_rusted_northeast"
+    },
+    {
+      "name": "color_rusted_northwest"
+    },
+    {
+      "name": "color_rustedcorner"
+    },
+    {
+      "name": "color_rustedfull"
+    },
+    {
+      "name": "color_rustedcee_south"
+    },
+    {
+      "name": "color_rustedcee_north"
+    },
+    {
+      "name": "color_rustedcee_east"
+    },
+    {
+      "name": "color_rustedcee_west"
+    },
+    {
+      "name": "steel_decals_rusted1_south"
+    },
+    {
+      "name": "steel_decals_rusted1_north"
+    },
+    {
+      "name": "steel_decals_rusted1_east"
+    },
+    {
+      "name": "steel_decals_rusted1_west"
+    },
+    {
+      "name": "steel_decals_rusted2_south"
+    },
+    {
+      "name": "steel_decals_rusted2_north"
+    },
+    {
+      "name": "steel_decals_rusted2_east"
+    },
+    {
+      "name": "steel_decals_rusted2_west"
+    },
+    {
+      "name": "corner_techfloor_gray_south"
+    },
+    {
+      "name": "corner_techfloor_gray_north"
+    },
+    {
+      "name": "corner_techfloor_gray_east"
+    },
+    {
+      "name": "corner_techfloor_gray_west"
+    },
+    {
+      "name": "corner_techfloor_gray_southeast"
+    },
+    {
+      "name": "corner_techfloor_gray_southwest"
+    },
+    {
+      "name": "corner_techfloor_gray_northeast"
+    },
+    {
+      "name": "corner_techfloor_gray_northwest"
+    },
+    {
+      "name": "corner_techfloor_gray_diagonal_south"
+    },
+    {
+      "name": "corner_techfloor_gray_diagonal_north"
+    },
+    {
+      "name": "corner_techfloor_gray_diagonal_east"
+    },
+    {
+      "name": "corner_techfloor_gray_diagonal_west"
+    },
+    {
+      "name": "corner_techfloor_gray_full_south"
+    },
+    {
+      "name": "corner_techfloor_gray_full_north"
+    },
+    {
+      "name": "corner_techfloor_gray_full_east"
+    },
+    {
+      "name": "corner_techfloor_gray_full_west"
+    },
+    {
+      "name": "corner_techfloor_grid_south"
+    },
+    {
+      "name": "corner_techfloor_grid_north"
+    },
+    {
+      "name": "corner_techfloor_grid_east"
+    },
+    {
+      "name": "corner_techfloor_grid_west"
+    },
+    {
+      "name": "corner_techfloor_grid_southeast"
+    },
+    {
+      "name": "corner_techfloor_grid_southwest"
+    },
+    {
+      "name": "corner_techfloor_grid_northeast"
+    },
+    {
+      "name": "corner_techfloor_grid_northwest"
+    },
+    {
+      "name": "corner_techfloor_grid_diagonal_south"
+    },
+    {
+      "name": "corner_techfloor_grid_diagonal_north"
+    },
+    {
+      "name": "corner_techfloor_grid_diagonal_east"
+    },
+    {
+      "name": "corner_techfloor_grid_diagonal_west"
+    },
+    {
+      "name": "corner_techfloor_grid_full_south"
+    },
+    {
+      "name": "corner_techfloor_grid_full_north"
+    },
+    {
+      "name": "corner_techfloor_grid_full_east"
+    },
+    {
+      "name": "corner_techfloor_grid_full_west"
+    },
+    {
+      "name": "steel_grid_south"
+    },
+    {
+      "name": "steel_grid_north"
+    },
+    {
+      "name": "steel_grid_east"
+    },
+    {
+      "name": "steel_grid_west"
+    },
+    {
+      "name": "steel_grid_southeast"
+    },
+    {
+      "name": "steel_grid_southwest"
+    },
+    {
+      "name": "steel_grid_northeast"
+    },
+    {
+      "name": "steel_grid_northwest"
+    },
+    {
+      "name": "steel_grid_diagonal_south"
+    },
+    {
+      "name": "steel_grid_diagonal_north"
+    },
+    {
+      "name": "steel_grid_diagonal_east"
+    },
+    {
+      "name": "steel_grid_diagonal_west"
+    },
+    {
+      "name": "steel_grid_full_south"
+    },
+    {
+      "name": "steel_grid_full_north"
+    },
+    {
+      "name": "steel_grid_full_east"
+    },
+    {
+      "name": "steel_grid_full_west"
+    },
+    {
+      "name": "borderfloor_south"
+    },
+    {
+      "name": "borderfloor_north"
+    },
+    {
+      "name": "borderfloor_east"
+    },
+    {
+      "name": "borderfloor_west"
+    },
+    {
+      "name": "borderfloor_southeast"
+    },
+    {
+      "name": "borderfloor_southwest"
+    },
+    {
+      "name": "borderfloor_northeast"
+    },
+    {
+      "name": "borderfloor_northwest"
+    },
+    {
+      "name": "borderfloorcorner_south"
+    },
+    {
+      "name": "borderfloorcorner_north"
+    },
+    {
+      "name": "borderfloorcorner_east"
+    },
+    {
+      "name": "borderfloorcorner_west"
+    },
+    {
+      "name": "borderfloorcorner2_south"
+    },
+    {
+      "name": "borderfloorcorner2_north"
+    },
+    {
+      "name": "borderfloorcorner2_east"
+    },
+    {
+      "name": "borderfloorcorner2_west"
+    },
+    {
+      "name": "borderfloorcorner2_southeast"
+    },
+    {
+      "name": "borderfloorcorner2_southwest"
+    },
+    {
+      "name": "borderfloorcorner2_northeast"
+    },
+    {
+      "name": "borderfloorcorner2_northwest"
+    },
+    {
+      "name": "borderfloorfull"
+    },
+    {
+      "name": "borderfloorcee_south"
+    },
+    {
+      "name": "borderfloorcee_north"
+    },
+    {
+      "name": "borderfloorcee_east"
+    },
+    {
+      "name": "borderfloorcee_west"
+    },
+    {
+      "name": "borderfloor_black_south"
+    },
+    {
+      "name": "borderfloor_black_north"
+    },
+    {
+      "name": "borderfloor_black_east"
+    },
+    {
+      "name": "borderfloor_black_west"
+    },
+    {
+      "name": "borderfloor_black_southeast"
+    },
+    {
+      "name": "borderfloor_black_southwest"
+    },
+    {
+      "name": "borderfloor_black_northeast"
+    },
+    {
+      "name": "borderfloor_black_northwest"
+    },
+    {
+      "name": "borderfloorcorner_black_south"
+    },
+    {
+      "name": "borderfloorcorner_black_north"
+    },
+    {
+      "name": "borderfloorcorner_black_east"
+    },
+    {
+      "name": "borderfloorcorner_black_west"
+    },
+    {
+      "name": "borderfloorcorner2_black_south"
+    },
+    {
+      "name": "borderfloorcorner2_black_north"
+    },
+    {
+      "name": "borderfloorcorner2_black_east"
+    },
+    {
+      "name": "borderfloorcorner2_black_west"
+    },
+    {
+      "name": "borderfloorcorner2_black_southeast"
+    },
+    {
+      "name": "borderfloorcorner2_black_southwest"
+    },
+    {
+      "name": "borderfloorcorner2_black_northeast"
+    },
+    {
+      "name": "borderfloorcorner2_black_northwest"
+    },
+    {
+      "name": "borderfloorfull_black"
+    },
+    {
+      "name": "borderfloorcee_black_south"
+    },
+    {
+      "name": "borderfloorcee_black_north"
+    },
+    {
+      "name": "borderfloorcee_black_east"
+    },
+    {
+      "name": "borderfloorcee_black_west"
+    },
+    {
+      "name": "borderfloorfull_white"
+    },
+    {
+      "name": "borderfloorcee_white_south"
+    },
+    {
+      "name": "borderfloorcee_white_north"
+    },
+    {
+      "name": "borderfloorcee_white_east"
+    },
+    {
+      "name": "borderfloorcee_white_west"
+    },
+    {
+      "name": "steel_decals1_south"
+    },
+    {
+      "name": "steel_decals1_north"
+    },
+    {
+      "name": "steel_decals1_east"
+    },
+    {
+      "name": "steel_decals1_west"
+    },
+    {
+      "name": "steel_decals1_southeast"
+    },
+    {
+      "name": "steel_decals1_southwest"
+    },
+    {
+      "name": "steel_decals1_northeast"
+    },
+    {
+      "name": "steel_decals1_northwest"
+    },
+    {
+      "name": "steel_decals2_south"
+    },
+    {
+      "name": "steel_decals2_north"
+    },
+    {
+      "name": "steel_decals2_east"
+    },
+    {
+      "name": "steel_decals2_west"
+    },
+    {
+      "name": "steel_decals3_south"
+    },
+    {
+      "name": "steel_decals3_north"
+    },
+    {
+      "name": "steel_decals3_east"
+    },
+    {
+      "name": "steel_decals3_west"
+    },
+    {
+      "name": "steel_decals3_southeast"
+    },
+    {
+      "name": "steel_decals3_southwest"
+    },
+    {
+      "name": "steel_decals3_northeast"
+    },
+    {
+      "name": "steel_decals3_northwest"
+    },
+    {
+      "name": "steel_decals4"
+    },
+    {
+      "name": "steel_decals6_south"
+    },
+    {
+      "name": "steel_decals6_north"
+    },
+    {
+      "name": "steel_decals6_east"
+    },
+    {
+      "name": "steel_decals6_west"
+    },
+    {
+      "name": "steel_decals6_southeast"
+    },
+    {
+      "name": "steel_decals6_southwest"
+    },
+    {
+      "name": "steel_decals6_northeast"
+    },
+    {
+      "name": "steel_decals6_northwest"
+    },
+    {
+      "name": "steel_decals7_south"
+    },
+    {
+      "name": "steel_decals7_north"
+    },
+    {
+      "name": "steel_decals7_east"
+    },
+    {
+      "name": "steel_decals7_west"
+    },
+    {
+      "name": "steel_decals7_southeast"
+    },
+    {
+      "name": "steel_decals7_southwest"
+    },
+    {
+      "name": "steel_decals7_northeast"
+    },
+    {
+      "name": "steel_decals7_northwest"
+    },
+    {
+      "name": "steel_decals8_south"
+    },
+    {
+      "name": "steel_decals8_north"
+    },
+    {
+      "name": "steel_decals8_east"
+    },
+    {
+      "name": "steel_decals8_west"
+    },
+    {
+      "name": "steel_decals9_south"
+    },
+    {
+      "name": "steel_decals9_north"
+    },
+    {
+      "name": "steel_decals9_east"
+    },
+    {
+      "name": "steel_decals9_west"
+    },
+    {
+      "name": "steel_decals10_south"
+    },
+    {
+      "name": "steel_decals10_north"
+    },
+    {
+      "name": "steel_decals10_east"
+    },
+    {
+      "name": "steel_decals10_west"
+    },
+    {
+      "name": "steel_decals10_southeast"
+    },
+    {
+      "name": "steel_decals10_southwest"
+    },
+    {
+      "name": "steel_decals10_northeast"
+    },
+    {
+      "name": "steel_decals10_northwest"
+    },
+    {
+      "name": "steel_decals_central1_south"
+    },
+    {
+      "name": "steel_decals_central1_north"
+    },
+    {
+      "name": "steel_decals_central1_east"
+    },
+    {
+      "name": "steel_decals_central1_west"
+    },
+    {
+      "name": "steel_decals_central2_south"
+    },
+    {
+      "name": "steel_decals_central2_north"
+    },
+    {
+      "name": "steel_decals_central2_east"
+    },
+    {
+      "name": "steel_decals_central2_west"
+    },
+    {
+      "name": "steel_decals_central3_south"
+    },
+    {
+      "name": "steel_decals_central3_north"
+    },
+    {
+      "name": "steel_decals_central3_east"
+    },
+    {
+      "name": "steel_decals_central3_west"
+    },
+    {
+      "name": "steel_decals_central4_south"
+    },
+    {
+      "name": "steel_decals_central4_north"
+    },
+    {
+      "name": "steel_decals_central4_east"
+    },
+    {
+      "name": "steel_decals_central4_west"
+    },
+    {
+      "name": "steel_decals_central5_south"
+    },
+    {
+      "name": "steel_decals_central5_north"
+    },
+    {
+      "name": "steel_decals_central5_east"
+    },
+    {
+      "name": "steel_decals_central5_west"
+    },
+    {
+      "name": "steel_decals_central6_south"
+    },
+    {
+      "name": "steel_decals_central6_north"
+    },
+    {
+      "name": "steel_decals_central6_east"
+    },
+    {
+      "name": "steel_decals_central6_west"
+    },
+    {
+      "name": "steel_decals_central7_south"
+    },
+    {
+      "name": "steel_decals_central7_north"
+    },
+    {
+      "name": "steel_decals_central7_east"
+    },
+    {
+      "name": "steel_decals_central7_west"
+    },
+    {
+      "name": "bordercolor_south"
+    },
+    {
+      "name": "bordercolor_north"
+    },
+    {
+      "name": "bordercolor_east"
+    },
+    {
+      "name": "bordercolor_west"
+    },
+    {
+      "name": "bordercolor_southeast"
+    },
+    {
+      "name": "bordercolor_southwest"
+    },
+    {
+      "name": "bordercolor_northeast"
+    },
+    {
+      "name": "bordercolor_northwest"
+    },
+    {
+      "name": "bordercolorcorner_south"
+    },
+    {
+      "name": "bordercolorcorner_north"
+    },
+    {
+      "name": "bordercolorcorner_east"
+    },
+    {
+      "name": "bordercolorcorner_west"
+    },
+    {
+      "name": "bordercolorcorner2_south"
+    },
+    {
+      "name": "bordercolorcorner2_north"
+    },
+    {
+      "name": "bordercolorcorner2_east"
+    },
+    {
+      "name": "bordercolorcorner2_west"
+    },
+    {
+      "name": "bordercolorcorner2_southeast"
+    },
+    {
+      "name": "bordercolorcorner2_southwest"
+    },
+    {
+      "name": "bordercolorcorner2_northeast"
+    },
+    {
+      "name": "bordercolorcorner2_northwest"
+    },
+    {
+      "name": "bordercolorfull"
+    },
+    {
+      "name": "bordercolorcee_south"
+    },
+    {
+      "name": "bordercolorcee_north"
+    },
+    {
+      "name": "bordercolorcee_east"
+    },
+    {
+      "name": "bordercolorcee_west"
+    },
+    {
+      "name": "bordercolorhalf_south"
+    },
+    {
+      "name": "bordercolorhalf_north"
+    },
+    {
+      "name": "bordercolorhalf_east"
+    },
+    {
+      "name": "bordercolorhalf_west"
+    },
+    {
+      "name": "bordercolormonofull"
+    },
+    {
+      "name": "grass_edge_south"
+    },
+    {
+      "name": "grass_edge_north"
+    },
+    {
+      "name": "grass_edge_east"
+    },
+    {
+      "name": "grass_edge_west"
+    },
+    {
+      "name": "grass_edge_southeast"
+    },
+    {
+      "name": "grass_edge_southwest"
+    },
+    {
+      "name": "grass_edge_northeast"
+    },
+    {
+      "name": "grass_edge_northwest"
+    },
+    {
+      "name": "grass_edge_corner_south"
+    },
+    {
+      "name": "grass_edge_corner_north"
+    },
+    {
+      "name": "grass_edge_corner_east"
+    },
+    {
+      "name": "grass_edge_corner_west"
+    },
+    {
+      "name": "grass_edge_corner_southeast"
+    },
+    {
+      "name": "grass_edge_corner_southwest"
+    },
+    {
+      "name": "grass_edge_corner_northeast"
+    },
+    {
+      "name": "grass_edge_corner_northwest"
+    },
+    {
+      "name": "borderfloor_white_south"
+    },
+    {
+      "name": "borderfloor_white_north"
+    },
+    {
+      "name": "borderfloor_white_east"
+    },
+    {
+      "name": "borderfloor_white_west"
+    },
+    {
+      "name": "borderfloor_white_southeast"
+    },
+    {
+      "name": "borderfloor_white_southwest"
+    },
+    {
+      "name": "borderfloor_white_northeast"
+    },
+    {
+      "name": "borderfloor_white_northwest"
+    },
+    {
+      "name": "borderfloorcorner_white_south"
+    },
+    {
+      "name": "borderfloorcorner_white_north"
+    },
+    {
+      "name": "borderfloorcorner_white_east"
+    },
+    {
+      "name": "borderfloorcorner_white_west"
+    },
+    {
+      "name": "borderfloorcorner2_white_south"
+    },
+    {
+      "name": "borderfloorcorner2_white_north"
+    },
+    {
+      "name": "borderfloorcorner2_white_east"
+    },
+    {
+      "name": "borderfloorcorner2_white_west"
+    },
+    {
+      "name": "borderfloorcorner2_white_southeast"
+    },
+    {
+      "name": "borderfloorcorner2_white_southwest"
+    },
+    {
+      "name": "borderfloorcorner2_white_northeast"
+    },
+    {
+      "name": "borderfloorcorner2_white_northwest"
+    },
+    {
+      "name": "stoneborder_south"
+    },
+    {
+      "name": "stoneborder_north"
+    },
+    {
+      "name": "stoneborder_east"
+    },
+    {
+      "name": "stoneborder_west"
+    },
+    {
+      "name": "stoneborder_c_south"
+    },
+    {
+      "name": "stoneborder_c_north"
+    },
+    {
+      "name": "stoneborder_c_east"
+    },
+    {
+      "name": "stoneborder_c_west"
+    },
+    {
+      "name": "white_or1"
+    },
+    {
+      "name": "white_or2"
+    },
+    {
+      "name": "white_tr"
+    },
+    {
+      "name": "white_pop"
+    },
+    {
+      "name": "mining_gems"
+    },
+    {
+      "name": "mining_shiny"
+    },
+    {
+      "name": "mining_nugget"
+    },
+    {
+      "name": "mining_lump"
+    },
+    {
+      "name": "hazard_n"
+    },
+    {
+      "name": "hazard_n_corner"
+    },
+    {
+      "name": "hazard_s"
+    },
+    {
+      "name": "hazard_s_corner"
+    },
+    {
+      "name": "hazard_e"
+    },
+    {
+      "name": "hazard_e_corner"
+    },
+    {
+      "name": "hazard_w"
+    },
+    {
+      "name": "hazard_w_corner"
+    },
+    {
+      "name": "hazard_nw_in"
+    },
+    {
+      "name": "hazard_nw_out"
+    },
+    {
+      "name": "hazard_ne_in"
+    },
+    {
+      "name": "hazard_ne_out"
+    },
+    {
+      "name": "hazard_sw_in"
+    },
+    {
+      "name": "hazard_sw_out"
+    },
+    {
+      "name": "hazard_se_in"
+    },
+    {
+      "name": "hazard_se_out"
+    },
+    {
+      "name": "hazard_u_n"
+    },
+    {
+      "name": "hazard_u_s"
+    },
+    {
+      "name": "hazard_u_e"
+    },
+    {
+      "name": "hazard_u_w"
+    }
+  ]
+}

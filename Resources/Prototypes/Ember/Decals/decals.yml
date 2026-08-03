@@ -1,0 +1,5862 @@
+# Напольные декали Baystation12 и её модов.
+#
+# BYOND прячет в направлениях состояния не только повороты: у логотипов это части одного большого
+# рисунка, у кромок пола — разные фаски для каждой стороны. Наши декали направлений не знают вовсе,
+# они поворачивают одну картинку, поэтому такие наборы разложены на отдельные состояния при сборке
+# ассета. Свёрнуты только те, где кадры действительно были поворотом одного рисунка.
+#
+# Категории в меню маппинга и в размещателе строятся из наследования, так что каждая — абстрактный
+# корень без родителя.
+
+# предупреждения, полосы и разметка опасных зон
+- type: decal
+  id: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalDangerBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalDangerSouth
+  parent: EmberDecalDangerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: danger_south
+
+- type: decal
+  id: EmberDecalDangerNorth
+  parent: EmberDecalDangerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: danger_north
+
+- type: decal
+  id: EmberDecalDangerEast
+  parent: EmberDecalDangerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: danger_east
+
+- type: decal
+  id: EmberDecalDangerWest
+  parent: EmberDecalDangerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: danger_west
+
+- type: decal
+  id: EmberDecalDangerSoutheast
+  parent: EmberDecalDangerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: danger_southeast
+
+- type: decal
+  id: EmberDecalDangerSouthwest
+  parent: EmberDecalDangerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: danger_southwest
+
+- type: decal
+  id: EmberDecalDangerNortheast
+  parent: EmberDecalDangerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: danger_northeast
+
+- type: decal
+  id: EmberDecalDangerNorthwest
+  parent: EmberDecalDangerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: danger_northwest
+
+- type: decal
+  id: EmberDecalDangerCeeBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalDangerCeeSouth
+  parent: EmberDecalDangerCeeBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: dangercee_south
+
+- type: decal
+  id: EmberDecalDangerCeeNorth
+  parent: EmberDecalDangerCeeBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: dangercee_north
+
+- type: decal
+  id: EmberDecalDangerCeeEast
+  parent: EmberDecalDangerCeeBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: dangercee_east
+
+- type: decal
+  id: EmberDecalDangerCeeWest
+  parent: EmberDecalDangerCeeBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: dangercee_west
+
+- type: decal
+  id: EmberDecalDangerCornerBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalDangerCornerSouth
+  parent: EmberDecalDangerCornerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: dangercorner_south
+
+- type: decal
+  id: EmberDecalDangerCornerNorth
+  parent: EmberDecalDangerCornerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: dangercorner_north
+
+- type: decal
+  id: EmberDecalDangerCornerEast
+  parent: EmberDecalDangerCornerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: dangercorner_east
+
+- type: decal
+  id: EmberDecalDangerCornerWest
+  parent: EmberDecalDangerCornerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: dangercorner_west
+
+- type: decal
+  id: EmberDecalDangerFull
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: dangerfull
+
+- type: decal
+  id: EmberDecalDelivery
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: delivery
+
+- type: decal
+  id: EmberDecalHazardEBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalHazardECorner
+  parent: EmberDecalHazardEBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_e_corner
+
+- type: decal
+  id: EmberDecalHazardE
+  parent: EmberDecalHazardEBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_e
+
+- type: decal
+  id: EmberDecalHazardNBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalHazardNCorner
+  parent: EmberDecalHazardNBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_n_corner
+
+- type: decal
+  id: EmberDecalHazardN
+  parent: EmberDecalHazardNBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_n
+
+- type: decal
+  id: EmberDecalHazardNEIn
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_ne_in
+
+- type: decal
+  id: EmberDecalHazardNEOut
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_ne_out
+
+- type: decal
+  id: EmberDecalHazardNWIn
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_nw_in
+
+- type: decal
+  id: EmberDecalHazardNWOut
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_nw_out
+
+- type: decal
+  id: EmberDecalHazardSBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalHazardSCorner
+  parent: EmberDecalHazardSBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_s_corner
+
+- type: decal
+  id: EmberDecalHazardS
+  parent: EmberDecalHazardSBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_s
+
+- type: decal
+  id: EmberDecalHazardSEIn
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_se_in
+
+- type: decal
+  id: EmberDecalHazardSEOut
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_se_out
+
+- type: decal
+  id: EmberDecalHazardSWIn
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_sw_in
+
+- type: decal
+  id: EmberDecalHazardSWOut
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_sw_out
+
+- type: decal
+  id: EmberDecalHazardUE
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_u_e
+
+- type: decal
+  id: EmberDecalHazardUN
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_u_n
+
+- type: decal
+  id: EmberDecalHazardUS
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_u_s
+
+- type: decal
+  id: EmberDecalHazardUW
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_u_w
+
+- type: decal
+  id: EmberDecalHazardWBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalHazardWCorner
+  parent: EmberDecalHazardWBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_w_corner
+
+- type: decal
+  id: EmberDecalHazardW
+  parent: EmberDecalHazardWBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: hazard_w
+
+- type: decal
+  id: EmberDecalLoadingAreaBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalLoadingAreaSouth
+  parent: EmberDecalLoadingAreaBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: loadingarea_south
+
+- type: decal
+  id: EmberDecalLoadingAreaNorth
+  parent: EmberDecalLoadingAreaBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: loadingarea_north
+
+- type: decal
+  id: EmberDecalLoadingAreaEast
+  parent: EmberDecalLoadingAreaBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: loadingarea_east
+
+- type: decal
+  id: EmberDecalLoadingAreaWest
+  parent: EmberDecalLoadingAreaBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: loadingarea_west
+
+- type: decal
+  id: EmberDecalOverstripeBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalOverstripeSouth
+  parent: EmberDecalOverstripeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: overstripe_south
+
+- type: decal
+  id: EmberDecalOverstripeNorth
+  parent: EmberDecalOverstripeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: overstripe_north
+
+- type: decal
+  id: EmberDecalOverstripeEast
+  parent: EmberDecalOverstripeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: overstripe_east
+
+- type: decal
+  id: EmberDecalOverstripeWest
+  parent: EmberDecalOverstripeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: overstripe_west
+
+- type: decal
+  id: EmberDecalOverstripeCeeBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalOverstripeCeeSouth
+  parent: EmberDecalOverstripeCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: overstripecee_south
+
+- type: decal
+  id: EmberDecalOverstripeCeeNorth
+  parent: EmberDecalOverstripeCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: overstripecee_north
+
+- type: decal
+  id: EmberDecalOverstripeCeeEast
+  parent: EmberDecalOverstripeCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: overstripecee_east
+
+- type: decal
+  id: EmberDecalOverstripeCeeWest
+  parent: EmberDecalOverstripeCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: overstripecee_west
+
+- type: decal
+  id: EmberDecalOverstripeCornerBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalOverstripeCornerSouth
+  parent: EmberDecalOverstripeCornerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: overstripecorner_south
+
+- type: decal
+  id: EmberDecalOverstripeCornerNorth
+  parent: EmberDecalOverstripeCornerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: overstripecorner_north
+
+- type: decal
+  id: EmberDecalOverstripeCornerEast
+  parent: EmberDecalOverstripeCornerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: overstripecorner_east
+
+- type: decal
+  id: EmberDecalOverstripeCornerWest
+  parent: EmberDecalOverstripeCornerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: overstripecorner_west
+
+- type: decal
+  id: EmberDecalOverstripeFull
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: overstripefull
+
+- type: decal
+  id: EmberDecalPryhole
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: pryhole
+
+- type: decal
+  id: EmberDecalShutoffBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalShutoffSouth
+  parent: EmberDecalShutoffBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: shutoff_south
+
+- type: decal
+  id: EmberDecalShutoffNorth
+  parent: EmberDecalShutoffBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: shutoff_north
+
+- type: decal
+  id: EmberDecalShutoffEast
+  parent: EmberDecalShutoffBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: shutoff_east
+
+- type: decal
+  id: EmberDecalShutoffWest
+  parent: EmberDecalShutoffBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: shutoff_west
+
+- type: decal
+  id: EmberDecalStripeBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalStripeSouth
+  parent: EmberDecalStripeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripe_south
+
+- type: decal
+  id: EmberDecalStripeNorth
+  parent: EmberDecalStripeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripe_north
+
+- type: decal
+  id: EmberDecalStripeEast
+  parent: EmberDecalStripeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripe_east
+
+- type: decal
+  id: EmberDecalStripeWest
+  parent: EmberDecalStripeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripe_west
+
+- type: decal
+  id: EmberDecalStripeSoutheast
+  parent: EmberDecalStripeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripe_southeast
+
+- type: decal
+  id: EmberDecalStripeSouthwest
+  parent: EmberDecalStripeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripe_southwest
+
+- type: decal
+  id: EmberDecalStripeNortheast
+  parent: EmberDecalStripeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripe_northeast
+
+- type: decal
+  id: EmberDecalStripeNorthwest
+  parent: EmberDecalStripeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripe_northwest
+
+- type: decal
+  id: EmberDecalStripeCeeBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalStripeCeeSouth
+  parent: EmberDecalStripeCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripecee_south
+
+- type: decal
+  id: EmberDecalStripeCeeNorth
+  parent: EmberDecalStripeCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripecee_north
+
+- type: decal
+  id: EmberDecalStripeCeeEast
+  parent: EmberDecalStripeCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripecee_east
+
+- type: decal
+  id: EmberDecalStripeCeeWest
+  parent: EmberDecalStripeCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripecee_west
+
+- type: decal
+  id: EmberDecalStripeCornerBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalStripeCornerSouth
+  parent: EmberDecalStripeCornerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripecorner_south
+
+- type: decal
+  id: EmberDecalStripeCornerNorth
+  parent: EmberDecalStripeCornerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripecorner_north
+
+- type: decal
+  id: EmberDecalStripeCornerEast
+  parent: EmberDecalStripeCornerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripecorner_east
+
+- type: decal
+  id: EmberDecalStripeCornerWest
+  parent: EmberDecalStripeCornerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripecorner_west
+
+- type: decal
+  id: EmberDecalStripeFull
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripefull
+
+- type: decal
+  id: EmberDecalStripeFullTile
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripefulltile
+
+- type: decal
+  id: EmberDecalStripeInnerBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalStripeInnerSouth
+  parent: EmberDecalStripeInnerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripeinner_south
+
+- type: decal
+  id: EmberDecalStripeInnerNorth
+  parent: EmberDecalStripeInnerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripeinner_north
+
+- type: decal
+  id: EmberDecalStripeInnerEast
+  parent: EmberDecalStripeInnerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripeinner_east
+
+- type: decal
+  id: EmberDecalStripeInnerWest
+  parent: EmberDecalStripeInnerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stripeinner_west
+
+- type: decal
+  id: EmberDecalTraction
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: traction
+
+- type: decal
+  id: EmberDecalWarningBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalWarningSouth
+  parent: EmberDecalWarningBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warning_south
+
+- type: decal
+  id: EmberDecalWarningNorth
+  parent: EmberDecalWarningBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warning_north
+
+- type: decal
+  id: EmberDecalWarningEast
+  parent: EmberDecalWarningBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warning_east
+
+- type: decal
+  id: EmberDecalWarningWest
+  parent: EmberDecalWarningBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warning_west
+
+- type: decal
+  id: EmberDecalWarningSoutheast
+  parent: EmberDecalWarningBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warning_southeast
+
+- type: decal
+  id: EmberDecalWarningSouthwest
+  parent: EmberDecalWarningBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warning_southwest
+
+- type: decal
+  id: EmberDecalWarningNortheast
+  parent: EmberDecalWarningBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warning_northeast
+
+- type: decal
+  id: EmberDecalWarningNorthwest
+  parent: EmberDecalWarningBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warning_northwest
+
+- type: decal
+  id: EmberDecalWarningDustBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalWarningDustSouth
+  parent: EmberDecalWarningDustBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warning_dust_south
+
+- type: decal
+  id: EmberDecalWarningDustNorth
+  parent: EmberDecalWarningDustBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warning_dust_north
+
+- type: decal
+  id: EmberDecalWarningDustEast
+  parent: EmberDecalWarningDustBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warning_dust_east
+
+- type: decal
+  id: EmberDecalWarningDustWest
+  parent: EmberDecalWarningDustBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warning_dust_west
+
+- type: decal
+  id: EmberDecalWarningDustSoutheast
+  parent: EmberDecalWarningDustBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warning_dust_southeast
+
+- type: decal
+  id: EmberDecalWarningDustSouthwest
+  parent: EmberDecalWarningDustBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warning_dust_southwest
+
+- type: decal
+  id: EmberDecalWarningDustNortheast
+  parent: EmberDecalWarningDustBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warning_dust_northeast
+
+- type: decal
+  id: EmberDecalWarningDustNorthwest
+  parent: EmberDecalWarningDustBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warning_dust_northwest
+
+- type: decal
+  id: EmberDecalWarningCeeBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalWarningCeeSouth
+  parent: EmberDecalWarningCeeBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warningcee_south
+
+- type: decal
+  id: EmberDecalWarningCeeNorth
+  parent: EmberDecalWarningCeeBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warningcee_north
+
+- type: decal
+  id: EmberDecalWarningCeeEast
+  parent: EmberDecalWarningCeeBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warningcee_east
+
+- type: decal
+  id: EmberDecalWarningCeeWest
+  parent: EmberDecalWarningCeeBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warningcee_west
+
+- type: decal
+  id: EmberDecalWarningCornerBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalWarningCornerSouth
+  parent: EmberDecalWarningCornerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warningcorner_south
+
+- type: decal
+  id: EmberDecalWarningCornerNorth
+  parent: EmberDecalWarningCornerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warningcorner_north
+
+- type: decal
+  id: EmberDecalWarningCornerEast
+  parent: EmberDecalWarningCornerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warningcorner_east
+
+- type: decal
+  id: EmberDecalWarningCornerWest
+  parent: EmberDecalWarningCornerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warningcorner_west
+
+- type: decal
+  id: EmberDecalWarningCornerDustBase
+  parent: EmberDecalCategoryWarning
+  abstract: true
+
+- type: decal
+  id: EmberDecalWarningCornerDustSouth
+  parent: EmberDecalWarningCornerDustBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warningcorner_dust_south
+
+- type: decal
+  id: EmberDecalWarningCornerDustNorth
+  parent: EmberDecalWarningCornerDustBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warningcorner_dust_north
+
+- type: decal
+  id: EmberDecalWarningCornerDustEast
+  parent: EmberDecalWarningCornerDustBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warningcorner_dust_east
+
+- type: decal
+  id: EmberDecalWarningCornerDustWest
+  parent: EmberDecalWarningCornerDustBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warningcorner_dust_west
+
+- type: decal
+  id: EmberDecalWarningFull
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warningfull
+
+- type: decal
+  id: EmberDecalWarningFullTile
+  parent: EmberDecalCategoryWarning
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: warningfulltile
+
+# ржавчина, запустение и порода
+- type: decal
+  id: EmberDecalCategoryWear
+  abstract: true
+
+- type: decal
+  id: EmberDecalAsteroid0
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: asteroid0
+
+- type: decal
+  id: EmberDecalAsteroid1
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: asteroid1
+
+- type: decal
+  id: EmberDecalAsteroid2
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: asteroid2
+
+- type: decal
+  id: EmberDecalAsteroid3
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: asteroid3
+
+- type: decal
+  id: EmberDecalAsteroid4
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: asteroid4
+
+- type: decal
+  id: EmberDecalAsteroid5
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: asteroid5
+
+- type: decal
+  id: EmberDecalAsteroid6
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: asteroid6
+
+- type: decal
+  id: EmberDecalAsteroid7
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: asteroid7
+
+- type: decal
+  id: EmberDecalAsteroid8
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: asteroid8
+
+- type: decal
+  id: EmberDecalAsteroid9
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: asteroid9
+
+- type: decal
+  id: EmberDecalAsteroidDugOverlay
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: asteroid_dug_overlay
+
+- type: decal
+  id: EmberDecalColorRustedBase
+  parent: EmberDecalCategoryWear
+  abstract: true
+
+- type: decal
+  id: EmberDecalColorRustedSouth
+  parent: EmberDecalColorRustedBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: color_rusted_south
+
+- type: decal
+  id: EmberDecalColorRustedNorth
+  parent: EmberDecalColorRustedBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: color_rusted_north
+
+- type: decal
+  id: EmberDecalColorRustedEast
+  parent: EmberDecalColorRustedBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: color_rusted_east
+
+- type: decal
+  id: EmberDecalColorRustedWest
+  parent: EmberDecalColorRustedBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: color_rusted_west
+
+- type: decal
+  id: EmberDecalColorRustedSoutheast
+  parent: EmberDecalColorRustedBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: color_rusted_southeast
+
+- type: decal
+  id: EmberDecalColorRustedSouthwest
+  parent: EmberDecalColorRustedBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: color_rusted_southwest
+
+- type: decal
+  id: EmberDecalColorRustedNortheast
+  parent: EmberDecalColorRustedBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: color_rusted_northeast
+
+- type: decal
+  id: EmberDecalColorRustedNorthwest
+  parent: EmberDecalColorRustedBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: color_rusted_northwest
+
+- type: decal
+  id: EmberDecalColorRustedCeeBase
+  parent: EmberDecalCategoryWear
+  abstract: true
+
+- type: decal
+  id: EmberDecalColorRustedCeeSouth
+  parent: EmberDecalColorRustedCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: color_rustedcee_south
+
+- type: decal
+  id: EmberDecalColorRustedCeeNorth
+  parent: EmberDecalColorRustedCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: color_rustedcee_north
+
+- type: decal
+  id: EmberDecalColorRustedCeeEast
+  parent: EmberDecalColorRustedCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: color_rustedcee_east
+
+- type: decal
+  id: EmberDecalColorRustedCeeWest
+  parent: EmberDecalColorRustedCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: color_rustedcee_west
+
+- type: decal
+  id: EmberDecalColorRustedCorner
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: color_rustedcorner
+
+- type: decal
+  id: EmberDecalColorRustedFull
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: color_rustedfull
+
+- type: decal
+  id: EmberDecalDerelict1
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: derelict1
+
+- type: decal
+  id: EmberDecalDerelict10
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: derelict10
+
+- type: decal
+  id: EmberDecalDerelict11
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: derelict11
+
+- type: decal
+  id: EmberDecalDerelict12
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: derelict12
+
+- type: decal
+  id: EmberDecalDerelict13
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: derelict13
+
+- type: decal
+  id: EmberDecalDerelict14
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: derelict14
+
+- type: decal
+  id: EmberDecalDerelict15
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: derelict15
+
+- type: decal
+  id: EmberDecalDerelict16
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: derelict16
+
+- type: decal
+  id: EmberDecalDerelict2
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: derelict2
+
+- type: decal
+  id: EmberDecalDerelict3
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: derelict3
+
+- type: decal
+  id: EmberDecalDerelict4
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: derelict4
+
+- type: decal
+  id: EmberDecalDerelict5
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: derelict5
+
+- type: decal
+  id: EmberDecalDerelict6
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: derelict6
+
+- type: decal
+  id: EmberDecalDerelict7
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: derelict7
+
+- type: decal
+  id: EmberDecalDerelict8
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: derelict8
+
+- type: decal
+  id: EmberDecalDerelict9
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: derelict9
+
+- type: decal
+  id: EmberDecalMiningGems
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: mining_gems
+
+- type: decal
+  id: EmberDecalMiningLump
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: mining_lump
+
+- type: decal
+  id: EmberDecalMiningNugget
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: mining_nugget
+
+- type: decal
+  id: EmberDecalMiningShiny
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: mining_shiny
+
+- type: decal
+  id: EmberDecalMonoRusted1
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: mono_rusted1
+
+- type: decal
+  id: EmberDecalMonoRusted2
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: mono_rusted2
+
+- type: decal
+  id: EmberDecalMonoRusted3
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: mono_rusted3
+
+- type: decal
+  id: EmberDecalPartRusted1Base
+  parent: EmberDecalCategoryWear
+  abstract: true
+
+- type: decal
+  id: EmberDecalPartRusted1South
+  parent: EmberDecalPartRusted1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: part_rusted1_south
+
+- type: decal
+  id: EmberDecalPartRusted1North
+  parent: EmberDecalPartRusted1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: part_rusted1_north
+
+- type: decal
+  id: EmberDecalPartRusted1East
+  parent: EmberDecalPartRusted1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: part_rusted1_east
+
+- type: decal
+  id: EmberDecalPartRusted1West
+  parent: EmberDecalPartRusted1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: part_rusted1_west
+
+- type: decal
+  id: EmberDecalPartRusted2Base
+  parent: EmberDecalCategoryWear
+  abstract: true
+
+- type: decal
+  id: EmberDecalPartRusted2South
+  parent: EmberDecalPartRusted2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: part_rusted2_south
+
+- type: decal
+  id: EmberDecalPartRusted2North
+  parent: EmberDecalPartRusted2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: part_rusted2_north
+
+- type: decal
+  id: EmberDecalPartRusted2East
+  parent: EmberDecalPartRusted2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: part_rusted2_east
+
+- type: decal
+  id: EmberDecalPartRusted2West
+  parent: EmberDecalPartRusted2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: part_rusted2_west
+
+- type: decal
+  id: EmberDecalPartRusted3Base
+  parent: EmberDecalCategoryWear
+  abstract: true
+
+- type: decal
+  id: EmberDecalPartRusted3South
+  parent: EmberDecalPartRusted3Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: part_rusted3_south
+
+- type: decal
+  id: EmberDecalPartRusted3North
+  parent: EmberDecalPartRusted3Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: part_rusted3_north
+
+- type: decal
+  id: EmberDecalPartRusted3East
+  parent: EmberDecalPartRusted3Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: part_rusted3_east
+
+- type: decal
+  id: EmberDecalPartRusted3West
+  parent: EmberDecalPartRusted3Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: part_rusted3_west
+
+- type: decal
+  id: EmberDecalRust
+  parent: EmberDecalCategoryWear
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: rust
+
+- type: decal
+  id: EmberDecalSteelDecalsRusted1Base
+  parent: EmberDecalCategoryWear
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelDecalsRusted1South
+  parent: EmberDecalSteelDecalsRusted1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_rusted1_south
+
+- type: decal
+  id: EmberDecalSteelDecalsRusted1North
+  parent: EmberDecalSteelDecalsRusted1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_rusted1_north
+
+- type: decal
+  id: EmberDecalSteelDecalsRusted1East
+  parent: EmberDecalSteelDecalsRusted1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_rusted1_east
+
+- type: decal
+  id: EmberDecalSteelDecalsRusted1West
+  parent: EmberDecalSteelDecalsRusted1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_rusted1_west
+
+- type: decal
+  id: EmberDecalSteelDecalsRusted2Base
+  parent: EmberDecalCategoryWear
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelDecalsRusted2South
+  parent: EmberDecalSteelDecalsRusted2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_rusted2_south
+
+- type: decal
+  id: EmberDecalSteelDecalsRusted2North
+  parent: EmberDecalSteelDecalsRusted2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_rusted2_north
+
+- type: decal
+  id: EmberDecalSteelDecalsRusted2East
+  parent: EmberDecalSteelDecalsRusted2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_rusted2_east
+
+- type: decal
+  id: EmberDecalSteelDecalsRusted2West
+  parent: EmberDecalSteelDecalsRusted2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_rusted2_west
+
+# угловые заливки, сплайны и сетка
+- type: decal
+  id: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalCornerKafelBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalCornerKafelSouth
+  parent: EmberDecalCornerKafelBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_kafel_south
+
+- type: decal
+  id: EmberDecalCornerKafelNorth
+  parent: EmberDecalCornerKafelBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_kafel_north
+
+- type: decal
+  id: EmberDecalCornerKafelEast
+  parent: EmberDecalCornerKafelBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_kafel_east
+
+- type: decal
+  id: EmberDecalCornerKafelWest
+  parent: EmberDecalCornerKafelBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_kafel_west
+
+- type: decal
+  id: EmberDecalCornerKafelSoutheast
+  parent: EmberDecalCornerKafelBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_kafel_southeast
+
+- type: decal
+  id: EmberDecalCornerKafelSouthwest
+  parent: EmberDecalCornerKafelBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_kafel_southwest
+
+- type: decal
+  id: EmberDecalCornerKafelNortheast
+  parent: EmberDecalCornerKafelBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_kafel_northeast
+
+- type: decal
+  id: EmberDecalCornerKafelNorthwest
+  parent: EmberDecalCornerKafelBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_kafel_northwest
+
+- type: decal
+  id: EmberDecalCornerKafelDiagonalBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalCornerKafelDiagonalSouth
+  parent: EmberDecalCornerKafelDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_kafel_diagonal_south
+
+- type: decal
+  id: EmberDecalCornerKafelDiagonalNorth
+  parent: EmberDecalCornerKafelDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_kafel_diagonal_north
+
+- type: decal
+  id: EmberDecalCornerKafelDiagonalEast
+  parent: EmberDecalCornerKafelDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_kafel_diagonal_east
+
+- type: decal
+  id: EmberDecalCornerKafelDiagonalWest
+  parent: EmberDecalCornerKafelDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_kafel_diagonal_west
+
+- type: decal
+  id: EmberDecalCornerKafelFullBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalCornerKafelFullSouth
+  parent: EmberDecalCornerKafelFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_kafel_full_south
+
+- type: decal
+  id: EmberDecalCornerKafelFullNorth
+  parent: EmberDecalCornerKafelFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_kafel_full_north
+
+- type: decal
+  id: EmberDecalCornerKafelFullEast
+  parent: EmberDecalCornerKafelFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_kafel_full_east
+
+- type: decal
+  id: EmberDecalCornerKafelFullWest
+  parent: EmberDecalCornerKafelFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_kafel_full_west
+
+- type: decal
+  id: EmberDecalCornerOldtileBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalCornerOldtileSouth
+  parent: EmberDecalCornerOldtileBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_oldtile_south
+
+- type: decal
+  id: EmberDecalCornerOldtileNorth
+  parent: EmberDecalCornerOldtileBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_oldtile_north
+
+- type: decal
+  id: EmberDecalCornerOldtileEast
+  parent: EmberDecalCornerOldtileBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_oldtile_east
+
+- type: decal
+  id: EmberDecalCornerOldtileWest
+  parent: EmberDecalCornerOldtileBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_oldtile_west
+
+- type: decal
+  id: EmberDecalCornerOldtileSoutheast
+  parent: EmberDecalCornerOldtileBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_oldtile_southeast
+
+- type: decal
+  id: EmberDecalCornerOldtileSouthwest
+  parent: EmberDecalCornerOldtileBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_oldtile_southwest
+
+- type: decal
+  id: EmberDecalCornerOldtileNortheast
+  parent: EmberDecalCornerOldtileBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_oldtile_northeast
+
+- type: decal
+  id: EmberDecalCornerOldtileNorthwest
+  parent: EmberDecalCornerOldtileBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_oldtile_northwest
+
+- type: decal
+  id: EmberDecalCornerOldtileDiagonalBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalCornerOldtileDiagonalSouth
+  parent: EmberDecalCornerOldtileDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_oldtile_diagonal_south
+
+- type: decal
+  id: EmberDecalCornerOldtileDiagonalNorth
+  parent: EmberDecalCornerOldtileDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_oldtile_diagonal_north
+
+- type: decal
+  id: EmberDecalCornerOldtileDiagonalEast
+  parent: EmberDecalCornerOldtileDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_oldtile_diagonal_east
+
+- type: decal
+  id: EmberDecalCornerOldtileDiagonalWest
+  parent: EmberDecalCornerOldtileDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_oldtile_diagonal_west
+
+- type: decal
+  id: EmberDecalCornerOldtileFullBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalCornerOldtileFullSouth
+  parent: EmberDecalCornerOldtileFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_oldtile_full_south
+
+- type: decal
+  id: EmberDecalCornerOldtileFullNorth
+  parent: EmberDecalCornerOldtileFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_oldtile_full_north
+
+- type: decal
+  id: EmberDecalCornerOldtileFullEast
+  parent: EmberDecalCornerOldtileFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_oldtile_full_east
+
+- type: decal
+  id: EmberDecalCornerOldtileFullWest
+  parent: EmberDecalCornerOldtileFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_oldtile_full_west
+
+- type: decal
+  id: EmberDecalCornerTechFloorGrayBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalCornerTechFloorGraySouth
+  parent: EmberDecalCornerTechFloorGrayBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_gray_south
+
+- type: decal
+  id: EmberDecalCornerTechFloorGrayNorth
+  parent: EmberDecalCornerTechFloorGrayBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_gray_north
+
+- type: decal
+  id: EmberDecalCornerTechFloorGrayEast
+  parent: EmberDecalCornerTechFloorGrayBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_gray_east
+
+- type: decal
+  id: EmberDecalCornerTechFloorGrayWest
+  parent: EmberDecalCornerTechFloorGrayBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_gray_west
+
+- type: decal
+  id: EmberDecalCornerTechFloorGraySoutheast
+  parent: EmberDecalCornerTechFloorGrayBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_gray_southeast
+
+- type: decal
+  id: EmberDecalCornerTechFloorGraySouthwest
+  parent: EmberDecalCornerTechFloorGrayBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_gray_southwest
+
+- type: decal
+  id: EmberDecalCornerTechFloorGrayNortheast
+  parent: EmberDecalCornerTechFloorGrayBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_gray_northeast
+
+- type: decal
+  id: EmberDecalCornerTechFloorGrayNorthwest
+  parent: EmberDecalCornerTechFloorGrayBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_gray_northwest
+
+- type: decal
+  id: EmberDecalCornerTechFloorGrayDiagonalBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalCornerTechFloorGrayDiagonalSouth
+  parent: EmberDecalCornerTechFloorGrayDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_gray_diagonal_south
+
+- type: decal
+  id: EmberDecalCornerTechFloorGrayDiagonalNorth
+  parent: EmberDecalCornerTechFloorGrayDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_gray_diagonal_north
+
+- type: decal
+  id: EmberDecalCornerTechFloorGrayDiagonalEast
+  parent: EmberDecalCornerTechFloorGrayDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_gray_diagonal_east
+
+- type: decal
+  id: EmberDecalCornerTechFloorGrayDiagonalWest
+  parent: EmberDecalCornerTechFloorGrayDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_gray_diagonal_west
+
+- type: decal
+  id: EmberDecalCornerTechFloorGrayFullBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalCornerTechFloorGrayFullSouth
+  parent: EmberDecalCornerTechFloorGrayFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_gray_full_south
+
+- type: decal
+  id: EmberDecalCornerTechFloorGrayFullNorth
+  parent: EmberDecalCornerTechFloorGrayFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_gray_full_north
+
+- type: decal
+  id: EmberDecalCornerTechFloorGrayFullEast
+  parent: EmberDecalCornerTechFloorGrayFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_gray_full_east
+
+- type: decal
+  id: EmberDecalCornerTechFloorGrayFullWest
+  parent: EmberDecalCornerTechFloorGrayFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_gray_full_west
+
+- type: decal
+  id: EmberDecalCornerTechFloorGridBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalCornerTechFloorGridSouth
+  parent: EmberDecalCornerTechFloorGridBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_grid_south
+
+- type: decal
+  id: EmberDecalCornerTechFloorGridNorth
+  parent: EmberDecalCornerTechFloorGridBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_grid_north
+
+- type: decal
+  id: EmberDecalCornerTechFloorGridEast
+  parent: EmberDecalCornerTechFloorGridBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_grid_east
+
+- type: decal
+  id: EmberDecalCornerTechFloorGridWest
+  parent: EmberDecalCornerTechFloorGridBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_grid_west
+
+- type: decal
+  id: EmberDecalCornerTechFloorGridSoutheast
+  parent: EmberDecalCornerTechFloorGridBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_grid_southeast
+
+- type: decal
+  id: EmberDecalCornerTechFloorGridSouthwest
+  parent: EmberDecalCornerTechFloorGridBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_grid_southwest
+
+- type: decal
+  id: EmberDecalCornerTechFloorGridNortheast
+  parent: EmberDecalCornerTechFloorGridBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_grid_northeast
+
+- type: decal
+  id: EmberDecalCornerTechFloorGridNorthwest
+  parent: EmberDecalCornerTechFloorGridBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_grid_northwest
+
+- type: decal
+  id: EmberDecalCornerTechFloorGridDiagonalBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalCornerTechFloorGridDiagonalSouth
+  parent: EmberDecalCornerTechFloorGridDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_grid_diagonal_south
+
+- type: decal
+  id: EmberDecalCornerTechFloorGridDiagonalNorth
+  parent: EmberDecalCornerTechFloorGridDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_grid_diagonal_north
+
+- type: decal
+  id: EmberDecalCornerTechFloorGridDiagonalEast
+  parent: EmberDecalCornerTechFloorGridDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_grid_diagonal_east
+
+- type: decal
+  id: EmberDecalCornerTechFloorGridDiagonalWest
+  parent: EmberDecalCornerTechFloorGridDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_grid_diagonal_west
+
+- type: decal
+  id: EmberDecalCornerTechFloorGridFullBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalCornerTechFloorGridFullSouth
+  parent: EmberDecalCornerTechFloorGridFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_grid_full_south
+
+- type: decal
+  id: EmberDecalCornerTechFloorGridFullNorth
+  parent: EmberDecalCornerTechFloorGridFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_grid_full_north
+
+- type: decal
+  id: EmberDecalCornerTechFloorGridFullEast
+  parent: EmberDecalCornerTechFloorGridFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_grid_full_east
+
+- type: decal
+  id: EmberDecalCornerTechFloorGridFullWest
+  parent: EmberDecalCornerTechFloorGridFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_techfloor_grid_full_west
+
+- type: decal
+  id: EmberDecalCornerWhiteBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalCornerWhiteSouth
+  parent: EmberDecalCornerWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_white_south
+
+- type: decal
+  id: EmberDecalCornerWhiteNorth
+  parent: EmberDecalCornerWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_white_north
+
+- type: decal
+  id: EmberDecalCornerWhiteEast
+  parent: EmberDecalCornerWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_white_east
+
+- type: decal
+  id: EmberDecalCornerWhiteWest
+  parent: EmberDecalCornerWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_white_west
+
+- type: decal
+  id: EmberDecalCornerWhiteSoutheast
+  parent: EmberDecalCornerWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_white_southeast
+
+- type: decal
+  id: EmberDecalCornerWhiteSouthwest
+  parent: EmberDecalCornerWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_white_southwest
+
+- type: decal
+  id: EmberDecalCornerWhiteNortheast
+  parent: EmberDecalCornerWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_white_northeast
+
+- type: decal
+  id: EmberDecalCornerWhiteNorthwest
+  parent: EmberDecalCornerWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_white_northwest
+
+- type: decal
+  id: EmberDecalCornerWhiteDiagonalBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalCornerWhiteDiagonalSouth
+  parent: EmberDecalCornerWhiteDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_white_diagonal_south
+
+- type: decal
+  id: EmberDecalCornerWhiteDiagonalNorth
+  parent: EmberDecalCornerWhiteDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_white_diagonal_north
+
+- type: decal
+  id: EmberDecalCornerWhiteDiagonalEast
+  parent: EmberDecalCornerWhiteDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_white_diagonal_east
+
+- type: decal
+  id: EmberDecalCornerWhiteDiagonalWest
+  parent: EmberDecalCornerWhiteDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_white_diagonal_west
+
+- type: decal
+  id: EmberDecalCornerWhiteFull
+  parent: EmberDecalCategoryCorner
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_white_full
+
+- type: decal
+  id: EmberDecalCornerWhiteThreeQuartersBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalCornerWhiteThreeQuartersSouth
+  parent: EmberDecalCornerWhiteThreeQuartersBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_white_three_quarters_south
+
+- type: decal
+  id: EmberDecalCornerWhiteThreeQuartersNorth
+  parent: EmberDecalCornerWhiteThreeQuartersBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_white_three_quarters_north
+
+- type: decal
+  id: EmberDecalCornerWhiteThreeQuartersEast
+  parent: EmberDecalCornerWhiteThreeQuartersBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_white_three_quarters_east
+
+- type: decal
+  id: EmberDecalCornerWhiteThreeQuartersWest
+  parent: EmberDecalCornerWhiteThreeQuartersBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corner_white_three_quarters_west
+
+- type: decal
+  id: EmberDecalSplineFancyBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalSplineFancySouth
+  parent: EmberDecalSplineFancyBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_fancy_south
+
+- type: decal
+  id: EmberDecalSplineFancyNorth
+  parent: EmberDecalSplineFancyBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_fancy_north
+
+- type: decal
+  id: EmberDecalSplineFancyEast
+  parent: EmberDecalSplineFancyBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_fancy_east
+
+- type: decal
+  id: EmberDecalSplineFancyWest
+  parent: EmberDecalSplineFancyBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_fancy_west
+
+- type: decal
+  id: EmberDecalSplineFancySoutheast
+  parent: EmberDecalSplineFancyBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_fancy_southeast
+
+- type: decal
+  id: EmberDecalSplineFancySouthwest
+  parent: EmberDecalSplineFancyBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_fancy_southwest
+
+- type: decal
+  id: EmberDecalSplineFancyNortheast
+  parent: EmberDecalSplineFancyBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_fancy_northeast
+
+- type: decal
+  id: EmberDecalSplineFancyNorthwest
+  parent: EmberDecalSplineFancyBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_fancy_northwest
+
+- type: decal
+  id: EmberDecalSplineFancyCorner
+  parent: EmberDecalSplineFancyBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_fancy_corner
+
+- type: decal
+  id: EmberDecalSplineFancyCee
+  parent: EmberDecalCategoryCorner
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_fancy_cee
+
+- type: decal
+  id: EmberDecalSplineFancyFull
+  parent: EmberDecalCategoryCorner
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_fancy_full
+
+- type: decal
+  id: EmberDecalSplinePlainBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalSplinePlainSouth
+  parent: EmberDecalSplinePlainBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_plain_south
+
+- type: decal
+  id: EmberDecalSplinePlainNorth
+  parent: EmberDecalSplinePlainBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_plain_north
+
+- type: decal
+  id: EmberDecalSplinePlainEast
+  parent: EmberDecalSplinePlainBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_plain_east
+
+- type: decal
+  id: EmberDecalSplinePlainWest
+  parent: EmberDecalSplinePlainBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_plain_west
+
+- type: decal
+  id: EmberDecalSplinePlainSoutheast
+  parent: EmberDecalSplinePlainBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_plain_southeast
+
+- type: decal
+  id: EmberDecalSplinePlainSouthwest
+  parent: EmberDecalSplinePlainBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_plain_southwest
+
+- type: decal
+  id: EmberDecalSplinePlainNortheast
+  parent: EmberDecalSplinePlainBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_plain_northeast
+
+- type: decal
+  id: EmberDecalSplinePlainNorthwest
+  parent: EmberDecalSplinePlainBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_plain_northwest
+
+- type: decal
+  id: EmberDecalSplinePlainCee
+  parent: EmberDecalCategoryCorner
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_plain_cee
+
+- type: decal
+  id: EmberDecalSplinePlainFull
+  parent: EmberDecalCategoryCorner
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: spline_plain_full
+
+- type: decal
+  id: EmberDecalSteelGridBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelGridSouth
+  parent: EmberDecalSteelGridBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_grid_south
+
+- type: decal
+  id: EmberDecalSteelGridNorth
+  parent: EmberDecalSteelGridBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_grid_north
+
+- type: decal
+  id: EmberDecalSteelGridEast
+  parent: EmberDecalSteelGridBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_grid_east
+
+- type: decal
+  id: EmberDecalSteelGridWest
+  parent: EmberDecalSteelGridBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_grid_west
+
+- type: decal
+  id: EmberDecalSteelGridSoutheast
+  parent: EmberDecalSteelGridBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_grid_southeast
+
+- type: decal
+  id: EmberDecalSteelGridSouthwest
+  parent: EmberDecalSteelGridBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_grid_southwest
+
+- type: decal
+  id: EmberDecalSteelGridNortheast
+  parent: EmberDecalSteelGridBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_grid_northeast
+
+- type: decal
+  id: EmberDecalSteelGridNorthwest
+  parent: EmberDecalSteelGridBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_grid_northwest
+
+- type: decal
+  id: EmberDecalSteelGridDiagonalBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelGridDiagonalSouth
+  parent: EmberDecalSteelGridDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_grid_diagonal_south
+
+- type: decal
+  id: EmberDecalSteelGridDiagonalNorth
+  parent: EmberDecalSteelGridDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_grid_diagonal_north
+
+- type: decal
+  id: EmberDecalSteelGridDiagonalEast
+  parent: EmberDecalSteelGridDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_grid_diagonal_east
+
+- type: decal
+  id: EmberDecalSteelGridDiagonalWest
+  parent: EmberDecalSteelGridDiagonalBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_grid_diagonal_west
+
+- type: decal
+  id: EmberDecalSteelGridFullBase
+  parent: EmberDecalCategoryCorner
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelGridFullSouth
+  parent: EmberDecalSteelGridFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_grid_full_south
+
+- type: decal
+  id: EmberDecalSteelGridFullNorth
+  parent: EmberDecalSteelGridFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_grid_full_north
+
+- type: decal
+  id: EmberDecalSteelGridFullEast
+  parent: EmberDecalSteelGridFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_grid_full_east
+
+- type: decal
+  id: EmberDecalSteelGridFullWest
+  parent: EmberDecalSteelGridFullBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_grid_full_west
+
+# кромки пола и обводка
+- type: decal
+  id: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalBorderColorBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalBorderColorSouth
+  parent: EmberDecalBorderColorBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolor_south
+
+- type: decal
+  id: EmberDecalBorderColorNorth
+  parent: EmberDecalBorderColorBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolor_north
+
+- type: decal
+  id: EmberDecalBorderColorEast
+  parent: EmberDecalBorderColorBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolor_east
+
+- type: decal
+  id: EmberDecalBorderColorWest
+  parent: EmberDecalBorderColorBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolor_west
+
+- type: decal
+  id: EmberDecalBorderColorSoutheast
+  parent: EmberDecalBorderColorBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolor_southeast
+
+- type: decal
+  id: EmberDecalBorderColorSouthwest
+  parent: EmberDecalBorderColorBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolor_southwest
+
+- type: decal
+  id: EmberDecalBorderColorNortheast
+  parent: EmberDecalBorderColorBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolor_northeast
+
+- type: decal
+  id: EmberDecalBorderColorNorthwest
+  parent: EmberDecalBorderColorBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolor_northwest
+
+- type: decal
+  id: EmberDecalBorderColorCeeBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalBorderColorCeeSouth
+  parent: EmberDecalBorderColorCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorcee_south
+
+- type: decal
+  id: EmberDecalBorderColorCeeNorth
+  parent: EmberDecalBorderColorCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorcee_north
+
+- type: decal
+  id: EmberDecalBorderColorCeeEast
+  parent: EmberDecalBorderColorCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorcee_east
+
+- type: decal
+  id: EmberDecalBorderColorCeeWest
+  parent: EmberDecalBorderColorCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorcee_west
+
+- type: decal
+  id: EmberDecalBorderColorCornerBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalBorderColorCornerSouth
+  parent: EmberDecalBorderColorCornerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorcorner_south
+
+- type: decal
+  id: EmberDecalBorderColorCornerNorth
+  parent: EmberDecalBorderColorCornerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorcorner_north
+
+- type: decal
+  id: EmberDecalBorderColorCornerEast
+  parent: EmberDecalBorderColorCornerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorcorner_east
+
+- type: decal
+  id: EmberDecalBorderColorCornerWest
+  parent: EmberDecalBorderColorCornerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorcorner_west
+
+- type: decal
+  id: EmberDecalBorderColorCorner2Base
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalBorderColorCorner2South
+  parent: EmberDecalBorderColorCorner2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorcorner2_south
+
+- type: decal
+  id: EmberDecalBorderColorCorner2North
+  parent: EmberDecalBorderColorCorner2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorcorner2_north
+
+- type: decal
+  id: EmberDecalBorderColorCorner2East
+  parent: EmberDecalBorderColorCorner2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorcorner2_east
+
+- type: decal
+  id: EmberDecalBorderColorCorner2West
+  parent: EmberDecalBorderColorCorner2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorcorner2_west
+
+- type: decal
+  id: EmberDecalBorderColorCorner2Southeast
+  parent: EmberDecalBorderColorCorner2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorcorner2_southeast
+
+- type: decal
+  id: EmberDecalBorderColorCorner2Southwest
+  parent: EmberDecalBorderColorCorner2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorcorner2_southwest
+
+- type: decal
+  id: EmberDecalBorderColorCorner2Northeast
+  parent: EmberDecalBorderColorCorner2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorcorner2_northeast
+
+- type: decal
+  id: EmberDecalBorderColorCorner2Northwest
+  parent: EmberDecalBorderColorCorner2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorcorner2_northwest
+
+- type: decal
+  id: EmberDecalBorderColorFull
+  parent: EmberDecalCategoryBorder
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorfull
+
+- type: decal
+  id: EmberDecalBorderColorHalfBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalBorderColorHalfSouth
+  parent: EmberDecalBorderColorHalfBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorhalf_south
+
+- type: decal
+  id: EmberDecalBorderColorHalfNorth
+  parent: EmberDecalBorderColorHalfBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorhalf_north
+
+- type: decal
+  id: EmberDecalBorderColorHalfEast
+  parent: EmberDecalBorderColorHalfBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorhalf_east
+
+- type: decal
+  id: EmberDecalBorderColorHalfWest
+  parent: EmberDecalBorderColorHalfBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolorhalf_west
+
+- type: decal
+  id: EmberDecalBorderColorMonoFull
+  parent: EmberDecalCategoryBorder
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: bordercolormonofull
+
+- type: decal
+  id: EmberDecalBorderFloorBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalBorderFloorSouth
+  parent: EmberDecalBorderFloorBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_south
+
+- type: decal
+  id: EmberDecalBorderFloorNorth
+  parent: EmberDecalBorderFloorBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_north
+
+- type: decal
+  id: EmberDecalBorderFloorEast
+  parent: EmberDecalBorderFloorBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_east
+
+- type: decal
+  id: EmberDecalBorderFloorWest
+  parent: EmberDecalBorderFloorBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_west
+
+- type: decal
+  id: EmberDecalBorderFloorSoutheast
+  parent: EmberDecalBorderFloorBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_southeast
+
+- type: decal
+  id: EmberDecalBorderFloorSouthwest
+  parent: EmberDecalBorderFloorBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_southwest
+
+- type: decal
+  id: EmberDecalBorderFloorNortheast
+  parent: EmberDecalBorderFloorBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_northeast
+
+- type: decal
+  id: EmberDecalBorderFloorNorthwest
+  parent: EmberDecalBorderFloorBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_northwest
+
+- type: decal
+  id: EmberDecalBorderFloorBlackBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalBorderFloorBlackSouth
+  parent: EmberDecalBorderFloorBlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_black_south
+
+- type: decal
+  id: EmberDecalBorderFloorBlackNorth
+  parent: EmberDecalBorderFloorBlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_black_north
+
+- type: decal
+  id: EmberDecalBorderFloorBlackEast
+  parent: EmberDecalBorderFloorBlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_black_east
+
+- type: decal
+  id: EmberDecalBorderFloorBlackWest
+  parent: EmberDecalBorderFloorBlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_black_west
+
+- type: decal
+  id: EmberDecalBorderFloorBlackSoutheast
+  parent: EmberDecalBorderFloorBlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_black_southeast
+
+- type: decal
+  id: EmberDecalBorderFloorBlackSouthwest
+  parent: EmberDecalBorderFloorBlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_black_southwest
+
+- type: decal
+  id: EmberDecalBorderFloorBlackNortheast
+  parent: EmberDecalBorderFloorBlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_black_northeast
+
+- type: decal
+  id: EmberDecalBorderFloorBlackNorthwest
+  parent: EmberDecalBorderFloorBlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_black_northwest
+
+- type: decal
+  id: EmberDecalBorderFloorWhiteBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalBorderFloorWhiteSouth
+  parent: EmberDecalBorderFloorWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_white_south
+
+- type: decal
+  id: EmberDecalBorderFloorWhiteNorth
+  parent: EmberDecalBorderFloorWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_white_north
+
+- type: decal
+  id: EmberDecalBorderFloorWhiteEast
+  parent: EmberDecalBorderFloorWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_white_east
+
+- type: decal
+  id: EmberDecalBorderFloorWhiteWest
+  parent: EmberDecalBorderFloorWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_white_west
+
+- type: decal
+  id: EmberDecalBorderFloorWhiteSoutheast
+  parent: EmberDecalBorderFloorWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_white_southeast
+
+- type: decal
+  id: EmberDecalBorderFloorWhiteSouthwest
+  parent: EmberDecalBorderFloorWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_white_southwest
+
+- type: decal
+  id: EmberDecalBorderFloorWhiteNortheast
+  parent: EmberDecalBorderFloorWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_white_northeast
+
+- type: decal
+  id: EmberDecalBorderFloorWhiteNorthwest
+  parent: EmberDecalBorderFloorWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloor_white_northwest
+
+- type: decal
+  id: EmberDecalBorderFloorCeeBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalBorderFloorCeeSouth
+  parent: EmberDecalBorderFloorCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcee_south
+
+- type: decal
+  id: EmberDecalBorderFloorCeeNorth
+  parent: EmberDecalBorderFloorCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcee_north
+
+- type: decal
+  id: EmberDecalBorderFloorCeeEast
+  parent: EmberDecalBorderFloorCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcee_east
+
+- type: decal
+  id: EmberDecalBorderFloorCeeWest
+  parent: EmberDecalBorderFloorCeeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcee_west
+
+- type: decal
+  id: EmberDecalBorderFloorCeeBlackBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalBorderFloorCeeBlackSouth
+  parent: EmberDecalBorderFloorCeeBlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcee_black_south
+
+- type: decal
+  id: EmberDecalBorderFloorCeeBlackNorth
+  parent: EmberDecalBorderFloorCeeBlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcee_black_north
+
+- type: decal
+  id: EmberDecalBorderFloorCeeBlackEast
+  parent: EmberDecalBorderFloorCeeBlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcee_black_east
+
+- type: decal
+  id: EmberDecalBorderFloorCeeBlackWest
+  parent: EmberDecalBorderFloorCeeBlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcee_black_west
+
+- type: decal
+  id: EmberDecalBorderFloorCeeWhiteBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalBorderFloorCeeWhiteSouth
+  parent: EmberDecalBorderFloorCeeWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcee_white_south
+
+- type: decal
+  id: EmberDecalBorderFloorCeeWhiteNorth
+  parent: EmberDecalBorderFloorCeeWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcee_white_north
+
+- type: decal
+  id: EmberDecalBorderFloorCeeWhiteEast
+  parent: EmberDecalBorderFloorCeeWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcee_white_east
+
+- type: decal
+  id: EmberDecalBorderFloorCeeWhiteWest
+  parent: EmberDecalBorderFloorCeeWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcee_white_west
+
+- type: decal
+  id: EmberDecalBorderFloorCornerBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalBorderFloorCornerSouth
+  parent: EmberDecalBorderFloorCornerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner_south
+
+- type: decal
+  id: EmberDecalBorderFloorCornerNorth
+  parent: EmberDecalBorderFloorCornerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner_north
+
+- type: decal
+  id: EmberDecalBorderFloorCornerEast
+  parent: EmberDecalBorderFloorCornerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner_east
+
+- type: decal
+  id: EmberDecalBorderFloorCornerWest
+  parent: EmberDecalBorderFloorCornerBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner_west
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2Base
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2South
+  parent: EmberDecalBorderFloorCorner2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_south
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2North
+  parent: EmberDecalBorderFloorCorner2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_north
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2East
+  parent: EmberDecalBorderFloorCorner2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_east
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2West
+  parent: EmberDecalBorderFloorCorner2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_west
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2Southeast
+  parent: EmberDecalBorderFloorCorner2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_southeast
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2Southwest
+  parent: EmberDecalBorderFloorCorner2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_southwest
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2Northeast
+  parent: EmberDecalBorderFloorCorner2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_northeast
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2Northwest
+  parent: EmberDecalBorderFloorCorner2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_northwest
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2BlackBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2BlackSouth
+  parent: EmberDecalBorderFloorCorner2BlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_black_south
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2BlackNorth
+  parent: EmberDecalBorderFloorCorner2BlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_black_north
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2BlackEast
+  parent: EmberDecalBorderFloorCorner2BlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_black_east
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2BlackWest
+  parent: EmberDecalBorderFloorCorner2BlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_black_west
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2BlackSoutheast
+  parent: EmberDecalBorderFloorCorner2BlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_black_southeast
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2BlackSouthwest
+  parent: EmberDecalBorderFloorCorner2BlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_black_southwest
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2BlackNortheast
+  parent: EmberDecalBorderFloorCorner2BlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_black_northeast
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2BlackNorthwest
+  parent: EmberDecalBorderFloorCorner2BlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_black_northwest
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2WhiteBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2WhiteSouth
+  parent: EmberDecalBorderFloorCorner2WhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_white_south
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2WhiteNorth
+  parent: EmberDecalBorderFloorCorner2WhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_white_north
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2WhiteEast
+  parent: EmberDecalBorderFloorCorner2WhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_white_east
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2WhiteWest
+  parent: EmberDecalBorderFloorCorner2WhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_white_west
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2WhiteSoutheast
+  parent: EmberDecalBorderFloorCorner2WhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_white_southeast
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2WhiteSouthwest
+  parent: EmberDecalBorderFloorCorner2WhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_white_southwest
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2WhiteNortheast
+  parent: EmberDecalBorderFloorCorner2WhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_white_northeast
+
+- type: decal
+  id: EmberDecalBorderFloorCorner2WhiteNorthwest
+  parent: EmberDecalBorderFloorCorner2WhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner2_white_northwest
+
+- type: decal
+  id: EmberDecalBorderFloorCornerBlackBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalBorderFloorCornerBlackSouth
+  parent: EmberDecalBorderFloorCornerBlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner_black_south
+
+- type: decal
+  id: EmberDecalBorderFloorCornerBlackNorth
+  parent: EmberDecalBorderFloorCornerBlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner_black_north
+
+- type: decal
+  id: EmberDecalBorderFloorCornerBlackEast
+  parent: EmberDecalBorderFloorCornerBlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner_black_east
+
+- type: decal
+  id: EmberDecalBorderFloorCornerBlackWest
+  parent: EmberDecalBorderFloorCornerBlackBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner_black_west
+
+- type: decal
+  id: EmberDecalBorderFloorCornerWhiteBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalBorderFloorCornerWhiteSouth
+  parent: EmberDecalBorderFloorCornerWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner_white_south
+
+- type: decal
+  id: EmberDecalBorderFloorCornerWhiteNorth
+  parent: EmberDecalBorderFloorCornerWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner_white_north
+
+- type: decal
+  id: EmberDecalBorderFloorCornerWhiteEast
+  parent: EmberDecalBorderFloorCornerWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner_white_east
+
+- type: decal
+  id: EmberDecalBorderFloorCornerWhiteWest
+  parent: EmberDecalBorderFloorCornerWhiteBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorcorner_white_west
+
+- type: decal
+  id: EmberDecalBorderFloorFull
+  parent: EmberDecalCategoryBorder
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorfull
+
+- type: decal
+  id: EmberDecalBorderFloorFullBlack
+  parent: EmberDecalCategoryBorder
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorfull_black
+
+- type: decal
+  id: EmberDecalBorderFloorFullWhite
+  parent: EmberDecalCategoryBorder
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: borderfloorfull_white
+
+- type: decal
+  id: EmberDecalEdgeBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalEdgeSouth
+  parent: EmberDecalEdgeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: edge_south
+
+- type: decal
+  id: EmberDecalEdgeNorth
+  parent: EmberDecalEdgeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: edge_north
+
+- type: decal
+  id: EmberDecalEdgeEast
+  parent: EmberDecalEdgeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: edge_east
+
+- type: decal
+  id: EmberDecalEdgeWest
+  parent: EmberDecalEdgeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: edge_west
+
+- type: decal
+  id: EmberDecalEdgeSoutheast
+  parent: EmberDecalEdgeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: edge_southeast
+
+- type: decal
+  id: EmberDecalEdgeSouthwest
+  parent: EmberDecalEdgeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: edge_southwest
+
+- type: decal
+  id: EmberDecalEdgeNortheast
+  parent: EmberDecalEdgeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: edge_northeast
+
+- type: decal
+  id: EmberDecalEdgeNorthwest
+  parent: EmberDecalEdgeBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: edge_northwest
+
+- type: decal
+  id: EmberDecalGrassEdgeBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalGrassEdgeSouth
+  parent: EmberDecalGrassEdgeBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: grass_edge_south
+
+- type: decal
+  id: EmberDecalGrassEdgeNorth
+  parent: EmberDecalGrassEdgeBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: grass_edge_north
+
+- type: decal
+  id: EmberDecalGrassEdgeEast
+  parent: EmberDecalGrassEdgeBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: grass_edge_east
+
+- type: decal
+  id: EmberDecalGrassEdgeWest
+  parent: EmberDecalGrassEdgeBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: grass_edge_west
+
+- type: decal
+  id: EmberDecalGrassEdgeSoutheast
+  parent: EmberDecalGrassEdgeBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: grass_edge_southeast
+
+- type: decal
+  id: EmberDecalGrassEdgeSouthwest
+  parent: EmberDecalGrassEdgeBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: grass_edge_southwest
+
+- type: decal
+  id: EmberDecalGrassEdgeNortheast
+  parent: EmberDecalGrassEdgeBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: grass_edge_northeast
+
+- type: decal
+  id: EmberDecalGrassEdgeNorthwest
+  parent: EmberDecalGrassEdgeBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: grass_edge_northwest
+
+- type: decal
+  id: EmberDecalGrassEdgeCornerBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalGrassEdgeCornerSouth
+  parent: EmberDecalGrassEdgeCornerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: grass_edge_corner_south
+
+- type: decal
+  id: EmberDecalGrassEdgeCornerNorth
+  parent: EmberDecalGrassEdgeCornerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: grass_edge_corner_north
+
+- type: decal
+  id: EmberDecalGrassEdgeCornerEast
+  parent: EmberDecalGrassEdgeCornerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: grass_edge_corner_east
+
+- type: decal
+  id: EmberDecalGrassEdgeCornerWest
+  parent: EmberDecalGrassEdgeCornerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: grass_edge_corner_west
+
+- type: decal
+  id: EmberDecalGrassEdgeCornerSoutheast
+  parent: EmberDecalGrassEdgeCornerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: grass_edge_corner_southeast
+
+- type: decal
+  id: EmberDecalGrassEdgeCornerSouthwest
+  parent: EmberDecalGrassEdgeCornerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: grass_edge_corner_southwest
+
+- type: decal
+  id: EmberDecalGrassEdgeCornerNortheast
+  parent: EmberDecalGrassEdgeCornerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: grass_edge_corner_northeast
+
+- type: decal
+  id: EmberDecalGrassEdgeCornerNorthwest
+  parent: EmberDecalGrassEdgeCornerBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: grass_edge_corner_northwest
+
+- type: decal
+  id: EmberDecalOutline
+  parent: EmberDecalCategoryBorder
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: outline
+
+- type: decal
+  id: EmberDecalStoneBorderBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalStoneBorderSouth
+  parent: EmberDecalStoneBorderBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stoneborder_south
+
+- type: decal
+  id: EmberDecalStoneBorderNorth
+  parent: EmberDecalStoneBorderBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stoneborder_north
+
+- type: decal
+  id: EmberDecalStoneBorderEast
+  parent: EmberDecalStoneBorderBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stoneborder_east
+
+- type: decal
+  id: EmberDecalStoneBorderWest
+  parent: EmberDecalStoneBorderBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stoneborder_west
+
+- type: decal
+  id: EmberDecalStoneBorderCBase
+  parent: EmberDecalCategoryBorder
+  abstract: true
+
+- type: decal
+  id: EmberDecalStoneBorderCSouth
+  parent: EmberDecalStoneBorderCBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stoneborder_c_south
+
+- type: decal
+  id: EmberDecalStoneBorderCNorth
+  parent: EmberDecalStoneBorderCBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stoneborder_c_north
+
+- type: decal
+  id: EmberDecalStoneBorderCEast
+  parent: EmberDecalStoneBorderCBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stoneborder_c_east
+
+- type: decal
+  id: EmberDecalStoneBorderCWest
+  parent: EmberDecalStoneBorderCBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: stoneborder_c_west
+
+# техпол и панели
+- type: decal
+  id: EmberDecalCategoryTechfloor
+  abstract: true
+
+- type: decal
+  id: EmberDecalManydot
+  parent: EmberDecalCategoryTechfloor
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: manydot
+
+- type: decal
+  id: EmberDecalManydotTiled
+  parent: EmberDecalCategoryTechfloor
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: manydot_tiled
+
+- type: decal
+  id: EmberDecalSolarPanel
+  parent: EmberDecalCategoryTechfloor
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: solarpanel
+
+- type: decal
+  id: EmberDecalTechFloorCornersBase
+  parent: EmberDecalCategoryTechfloor
+  abstract: true
+
+- type: decal
+  id: EmberDecalTechFloorCornersSouth
+  parent: EmberDecalTechFloorCornersBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_corners_south
+
+- type: decal
+  id: EmberDecalTechFloorCornersNorth
+  parent: EmberDecalTechFloorCornersBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_corners_north
+
+- type: decal
+  id: EmberDecalTechFloorCornersEast
+  parent: EmberDecalTechFloorCornersBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_corners_east
+
+- type: decal
+  id: EmberDecalTechFloorCornersWest
+  parent: EmberDecalTechFloorCornersBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_corners_west
+
+- type: decal
+  id: EmberDecalTechFloorEdgesBase
+  parent: EmberDecalCategoryTechfloor
+  abstract: true
+
+- type: decal
+  id: EmberDecalTechFloorEdgesSouth
+  parent: EmberDecalTechFloorEdgesBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_edges_south
+
+- type: decal
+  id: EmberDecalTechFloorEdgesNorth
+  parent: EmberDecalTechFloorEdgesBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_edges_north
+
+- type: decal
+  id: EmberDecalTechFloorEdgesEast
+  parent: EmberDecalTechFloorEdgesBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_edges_east
+
+- type: decal
+  id: EmberDecalTechFloorEdgesWest
+  parent: EmberDecalTechFloorEdgesBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_edges_west
+
+- type: decal
+  id: EmberDecalTechFloorEdgesSoutheast
+  parent: EmberDecalTechFloorEdgesBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_edges_southeast
+
+- type: decal
+  id: EmberDecalTechFloorEdgesSouthwest
+  parent: EmberDecalTechFloorEdgesBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_edges_southwest
+
+- type: decal
+  id: EmberDecalTechFloorEdgesNortheast
+  parent: EmberDecalTechFloorEdgesBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_edges_northeast
+
+- type: decal
+  id: EmberDecalTechFloorEdgesNorthwest
+  parent: EmberDecalTechFloorEdgesBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_edges_northwest
+
+- type: decal
+  id: EmberDecalTechFloorHoleLeftBase
+  parent: EmberDecalCategoryTechfloor
+  abstract: true
+
+- type: decal
+  id: EmberDecalTechFloorHoleLeftSouth
+  parent: EmberDecalTechFloorHoleLeftBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_hole_left_south
+
+- type: decal
+  id: EmberDecalTechFloorHoleLeftNorth
+  parent: EmberDecalTechFloorHoleLeftBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_hole_left_north
+
+- type: decal
+  id: EmberDecalTechFloorHoleLeftEast
+  parent: EmberDecalTechFloorHoleLeftBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_hole_left_east
+
+- type: decal
+  id: EmberDecalTechFloorHoleLeftWest
+  parent: EmberDecalTechFloorHoleLeftBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_hole_left_west
+
+- type: decal
+  id: EmberDecalTechFloorHoleRightBase
+  parent: EmberDecalCategoryTechfloor
+  abstract: true
+
+- type: decal
+  id: EmberDecalTechFloorHoleRightSouth
+  parent: EmberDecalTechFloorHoleRightBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_hole_right_south
+
+- type: decal
+  id: EmberDecalTechFloorHoleRightNorth
+  parent: EmberDecalTechFloorHoleRightBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_hole_right_north
+
+- type: decal
+  id: EmberDecalTechFloorHoleRightEast
+  parent: EmberDecalTechFloorHoleRightBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_hole_right_east
+
+- type: decal
+  id: EmberDecalTechFloorHoleRightWest
+  parent: EmberDecalTechFloorHoleRightBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloor_hole_right_west
+
+- type: decal
+  id: EmberDecalTechFloorOrangeCorners
+  parent: EmberDecalCategoryTechfloor
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloororange_corners
+
+- type: decal
+  id: EmberDecalTechFloorOrangeEdgesBase
+  parent: EmberDecalCategoryTechfloor
+  abstract: true
+
+- type: decal
+  id: EmberDecalTechFloorOrangeEdgesSouth
+  parent: EmberDecalTechFloorOrangeEdgesBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloororange_edges_south
+
+- type: decal
+  id: EmberDecalTechFloorOrangeEdgesNorth
+  parent: EmberDecalTechFloorOrangeEdgesBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloororange_edges_north
+
+- type: decal
+  id: EmberDecalTechFloorOrangeEdgesEast
+  parent: EmberDecalTechFloorOrangeEdgesBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloororange_edges_east
+
+- type: decal
+  id: EmberDecalTechFloorOrangeEdgesWest
+  parent: EmberDecalTechFloorOrangeEdgesBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloororange_edges_west
+
+- type: decal
+  id: EmberDecalTechFloorOrangeEdgesSoutheast
+  parent: EmberDecalTechFloorOrangeEdgesBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloororange_edges_southeast
+
+- type: decal
+  id: EmberDecalTechFloorOrangeEdgesSouthwest
+  parent: EmberDecalTechFloorOrangeEdgesBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloororange_edges_southwest
+
+- type: decal
+  id: EmberDecalTechFloorOrangeEdgesNortheast
+  parent: EmberDecalTechFloorOrangeEdgesBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloororange_edges_northeast
+
+- type: decal
+  id: EmberDecalTechFloorOrangeEdgesNorthwest
+  parent: EmberDecalTechFloorOrangeEdgesBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: techfloororange_edges_northwest
+
+# мелкие накладки
+- type: decal
+  id: EmberDecalCategoryDetail
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelDecals1Base
+  parent: EmberDecalCategoryDetail
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelDecals1South
+  parent: EmberDecalSteelDecals1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals1_south
+
+- type: decal
+  id: EmberDecalSteelDecals1North
+  parent: EmberDecalSteelDecals1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals1_north
+
+- type: decal
+  id: EmberDecalSteelDecals1East
+  parent: EmberDecalSteelDecals1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals1_east
+
+- type: decal
+  id: EmberDecalSteelDecals1West
+  parent: EmberDecalSteelDecals1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals1_west
+
+- type: decal
+  id: EmberDecalSteelDecals1Southeast
+  parent: EmberDecalSteelDecals1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals1_southeast
+
+- type: decal
+  id: EmberDecalSteelDecals1Southwest
+  parent: EmberDecalSteelDecals1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals1_southwest
+
+- type: decal
+  id: EmberDecalSteelDecals1Northeast
+  parent: EmberDecalSteelDecals1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals1_northeast
+
+- type: decal
+  id: EmberDecalSteelDecals1Northwest
+  parent: EmberDecalSteelDecals1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals1_northwest
+
+- type: decal
+  id: EmberDecalSteelDecals10Base
+  parent: EmberDecalCategoryDetail
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelDecals10South
+  parent: EmberDecalSteelDecals10Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals10_south
+
+- type: decal
+  id: EmberDecalSteelDecals10North
+  parent: EmberDecalSteelDecals10Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals10_north
+
+- type: decal
+  id: EmberDecalSteelDecals10East
+  parent: EmberDecalSteelDecals10Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals10_east
+
+- type: decal
+  id: EmberDecalSteelDecals10West
+  parent: EmberDecalSteelDecals10Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals10_west
+
+- type: decal
+  id: EmberDecalSteelDecals10Southeast
+  parent: EmberDecalSteelDecals10Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals10_southeast
+
+- type: decal
+  id: EmberDecalSteelDecals10Southwest
+  parent: EmberDecalSteelDecals10Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals10_southwest
+
+- type: decal
+  id: EmberDecalSteelDecals10Northeast
+  parent: EmberDecalSteelDecals10Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals10_northeast
+
+- type: decal
+  id: EmberDecalSteelDecals10Northwest
+  parent: EmberDecalSteelDecals10Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals10_northwest
+
+- type: decal
+  id: EmberDecalSteelDecals2Base
+  parent: EmberDecalCategoryDetail
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelDecals2South
+  parent: EmberDecalSteelDecals2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals2_south
+
+- type: decal
+  id: EmberDecalSteelDecals2North
+  parent: EmberDecalSteelDecals2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals2_north
+
+- type: decal
+  id: EmberDecalSteelDecals2East
+  parent: EmberDecalSteelDecals2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals2_east
+
+- type: decal
+  id: EmberDecalSteelDecals2West
+  parent: EmberDecalSteelDecals2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals2_west
+
+- type: decal
+  id: EmberDecalSteelDecals3Base
+  parent: EmberDecalCategoryDetail
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelDecals3South
+  parent: EmberDecalSteelDecals3Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals3_south
+
+- type: decal
+  id: EmberDecalSteelDecals3North
+  parent: EmberDecalSteelDecals3Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals3_north
+
+- type: decal
+  id: EmberDecalSteelDecals3East
+  parent: EmberDecalSteelDecals3Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals3_east
+
+- type: decal
+  id: EmberDecalSteelDecals3West
+  parent: EmberDecalSteelDecals3Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals3_west
+
+- type: decal
+  id: EmberDecalSteelDecals3Southeast
+  parent: EmberDecalSteelDecals3Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals3_southeast
+
+- type: decal
+  id: EmberDecalSteelDecals3Southwest
+  parent: EmberDecalSteelDecals3Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals3_southwest
+
+- type: decal
+  id: EmberDecalSteelDecals3Northeast
+  parent: EmberDecalSteelDecals3Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals3_northeast
+
+- type: decal
+  id: EmberDecalSteelDecals3Northwest
+  parent: EmberDecalSteelDecals3Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals3_northwest
+
+- type: decal
+  id: EmberDecalSteelDecals4
+  parent: EmberDecalCategoryDetail
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals4
+
+- type: decal
+  id: EmberDecalSteelDecals6Base
+  parent: EmberDecalCategoryDetail
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelDecals6South
+  parent: EmberDecalSteelDecals6Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals6_south
+
+- type: decal
+  id: EmberDecalSteelDecals6North
+  parent: EmberDecalSteelDecals6Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals6_north
+
+- type: decal
+  id: EmberDecalSteelDecals6East
+  parent: EmberDecalSteelDecals6Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals6_east
+
+- type: decal
+  id: EmberDecalSteelDecals6West
+  parent: EmberDecalSteelDecals6Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals6_west
+
+- type: decal
+  id: EmberDecalSteelDecals6Southeast
+  parent: EmberDecalSteelDecals6Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals6_southeast
+
+- type: decal
+  id: EmberDecalSteelDecals6Southwest
+  parent: EmberDecalSteelDecals6Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals6_southwest
+
+- type: decal
+  id: EmberDecalSteelDecals6Northeast
+  parent: EmberDecalSteelDecals6Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals6_northeast
+
+- type: decal
+  id: EmberDecalSteelDecals6Northwest
+  parent: EmberDecalSteelDecals6Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals6_northwest
+
+- type: decal
+  id: EmberDecalSteelDecals7Base
+  parent: EmberDecalCategoryDetail
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelDecals7South
+  parent: EmberDecalSteelDecals7Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals7_south
+
+- type: decal
+  id: EmberDecalSteelDecals7North
+  parent: EmberDecalSteelDecals7Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals7_north
+
+- type: decal
+  id: EmberDecalSteelDecals7East
+  parent: EmberDecalSteelDecals7Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals7_east
+
+- type: decal
+  id: EmberDecalSteelDecals7West
+  parent: EmberDecalSteelDecals7Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals7_west
+
+- type: decal
+  id: EmberDecalSteelDecals7Southeast
+  parent: EmberDecalSteelDecals7Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals7_southeast
+
+- type: decal
+  id: EmberDecalSteelDecals7Southwest
+  parent: EmberDecalSteelDecals7Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals7_southwest
+
+- type: decal
+  id: EmberDecalSteelDecals7Northeast
+  parent: EmberDecalSteelDecals7Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals7_northeast
+
+- type: decal
+  id: EmberDecalSteelDecals7Northwest
+  parent: EmberDecalSteelDecals7Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals7_northwest
+
+- type: decal
+  id: EmberDecalSteelDecals8Base
+  parent: EmberDecalCategoryDetail
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelDecals8South
+  parent: EmberDecalSteelDecals8Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals8_south
+
+- type: decal
+  id: EmberDecalSteelDecals8North
+  parent: EmberDecalSteelDecals8Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals8_north
+
+- type: decal
+  id: EmberDecalSteelDecals8East
+  parent: EmberDecalSteelDecals8Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals8_east
+
+- type: decal
+  id: EmberDecalSteelDecals8West
+  parent: EmberDecalSteelDecals8Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals8_west
+
+- type: decal
+  id: EmberDecalSteelDecals9Base
+  parent: EmberDecalCategoryDetail
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelDecals9South
+  parent: EmberDecalSteelDecals9Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals9_south
+
+- type: decal
+  id: EmberDecalSteelDecals9North
+  parent: EmberDecalSteelDecals9Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals9_north
+
+- type: decal
+  id: EmberDecalSteelDecals9East
+  parent: EmberDecalSteelDecals9Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals9_east
+
+- type: decal
+  id: EmberDecalSteelDecals9West
+  parent: EmberDecalSteelDecals9Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals9_west
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral1Base
+  parent: EmberDecalCategoryDetail
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral1South
+  parent: EmberDecalSteelDecalsCentral1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central1_south
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral1North
+  parent: EmberDecalSteelDecalsCentral1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central1_north
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral1East
+  parent: EmberDecalSteelDecalsCentral1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central1_east
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral1West
+  parent: EmberDecalSteelDecalsCentral1Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central1_west
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral2Base
+  parent: EmberDecalCategoryDetail
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral2South
+  parent: EmberDecalSteelDecalsCentral2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central2_south
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral2North
+  parent: EmberDecalSteelDecalsCentral2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central2_north
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral2East
+  parent: EmberDecalSteelDecalsCentral2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central2_east
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral2West
+  parent: EmberDecalSteelDecalsCentral2Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central2_west
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral3Base
+  parent: EmberDecalCategoryDetail
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral3South
+  parent: EmberDecalSteelDecalsCentral3Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central3_south
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral3North
+  parent: EmberDecalSteelDecalsCentral3Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central3_north
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral3East
+  parent: EmberDecalSteelDecalsCentral3Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central3_east
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral3West
+  parent: EmberDecalSteelDecalsCentral3Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central3_west
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral4Base
+  parent: EmberDecalCategoryDetail
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral4South
+  parent: EmberDecalSteelDecalsCentral4Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central4_south
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral4North
+  parent: EmberDecalSteelDecalsCentral4Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central4_north
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral4East
+  parent: EmberDecalSteelDecalsCentral4Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central4_east
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral4West
+  parent: EmberDecalSteelDecalsCentral4Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central4_west
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral5Base
+  parent: EmberDecalCategoryDetail
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral5South
+  parent: EmberDecalSteelDecalsCentral5Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central5_south
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral5North
+  parent: EmberDecalSteelDecalsCentral5Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central5_north
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral5East
+  parent: EmberDecalSteelDecalsCentral5Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central5_east
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral5West
+  parent: EmberDecalSteelDecalsCentral5Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central5_west
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral6Base
+  parent: EmberDecalCategoryDetail
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral6South
+  parent: EmberDecalSteelDecalsCentral6Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central6_south
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral6North
+  parent: EmberDecalSteelDecalsCentral6Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central6_north
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral6East
+  parent: EmberDecalSteelDecalsCentral6Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central6_east
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral6West
+  parent: EmberDecalSteelDecalsCentral6Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central6_west
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral7Base
+  parent: EmberDecalCategoryDetail
+  abstract: true
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral7South
+  parent: EmberDecalSteelDecalsCentral7Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central7_south
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral7North
+  parent: EmberDecalSteelDecalsCentral7Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central7_north
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral7East
+  parent: EmberDecalSteelDecalsCentral7Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central7_east
+
+- type: decal
+  id: EmberDecalSteelDecalsCentral7West
+  parent: EmberDecalSteelDecalsCentral7Base
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: steel_decals_central7_west
+
+# буквы, цифры и обозначения отсеков
+- type: decal
+  id: EmberDecalCategoryLetter
+  abstract: true
+
+- type: decal
+  id: EmberDecalL1
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: L1
+
+- type: decal
+  id: EmberDecalL10
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: L10
+
+- type: decal
+  id: EmberDecalL11
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: L11
+
+- type: decal
+  id: EmberDecalL12
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: L12
+
+- type: decal
+  id: EmberDecalL13
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: L13
+
+- type: decal
+  id: EmberDecalL14
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: L14
+
+- type: decal
+  id: EmberDecalL15
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: L15
+
+- type: decal
+  id: EmberDecalL16
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: L16
+
+- type: decal
+  id: EmberDecalL2
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: L2
+
+- type: decal
+  id: EmberDecalL3
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: L3
+
+- type: decal
+  id: EmberDecalL4
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: L4
+
+- type: decal
+  id: EmberDecalL5
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: L5
+
+- type: decal
+  id: EmberDecalL6
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: L6
+
+- type: decal
+  id: EmberDecalL7
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: L7
+
+- type: decal
+  id: EmberDecalL8
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: L8
+
+- type: decal
+  id: EmberDecalL9
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: L9
+
+- type: decal
+  id: EmberDecalWhite1
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: white_1
+
+- type: decal
+  id: EmberDecalWhite2
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: white_2
+
+- type: decal
+  id: EmberDecalWhiteA
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: white_a
+
+- type: decal
+  id: EmberDecalWhiteB
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: white_b
+
+- type: decal
+  id: EmberDecalWhiteC
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: white_c
+
+- type: decal
+  id: EmberDecalWhiteCMO
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: white_cmo
+
+- type: decal
+  id: EmberDecalWhiteD
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: white_d
+
+- type: decal
+  id: EmberDecalWhiteEX
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: white_ex
+
+- type: decal
+  id: EmberDecalWhiteM
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: white_m
+
+- type: decal
+  id: EmberDecalWhiteOR1
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: white_or1
+
+- type: decal
+  id: EmberDecalWhiteOR2
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: white_or2
+
+- type: decal
+  id: EmberDecalWhiteP
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: white_p
+
+- type: decal
+  id: EmberDecalWhitePop
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: white_pop
+
+- type: decal
+  id: EmberDecalWhiteTR
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: white_tr
+
+- type: decal
+  id: EmberDecalWhiteV
+  parent: EmberDecalCategoryLetter
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: white_v
+
+# составные логотипы
+- type: decal
+  id: EmberDecalCategoryLogo
+  abstract: true
+
+- type: decal
+  id: EmberDecalFoundationBase
+  parent: EmberDecalCategoryLogo
+  abstract: true
+
+- type: decal
+  id: EmberDecalFoundationTopLeft
+  parent: EmberDecalFoundationBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/logos_offbay.rsi
+    state: foundation_top_left
+
+- type: decal
+  id: EmberDecalFoundationTopCenter
+  parent: EmberDecalFoundationBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/logos_offbay.rsi
+    state: foundation_top_center
+
+- type: decal
+  id: EmberDecalFoundationTopRight
+  parent: EmberDecalFoundationBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/logos_offbay.rsi
+    state: foundation_top_right
+
+- type: decal
+  id: EmberDecalFoundationCenterLeft
+  parent: EmberDecalFoundationBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/logos_offbay.rsi
+    state: foundation_center_left
+
+- type: decal
+  id: EmberDecalFoundationCenterRight
+  parent: EmberDecalFoundationBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/logos_offbay.rsi
+    state: foundation_center_right
+
+- type: decal
+  id: EmberDecalFoundationBottomLeft
+  parent: EmberDecalFoundationBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/logos_offbay.rsi
+    state: foundation_bottom_left
+
+- type: decal
+  id: EmberDecalFoundationBottomCenter
+  parent: EmberDecalFoundationBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/logos_offbay.rsi
+    state: foundation_bottom_center
+
+- type: decal
+  id: EmberDecalFoundationBottomRight
+  parent: EmberDecalFoundationBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/logos_offbay.rsi
+    state: foundation_bottom_right
+
+- type: decal
+  id: EmberDecalFoundationCenter
+  parent: EmberDecalFoundationBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/logos_offbay.rsi
+    state: foundation_center
+
+- type: decal
+  id: EmberDecalGccBase
+  parent: EmberDecalCategoryLogo
+  abstract: true
+
+- type: decal
+  id: EmberDecalGccTopLeft
+  parent: EmberDecalGccBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/logos_offbay.rsi
+    state: gcc_top_left
+
+- type: decal
+  id: EmberDecalGccTopCenter
+  parent: EmberDecalGccBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/logos_offbay.rsi
+    state: gcc_top_center
+
+- type: decal
+  id: EmberDecalGccTopRight
+  parent: EmberDecalGccBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/logos_offbay.rsi
+    state: gcc_top_right
+
+- type: decal
+  id: EmberDecalGccCenterLeft
+  parent: EmberDecalGccBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/logos_offbay.rsi
+    state: gcc_center_left
+
+- type: decal
+  id: EmberDecalGccCenterRight
+  parent: EmberDecalGccBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/logos_offbay.rsi
+    state: gcc_center_right
+
+- type: decal
+  id: EmberDecalGccBottomLeft
+  parent: EmberDecalGccBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/logos_offbay.rsi
+    state: gcc_bottom_left
+
+- type: decal
+  id: EmberDecalGccBottomCenter
+  parent: EmberDecalGccBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/logos_offbay.rsi
+    state: gcc_bottom_center
+
+- type: decal
+  id: EmberDecalGccBottomRight
+  parent: EmberDecalGccBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/logos_offbay.rsi
+    state: gcc_bottom_right
+
+- type: decal
+  id: EmberDecalGccCenter
+  parent: EmberDecalGccBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/logos_offbay.rsi
+    state: gcc_center
+
+- type: decal
+  id: EmberDecalGccGccBase
+  parent: EmberDecalCategoryLogo
+  abstract: true
+
+- type: decal
+  id: EmberDecalGccGccCorner
+  parent: EmberDecalGccGccBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/logos_offbay.rsi
+    state: gcc_gcc_corner
+
+- type: decal
+  id: EmberDecalNtlogoBase
+  parent: EmberDecalCategoryLogo
+  abstract: true
+
+- type: decal
+  id: EmberDecalNtlogoSouth
+  parent: EmberDecalNtlogoBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: ntlogo_south
+
+- type: decal
+  id: EmberDecalNtlogoNorth
+  parent: EmberDecalNtlogoBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: ntlogo_north
+
+- type: decal
+  id: EmberDecalNtlogoEast
+  parent: EmberDecalNtlogoBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: ntlogo_east
+
+- type: decal
+  id: EmberDecalNtlogoWest
+  parent: EmberDecalNtlogoBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: ntlogo_west
+
+# прочее
+- type: decal
+  id: EmberDecalCategoryMisc
+  abstract: true
+
+- type: decal
+  id: EmberDecalChapelBase
+  parent: EmberDecalCategoryMisc
+  abstract: true
+
+- type: decal
+  id: EmberDecalChapelSouth
+  parent: EmberDecalChapelBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: chapel_south
+
+- type: decal
+  id: EmberDecalChapelNorth
+  parent: EmberDecalChapelBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: chapel_north
+
+- type: decal
+  id: EmberDecalChapelEast
+  parent: EmberDecalChapelBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: chapel_east
+
+- type: decal
+  id: EmberDecalChapelWest
+  parent: EmberDecalChapelBase
+  tags: ["station", "markings"]
+  defaultCustomColor: true
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: chapel_west
+
+- type: decal
+  id: EmberDecalPlaque
+  parent: EmberDecalCategoryMisc
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: plaque
