@@ -12,3 +12,9 @@ ember-shard-desc-splinters = Щепки { $materialGenitive }. Мелкие, о�
 
 ember-assemble-grille-occupied = Здесь уже есть решётка.
 ember-assemble-grille-not-enough = Нужно хотя бы два прута.
+ember-place-window-occupied = Здесь уже есть окно.
+ember-place-window-not-enough = Для окна нужно { $amount } { $amount ->
+        [one] лист
+        [few] листа
+       *[other] листов
+    }.

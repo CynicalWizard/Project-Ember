@@ -12,3 +12,5 @@ ember-shard-desc-splinters = Splinters of { $material }. Small, sharp, and impos
 
 ember-assemble-grille-occupied = There is already a grille here.
 ember-assemble-grille-not-enough = You need at least two rods for that.
+ember-place-window-occupied = There is already a window here.
+ember-place-window-not-enough = You need { $amount } sheets for a window.
