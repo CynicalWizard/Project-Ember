@@ -1,5 +1,52 @@
-# Плитки собираются руками во вкладке «Плитки»: лист даёт четыре штуки, как на бэе.
-# Беевские рецепты висят на стали и пластике; металлические — на своём же листе.
+# Сгенерировано. Вкладка «Плитки»: единица материала даёт четыре плитки, как на бэе.
+
+- type: construction
+  name: techfloor
+  id: EmberTileTechfloor
+  graph: EmberTileTechfloor
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemTechfloor
+  objectType: Item
+
+- type: construction
+  name: grid techfloor
+  id: EmberTileTechfloorGrid
+  graph: EmberTileTechfloorGrid
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemTechfloorGrid
+  objectType: Item
+
+- type: construction
+  name: grey grid floor
+  id: EmberTileSteelGrid
+  graph: EmberTileSteelGrid
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemSteelGrid
+  objectType: Item
+
+- type: construction
+  name: grey ridged floor
+  id: EmberTileSteelRidged
+  graph: EmberTileSteelRidged
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemSteelRidged
+  objectType: Item
 
 - type: construction
   name: iron floor tile
@@ -8,9 +55,45 @@
   startNode: start
   targetNode: tile
   category: construction-category-tiles
-  description: "Four iron station tiles."
+  description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemMetalIron
+  objectType: Item
+
+- type: construction
+  name: iron mono floor tile
+  id: EmberTileMetalIronMono
+  graph: EmberTileMetalIronMono
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalIronMono
+  objectType: Item
+
+- type: construction
+  name: iron grid floor tile
+  id: EmberTileMetalIronGrid
+  graph: EmberTileMetalIronGrid
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalIronGrid
+  objectType: Item
+
+- type: construction
+  name: iron ridged floor tile
+  id: EmberTileMetalIronRidged
+  graph: EmberTileMetalIronRidged
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalIronRidged
   objectType: Item
 
 - type: construction
@@ -20,9 +103,45 @@
   startNode: start
   targetNode: tile
   category: construction-category-tiles
-  description: "Four aluminium station tiles."
+  description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemMetalAluminium
+  objectType: Item
+
+- type: construction
+  name: aluminium mono floor tile
+  id: EmberTileMetalAluminiumMono
+  graph: EmberTileMetalAluminiumMono
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalAluminiumMono
+  objectType: Item
+
+- type: construction
+  name: aluminium grid floor tile
+  id: EmberTileMetalAluminiumGrid
+  graph: EmberTileMetalAluminiumGrid
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalAluminiumGrid
+  objectType: Item
+
+- type: construction
+  name: aluminium ridged floor tile
+  id: EmberTileMetalAluminiumRidged
+  graph: EmberTileMetalAluminiumRidged
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalAluminiumRidged
   objectType: Item
 
 - type: construction
@@ -32,9 +151,45 @@
   startNode: start
   targetNode: tile
   category: construction-category-tiles
-  description: "Four plasteel station tiles."
+  description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemMetalPlasteel
+  objectType: Item
+
+- type: construction
+  name: plasteel mono floor tile
+  id: EmberTileMetalPlasteelMono
+  graph: EmberTileMetalPlasteelMono
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalPlasteelMono
+  objectType: Item
+
+- type: construction
+  name: plasteel grid floor tile
+  id: EmberTileMetalPlasteelGrid
+  graph: EmberTileMetalPlasteelGrid
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalPlasteelGrid
+  objectType: Item
+
+- type: construction
+  name: plasteel ridged floor tile
+  id: EmberTileMetalPlasteelRidged
+  graph: EmberTileMetalPlasteelRidged
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalPlasteelRidged
   objectType: Item
 
 - type: construction
@@ -44,9 +199,45 @@
   startNode: start
   targetNode: tile
   category: construction-category-tiles
-  description: "Four titanium station tiles."
+  description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemMetalTitanium
+  objectType: Item
+
+- type: construction
+  name: titanium mono floor tile
+  id: EmberTileMetalTitaniumMono
+  graph: EmberTileMetalTitaniumMono
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalTitaniumMono
+  objectType: Item
+
+- type: construction
+  name: titanium grid floor tile
+  id: EmberTileMetalTitaniumGrid
+  graph: EmberTileMetalTitaniumGrid
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalTitaniumGrid
+  objectType: Item
+
+- type: construction
+  name: titanium ridged floor tile
+  id: EmberTileMetalTitaniumRidged
+  graph: EmberTileMetalTitaniumRidged
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalTitaniumRidged
   objectType: Item
 
 - type: construction
@@ -56,9 +247,45 @@
   startNode: start
   targetNode: tile
   category: construction-category-tiles
-  description: "Four osmium-carbide plasteel station tiles."
+  description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemMetalOsmiumCarbidePlasteel
+  objectType: Item
+
+- type: construction
+  name: osmium-carbide plasteel mono floor tile
+  id: EmberTileMetalOsmiumCarbidePlasteelMono
+  graph: EmberTileMetalOsmiumCarbidePlasteelMono
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalOsmiumCarbidePlasteelMono
+  objectType: Item
+
+- type: construction
+  name: osmium-carbide plasteel grid floor tile
+  id: EmberTileMetalOsmiumCarbidePlasteelGrid
+  graph: EmberTileMetalOsmiumCarbidePlasteelGrid
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalOsmiumCarbidePlasteelGrid
+  objectType: Item
+
+- type: construction
+  name: osmium-carbide plasteel ridged floor tile
+  id: EmberTileMetalOsmiumCarbidePlasteelRidged
+  graph: EmberTileMetalOsmiumCarbidePlasteelRidged
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalOsmiumCarbidePlasteelRidged
   objectType: Item
 
 - type: construction
@@ -68,9 +295,45 @@
   startNode: start
   targetNode: tile
   category: construction-category-tiles
-  description: "Four osmium station tiles."
+  description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemMetalOsmium
+  objectType: Item
+
+- type: construction
+  name: osmium mono floor tile
+  id: EmberTileMetalOsmiumMono
+  graph: EmberTileMetalOsmiumMono
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalOsmiumMono
+  objectType: Item
+
+- type: construction
+  name: osmium grid floor tile
+  id: EmberTileMetalOsmiumGrid
+  graph: EmberTileMetalOsmiumGrid
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalOsmiumGrid
+  objectType: Item
+
+- type: construction
+  name: osmium ridged floor tile
+  id: EmberTileMetalOsmiumRidged
+  graph: EmberTileMetalOsmiumRidged
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalOsmiumRidged
   objectType: Item
 
 - type: construction
@@ -80,9 +343,45 @@
   startNode: start
   targetNode: tile
   category: construction-category-tiles
-  description: "Four gold station tiles."
+  description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemMetalGold
+  objectType: Item
+
+- type: construction
+  name: gold mono floor tile
+  id: EmberTileMetalGoldMono
+  graph: EmberTileMetalGoldMono
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalGoldMono
+  objectType: Item
+
+- type: construction
+  name: gold grid floor tile
+  id: EmberTileMetalGoldGrid
+  graph: EmberTileMetalGoldGrid
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalGoldGrid
+  objectType: Item
+
+- type: construction
+  name: gold ridged floor tile
+  id: EmberTileMetalGoldRidged
+  graph: EmberTileMetalGoldRidged
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalGoldRidged
   objectType: Item
 
 - type: construction
@@ -92,9 +391,45 @@
   startNode: start
   targetNode: tile
   category: construction-category-tiles
-  description: "Four silver station tiles."
+  description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemMetalSilver
+  objectType: Item
+
+- type: construction
+  name: silver mono floor tile
+  id: EmberTileMetalSilverMono
+  graph: EmberTileMetalSilverMono
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalSilverMono
+  objectType: Item
+
+- type: construction
+  name: silver grid floor tile
+  id: EmberTileMetalSilverGrid
+  graph: EmberTileMetalSilverGrid
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalSilverGrid
+  objectType: Item
+
+- type: construction
+  name: silver ridged floor tile
+  id: EmberTileMetalSilverRidged
+  graph: EmberTileMetalSilverRidged
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalSilverRidged
   objectType: Item
 
 - type: construction
@@ -104,9 +439,45 @@
   startNode: start
   targetNode: tile
   category: construction-category-tiles
-  description: "Four electrum station tiles."
+  description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemMetalElectrum
+  objectType: Item
+
+- type: construction
+  name: electrum mono floor tile
+  id: EmberTileMetalElectrumMono
+  graph: EmberTileMetalElectrumMono
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalElectrumMono
+  objectType: Item
+
+- type: construction
+  name: electrum grid floor tile
+  id: EmberTileMetalElectrumGrid
+  graph: EmberTileMetalElectrumGrid
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalElectrumGrid
+  objectType: Item
+
+- type: construction
+  name: electrum ridged floor tile
+  id: EmberTileMetalElectrumRidged
+  graph: EmberTileMetalElectrumRidged
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalElectrumRidged
   objectType: Item
 
 - type: construction
@@ -116,9 +487,45 @@
   startNode: start
   targetNode: tile
   category: construction-category-tiles
-  description: "Four copper station tiles."
+  description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemMetalCopper
+  objectType: Item
+
+- type: construction
+  name: copper mono floor tile
+  id: EmberTileMetalCopperMono
+  graph: EmberTileMetalCopperMono
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalCopperMono
+  objectType: Item
+
+- type: construction
+  name: copper grid floor tile
+  id: EmberTileMetalCopperGrid
+  graph: EmberTileMetalCopperGrid
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalCopperGrid
+  objectType: Item
+
+- type: construction
+  name: copper ridged floor tile
+  id: EmberTileMetalCopperRidged
+  graph: EmberTileMetalCopperRidged
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalCopperRidged
   objectType: Item
 
 - type: construction
@@ -128,9 +535,45 @@
   startNode: start
   targetNode: tile
   category: construction-category-tiles
-  description: "Four bronze station tiles."
+  description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemMetalBronze
+  objectType: Item
+
+- type: construction
+  name: bronze mono floor tile
+  id: EmberTileMetalBronzeMono
+  graph: EmberTileMetalBronzeMono
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalBronzeMono
+  objectType: Item
+
+- type: construction
+  name: bronze grid floor tile
+  id: EmberTileMetalBronzeGrid
+  graph: EmberTileMetalBronzeGrid
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalBronzeGrid
+  objectType: Item
+
+- type: construction
+  name: bronze ridged floor tile
+  id: EmberTileMetalBronzeRidged
+  graph: EmberTileMetalBronzeRidged
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalBronzeRidged
   objectType: Item
 
 - type: construction
@@ -140,9 +583,45 @@
   startNode: start
   targetNode: tile
   category: construction-category-tiles
-  description: "Four platinum station tiles."
+  description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemMetalPlatinum
+  objectType: Item
+
+- type: construction
+  name: platinum mono floor tile
+  id: EmberTileMetalPlatinumMono
+  graph: EmberTileMetalPlatinumMono
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalPlatinumMono
+  objectType: Item
+
+- type: construction
+  name: platinum grid floor tile
+  id: EmberTileMetalPlatinumGrid
+  graph: EmberTileMetalPlatinumGrid
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalPlatinumGrid
+  objectType: Item
+
+- type: construction
+  name: platinum ridged floor tile
+  id: EmberTileMetalPlatinumRidged
+  graph: EmberTileMetalPlatinumRidged
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalPlatinumRidged
   objectType: Item
 
 - type: construction
@@ -152,115 +631,211 @@
   startNode: start
   targetNode: tile
   category: construction-category-tiles
-  description: "Four uranium station tiles."
+  description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemMetalUranium
   objectType: Item
 
 - type: construction
-  name: grey techfloor tile
-  id: EmberTileTechfloor
-  graph: EmberTileTechfloor
+  name: uranium mono floor tile
+  id: EmberTileMetalUraniumMono
+  graph: EmberTileMetalUraniumMono
   startNode: start
-  targetNode: techfloor
+  targetNode: tile
   category: construction-category-tiles
-  description: "Four of them, from a single sheet."
-  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: techfloor }
-  iconEntity: EmberFloorTileItemTechfloor
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalUraniumMono
   objectType: Item
 
 - type: construction
-  name: grid techfloor tile
-  id: EmberTileTechfloorGrid
-  graph: EmberTileTechfloorGrid
+  name: uranium grid floor tile
+  id: EmberTileMetalUraniumGrid
+  graph: EmberTileMetalUraniumGrid
   startNode: start
-  targetNode: techfloorgrid
+  targetNode: tile
   category: construction-category-tiles
-  description: "Four of them, from a single sheet."
-  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: techfloor-grid }
-  iconEntity: EmberFloorTileItemTechfloorGrid
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalUraniumGrid
   objectType: Item
 
 - type: construction
-  name: grey grid tile
-  id: EmberTileSteelGrid
-  graph: EmberTileSteelGrid
+  name: uranium ridged floor tile
+  id: EmberTileMetalUraniumRidged
+  graph: EmberTileMetalUraniumRidged
   startNode: start
-  targetNode: steelgrid
+  targetNode: tile
   category: construction-category-tiles
-  description: "Four of them, from a single sheet."
-  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel-grid }
-  iconEntity: EmberFloorTileItemSteelGrid
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalUraniumRidged
   objectType: Item
 
 - type: construction
-  name: grey ridged tile
-  id: EmberTileSteelRidged
-  graph: EmberTileSteelRidged
+  name: sandstone slab
+  id: EmberTileStoneSandstone
+  graph: EmberTileStoneSandstone
   startNode: start
-  targetNode: steelridged
+  targetNode: tile
   category: construction-category-tiles
-  description: "Four of them, from a single sheet."
-  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel-ridged }
-  iconEntity: EmberFloorTileItemSteelRidged
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemStoneSandstone
   objectType: Item
 
 - type: construction
-  name: dark techfloor tile
-  id: EmberTileTechmaint
-  graph: EmberTileTechmaint
+  name: marble slab
+  id: EmberTileStoneMarble
+  graph: EmberTileStoneMarble
   startNode: start
-  targetNode: techmaint
+  targetNode: tile
   category: construction-category-tiles
-  description: "Four of them, from a single sheet."
-  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: tech-maint }
-  iconEntity: FloorTileItemTechmaint
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemStoneMarble
   objectType: Item
 
 - type: construction
-  name: steel mono tile
-  id: EmberTileSteelMono
-  graph: EmberTileSteelMono
+  name: concrete slab
+  id: EmberTileStoneConcrete
+  graph: EmberTileStoneConcrete
   startNode: start
-  targetNode: steelmono
+  targetNode: tile
   category: construction-category-tiles
-  description: "Four of them, from a single sheet."
-  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel-mono }
-  iconEntity: FloorTileItemSteelMono
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemStoneConcrete
   objectType: Item
 
 - type: construction
-  name: dark mono tile
-  id: EmberTileDarkMono
-  graph: EmberTileDarkMono
+  name: quartz slab
+  id: EmberTileStoneQuartz
+  graph: EmberTileStoneQuartz
   startNode: start
-  targetNode: darkmono
+  targetNode: tile
   category: construction-category-tiles
-  description: "Four of them, from a single sheet."
-  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: dark-mono }
-  iconEntity: FloorTileItemDarkMono
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemStoneQuartz
   objectType: Item
 
 - type: construction
-  name: white mono tile
-  id: EmberTileWhiteMono
-  graph: EmberTileWhiteMono
+  name: pyrite slab
+  id: EmberTileStonePyrite
+  graph: EmberTileStonePyrite
   startNode: start
-  targetNode: whitemono
+  targetNode: tile
   category: construction-category-tiles
-  description: "Four of them, from a single sheet."
-  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: white-mono }
-  iconEntity: FloorTileItemWhiteMono
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemStonePyrite
   objectType: Item
 
 - type: construction
-  name: freezer floor tile
-  id: EmberTileFreezer
-  graph: EmberTileFreezer
+  name: spodumene slab
+  id: EmberTileStoneSpodumene
+  graph: EmberTileStoneSpodumene
   startNode: start
-  targetNode: freezer
+  targetNode: tile
   category: construction-category-tiles
-  description: "Four of them, from a single sheet."
-  icon: { sprite: Objects/Tiles/tile.rsi, state: showroom }
-  iconEntity: FloorTileItemFreezer
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemStoneSpodumene
+  objectType: Item
+
+- type: construction
+  name: cinnabar slab
+  id: EmberTileStoneCinnabar
+  graph: EmberTileStoneCinnabar
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemStoneCinnabar
+  objectType: Item
+
+- type: construction
+  name: phosphorite slab
+  id: EmberTileStonePhosphorite
+  graph: EmberTileStonePhosphorite
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemStonePhosphorite
+  objectType: Item
+
+- type: construction
+  name: rock salt slab
+  id: EmberTileStoneRockSalt
+  graph: EmberTileStoneRockSalt
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemStoneRockSalt
+  objectType: Item
+
+- type: construction
+  name: potash slab
+  id: EmberTileStonePotash
+  graph: EmberTileStonePotash
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemStonePotash
+  objectType: Item
+
+- type: construction
+  name: bauxite slab
+  id: EmberTileStoneBauxite
+  graph: EmberTileStoneBauxite
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemStoneBauxite
+  objectType: Item
+
+- type: construction
+  name: rutile slab
+  id: EmberTileStoneRutile
+  graph: EmberTileStoneRutile
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemStoneRutile
+  objectType: Item
+
+- type: construction
+  name: borax slab
+  id: EmberTileStoneBorax
+  graph: EmberTileStoneBorax
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemStoneBorax
+  objectType: Item
+
+- type: construction
+  name: pitchblende slab
+  id: EmberTileStonePitchblende
+  graph: EmberTileStonePitchblende
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemStonePitchblende
   objectType: Item

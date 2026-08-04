@@ -55,6 +55,39 @@ public sealed class EmberTileTest
     }
 
     /// <summary>
+    /// The mapping window and the spawn window both build their categories out of prototype inheritance, so a
+    /// tile with no parent lands loose at the top of a list that is now hundreds of floors long.
+    /// </summary>
+    [Test]
+    public async Task EveryEmberTileSitsInACategory()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var protoManager = pair.Server.ResolveDependency<IPrototypeManager>();
+
+        var problems = new List<string>();
+        var categories = new HashSet<string>();
+
+        foreach (var tile in protoManager.EnumeratePrototypes<ContentTileDefinition>())
+        {
+            if (!tile.ID.StartsWith("Ember"))
+                continue;
+
+            if (tile.Parents is not { Length: > 0 } parents)
+            {
+                problems.Add($"{tile.ID} has no category, so it lands loose at the top of the list");
+                continue;
+            }
+
+            categories.Add(parents[0]);
+        }
+
+        Assert.That(problems, Is.Empty, string.Join("\n", problems));
+        Assert.That(categories, Has.Count.GreaterThan(1), "Every Ember tile ended up in the same category.");
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
     /// A resprite must not shorten the strip: the renderer skips a tile whose stored variant runs off the end
     /// of the atlas region, so an old map would come back with holes in the floor rather than the wrong floor.
     /// </summary>

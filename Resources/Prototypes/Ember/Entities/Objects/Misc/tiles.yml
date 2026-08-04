@@ -1,5 +1,5 @@
-# Плитки для полов с бэя. Спрайт берётся из отдельного листа, а не из ванильного tile.rsi, поэтому
-# спрайт в руках остаётся ванильным: своих inhand-состояний у беевского листа нет.
+# Сгенерировано вместе с полами. Спрайт берётся из беевского листа, а цвет — из материала,
+# поэтому плитка в списке отличима от соседней.
 
 - type: entity
   parent: FloorTileItemBase
@@ -8,16 +8,16 @@
   components:
   - type: Sprite
     sprite: Ember/Objects/Tiles/tiles_offbay.rsi
+  - type: Item
+    heldPrefix: steel
 
 - type: entity
-  name: grey techfloor tile
+  name: techfloor
   parent: EmberFloorTileItemBase
   id: EmberFloorTileItemTechfloor
   components:
   - type: Sprite
     state: techfloor
-  - type: Item
-    heldPrefix: dark
   - type: FloorTile
     outputs:
     - Plating
@@ -26,14 +26,12 @@
     stackType: EmberFloorTileTechfloor
 
 - type: entity
-  name: grid techfloor tile
+  name: grid techfloor
   parent: EmberFloorTileItemBase
   id: EmberFloorTileItemTechfloorGrid
   components:
   - type: Sprite
     state: techfloor-grid
-  - type: Item
-    heldPrefix: dark
   - type: FloorTile
     outputs:
     - Plating
@@ -42,14 +40,12 @@
     stackType: EmberFloorTileTechfloorGrid
 
 - type: entity
-  name: grey grid tile
+  name: grey grid floor
   parent: EmberFloorTileItemBase
   id: EmberFloorTileItemSteelGrid
   components:
   - type: Sprite
     state: steel-grid
-  - type: Item
-    heldPrefix: steel
   - type: FloorTile
     outputs:
     - Plating
@@ -58,14 +54,12 @@
     stackType: EmberFloorTileSteelGrid
 
 - type: entity
-  name: grey ridged tile
+  name: grey ridged floor
   parent: EmberFloorTileItemBase
   id: EmberFloorTileItemSteelRidged
   components:
   - type: Sprite
     state: steel-ridged
-  - type: Item
-    heldPrefix: steel
   - type: FloorTile
     outputs:
     - Plating
@@ -74,14 +68,12 @@
     stackType: EmberFloorTileSteelRidged
 
 - type: entity
-  name: stone slab
+  name: stone slabs
   parent: EmberFloorTileItemBase
   id: EmberFloorTileItemStone
   components:
   - type: Sprite
     state: stone
-  - type: Item
-    heldPrefix: steel
   - type: FloorTile
     outputs:
     - Plating
@@ -89,7 +81,996 @@
   - type: Stack
     stackType: EmberFloorTileStone
 
-# Породы дерева. Одна и та же доска, разный цвет — как и сам пол.
+- type: entity
+  name: iron floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalIron
+  components:
+  - type: Sprite
+    state: steel
+    color: "#5C5454"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalIron
+  - type: Stack
+    stackType: EmberFloorTileMetalIron
+
+- type: entity
+  name: iron mono floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalIronMono
+  components:
+  - type: Sprite
+    state: steel-mono
+    color: "#5C5454"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalIronMono
+  - type: Stack
+    stackType: EmberFloorTileMetalIronMono
+
+- type: entity
+  name: iron grid floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalIronGrid
+  components:
+  - type: Sprite
+    state: steel-grid
+    color: "#5C5454"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalIronGrid
+  - type: Stack
+    stackType: EmberFloorTileMetalIronGrid
+
+- type: entity
+  name: iron ridged floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalIronRidged
+  components:
+  - type: Sprite
+    state: steel-ridged
+    color: "#5C5454"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalIronRidged
+  - type: Stack
+    stackType: EmberFloorTileMetalIronRidged
+
+- type: entity
+  name: aluminium floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalAluminium
+  components:
+  - type: Sprite
+    state: steel
+    color: "#CCCDCC"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalAluminium
+  - type: Stack
+    stackType: EmberFloorTileMetalAluminium
+
+- type: entity
+  name: aluminium mono floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalAluminiumMono
+  components:
+  - type: Sprite
+    state: steel-mono
+    color: "#CCCDCC"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalAluminiumMono
+  - type: Stack
+    stackType: EmberFloorTileMetalAluminiumMono
+
+- type: entity
+  name: aluminium grid floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalAluminiumGrid
+  components:
+  - type: Sprite
+    state: steel-grid
+    color: "#CCCDCC"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalAluminiumGrid
+  - type: Stack
+    stackType: EmberFloorTileMetalAluminiumGrid
+
+- type: entity
+  name: aluminium ridged floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalAluminiumRidged
+  components:
+  - type: Sprite
+    state: steel-ridged
+    color: "#CCCDCC"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalAluminiumRidged
+  - type: Stack
+    stackType: EmberFloorTileMetalAluminiumRidged
+
+- type: entity
+  name: plasteel floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalPlasteel
+  components:
+  - type: Sprite
+    state: steel
+    color: "#A8A9B2"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalPlasteel
+  - type: Stack
+    stackType: EmberFloorTileMetalPlasteel
+
+- type: entity
+  name: plasteel mono floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalPlasteelMono
+  components:
+  - type: Sprite
+    state: steel-mono
+    color: "#A8A9B2"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalPlasteelMono
+  - type: Stack
+    stackType: EmberFloorTileMetalPlasteelMono
+
+- type: entity
+  name: plasteel grid floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalPlasteelGrid
+  components:
+  - type: Sprite
+    state: steel-grid
+    color: "#A8A9B2"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalPlasteelGrid
+  - type: Stack
+    stackType: EmberFloorTileMetalPlasteelGrid
+
+- type: entity
+  name: plasteel ridged floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalPlasteelRidged
+  components:
+  - type: Sprite
+    state: steel-ridged
+    color: "#A8A9B2"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalPlasteelRidged
+  - type: Stack
+    stackType: EmberFloorTileMetalPlasteelRidged
+
+- type: entity
+  name: titanium floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalTitanium
+  components:
+  - type: Sprite
+    state: steel
+    color: "#D1E6E3"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalTitanium
+  - type: Stack
+    stackType: EmberFloorTileMetalTitanium
+
+- type: entity
+  name: titanium mono floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalTitaniumMono
+  components:
+  - type: Sprite
+    state: steel-mono
+    color: "#D1E6E3"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalTitaniumMono
+  - type: Stack
+    stackType: EmberFloorTileMetalTitaniumMono
+
+- type: entity
+  name: titanium grid floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalTitaniumGrid
+  components:
+  - type: Sprite
+    state: steel-grid
+    color: "#D1E6E3"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalTitaniumGrid
+  - type: Stack
+    stackType: EmberFloorTileMetalTitaniumGrid
+
+- type: entity
+  name: titanium ridged floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalTitaniumRidged
+  components:
+  - type: Sprite
+    state: steel-ridged
+    color: "#D1E6E3"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalTitaniumRidged
+  - type: Stack
+    stackType: EmberFloorTileMetalTitaniumRidged
+
+- type: entity
+  name: osmium-carbide plasteel floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalOsmiumCarbidePlasteel
+  components:
+  - type: Sprite
+    state: steel
+    color: "#9BC6F2"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalOsmiumCarbidePlasteel
+  - type: Stack
+    stackType: EmberFloorTileMetalOsmiumCarbidePlasteel
+
+- type: entity
+  name: osmium-carbide plasteel mono floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalOsmiumCarbidePlasteelMono
+  components:
+  - type: Sprite
+    state: steel-mono
+    color: "#9BC6F2"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalOsmiumCarbidePlasteelMono
+  - type: Stack
+    stackType: EmberFloorTileMetalOsmiumCarbidePlasteelMono
+
+- type: entity
+  name: osmium-carbide plasteel grid floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalOsmiumCarbidePlasteelGrid
+  components:
+  - type: Sprite
+    state: steel-grid
+    color: "#9BC6F2"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalOsmiumCarbidePlasteelGrid
+  - type: Stack
+    stackType: EmberFloorTileMetalOsmiumCarbidePlasteelGrid
+
+- type: entity
+  name: osmium-carbide plasteel ridged floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalOsmiumCarbidePlasteelRidged
+  components:
+  - type: Sprite
+    state: steel-ridged
+    color: "#9BC6F2"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalOsmiumCarbidePlasteelRidged
+  - type: Stack
+    stackType: EmberFloorTileMetalOsmiumCarbidePlasteelRidged
+
+- type: entity
+  name: osmium floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalOsmium
+  components:
+  - type: Sprite
+    state: steel
+    color: "#9999FF"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalOsmium
+  - type: Stack
+    stackType: EmberFloorTileMetalOsmium
+
+- type: entity
+  name: osmium mono floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalOsmiumMono
+  components:
+  - type: Sprite
+    state: steel-mono
+    color: "#9999FF"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalOsmiumMono
+  - type: Stack
+    stackType: EmberFloorTileMetalOsmiumMono
+
+- type: entity
+  name: osmium grid floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalOsmiumGrid
+  components:
+  - type: Sprite
+    state: steel-grid
+    color: "#9999FF"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalOsmiumGrid
+  - type: Stack
+    stackType: EmberFloorTileMetalOsmiumGrid
+
+- type: entity
+  name: osmium ridged floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalOsmiumRidged
+  components:
+  - type: Sprite
+    state: steel-ridged
+    color: "#9999FF"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalOsmiumRidged
+  - type: Stack
+    stackType: EmberFloorTileMetalOsmiumRidged
+
+- type: entity
+  name: gold floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalGold
+  components:
+  - type: Sprite
+    state: steel
+    color: "#FFCC33"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalGold
+  - type: Stack
+    stackType: EmberFloorTileMetalGold
+
+- type: entity
+  name: gold mono floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalGoldMono
+  components:
+  - type: Sprite
+    state: steel-mono
+    color: "#FFCC33"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalGoldMono
+  - type: Stack
+    stackType: EmberFloorTileMetalGoldMono
+
+- type: entity
+  name: gold grid floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalGoldGrid
+  components:
+  - type: Sprite
+    state: steel-grid
+    color: "#FFCC33"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalGoldGrid
+  - type: Stack
+    stackType: EmberFloorTileMetalGoldGrid
+
+- type: entity
+  name: gold ridged floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalGoldRidged
+  components:
+  - type: Sprite
+    state: steel-ridged
+    color: "#FFCC33"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalGoldRidged
+  - type: Stack
+    stackType: EmberFloorTileMetalGoldRidged
+
+- type: entity
+  name: silver floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalSilver
+  components:
+  - type: Sprite
+    state: steel
+    color: "#D1E6E3"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalSilver
+  - type: Stack
+    stackType: EmberFloorTileMetalSilver
+
+- type: entity
+  name: silver mono floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalSilverMono
+  components:
+  - type: Sprite
+    state: steel-mono
+    color: "#D1E6E3"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalSilverMono
+  - type: Stack
+    stackType: EmberFloorTileMetalSilverMono
+
+- type: entity
+  name: silver grid floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalSilverGrid
+  components:
+  - type: Sprite
+    state: steel-grid
+    color: "#D1E6E3"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalSilverGrid
+  - type: Stack
+    stackType: EmberFloorTileMetalSilverGrid
+
+- type: entity
+  name: silver ridged floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalSilverRidged
+  components:
+  - type: Sprite
+    state: steel-ridged
+    color: "#D1E6E3"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalSilverRidged
+  - type: Stack
+    stackType: EmberFloorTileMetalSilverRidged
+
+- type: entity
+  name: electrum floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalElectrum
+  components:
+  - type: Sprite
+    state: steel
+    color: "#E7C697"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalElectrum
+  - type: Stack
+    stackType: EmberFloorTileMetalElectrum
+
+- type: entity
+  name: electrum mono floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalElectrumMono
+  components:
+  - type: Sprite
+    state: steel-mono
+    color: "#E7C697"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalElectrumMono
+  - type: Stack
+    stackType: EmberFloorTileMetalElectrumMono
+
+- type: entity
+  name: electrum grid floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalElectrumGrid
+  components:
+  - type: Sprite
+    state: steel-grid
+    color: "#E7C697"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalElectrumGrid
+  - type: Stack
+    stackType: EmberFloorTileMetalElectrumGrid
+
+- type: entity
+  name: electrum ridged floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalElectrumRidged
+  components:
+  - type: Sprite
+    state: steel-ridged
+    color: "#E7C697"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalElectrumRidged
+  - type: Stack
+    stackType: EmberFloorTileMetalElectrumRidged
+
+- type: entity
+  name: copper floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalCopper
+  components:
+  - type: Sprite
+    state: steel
+    color: "#B87333"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalCopper
+  - type: Stack
+    stackType: EmberFloorTileMetalCopper
+
+- type: entity
+  name: copper mono floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalCopperMono
+  components:
+  - type: Sprite
+    state: steel-mono
+    color: "#B87333"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalCopperMono
+  - type: Stack
+    stackType: EmberFloorTileMetalCopperMono
+
+- type: entity
+  name: copper grid floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalCopperGrid
+  components:
+  - type: Sprite
+    state: steel-grid
+    color: "#B87333"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalCopperGrid
+  - type: Stack
+    stackType: EmberFloorTileMetalCopperGrid
+
+- type: entity
+  name: copper ridged floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalCopperRidged
+  components:
+  - type: Sprite
+    state: steel-ridged
+    color: "#B87333"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalCopperRidged
+  - type: Stack
+    stackType: EmberFloorTileMetalCopperRidged
+
+- type: entity
+  name: bronze floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalBronze
+  components:
+  - type: Sprite
+    state: steel
+    color: "#EDD12F"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalBronze
+  - type: Stack
+    stackType: EmberFloorTileMetalBronze
+
+- type: entity
+  name: bronze mono floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalBronzeMono
+  components:
+  - type: Sprite
+    state: steel-mono
+    color: "#EDD12F"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalBronzeMono
+  - type: Stack
+    stackType: EmberFloorTileMetalBronzeMono
+
+- type: entity
+  name: bronze grid floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalBronzeGrid
+  components:
+  - type: Sprite
+    state: steel-grid
+    color: "#EDD12F"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalBronzeGrid
+  - type: Stack
+    stackType: EmberFloorTileMetalBronzeGrid
+
+- type: entity
+  name: bronze ridged floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalBronzeRidged
+  components:
+  - type: Sprite
+    state: steel-ridged
+    color: "#EDD12F"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalBronzeRidged
+  - type: Stack
+    stackType: EmberFloorTileMetalBronzeRidged
+
+- type: entity
+  name: platinum floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalPlatinum
+  components:
+  - type: Sprite
+    state: steel
+    color: "#DEDDFF"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalPlatinum
+  - type: Stack
+    stackType: EmberFloorTileMetalPlatinum
+
+- type: entity
+  name: platinum mono floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalPlatinumMono
+  components:
+  - type: Sprite
+    state: steel-mono
+    color: "#DEDDFF"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalPlatinumMono
+  - type: Stack
+    stackType: EmberFloorTileMetalPlatinumMono
+
+- type: entity
+  name: platinum grid floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalPlatinumGrid
+  components:
+  - type: Sprite
+    state: steel-grid
+    color: "#DEDDFF"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalPlatinumGrid
+  - type: Stack
+    stackType: EmberFloorTileMetalPlatinumGrid
+
+- type: entity
+  name: platinum ridged floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalPlatinumRidged
+  components:
+  - type: Sprite
+    state: steel-ridged
+    color: "#DEDDFF"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalPlatinumRidged
+  - type: Stack
+    stackType: EmberFloorTileMetalPlatinumRidged
+
+- type: entity
+  name: uranium floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalUranium
+  components:
+  - type: Sprite
+    state: steel
+    color: "#007A00"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalUranium
+  - type: Stack
+    stackType: EmberFloorTileMetalUranium
+
+- type: entity
+  name: uranium mono floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalUraniumMono
+  components:
+  - type: Sprite
+    state: steel-mono
+    color: "#007A00"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalUraniumMono
+  - type: Stack
+    stackType: EmberFloorTileMetalUraniumMono
+
+- type: entity
+  name: uranium grid floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalUraniumGrid
+  components:
+  - type: Sprite
+    state: steel-grid
+    color: "#007A00"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalUraniumGrid
+  - type: Stack
+    stackType: EmberFloorTileMetalUraniumGrid
+
+- type: entity
+  name: uranium ridged floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalUraniumRidged
+  components:
+  - type: Sprite
+    state: steel-ridged
+    color: "#007A00"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalUraniumRidged
+  - type: Stack
+    stackType: EmberFloorTileMetalUraniumRidged
+
+- type: entity
+  name: sandstone slab
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemStoneSandstone
+  components:
+  - type: Sprite
+    state: stone
+    color: "#D9C179"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorStoneSandstone
+  - type: Stack
+    stackType: EmberFloorTileStoneSandstone
+
+- type: entity
+  name: marble slab
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemStoneMarble
+  components:
+  - type: Sprite
+    state: stone
+    color: "#AAAAAA"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorStoneMarble
+  - type: Stack
+    stackType: EmberFloorTileStoneMarble
+
+- type: entity
+  name: concrete slab
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemStoneConcrete
+  components:
+  - type: Sprite
+    state: stone
+    color: "#808080"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorStoneConcrete
+  - type: Stack
+    stackType: EmberFloorTileStoneConcrete
+
+- type: entity
+  name: quartz slab
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemStoneQuartz
+  components:
+  - type: Sprite
+    state: stone
+    color: "#EFFFFE"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorStoneQuartz
+  - type: Stack
+    stackType: EmberFloorTileStoneQuartz
+
+- type: entity
+  name: pyrite slab
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemStonePyrite
+  components:
+  - type: Sprite
+    state: stone
+    color: "#CCC9A3"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorStonePyrite
+  - type: Stack
+    stackType: EmberFloorTileStonePyrite
+
+- type: entity
+  name: spodumene slab
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemStoneSpodumene
+  components:
+  - type: Sprite
+    state: stone
+    color: "#E5BECB"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorStoneSpodumene
+  - type: Stack
+    stackType: EmberFloorTileStoneSpodumene
+
+- type: entity
+  name: cinnabar slab
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemStoneCinnabar
+  components:
+  - type: Sprite
+    state: stone
+    color: "#E54E4E"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorStoneCinnabar
+  - type: Stack
+    stackType: EmberFloorTileStoneCinnabar
+
+- type: entity
+  name: phosphorite slab
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemStonePhosphorite
+  components:
+  - type: Sprite
+    state: stone
+    color: "#ACAD95"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorStonePhosphorite
+  - type: Stack
+    stackType: EmberFloorTileStonePhosphorite
+
+- type: entity
+  name: rock salt slab
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemStoneRockSalt
+  components:
+  - type: Sprite
+    state: stone
+    color: "#D1C0BC"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorStoneRockSalt
+  - type: Stack
+    stackType: EmberFloorTileStoneRockSalt
+
+- type: entity
+  name: potash slab
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemStonePotash
+  components:
+  - type: Sprite
+    state: stone
+    color: "#B77464"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorStonePotash
+  - type: Stack
+    stackType: EmberFloorTileStonePotash
+
+- type: entity
+  name: bauxite slab
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemStoneBauxite
+  components:
+  - type: Sprite
+    state: stone
+    color: "#D8AD97"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorStoneBauxite
+  - type: Stack
+    stackType: EmberFloorTileStoneBauxite
+
+- type: entity
+  name: rutile slab
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemStoneRutile
+  components:
+  - type: Sprite
+    state: stone
+    color: "#D8AD97"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorStoneRutile
+  - type: Stack
+    stackType: EmberFloorTileStoneRutile
+
+- type: entity
+  name: borax slab
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemStoneBorax
+  components:
+  - type: Sprite
+    state: stone
+    color: "#9DD6E0"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorStoneBorax
+  - type: Stack
+    stackType: EmberFloorTileStoneBorax
+
+- type: entity
+  name: pitchblende slab
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemStonePitchblende
+  components:
+  - type: Sprite
+    state: stone
+    color: "#917D1A"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorStonePitchblende
+  - type: Stack
+    stackType: EmberFloorTileStonePitchblende
+
 - type: entity
   name: mahogany floor tile
   parent: EmberFloorTileItemBase
@@ -98,8 +1079,6 @@
   - type: Sprite
     state: wood
     color: "#792f27"
-  - type: Item
-    heldPrefix: wood
   - type: FloorTile
     outputs:
     - Plating
@@ -115,8 +1094,6 @@
   - type: Sprite
     state: wood
     color: "#d2bc9d"
-  - type: Item
-    heldPrefix: wood
   - type: FloorTile
     outputs:
     - Plating
@@ -132,8 +1109,6 @@
   - type: Sprite
     state: wood
     color: "#332521"
-  - type: Item
-    heldPrefix: wood
   - type: FloorTile
     outputs:
     - Plating
@@ -149,8 +1124,6 @@
   - type: Sprite
     state: wood
     color: "#543c30"
-  - type: Item
-    heldPrefix: wood
   - type: FloorTile
     outputs:
     - Plating
@@ -166,8 +1139,6 @@
   - type: Sprite
     state: wood
     color: "#e6d2ba"
-  - type: Item
-    heldPrefix: wood
   - type: FloorTile
     outputs:
     - Plating
@@ -183,235 +1154,9 @@
   - type: Sprite
     state: wood
     color: "#e3994e"
-  - type: Item
-    heldPrefix: wood
   - type: FloorTile
     outputs:
     - Plating
     - EmberFloorWoodYew
   - type: Stack
     stackType: EmberFloorTileWoodYew
-
-# Полы из металлов. Маска общая, отличает их только цвет тайла, так что каждый новый
-# металл — это запись в YAML и ни одной новой картинки.
-
-- type: entity
-  name: iron floor tile
-  parent: EmberFloorTileItemBase
-  id: EmberFloorTileItemMetalIron
-  components:
-  - type: Sprite
-    state: steel
-    color: "#5C5454"
-  - type: Item
-    heldPrefix: steel
-  - type: FloorTile
-    outputs:
-    - Plating
-    - EmberFloorMetalIron
-  - type: Stack
-    stackType: EmberFloorTileMetalIron
-
-- type: entity
-  name: aluminium floor tile
-  parent: EmberFloorTileItemBase
-  id: EmberFloorTileItemMetalAluminium
-  components:
-  - type: Sprite
-    state: steel
-    color: "#CCCDCC"
-  - type: Item
-    heldPrefix: steel
-  - type: FloorTile
-    outputs:
-    - Plating
-    - EmberFloorMetalAluminium
-  - type: Stack
-    stackType: EmberFloorTileMetalAluminium
-
-- type: entity
-  name: plasteel floor tile
-  parent: EmberFloorTileItemBase
-  id: EmberFloorTileItemMetalPlasteel
-  components:
-  - type: Sprite
-    state: steel
-    color: "#A8A9B2"
-  - type: Item
-    heldPrefix: steel
-  - type: FloorTile
-    outputs:
-    - Plating
-    - EmberFloorMetalPlasteel
-  - type: Stack
-    stackType: EmberFloorTileMetalPlasteel
-
-- type: entity
-  name: titanium floor tile
-  parent: EmberFloorTileItemBase
-  id: EmberFloorTileItemMetalTitanium
-  components:
-  - type: Sprite
-    state: steel
-    color: "#D1E6E3"
-  - type: Item
-    heldPrefix: steel
-  - type: FloorTile
-    outputs:
-    - Plating
-    - EmberFloorMetalTitanium
-  - type: Stack
-    stackType: EmberFloorTileMetalTitanium
-
-- type: entity
-  name: osmium-carbide plasteel floor tile
-  parent: EmberFloorTileItemBase
-  id: EmberFloorTileItemMetalOsmiumCarbidePlasteel
-  components:
-  - type: Sprite
-    state: steel
-    color: "#9BC6F2"
-  - type: Item
-    heldPrefix: steel
-  - type: FloorTile
-    outputs:
-    - Plating
-    - EmberFloorMetalOsmiumCarbidePlasteel
-  - type: Stack
-    stackType: EmberFloorTileMetalOsmiumCarbidePlasteel
-
-- type: entity
-  name: osmium floor tile
-  parent: EmberFloorTileItemBase
-  id: EmberFloorTileItemMetalOsmium
-  components:
-  - type: Sprite
-    state: steel
-    color: "#9999FF"
-  - type: Item
-    heldPrefix: steel
-  - type: FloorTile
-    outputs:
-    - Plating
-    - EmberFloorMetalOsmium
-  - type: Stack
-    stackType: EmberFloorTileMetalOsmium
-
-- type: entity
-  name: gold floor tile
-  parent: EmberFloorTileItemBase
-  id: EmberFloorTileItemMetalGold
-  components:
-  - type: Sprite
-    state: steel
-    color: "#FFCC33"
-  - type: Item
-    heldPrefix: steel
-  - type: FloorTile
-    outputs:
-    - Plating
-    - EmberFloorMetalGold
-  - type: Stack
-    stackType: EmberFloorTileMetalGold
-
-- type: entity
-  name: silver floor tile
-  parent: EmberFloorTileItemBase
-  id: EmberFloorTileItemMetalSilver
-  components:
-  - type: Sprite
-    state: steel
-    color: "#D1E6E3"
-  - type: Item
-    heldPrefix: steel
-  - type: FloorTile
-    outputs:
-    - Plating
-    - EmberFloorMetalSilver
-  - type: Stack
-    stackType: EmberFloorTileMetalSilver
-
-- type: entity
-  name: electrum floor tile
-  parent: EmberFloorTileItemBase
-  id: EmberFloorTileItemMetalElectrum
-  components:
-  - type: Sprite
-    state: steel
-    color: "#E7C697"
-  - type: Item
-    heldPrefix: steel
-  - type: FloorTile
-    outputs:
-    - Plating
-    - EmberFloorMetalElectrum
-  - type: Stack
-    stackType: EmberFloorTileMetalElectrum
-
-- type: entity
-  name: copper floor tile
-  parent: EmberFloorTileItemBase
-  id: EmberFloorTileItemMetalCopper
-  components:
-  - type: Sprite
-    state: steel
-    color: "#B87333"
-  - type: Item
-    heldPrefix: steel
-  - type: FloorTile
-    outputs:
-    - Plating
-    - EmberFloorMetalCopper
-  - type: Stack
-    stackType: EmberFloorTileMetalCopper
-
-- type: entity
-  name: bronze floor tile
-  parent: EmberFloorTileItemBase
-  id: EmberFloorTileItemMetalBronze
-  components:
-  - type: Sprite
-    state: steel
-    color: "#EDD12F"
-  - type: Item
-    heldPrefix: steel
-  - type: FloorTile
-    outputs:
-    - Plating
-    - EmberFloorMetalBronze
-  - type: Stack
-    stackType: EmberFloorTileMetalBronze
-
-- type: entity
-  name: platinum floor tile
-  parent: EmberFloorTileItemBase
-  id: EmberFloorTileItemMetalPlatinum
-  components:
-  - type: Sprite
-    state: steel
-    color: "#DEDDFF"
-  - type: Item
-    heldPrefix: steel
-  - type: FloorTile
-    outputs:
-    - Plating
-    - EmberFloorMetalPlatinum
-  - type: Stack
-    stackType: EmberFloorTileMetalPlatinum
-
-- type: entity
-  name: uranium floor tile
-  parent: EmberFloorTileItemBase
-  id: EmberFloorTileItemMetalUranium
-  components:
-  - type: Sprite
-    state: steel
-    color: "#007A00"
-  - type: Item
-    heldPrefix: steel
-  - type: FloorTile
-    outputs:
-    - Plating
-    - EmberFloorMetalUranium
-  - type: Stack
-    stackType: EmberFloorTileMetalUranium

@@ -1,31 +1,429 @@
+# Сгенерировано. Вкладка «Плитки»: единица материала даёт четыре плитки, как на бэе.
+
 - type: stack
   id: EmberFloorTileTechfloor
-  name: grey techfloor tile
+  name: techfloor
   spawn: EmberFloorTileItemTechfloor
   maxCount: 30
 
 - type: stack
   id: EmberFloorTileTechfloorGrid
-  name: grid techfloor tile
+  name: grid techfloor
   spawn: EmberFloorTileItemTechfloorGrid
   maxCount: 30
 
 - type: stack
   id: EmberFloorTileSteelGrid
-  name: grey grid tile
+  name: grey grid floor
   spawn: EmberFloorTileItemSteelGrid
   maxCount: 30
 
 - type: stack
   id: EmberFloorTileSteelRidged
-  name: grey ridged tile
+  name: grey ridged floor
   spawn: EmberFloorTileItemSteelRidged
   maxCount: 30
 
 - type: stack
   id: EmberFloorTileStone
-  name: stone slab
+  name: stone slabs
   spawn: EmberFloorTileItemStone
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalIron
+  name: iron floor tile
+  spawn: EmberFloorTileItemMetalIron
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalIronMono
+  name: iron mono floor tile
+  spawn: EmberFloorTileItemMetalIronMono
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalIronGrid
+  name: iron grid floor tile
+  spawn: EmberFloorTileItemMetalIronGrid
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalIronRidged
+  name: iron ridged floor tile
+  spawn: EmberFloorTileItemMetalIronRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalAluminium
+  name: aluminium floor tile
+  spawn: EmberFloorTileItemMetalAluminium
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalAluminiumMono
+  name: aluminium mono floor tile
+  spawn: EmberFloorTileItemMetalAluminiumMono
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalAluminiumGrid
+  name: aluminium grid floor tile
+  spawn: EmberFloorTileItemMetalAluminiumGrid
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalAluminiumRidged
+  name: aluminium ridged floor tile
+  spawn: EmberFloorTileItemMetalAluminiumRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalPlasteel
+  name: plasteel floor tile
+  spawn: EmberFloorTileItemMetalPlasteel
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalPlasteelMono
+  name: plasteel mono floor tile
+  spawn: EmberFloorTileItemMetalPlasteelMono
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalPlasteelGrid
+  name: plasteel grid floor tile
+  spawn: EmberFloorTileItemMetalPlasteelGrid
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalPlasteelRidged
+  name: plasteel ridged floor tile
+  spawn: EmberFloorTileItemMetalPlasteelRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalTitanium
+  name: titanium floor tile
+  spawn: EmberFloorTileItemMetalTitanium
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalTitaniumMono
+  name: titanium mono floor tile
+  spawn: EmberFloorTileItemMetalTitaniumMono
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalTitaniumGrid
+  name: titanium grid floor tile
+  spawn: EmberFloorTileItemMetalTitaniumGrid
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalTitaniumRidged
+  name: titanium ridged floor tile
+  spawn: EmberFloorTileItemMetalTitaniumRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalOsmiumCarbidePlasteel
+  name: osmium-carbide plasteel floor tile
+  spawn: EmberFloorTileItemMetalOsmiumCarbidePlasteel
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalOsmiumCarbidePlasteelMono
+  name: osmium-carbide plasteel mono floor tile
+  spawn: EmberFloorTileItemMetalOsmiumCarbidePlasteelMono
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalOsmiumCarbidePlasteelGrid
+  name: osmium-carbide plasteel grid floor tile
+  spawn: EmberFloorTileItemMetalOsmiumCarbidePlasteelGrid
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalOsmiumCarbidePlasteelRidged
+  name: osmium-carbide plasteel ridged floor tile
+  spawn: EmberFloorTileItemMetalOsmiumCarbidePlasteelRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalOsmium
+  name: osmium floor tile
+  spawn: EmberFloorTileItemMetalOsmium
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalOsmiumMono
+  name: osmium mono floor tile
+  spawn: EmberFloorTileItemMetalOsmiumMono
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalOsmiumGrid
+  name: osmium grid floor tile
+  spawn: EmberFloorTileItemMetalOsmiumGrid
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalOsmiumRidged
+  name: osmium ridged floor tile
+  spawn: EmberFloorTileItemMetalOsmiumRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalGold
+  name: gold floor tile
+  spawn: EmberFloorTileItemMetalGold
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalGoldMono
+  name: gold mono floor tile
+  spawn: EmberFloorTileItemMetalGoldMono
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalGoldGrid
+  name: gold grid floor tile
+  spawn: EmberFloorTileItemMetalGoldGrid
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalGoldRidged
+  name: gold ridged floor tile
+  spawn: EmberFloorTileItemMetalGoldRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalSilver
+  name: silver floor tile
+  spawn: EmberFloorTileItemMetalSilver
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalSilverMono
+  name: silver mono floor tile
+  spawn: EmberFloorTileItemMetalSilverMono
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalSilverGrid
+  name: silver grid floor tile
+  spawn: EmberFloorTileItemMetalSilverGrid
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalSilverRidged
+  name: silver ridged floor tile
+  spawn: EmberFloorTileItemMetalSilverRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalElectrum
+  name: electrum floor tile
+  spawn: EmberFloorTileItemMetalElectrum
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalElectrumMono
+  name: electrum mono floor tile
+  spawn: EmberFloorTileItemMetalElectrumMono
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalElectrumGrid
+  name: electrum grid floor tile
+  spawn: EmberFloorTileItemMetalElectrumGrid
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalElectrumRidged
+  name: electrum ridged floor tile
+  spawn: EmberFloorTileItemMetalElectrumRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalCopper
+  name: copper floor tile
+  spawn: EmberFloorTileItemMetalCopper
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalCopperMono
+  name: copper mono floor tile
+  spawn: EmberFloorTileItemMetalCopperMono
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalCopperGrid
+  name: copper grid floor tile
+  spawn: EmberFloorTileItemMetalCopperGrid
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalCopperRidged
+  name: copper ridged floor tile
+  spawn: EmberFloorTileItemMetalCopperRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalBronze
+  name: bronze floor tile
+  spawn: EmberFloorTileItemMetalBronze
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalBronzeMono
+  name: bronze mono floor tile
+  spawn: EmberFloorTileItemMetalBronzeMono
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalBronzeGrid
+  name: bronze grid floor tile
+  spawn: EmberFloorTileItemMetalBronzeGrid
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalBronzeRidged
+  name: bronze ridged floor tile
+  spawn: EmberFloorTileItemMetalBronzeRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalPlatinum
+  name: platinum floor tile
+  spawn: EmberFloorTileItemMetalPlatinum
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalPlatinumMono
+  name: platinum mono floor tile
+  spawn: EmberFloorTileItemMetalPlatinumMono
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalPlatinumGrid
+  name: platinum grid floor tile
+  spawn: EmberFloorTileItemMetalPlatinumGrid
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalPlatinumRidged
+  name: platinum ridged floor tile
+  spawn: EmberFloorTileItemMetalPlatinumRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalUranium
+  name: uranium floor tile
+  spawn: EmberFloorTileItemMetalUranium
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalUraniumMono
+  name: uranium mono floor tile
+  spawn: EmberFloorTileItemMetalUraniumMono
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalUraniumGrid
+  name: uranium grid floor tile
+  spawn: EmberFloorTileItemMetalUraniumGrid
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalUraniumRidged
+  name: uranium ridged floor tile
+  spawn: EmberFloorTileItemMetalUraniumRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileStoneSandstone
+  name: sandstone slab
+  spawn: EmberFloorTileItemStoneSandstone
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileStoneMarble
+  name: marble slab
+  spawn: EmberFloorTileItemStoneMarble
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileStoneConcrete
+  name: concrete slab
+  spawn: EmberFloorTileItemStoneConcrete
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileStoneQuartz
+  name: quartz slab
+  spawn: EmberFloorTileItemStoneQuartz
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileStonePyrite
+  name: pyrite slab
+  spawn: EmberFloorTileItemStonePyrite
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileStoneSpodumene
+  name: spodumene slab
+  spawn: EmberFloorTileItemStoneSpodumene
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileStoneCinnabar
+  name: cinnabar slab
+  spawn: EmberFloorTileItemStoneCinnabar
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileStonePhosphorite
+  name: phosphorite slab
+  spawn: EmberFloorTileItemStonePhosphorite
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileStoneRockSalt
+  name: rock salt slab
+  spawn: EmberFloorTileItemStoneRockSalt
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileStonePotash
+  name: potash slab
+  spawn: EmberFloorTileItemStonePotash
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileStoneBauxite
+  name: bauxite slab
+  spawn: EmberFloorTileItemStoneBauxite
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileStoneRutile
+  name: rutile slab
+  spawn: EmberFloorTileItemStoneRutile
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileStoneBorax
+  name: borax slab
+  spawn: EmberFloorTileItemStoneBorax
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileStonePitchblende
+  name: pitchblende slab
+  spawn: EmberFloorTileItemStonePitchblende
   maxCount: 30
 
 - type: stack
@@ -62,82 +460,4 @@
   id: EmberFloorTileWoodYew
   name: yew floor tile
   spawn: EmberFloorTileItemWoodYew
-  maxCount: 30
-
-- type: stack
-  id: EmberFloorTileMetalIron
-  name: iron floor tile
-  spawn: EmberFloorTileItemMetalIron
-  maxCount: 30
-
-- type: stack
-  id: EmberFloorTileMetalAluminium
-  name: aluminium floor tile
-  spawn: EmberFloorTileItemMetalAluminium
-  maxCount: 30
-
-- type: stack
-  id: EmberFloorTileMetalPlasteel
-  name: plasteel floor tile
-  spawn: EmberFloorTileItemMetalPlasteel
-  maxCount: 30
-
-- type: stack
-  id: EmberFloorTileMetalTitanium
-  name: titanium floor tile
-  spawn: EmberFloorTileItemMetalTitanium
-  maxCount: 30
-
-- type: stack
-  id: EmberFloorTileMetalOsmiumCarbidePlasteel
-  name: osmium-carbide plasteel floor tile
-  spawn: EmberFloorTileItemMetalOsmiumCarbidePlasteel
-  maxCount: 30
-
-- type: stack
-  id: EmberFloorTileMetalOsmium
-  name: osmium floor tile
-  spawn: EmberFloorTileItemMetalOsmium
-  maxCount: 30
-
-- type: stack
-  id: EmberFloorTileMetalGold
-  name: gold floor tile
-  spawn: EmberFloorTileItemMetalGold
-  maxCount: 30
-
-- type: stack
-  id: EmberFloorTileMetalSilver
-  name: silver floor tile
-  spawn: EmberFloorTileItemMetalSilver
-  maxCount: 30
-
-- type: stack
-  id: EmberFloorTileMetalElectrum
-  name: electrum floor tile
-  spawn: EmberFloorTileItemMetalElectrum
-  maxCount: 30
-
-- type: stack
-  id: EmberFloorTileMetalCopper
-  name: copper floor tile
-  spawn: EmberFloorTileItemMetalCopper
-  maxCount: 30
-
-- type: stack
-  id: EmberFloorTileMetalBronze
-  name: bronze floor tile
-  spawn: EmberFloorTileItemMetalBronze
-  maxCount: 30
-
-- type: stack
-  id: EmberFloorTileMetalPlatinum
-  name: platinum floor tile
-  spawn: EmberFloorTileItemMetalPlatinum
-  maxCount: 30
-
-- type: stack
-  id: EmberFloorTileMetalUranium
-  name: uranium floor tile
-  spawn: EmberFloorTileItemMetalUranium
   maxCount: 30
