@@ -19,6 +19,12 @@ public static class EmberMaterialLookup
     /// <summary>The frame under a table's plating is steel whatever it is topped with, exactly as on Bay.</summary>
     public static readonly ProtoId<EmberMaterialPrototype> TableFrame = "Steel";
 
+    /// <summary>What an airlock is, since a style says nothing about substance.</summary>
+    public static readonly ProtoId<EmberMaterialPrototype> AirlockShell = "Steel";
+
+    /// <summary>And what is set into a glass one.</summary>
+    public static readonly ProtoId<EmberMaterialPrototype> AirlockWindow = "Glass";
+
     /// <summary>
     /// Every material an entity is made of, most important first. Most things are one material; a table is
     /// three, and a reinforced wall is two.
@@ -59,6 +65,26 @@ public static class EmberMaterialLookup
 
             if (table.Reinforcement is { } reinforcement)
                 yield return reinforcement;
+
+            yield break;
+        }
+
+        if (entities.TryGetComponent(uid, out EmberMaterialTintComponent? tint))
+        {
+            if (Physical(prototypes, tint.Material) is { } material)
+                yield return material;
+
+            yield break;
+        }
+
+        if (entities.TryGetComponent(uid, out EmberProceduralAirlockComponent? airlock))
+        {
+            // An airlock carries a style, which is a set of colours rather than a substance. Bay's station
+            // airlocks are steel, and a glass one is steel and a pane, which is what it counts as made of.
+            yield return AirlockShell;
+
+            if (airlock.Glass)
+                yield return AirlockWindow;
 
             yield break;
         }

@@ -1,5 +1,6 @@
 using Content.Server.Atmos;
 using Content.Server.Atmos.Components;
+using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Ember.Doors;
@@ -12,7 +13,8 @@ using Robust.Shared.Prototypes;
 namespace Content.Server.Ember.Materials;
 
 /// <summary>
-/// Burns things standing in a fire hotter than the material they are made of can take.
+/// Burns things standing in a fire hotter than the material they are made of can take, and sets alight the
+/// ones that catch rather than melt.
 /// </summary>
 /// <remarks>
 /// Bay's <c>fire_act</c>: a point of damage for every hundred kelvin the fire runs above the melting point,
@@ -22,8 +24,21 @@ namespace Content.Server.Ember.Materials;
 /// </remarks>
 public sealed class EmberMaterialHeatSystem : EntitySystem
 {
+    [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private readonly FlammableSystem _flammable = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+
+    /// <summary>
+    /// How often Bay runs a fire, in seconds: its air subsystem takes the default twenty deciseconds and
+    /// never overrides it.
+    /// </summary>
+    /// <remarks>
+    /// Ours runs at the atmos tick rate, fifteen times a second by default, so the same numbers land thirty
+    /// times as often. Left unscaled, a tritium fire put four hundred points into a steel wall in under half
+    /// a second and took out everything within twenty tiles before anyone could react to it.
+    /// </remarks>
+    private const float BayFireInterval = 2f;
 
     private static readonly ProtoId<DamageTypePrototype> Heat = "Heat";
 
@@ -32,14 +47,18 @@ public sealed class EmberMaterialHeatSystem : EntitySystem
         base.Initialize();
 
         // One subscription per component that can name a material, since that is the only thing they share.
-        // Both doors go through the adjacent event as well: a shut airlock seals its tile just like a wall.
         SubscribeLocalEvent<EmberProceduralWallComponent, TileFireEvent>(OnTileFire);
         SubscribeLocalEvent<EmberProceduralStructureComponent, TileFireEvent>(OnTileFire);
+        SubscribeLocalEvent<EmberMaterialTintComponent, TileFireEvent>(OnTileFire);
         SubscribeLocalEvent<EmberProceduralTableComponent, TileFireEvent>(OnTileFire);
+        SubscribeLocalEvent<EmberProceduralAirlockComponent, TileFireEvent>(OnTileFire);
         SubscribeLocalEvent<EmberProceduralMaterialDoorComponent, TileFireEvent>(OnTileFire);
 
+        // Anything that seals its own tile can never have a fire on it, so it hears about the one next door.
         SubscribeLocalEvent<EmberProceduralWallComponent, AdjacentTileFireEvent>(OnAdjacentTileFire);
         SubscribeLocalEvent<EmberProceduralStructureComponent, AdjacentTileFireEvent>(OnAdjacentTileFire);
+        SubscribeLocalEvent<EmberMaterialTintComponent, AdjacentTileFireEvent>(OnAdjacentTileFire);
+        SubscribeLocalEvent<EmberProceduralAirlockComponent, AdjacentTileFireEvent>(OnAdjacentTileFire);
         SubscribeLocalEvent<EmberProceduralMaterialDoorComponent, AdjacentTileFireEvent>(OnAdjacentTileFire);
     }
 
@@ -63,13 +82,16 @@ public sealed class EmberMaterialHeatSystem : EntitySystem
 
     private void Burn(EntityUid uid, float temperature)
     {
-        if (!HasComp<DamageableComponent>(uid))
+        if (Ignites(uid, temperature))
+            _flammable.AdjustFireStacks(uid, 1f, ignite: true);
+
+        if (!HasComp<DamageableComponent>(uid) || MeltingPoint(uid) is not { } melting)
             return;
 
-        if (MeltingPoint(uid) is not { } melting)
-            return;
-
-        var damage = EmberMaterialHeat.Damage(temperature, melting);
+        // Bay's numbers are per fire tick and ours arrive far more often, so what it charges over two seconds
+        // is spread across however many times we are called in those two seconds.
+        var share = 1f / (_atmosphere.AtmosTickRate * BayFireInterval);
+        var damage = EmberMaterialHeat.Damage(temperature, melting) * share;
 
         if (damage <= 0f)
             return;
@@ -78,6 +100,32 @@ public sealed class EmberMaterialHeatSystem : EntitySystem
             uid,
             new DamageSpecifier(_prototype.Index(Heat), FixedPoint2.New(damage)),
             ignoreResistances: false);
+    }
+
+    /// <summary>
+    /// Whether a fire this hot sets the thing alight rather than merely wearing it down.
+    /// </summary>
+    /// <remarks>
+    /// Only some materials have an ignition point at all — wood, cloth, carpet, cardboard, vox resin — and for
+    /// those it sits below the melting point, so they catch before they soften. Anything already burning is
+    /// left alone rather than being fed a fresh stack every tick.
+    /// </remarks>
+    private bool Ignites(EntityUid uid, float temperature)
+    {
+        if (!TryComp<FlammableComponent>(uid, out var flammable) || flammable.OnFire)
+            return false;
+
+        foreach (var id in EmberMaterialLookup.Materials(EntityManager, _prototype, uid))
+        {
+            if (_prototype.TryIndex(id, out EmberMaterialPrototype? material) &&
+                material.IgnitionPoint is { } ignition &&
+                temperature >= ignition)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /// <summary>

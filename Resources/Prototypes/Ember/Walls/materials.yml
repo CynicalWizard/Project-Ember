@@ -123,37 +123,44 @@
 
 - type: emberWallMaterial
   id: EmberGlass
+  physicalMaterial: Glass
   stateBase: solid
   color: "#AACCFFB0"
 
 - type: emberWallMaterial
   id: EmberBorosilicateGlass
+  physicalMaterial: BorosilicateGlass
   stateBase: solid
   color: "#899EBDB0"
 
 - type: emberWallMaterial
   id: EmberPhoronGlass
+  physicalMaterial: BorosilicateGlass
   stateBase: solid
   color: "#E37108B0"
 
 
 - type: emberWallMaterial
   id: EmberUraniumGlass
+  physicalMaterial: Glass
   stateBase: solid
   color: "#66CC66B0"
 
 - type: emberWallMaterial
   id: EmberShuttleGlass
+  physicalMaterial: Glass
   stateBase: solid
   color: "#AACCFFB0"
 
 - type: emberWallMaterial
   id: EmberBrassGlass
+  physicalMaterial: Glass
   stateBase: solid
   color: "#B08D28B0"
 
 - type: emberWallMaterial
   id: EmberMiningGlass
+  physicalMaterial: Glass
   stateBase: solid
   color: "#D6B56DB0"
 
