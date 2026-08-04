@@ -43,6 +43,30 @@
   maxCount: 30
 
 - type: stack
+  id: EmberFloorTileMetalIronDiagonal
+  name: iron diagonal floor tile
+  spawn: EmberFloorTileItemMetalIronDiagonal
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalIronDiagonalMini
+  name: iron small diagonal floor tile
+  spawn: EmberFloorTileItemMetalIronDiagonalMini
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalIronHerringbone
+  name: iron herringbone floor tile
+  spawn: EmberFloorTileItemMetalIronHerringbone
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalIronMini
+  name: iron small floor tile
+  spawn: EmberFloorTileItemMetalIronMini
+  maxCount: 30
+
+- type: stack
   id: EmberFloorTileMetalAluminium
   name: aluminium floor tile
   spawn: EmberFloorTileItemMetalAluminium
@@ -64,6 +88,30 @@
   id: EmberFloorTileMetalAluminiumRidged
   name: aluminium ridged floor tile
   spawn: EmberFloorTileItemMetalAluminiumRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalAluminiumDiagonal
+  name: aluminium diagonal floor tile
+  spawn: EmberFloorTileItemMetalAluminiumDiagonal
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalAluminiumDiagonalMini
+  name: aluminium small diagonal floor tile
+  spawn: EmberFloorTileItemMetalAluminiumDiagonalMini
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalAluminiumHerringbone
+  name: aluminium herringbone floor tile
+  spawn: EmberFloorTileItemMetalAluminiumHerringbone
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalAluminiumMini
+  name: aluminium small floor tile
+  spawn: EmberFloorTileItemMetalAluminiumMini
   maxCount: 30
 
 - type: stack
@@ -91,6 +139,30 @@
   maxCount: 30
 
 - type: stack
+  id: EmberFloorTileMetalPlasteelDiagonal
+  name: plasteel diagonal floor tile
+  spawn: EmberFloorTileItemMetalPlasteelDiagonal
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalPlasteelDiagonalMini
+  name: plasteel small diagonal floor tile
+  spawn: EmberFloorTileItemMetalPlasteelDiagonalMini
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalPlasteelHerringbone
+  name: plasteel herringbone floor tile
+  spawn: EmberFloorTileItemMetalPlasteelHerringbone
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalPlasteelMini
+  name: plasteel small floor tile
+  spawn: EmberFloorTileItemMetalPlasteelMini
+  maxCount: 30
+
+- type: stack
   id: EmberFloorTileMetalTitanium
   name: titanium floor tile
   spawn: EmberFloorTileItemMetalTitanium
@@ -112,6 +184,30 @@
   id: EmberFloorTileMetalTitaniumRidged
   name: titanium ridged floor tile
   spawn: EmberFloorTileItemMetalTitaniumRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalTitaniumDiagonal
+  name: titanium diagonal floor tile
+  spawn: EmberFloorTileItemMetalTitaniumDiagonal
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalTitaniumDiagonalMini
+  name: titanium small diagonal floor tile
+  spawn: EmberFloorTileItemMetalTitaniumDiagonalMini
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalTitaniumHerringbone
+  name: titanium herringbone floor tile
+  spawn: EmberFloorTileItemMetalTitaniumHerringbone
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalTitaniumMini
+  name: titanium small floor tile
+  spawn: EmberFloorTileItemMetalTitaniumMini
   maxCount: 30
 
 - type: stack
@@ -139,6 +235,30 @@
   maxCount: 30
 
 - type: stack
+  id: EmberFloorTileMetalOsmiumCarbidePlasteelDiagonal
+  name: osmium-carbide plasteel diagonal floor tile
+  spawn: EmberFloorTileItemMetalOsmiumCarbidePlasteelDiagonal
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalOsmiumCarbidePlasteelDiagonalMini
+  name: osmium-carbide plasteel small diagonal floor tile
+  spawn: EmberFloorTileItemMetalOsmiumCarbidePlasteelDiagonalMini
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalOsmiumCarbidePlasteelHerringbone
+  name: osmium-carbide plasteel herringbone floor tile
+  spawn: EmberFloorTileItemMetalOsmiumCarbidePlasteelHerringbone
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalOsmiumCarbidePlasteelMini
+  name: osmium-carbide plasteel small floor tile
+  spawn: EmberFloorTileItemMetalOsmiumCarbidePlasteelMini
+  maxCount: 30
+
+- type: stack
   id: EmberFloorTileMetalOsmium
   name: osmium floor tile
   spawn: EmberFloorTileItemMetalOsmium
@@ -160,6 +280,30 @@
   id: EmberFloorTileMetalOsmiumRidged
   name: osmium ridged floor tile
   spawn: EmberFloorTileItemMetalOsmiumRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalOsmiumDiagonal
+  name: osmium diagonal floor tile
+  spawn: EmberFloorTileItemMetalOsmiumDiagonal
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalOsmiumDiagonalMini
+  name: osmium small diagonal floor tile
+  spawn: EmberFloorTileItemMetalOsmiumDiagonalMini
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalOsmiumHerringbone
+  name: osmium herringbone floor tile
+  spawn: EmberFloorTileItemMetalOsmiumHerringbone
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalOsmiumMini
+  name: osmium small floor tile
+  spawn: EmberFloorTileItemMetalOsmiumMini
   maxCount: 30
 
 - type: stack
@@ -187,6 +331,30 @@
   maxCount: 30
 
 - type: stack
+  id: EmberFloorTileMetalGoldDiagonal
+  name: gold diagonal floor tile
+  spawn: EmberFloorTileItemMetalGoldDiagonal
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalGoldDiagonalMini
+  name: gold small diagonal floor tile
+  spawn: EmberFloorTileItemMetalGoldDiagonalMini
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalGoldHerringbone
+  name: gold herringbone floor tile
+  spawn: EmberFloorTileItemMetalGoldHerringbone
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalGoldMini
+  name: gold small floor tile
+  spawn: EmberFloorTileItemMetalGoldMini
+  maxCount: 30
+
+- type: stack
   id: EmberFloorTileMetalSilver
   name: silver floor tile
   spawn: EmberFloorTileItemMetalSilver
@@ -208,6 +376,30 @@
   id: EmberFloorTileMetalSilverRidged
   name: silver ridged floor tile
   spawn: EmberFloorTileItemMetalSilverRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalSilverDiagonal
+  name: silver diagonal floor tile
+  spawn: EmberFloorTileItemMetalSilverDiagonal
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalSilverDiagonalMini
+  name: silver small diagonal floor tile
+  spawn: EmberFloorTileItemMetalSilverDiagonalMini
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalSilverHerringbone
+  name: silver herringbone floor tile
+  spawn: EmberFloorTileItemMetalSilverHerringbone
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalSilverMini
+  name: silver small floor tile
+  spawn: EmberFloorTileItemMetalSilverMini
   maxCount: 30
 
 - type: stack
@@ -235,6 +427,30 @@
   maxCount: 30
 
 - type: stack
+  id: EmberFloorTileMetalElectrumDiagonal
+  name: electrum diagonal floor tile
+  spawn: EmberFloorTileItemMetalElectrumDiagonal
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalElectrumDiagonalMini
+  name: electrum small diagonal floor tile
+  spawn: EmberFloorTileItemMetalElectrumDiagonalMini
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalElectrumHerringbone
+  name: electrum herringbone floor tile
+  spawn: EmberFloorTileItemMetalElectrumHerringbone
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalElectrumMini
+  name: electrum small floor tile
+  spawn: EmberFloorTileItemMetalElectrumMini
+  maxCount: 30
+
+- type: stack
   id: EmberFloorTileMetalCopper
   name: copper floor tile
   spawn: EmberFloorTileItemMetalCopper
@@ -256,6 +472,30 @@
   id: EmberFloorTileMetalCopperRidged
   name: copper ridged floor tile
   spawn: EmberFloorTileItemMetalCopperRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalCopperDiagonal
+  name: copper diagonal floor tile
+  spawn: EmberFloorTileItemMetalCopperDiagonal
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalCopperDiagonalMini
+  name: copper small diagonal floor tile
+  spawn: EmberFloorTileItemMetalCopperDiagonalMini
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalCopperHerringbone
+  name: copper herringbone floor tile
+  spawn: EmberFloorTileItemMetalCopperHerringbone
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalCopperMini
+  name: copper small floor tile
+  spawn: EmberFloorTileItemMetalCopperMini
   maxCount: 30
 
 - type: stack
@@ -283,6 +523,30 @@
   maxCount: 30
 
 - type: stack
+  id: EmberFloorTileMetalBronzeDiagonal
+  name: bronze diagonal floor tile
+  spawn: EmberFloorTileItemMetalBronzeDiagonal
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalBronzeDiagonalMini
+  name: bronze small diagonal floor tile
+  spawn: EmberFloorTileItemMetalBronzeDiagonalMini
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalBronzeHerringbone
+  name: bronze herringbone floor tile
+  spawn: EmberFloorTileItemMetalBronzeHerringbone
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalBronzeMini
+  name: bronze small floor tile
+  spawn: EmberFloorTileItemMetalBronzeMini
+  maxCount: 30
+
+- type: stack
   id: EmberFloorTileMetalPlatinum
   name: platinum floor tile
   spawn: EmberFloorTileItemMetalPlatinum
@@ -307,6 +571,30 @@
   maxCount: 30
 
 - type: stack
+  id: EmberFloorTileMetalPlatinumDiagonal
+  name: platinum diagonal floor tile
+  spawn: EmberFloorTileItemMetalPlatinumDiagonal
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalPlatinumDiagonalMini
+  name: platinum small diagonal floor tile
+  spawn: EmberFloorTileItemMetalPlatinumDiagonalMini
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalPlatinumHerringbone
+  name: platinum herringbone floor tile
+  spawn: EmberFloorTileItemMetalPlatinumHerringbone
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalPlatinumMini
+  name: platinum small floor tile
+  spawn: EmberFloorTileItemMetalPlatinumMini
+  maxCount: 30
+
+- type: stack
   id: EmberFloorTileMetalUranium
   name: uranium floor tile
   spawn: EmberFloorTileItemMetalUranium
@@ -328,6 +616,30 @@
   id: EmberFloorTileMetalUraniumRidged
   name: uranium ridged floor tile
   spawn: EmberFloorTileItemMetalUraniumRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalUraniumDiagonal
+  name: uranium diagonal floor tile
+  spawn: EmberFloorTileItemMetalUraniumDiagonal
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalUraniumDiagonalMini
+  name: uranium small diagonal floor tile
+  spawn: EmberFloorTileItemMetalUraniumDiagonalMini
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalUraniumHerringbone
+  name: uranium herringbone floor tile
+  spawn: EmberFloorTileItemMetalUraniumHerringbone
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalUraniumMini
+  name: uranium small floor tile
+  spawn: EmberFloorTileItemMetalUraniumMini
   maxCount: 30
 
 - type: stack

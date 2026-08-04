@@ -97,6 +97,70 @@
     entity: EmberFloorTileItemMetalIronRidged
 
 - type: constructionGraph
+  id: EmberTileMetalIronDiagonal
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Iron
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalIronDiagonal
+
+- type: constructionGraph
+  id: EmberTileMetalIronDiagonalMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Iron
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalIronDiagonalMini
+
+- type: constructionGraph
+  id: EmberTileMetalIronHerringbone
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Iron
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalIronHerringbone
+
+- type: constructionGraph
+  id: EmberTileMetalIronMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Iron
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalIronMini
+
+- type: constructionGraph
   id: EmberTileMetalAluminium
   start: start
   graph:
@@ -159,6 +223,70 @@
         amount: 1
   - node: tile
     entity: EmberFloorTileItemMetalAluminiumRidged
+
+- type: constructionGraph
+  id: EmberTileMetalAluminiumDiagonal
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: EmberAluminium
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalAluminiumDiagonal
+
+- type: constructionGraph
+  id: EmberTileMetalAluminiumDiagonalMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: EmberAluminium
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalAluminiumDiagonalMini
+
+- type: constructionGraph
+  id: EmberTileMetalAluminiumHerringbone
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: EmberAluminium
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalAluminiumHerringbone
+
+- type: constructionGraph
+  id: EmberTileMetalAluminiumMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: EmberAluminium
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalAluminiumMini
 
 - type: constructionGraph
   id: EmberTileMetalPlasteel
@@ -225,6 +353,70 @@
     entity: EmberFloorTileItemMetalPlasteelRidged
 
 - type: constructionGraph
+  id: EmberTileMetalPlasteelDiagonal
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Plasteel
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalPlasteelDiagonal
+
+- type: constructionGraph
+  id: EmberTileMetalPlasteelDiagonalMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Plasteel
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalPlasteelDiagonalMini
+
+- type: constructionGraph
+  id: EmberTileMetalPlasteelHerringbone
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Plasteel
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalPlasteelHerringbone
+
+- type: constructionGraph
+  id: EmberTileMetalPlasteelMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Plasteel
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalPlasteelMini
+
+- type: constructionGraph
   id: EmberTileMetalTitanium
   start: start
   graph:
@@ -287,6 +479,70 @@
         amount: 1
   - node: tile
     entity: EmberFloorTileItemMetalTitaniumRidged
+
+- type: constructionGraph
+  id: EmberTileMetalTitaniumDiagonal
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Titanium
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalTitaniumDiagonal
+
+- type: constructionGraph
+  id: EmberTileMetalTitaniumDiagonalMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Titanium
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalTitaniumDiagonalMini
+
+- type: constructionGraph
+  id: EmberTileMetalTitaniumHerringbone
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Titanium
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalTitaniumHerringbone
+
+- type: constructionGraph
+  id: EmberTileMetalTitaniumMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Titanium
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalTitaniumMini
 
 - type: constructionGraph
   id: EmberTileMetalOsmiumCarbidePlasteel
@@ -353,6 +609,70 @@
     entity: EmberFloorTileItemMetalOsmiumCarbidePlasteelRidged
 
 - type: constructionGraph
+  id: EmberTileMetalOsmiumCarbidePlasteelDiagonal
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: OsmiumCarbidePlasteel
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalOsmiumCarbidePlasteelDiagonal
+
+- type: constructionGraph
+  id: EmberTileMetalOsmiumCarbidePlasteelDiagonalMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: OsmiumCarbidePlasteel
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalOsmiumCarbidePlasteelDiagonalMini
+
+- type: constructionGraph
+  id: EmberTileMetalOsmiumCarbidePlasteelHerringbone
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: OsmiumCarbidePlasteel
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalOsmiumCarbidePlasteelHerringbone
+
+- type: constructionGraph
+  id: EmberTileMetalOsmiumCarbidePlasteelMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: OsmiumCarbidePlasteel
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalOsmiumCarbidePlasteelMini
+
+- type: constructionGraph
   id: EmberTileMetalOsmium
   start: start
   graph:
@@ -415,6 +735,70 @@
         amount: 1
   - node: tile
     entity: EmberFloorTileItemMetalOsmiumRidged
+
+- type: constructionGraph
+  id: EmberTileMetalOsmiumDiagonal
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Osmium
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalOsmiumDiagonal
+
+- type: constructionGraph
+  id: EmberTileMetalOsmiumDiagonalMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Osmium
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalOsmiumDiagonalMini
+
+- type: constructionGraph
+  id: EmberTileMetalOsmiumHerringbone
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Osmium
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalOsmiumHerringbone
+
+- type: constructionGraph
+  id: EmberTileMetalOsmiumMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Osmium
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalOsmiumMini
 
 - type: constructionGraph
   id: EmberTileMetalGold
@@ -481,6 +865,70 @@
     entity: EmberFloorTileItemMetalGoldRidged
 
 - type: constructionGraph
+  id: EmberTileMetalGoldDiagonal
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Gold
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalGoldDiagonal
+
+- type: constructionGraph
+  id: EmberTileMetalGoldDiagonalMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Gold
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalGoldDiagonalMini
+
+- type: constructionGraph
+  id: EmberTileMetalGoldHerringbone
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Gold
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalGoldHerringbone
+
+- type: constructionGraph
+  id: EmberTileMetalGoldMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Gold
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalGoldMini
+
+- type: constructionGraph
   id: EmberTileMetalSilver
   start: start
   graph:
@@ -543,6 +991,70 @@
         amount: 1
   - node: tile
     entity: EmberFloorTileItemMetalSilverRidged
+
+- type: constructionGraph
+  id: EmberTileMetalSilverDiagonal
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Silver
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalSilverDiagonal
+
+- type: constructionGraph
+  id: EmberTileMetalSilverDiagonalMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Silver
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalSilverDiagonalMini
+
+- type: constructionGraph
+  id: EmberTileMetalSilverHerringbone
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Silver
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalSilverHerringbone
+
+- type: constructionGraph
+  id: EmberTileMetalSilverMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Silver
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalSilverMini
 
 - type: constructionGraph
   id: EmberTileMetalElectrum
@@ -609,6 +1121,70 @@
     entity: EmberFloorTileItemMetalElectrumRidged
 
 - type: constructionGraph
+  id: EmberTileMetalElectrumDiagonal
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Electrum
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalElectrumDiagonal
+
+- type: constructionGraph
+  id: EmberTileMetalElectrumDiagonalMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Electrum
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalElectrumDiagonalMini
+
+- type: constructionGraph
+  id: EmberTileMetalElectrumHerringbone
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Electrum
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalElectrumHerringbone
+
+- type: constructionGraph
+  id: EmberTileMetalElectrumMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Electrum
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalElectrumMini
+
+- type: constructionGraph
   id: EmberTileMetalCopper
   start: start
   graph:
@@ -671,6 +1247,70 @@
         amount: 1
   - node: tile
     entity: EmberFloorTileItemMetalCopperRidged
+
+- type: constructionGraph
+  id: EmberTileMetalCopperDiagonal
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: EmberCopper
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalCopperDiagonal
+
+- type: constructionGraph
+  id: EmberTileMetalCopperDiagonalMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: EmberCopper
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalCopperDiagonalMini
+
+- type: constructionGraph
+  id: EmberTileMetalCopperHerringbone
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: EmberCopper
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalCopperHerringbone
+
+- type: constructionGraph
+  id: EmberTileMetalCopperMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: EmberCopper
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalCopperMini
 
 - type: constructionGraph
   id: EmberTileMetalBronze
@@ -737,6 +1377,70 @@
     entity: EmberFloorTileItemMetalBronzeRidged
 
 - type: constructionGraph
+  id: EmberTileMetalBronzeDiagonal
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Bronze
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalBronzeDiagonal
+
+- type: constructionGraph
+  id: EmberTileMetalBronzeDiagonalMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Bronze
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalBronzeDiagonalMini
+
+- type: constructionGraph
+  id: EmberTileMetalBronzeHerringbone
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Bronze
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalBronzeHerringbone
+
+- type: constructionGraph
+  id: EmberTileMetalBronzeMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Bronze
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalBronzeMini
+
+- type: constructionGraph
   id: EmberTileMetalPlatinum
   start: start
   graph:
@@ -799,6 +1503,70 @@
         amount: 1
   - node: tile
     entity: EmberFloorTileItemMetalPlatinumRidged
+
+- type: constructionGraph
+  id: EmberTileMetalPlatinumDiagonal
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Platinum
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalPlatinumDiagonal
+
+- type: constructionGraph
+  id: EmberTileMetalPlatinumDiagonalMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Platinum
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalPlatinumDiagonalMini
+
+- type: constructionGraph
+  id: EmberTileMetalPlatinumHerringbone
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Platinum
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalPlatinumHerringbone
+
+- type: constructionGraph
+  id: EmberTileMetalPlatinumMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Platinum
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalPlatinumMini
 
 - type: constructionGraph
   id: EmberTileMetalUranium
@@ -865,6 +1633,70 @@
     entity: EmberFloorTileItemMetalUraniumRidged
 
 - type: constructionGraph
+  id: EmberTileMetalUraniumDiagonal
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Uranium
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalUraniumDiagonal
+
+- type: constructionGraph
+  id: EmberTileMetalUraniumDiagonalMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Uranium
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalUraniumDiagonalMini
+
+- type: constructionGraph
+  id: EmberTileMetalUraniumHerringbone
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Uranium
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalUraniumHerringbone
+
+- type: constructionGraph
+  id: EmberTileMetalUraniumMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Uranium
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemMetalUraniumMini
+
+- type: constructionGraph
   id: EmberTileSteelGrid
   start: start
   graph:
@@ -895,6 +1727,70 @@
         amount: 1
   - node: tile
     entity: EmberFloorTileItemSteelRidged
+
+- type: constructionGraph
+  id: EmberTileWhiteDiagonal
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Plastic
+        amount: 1
+  - node: tile
+    entity: FloorTileItemWhiteDiagonal
+
+- type: constructionGraph
+  id: EmberTileWhiteDiagonalMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Plastic
+        amount: 1
+  - node: tile
+    entity: FloorTileItemWhiteDiagonalMini
+
+- type: constructionGraph
+  id: EmberTileWhiteHerringbone
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Plastic
+        amount: 1
+  - node: tile
+    entity: FloorTileItemWhiteHerringbone
+
+- type: constructionGraph
+  id: EmberTileWhiteMini
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Plastic
+        amount: 1
+  - node: tile
+    entity: FloorTileItemWhiteMini
 
 - type: constructionGraph
   id: EmberTileStoneSandstone

@@ -283,7 +283,7 @@
 - type: tile
   id: FloorWhiteMini
   name: tiles-white-floor-mini
-  sprite: /Textures/Tiles/white_mini.png
+  sprite: /Textures/Ember/Tiles/mini.png
   variants: 4
   placementVariants:
   - 1.0
@@ -319,7 +319,7 @@
 - type: tile
   id: FloorWhiteDiagonal
   name: tiles-white-floor-diagonal
-  sprite: /Textures/Tiles/white_diagonal.png
+  sprite: /Textures/Ember/Tiles/diagonal.png
   variants: 4
   placementVariants:
   - 1.0
@@ -386,7 +386,7 @@
 - type: tile
   id: FloorWhiteHerringbone
   name: tiles-white-floor-herringbone
-  sprite: /Textures/Tiles/white_herringbone.png
+  sprite: /Textures/Ember/Tiles/herringbone.png
   variants: 4
   placementVariants:
   - 1.0
@@ -404,7 +404,7 @@
 - type: tile
   id: FloorWhiteDiagonalMini
   name: tiles-white-floor-diagonal-mini
-  sprite: /Textures/Tiles/white_diagonal_mini.png
+  sprite: /Textures/Ember/Tiles/diagonal_mini.png
   variants: 4
   placementVariants:
   - 1.0

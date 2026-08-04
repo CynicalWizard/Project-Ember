@@ -73,6 +73,54 @@
   objectType: Item
 
 - type: construction
+  name: iron diagonal floor tile
+  id: EmberTileMetalIronDiagonal
+  graph: EmberTileMetalIronDiagonal
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalIronDiagonal
+  objectType: Item
+
+- type: construction
+  name: iron small diagonal floor tile
+  id: EmberTileMetalIronDiagonalMini
+  graph: EmberTileMetalIronDiagonalMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalIronDiagonalMini
+  objectType: Item
+
+- type: construction
+  name: iron herringbone floor tile
+  id: EmberTileMetalIronHerringbone
+  graph: EmberTileMetalIronHerringbone
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalIronHerringbone
+  objectType: Item
+
+- type: construction
+  name: iron small floor tile
+  id: EmberTileMetalIronMini
+  graph: EmberTileMetalIronMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalIronMini
+  objectType: Item
+
+- type: construction
   name: aluminium floor tile
   id: EmberTileMetalAluminium
   graph: EmberTileMetalAluminium
@@ -118,6 +166,54 @@
   description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemMetalAluminiumRidged
+  objectType: Item
+
+- type: construction
+  name: aluminium diagonal floor tile
+  id: EmberTileMetalAluminiumDiagonal
+  graph: EmberTileMetalAluminiumDiagonal
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalAluminiumDiagonal
+  objectType: Item
+
+- type: construction
+  name: aluminium small diagonal floor tile
+  id: EmberTileMetalAluminiumDiagonalMini
+  graph: EmberTileMetalAluminiumDiagonalMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalAluminiumDiagonalMini
+  objectType: Item
+
+- type: construction
+  name: aluminium herringbone floor tile
+  id: EmberTileMetalAluminiumHerringbone
+  graph: EmberTileMetalAluminiumHerringbone
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalAluminiumHerringbone
+  objectType: Item
+
+- type: construction
+  name: aluminium small floor tile
+  id: EmberTileMetalAluminiumMini
+  graph: EmberTileMetalAluminiumMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalAluminiumMini
   objectType: Item
 
 - type: construction
@@ -169,6 +265,54 @@
   objectType: Item
 
 - type: construction
+  name: plasteel diagonal floor tile
+  id: EmberTileMetalPlasteelDiagonal
+  graph: EmberTileMetalPlasteelDiagonal
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalPlasteelDiagonal
+  objectType: Item
+
+- type: construction
+  name: plasteel small diagonal floor tile
+  id: EmberTileMetalPlasteelDiagonalMini
+  graph: EmberTileMetalPlasteelDiagonalMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalPlasteelDiagonalMini
+  objectType: Item
+
+- type: construction
+  name: plasteel herringbone floor tile
+  id: EmberTileMetalPlasteelHerringbone
+  graph: EmberTileMetalPlasteelHerringbone
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalPlasteelHerringbone
+  objectType: Item
+
+- type: construction
+  name: plasteel small floor tile
+  id: EmberTileMetalPlasteelMini
+  graph: EmberTileMetalPlasteelMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalPlasteelMini
+  objectType: Item
+
+- type: construction
   name: titanium floor tile
   id: EmberTileMetalTitanium
   graph: EmberTileMetalTitanium
@@ -214,6 +358,54 @@
   description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemMetalTitaniumRidged
+  objectType: Item
+
+- type: construction
+  name: titanium diagonal floor tile
+  id: EmberTileMetalTitaniumDiagonal
+  graph: EmberTileMetalTitaniumDiagonal
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalTitaniumDiagonal
+  objectType: Item
+
+- type: construction
+  name: titanium small diagonal floor tile
+  id: EmberTileMetalTitaniumDiagonalMini
+  graph: EmberTileMetalTitaniumDiagonalMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalTitaniumDiagonalMini
+  objectType: Item
+
+- type: construction
+  name: titanium herringbone floor tile
+  id: EmberTileMetalTitaniumHerringbone
+  graph: EmberTileMetalTitaniumHerringbone
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalTitaniumHerringbone
+  objectType: Item
+
+- type: construction
+  name: titanium small floor tile
+  id: EmberTileMetalTitaniumMini
+  graph: EmberTileMetalTitaniumMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalTitaniumMini
   objectType: Item
 
 - type: construction
@@ -265,6 +457,54 @@
   objectType: Item
 
 - type: construction
+  name: osmium-carbide plasteel diagonal floor tile
+  id: EmberTileMetalOsmiumCarbidePlasteelDiagonal
+  graph: EmberTileMetalOsmiumCarbidePlasteelDiagonal
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalOsmiumCarbidePlasteelDiagonal
+  objectType: Item
+
+- type: construction
+  name: osmium-carbide plasteel small diagonal floor tile
+  id: EmberTileMetalOsmiumCarbidePlasteelDiagonalMini
+  graph: EmberTileMetalOsmiumCarbidePlasteelDiagonalMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalOsmiumCarbidePlasteelDiagonalMini
+  objectType: Item
+
+- type: construction
+  name: osmium-carbide plasteel herringbone floor tile
+  id: EmberTileMetalOsmiumCarbidePlasteelHerringbone
+  graph: EmberTileMetalOsmiumCarbidePlasteelHerringbone
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalOsmiumCarbidePlasteelHerringbone
+  objectType: Item
+
+- type: construction
+  name: osmium-carbide plasteel small floor tile
+  id: EmberTileMetalOsmiumCarbidePlasteelMini
+  graph: EmberTileMetalOsmiumCarbidePlasteelMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalOsmiumCarbidePlasteelMini
+  objectType: Item
+
+- type: construction
   name: osmium floor tile
   id: EmberTileMetalOsmium
   graph: EmberTileMetalOsmium
@@ -310,6 +550,54 @@
   description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemMetalOsmiumRidged
+  objectType: Item
+
+- type: construction
+  name: osmium diagonal floor tile
+  id: EmberTileMetalOsmiumDiagonal
+  graph: EmberTileMetalOsmiumDiagonal
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalOsmiumDiagonal
+  objectType: Item
+
+- type: construction
+  name: osmium small diagonal floor tile
+  id: EmberTileMetalOsmiumDiagonalMini
+  graph: EmberTileMetalOsmiumDiagonalMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalOsmiumDiagonalMini
+  objectType: Item
+
+- type: construction
+  name: osmium herringbone floor tile
+  id: EmberTileMetalOsmiumHerringbone
+  graph: EmberTileMetalOsmiumHerringbone
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalOsmiumHerringbone
+  objectType: Item
+
+- type: construction
+  name: osmium small floor tile
+  id: EmberTileMetalOsmiumMini
+  graph: EmberTileMetalOsmiumMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalOsmiumMini
   objectType: Item
 
 - type: construction
@@ -361,6 +649,54 @@
   objectType: Item
 
 - type: construction
+  name: gold diagonal floor tile
+  id: EmberTileMetalGoldDiagonal
+  graph: EmberTileMetalGoldDiagonal
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalGoldDiagonal
+  objectType: Item
+
+- type: construction
+  name: gold small diagonal floor tile
+  id: EmberTileMetalGoldDiagonalMini
+  graph: EmberTileMetalGoldDiagonalMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalGoldDiagonalMini
+  objectType: Item
+
+- type: construction
+  name: gold herringbone floor tile
+  id: EmberTileMetalGoldHerringbone
+  graph: EmberTileMetalGoldHerringbone
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalGoldHerringbone
+  objectType: Item
+
+- type: construction
+  name: gold small floor tile
+  id: EmberTileMetalGoldMini
+  graph: EmberTileMetalGoldMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalGoldMini
+  objectType: Item
+
+- type: construction
   name: silver floor tile
   id: EmberTileMetalSilver
   graph: EmberTileMetalSilver
@@ -406,6 +742,54 @@
   description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemMetalSilverRidged
+  objectType: Item
+
+- type: construction
+  name: silver diagonal floor tile
+  id: EmberTileMetalSilverDiagonal
+  graph: EmberTileMetalSilverDiagonal
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalSilverDiagonal
+  objectType: Item
+
+- type: construction
+  name: silver small diagonal floor tile
+  id: EmberTileMetalSilverDiagonalMini
+  graph: EmberTileMetalSilverDiagonalMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalSilverDiagonalMini
+  objectType: Item
+
+- type: construction
+  name: silver herringbone floor tile
+  id: EmberTileMetalSilverHerringbone
+  graph: EmberTileMetalSilverHerringbone
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalSilverHerringbone
+  objectType: Item
+
+- type: construction
+  name: silver small floor tile
+  id: EmberTileMetalSilverMini
+  graph: EmberTileMetalSilverMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalSilverMini
   objectType: Item
 
 - type: construction
@@ -457,6 +841,54 @@
   objectType: Item
 
 - type: construction
+  name: electrum diagonal floor tile
+  id: EmberTileMetalElectrumDiagonal
+  graph: EmberTileMetalElectrumDiagonal
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalElectrumDiagonal
+  objectType: Item
+
+- type: construction
+  name: electrum small diagonal floor tile
+  id: EmberTileMetalElectrumDiagonalMini
+  graph: EmberTileMetalElectrumDiagonalMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalElectrumDiagonalMini
+  objectType: Item
+
+- type: construction
+  name: electrum herringbone floor tile
+  id: EmberTileMetalElectrumHerringbone
+  graph: EmberTileMetalElectrumHerringbone
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalElectrumHerringbone
+  objectType: Item
+
+- type: construction
+  name: electrum small floor tile
+  id: EmberTileMetalElectrumMini
+  graph: EmberTileMetalElectrumMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalElectrumMini
+  objectType: Item
+
+- type: construction
   name: copper floor tile
   id: EmberTileMetalCopper
   graph: EmberTileMetalCopper
@@ -502,6 +934,54 @@
   description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemMetalCopperRidged
+  objectType: Item
+
+- type: construction
+  name: copper diagonal floor tile
+  id: EmberTileMetalCopperDiagonal
+  graph: EmberTileMetalCopperDiagonal
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalCopperDiagonal
+  objectType: Item
+
+- type: construction
+  name: copper small diagonal floor tile
+  id: EmberTileMetalCopperDiagonalMini
+  graph: EmberTileMetalCopperDiagonalMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalCopperDiagonalMini
+  objectType: Item
+
+- type: construction
+  name: copper herringbone floor tile
+  id: EmberTileMetalCopperHerringbone
+  graph: EmberTileMetalCopperHerringbone
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalCopperHerringbone
+  objectType: Item
+
+- type: construction
+  name: copper small floor tile
+  id: EmberTileMetalCopperMini
+  graph: EmberTileMetalCopperMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalCopperMini
   objectType: Item
 
 - type: construction
@@ -553,6 +1033,54 @@
   objectType: Item
 
 - type: construction
+  name: bronze diagonal floor tile
+  id: EmberTileMetalBronzeDiagonal
+  graph: EmberTileMetalBronzeDiagonal
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalBronzeDiagonal
+  objectType: Item
+
+- type: construction
+  name: bronze small diagonal floor tile
+  id: EmberTileMetalBronzeDiagonalMini
+  graph: EmberTileMetalBronzeDiagonalMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalBronzeDiagonalMini
+  objectType: Item
+
+- type: construction
+  name: bronze herringbone floor tile
+  id: EmberTileMetalBronzeHerringbone
+  graph: EmberTileMetalBronzeHerringbone
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalBronzeHerringbone
+  objectType: Item
+
+- type: construction
+  name: bronze small floor tile
+  id: EmberTileMetalBronzeMini
+  graph: EmberTileMetalBronzeMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalBronzeMini
+  objectType: Item
+
+- type: construction
   name: platinum floor tile
   id: EmberTileMetalPlatinum
   graph: EmberTileMetalPlatinum
@@ -598,6 +1126,54 @@
   description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemMetalPlatinumRidged
+  objectType: Item
+
+- type: construction
+  name: platinum diagonal floor tile
+  id: EmberTileMetalPlatinumDiagonal
+  graph: EmberTileMetalPlatinumDiagonal
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalPlatinumDiagonal
+  objectType: Item
+
+- type: construction
+  name: platinum small diagonal floor tile
+  id: EmberTileMetalPlatinumDiagonalMini
+  graph: EmberTileMetalPlatinumDiagonalMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalPlatinumDiagonalMini
+  objectType: Item
+
+- type: construction
+  name: platinum herringbone floor tile
+  id: EmberTileMetalPlatinumHerringbone
+  graph: EmberTileMetalPlatinumHerringbone
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalPlatinumHerringbone
+  objectType: Item
+
+- type: construction
+  name: platinum small floor tile
+  id: EmberTileMetalPlatinumMini
+  graph: EmberTileMetalPlatinumMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalPlatinumMini
   objectType: Item
 
 - type: construction
@@ -649,6 +1225,54 @@
   objectType: Item
 
 - type: construction
+  name: uranium diagonal floor tile
+  id: EmberTileMetalUraniumDiagonal
+  graph: EmberTileMetalUraniumDiagonal
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalUraniumDiagonal
+  objectType: Item
+
+- type: construction
+  name: uranium small diagonal floor tile
+  id: EmberTileMetalUraniumDiagonalMini
+  graph: EmberTileMetalUraniumDiagonalMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalUraniumDiagonalMini
+  objectType: Item
+
+- type: construction
+  name: uranium herringbone floor tile
+  id: EmberTileMetalUraniumHerringbone
+  graph: EmberTileMetalUraniumHerringbone
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalUraniumHerringbone
+  objectType: Item
+
+- type: construction
+  name: uranium small floor tile
+  id: EmberTileMetalUraniumMini
+  graph: EmberTileMetalUraniumMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: EmberFloorTileItemMetalUraniumMini
+  objectType: Item
+
+- type: construction
   name: grey grid floor
   id: EmberTileSteelGrid
   graph: EmberTileSteelGrid
@@ -670,6 +1294,54 @@
   description: "Four of them, from a single unit."
   icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
   iconEntity: EmberFloorTileItemSteelRidged
+  objectType: Item
+
+- type: construction
+  name: white diagonal tile
+  id: EmberTileWhiteDiagonal
+  graph: EmberTileWhiteDiagonal
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: FloorTileItemWhiteDiagonal
+  objectType: Item
+
+- type: construction
+  name: white diagonal mini tile
+  id: EmberTileWhiteDiagonalMini
+  graph: EmberTileWhiteDiagonalMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: FloorTileItemWhiteDiagonalMini
+  objectType: Item
+
+- type: construction
+  name: white herringbone tile
+  id: EmberTileWhiteHerringbone
+  graph: EmberTileWhiteHerringbone
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: FloorTileItemWhiteHerringbone
+  objectType: Item
+
+- type: construction
+  name: white mini tile
+  id: EmberTileWhiteMini
+  graph: EmberTileWhiteMini
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  description: "Four of them, from a single unit."
+  icon: { sprite: Ember/Objects/Tiles/tiles_offbay.rsi, state: steel }
+  iconEntity: FloorTileItemWhiteMini
   objectType: Item
 
 - type: construction

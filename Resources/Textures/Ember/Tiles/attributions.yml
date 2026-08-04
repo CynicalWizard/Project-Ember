@@ -5,3 +5,9 @@
   license: "CC-BY-SA-3.0"
   copyright: "Taken from SierraBay (Baystation12)"
   source: "https://github.com/Baystation12/Baystation12"
+
+# Ванильные картинки, осветлённые под остальные маски: цвет тайла умножает, а значит только темнит.
+- files: ["diagonal.png", "diagonal_mini.png", "herringbone.png", "lattice.png", "mini.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Space Station 14, brightened so a tile colour has something to work with"
+  source: "https://github.com/space-wizards/space-station-14"

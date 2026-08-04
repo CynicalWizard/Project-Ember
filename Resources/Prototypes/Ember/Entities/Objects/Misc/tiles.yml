@@ -114,6 +114,70 @@
     stackType: EmberFloorTileMetalIronRidged
 
 - type: entity
+  name: iron diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalIronDiagonal
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal
+    color: "#5C5454"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalIronDiagonal
+  - type: Stack
+    stackType: EmberFloorTileMetalIronDiagonal
+
+- type: entity
+  name: iron small diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalIronDiagonalMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal-mini
+    color: "#5C5454"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalIronDiagonalMini
+  - type: Stack
+    stackType: EmberFloorTileMetalIronDiagonalMini
+
+- type: entity
+  name: iron herringbone floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalIronHerringbone
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-herringbone
+    color: "#5C5454"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalIronHerringbone
+  - type: Stack
+    stackType: EmberFloorTileMetalIronHerringbone
+
+- type: entity
+  name: iron small floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalIronMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-mini
+    color: "#5C5454"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalIronMini
+  - type: Stack
+    stackType: EmberFloorTileMetalIronMini
+
+- type: entity
   name: aluminium floor tile
   parent: EmberFloorTileItemBase
   id: EmberFloorTileItemMetalAluminium
@@ -172,6 +236,70 @@
     - EmberFloorMetalAluminiumRidged
   - type: Stack
     stackType: EmberFloorTileMetalAluminiumRidged
+
+- type: entity
+  name: aluminium diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalAluminiumDiagonal
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal
+    color: "#CCCDCC"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalAluminiumDiagonal
+  - type: Stack
+    stackType: EmberFloorTileMetalAluminiumDiagonal
+
+- type: entity
+  name: aluminium small diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalAluminiumDiagonalMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal-mini
+    color: "#CCCDCC"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalAluminiumDiagonalMini
+  - type: Stack
+    stackType: EmberFloorTileMetalAluminiumDiagonalMini
+
+- type: entity
+  name: aluminium herringbone floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalAluminiumHerringbone
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-herringbone
+    color: "#CCCDCC"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalAluminiumHerringbone
+  - type: Stack
+    stackType: EmberFloorTileMetalAluminiumHerringbone
+
+- type: entity
+  name: aluminium small floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalAluminiumMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-mini
+    color: "#CCCDCC"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalAluminiumMini
+  - type: Stack
+    stackType: EmberFloorTileMetalAluminiumMini
 
 - type: entity
   name: plasteel floor tile
@@ -234,6 +362,70 @@
     stackType: EmberFloorTileMetalPlasteelRidged
 
 - type: entity
+  name: plasteel diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalPlasteelDiagonal
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal
+    color: "#A8A9B2"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalPlasteelDiagonal
+  - type: Stack
+    stackType: EmberFloorTileMetalPlasteelDiagonal
+
+- type: entity
+  name: plasteel small diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalPlasteelDiagonalMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal-mini
+    color: "#A8A9B2"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalPlasteelDiagonalMini
+  - type: Stack
+    stackType: EmberFloorTileMetalPlasteelDiagonalMini
+
+- type: entity
+  name: plasteel herringbone floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalPlasteelHerringbone
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-herringbone
+    color: "#A8A9B2"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalPlasteelHerringbone
+  - type: Stack
+    stackType: EmberFloorTileMetalPlasteelHerringbone
+
+- type: entity
+  name: plasteel small floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalPlasteelMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-mini
+    color: "#A8A9B2"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalPlasteelMini
+  - type: Stack
+    stackType: EmberFloorTileMetalPlasteelMini
+
+- type: entity
   name: titanium floor tile
   parent: EmberFloorTileItemBase
   id: EmberFloorTileItemMetalTitanium
@@ -292,6 +484,70 @@
     - EmberFloorMetalTitaniumRidged
   - type: Stack
     stackType: EmberFloorTileMetalTitaniumRidged
+
+- type: entity
+  name: titanium diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalTitaniumDiagonal
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal
+    color: "#D1E6E3"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalTitaniumDiagonal
+  - type: Stack
+    stackType: EmberFloorTileMetalTitaniumDiagonal
+
+- type: entity
+  name: titanium small diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalTitaniumDiagonalMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal-mini
+    color: "#D1E6E3"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalTitaniumDiagonalMini
+  - type: Stack
+    stackType: EmberFloorTileMetalTitaniumDiagonalMini
+
+- type: entity
+  name: titanium herringbone floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalTitaniumHerringbone
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-herringbone
+    color: "#D1E6E3"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalTitaniumHerringbone
+  - type: Stack
+    stackType: EmberFloorTileMetalTitaniumHerringbone
+
+- type: entity
+  name: titanium small floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalTitaniumMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-mini
+    color: "#D1E6E3"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalTitaniumMini
+  - type: Stack
+    stackType: EmberFloorTileMetalTitaniumMini
 
 - type: entity
   name: osmium-carbide plasteel floor tile
@@ -354,6 +610,70 @@
     stackType: EmberFloorTileMetalOsmiumCarbidePlasteelRidged
 
 - type: entity
+  name: osmium-carbide plasteel diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalOsmiumCarbidePlasteelDiagonal
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal
+    color: "#9BC6F2"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalOsmiumCarbidePlasteelDiagonal
+  - type: Stack
+    stackType: EmberFloorTileMetalOsmiumCarbidePlasteelDiagonal
+
+- type: entity
+  name: osmium-carbide plasteel small diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalOsmiumCarbidePlasteelDiagonalMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal-mini
+    color: "#9BC6F2"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalOsmiumCarbidePlasteelDiagonalMini
+  - type: Stack
+    stackType: EmberFloorTileMetalOsmiumCarbidePlasteelDiagonalMini
+
+- type: entity
+  name: osmium-carbide plasteel herringbone floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalOsmiumCarbidePlasteelHerringbone
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-herringbone
+    color: "#9BC6F2"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalOsmiumCarbidePlasteelHerringbone
+  - type: Stack
+    stackType: EmberFloorTileMetalOsmiumCarbidePlasteelHerringbone
+
+- type: entity
+  name: osmium-carbide plasteel small floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalOsmiumCarbidePlasteelMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-mini
+    color: "#9BC6F2"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalOsmiumCarbidePlasteelMini
+  - type: Stack
+    stackType: EmberFloorTileMetalOsmiumCarbidePlasteelMini
+
+- type: entity
   name: osmium floor tile
   parent: EmberFloorTileItemBase
   id: EmberFloorTileItemMetalOsmium
@@ -412,6 +732,70 @@
     - EmberFloorMetalOsmiumRidged
   - type: Stack
     stackType: EmberFloorTileMetalOsmiumRidged
+
+- type: entity
+  name: osmium diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalOsmiumDiagonal
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal
+    color: "#9999FF"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalOsmiumDiagonal
+  - type: Stack
+    stackType: EmberFloorTileMetalOsmiumDiagonal
+
+- type: entity
+  name: osmium small diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalOsmiumDiagonalMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal-mini
+    color: "#9999FF"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalOsmiumDiagonalMini
+  - type: Stack
+    stackType: EmberFloorTileMetalOsmiumDiagonalMini
+
+- type: entity
+  name: osmium herringbone floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalOsmiumHerringbone
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-herringbone
+    color: "#9999FF"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalOsmiumHerringbone
+  - type: Stack
+    stackType: EmberFloorTileMetalOsmiumHerringbone
+
+- type: entity
+  name: osmium small floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalOsmiumMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-mini
+    color: "#9999FF"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalOsmiumMini
+  - type: Stack
+    stackType: EmberFloorTileMetalOsmiumMini
 
 - type: entity
   name: gold floor tile
@@ -474,6 +858,70 @@
     stackType: EmberFloorTileMetalGoldRidged
 
 - type: entity
+  name: gold diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalGoldDiagonal
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal
+    color: "#FFCC33"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalGoldDiagonal
+  - type: Stack
+    stackType: EmberFloorTileMetalGoldDiagonal
+
+- type: entity
+  name: gold small diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalGoldDiagonalMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal-mini
+    color: "#FFCC33"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalGoldDiagonalMini
+  - type: Stack
+    stackType: EmberFloorTileMetalGoldDiagonalMini
+
+- type: entity
+  name: gold herringbone floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalGoldHerringbone
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-herringbone
+    color: "#FFCC33"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalGoldHerringbone
+  - type: Stack
+    stackType: EmberFloorTileMetalGoldHerringbone
+
+- type: entity
+  name: gold small floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalGoldMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-mini
+    color: "#FFCC33"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalGoldMini
+  - type: Stack
+    stackType: EmberFloorTileMetalGoldMini
+
+- type: entity
   name: silver floor tile
   parent: EmberFloorTileItemBase
   id: EmberFloorTileItemMetalSilver
@@ -532,6 +980,70 @@
     - EmberFloorMetalSilverRidged
   - type: Stack
     stackType: EmberFloorTileMetalSilverRidged
+
+- type: entity
+  name: silver diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalSilverDiagonal
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal
+    color: "#D1E6E3"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalSilverDiagonal
+  - type: Stack
+    stackType: EmberFloorTileMetalSilverDiagonal
+
+- type: entity
+  name: silver small diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalSilverDiagonalMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal-mini
+    color: "#D1E6E3"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalSilverDiagonalMini
+  - type: Stack
+    stackType: EmberFloorTileMetalSilverDiagonalMini
+
+- type: entity
+  name: silver herringbone floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalSilverHerringbone
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-herringbone
+    color: "#D1E6E3"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalSilverHerringbone
+  - type: Stack
+    stackType: EmberFloorTileMetalSilverHerringbone
+
+- type: entity
+  name: silver small floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalSilverMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-mini
+    color: "#D1E6E3"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalSilverMini
+  - type: Stack
+    stackType: EmberFloorTileMetalSilverMini
 
 - type: entity
   name: electrum floor tile
@@ -594,6 +1106,70 @@
     stackType: EmberFloorTileMetalElectrumRidged
 
 - type: entity
+  name: electrum diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalElectrumDiagonal
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal
+    color: "#E7C697"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalElectrumDiagonal
+  - type: Stack
+    stackType: EmberFloorTileMetalElectrumDiagonal
+
+- type: entity
+  name: electrum small diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalElectrumDiagonalMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal-mini
+    color: "#E7C697"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalElectrumDiagonalMini
+  - type: Stack
+    stackType: EmberFloorTileMetalElectrumDiagonalMini
+
+- type: entity
+  name: electrum herringbone floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalElectrumHerringbone
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-herringbone
+    color: "#E7C697"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalElectrumHerringbone
+  - type: Stack
+    stackType: EmberFloorTileMetalElectrumHerringbone
+
+- type: entity
+  name: electrum small floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalElectrumMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-mini
+    color: "#E7C697"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalElectrumMini
+  - type: Stack
+    stackType: EmberFloorTileMetalElectrumMini
+
+- type: entity
   name: copper floor tile
   parent: EmberFloorTileItemBase
   id: EmberFloorTileItemMetalCopper
@@ -652,6 +1228,70 @@
     - EmberFloorMetalCopperRidged
   - type: Stack
     stackType: EmberFloorTileMetalCopperRidged
+
+- type: entity
+  name: copper diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalCopperDiagonal
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal
+    color: "#B87333"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalCopperDiagonal
+  - type: Stack
+    stackType: EmberFloorTileMetalCopperDiagonal
+
+- type: entity
+  name: copper small diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalCopperDiagonalMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal-mini
+    color: "#B87333"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalCopperDiagonalMini
+  - type: Stack
+    stackType: EmberFloorTileMetalCopperDiagonalMini
+
+- type: entity
+  name: copper herringbone floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalCopperHerringbone
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-herringbone
+    color: "#B87333"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalCopperHerringbone
+  - type: Stack
+    stackType: EmberFloorTileMetalCopperHerringbone
+
+- type: entity
+  name: copper small floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalCopperMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-mini
+    color: "#B87333"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalCopperMini
+  - type: Stack
+    stackType: EmberFloorTileMetalCopperMini
 
 - type: entity
   name: bronze floor tile
@@ -714,6 +1354,70 @@
     stackType: EmberFloorTileMetalBronzeRidged
 
 - type: entity
+  name: bronze diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalBronzeDiagonal
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal
+    color: "#EDD12F"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalBronzeDiagonal
+  - type: Stack
+    stackType: EmberFloorTileMetalBronzeDiagonal
+
+- type: entity
+  name: bronze small diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalBronzeDiagonalMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal-mini
+    color: "#EDD12F"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalBronzeDiagonalMini
+  - type: Stack
+    stackType: EmberFloorTileMetalBronzeDiagonalMini
+
+- type: entity
+  name: bronze herringbone floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalBronzeHerringbone
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-herringbone
+    color: "#EDD12F"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalBronzeHerringbone
+  - type: Stack
+    stackType: EmberFloorTileMetalBronzeHerringbone
+
+- type: entity
+  name: bronze small floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalBronzeMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-mini
+    color: "#EDD12F"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalBronzeMini
+  - type: Stack
+    stackType: EmberFloorTileMetalBronzeMini
+
+- type: entity
   name: platinum floor tile
   parent: EmberFloorTileItemBase
   id: EmberFloorTileItemMetalPlatinum
@@ -774,6 +1478,70 @@
     stackType: EmberFloorTileMetalPlatinumRidged
 
 - type: entity
+  name: platinum diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalPlatinumDiagonal
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal
+    color: "#DEDDFF"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalPlatinumDiagonal
+  - type: Stack
+    stackType: EmberFloorTileMetalPlatinumDiagonal
+
+- type: entity
+  name: platinum small diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalPlatinumDiagonalMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal-mini
+    color: "#DEDDFF"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalPlatinumDiagonalMini
+  - type: Stack
+    stackType: EmberFloorTileMetalPlatinumDiagonalMini
+
+- type: entity
+  name: platinum herringbone floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalPlatinumHerringbone
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-herringbone
+    color: "#DEDDFF"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalPlatinumHerringbone
+  - type: Stack
+    stackType: EmberFloorTileMetalPlatinumHerringbone
+
+- type: entity
+  name: platinum small floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalPlatinumMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-mini
+    color: "#DEDDFF"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalPlatinumMini
+  - type: Stack
+    stackType: EmberFloorTileMetalPlatinumMini
+
+- type: entity
   name: uranium floor tile
   parent: EmberFloorTileItemBase
   id: EmberFloorTileItemMetalUranium
@@ -832,6 +1600,70 @@
     - EmberFloorMetalUraniumRidged
   - type: Stack
     stackType: EmberFloorTileMetalUraniumRidged
+
+- type: entity
+  name: uranium diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalUraniumDiagonal
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal
+    color: "#007A00"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalUraniumDiagonal
+  - type: Stack
+    stackType: EmberFloorTileMetalUraniumDiagonal
+
+- type: entity
+  name: uranium small diagonal floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalUraniumDiagonalMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-diagonal-mini
+    color: "#007A00"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalUraniumDiagonalMini
+  - type: Stack
+    stackType: EmberFloorTileMetalUraniumDiagonalMini
+
+- type: entity
+  name: uranium herringbone floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalUraniumHerringbone
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-herringbone
+    color: "#007A00"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalUraniumHerringbone
+  - type: Stack
+    stackType: EmberFloorTileMetalUraniumHerringbone
+
+- type: entity
+  name: uranium small floor tile
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemMetalUraniumMini
+  components:
+  - type: Sprite
+    sprite: Objects/Tiles/tile.rsi
+    state: steel-mini
+    color: "#007A00"
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorMetalUraniumMini
+  - type: Stack
+    stackType: EmberFloorTileMetalUraniumMini
 
 - type: entity
   name: grey grid floor
