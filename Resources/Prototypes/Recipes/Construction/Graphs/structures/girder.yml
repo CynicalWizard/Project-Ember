@@ -255,6 +255,116 @@
         amount: 2
       - tool: Welding
         doAfter: 10
+    - to: quartzWall
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      conditions:
+      - !type:EntityAnchored {}
+      steps:
+      - material: Quartz
+        amount: 2
+      - tool: Welding
+        doAfter: 10
+    - to: pyriteWall
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      conditions:
+      - !type:EntityAnchored {}
+      steps:
+      - material: Pyrite
+        amount: 2
+      - tool: Welding
+        doAfter: 10
+    - to: spodumeneWall
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      conditions:
+      - !type:EntityAnchored {}
+      steps:
+      - material: Spodumene
+        amount: 2
+      - tool: Welding
+        doAfter: 10
+    - to: cinnabarWall
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      conditions:
+      - !type:EntityAnchored {}
+      steps:
+      - material: Cinnabar
+        amount: 2
+      - tool: Welding
+        doAfter: 10
+    - to: phosphoriteWall
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      conditions:
+      - !type:EntityAnchored {}
+      steps:
+      - material: Phosphorite
+        amount: 2
+      - tool: Welding
+        doAfter: 10
+    - to: potashWall
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      conditions:
+      - !type:EntityAnchored {}
+      steps:
+      - material: Potash
+        amount: 2
+      - tool: Welding
+        doAfter: 10
+    - to: bauxiteWall
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      conditions:
+      - !type:EntityAnchored {}
+      steps:
+      - material: Bauxite
+        amount: 2
+      - tool: Welding
+        doAfter: 10
+    - to: rutileWall
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      conditions:
+      - !type:EntityAnchored {}
+      steps:
+      - material: Rutile
+        amount: 2
+      - tool: Welding
+        doAfter: 10
+    - to: boraxWall
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      conditions:
+      - !type:EntityAnchored {}
+      steps:
+      - material: Borax
+        amount: 2
+      - tool: Welding
+        doAfter: 10
+    - to: pitchblendeWall
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      conditions:
+      - !type:EntityAnchored {}
+      steps:
+      - material: Pitchblende
+        amount: 2
+      - tool: Welding
+        doAfter: 10
     - to: stoneWall
       completed:
       - !type:SnapToGrid
@@ -802,6 +912,146 @@
       completed:
       - !type:GivePrototype
         prototype: EmberBrickSandstone1
+        amount: 2
+      steps:
+      - tool: Welding
+        doAfter: 10
+      - tool: Prying
+        doAfter: 10
+
+  - node: quartzWall
+    entity: WallQuartz
+    edges:
+    - to: girder
+      completed:
+      - !type:GivePrototype
+        prototype: EmberBrickQuartz1
+        amount: 2
+      steps:
+      - tool: Welding
+        doAfter: 10
+      - tool: Prying
+        doAfter: 10
+
+  - node: pyriteWall
+    entity: WallPyrite
+    edges:
+    - to: girder
+      completed:
+      - !type:GivePrototype
+        prototype: EmberBrickPyrite1
+        amount: 2
+      steps:
+      - tool: Welding
+        doAfter: 10
+      - tool: Prying
+        doAfter: 10
+
+  - node: spodumeneWall
+    entity: WallSpodumene
+    edges:
+    - to: girder
+      completed:
+      - !type:GivePrototype
+        prototype: EmberBrickSpodumene1
+        amount: 2
+      steps:
+      - tool: Welding
+        doAfter: 10
+      - tool: Prying
+        doAfter: 10
+
+  - node: cinnabarWall
+    entity: WallCinnabar
+    edges:
+    - to: girder
+      completed:
+      - !type:GivePrototype
+        prototype: EmberBrickCinnabar1
+        amount: 2
+      steps:
+      - tool: Welding
+        doAfter: 10
+      - tool: Prying
+        doAfter: 10
+
+  - node: phosphoriteWall
+    entity: WallPhosphorite
+    edges:
+    - to: girder
+      completed:
+      - !type:GivePrototype
+        prototype: EmberBrickPhosphorite1
+        amount: 2
+      steps:
+      - tool: Welding
+        doAfter: 10
+      - tool: Prying
+        doAfter: 10
+
+  - node: potashWall
+    entity: WallPotash
+    edges:
+    - to: girder
+      completed:
+      - !type:GivePrototype
+        prototype: EmberBrickPotash1
+        amount: 2
+      steps:
+      - tool: Welding
+        doAfter: 10
+      - tool: Prying
+        doAfter: 10
+
+  - node: bauxiteWall
+    entity: WallBauxite
+    edges:
+    - to: girder
+      completed:
+      - !type:GivePrototype
+        prototype: EmberBrickBauxite1
+        amount: 2
+      steps:
+      - tool: Welding
+        doAfter: 10
+      - tool: Prying
+        doAfter: 10
+
+  - node: rutileWall
+    entity: WallRutile
+    edges:
+    - to: girder
+      completed:
+      - !type:GivePrototype
+        prototype: EmberBrickRutile1
+        amount: 2
+      steps:
+      - tool: Welding
+        doAfter: 10
+      - tool: Prying
+        doAfter: 10
+
+  - node: boraxWall
+    entity: WallBorax
+    edges:
+    - to: girder
+      completed:
+      - !type:GivePrototype
+        prototype: EmberBrickBorax1
+        amount: 2
+      steps:
+      - tool: Welding
+        doAfter: 10
+      - tool: Prying
+        doAfter: 10
+
+  - node: pitchblendeWall
+    entity: WallPitchblende
+    edges:
+    - to: girder
+      completed:
+      - !type:GivePrototype
+        prototype: EmberBrickPitchblende1
         amount: 2
       steps:
       - tool: Welding

@@ -10,6 +10,8 @@ using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Client.Verbs;
 using Content.Shared.Administration;
 using Content.Shared.Decals;
+using Content.Shared.Ember.Walls;
+using Content.Shared.Ember.Structures;
 using Content.Shared.Input;
 using Content.Shared.Mapping;
 using Content.Shared.Maps;
@@ -123,6 +125,7 @@ public sealed class MappingState : GameplayStateBase
         Screen.DecalSystem = _decal;
 
         Screen.Entities.GetPrototypeData += OnGetData;
+        Screen.Entities.GetPrototypeModulate = OnGetEntityColor;
         Screen.Entities.SelectionChanged += OnSelected;
         Screen.Tiles.GetPrototypeData += OnGetData;
         Screen.Tiles.GetPrototypeModulate = OnGetTileColor;
@@ -176,6 +179,7 @@ public sealed class MappingState : GameplayStateBase
         CommandBinds.Unregister<MappingState>();
 
         Screen.Entities.GetPrototypeData -= OnGetData;
+        Screen.Entities.GetPrototypeModulate = null;
         Screen.Entities.SelectionChanged -= OnSelected;
         Screen.Tiles.GetPrototypeData -= OnGetData;
         Screen.Tiles.GetPrototypeModulate = null;
@@ -689,6 +693,34 @@ public sealed class MappingState : GameplayStateBase
                     textures.Add(_resources.GetResource<TextureResource>(sprite).Texture);
                 break;
         }
+    }
+
+    /// <summary>
+    ///     What a procedural entity is going to be coloured once it exists.
+    /// </summary>
+    /// <remarks>
+    ///     A wall, a window, a low wall and a girder frame all draw a grey mask and take their colour from
+    ///     their material at runtime, so the list showed a column of identical grey walls. The material is on
+    ///     the prototype already; it just has nobody to ask before the entity is spawned.
+    /// </remarks>
+    private Color? OnGetEntityColor(IPrototype prototype)
+    {
+        if (prototype is not EntityPrototype entity)
+            return null;
+
+        ProtoId<EmberWallMaterialPrototype>? material = null;
+
+        if (entity.Components.TryGetComponent("EmberProceduralWall", out var wall))
+            material = ((EmberProceduralWallComponent) wall).Material;
+        else if (entity.Components.TryGetComponent("EmberProceduralStructure", out var structure))
+            material = ((EmberProceduralStructureComponent) structure).Material;
+        else if (entity.Components.TryGetComponent("EmberMaterialTint", out var tint))
+            material = ((EmberMaterialTintComponent) tint).Material;
+
+        if (material is not { } id || !_prototypeManager.TryIndex(id, out EmberWallMaterialPrototype? found))
+            return null;
+
+        return found.Color;
     }
 
     /// <summary>

@@ -164,4 +164,52 @@
   stateBase: solid
   color: "#D6B56DB0"
 
+- type: emberWallMaterial
+  id: EmberWallQuartz
+  physicalMaterial: Quartz
+  stateBase: stone
 
+- type: emberWallMaterial
+  id: EmberWallPyrite
+  physicalMaterial: Pyrite
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallSpodumene
+  physicalMaterial: Spodumene
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallCinnabar
+  physicalMaterial: Cinnabar
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallPhosphorite
+  physicalMaterial: Phosphorite
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallPotash
+  physicalMaterial: Potash
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallBauxite
+  physicalMaterial: Bauxite
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallRutile
+  physicalMaterial: Rutile
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallBorax
+  physicalMaterial: Borax
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallPitchblende
+  physicalMaterial: Pitchblende
+  stateBase: stone

@@ -1,3 +1,10 @@
+# Стены собраны в одну ветку меню маппинга. Своего имени у категории нет намеренно:
+# половина стен не задаёт имени и берёт его у родителя, так что названная категория
+# переименовала бы их все. Дерево показывает идентификатор и локализует его.
+- type: entity
+  abstract: true
+  id: EmberWallCategory
+
 - type: entity
   abstract: true
   parent: BaseStructure
@@ -231,7 +238,7 @@
     base: debug
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallDiamond
   components:
   - type: Tag
@@ -263,7 +270,7 @@
     material: EmberWallDiamond
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallGold
   components:
   - type: Tag
@@ -334,7 +341,7 @@
     base: ice
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallPhoron
   components:
   - type: Tag
@@ -380,7 +387,7 @@
     resistance: 7
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallPlastic
   components:
   - type: Tag
@@ -548,7 +555,7 @@
         - WallLayer
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallReinforced
   components:
   - type: Sprite
@@ -608,7 +615,7 @@
     resistance: 8
 
 - type: entity
-  parent: WallReinforced
+  parent: [WallReinforced, EmberWallCategory]
   id: WallReinforcedRust
   suffix: rusted
   components:
@@ -647,7 +654,7 @@
       - !type:EmberSpawnMaterialDebrisBehavior
 
 - type: entity
-  parent: WallReinforced
+  parent: [WallReinforced, EmberWallCategory]
   id: WallOCP
   components:
   - type: Construction
@@ -739,7 +746,7 @@
     price: 150
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallSandstone
   components:
   - type: Tag
@@ -771,7 +778,7 @@
     material: EmberWallSandstone
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallSilver
   components:
   - type: Tag
@@ -944,7 +951,7 @@
           5: {state: shuttle_construct-5, visible: true}
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallSolid
   name: steel wall
   description: It seems to be a section of hull plated with steel.
@@ -1014,7 +1021,7 @@
     state: state0
 
 - type: entity
-  parent: WallSolid
+  parent: [WallSolid, EmberWallCategory]
   id: WallSolidRust
   suffix: rusted
   components:
@@ -1052,7 +1059,7 @@
       - !type:EmberSpawnMaterialDebrisBehavior
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallUranium
   components:
   - type: Sprite
@@ -1091,7 +1098,7 @@
     resistance: 10
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallWood
   components:
   - type: Sprite
@@ -1434,7 +1441,7 @@
     base: cobblebrick
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallIron
   name: iron wall
   components:
@@ -1481,7 +1488,7 @@
 
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallAluminium
   name: aluminium wall
   components:
@@ -1528,7 +1535,7 @@
 
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallTitanium
   name: titanium wall
   components:
@@ -1575,7 +1582,7 @@
 
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallOsmium
   name: osmium wall
   components:
@@ -1622,7 +1629,7 @@
 
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallElectrum
   name: electrum wall
   components:
@@ -1669,7 +1676,7 @@
 
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallCopper
   name: copper wall
   components:
@@ -1716,7 +1723,7 @@
 
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallBronze
   name: bronze wall
   components:
@@ -1763,7 +1770,7 @@
 
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallPlatinum
   name: platinum wall
   components:
@@ -1810,7 +1817,7 @@
 
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallMarble
   name: marble wall
   components:
@@ -1857,7 +1864,7 @@
 
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallConcrete
   name: concrete wall
   components:
@@ -1904,7 +1911,7 @@
 
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallStone
   name: stone wall
   components:
@@ -1948,3 +1955,363 @@
       - !type:EmberSpawnMaterialDebrisBehavior
   - type: EmberProceduralWall
     material: EmberWallStone
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallQuartz
+  name: quartz wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallQuartz
+  - type: Construction
+    graph: Girder
+    node: quartzWall
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallPyrite
+  name: pyrite wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallPyrite
+  - type: Construction
+    graph: Girder
+    node: pyriteWall
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallSpodumene
+  name: spodumene wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallSpodumene
+  - type: Construction
+    graph: Girder
+    node: spodumeneWall
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallCinnabar
+  name: cinnabar wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallCinnabar
+  - type: Construction
+    graph: Girder
+    node: cinnabarWall
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallPhosphorite
+  name: phosphorite wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallPhosphorite
+  - type: Construction
+    graph: Girder
+    node: phosphoriteWall
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallPotash
+  name: potash wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallPotash
+  - type: Construction
+    graph: Girder
+    node: potashWall
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallBauxite
+  name: bauxite wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallBauxite
+  - type: Construction
+    graph: Girder
+    node: bauxiteWall
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallRutile
+  name: rutile wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallRutile
+  - type: Construction
+    graph: Girder
+    node: rutileWall
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallBorax
+  name: borax wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallBorax
+  - type: Construction
+    graph: Girder
+    node: boraxWall
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallPitchblende
+  name: pitchblende wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallPitchblende
+  - type: Construction
+    graph: Girder
+    node: pitchblendeWall
