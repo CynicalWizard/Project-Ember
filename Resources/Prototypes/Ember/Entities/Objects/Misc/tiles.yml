@@ -40,34 +40,6 @@
     stackType: EmberFloorTileTechfloorGrid
 
 - type: entity
-  name: grey grid floor
-  parent: EmberFloorTileItemBase
-  id: EmberFloorTileItemSteelGrid
-  components:
-  - type: Sprite
-    state: steel-grid
-  - type: FloorTile
-    outputs:
-    - Plating
-    - EmberFloorSteelGrid
-  - type: Stack
-    stackType: EmberFloorTileSteelGrid
-
-- type: entity
-  name: grey ridged floor
-  parent: EmberFloorTileItemBase
-  id: EmberFloorTileItemSteelRidged
-  components:
-  - type: Sprite
-    state: steel-ridged
-  - type: FloorTile
-    outputs:
-    - Plating
-    - EmberFloorSteelRidged
-  - type: Stack
-    stackType: EmberFloorTileSteelRidged
-
-- type: entity
   name: stone slabs
   parent: EmberFloorTileItemBase
   id: EmberFloorTileItemStone
@@ -860,6 +832,34 @@
     - EmberFloorMetalUraniumRidged
   - type: Stack
     stackType: EmberFloorTileMetalUraniumRidged
+
+- type: entity
+  name: grey grid floor
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemSteelGrid
+  components:
+  - type: Sprite
+    state: steel-grid
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorSteelGrid
+  - type: Stack
+    stackType: EmberFloorTileSteelGrid
+
+- type: entity
+  name: grey ridged floor
+  parent: EmberFloorTileItemBase
+  id: EmberFloorTileItemSteelRidged
+  components:
+  - type: Sprite
+    state: steel-ridged
+  - type: FloorTile
+    outputs:
+    - Plating
+    - EmberFloorSteelRidged
+  - type: Stack
+    stackType: EmberFloorTileSteelRidged
 
 - type: entity
   name: sandstone slab

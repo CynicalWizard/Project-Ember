@@ -65,6 +65,7 @@
 
 - type: tile
   id: Lattice
+  parent: EmberTileCategoryLattice
   name: tiles-lattice
   sprite: /Textures/Tiles/lattice.png
   baseTurf: Space

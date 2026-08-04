@@ -147,9 +147,17 @@ public sealed partial class EmberTileSpawnWindow : DefaultWindow
 
     private Control Button(ContentTileDefinition tile, string name)
     {
+        var sheet = _resources.GetResource<TextureResource>(tile.Sprite!.Value.ToString()).Texture;
+
+        // A tile's texture is its variants laid out in a strip, so drawing the whole thing stretches the
+        // random ones across the cell. Only the first variant is the tile's own face.
+        var texture = sheet.Width > sheet.Height
+            ? new AtlasTexture(sheet, UIBox2.FromDimensions(0, 0, sheet.Height, sheet.Height))
+            : sheet;
+
         var button = new TextureButton
         {
-            TextureNormal = _resources.GetResource<TextureResource>(tile.Sprite!.Value.ToString()).Texture,
+            TextureNormal = texture,
             Name = tile.ID,
             ToolTip = name,
             // The sprite is a mask shared by a whole family; without this a dozen metals are one grey square.

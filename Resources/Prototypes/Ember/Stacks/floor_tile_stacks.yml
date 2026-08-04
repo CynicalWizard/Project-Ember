@@ -13,18 +13,6 @@
   maxCount: 30
 
 - type: stack
-  id: EmberFloorTileSteelGrid
-  name: grey grid floor
-  spawn: EmberFloorTileItemSteelGrid
-  maxCount: 30
-
-- type: stack
-  id: EmberFloorTileSteelRidged
-  name: grey ridged floor
-  spawn: EmberFloorTileItemSteelRidged
-  maxCount: 30
-
-- type: stack
   id: EmberFloorTileStone
   name: stone slabs
   spawn: EmberFloorTileItemStone
@@ -340,6 +328,18 @@
   id: EmberFloorTileMetalUraniumRidged
   name: uranium ridged floor tile
   spawn: EmberFloorTileItemMetalUraniumRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileSteelGrid
+  name: grey grid floor
+  spawn: EmberFloorTileItemSteelGrid
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileSteelRidged
+  name: grey ridged floor
+  spawn: EmberFloorTileItemSteelRidged
   maxCount: 30
 
 - type: stack

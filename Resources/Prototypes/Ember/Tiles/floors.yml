@@ -3,6 +3,11 @@
 # Картинка — серая маска, цвет задаёт сам тайл, поэтому новый материал не добавляет ни одной
 # картинки. Категории в меню маппинга строятся из наследования, как у декалей, так что каждая
 # из них — абстрактный тайл без родителя.
+#
+# EMBER-TODO: материал у пола — пока только цвет. Прочность, температура плавления,
+# теплопроводность и броня у материалов уже описаны и здесь не используются, поэтому
+# урановый пол ничем не отличается от золотого. Упрётся в то же, что и повреждения
+# пола: тайлу негде хранить состояние.
 
 # полы с бэя
 - type: tile
@@ -67,34 +72,6 @@
   heatCapacity: 10000
 
 - type: tile
-  id: EmberFloorSteelGrid
-  parent: EmberTileCategoryBay
-  name: ember-tiles-steelgrid
-  sprite: /Textures/Ember/Tiles/grid.png
-  color: "#545c68"
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: EmberFloorTileItemSteelGrid
-  heatCapacity: 10000
-
-- type: tile
-  id: EmberFloorSteelRidged
-  parent: EmberTileCategoryBay
-  name: ember-tiles-steelridged
-  sprite: /Textures/Ember/Tiles/ridged.png
-  color: "#545c68"
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: EmberFloorTileItemSteelRidged
-  heatCapacity: 10000
-
-- type: tile
   id: EmberFloorStone
   parent: EmberTileCategoryBay
   name: ember-tiles-stone
@@ -148,14 +125,21 @@
   heatCapacity: 10000
 
 - type: tile
+  id: EmberTileMetalSteelBase
+  parent: EmberTileCategoryMetal
+  abstract: true
+  name: ember-tiles-metal-steel
+
+- type: tile
   id: EmberTileMetalIronBase
   parent: EmberTileCategoryMetal
   abstract: true
+  name: ember-tiles-metal-iron
 
 - type: tile
   id: EmberFloorMetalIron
   parent: EmberTileMetalIronBase
-  name: ember-tiles-metal-iron
+  name: ember-tiles-metal-iron-plain
   sprite: /Textures/Ember/Tiles/tiled.png
   color: "#5C5454"
   baseTurf: Plating
@@ -169,7 +153,7 @@
 - type: tile
   id: EmberFloorMetalIronMono
   parent: EmberTileMetalIronBase
-  name: ember-tiles-metal-ironmono
+  name: ember-tiles-metal-iron-mono
   sprite: /Textures/Ember/Tiles/monotile.png
   color: "#5C5454"
   baseTurf: Plating
@@ -183,7 +167,7 @@
 - type: tile
   id: EmberFloorMetalIronGrid
   parent: EmberTileMetalIronBase
-  name: ember-tiles-metal-irongrid
+  name: ember-tiles-metal-iron-grid
   sprite: /Textures/Ember/Tiles/grid.png
   color: "#5C5454"
   baseTurf: Plating
@@ -197,7 +181,7 @@
 - type: tile
   id: EmberFloorMetalIronRidged
   parent: EmberTileMetalIronBase
-  name: ember-tiles-metal-ironridged
+  name: ember-tiles-metal-iron-ridged
   sprite: /Textures/Ember/Tiles/ridged.png
   color: "#5C5454"
   baseTurf: Plating
@@ -244,11 +228,12 @@
   id: EmberTileMetalAluminiumBase
   parent: EmberTileCategoryMetal
   abstract: true
+  name: ember-tiles-metal-aluminium
 
 - type: tile
   id: EmberFloorMetalAluminium
   parent: EmberTileMetalAluminiumBase
-  name: ember-tiles-metal-aluminium
+  name: ember-tiles-metal-aluminium-plain
   sprite: /Textures/Ember/Tiles/tiled.png
   color: "#CCCDCC"
   baseTurf: Plating
@@ -262,7 +247,7 @@
 - type: tile
   id: EmberFloorMetalAluminiumMono
   parent: EmberTileMetalAluminiumBase
-  name: ember-tiles-metal-aluminiummono
+  name: ember-tiles-metal-aluminium-mono
   sprite: /Textures/Ember/Tiles/monotile.png
   color: "#CCCDCC"
   baseTurf: Plating
@@ -276,7 +261,7 @@
 - type: tile
   id: EmberFloorMetalAluminiumGrid
   parent: EmberTileMetalAluminiumBase
-  name: ember-tiles-metal-aluminiumgrid
+  name: ember-tiles-metal-aluminium-grid
   sprite: /Textures/Ember/Tiles/grid.png
   color: "#CCCDCC"
   baseTurf: Plating
@@ -290,7 +275,7 @@
 - type: tile
   id: EmberFloorMetalAluminiumRidged
   parent: EmberTileMetalAluminiumBase
-  name: ember-tiles-metal-aluminiumridged
+  name: ember-tiles-metal-aluminium-ridged
   sprite: /Textures/Ember/Tiles/ridged.png
   color: "#CCCDCC"
   baseTurf: Plating
@@ -337,11 +322,12 @@
   id: EmberTileMetalPlasteelBase
   parent: EmberTileCategoryMetal
   abstract: true
+  name: ember-tiles-metal-plasteel
 
 - type: tile
   id: EmberFloorMetalPlasteel
   parent: EmberTileMetalPlasteelBase
-  name: ember-tiles-metal-plasteel
+  name: ember-tiles-metal-plasteel-plain
   sprite: /Textures/Ember/Tiles/tiled.png
   color: "#A8A9B2"
   baseTurf: Plating
@@ -355,7 +341,7 @@
 - type: tile
   id: EmberFloorMetalPlasteelMono
   parent: EmberTileMetalPlasteelBase
-  name: ember-tiles-metal-plasteelmono
+  name: ember-tiles-metal-plasteel-mono
   sprite: /Textures/Ember/Tiles/monotile.png
   color: "#A8A9B2"
   baseTurf: Plating
@@ -369,7 +355,7 @@
 - type: tile
   id: EmberFloorMetalPlasteelGrid
   parent: EmberTileMetalPlasteelBase
-  name: ember-tiles-metal-plasteelgrid
+  name: ember-tiles-metal-plasteel-grid
   sprite: /Textures/Ember/Tiles/grid.png
   color: "#A8A9B2"
   baseTurf: Plating
@@ -383,7 +369,7 @@
 - type: tile
   id: EmberFloorMetalPlasteelRidged
   parent: EmberTileMetalPlasteelBase
-  name: ember-tiles-metal-plasteelridged
+  name: ember-tiles-metal-plasteel-ridged
   sprite: /Textures/Ember/Tiles/ridged.png
   color: "#A8A9B2"
   baseTurf: Plating
@@ -430,11 +416,12 @@
   id: EmberTileMetalTitaniumBase
   parent: EmberTileCategoryMetal
   abstract: true
+  name: ember-tiles-metal-titanium
 
 - type: tile
   id: EmberFloorMetalTitanium
   parent: EmberTileMetalTitaniumBase
-  name: ember-tiles-metal-titanium
+  name: ember-tiles-metal-titanium-plain
   sprite: /Textures/Ember/Tiles/tiled.png
   color: "#D1E6E3"
   baseTurf: Plating
@@ -448,7 +435,7 @@
 - type: tile
   id: EmberFloorMetalTitaniumMono
   parent: EmberTileMetalTitaniumBase
-  name: ember-tiles-metal-titaniummono
+  name: ember-tiles-metal-titanium-mono
   sprite: /Textures/Ember/Tiles/monotile.png
   color: "#D1E6E3"
   baseTurf: Plating
@@ -462,7 +449,7 @@
 - type: tile
   id: EmberFloorMetalTitaniumGrid
   parent: EmberTileMetalTitaniumBase
-  name: ember-tiles-metal-titaniumgrid
+  name: ember-tiles-metal-titanium-grid
   sprite: /Textures/Ember/Tiles/grid.png
   color: "#D1E6E3"
   baseTurf: Plating
@@ -476,7 +463,7 @@
 - type: tile
   id: EmberFloorMetalTitaniumRidged
   parent: EmberTileMetalTitaniumBase
-  name: ember-tiles-metal-titaniumridged
+  name: ember-tiles-metal-titanium-ridged
   sprite: /Textures/Ember/Tiles/ridged.png
   color: "#D1E6E3"
   baseTurf: Plating
@@ -523,11 +510,12 @@
   id: EmberTileMetalOsmiumCarbidePlasteelBase
   parent: EmberTileCategoryMetal
   abstract: true
+  name: ember-tiles-metal-osmiumcarbideplasteel
 
 - type: tile
   id: EmberFloorMetalOsmiumCarbidePlasteel
   parent: EmberTileMetalOsmiumCarbidePlasteelBase
-  name: ember-tiles-metal-osmiumcarbideplasteel
+  name: ember-tiles-metal-osmiumcarbideplasteel-plain
   sprite: /Textures/Ember/Tiles/tiled.png
   color: "#9BC6F2"
   baseTurf: Plating
@@ -541,7 +529,7 @@
 - type: tile
   id: EmberFloorMetalOsmiumCarbidePlasteelMono
   parent: EmberTileMetalOsmiumCarbidePlasteelBase
-  name: ember-tiles-metal-osmiumcarbideplasteelmono
+  name: ember-tiles-metal-osmiumcarbideplasteel-mono
   sprite: /Textures/Ember/Tiles/monotile.png
   color: "#9BC6F2"
   baseTurf: Plating
@@ -555,7 +543,7 @@
 - type: tile
   id: EmberFloorMetalOsmiumCarbidePlasteelGrid
   parent: EmberTileMetalOsmiumCarbidePlasteelBase
-  name: ember-tiles-metal-osmiumcarbideplasteelgrid
+  name: ember-tiles-metal-osmiumcarbideplasteel-grid
   sprite: /Textures/Ember/Tiles/grid.png
   color: "#9BC6F2"
   baseTurf: Plating
@@ -569,7 +557,7 @@
 - type: tile
   id: EmberFloorMetalOsmiumCarbidePlasteelRidged
   parent: EmberTileMetalOsmiumCarbidePlasteelBase
-  name: ember-tiles-metal-osmiumcarbideplasteelridged
+  name: ember-tiles-metal-osmiumcarbideplasteel-ridged
   sprite: /Textures/Ember/Tiles/ridged.png
   color: "#9BC6F2"
   baseTurf: Plating
@@ -616,11 +604,12 @@
   id: EmberTileMetalOsmiumBase
   parent: EmberTileCategoryMetal
   abstract: true
+  name: ember-tiles-metal-osmium
 
 - type: tile
   id: EmberFloorMetalOsmium
   parent: EmberTileMetalOsmiumBase
-  name: ember-tiles-metal-osmium
+  name: ember-tiles-metal-osmium-plain
   sprite: /Textures/Ember/Tiles/tiled.png
   color: "#9999FF"
   baseTurf: Plating
@@ -634,7 +623,7 @@
 - type: tile
   id: EmberFloorMetalOsmiumMono
   parent: EmberTileMetalOsmiumBase
-  name: ember-tiles-metal-osmiummono
+  name: ember-tiles-metal-osmium-mono
   sprite: /Textures/Ember/Tiles/monotile.png
   color: "#9999FF"
   baseTurf: Plating
@@ -648,7 +637,7 @@
 - type: tile
   id: EmberFloorMetalOsmiumGrid
   parent: EmberTileMetalOsmiumBase
-  name: ember-tiles-metal-osmiumgrid
+  name: ember-tiles-metal-osmium-grid
   sprite: /Textures/Ember/Tiles/grid.png
   color: "#9999FF"
   baseTurf: Plating
@@ -662,7 +651,7 @@
 - type: tile
   id: EmberFloorMetalOsmiumRidged
   parent: EmberTileMetalOsmiumBase
-  name: ember-tiles-metal-osmiumridged
+  name: ember-tiles-metal-osmium-ridged
   sprite: /Textures/Ember/Tiles/ridged.png
   color: "#9999FF"
   baseTurf: Plating
@@ -709,11 +698,12 @@
   id: EmberTileMetalGoldBase
   parent: EmberTileCategoryMetal
   abstract: true
+  name: ember-tiles-metal-gold
 
 - type: tile
   id: EmberFloorMetalGold
   parent: EmberTileMetalGoldBase
-  name: ember-tiles-metal-gold
+  name: ember-tiles-metal-gold-plain
   sprite: /Textures/Ember/Tiles/tiled.png
   color: "#FFCC33"
   baseTurf: Plating
@@ -727,7 +717,7 @@
 - type: tile
   id: EmberFloorMetalGoldMono
   parent: EmberTileMetalGoldBase
-  name: ember-tiles-metal-goldmono
+  name: ember-tiles-metal-gold-mono
   sprite: /Textures/Ember/Tiles/monotile.png
   color: "#FFCC33"
   baseTurf: Plating
@@ -741,7 +731,7 @@
 - type: tile
   id: EmberFloorMetalGoldGrid
   parent: EmberTileMetalGoldBase
-  name: ember-tiles-metal-goldgrid
+  name: ember-tiles-metal-gold-grid
   sprite: /Textures/Ember/Tiles/grid.png
   color: "#FFCC33"
   baseTurf: Plating
@@ -755,7 +745,7 @@
 - type: tile
   id: EmberFloorMetalGoldRidged
   parent: EmberTileMetalGoldBase
-  name: ember-tiles-metal-goldridged
+  name: ember-tiles-metal-gold-ridged
   sprite: /Textures/Ember/Tiles/ridged.png
   color: "#FFCC33"
   baseTurf: Plating
@@ -802,11 +792,12 @@
   id: EmberTileMetalSilverBase
   parent: EmberTileCategoryMetal
   abstract: true
+  name: ember-tiles-metal-silver
 
 - type: tile
   id: EmberFloorMetalSilver
   parent: EmberTileMetalSilverBase
-  name: ember-tiles-metal-silver
+  name: ember-tiles-metal-silver-plain
   sprite: /Textures/Ember/Tiles/tiled.png
   color: "#D1E6E3"
   baseTurf: Plating
@@ -820,7 +811,7 @@
 - type: tile
   id: EmberFloorMetalSilverMono
   parent: EmberTileMetalSilverBase
-  name: ember-tiles-metal-silvermono
+  name: ember-tiles-metal-silver-mono
   sprite: /Textures/Ember/Tiles/monotile.png
   color: "#D1E6E3"
   baseTurf: Plating
@@ -834,7 +825,7 @@
 - type: tile
   id: EmberFloorMetalSilverGrid
   parent: EmberTileMetalSilverBase
-  name: ember-tiles-metal-silvergrid
+  name: ember-tiles-metal-silver-grid
   sprite: /Textures/Ember/Tiles/grid.png
   color: "#D1E6E3"
   baseTurf: Plating
@@ -848,7 +839,7 @@
 - type: tile
   id: EmberFloorMetalSilverRidged
   parent: EmberTileMetalSilverBase
-  name: ember-tiles-metal-silverridged
+  name: ember-tiles-metal-silver-ridged
   sprite: /Textures/Ember/Tiles/ridged.png
   color: "#D1E6E3"
   baseTurf: Plating
@@ -895,11 +886,12 @@
   id: EmberTileMetalElectrumBase
   parent: EmberTileCategoryMetal
   abstract: true
+  name: ember-tiles-metal-electrum
 
 - type: tile
   id: EmberFloorMetalElectrum
   parent: EmberTileMetalElectrumBase
-  name: ember-tiles-metal-electrum
+  name: ember-tiles-metal-electrum-plain
   sprite: /Textures/Ember/Tiles/tiled.png
   color: "#E7C697"
   baseTurf: Plating
@@ -913,7 +905,7 @@
 - type: tile
   id: EmberFloorMetalElectrumMono
   parent: EmberTileMetalElectrumBase
-  name: ember-tiles-metal-electrummono
+  name: ember-tiles-metal-electrum-mono
   sprite: /Textures/Ember/Tiles/monotile.png
   color: "#E7C697"
   baseTurf: Plating
@@ -927,7 +919,7 @@
 - type: tile
   id: EmberFloorMetalElectrumGrid
   parent: EmberTileMetalElectrumBase
-  name: ember-tiles-metal-electrumgrid
+  name: ember-tiles-metal-electrum-grid
   sprite: /Textures/Ember/Tiles/grid.png
   color: "#E7C697"
   baseTurf: Plating
@@ -941,7 +933,7 @@
 - type: tile
   id: EmberFloorMetalElectrumRidged
   parent: EmberTileMetalElectrumBase
-  name: ember-tiles-metal-electrumridged
+  name: ember-tiles-metal-electrum-ridged
   sprite: /Textures/Ember/Tiles/ridged.png
   color: "#E7C697"
   baseTurf: Plating
@@ -988,11 +980,12 @@
   id: EmberTileMetalCopperBase
   parent: EmberTileCategoryMetal
   abstract: true
+  name: ember-tiles-metal-copper
 
 - type: tile
   id: EmberFloorMetalCopper
   parent: EmberTileMetalCopperBase
-  name: ember-tiles-metal-copper
+  name: ember-tiles-metal-copper-plain
   sprite: /Textures/Ember/Tiles/tiled.png
   color: "#B87333"
   baseTurf: Plating
@@ -1006,7 +999,7 @@
 - type: tile
   id: EmberFloorMetalCopperMono
   parent: EmberTileMetalCopperBase
-  name: ember-tiles-metal-coppermono
+  name: ember-tiles-metal-copper-mono
   sprite: /Textures/Ember/Tiles/monotile.png
   color: "#B87333"
   baseTurf: Plating
@@ -1020,7 +1013,7 @@
 - type: tile
   id: EmberFloorMetalCopperGrid
   parent: EmberTileMetalCopperBase
-  name: ember-tiles-metal-coppergrid
+  name: ember-tiles-metal-copper-grid
   sprite: /Textures/Ember/Tiles/grid.png
   color: "#B87333"
   baseTurf: Plating
@@ -1034,7 +1027,7 @@
 - type: tile
   id: EmberFloorMetalCopperRidged
   parent: EmberTileMetalCopperBase
-  name: ember-tiles-metal-copperridged
+  name: ember-tiles-metal-copper-ridged
   sprite: /Textures/Ember/Tiles/ridged.png
   color: "#B87333"
   baseTurf: Plating
@@ -1081,11 +1074,12 @@
   id: EmberTileMetalBronzeBase
   parent: EmberTileCategoryMetal
   abstract: true
+  name: ember-tiles-metal-bronze
 
 - type: tile
   id: EmberFloorMetalBronze
   parent: EmberTileMetalBronzeBase
-  name: ember-tiles-metal-bronze
+  name: ember-tiles-metal-bronze-plain
   sprite: /Textures/Ember/Tiles/tiled.png
   color: "#EDD12F"
   baseTurf: Plating
@@ -1099,7 +1093,7 @@
 - type: tile
   id: EmberFloorMetalBronzeMono
   parent: EmberTileMetalBronzeBase
-  name: ember-tiles-metal-bronzemono
+  name: ember-tiles-metal-bronze-mono
   sprite: /Textures/Ember/Tiles/monotile.png
   color: "#EDD12F"
   baseTurf: Plating
@@ -1113,7 +1107,7 @@
 - type: tile
   id: EmberFloorMetalBronzeGrid
   parent: EmberTileMetalBronzeBase
-  name: ember-tiles-metal-bronzegrid
+  name: ember-tiles-metal-bronze-grid
   sprite: /Textures/Ember/Tiles/grid.png
   color: "#EDD12F"
   baseTurf: Plating
@@ -1127,7 +1121,7 @@
 - type: tile
   id: EmberFloorMetalBronzeRidged
   parent: EmberTileMetalBronzeBase
-  name: ember-tiles-metal-bronzeridged
+  name: ember-tiles-metal-bronze-ridged
   sprite: /Textures/Ember/Tiles/ridged.png
   color: "#EDD12F"
   baseTurf: Plating
@@ -1174,11 +1168,12 @@
   id: EmberTileMetalPlatinumBase
   parent: EmberTileCategoryMetal
   abstract: true
+  name: ember-tiles-metal-platinum
 
 - type: tile
   id: EmberFloorMetalPlatinum
   parent: EmberTileMetalPlatinumBase
-  name: ember-tiles-metal-platinum
+  name: ember-tiles-metal-platinum-plain
   sprite: /Textures/Ember/Tiles/tiled.png
   color: "#DEDDFF"
   baseTurf: Plating
@@ -1192,7 +1187,7 @@
 - type: tile
   id: EmberFloorMetalPlatinumMono
   parent: EmberTileMetalPlatinumBase
-  name: ember-tiles-metal-platinummono
+  name: ember-tiles-metal-platinum-mono
   sprite: /Textures/Ember/Tiles/monotile.png
   color: "#DEDDFF"
   baseTurf: Plating
@@ -1206,7 +1201,7 @@
 - type: tile
   id: EmberFloorMetalPlatinumGrid
   parent: EmberTileMetalPlatinumBase
-  name: ember-tiles-metal-platinumgrid
+  name: ember-tiles-metal-platinum-grid
   sprite: /Textures/Ember/Tiles/grid.png
   color: "#DEDDFF"
   baseTurf: Plating
@@ -1220,7 +1215,7 @@
 - type: tile
   id: EmberFloorMetalPlatinumRidged
   parent: EmberTileMetalPlatinumBase
-  name: ember-tiles-metal-platinumridged
+  name: ember-tiles-metal-platinum-ridged
   sprite: /Textures/Ember/Tiles/ridged.png
   color: "#DEDDFF"
   baseTurf: Plating
@@ -1267,11 +1262,12 @@
   id: EmberTileMetalUraniumBase
   parent: EmberTileCategoryMetal
   abstract: true
+  name: ember-tiles-metal-uranium
 
 - type: tile
   id: EmberFloorMetalUranium
   parent: EmberTileMetalUraniumBase
-  name: ember-tiles-metal-uranium
+  name: ember-tiles-metal-uranium-plain
   sprite: /Textures/Ember/Tiles/tiled.png
   color: "#007A00"
   baseTurf: Plating
@@ -1285,7 +1281,7 @@
 - type: tile
   id: EmberFloorMetalUraniumMono
   parent: EmberTileMetalUraniumBase
-  name: ember-tiles-metal-uraniummono
+  name: ember-tiles-metal-uranium-mono
   sprite: /Textures/Ember/Tiles/monotile.png
   color: "#007A00"
   baseTurf: Plating
@@ -1299,7 +1295,7 @@
 - type: tile
   id: EmberFloorMetalUraniumGrid
   parent: EmberTileMetalUraniumBase
-  name: ember-tiles-metal-uraniumgrid
+  name: ember-tiles-metal-uranium-grid
   sprite: /Textures/Ember/Tiles/grid.png
   color: "#007A00"
   baseTurf: Plating
@@ -1313,7 +1309,7 @@
 - type: tile
   id: EmberFloorMetalUraniumRidged
   parent: EmberTileMetalUraniumBase
-  name: ember-tiles-metal-uraniumridged
+  name: ember-tiles-metal-uranium-ridged
   sprite: /Textures/Ember/Tiles/ridged.png
   color: "#007A00"
   baseTurf: Plating
@@ -1354,6 +1350,34 @@
   friction: 0.3
   isSpace: true
   itemDrop: EmberRodUranium1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorSteelGrid
+  parent: EmberTileMetalSteelBase
+  name: ember-tiles-steelgrid
+  sprite: /Textures/Ember/Tiles/grid.png
+  color: "#545c68"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemSteelGrid
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorSteelRidged
+  parent: EmberTileMetalSteelBase
+  name: ember-tiles-steelridged
+  sprite: /Textures/Ember/Tiles/ridged.png
+  color: "#545c68"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemSteelRidged
   heatCapacity: 10000
 
 - type: tile

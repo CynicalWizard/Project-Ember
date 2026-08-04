@@ -1,5 +1,6 @@
 - type: tile
   id: FloorSteel
+  parent: EmberTileMetalSteelBase
   name: tiles-steel-floor
   sprite: /Textures/Ember/Tiles/tiled.png
   color: "#4c535b"
@@ -125,6 +126,7 @@
 
 - type: tile
   id: FloorSteelMono
+  parent: EmberTileMetalSteelBase
   name: tiles-steel-floor-mono
   sprite: /Textures/Ember/Tiles/monotile.png
   color: "#4c535b"
@@ -625,6 +627,7 @@
 
 - type: tile
   id: FloorReinforced
+  parent: EmberTileCategoryReinforced
   name: tiles-reinforced-floor
   sprite: /Textures/Ember/Tiles/reinforced.png
   baseTurf: Plating

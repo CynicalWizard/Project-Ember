@@ -33,38 +33,6 @@
     entity: EmberFloorTileItemTechfloorGrid
 
 - type: constructionGraph
-  id: EmberTileSteelGrid
-  start: start
-  graph:
-  - node: start
-    edges:
-    - to: tile
-      completed:
-      - !type:SetStackCount
-        amount: 4
-      steps:
-      - material: Steel
-        amount: 1
-  - node: tile
-    entity: EmberFloorTileItemSteelGrid
-
-- type: constructionGraph
-  id: EmberTileSteelRidged
-  start: start
-  graph:
-  - node: start
-    edges:
-    - to: tile
-      completed:
-      - !type:SetStackCount
-        amount: 4
-      steps:
-      - material: Steel
-        amount: 1
-  - node: tile
-    entity: EmberFloorTileItemSteelRidged
-
-- type: constructionGraph
   id: EmberTileMetalIron
   start: start
   graph:
@@ -895,6 +863,38 @@
         amount: 1
   - node: tile
     entity: EmberFloorTileItemMetalUraniumRidged
+
+- type: constructionGraph
+  id: EmberTileSteelGrid
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Steel
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemSteelGrid
+
+- type: constructionGraph
+  id: EmberTileSteelRidged
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Steel
+        amount: 1
+  - node: tile
+    entity: EmberFloorTileItemSteelRidged
 
 - type: constructionGraph
   id: EmberTileStoneSandstone
