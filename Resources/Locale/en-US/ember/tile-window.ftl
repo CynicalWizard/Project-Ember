@@ -1,0 +1,9 @@
+ember-tile-spawn-window-title = Spawn Tiles
+ember-tile-spawn-window-category = Category
+ember-tile-spawn-window-search = Search
+ember-tile-spawn-window-nothing-selected = Nothing selected
+ember-tile-spawn-window-category-all = All
+ember-tile-spawn-window-category-other = Uncategorised
+ember-tile-spawn-window-mirror = Mirror
+ember-tile-spawn-window-erase = Erase
+ember-tile-spawn-window-rotation = Facing: { $direction }

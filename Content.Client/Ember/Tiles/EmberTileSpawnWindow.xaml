@@ -1,0 +1,26 @@
+<DefaultWindow xmlns="https://spacestation14.io"
+               Title="{Loc 'ember-tile-spawn-window-title'}"
+               MinSize="340 500"
+               SetSize="340 620">
+    <BoxContainer Orientation="Vertical">
+        <BoxContainer Orientation="Horizontal">
+            <Label Text="{Loc 'ember-tile-spawn-window-category'}" Margin="0 0 4 0" />
+            <OptionButton Name="Category" HorizontalExpand="True" />
+        </BoxContainer>
+        <LineEdit Name="Search" PlaceHolder="{Loc 'ember-tile-spawn-window-search'}" />
+        <ScrollContainer VerticalExpand="True" HScrollEnabled="False">
+            <GridContainer Name="Grid" Columns="8">
+                <!-- Tiles get added here by code -->
+            </GridContainer>
+        </ScrollContainer>
+        <Label Name="SelectedLabel" Text="{Loc 'ember-tile-spawn-window-nothing-selected'}"
+               Margin="0 2 0 2" StyleClasses="LabelSubText" />
+        <BoxContainer Orientation="Horizontal">
+            <Button Name="MirrorButton" ToggleMode="True" HorizontalExpand="True"
+                    Text="{Loc 'ember-tile-spawn-window-mirror'}" />
+            <Button Name="EraseButton" ToggleMode="True" HorizontalExpand="True"
+                    Text="{Loc 'ember-tile-spawn-window-erase'}" />
+        </BoxContainer>
+        <Label Name="RotationLabel" StyleClasses="LabelSubText" />
+    </BoxContainer>
+</DefaultWindow>

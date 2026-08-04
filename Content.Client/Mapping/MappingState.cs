@@ -412,6 +412,12 @@ public sealed class MappingState : GameplayStateBase
                     ? nameNode.Value
                     : id;
 
+                // Abstract prototypes are what the categories in this tree are made of, and a tile or a decal
+                // names itself with a loc id rather than with text. Entity names are already text, and those
+                // are simply never keys.
+                if (_locale.TryGetString(name, out var localized))
+                    name = localized;
+
                 if (node.TryGet("suffix", out ValueDataNode? suffix))
                     name = $"{name} [{suffix.Value}]";
 

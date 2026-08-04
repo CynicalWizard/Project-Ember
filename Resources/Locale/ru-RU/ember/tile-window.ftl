@@ -1,0 +1,9 @@
+ember-tile-spawn-window-title = Спавн тайлов
+ember-tile-spawn-window-category = Категория
+ember-tile-spawn-window-search = Поиск
+ember-tile-spawn-window-nothing-selected = Ничего не выбрано
+ember-tile-spawn-window-category-all = Все
+ember-tile-spawn-window-category-other = Без категории
+ember-tile-spawn-window-mirror = Зеркально
+ember-tile-spawn-window-erase = Стереть
+ember-tile-spawn-window-rotation = Направление: { $direction }
