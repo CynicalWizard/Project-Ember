@@ -54,6 +54,17 @@ public sealed partial class ConstructionPrototype : IPrototype
     public SpriteSpecifier Icon = SpriteSpecifier.Invalid;
 
     /// <summary>
+    ///     An entity to draw in the construction GUI instead of <see cref="Icon"/>.
+    /// </summary>
+    /// <remarks>
+    ///     For recipes whose look does not survive being flattened into a sprite and a state -- anything the
+    ///     material tints, for one, where a plain icon would list a dozen recipes as the same grey square.
+    ///     The node's own entity cannot be used for this, since that is resolved server side only.
+    /// </remarks>
+    [DataField]
+    public EntProtoId? IconEntity;
+
+    /// <summary>
     ///     Texture paths used for the construction ghost.
     /// </summary>
     [DataField("layers")]

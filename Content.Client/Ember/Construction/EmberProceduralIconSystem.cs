@@ -60,6 +60,11 @@ public sealed class EmberProceduralIconSystem : EntitySystem
 
     public bool TryGetConstructionIcon(ConstructionPrototype recipe, out Texture texture)
     {
+        // Naming an entity is the recipe saying outright that this is what it looks like, so it is taken at
+        // its word rather than being asked whether it counts as procedural.
+        if (recipe.IconEntity is { } named && TryGetPrototypeIcon(named, out texture, requireProcedural: false))
+            return true;
+
         if (ConstructionIconPrototypes.TryGetValue(recipe.ID, out var mapped) &&
             TryGetPrototypeIcon(mapped, out texture))
         {
@@ -69,13 +74,13 @@ public sealed class EmberProceduralIconSystem : EntitySystem
         return TryGetPrototypeIcon(recipe.ID, out texture);
     }
 
-    public bool TryGetPrototypeIcon(string? prototypeId, out Texture texture)
+    public bool TryGetPrototypeIcon(string? prototypeId, out Texture texture, bool requireProcedural = true)
     {
         texture = Texture.Transparent;
 
         if (string.IsNullOrEmpty(prototypeId) ||
             !_prototype.TryIndex<EntityPrototype>(prototypeId, out var prototype, logError: false) ||
-            !IsProcedural(prototype))
+            (requireProcedural && !IsProcedural(prototype)))
         {
             return false;
         }

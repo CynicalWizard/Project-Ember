@@ -63,3 +63,81 @@
   name: yew floor tile
   spawn: EmberFloorTileItemWoodYew
   maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalIron
+  name: iron floor tile
+  spawn: EmberFloorTileItemMetalIron
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalAluminium
+  name: aluminium floor tile
+  spawn: EmberFloorTileItemMetalAluminium
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalPlasteel
+  name: plasteel floor tile
+  spawn: EmberFloorTileItemMetalPlasteel
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalTitanium
+  name: titanium floor tile
+  spawn: EmberFloorTileItemMetalTitanium
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalOsmiumCarbidePlasteel
+  name: osmium-carbide plasteel floor tile
+  spawn: EmberFloorTileItemMetalOsmiumCarbidePlasteel
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalOsmium
+  name: osmium floor tile
+  spawn: EmberFloorTileItemMetalOsmium
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalGold
+  name: gold floor tile
+  spawn: EmberFloorTileItemMetalGold
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalSilver
+  name: silver floor tile
+  spawn: EmberFloorTileItemMetalSilver
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalElectrum
+  name: electrum floor tile
+  spawn: EmberFloorTileItemMetalElectrum
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalCopper
+  name: copper floor tile
+  spawn: EmberFloorTileItemMetalCopper
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalBronze
+  name: bronze floor tile
+  spawn: EmberFloorTileItemMetalBronze
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalPlatinum
+  name: platinum floor tile
+  spawn: EmberFloorTileItemMetalPlatinum
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileMetalUranium
+  name: uranium floor tile
+  spawn: EmberFloorTileItemMetalUranium
+  maxCount: 30

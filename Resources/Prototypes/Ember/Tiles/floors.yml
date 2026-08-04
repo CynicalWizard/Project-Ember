@@ -201,3 +201,175 @@
     collection: BarestepWood
   itemDrop: EmberFloorTileItemWoodYew
   heatCapacity: 10000
+
+# Полы из металлов. Маска общая, отличает их только цвет тайла, так что каждый новый
+# металл — это запись в YAML и ни одной новой картинки.
+
+- type: tile
+  id: EmberFloorMetalIron
+  name: ember-tiles-metal-iron
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#5C5454"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalIron
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalAluminium
+  name: ember-tiles-metal-aluminium
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#CCCDCC"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalAluminium
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalPlasteel
+  name: ember-tiles-metal-plasteel
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#A8A9B2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalPlasteel
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalTitanium
+  name: ember-tiles-metal-titanium
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalTitanium
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalOsmiumCarbidePlasteel
+  name: ember-tiles-metal-osmiumcarbideplasteel
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#9BC6F2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalOsmiumCarbidePlasteel
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalOsmium
+  name: ember-tiles-metal-osmium
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#9999FF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalOsmium
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalGold
+  name: ember-tiles-metal-gold
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#FFCC33"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalGold
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalSilver
+  name: ember-tiles-metal-silver
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalSilver
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalElectrum
+  name: ember-tiles-metal-electrum
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#E7C697"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalElectrum
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalCopper
+  name: ember-tiles-metal-copper
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#B87333"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalCopper
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalBronze
+  name: ember-tiles-metal-bronze
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#EDD12F"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalBronze
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalPlatinum
+  name: ember-tiles-metal-platinum
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#DEDDFF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalPlatinum
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalUranium
+  name: ember-tiles-metal-uranium
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#007A00"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalUranium
+  heatCapacity: 10000
