@@ -16,7 +16,6 @@
   alloyMaterials:
     Hematite: 1875
     Graphite: 1875
-  salePrice: 1
   value: 4
   hardness: 60
   meltingPoint: 1800
@@ -44,7 +43,6 @@
   sheetSingularName: ingot
   sheetPluralName: ingots
   wallName: bulkhead
-  salePrice: 1
   value: 5
   hardness: 60
   meltingPoint: 1800
@@ -69,7 +67,6 @@
   wallIconBase: solid
   wallIconReinforced: reinf_over
   wallPaintableStripe: true
-  salePrice: 1
   hardness: 60
   meltingPoint: 1800
   bruteArmor: 2
@@ -102,7 +99,6 @@
   alloyMaterials:
     Steel: 2500
     Platinum: 1250
-  salePrice: 2
   value: 12
   hardness: 80
   meltingPoint: 6000
@@ -163,7 +159,6 @@
   alloyMaterials:
     Plasteel: 7500
     Osmium: 3750
-  salePrice: 3
   hardness: 80
   meltingPoint: 12000
   bruteArmor: 4
@@ -191,7 +186,6 @@
   sheetPluralName: ingots
   wallName: bulkhead
   oreSmeltsTo: Osmium
-  salePrice: 3
   value: 30
   hardness: 60
   meltingPoint: 1800
@@ -217,7 +211,6 @@
   oreName: materials-gold-ore-name
   oreSmeltsTo: Gold
   oreIconOverlay: nugget
-  salePrice: 3
   value: 40
   hardness: 25
   meltingPoint: 1800
@@ -247,7 +240,6 @@
   oreName: materials-silver-ore-name
   oreSmeltsTo: Silver
   oreIconOverlay: shiny
-  salePrice: 2
   value: 35
   hardness: 30
   meltingPoint: 1800
@@ -276,7 +268,6 @@
   oreName: materials-electrum-ore-name
   oreSmeltsTo: Electrum
   oreIconOverlay: shiny
-  salePrice: 3
   value: 37
   hardness: 30
   meltingPoint: 1800
@@ -307,7 +298,6 @@
   oreName: materials-copper-ore-name
   oreSmeltsTo: Copper
   oreIconOverlay: shiny
-  salePrice: 1
   hardness: 30
   meltingPoint: 1800
   bruteArmor: 2
@@ -351,7 +341,6 @@
   oreSmeltsTo: Platinum
   oreCompressesTo: Osmium
   oreIconOverlay: shiny
-  salePrice: 5
   value: 80
   hardness: 60
   meltingPoint: 1800
@@ -382,7 +371,6 @@
   doorIconBase: stone
   tableIconBase: stone
   tableIconReinforced: reinf_stone
-  salePrice: 2
   value: 100
   hardness: 60
   meltingPoint: 1800
@@ -452,7 +440,6 @@
   oreSmeltsTo: Tritium
   oreCompressesTo: MetallicHydrogen
   oreIconOverlay: gems
-  salePrice: 5
   value: 100
   hardness: 60
   meltingPoint: 1800
@@ -508,7 +495,6 @@
   displayName: materials-supermatter
   category: mineral
   color: "#FFFF00"
-  hiddenFromCodex: true
   hardness: 40
   meltingPoint: 1800
   bruteArmor: 2
@@ -601,7 +587,6 @@
   displayName: materials-crystal
   category: stone
   color: "#D8D4EA"
-  hiddenFromCodex: true
   hardness: 80
   meltingPoint: 1800
   bruteArmor: 10
@@ -1212,7 +1197,6 @@
   oreName: materials-hematite-ore-name
   oreSmeltsTo: Iron
   oreIconOverlay: lump
-  salePrice: 1
   oreSpreadChance: 25
   oreResultAmount: 5
   oreScanIcon: mineral_common
@@ -1227,7 +1211,6 @@
   oreName: materials-rutile-ore-name
   oreSmeltsTo: Titanium
   oreIconOverlay: lump
-  salePrice: 2
   oreSpreadChance: 15
   oreResultAmount: 5
   oreScanIcon: mineral_uncommon
@@ -1238,7 +1221,6 @@
   displayName: materials-waste
   category: other
   color: "#2E3A07"
-  hiddenFromCodex: true
 
 - type: emberMaterial
   id: CultStone
@@ -1286,7 +1268,6 @@
   hardness: 500
   weight: 500
   constructionDifficulty: 2
-  hiddenFromCodex: true
   value: 100
 
 - type: emberMaterial
@@ -1297,7 +1278,6 @@
   color: "#666666"
   wallName: bulkhead
   constructionDifficulty: 2
-  hiddenFromCodex: true
 
 - type: emberMaterial
   id: AlienAlloy
@@ -1312,7 +1292,6 @@
   wallIconReinforced: reinf_metal
   doorIconBase: metal
   constructionDifficulty: 3
-  hiddenFromCodex: true
   wallBlendIcons:
     wood: true
     stone: true
@@ -1507,7 +1486,6 @@
   displayName: materials-growth
   category: special
   color: "#FFFFFF"
-  hiddenFromCodex: true
   wallBlendIcons:
     solid: true
     wood: true

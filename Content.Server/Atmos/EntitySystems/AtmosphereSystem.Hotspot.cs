@@ -199,6 +199,23 @@ namespace Content.Server.Atmos.EntitySystems
             {
                 RaiseLocalEvent(entity, ref fireEvent);
             }
+
+            // Ember: a wall seals its own tile, so a fire can never start on one and it would never hear the
+            // event above. Bay reaches walls through the fire beside them instead, and so do we.
+            var adjacentEvent = new AdjacentTileFireEvent(tile.Hotspot.Temperature, tile.Hotspot.Volume);
+
+            for (var i = 0; i < Atmospherics.Directions; i++)
+            {
+                var indices = tile.GridIndices.Offset((AtmosDirection) (1 << i));
+
+                _entSet.Clear();
+                _lookup.GetLocalEntitiesIntersecting(tile.GridIndex, indices, _entSet, 0f);
+
+                foreach (var entity in _entSet)
+                {
+                    RaiseLocalEvent(entity, ref adjacentEvent);
+                }
+            }
         }
     }
 }

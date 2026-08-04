@@ -181,12 +181,8 @@ public sealed partial class EmberMaterialPrototype : IPrototype
     [DataField]
     public bool AlloyProduct { get; set; }
 
-    [DataField]
-    public int? SalePrice { get; set; }
 
     [DataField]
     public int Value { get; set; } = 1;
 
-    [DataField]
-    public bool HiddenFromCodex { get; set; }
 }
