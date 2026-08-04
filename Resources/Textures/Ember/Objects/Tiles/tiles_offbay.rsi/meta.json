@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from SierraBay (Baystation12)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "dark"
+    },
+    {
+      "name": "dark-mono"
+    },
+    {
+      "name": "lino"
+    },
+    {
+      "name": "steel"
+    },
+    {
+      "name": "steel-grid"
+    },
+    {
+      "name": "steel-mono"
+    },
+    {
+      "name": "steel-ridged"
+    },
+    {
+      "name": "stone"
+    },
+    {
+      "name": "tech-maint"
+    },
+    {
+      "name": "techfloor"
+    },
+    {
+      "name": "techfloor-grid"
+    },
+    {
+      "name": "white"
+    },
+    {
+      "name": "white-mono"
+    },
+    {
+      "name": "wood"
+    }
+  ]
+}

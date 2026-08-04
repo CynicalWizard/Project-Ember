@@ -1,0 +1,7 @@
+# Полы взяты со SierraBay (форк Baystation12). Это те же серые маски, что и на бэе: цвет задаётся
+# в прототипе тайла, а не запекается в картинку, поэтому один файл обслуживает всё семейство.
+
+- files: ["blue_circuit.png", "cargo.png", "elevator_shaft.png", "freezer.png", "green_circuit.png", "grid.png", "hydro.png", "kafel.png", "lino.png", "monotile.png", "monotile_light.png", "plating.png", "red_circuit.png", "reinforced.png", "ridged.png", "rock_vault.png", "showroom.png", "steel_dirty.png", "stone.png", "tech_maint.png", "techfloor.png", "techfloor_grid.png", "tile_old.png", "tiled.png", "tiled_light.png", "wood.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Taken from SierraBay (Baystation12)"
+  source: "https://github.com/Baystation12/Baystation12"

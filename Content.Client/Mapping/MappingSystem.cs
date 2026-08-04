@@ -79,12 +79,18 @@ public sealed partial class MappingSystem : EntitySystem
                 ? _spaceIcon
                 : new Texture(contentTileDef.Sprite!.Value);
 
+            // The sprite may be a greyscale mask shared by a whole family of tiles, in which case only the
+            // colour tells them apart. The atlas does this multiply for us everywhere else.
+            var tileColor = contentTileDef.MapAtmosphere ? Color.White : contentTileDef.Color;
+
             action = new InstantActionComponent
             {
                 ClientExclusive = true,
                 CheckCanInteract = false,
                 Event = actionEvent,
-                Icon = tileIcon
+                Icon = tileIcon,
+                IconColor = tileColor,
+                OriginalIconColor = tileColor
             };
 
             name = Loc.GetString(tileDef.Name);

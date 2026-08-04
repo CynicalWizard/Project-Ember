@@ -1,0 +1,203 @@
+# Полы Baystation12 и SierraBay, которых у нас не было.
+#
+# Картинка тут — серая маска, ровно как на бэе, а цвет задаёт `color` у самого тайла: движок умножает
+# его при сборке атласа. Поэтому шесть пород дерева — это шесть прототипов и один файл, а не шесть
+# файлов, и следующий материал не добавит в репозиторий ни одной картинки.
+
+- type: tile
+  id: EmberFloorTechfloor
+  name: ember-tiles-techfloor
+  sprite: /Textures/Ember/Tiles/techfloor.png
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepHull
+  itemDrop: EmberFloorTileItemTechfloor
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorTechfloorGrid
+  name: ember-tiles-techfloor-grid
+  sprite: /Textures/Ember/Tiles/techfloor_grid.png
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepHull
+  itemDrop: EmberFloorTileItemTechfloorGrid
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorSteelGrid
+  name: ember-tiles-steel-grid
+  sprite: /Textures/Ember/Tiles/grid.png
+  color: "#545c68"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemSteelGrid
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorSteelRidged
+  name: ember-tiles-steel-ridged
+  sprite: /Textures/Ember/Tiles/ridged.png
+  color: "#545c68"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemSteelRidged
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorStone
+  name: ember-tiles-stone
+  sprite: /Textures/Ember/Tiles/stone.png
+  color: "#4c535b"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemStone
+  heatCapacity: 10000
+
+# Три узора, которые на бэе только раскладывает маппер: строить их не из чего, но снять ломиком можно,
+# и тогда остаётся обычная стальная плитка.
+- type: tile
+  id: EmberFloorTileOld
+  name: ember-tiles-old
+  sprite: /Textures/Ember/Tiles/tile_old.png
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSteel
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorCargo
+  name: ember-tiles-cargo
+  sprite: /Textures/Ember/Tiles/cargo.png
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSteel
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorKafel
+  name: ember-tiles-kafel
+  sprite: /Textures/Ember/Tiles/kafel.png
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSteel
+  heatCapacity: 10000
+
+# Породы дерева. Цвета — те же, что у одноимённых материалов, так что доска, лист и стол сходятся.
+- type: tile
+  id: EmberFloorWoodMahogany
+  name: ember-tiles-wood-mahogany
+  sprite: /Textures/Ember/Tiles/wood.png
+  color: "#792f27"
+  variants: 4
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  itemDrop: EmberFloorTileItemWoodMahogany
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorWoodMaple
+  name: ember-tiles-wood-maple
+  sprite: /Textures/Ember/Tiles/wood.png
+  color: "#d2bc9d"
+  variants: 4
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  itemDrop: EmberFloorTileItemWoodMaple
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorWoodEbony
+  name: ember-tiles-wood-ebony
+  sprite: /Textures/Ember/Tiles/wood.png
+  color: "#332521"
+  variants: 4
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  itemDrop: EmberFloorTileItemWoodEbony
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorWoodWalnut
+  name: ember-tiles-wood-walnut
+  sprite: /Textures/Ember/Tiles/wood.png
+  color: "#543c30"
+  variants: 4
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  itemDrop: EmberFloorTileItemWoodWalnut
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorWoodBamboo
+  name: ember-tiles-wood-bamboo
+  sprite: /Textures/Ember/Tiles/wood.png
+  color: "#e6d2ba"
+  variants: 4
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  itemDrop: EmberFloorTileItemWoodBamboo
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorWoodYew
+  name: ember-tiles-wood-yew
+  sprite: /Textures/Ember/Tiles/wood.png
+  color: "#e3994e"
+  variants: 4
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  itemDrop: EmberFloorTileItemWoodYew
+  heatCapacity: 10000

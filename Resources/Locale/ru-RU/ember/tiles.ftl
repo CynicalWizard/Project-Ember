@@ -1,0 +1,14 @@
+ember-tiles-techfloor = техпол
+ember-tiles-techfloor-grid = решётчатый техпол
+ember-tiles-steel-grid = серый решётчатый пол
+ember-tiles-steel-ridged = серый рифлёный пол
+ember-tiles-stone = каменные плиты
+ember-tiles-old = старая плитка
+ember-tiles-cargo = грузовая плитка
+ember-tiles-kafel = кафель
+ember-tiles-wood-mahogany = пол из красного дерева
+ember-tiles-wood-maple = клёновый пол
+ember-tiles-wood-ebony = пол из чёрного дерева
+ember-tiles-wood-walnut = ореховый пол
+ember-tiles-wood-bamboo = бамбуковый пол
+ember-tiles-wood-yew = тисовый пол

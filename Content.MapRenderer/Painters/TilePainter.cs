@@ -12,6 +12,7 @@ using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
 using static Robust.UnitTesting.RobustIntegrationTest;
+using Color = Robust.Shared.Maths.Color;
 
 namespace Content.MapRenderer.Painters
 {
@@ -46,14 +47,14 @@ namespace Content.MapRenderer.Painters
 
             _sMapSystem.GetAllTiles(gridUid, grid).AsParallel().ForAll(tile =>
             {
-                var path = _sTileDefinitionManager[tile.Tile.TypeId].Sprite.ToString();
+                var definition = _sTileDefinitionManager[tile.Tile.TypeId];
 
-                if (string.IsNullOrWhiteSpace(path))
+                if (!images.TryGetValue(definition.ID, out var variants))
                     return;
 
                 var x = (int) (tile.X + xOffset);
                 var y = (int) (tile.Y + yOffset);
-                var image = images[path][tile.Tile.Variant];
+                var image = variants[tile.Tile.Variant];
 
                 gridCanvas.Mutate(o => o.DrawImage(image, new Point(x * tileSize, y * tileSize), 1));
 
@@ -80,10 +81,13 @@ namespace Content.MapRenderer.Painters
                 if (string.IsNullOrWhiteSpace(path))
                     continue;
 
-                images[path] = new List<Image>(definition.Variants);
+                var variants = new List<Image>(definition.Variants);
+                images[definition.ID] = variants;
 
                 using var stream = resManager.ContentFileRead(path);
-                Image tileSheet = Image.Load<Rgba32>(stream);
+                var tileSheet = Image.Load<Rgba32>(stream);
+
+                Tint(tileSheet, definition.Color);
 
                 if (tileSheet.Width != tileSize * definition.Variants || tileSheet.Height != tileSize)
                 {
@@ -94,13 +98,43 @@ namespace Content.MapRenderer.Painters
                 {
                     var index = i;
                     var tileImage = tileSheet.Clone(o => o.Crop(new Rectangle(tileSize * index, 0, 32, 32)));
-                    images[path].Add(tileImage);
+                    variants.Add(tileImage);
                 }
             }
 
             Console.WriteLine($"Indexed all tile images in {(int) stopwatch.Elapsed.TotalMilliseconds} ms");
 
             return images;
+        }
+
+        /// <summary>
+        /// Mirrors what the engine does when it bakes the tile atlas, so a floor whose colour comes from its
+        /// definition is painted the same here as it is drawn in game.
+        /// </summary>
+        private static void Tint(Image<Rgba32> image, Color color)
+        {
+            if (color == Color.White)
+                return;
+
+            var (r, g, b, a) = (color.RByte, color.GByte, color.BByte, color.AByte);
+
+            image.ProcessPixelRows(accessor =>
+            {
+                for (var y = 0; y < accessor.Height; y++)
+                {
+                    var row = accessor.GetRowSpan(y);
+
+                    for (var x = 0; x < row.Length; x++)
+                    {
+                        ref var pixel = ref row[x];
+
+                        pixel.R = (byte) (pixel.R * r / 255);
+                        pixel.G = (byte) (pixel.G * g / 255);
+                        pixel.B = (byte) (pixel.B * b / 255);
+                        pixel.A = (byte) (pixel.A * a / 255);
+                    }
+                }
+            });
         }
     }
 }

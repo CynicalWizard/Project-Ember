@@ -1,0 +1,65 @@
+- type: stack
+  id: EmberFloorTileTechfloor
+  name: grey techfloor tile
+  spawn: EmberFloorTileItemTechfloor
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileTechfloorGrid
+  name: grid techfloor tile
+  spawn: EmberFloorTileItemTechfloorGrid
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileSteelGrid
+  name: grey grid tile
+  spawn: EmberFloorTileItemSteelGrid
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileSteelRidged
+  name: grey ridged tile
+  spawn: EmberFloorTileItemSteelRidged
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileStone
+  name: stone slab
+  spawn: EmberFloorTileItemStone
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileWoodMahogany
+  name: mahogany floor tile
+  spawn: EmberFloorTileItemWoodMahogany
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileWoodMaple
+  name: maple floor tile
+  spawn: EmberFloorTileItemWoodMaple
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileWoodEbony
+  name: ebony floor tile
+  spawn: EmberFloorTileItemWoodEbony
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileWoodWalnut
+  name: walnut floor tile
+  spawn: EmberFloorTileItemWoodWalnut
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileWoodBamboo
+  name: bamboo floor tile
+  spawn: EmberFloorTileItemWoodBamboo
+  maxCount: 30
+
+- type: stack
+  id: EmberFloorTileWoodYew
+  name: yew floor tile
+  spawn: EmberFloorTileItemWoodYew
+  maxCount: 30

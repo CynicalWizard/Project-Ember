@@ -1,0 +1,14 @@
+ember-tiles-techfloor = techfloor
+ember-tiles-techfloor-grid = grid techfloor
+ember-tiles-steel-grid = grey grid floor
+ember-tiles-steel-ridged = grey ridged floor
+ember-tiles-stone = stone slabs
+ember-tiles-old = old tiling
+ember-tiles-cargo = cargo tiling
+ember-tiles-kafel = kafel tiling
+ember-tiles-wood-mahogany = mahogany floor
+ember-tiles-wood-maple = maple floor
+ember-tiles-wood-ebony = ebony floor
+ember-tiles-wood-walnut = walnut floor
+ember-tiles-wood-bamboo = bamboo floor
+ember-tiles-wood-yew = yew floor

@@ -1,7 +1,8 @@
 - type: tile
   id: FloorSteel
   name: tiles-steel-floor
-  sprite: /Textures/Tiles/steel.png
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#4c535b"
   variants: 8
   placementVariants:
   - 1.2
@@ -125,7 +126,8 @@
 - type: tile
   id: FloorSteelMono
   name: tiles-steel-floor-mono
-  sprite: /Textures/Tiles/steel_mono.png
+  sprite: /Textures/Ember/Tiles/monotile.png
+  color: "#4c535b"
   variants: 4
   placementVariants:
   - 1.0
@@ -239,7 +241,8 @@
 - type: tile
   id: FloorWood
   name: tiles-wood
-  sprite: /Textures/Tiles/wood.png
+  sprite: /Textures/Ember/Tiles/wood.png
+  color: "#d5a66e"
   variants: 4
   placementVariants:
   - 1.0
@@ -259,7 +262,8 @@
 - type: tile
   id: FloorWhite
   name: tiles-white-floor
-  sprite: /Textures/Tiles/white.png
+  sprite: /Textures/Ember/Tiles/tiled_light.png
+  color: "#eeeeee"
   variants: 4
   placementVariants:
   - 1.0
@@ -343,7 +347,8 @@
 - type: tile
   id: FloorWhiteMono
   name: tiles-white-floor-mono
-  sprite: /Textures/Tiles/white_mono.png
+  sprite: /Textures/Ember/Tiles/monotile_light.png
+  color: "#eeeeee"
   variants: 4
   placementVariants:
   - 1.0
@@ -433,7 +438,8 @@
 - type: tile
   id: FloorDark
   name: tiles-dark-floor
-  sprite: /Textures/Tiles/dark.png
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#404040"
   variants: 4
   placementVariants:
   - 1.0
@@ -517,7 +523,8 @@
 - type: tile
   id: FloorDarkMono
   name: tiles-dark-floor-mono
-  sprite: /Textures/Tiles/dark_mono.png
+  sprite: /Textures/Ember/Tiles/monotile.png
+  color: "#404040"
   variants: 4
   placementVariants:
   - 1.0
@@ -607,7 +614,7 @@
 - type: tile
   id: FloorTechMaint
   name: tiles-techmaint-floor
-  sprite: /Textures/Tiles/tech_maint.png
+  sprite: /Textures/Ember/Tiles/tech_maint.png
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -619,7 +626,7 @@
 - type: tile
   id: FloorReinforced
   name: tiles-reinforced-floor
-  sprite: /Textures/Tiles/reinforced.png
+  sprite: /Textures/Ember/Tiles/reinforced.png
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -644,7 +651,7 @@
 - type: tile
   id: FloorLino
   name: tiles-linoleum-floor
-  sprite: /Textures/Tiles/lino.png
+  sprite: /Textures/Ember/Tiles/lino.png
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -656,7 +663,7 @@
 - type: tile
   id: FloorSteelDirty
   name: tiles-dirty-steel-floor
-  sprite: /Textures/Tiles/steel_dirty.png
+  sprite: /Textures/Ember/Tiles/steel_dirty.png
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -668,7 +675,7 @@
 - type: tile
   id: FloorElevatorShaft
   name: tiles-elevator-shaft
-  sprite: /Textures/Tiles/elevator_shaft.png
+  sprite: /Textures/Ember/Tiles/elevator_shaft.png
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -692,7 +699,7 @@
 - type: tile
   id: FloorRockVault
   name: tiles-rock-floor
-  sprite: /Textures/Tiles/rock_vault.png
+  sprite: /Textures/Ember/Tiles/rock_vault.png
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -771,7 +778,7 @@
 - type: tile
   id: FloorFreezer
   name: tiles-freezer
-  sprite: /Textures/Tiles/freezer.png
+  sprite: /Textures/Ember/Tiles/freezer.png
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -783,7 +790,7 @@
 - type: tile
   id: FloorShowroom
   name: tiles-showroom-floor
-  sprite: /Textures/Tiles/showroom.png
+  sprite: /Textures/Ember/Tiles/showroom.png
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -795,7 +802,7 @@
 - type: tile
   id: FloorHydro
   name: tiles-hydro-floor
-  sprite: /Textures/Tiles/hydro.png
+  sprite: /Textures/Ember/Tiles/hydro.png
   variants: 4
   placementVariants:
   - 1.0
@@ -1376,7 +1383,7 @@
 - type: tile
   id: FloorGreenCircuit
   name: tiles-green-circuit-floor
-  sprite: /Textures/Tiles/green_circuit.png
+  sprite: /Textures/Ember/Tiles/green_circuit.png
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1388,7 +1395,7 @@
 - type: tile
   id: FloorBlueCircuit
   name: tiles-blue-circuit-floor
-  sprite: /Textures/Tiles/blue_circuit.png
+  sprite: /Textures/Ember/Tiles/blue_circuit.png
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1400,7 +1407,7 @@
 - type: tile
   id: FloorRedCircuit
   name: tiles-red-circuit-floor
-  sprite: /Textures/Tiles/red_circuit.png
+  sprite: /Textures/Ember/Tiles/red_circuit.png
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]

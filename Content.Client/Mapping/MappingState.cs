@@ -125,6 +125,7 @@ public sealed class MappingState : GameplayStateBase
         Screen.Entities.GetPrototypeData += OnGetData;
         Screen.Entities.SelectionChanged += OnSelected;
         Screen.Tiles.GetPrototypeData += OnGetData;
+        Screen.Tiles.GetPrototypeModulate = OnGetTileColor;
         Screen.Tiles.SelectionChanged += OnSelected;
         Screen.Decals.GetPrototypeData += OnGetData;
         Screen.Decals.SelectionChanged += OnSelected;
@@ -177,6 +178,7 @@ public sealed class MappingState : GameplayStateBase
         Screen.Entities.GetPrototypeData -= OnGetData;
         Screen.Entities.SelectionChanged -= OnSelected;
         Screen.Tiles.GetPrototypeData -= OnGetData;
+        Screen.Tiles.GetPrototypeModulate = null;
         Screen.Tiles.SelectionChanged -= OnSelected;
         Screen.Decals.GetPrototypeData -= OnGetData;
         Screen.Decals.SelectionChanged -= OnSelected;
@@ -681,6 +683,15 @@ public sealed class MappingState : GameplayStateBase
                     textures.Add(_resources.GetResource<TextureResource>(sprite).Texture);
                 break;
         }
+    }
+
+    /// <summary>
+    ///     A tile's sprite can be a greyscale mask shared by a whole family, in which case the colour is the
+    ///     only thing telling them apart. The atlas applies it wherever the tile is actually drawn.
+    /// </summary>
+    private Color? OnGetTileColor(IPrototype prototype)
+    {
+        return prototype is ContentTileDefinition tile ? tile.Color : null;
     }
 
     private void OnSelected(MappingPrototypeList list, MappingPrototype mapping)
