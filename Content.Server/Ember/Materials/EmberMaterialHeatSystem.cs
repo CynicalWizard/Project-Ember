@@ -9,6 +9,7 @@ using Content.Shared.Ember.Structures;
 using Content.Shared.Ember.Walls;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Server.Ember.Materials;
 
@@ -28,6 +29,7 @@ public sealed class EmberMaterialHeatSystem : EntitySystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly FlammableSystem _flammable = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     /// <summary>
     /// How often Bay runs a fire, in seconds: its air subsystem takes the default twenty deciseconds and
@@ -36,7 +38,8 @@ public sealed class EmberMaterialHeatSystem : EntitySystem
     /// <remarks>
     /// Ours runs at the atmos tick rate, fifteen times a second by default, so the same numbers land thirty
     /// times as often. Left unscaled, a tritium fire put four hundred points into a steel wall in under half
-    /// a second and took out everything within twenty tiles before anyone could react to it.
+    /// a second and took out everything within twenty tiles before anyone could react to it. What we do with
+    /// this is decide how often a tick counts, not how much it is worth — see <see cref="Burn"/>.
     /// </remarks>
     private const float BayFireInterval = 2f;
 
@@ -53,6 +56,7 @@ public sealed class EmberMaterialHeatSystem : EntitySystem
         SubscribeLocalEvent<EmberProceduralTableComponent, TileFireEvent>(OnTileFire);
         SubscribeLocalEvent<EmberProceduralAirlockComponent, TileFireEvent>(OnTileFire);
         SubscribeLocalEvent<EmberProceduralMaterialDoorComponent, TileFireEvent>(OnTileFire);
+        SubscribeLocalEvent<EmberMaterialCompositionComponent, TileFireEvent>(OnTileFire);
 
         // Anything that seals its own tile can never have a fire on it, so it hears about the one next door.
         SubscribeLocalEvent<EmberProceduralWallComponent, AdjacentTileFireEvent>(OnAdjacentTileFire);
@@ -60,6 +64,7 @@ public sealed class EmberMaterialHeatSystem : EntitySystem
         SubscribeLocalEvent<EmberMaterialTintComponent, AdjacentTileFireEvent>(OnAdjacentTileFire);
         SubscribeLocalEvent<EmberProceduralAirlockComponent, AdjacentTileFireEvent>(OnAdjacentTileFire);
         SubscribeLocalEvent<EmberProceduralMaterialDoorComponent, AdjacentTileFireEvent>(OnAdjacentTileFire);
+        SubscribeLocalEvent<EmberMaterialCompositionComponent, AdjacentTileFireEvent>(OnAdjacentTileFire);
     }
 
     private void OnTileFire<T>(Entity<T> ent, ref TileFireEvent args) where T : IComponent
@@ -88,12 +93,17 @@ public sealed class EmberMaterialHeatSystem : EntitySystem
         if (!HasComp<DamageableComponent>(uid) || MeltingPoint(uid) is not { } melting)
             return;
 
-        // Bay's numbers are per fire tick and ours arrive far more often, so what it charges over two seconds
-        // is spread across however many times we are called in those two seconds.
-        var share = 1f / (_atmosphere.AtmosTickRate * BayFireInterval);
-        var damage = EmberMaterialHeat.Damage(temperature, melting) * share;
+        var damage = EmberMaterialHeat.Damage(temperature, melting);
 
         if (damage <= 0f)
+            return;
+
+        // Bay charges its whole toll once every two seconds, and we are called thirty times in those two
+        // seconds. Handing over a thirtieth of it each time looks equivalent and is not: armour is a flat
+        // subtraction taken per blow, every flat reduction in the game is larger than a thirtieth of Bay's
+        // damage, and so sliced fire damage was being rounded away to nothing on everything that has any.
+        // Landing the whole blow a thirtieth of the time keeps Bay's rate and lets armour work as written.
+        if (!_random.Prob(1f / (_atmosphere.AtmosTickRate * BayFireInterval)))
             return;
 
         _damageable.TryChangeDamage(

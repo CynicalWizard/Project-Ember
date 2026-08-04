@@ -30,6 +30,12 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallic
+  # Стальной, каким бы материалом его потом не обшили: на Bay гирдер один на все стены и при разборке
+  # всегда отдаёт стальной лист. Материал тут ничего не красит, он нужен только чтобы гирдеру было
+  # чем ответить огню.
+  - type: EmberMaterialComposition
+    materials:
+    - Steel
   - type: Destructible
     thresholds:
     - trigger:
@@ -67,6 +73,12 @@
     - type: Construction
       graph: Girder
       node: reinforcedGirder
+    # Плестиловые распорки на стальном каркасе. Плавится всё равно каркас: подкрепление добавляется к
+    # температуре только у стен, у гирдера на Bay его вообще никто не спрашивает.
+    - type: EmberMaterialComposition
+      materials:
+      - Steel
+      - Plasteel
     - type: Destructible
       thresholds:
         - trigger:
@@ -110,6 +122,11 @@
     - type: Construction
       graph: ClockworkGirder
       node: clockGirder
+    # Латуни у нас нет, а наследовать сталь с плестилом шестерня не должна. Бронза — ближайший
+    # настоящий сплав меди из тех, что есть.
+    - type: EmberMaterialComposition
+      materials:
+      - Bronze
     - type: StaticPrice
       price: 75
     - type: Destructible

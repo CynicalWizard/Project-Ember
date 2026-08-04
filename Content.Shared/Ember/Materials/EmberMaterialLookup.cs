@@ -99,6 +99,17 @@ public static class EmberMaterialLookup
             stack.Material is { } stackMaterial)
         {
             yield return stackMaterial;
+            yield break;
+        }
+
+        // Last, because it is the one that says nothing about how the thing looks: whatever named it did so
+        // only so that the material could be asked about.
+        if (entities.TryGetComponent(uid, out EmberMaterialCompositionComponent? composition))
+        {
+            foreach (var material in composition.Materials)
+            {
+                yield return material;
+            }
         }
     }
 
