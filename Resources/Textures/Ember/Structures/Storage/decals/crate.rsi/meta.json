@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "license": null,
+  "copyright": null,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "hazard",
+      "directions": 4
+    },
+    {
+      "name": "crate_radiation_left",
+      "directions": 4
+    },
+    {
+      "name": "crate_radiation_right",
+      "directions": 4
+    },
+    {
+      "name": "crate_reticle",
+      "directions": 4
+    },
+    {
+      "name": "toxin",
+      "directions": 4
+    },
+    {
+      "name": "crate_bracing_closed",
+      "directions": 4
+    },
+    {
+      "name": "crate_bracing_open",
+      "directions": 4
+    },
+    {
+      "name": "crate_cross_closed",
+      "directions": 4
+    },
+    {
+      "name": "crate_oxy_closed",
+      "directions": 4
+    },
+    {
+      "name": "crate_stripe_closed",
+      "directions": 4
+    },
+    {
+      "name": "crate_stripe_open",
+      "directions": 4
+    },
+    {
+      "name": "crate_stripe_left_closed",
+      "directions": 4
+    },
+    {
+      "name": "crate_stripe_left_open",
+      "directions": 4
+    },
+    {
+      "name": "crate_stripe_right_closed",
+      "directions": 4
+    },
+    {
+      "name": "crate_stripe_right_open",
+      "directions": 4
+    },
+    {
+      "name": "crate_stripes_closed",
+      "directions": 4
+    },
+    {
+      "name": "crate_stripes_open",
+      "directions": 4
+    },
+    {
+      "name": "lid_stripes_closed",
+      "directions": 4
+    },
+    {
+      "name": "lid_stripes_open",
+      "directions": 4
+    }
+  ]
+}

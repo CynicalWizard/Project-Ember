@@ -10,131 +10,111 @@
 # Blue wardrobe
 - type: entity
   id: WardrobeBlue
-  parent: WardrobeBase
+  parent: [WardrobeBase, EmberProceduralClosetVisuals]
   name: blue wardrobe
   description: "A wardrobe packed with stylish blue clothing."
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: generic
-    stateDoorOpen: generic_open
-    stateDoorClosed: blue_door
+  - type: EmberProceduralCloset
+    style: EmberClosetWardrobe
 
 # Pink wardrobe
 - type: entity
   id: WardrobePink
-  parent: WardrobeBase
+  parent: [WardrobeBase, EmberProceduralClosetVisuals]
   name: pink wardrobe
   description: "A wardrobe packed with fabulous pink clothing."
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: generic
-    stateDoorOpen: generic_open
-    stateDoorClosed: pink_door
+  - type: EmberProceduralCloset
+    style: EmberClosetWardrobePink
 
 # Black wardrobe
 - type: entity
   id: WardrobeBlack
-  parent: WardrobeBase
+  parent: [WardrobeBase, EmberProceduralClosetVisuals]
   name: black wardrobe
   description: "A wardrobe packed with stylish black clothing."
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: generic
-    stateDoorOpen: generic_open
-    stateDoorClosed: black_door
+  - type: EmberProceduralCloset
+    style: EmberClosetWardrobeBlack
 
 # Green wardrobe
 - type: entity
   id: WardrobeGreen
-  parent: WardrobeBase
+  parent: [WardrobeBase, EmberProceduralClosetVisuals]
   name: green wardrobe
   description: "A wardrobe packed with stylish green clothing."
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: generic
-    stateDoorOpen: generic_open
-    stateDoorClosed: green_door
+  - type: EmberProceduralCloset
+    style: EmberClosetWardrobeGreen
 
 # Prison wardrobe
 - type: entity
   id: WardrobePrison
-  parent: WardrobeBase
+  parent: [WardrobeBase, EmberProceduralClosetVisuals]
   name: prison wardrobe
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: generic
-    stateDoorOpen: generic_open
-    stateDoorClosed: orange_door
+  - type: EmberProceduralCloset
+    style: EmberClosetWardrobeOrange
 
 # Yellow wardrobe
 - type: entity
   id: WardrobeYellow
-  parent: WardrobeBase
+  parent: [WardrobeBase, EmberProceduralClosetVisuals]
   name: yellow wardrobe
   description: "A wardrobe packed with stylish yellow clothing."
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: generic
-    stateDoorOpen: generic_open
-    stateDoorClosed: yellow_door
+  - type: EmberProceduralCloset
+    style: EmberClosetWardrobeYellow
 
 # White wardrobe
 - type: entity
   id: WardrobeWhite
-  parent: WardrobeBase
+  parent: [WardrobeBase, EmberProceduralClosetVisuals]
   name: white wardrobe
   description: "A wardrobe packed with stylish white clothing."
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: generic
-    stateDoorOpen: generic_open
-    stateDoorClosed: white_door
+  - type: EmberProceduralCloset
+    style: EmberClosetWardrobeWhite
 
 # Grey wardrobe
 - type: entity
   id: WardrobeGrey
-  parent: WardrobeBase
+  parent: [WardrobeBase, EmberProceduralClosetVisuals]
   name: grey wardrobe
   description: "A wardrobe packed with a tide of grey clothing."
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: generic
-    stateDoorOpen: generic_open
-    stateDoorClosed: grey_door
+  - type: EmberProceduralCloset
+    style: EmberClosetWardrobeGrey
 
 # Mixed wardrobe
 - type: entity
   id: WardrobeMixed
-  parent: WardrobeBase
+  parent: [WardrobeBase, EmberProceduralClosetVisuals]
   name: mixed wardrobe
   description: "A wardrobe packed with a mix of colorful clothing."
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: generic
-    stateDoorOpen: generic_open
-    stateDoorClosed: mixed_door
+  - type: EmberProceduralCloset
+    style: EmberClosetWardrobeMixed
 
 # Jobs
 
 - type: entity
   id: WardrobeSecurity
-  parent: WardrobeBase
+  parent: [WardrobeBase, EmberProceduralClosetVisuals]
   name: security wardrobe
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: generic
-    stateDoorOpen: generic_open
-    stateDoorClosed: red_door
+  - type: EmberProceduralCloset
+    style: EmberClosetWardrobeRed
 
 - type: entity
   id: WardrobeAtmospherics

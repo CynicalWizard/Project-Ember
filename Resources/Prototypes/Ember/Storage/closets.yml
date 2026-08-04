@@ -1,0 +1,105 @@
+# Слои, которые процедурный контейнер НЕ рисует сам, и материал, из которого он сделан.
+#
+# EmberProceduralClosetSystem вставляет свои слои в начало списка, так что всё объявленное здесь остаётся
+# сверху. У каждого слоя тут указан свой sprite, потому что контейнер может переопределить sprite: у Sprite
+# целиком — тогда слой без собственного листа поедет за ним.
+#
+# Три слоя существуют только чтобы ванильным визуализаторам было что дёргать. LockVisualizerSystem меняет
+# видимость своего слоя не проверяя, что слой есть, а EntityStorageVisualizerSystem при инициализации ставит
+# состояние на базовый слой — оба уронили бы контейнер, которого не ждали. Они скрыты и ничего не рисуют.
+#
+# Материал баевский: /obj/structure/closet объявляет сталь и использует её ровно в одном месте — при разрезке
+# контейнер отдаёт два листа. Здесь он ещё и решает, при какой температуре ящик поплывёт.
+
+- type: entity
+  abstract: true
+  id: EmberProceduralClosetVisuals
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: Ember/Structures/Storage/bases/closet.rsi
+    layers:
+    - state: generic
+      visible: false
+      sprite: Structures/Storage/closet.rsi
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: generic_door
+      visible: false
+      sprite: Structures/Storage/closet.rsi
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: blank
+      sprite: Ember/Structures/Storage/bases/closet.rsi
+      map: ["enum.LockVisualLayers.Lock"]
+    - state: paper
+      visible: false
+      sprite: Structures/Storage/closet_labels.rsi
+      offset: "-0.065,0"
+      map: ["enum.PaperLabelVisuals.Layer"]
+  - type: EmberMaterialComposition
+    materials:
+    - Steel
+
+- type: entity
+  abstract: true
+  id: EmberProceduralCrateVisuals
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: Ember/Structures/Storage/bases/crate.rsi
+    layers:
+    - state: base
+      visible: false
+      sprite: Structures/Storage/Crates/generic.rsi
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: closed
+      visible: false
+      sprite: Structures/Storage/Crates/generic.rsi
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: blank
+      sprite: Ember/Structures/Storage/bases/crate.rsi
+      map: ["enum.LockVisualLayers.Lock"]
+    - state: paper
+      visible: false
+      sprite: Structures/Storage/Crates/labels.rsi
+      map: ["enum.PaperLabelVisuals.Layer"]
+  - type: EmberMaterialComposition
+    materials:
+    - Steel
+
+- type: entity
+  abstract: true
+  id: EmberProceduralWallClosetVisuals
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: Ember/Structures/Storage/bases/wall.rsi
+    layers:
+    - state: generic
+      visible: false
+      sprite: Structures/Storage/wall_locker.rsi
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: generic_door
+      visible: false
+      sprite: Structures/Storage/wall_locker.rsi
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: blank
+      sprite: Ember/Structures/Storage/bases/wall.rsi
+      map: ["enum.LockVisualLayers.Lock"]
+  - type: EmberMaterialComposition
+    materials:
+    - Steel
+
+# Ящик, который переживает пожар. Всё остальное из этого списка сделано из стали и плывёт при 1800 K, чего
+# тритиевому пожару хватает с запасом; осмий-карбидный плестил держит 12000 K, и это единственное, что можно
+# оставить в горящем отсеке с расчётом найти его там же.
+- type: entity
+  id: CrateThermal
+  parent: CrateGenericSteel
+  name: thermal crate
+  description: A crate lined with osmium-carbide plasteel. Whatever is inside will outlive the room it is in.
+  components:
+  - type: EmberProceduralCloset
+    style: EmberClosetCrateSecureHazard
+  - type: EmberMaterialComposition
+    materials:
+    - OsmiumCarbidePlasteel

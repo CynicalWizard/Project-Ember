@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "license": null,
+  "copyright": null,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "closed_locked"
+    },
+    {
+      "name": "closed"
+    },
+    {
+      "name": "open"
+    },
+    {
+      "name": "closed_unlocked"
+    },
+    {
+      "name": "closed_off"
+    },
+    {
+      "name": "open_off"
+    },
+    {
+      "name": "blank"
+    }
+  ]
+}

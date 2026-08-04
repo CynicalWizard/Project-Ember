@@ -1,26 +1,22 @@
 - type: entity
   id: ClosetWall
-  parent: BaseWallCloset
+  parent: [BaseWallCloset, EmberProceduralWallClosetVisuals]
   name: maintenance wall closet
   description: It's a storage unit.
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: generic
-    stateDoorOpen: generic_open
-    stateDoorClosed: generic_door
+  - type: EmberProceduralCloset
+    style: EmberClosetWall
 
 - type: entity
   id: ClosetWallEmergency
   name: emergency wall closet
-  parent: BaseWallCloset
+  parent: [BaseWallCloset, EmberProceduralWallClosetVisuals]
   description: It's a storage unit for emergency breath masks and O2 tanks.
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: emergency
-    stateDoorOpen: emergency_open
-    stateDoorClosed: emergency_door
+  - type: EmberProceduralCloset
+    style: EmberClosetWallEmergency
 
 - type: entity
   id: ClosetWallRadiation
@@ -37,14 +33,12 @@
 - type: entity
   id: ClosetWallFire
   name: fire-safety wall closet
-  parent: BaseWallCloset
+  parent: [BaseWallCloset, EmberProceduralWallClosetVisuals]
   description: It's a storage unit for fire-fighting supplies.
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: fire
-    stateDoorOpen: fire_open
-    stateDoorClosed: fire_door
+  - type: EmberProceduralCloset
+    style: EmberClosetWallHydrant
 
 - type: entity
   id: ClosetWallBlue
@@ -166,13 +160,11 @@
 
 - type: entity
   id: LockerWallMedical
-  parent: BaseWallLocker
+  parent: [BaseWallLocker, EmberProceduralWallClosetVisuals]
   name: medical wall locker
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: med
-    stateDoorOpen: med_open
-    stateDoorClosed: med_door
   - type: AccessReader
     access: [["Medical"]]
+  - type: EmberProceduralCloset
+    style: EmberClosetWallMedical

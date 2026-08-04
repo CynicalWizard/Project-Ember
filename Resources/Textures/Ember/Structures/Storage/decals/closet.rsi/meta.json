@@ -1,0 +1,197 @@
+{
+  "version": 1,
+  "license": null,
+  "copyright": null,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "lower_vent_closed"
+    },
+    {
+      "name": "lower_vent_open"
+    },
+    {
+      "name": "upper_vent_closed"
+    },
+    {
+      "name": "upper_vent_open"
+    },
+    {
+      "name": "biohazard_closed"
+    },
+    {
+      "name": "stripe_horizontal_closed"
+    },
+    {
+      "name": "stripe_horizontal_lower_closed"
+    },
+    {
+      "name": "stripe_horizontal_upper_closed"
+    },
+    {
+      "name": "stripes_horizontal_closed"
+    },
+    {
+      "name": "research_closed"
+    },
+    {
+      "name": "medical_closed"
+    },
+    {
+      "name": "atmos_upper_closed"
+    },
+    {
+      "name": "cargo_upper_closed"
+    },
+    {
+      "name": "forensics_closed"
+    },
+    {
+      "name": "exped_closed"
+    },
+    {
+      "name": "security_closed"
+    },
+    {
+      "name": "stripe_personnel_closed"
+    },
+    {
+      "name": "stripe_vertical_left_partial"
+    },
+    {
+      "name": "stripe_vertical_mid_partial"
+    },
+    {
+      "name": "stripe_vertical_right_partial"
+    },
+    {
+      "name": "stripe_vertical_left_full"
+    },
+    {
+      "name": "stripe_vertical_mid_full"
+    },
+    {
+      "name": "stripe_vertical_right_full"
+    },
+    {
+      "name": "electric_closed"
+    },
+    {
+      "name": "fire_closed"
+    },
+    {
+      "name": "nano_closed"
+    },
+    {
+      "name": "corp_closed"
+    },
+    {
+      "name": "command_closed"
+    },
+    {
+      "name": "l2_closed"
+    },
+    {
+      "name": "l3_closed"
+    },
+    {
+      "name": "l4_closed"
+    },
+    {
+      "name": "stripe_w_closed"
+    },
+    {
+      "name": "upper_holes_closed"
+    },
+    {
+      "name": "upper_holes_open"
+    },
+    {
+      "name": "lower_holes_closed"
+    },
+    {
+      "name": "lower_holes_open"
+    },
+    {
+      "name": "upper_side_vent_closed"
+    },
+    {
+      "name": "upper_side_vent_open"
+    },
+    {
+      "name": "lower_side_vent_closed"
+    },
+    {
+      "name": "lower_side_vent_open"
+    },
+    {
+      "name": "captain_closed"
+    },
+    {
+      "name": "eng_closed"
+    },
+    {
+      "name": "eng_narrow_closed"
+    },
+    {
+      "name": "circle_closed"
+    },
+    {
+      "name": "medcircle_closed"
+    },
+    {
+      "name": "atmos_closed"
+    },
+    {
+      "name": "viro_closed"
+    },
+    {
+      "name": "sci_closed"
+    },
+    {
+      "name": "hydro_closed"
+    },
+    {
+      "name": "cargo_closed"
+    },
+    {
+      "name": "hop_closed"
+    },
+    {
+      "name": "oxy_closed"
+    },
+    {
+      "name": "extinguisher_closed"
+    },
+    {
+      "name": "vertical_stripe_simple_closed"
+    },
+    {
+      "name": "lower_half_solid_closed"
+    },
+    {
+      "name": "stripe_horizontal_narrow_closed"
+    },
+    {
+      "name": "stripe_horizontal_broad_closed"
+    },
+    {
+      "name": "inset"
+    },
+    {
+      "name": "mining_closed"
+    },
+    {
+      "name": "tool_closed"
+    },
+    {
+      "name": "rads_closed"
+    },
+    {
+      "name": "top_stripe_closed"
+    }
+  ]
+}
