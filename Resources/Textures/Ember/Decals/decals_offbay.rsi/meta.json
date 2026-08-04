@@ -1779,6 +1779,30 @@
     },
     {
       "name": "hazard_u_w"
+    },
+    {
+      "name": "corp_floor_top_left"
+    },
+    {
+      "name": "corp_floor_field_top_left"
+    },
+    {
+      "name": "corp_floor_top_right"
+    },
+    {
+      "name": "corp_floor_field_top_right"
+    },
+    {
+      "name": "corp_floor_bottom_left"
+    },
+    {
+      "name": "corp_floor_field_bottom_left"
+    },
+    {
+      "name": "corp_floor_bottom_right"
+    },
+    {
+      "name": "corp_floor_field_bottom_right"
     }
   ]
 }

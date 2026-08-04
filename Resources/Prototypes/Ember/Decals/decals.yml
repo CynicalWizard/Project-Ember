@@ -5604,6 +5604,80 @@
   abstract: true
 
 - type: decal
+  id: EmberDecalCorpFloorBase
+  parent: EmberDecalCategoryLogo
+  abstract: true
+
+- type: decal
+  id: EmberDecalCorpFloorTopLeft
+  parent: EmberDecalCorpFloorBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corp_floor_top_left
+
+- type: decal
+  id: EmberDecalCorpFloorTopRight
+  parent: EmberDecalCorpFloorBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corp_floor_top_right
+
+- type: decal
+  id: EmberDecalCorpFloorBottomLeft
+  parent: EmberDecalCorpFloorBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corp_floor_bottom_left
+
+- type: decal
+  id: EmberDecalCorpFloorBottomRight
+  parent: EmberDecalCorpFloorBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corp_floor_bottom_right
+
+- type: decal
+  id: EmberDecalCorpFloorFieldBase
+  parent: EmberDecalCategoryLogo
+  abstract: true
+
+- type: decal
+  id: EmberDecalCorpFloorFieldTopLeft
+  parent: EmberDecalCorpFloorFieldBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corp_floor_field_top_left
+
+- type: decal
+  id: EmberDecalCorpFloorFieldTopRight
+  parent: EmberDecalCorpFloorFieldBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corp_floor_field_top_right
+
+- type: decal
+  id: EmberDecalCorpFloorFieldBottomLeft
+  parent: EmberDecalCorpFloorFieldBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corp_floor_field_bottom_left
+
+- type: decal
+  id: EmberDecalCorpFloorFieldBottomRight
+  parent: EmberDecalCorpFloorFieldBase
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Ember/Decals/decals_offbay.rsi
+    state: corp_floor_field_bottom_right
+
+- type: decal
   id: EmberDecalFoundationBase
   parent: EmberDecalCategoryLogo
   abstract: true
