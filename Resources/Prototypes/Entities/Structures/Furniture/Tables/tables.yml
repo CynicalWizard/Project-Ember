@@ -183,11 +183,10 @@
           collection: MetalBreak
           params:
             volume: -6
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          SheetSteel1:
-            min: 1
-            max: 1
+      # Bay settles up with each part of a broken table separately -- the frame, the plating and whatever
+      # reinforces it -- and about one part in five comes through whole.
+      - !type:EmberSpawnMaterialDebrisBehavior
+        sheetChance: 0.2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Construction
@@ -220,11 +219,10 @@
           collection: MetalBreak
           params:
             volume: -6
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          SheetSteel1:
-            min: 2
-            max: 2
+      # Bay settles up with each part of a broken table separately -- the frame, the plating and
+      # whatever reinforces it -- and about one part in five comes through whole.
+      - !type:EmberSpawnMaterialDebrisBehavior
+        sheetChance: 0.2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Construction
@@ -272,11 +270,10 @@
       - !type:PlaySoundBehavior
         sound:
           collection: GlassBreak
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          ShardGlass:
-            min: 1
-            max: 1
+      # Bay settles up with each part of a broken table separately -- the frame, the plating and
+      # whatever reinforces it -- and about one part in five comes through whole.
+      - !type:EmberSpawnMaterialDebrisBehavior
+        sheetChance: 0.2
       - !type:ChangeConstructionNodeBehavior
         node: TableFrame
       - !type:DoActsBehavior
@@ -325,14 +322,10 @@
           collection: GlassBreak
       - !type:ChangeConstructionNodeBehavior
         node: TableFrame
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          ShardGlass:
-            min: 1
-            max: 1
-          PartRodMetal1:
-            min: 1
-            max: 1
+      # Bay settles up with each part of a broken table separately -- the frame, the plating and
+      # whatever reinforces it -- and about one part in five comes through whole.
+      - !type:EmberSpawnMaterialDebrisBehavior
+        sheetChance: 0.2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Construction
@@ -378,14 +371,10 @@
           collection: GlassBreak
       - !type:ChangeConstructionNodeBehavior
         node: TableFrame
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          ShardGlassPlasma:
-            min: 1
-            max: 1
-          PartRodMetal1:
-            min: 1
-            max: 1
+      # Bay settles up with each part of a broken table separately -- the frame, the plating and
+      # whatever reinforces it -- and about one part in five comes through whole.
+      - !type:EmberSpawnMaterialDebrisBehavior
+        sheetChance: 0.2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Construction
@@ -423,11 +412,10 @@
           collection: MetalBreak
           params:
             volume: -6
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          SheetBrass1:
-            min: 1
-            max: 1
+      # Bay settles up with each part of a broken table separately -- the frame, the plating and
+      # whatever reinforces it -- and about one part in five comes through whole.
+      - !type:EmberSpawnMaterialDebrisBehavior
+        sheetChance: 0.2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Construction
@@ -462,11 +450,10 @@
       - !type:PlaySoundBehavior
         sound:
           collection: WoodDestroy
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          MaterialWoodPlank:
-            min: 1
-            max: 1
+      # Bay settles up with each part of a broken table separately -- the frame, the plating and
+      # whatever reinforces it -- and about one part in five comes through whole.
+      - !type:EmberSpawnMaterialDebrisBehavior
+        sheetChance: 0.2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Construction
@@ -499,14 +486,10 @@
       - !type:PlaySoundBehavior
         sound:
           collection: WoodDestroy
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          MaterialWoodPlank:
-            min: 1
-            max: 1
-          MaterialCloth1:
-            min: 1
-            max: 1
+      # Bay settles up with each part of a broken table separately -- the frame, the plating and
+      # whatever reinforces it -- and about one part in five comes through whole.
+      - !type:EmberSpawnMaterialDebrisBehavior
+        sheetChance: 0.2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Construction
@@ -536,6 +519,10 @@
       - !type:PlaySoundBehavior
         sound:
           path: /Audio/Effects/picaxe2.ogg
+      # Bay settles up with each part of a broken table separately -- the frame, the plating and
+      # whatever reinforces it -- and about one part in five comes through whole.
+      - !type:EmberSpawnMaterialDebrisBehavior
+        sheetChance: 0.2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: FootstepModifier

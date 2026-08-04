@@ -4,6 +4,7 @@ using Content.Shared.Ember.Materials;
 using Content.Shared.Ember.Structures;
 using Content.Shared.Tag;
 using Robust.Client.GameObjects;
+using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Map.Enumerators;
@@ -22,6 +23,7 @@ public sealed class EmberProceduralTableSystem : EntitySystem
     private static readonly ProtoId<TagPrototype> WindowTag = "Window";
     private static readonly ProtoId<TagPrototype> DirectionalTag = "Directional";
 
+    [Dependency] private readonly IEyeManager _eye = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IResourceCache _resource = default!;
     [Dependency] private readonly TagSystem _tag = default!;
@@ -29,6 +31,7 @@ public sealed class EmberProceduralTableSystem : EntitySystem
     private readonly Queue<EntityUid> _dirty = new();
     private readonly Queue<EntityUid> _anchorChanged = new();
     private int _generation;
+    private Angle _lastEyeRotation;
 
     public override void Initialize()
     {
@@ -85,6 +88,23 @@ public sealed class EmberProceduralTableSystem : EntitySystem
         {
             if (tables.TryGetComponent(uid, out var table))
                 DirtyNeighbours(uid, table);
+        }
+
+        // A flipped table picks its frame outright, and the engine only leaves eye rotation out of that
+        // choice. Turning the camera therefore has to redraw them, or every table keeps leaning the way it
+        // leant before the view moved.
+        var eye = _eye.CurrentEye.Rotation;
+
+        if (!eye.EqualsApprox(_lastEyeRotation))
+        {
+            _lastEyeRotation = eye;
+
+            var flipped = AllEntityQuery<EmberProceduralTableComponent>();
+            while (flipped.MoveNext(out var uid, out var table))
+            {
+                if (table.Flipped)
+                    _dirty.Enqueue(uid);
+            }
         }
 
         if (_dirty.Count == 0)
@@ -230,9 +250,11 @@ public sealed class EmberProceduralTableSystem : EntitySystem
         var facing = component.FlipFacing;
 
         // The frame to draw is chosen outright rather than by turning the entity, so that what you see and what
-        // you walk into are decided by the same networked value.
+        // you walk into are decided by the same networked value. The engine picks a frame from the angle the
+        // entity has on screen, which an override skips entirely, so the camera has to be added back by hand:
+        // otherwise a turned view leaves the table leaning against an edge it is not blocking.
         sprite.EnableDirectionOverride = true;
-        sprite.DirectionOverride = facing;
+        sprite.DirectionOverride = (facing.ToAngle() + _eye.CurrentEye.Rotation).GetCardinalDir();
 
         var run = "0";
 

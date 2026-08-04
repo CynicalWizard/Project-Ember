@@ -1,7 +1,8 @@
-using System.Diagnostics.CodeAnalysis;
+using System.Collections.Generic;
 using System.Numerics;
 using Content.Shared.Destructible.Thresholds;
 using Content.Shared.Ember.Materials;
+using Content.Shared.Ember.Structures;
 using Content.Shared.Ember.Walls;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
@@ -22,6 +23,8 @@ namespace Content.Server.Destructible.Thresholds.Behaviors;
 [DataDefinition]
 public sealed partial class EmberSpawnMaterialDebrisBehavior : IThresholdBehavior
 {
+    private static readonly ProtoId<EmberMaterialPrototype> TableFrame = "Steel";
+
     /// <summary>How many pieces to scatter. Bay's devastated walls drop one or two.</summary>
     [DataField]
     public MinMax Count = new(1, 2);
@@ -34,11 +37,15 @@ public sealed partial class EmberSpawnMaterialDebrisBehavior : IThresholdBehavio
     [DataField]
     public EntProtoId Shard = "EmberShard";
 
+    /// <summary>
+    /// The chance a piece survives whole and comes back as a sheet instead. Bay pays this out per part of a
+    /// broken table; a wall that comes down leaves nothing intact, which is the default.
+    /// </summary>
+    [DataField]
+    public float SheetChance;
+
     public void Execute(EntityUid owner, DestructibleSystem system, EntityUid? cause = null)
     {
-        if (!TryGetMaterial(owner, system, out var materialId, out var material))
-            return;
-
         var transform = system.EntityManager.System<TransformSystem>();
         var position = transform.GetMapCoordinates(owner);
 
@@ -46,22 +53,32 @@ public sealed partial class EmberSpawnMaterialDebrisBehavior : IThresholdBehavio
             ? Count.Min
             : system.Random.Next(Count.Min, Count.Max + 1);
 
-        for (var i = 0; i < count; i++)
+        foreach (var materialId in GetMaterials(owner, system))
         {
-            var scatter = new Vector2(
-                system.Random.NextFloat(-Offset, Offset),
-                system.Random.NextFloat(-Offset, Offset));
-
-            // A material that shatters into nothing still leaves something behind, just its sheet form.
-            if (material.ShardType == EmberShardType.None)
-            {
-                if (material.StackEntity is { } sheet)
-                    system.EntityManager.SpawnEntity(sheet, position.Offset(scatter));
-
+            if (!system.PrototypeManager.TryIndex(materialId, out EmberMaterialPrototype? material))
                 continue;
-            }
 
-            SpawnShard(system.EntityManager, materialId, position.Offset(scatter));
+            for (var i = 0; i < count; i++)
+            {
+                var scatter = new Vector2(
+                    system.Random.NextFloat(-Offset, Offset),
+                    system.Random.NextFloat(-Offset, Offset));
+
+                // A material that shatters into nothing still leaves something behind, just its sheet form,
+                // as does the occasional piece that comes through the wreck intact.
+                var whole = material.ShardType == EmberShardType.None ||
+                            (SheetChance > 0f && system.Random.NextFloat() < SheetChance);
+
+                if (whole)
+                {
+                    if (material.StackEntity is { } sheet)
+                        system.EntityManager.SpawnEntity(sheet, position.Offset(scatter));
+
+                    continue;
+                }
+
+                SpawnShard(system.EntityManager, materialId, position.Offset(scatter));
+            }
         }
     }
 
@@ -87,35 +104,46 @@ public sealed partial class EmberSpawnMaterialDebrisBehavior : IThresholdBehavio
     }
 
     /// <summary>
+    /// Everything the thing was built out of. Most objects are one material; a table is its frame, its plating
+    /// and whatever reinforces the plating, and Bay's <c>break_to_parts</c> settles up with each of them.
+    /// </summary>
+    /// <remarks>
     /// Walls name a wall material that points at the physical one; anything else carrying a material names it
     /// directly.
-    /// </summary>
-    private static bool TryGetMaterial(
+    /// </remarks>
+    private static IEnumerable<ProtoId<EmberMaterialPrototype>> GetMaterials(
         EntityUid owner,
-        DestructibleSystem system,
-        out ProtoId<EmberMaterialPrototype> id,
-        [NotNullWhen(true)] out EmberMaterialPrototype? material)
+        DestructibleSystem system)
     {
-        id = default;
-        material = null;
-
         var entities = system.EntityManager;
-        ProtoId<EmberMaterialPrototype>? found = null;
 
         if (entities.TryGetComponent(owner, out EmberProceduralWallComponent? wall) &&
             system.PrototypeManager.TryIndex(wall.Material, out EmberWallMaterialPrototype? wallMaterial))
         {
-            found = wallMaterial.PhysicalMaterial;
+            if (wallMaterial.PhysicalMaterial is { } physical)
+                yield return physical;
+
+            yield break;
         }
-        else if (entities.TryGetComponent(owner, out EmberMaterialStackComponent? stack))
+
+        if (entities.TryGetComponent(owner, out EmberProceduralTableComponent? table))
         {
-            found = stack.Material;
+            // The frame under the plating is steel whatever the table is topped with, exactly as on Bay.
+            yield return TableFrame;
+
+            if (table.Material is { } plating)
+                yield return plating;
+
+            if (table.Reinforcement is { } reinforcement)
+                yield return reinforcement;
+
+            yield break;
         }
 
-        if (found is not { } materialId || !system.PrototypeManager.TryIndex(materialId, out material))
-            return false;
-
-        id = materialId;
-        return true;
+        if (entities.TryGetComponent(owner, out EmberMaterialStackComponent? stack) &&
+            stack.Material is { } material)
+        {
+            yield return material;
+        }
     }
 }
