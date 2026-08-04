@@ -63,6 +63,8 @@
         - FullTileMask
         layer:
         - GlassLayer
+  - type: EmberMaterialReinforcement
+    material: Steel
 
 - type: entity
   id: PlastitaniumWindowIndestructible

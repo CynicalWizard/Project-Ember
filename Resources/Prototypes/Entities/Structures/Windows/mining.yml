@@ -56,3 +56,5 @@
       sprite: Ember/Structures/Windows/window_damage_overlay.rsi
   - type: StaticPrice
     price: 100
+  - type: EmberMaterialReinforcement
+    material: Steel

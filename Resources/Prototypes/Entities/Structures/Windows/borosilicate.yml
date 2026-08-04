@@ -73,6 +73,8 @@
             max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: EmberMaterialReinforcement
+    material: Steel
 
 - type: entity
   parent: PhoronWindowDirectional
@@ -117,4 +119,6 @@
             max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: EmberMaterialReinforcement
+    material: Steel
 

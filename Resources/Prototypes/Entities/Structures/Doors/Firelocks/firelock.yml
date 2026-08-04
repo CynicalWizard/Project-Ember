@@ -145,6 +145,10 @@
   - type: ContainerFill
     containers:
       board: [ FirelockElectronics ]
+  # Плестил, как /obj/machinery/door/firedoor/get_material() на Bay.
+  - type: EmberMaterialComposition
+    materials:
+    - Plasteel
 
 - type: entity
   id: FirelockGlass

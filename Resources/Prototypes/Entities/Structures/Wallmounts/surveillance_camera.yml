@@ -85,6 +85,10 @@
               collection: MetalBreak
               params:
                 volume: -8
+  # Плестил, как /obj/machinery/camera/get_material() на Bay.
+  - type: EmberMaterialComposition
+    materials:
+    - Plasteel
   placement:
     mode: SnapgridCenter
     snap:

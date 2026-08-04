@@ -119,6 +119,8 @@
   - type: Occluder
   - type: StaticPrice
     price: 90
+  - type: EmberMaterialReinforcement
+    material: Steel
 
 - type: entity
   id: WindowRCDResistant

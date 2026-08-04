@@ -43,6 +43,9 @@ public sealed class EmberMaterialHeatSystem : EntitySystem
     /// </remarks>
     private const float BayFireInterval = 2f;
 
+    /// <summary>What Bay's <c>/obj/structure/window/get_material_melting_point</c> gives a reinforcement.</summary>
+    private const float ReinforcementShare = 0.25f;
+
     private static readonly ProtoId<DamageTypePrototype> Heat = "Heat";
 
     public override void Initialize()
@@ -142,16 +145,19 @@ public sealed class EmberMaterialHeatSystem : EntitySystem
     /// The temperature this thing starts suffering at, or null if nothing about it can melt.
     /// </summary>
     /// <remarks>
-    /// Bay adds a wall's reinforcement to its melting point rather than taking the higher of the two, so a
-    /// reinforced wall stands in a fire that would have taken down either material on its own. Everything else
-    /// it measures by the one material it calls its own, which for a table is the plating rather than the frame
-    /// underneath — a wooden table burns like wood however the frame is made. Taking the lowest of the parts
-    /// says the same thing without having to ask what kind of thing this is.
+    /// Bay does not have one answer to this: <c>get_material_melting_point</c> is overridden wherever a thing
+    /// is made of more than one substance, and the overrides disagree on purpose. A wall adds its
+    /// reinforcement, so a plasteel-backed bulkhead stands in a fire neither material would survive alone. A
+    /// glass airlock averages its shell and its pane, so the window is a weakness without being the whole
+    /// story. Everything else is measured by the one material it calls its own, which for a table is the
+    /// plating and not the frame underneath — a wooden table burns like wood however it is framed — and taking
+    /// the lowest of the parts says that without having to ask what kind of thing this is.
     /// </remarks>
-    private float? MeltingPoint(EntityUid uid)
+    public float? MeltingPoint(EntityUid uid)
     {
-        var wall = HasComp<EmberProceduralWallComponent>(uid);
+        var rule = Rule(uid);
         float? total = null;
+        var parts = 0;
 
         foreach (var id in EmberMaterialLookup.Materials(EntityManager, _prototype, uid))
         {
@@ -161,13 +167,54 @@ public sealed class EmberMaterialHeatSystem : EntitySystem
             if (material.Unmeltable)
                 return null;
 
+            parts++;
             total = total is not { } current
                 ? material.MeltingPoint
-                : wall
-                    ? current + material.MeltingPoint
-                    : MathF.Min(current, material.MeltingPoint);
+                : rule == MeltingRule.Lowest
+                    ? MathF.Min(current, material.MeltingPoint)
+                    : current + material.MeltingPoint;
         }
 
-        return total;
+        if (total is not { } point)
+            return null;
+
+        // DM's single-argument round floors, which is not what .NET's Round does with a half.
+        if (rule == MeltingRule.Mean)
+            point = MathF.Floor(point / parts);
+
+        // A lattice set into a pane is worth a quarter of itself, and no more: the pane is still glass.
+        if (TryComp<EmberMaterialReinforcementComponent>(uid, out var reinforcement) &&
+            _prototype.TryIndex(reinforcement.Material, out EmberMaterialPrototype? lattice) &&
+            !lattice.Unmeltable)
+        {
+            point += ReinforcementShare * lattice.MeltingPoint;
+        }
+
+        return point;
+    }
+
+    /// <summary>Which of Bay's overrides applies to this thing.</summary>
+    private MeltingRule Rule(EntityUid uid)
+    {
+        if (HasComp<EmberProceduralWallComponent>(uid))
+            return MeltingRule.Sum;
+
+        if (HasComp<EmberProceduralAirlockComponent>(uid))
+            return MeltingRule.Mean;
+
+        return MeltingRule.Lowest;
+    }
+
+    /// <summary>How the parts of a thing add up to the temperature it gives way at.</summary>
+    private enum MeltingRule : byte
+    {
+        /// <summary>The weakest part decides, which is what Bay means by asking for one material.</summary>
+        Lowest,
+
+        /// <summary>A wall: material plus reinforcement.</summary>
+        Sum,
+
+        /// <summary>A glass airlock: the shell and the pane, halved.</summary>
+        Mean,
     }
 }

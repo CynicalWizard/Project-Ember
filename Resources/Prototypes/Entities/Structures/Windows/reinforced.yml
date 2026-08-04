@@ -60,6 +60,8 @@
     trackAllDamage: true
     damageOverlay:
       sprite: Ember/Structures/Windows/window_damage_overlay.rsi
+  - type: EmberMaterialReinforcement
+    material: Steel
 
 - type: entity
   id: WindowReinforcedDirectional
@@ -123,6 +125,8 @@
         acts: [ "Destruction" ]
   - type: StaticPrice
     price: 22.5
+  - type: EmberMaterialReinforcement
+    material: Steel
 
 
 - type: entity

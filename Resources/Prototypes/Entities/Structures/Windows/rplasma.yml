@@ -61,6 +61,8 @@
     price: 230
   - type: ExplosionResistance
     damageCoefficient: 0.2
+  - type: EmberMaterialReinforcement
+    material: Steel
 
 - type: entity
   id: PlasmaReinforcedWindowDirectional
@@ -118,6 +120,8 @@
         acts: [ "Destruction" ]
   - type: StaticPrice
     price: 66
+  - type: EmberMaterialReinforcement
+    material: Steel
 
 
 - type: entity
