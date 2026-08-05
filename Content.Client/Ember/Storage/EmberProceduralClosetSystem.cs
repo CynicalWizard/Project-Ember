@@ -35,14 +35,6 @@ public sealed class EmberProceduralClosetSystem : EntitySystem
     private const string BasePath = "/Textures/Ember/Structures/Storage/bases";
     private const string DecalPath = "/Textures/Ember/Structures/Storage/decals";
 
-    /// <summary>The layers the vanilla visualisers drew a container with, which this system replaces.</summary>
-    private static readonly object[] VanillaLayers =
-    {
-        StorageVisualLayers.Base,
-        StorageVisualLayers.Door,
-        LockVisualLayers.Lock,
-    };
-
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IResourceCache _cache = default!;
@@ -93,20 +85,23 @@ public sealed class EmberProceduralClosetSystem : EntitySystem
         RemComp<EntityStorageVisualsComponent>(ent);
         RemComp<LockVisualsComponent>(ent);
 
-        foreach (var layer in VanillaLayers)
-        {
-            if (sprite.LayerMapTryGet(layer, out _))
-                sprite.RemoveLayer(layer);
-        }
-
-        // What is left is this system's own layers, cleared for a fresh pass, and the paper label, which is
-        // the one thing that belongs above the container rather than under it.
+        // Everything except the paper label goes, by index rather than by key. Naming the layers to remove
+        // only worked for the ones the base prototypes map; a crate that lays out art of its own -- and plenty
+        // do -- kept it and was drawn twice, once as itself and once as whatever it used to be.
         Clear(sprite);
+
+        var label = sprite.LayerMapTryGet(PaperLabelVisuals.Layer, out var labelIndex) ? labelIndex : -1;
+        for (var i = sprite.AllLayers.Count() - 1; i >= 0; i--)
+        {
+            if (i != label)
+                sprite.RemoveLayer(i);
+        }
 
         var shape = ShapeName(style.Shape);
         var basePath = new ResPath($"{BasePath}/{shape}.rsi");
         var decalPath = new ResPath($"{DecalPath}/{ShapeName(style.Markings)}.rsi");
-        var at = sprite.LayerMapTryGet(PaperLabelVisuals.Layer, out var label) ? label : sprite.AllLayers.Count();
+        // Under the label if there is one, which is the only thing left above the container.
+        var at = sprite.LayerMapTryGet(PaperLabelVisuals.Layer, out var above) ? above : sprite.AllLayers.Count();
 
         AddLayer(sprite, ref at, EmberClosetLayer.Base, basePath, "base");
         AddLayer(sprite, ref at, EmberClosetLayer.Door, basePath, "open");

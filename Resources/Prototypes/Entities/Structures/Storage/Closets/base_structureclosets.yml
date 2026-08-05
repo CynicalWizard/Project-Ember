@@ -130,7 +130,7 @@
 # steel closet base (that can be constructed/deconstructed)
 - type: entity
   id: ClosetSteelBase
-  parent: ClosetBase
+  parent: [ClosetBase, EmberProceduralClosetVisuals]
   components:
   - type: Construction
     graph: ClosetSteel
@@ -142,6 +142,8 @@
       types:
         Blunt: 15
     staminaCost: 50
+  - type: EmberProceduralCloset
+    style: EmberClosetBase
 
 #Wall Closet
 - type: entity
@@ -151,6 +153,7 @@
   abstract: true
   name: wall closet
   description: A standard-issue Nanotrasen storage unit, now on walls.
+  parent: EmberProceduralWallClosetVisuals
   components:
   - type: InteractionOutline
   - type: Clickable
@@ -218,6 +221,8 @@
     node: done
     containers:
     - entity_storage
+  - type: EmberProceduralCloset
+    style: EmberClosetWall
 
 #Wall locker
 - type: entity

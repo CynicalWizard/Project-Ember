@@ -8,6 +8,7 @@ using Content.Shared.Ember.Storage;
 using Content.Shared.Ember.Structures;
 using Content.Shared.Ember.Walls;
 using Content.Shared.Interaction;
+using Content.Shared.Lock;
 using Content.Shared.Popups;
 using Content.Shared.Paint;
 using Content.Shared.SprayPainter.Components;
@@ -387,6 +388,28 @@ public abstract class SharedSprayPainterSystem : EntitySystem
 
         if (painter.ClosetIndex < 0 || painter.ClosetIndex >= ClosetStyles.Count)
             return;
+
+        if (!Proto.TryIndex(ClosetStyles[painter.ClosetIndex], out var picked) ||
+            !Proto.TryIndex(ent.Comp.Style, out var current))
+        {
+            return;
+        }
+
+        // Paint does not reshape anything. A crate is a crate however it is painted, and an appearance drawn
+        // on another shape's sheet would be a closet wearing a crate's markings.
+        if (picked.Shape != current.Shape)
+        {
+            _popup.PopupClient(Loc.GetString("spray-painter-closet-shape-not-available"), args.User, args.User);
+            return;
+        }
+
+        // Nor does it fit or remove a lock. An appearance that draws a lock light on a container with no lock
+        // is telling the room something that is not true, and the same the other way round.
+        if (picked.CanLock != HasComp<LockComponent>(ent))
+        {
+            _popup.PopupClient(Loc.GetString("spray-painter-closet-lock-not-available"), args.User, args.User);
+            return;
+        }
 
         // Only a colour the user chose themselves overrides the appearance. Picking one off the palette is how
         // pipes and stripes are done and would otherwise repaint every container the same shade by accident.

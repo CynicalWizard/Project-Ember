@@ -1,9 +1,12 @@
 # Base
 - type: entity
   id: WardrobeBase
-  parent: ClosetSteelBase
+  parent: [ClosetSteelBase, EmberProceduralClosetVisuals]
   abstract: true
   description: It's a storage unit for standard-issue Nanotrasen attire.
+  components:
+  - type: EmberProceduralCloset
+    style: EmberClosetWardrobe
 
 # Colored
 

@@ -16,6 +16,8 @@ spray-painter-tab-airlocks = Шлюзы
 
 spray-painter-tab-walls = Стены
 
+spray-painter-closet-shape-not-available = Эта внешность — для контейнера другой формы.
+spray-painter-closet-lock-not-available = Эта внешность не совпадает с замком этого контейнера.
 spray-painter-tab-closets = Контейнеры
 spray-painter-selected-closet-style = Внешность контейнера:
 spray-painter-tab-pipes = Трубы

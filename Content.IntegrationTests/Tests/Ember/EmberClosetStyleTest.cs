@@ -126,6 +126,15 @@ public sealed class EmberClosetStyleTest
             "CratePlastic",
             "CrateThermal",
             "ClosetWallEmergency",
+
+            // Named because they were reported drawing both sprites at once: variants that lay out art of
+            // their own, and one that reaches its crate through a second parent.
+            "CrateEngineeringParticleAccelerator",
+            "CrateArmorySMG",
+            "CrateMaterialPlasma",
+            "CrateSecgear",
+            "LockerBooze",
+            "WardrobeMedicalDoctor",
         };
 
         var closet = factory.GetComponentName<EmberProceduralClosetComponent>();
@@ -175,9 +184,20 @@ public sealed class EmberClosetStyleTest
                 if (sprite.LayerMapTryGet(StorageVisualLayers.Base, out _))
                     problems.Add($"{id} still has the vanilla base layer");
 
-                // A paper label belongs above the container; nothing else does.
-                if (sprite.LayerMapTryGet(PaperLabelVisuals.Layer, out var labelIndex) && labelIndex < index)
+                // A paper label belongs above the container; nothing else does. Anything else left over is a
+                // second container drawn on the same entity, which is what "it looks like both" means.
+                var label = sprite.LayerMapTryGet(PaperLabelVisuals.Layer, out var labelIndex);
+                if (label && labelIndex < index)
                     problems.Add($"{id} draws its label under itself");
+
+                var own = 3 + protoManager.Index(
+                    clientEnts.GetComponent<EmberProceduralClosetComponent>(clientUid).Style).AllDecals().Count() + 3;
+
+                if (sprite.AllLayers.Count() != own + (label ? 1 : 0))
+                {
+                    problems.Add(
+                        $"{id} has {sprite.AllLayers.Count()} layers where {own + (label ? 1 : 0)} are its own");
+                }
             }
         });
 
