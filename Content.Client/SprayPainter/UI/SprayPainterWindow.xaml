@@ -41,6 +41,16 @@
                           HorizontalExpand="True"
                           VerticalExpand="True"
                           SeparationOverride="4">
+                <Label Name="SelectedClosetLabel"
+                       Text="{Loc 'spray-painter-selected-closet-style'}"/>
+                <ItemList Name="ClosetList"
+                          SizeFlagsStretchRatio="8"
+                          VerticalExpand="True"/>
+            </BoxContainer>
+            <BoxContainer Orientation="Vertical"
+                          HorizontalExpand="True"
+                          VerticalExpand="True"
+                          SeparationOverride="4">
                 <Label Name="SelectedPipeActionLabel"
                        Text="{Loc 'spray-painter-pipes-use-selected-color'}"/>
             </BoxContainer>

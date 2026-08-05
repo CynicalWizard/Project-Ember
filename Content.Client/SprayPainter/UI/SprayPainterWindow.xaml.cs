@@ -26,11 +26,13 @@ public sealed partial class SprayPainterWindow : DefaultWindow
     public Action<Color>? OnCustomColorPicked;
     public Action<ItemList.ItemListSelectedEventArgs>? OnWallModePicked;
     public Action<ItemList.ItemListSelectedEventArgs>? OnAirlockModePicked;
+    public Action<ItemList.ItemListSelectedEventArgs>? OnClosetPicked;
     public Dictionary<string, int> ItemColorIndex = new();
 
     private Dictionary<string, Color> currentPalette = new();
     private const string colorLocKeyPrefix = "spray-painter-color-";
     private List<SprayPainterEntry> CurrentEntries = new List<SprayPainterEntry>();
+    private List<SprayPainterClosetEntry> CurrentClosetEntries = new();
     private bool _updatingCustomColor;
 
     public SprayPainterWindow()
@@ -42,7 +44,8 @@ public sealed partial class SprayPainterWindow : DefaultWindow
 
         ModeTabs.SetTabTitle(0, Loc.GetString("spray-painter-tab-airlocks"));
         ModeTabs.SetTabTitle(1, Loc.GetString("spray-painter-tab-walls"));
-        ModeTabs.SetTabTitle(2, Loc.GetString("spray-painter-tab-pipes"));
+        ModeTabs.SetTabTitle(2, Loc.GetString("spray-painter-tab-closets"));
+        ModeTabs.SetTabTitle(3, Loc.GetString("spray-painter-tab-pipes"));
         PopulateAirlockActions();
         PopulateWallActions();
         PaletteButton.OnPressed += _ => TogglePalettePicker();
@@ -81,7 +84,9 @@ public sealed partial class SprayPainterWindow : DefaultWindow
 
     public void Populate(
         List<SprayPainterEntry> entries,
+        List<SprayPainterClosetEntry> closetEntries,
         int selectedStyle,
+        int selectedClosetStyle,
         SprayPainterWallMode selectedWallMode,
         SprayPainterAirlockMode selectedAirlockMode,
         string? selectedColorKey,
@@ -97,6 +102,17 @@ public sealed partial class SprayPainterWindow : DefaultWindow
             foreach (var entry in entries)
             {
                 SpriteList.AddItem(entry.Name, ResolveEntryIcon(entry));
+            }
+        }
+
+        if (!CurrentClosetEntries.Equals(closetEntries))
+        {
+            CurrentClosetEntries = closetEntries;
+            ClosetList.Clear();
+            foreach (var entry in closetEntries)
+            {
+                var item = ClosetList.AddItem(entry.Name, entry.Icon);
+                item.IconModulate = entry.Color;
             }
         }
 
@@ -136,6 +152,13 @@ public sealed partial class SprayPainterWindow : DefaultWindow
         WallActionList.OnItemSelected -= OnWallModePicked;
         SelectWallMode(selectedWallMode);
         WallActionList.OnItemSelected += OnWallModePicked;
+
+        if (ClosetList.Count > 0)
+        {
+            ClosetList.OnItemSelected -= OnClosetPicked;
+            ClosetList[Math.Clamp(selectedClosetStyle, 0, ClosetList.Count - 1)].Selected = true;
+            ClosetList.OnItemSelected += OnClosetPicked;
+        }
     }
 
     public SprayPainterAirlockMode IndexToAirlockMode(int index)

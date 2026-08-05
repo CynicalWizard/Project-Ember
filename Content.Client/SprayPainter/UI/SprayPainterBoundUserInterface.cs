@@ -25,12 +25,15 @@ public sealed class SprayPainterBoundUserInterface : BoundUserInterface
         _window.OnCustomColorPicked = OnCustomColorPicked;
         _window.OnWallModePicked = OnWallModePicked;
         _window.OnAirlockModePicked = OnAirlockModePicked;
+        _window.OnClosetPicked = OnClosetPicked;
 
         if (EntMan.TryGetComponent(Owner, out SprayPainterComponent? comp))
         {
             _window.Populate(
                 EntMan.System<SprayPainterSystem>().Entries,
+                EntMan.System<SprayPainterSystem>().ClosetEntries,
                 comp.Index,
+                comp.ClosetIndex,
                 comp.WallMode,
                 comp.AirlockMode,
                 comp.PickedColor,
@@ -62,6 +65,11 @@ public sealed class SprayPainterBoundUserInterface : BoundUserInterface
             return;
 
         SendMessage(new SprayPainterWallModePickedMessage(_window.IndexToWallMode(args.ItemIndex)));
+    }
+
+    private void OnClosetPicked(ItemList.ItemListSelectedEventArgs args)
+    {
+        SendMessage(new SprayPainterClosetPickedMessage(args.ItemIndex));
     }
 
     private void OnAirlockModePicked(ItemList.ItemListSelectedEventArgs args)

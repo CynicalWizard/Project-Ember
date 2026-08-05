@@ -16,6 +16,8 @@ spray-painter-tab-airlocks = Шлюзы
 
 spray-painter-tab-walls = Стены
 
+spray-painter-tab-closets = Контейнеры
+spray-painter-selected-closet-style = Внешность контейнера:
 spray-painter-tab-pipes = Трубы
 
 spray-painter-pipes-use-selected-color = Трубы используют выбранный цвет.

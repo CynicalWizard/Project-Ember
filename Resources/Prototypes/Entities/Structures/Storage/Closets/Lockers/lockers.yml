@@ -181,6 +181,10 @@
   - type: EntityStorageVisuals
     stateBaseClosed: closed
     stateBaseOpen: open
+    # Холодильник у Bay меняется целиком, а не открывает дверь, и унаследованного generic_door в его листе
+    # нет — ровно на это и ругался клиент.
+    stateDoorOpen: blank
+    stateDoorClosed: blank
   - type: LockVisuals
     stateLocked: closed_locked
     stateUnlocked: closed_unlocked

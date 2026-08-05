@@ -6,7 +6,9 @@
 #
 # Три слоя существуют только чтобы ванильным визуализаторам было что дёргать. LockVisualizerSystem меняет
 # видимость своего слоя не проверяя, что слой есть, а EntityStorageVisualizerSystem при инициализации ставит
-# состояние на базовый слой — оба уронили бы контейнер, которого не ждали. Они скрыты и ничего не рисуют.
+# состояние на базовый слой — оба уронили бы контейнер, которого не ждали. Скрыть их мало: визуализатор сам
+# включает свой слой обратно. Поэтому им выдана пустая рамка и состояния, которых кроме неё нет — пусть ставит
+# что хочет, рисовать там нечего.
 #
 # Материал баевский: /obj/structure/closet объявляет сталь и использует её ровно в одном месте — при разрезке
 # контейнер отдаёт два листа. Здесь он ещё и решает, при какой температуре ящик поплывёт.
@@ -19,13 +21,13 @@
     noRot: true
     sprite: Ember/Structures/Storage/bases/closet.rsi
     layers:
-    - state: generic
+    - state: blank
       visible: false
-      sprite: Structures/Storage/closet.rsi
+      sprite: Ember/Structures/Storage/bases/closet.rsi
       map: ["enum.StorageVisualLayers.Base"]
-    - state: generic_door
+    - state: blank
       visible: false
-      sprite: Structures/Storage/closet.rsi
+      sprite: Ember/Structures/Storage/bases/closet.rsi
       map: ["enum.StorageVisualLayers.Door"]
     - state: blank
       sprite: Ember/Structures/Storage/bases/closet.rsi
@@ -35,6 +37,11 @@
       sprite: Structures/Storage/closet_labels.rsi
       offset: "-0.065,0"
       map: ["enum.PaperLabelVisuals.Layer"]
+  - type: EntityStorageVisuals
+    stateBaseClosed: blank
+    stateBaseOpen: blank
+    stateDoorOpen: blank
+    stateDoorClosed: blank
   - type: EmberMaterialComposition
     materials:
     - Steel
@@ -47,13 +54,13 @@
     noRot: true
     sprite: Ember/Structures/Storage/bases/crate.rsi
     layers:
-    - state: base
+    - state: blank
       visible: false
-      sprite: Structures/Storage/Crates/generic.rsi
+      sprite: Ember/Structures/Storage/bases/crate.rsi
       map: ["enum.StorageVisualLayers.Base"]
-    - state: closed
+    - state: blank
       visible: false
-      sprite: Structures/Storage/Crates/generic.rsi
+      sprite: Ember/Structures/Storage/bases/crate.rsi
       map: ["enum.StorageVisualLayers.Door"]
     - state: blank
       sprite: Ember/Structures/Storage/bases/crate.rsi
@@ -62,6 +69,11 @@
       visible: false
       sprite: Structures/Storage/Crates/labels.rsi
       map: ["enum.PaperLabelVisuals.Layer"]
+  - type: EntityStorageVisuals
+    stateBaseClosed: blank
+    stateBaseOpen: blank
+    stateDoorOpen: blank
+    stateDoorClosed: blank
   - type: EmberMaterialComposition
     materials:
     - Steel
@@ -74,17 +86,22 @@
     noRot: true
     sprite: Ember/Structures/Storage/bases/wall.rsi
     layers:
-    - state: generic
+    - state: blank
       visible: false
-      sprite: Structures/Storage/wall_locker.rsi
+      sprite: Ember/Structures/Storage/bases/wall.rsi
       map: ["enum.StorageVisualLayers.Base"]
-    - state: generic_door
+    - state: blank
       visible: false
-      sprite: Structures/Storage/wall_locker.rsi
+      sprite: Ember/Structures/Storage/bases/wall.rsi
       map: ["enum.StorageVisualLayers.Door"]
     - state: blank
       sprite: Ember/Structures/Storage/bases/wall.rsi
       map: ["enum.LockVisualLayers.Lock"]
+  - type: EntityStorageVisuals
+    stateBaseClosed: blank
+    stateBaseOpen: blank
+    stateDoorOpen: blank
+    stateDoorClosed: blank
   - type: EmberMaterialComposition
     materials:
     - Steel

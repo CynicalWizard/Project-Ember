@@ -142,3 +142,34 @@ public sealed partial class SprayPainterWallDoAfterEvent : DoAfterEvent
 
     public override DoAfterEvent Clone() => this;
 }
+
+[Serializable, NetSerializable]
+public sealed class SprayPainterClosetPickedMessage : BoundUserInterfaceMessage
+{
+    public readonly int Index;
+
+    public SprayPainterClosetPickedMessage(int index)
+    {
+        Index = index;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed partial class SprayPainterClosetDoAfterEvent : DoAfterEvent
+{
+    /// <summary>The appearance to give the container.</summary>
+    [DataField]
+    public string Style;
+
+    /// <summary>A colour of the user's own, which overrides the one the appearance carries.</summary>
+    [DataField]
+    public Color? Color;
+
+    public SprayPainterClosetDoAfterEvent(string style, Color? color)
+    {
+        Style = style;
+        Color = color;
+    }
+
+    public override DoAfterEvent Clone() => this;
+}

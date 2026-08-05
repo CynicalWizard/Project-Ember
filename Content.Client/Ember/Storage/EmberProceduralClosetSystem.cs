@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared.Ember.Storage;
+using Content.Shared.Labels;
 using Content.Shared.Lock;
 using Content.Shared.Storage;
 using Content.Shared.Tools.Components;
@@ -73,15 +74,15 @@ public sealed class EmberProceduralClosetSystem : EntitySystem
             return;
         }
 
-        // Only the layers this owns are cleared. A container keeps foreign ones — the paper label above all
-        // else, and the blank layer the vanilla lock visualiser insists on toggling — and those stay on top,
-        // which is why everything below is inserted at the front rather than appended.
+        // Only the layers this owns are cleared. The foreign ones stay: the blank frames the vanilla
+        // visualisers insist on setting states on, and the paper label. The label has to stay on top of the
+        // container and the container has to stay on top of the blanks, so this goes in just under the label.
         Clear(sprite);
 
         var shape = ShapeName(style.Shape);
         var basePath = new ResPath($"{BasePath}/{shape}.rsi");
         var decalPath = new ResPath($"{DecalPath}/{ShapeName(style.Markings)}.rsi");
-        var at = 0;
+        var at = sprite.LayerMapTryGet(PaperLabelVisuals.Layer, out var label) ? label : sprite.AllLayers.Count();
 
         AddLayer(sprite, ref at, EmberClosetLayer.Base, basePath, "base");
         AddLayer(sprite, ref at, EmberClosetLayer.Door, basePath, "open");

@@ -53,4 +53,15 @@ public sealed partial class SprayPainterComponent : Component
 
     [DataField, AutoNetworkedField]
     public SprayPainterAirlockMode AirlockMode = SprayPainterAirlockMode.ApplyStyle;
+
+    /// <summary>
+    /// Which closet or crate appearance is picked, as an index into the cached list of them.
+    /// </summary>
+    /// <remarks>
+    /// A container is crafted plain and painted into whatever it is meant to be, which is why there is one
+    /// recipe per shape rather than one per department. Same bookkeeping as the airlock index above: after a
+    /// prototype reload the index may point at a different style, but never out of bounds.
+    /// </remarks>
+    [DataField, AutoNetworkedField]
+    public int ClosetIndex;
 }
