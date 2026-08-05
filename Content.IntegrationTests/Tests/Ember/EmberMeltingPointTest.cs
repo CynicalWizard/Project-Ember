@@ -83,6 +83,56 @@ public sealed class EmberMeltingPointTest
     }
 
     /// <summary>
+    /// A reinforced borosilicate pane against the fire that was reported cracking one.
+    /// </summary>
+    /// <remarks>
+    /// The air alarm in that report read 6324 K. Borosilicate melts at 4273 and its steel lattice is worth
+    /// another quarter of steel's own point, so the pane gives way at 4723 — and under the knee a 6324 K fire
+    /// counts as 4302, which is below that and does nothing at all. It cracked because the knee was 5000 at the
+    /// time, where the same fire counted as 6174 and cleared both the melting point and the pane's floor of
+    /// eleven. This pins the case that was actually observed.
+    ///
+    /// It still gives way to something genuinely extreme, which is the point of a knee: the fire has to reach
+    /// about 13500 K before a blow gets past the floor.
+    /// </remarks>
+    [Test]
+    public async Task ABorosilicatePaneSurvivesThePhoronFireThatCrackedOne()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        var entManager = server.ResolveDependency<IEntityManager>();
+        var map = await pair.CreateTestMap();
+
+        await server.WaitPost(() =>
+        {
+            var window = entManager.SpawnEntity("ReinforcedBorosilicateWindow", map.GridCoords);
+            var damage = entManager.GetComponent<DamageableComponent>(window);
+
+            var reported = new TileFireEvent(6324f, 2500f);
+            for (var i = 0; i < 5000; i++)
+            {
+                entManager.EventBus.RaiseLocalEvent(window, ref reported);
+            }
+
+            Assert.That((float) damage.TotalDamage, Is.Zero,
+                "The fire from the report cracked a borosilicate pane again.");
+
+            var inferno = new TileFireEvent(30_000f, 2500f);
+            for (var i = 0; i < 5000 && damage.TotalDamage <= 0; i++)
+            {
+                entManager.EventBus.RaiseLocalEvent(window, ref inferno);
+            }
+
+            Assert.That((float) damage.TotalDamage, Is.GreaterThan(0f),
+                "Thirty thousand kelvin left a glass pane untouched, which is too far the other way.");
+
+            entManager.DeleteEntity(window);
+        });
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
     /// A steel bulkhead in the worst fire the station can make: it has to go, and it has to take long enough
     /// that someone could have done something about it.
     /// </summary>
