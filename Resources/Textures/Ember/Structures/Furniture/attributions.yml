@@ -1,4 +1,4 @@
-- files: ["furniture.rsi", "sofas.rsi", "pews.rsi"]
+- files: ["furniture.rsi", "sofas.rsi", "pews.rsi", "inflatable.rsi", "barricades.rsi"]
   license: "CC-BY-SA-3.0"
   copyright: "Taken from SierraBay (Baystation12)"
   source: "https://github.com/Baystation12/Baystation12"
