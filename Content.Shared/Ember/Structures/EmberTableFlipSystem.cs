@@ -33,8 +33,6 @@ public sealed class EmberTableFlipSystem : EntitySystem
     /// <summary>How far a row of tables is followed before giving up on deciding whether it is straight.</summary>
     private const int MaximumRun = 32;
 
-    /// <summary>How far off to one side counts as standing at a corner rather than squarely on one side.</summary>
-    private const float CornerFraction = 0.4f;
 
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly FixtureSystem _fixtures = default!;
@@ -134,7 +132,15 @@ public sealed class EmberTableFlipSystem : EntitySystem
             return false;
         }
 
-        foreach (var candidate in NearestEdges(user, ent))
+        var edges = NearestEdges(user, ent);
+
+        if (edges.Length == 0)
+        {
+            _popup.PopupClient(Loc.GetString("ember-table-flip-underfoot"), user, user);
+            return false;
+        }
+
+        foreach (var candidate in edges)
         {
             if (!IsRowStraight(ent, candidate))
                 continue;
@@ -148,32 +154,69 @@ public sealed class EmberTableFlipSystem : EntitySystem
     }
 
     /// <summary>
-    /// The edge the user is on. Standing at a corner offers both edges nearest them, since either is a fair
-    /// reading of which side they are on; standing squarely on one side offers only that one.
+    /// The edge the user is on: which way the table goes over is which way it is being pushed, away from them.
     /// </summary>
     /// <remarks>
-    /// The difference matters. Offering a second edge to somebody standing squarely at the end of a long row
-    /// means the row refuses to go over that way — correctly, it is a row — and the table quietly goes over
-    /// sideways instead. From the player's side of the screen that reads as the table falling in a direction
-    /// they did not choose, and as no rule at all once they try it from a few different places.
+    /// Measured tile to tile, not point to point. A player does not stand on the middle of their tile, and
+    /// comparing two positions makes the answer depend on where in the tile they happened to stop: anywhere near
+    /// the line running through the table, a few pixels either way swings it between two edges, and standing on
+    /// the table itself it swings between all four. That is a table that goes over the right way, the wrong way
+    /// or refuses depending on nothing the player can see. Bay never has the problem because it asks which turf
+    /// you are on, so that is what this asks.
+    ///
+    /// Standing diagonally offers both edges nearest the user, since either is a fair reading of which side they
+    /// are on, and the row check decides between them. Standing on the table offers none: there is no away.
     /// </remarks>
     private Direction[] NearestEdges(EntityUid user, EntityUid table)
     {
-        var away = _transform.GetWorldPosition(table) - _transform.GetWorldPosition(user);
-        var primary = EmberProceduralTableVisuals.FlipDirection(
-            _transform.GetWorldPosition(user), _transform.GetWorldPosition(table));
+        var (dx, dy) = TileOffset(user, table);
 
-        var along = MathF.Abs(primary is Direction.North or Direction.South ? away.Y : away.X);
-        var aside = MathF.Abs(primary is Direction.North or Direction.South ? away.X : away.Y);
+        if (dx == 0 && dy == 0)
+            return [];
 
-        if (aside < along * CornerFraction)
-            return [primary];
+        var horizontal = dx > 0 ? Direction.East : Direction.West;
+        var vertical = dy > 0 ? Direction.North : Direction.South;
 
-        var secondary = primary is Direction.North or Direction.South
-            ? away.X >= 0f ? Direction.East : Direction.West
-            : away.Y >= 0f ? Direction.North : Direction.South;
+        if (dy == 0)
+            return [horizontal];
 
-        return [primary, secondary];
+        if (dx == 0)
+            return [vertical];
+
+        // A corner: both are away from the user, so the one they are further along comes first. Standing square
+        // on the diagonal there is nothing to choose between them, and the tie goes to the vertical — not
+        // because it is better but because it has to be the same answer every time. Measuring the leftover
+        // fraction of a tile to break it is what made the whole thing unpredictable in the first place.
+        if (Math.Abs(dx) > Math.Abs(dy))
+            return [horizontal, vertical];
+
+        return [vertical, horizontal];
+    }
+
+    /// <summary>How many tiles the table is from the user, along each axis.</summary>
+    private (int X, int Y) TileOffset(EntityUid user, EntityUid table)
+    {
+        var tableXform = Transform(table);
+
+        if (tableXform.GridUid is not { } gridUid || !TryComp<MapGridComponent>(gridUid, out var grid))
+            return WorldOffset();
+
+        var userXform = Transform(user);
+
+        // Off the grid the table is on, there are no shared tiles to compare.
+        if (userXform.GridUid != gridUid)
+            return WorldOffset();
+
+        var here = grid.TileIndicesFor(tableXform.Coordinates);
+        var there = grid.TileIndicesFor(userXform.Coordinates);
+
+        return (here.X - there.X, here.Y - there.Y);
+
+        (int X, int Y) WorldOffset()
+        {
+            var away = _transform.GetWorldPosition(table) - _transform.GetWorldPosition(user);
+            return (MathF.Sign(away.X), MathF.Sign(away.Y));
+        }
     }
 
     private bool CanStandBackUp(Entity<EmberProceduralTableComponent> ent, EntityUid user)
@@ -380,12 +423,6 @@ public sealed class EmberTableFlipSystem : EntitySystem
         }
 
         return null;
-    }
-
-    private Direction DirectionFrom(EntityUid user, EntityUid table)
-    {
-        return EmberProceduralTableVisuals.FlipDirection(
-            _transform.GetWorldPosition(user), _transform.GetWorldPosition(table));
     }
 
     private static Direction Rotate(Direction direction, bool clockwise)

@@ -135,6 +135,11 @@
   - type: Sprite
     sprite: Ember/Structures/Furniture/sofas.rsi
     noRot: true
+  # У Bay это единственная мебель, у которой поворот проверяет якорь: /obj/structure/bed/sofa/rotate отказывает
+  # прикрученному, а /obj/structure/bed/chair/rotate — нет. Диван стоит вдоль стены и собирается из секций;
+  # крутиться на нём, как на стуле, разворачивая всю секцию, он не должен. Открутил — крути.
+  - type: Rotatable
+    rotateWhileAnchored: false
   - type: EmberProceduralFurniture
     baseState: sofa
     sprite: /Textures/Ember/Structures/Furniture/sofas.rsi

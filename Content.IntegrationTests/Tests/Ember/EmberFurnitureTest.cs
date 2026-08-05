@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Content.Client.Clickable;
+using Content.Shared.Verbs;
 using EmberDrawDepth = Content.Shared.DrawDepth.DrawDepth;
 using Content.Shared.Ember.Furniture;
 using Robust.Client.GameObjects;
@@ -464,6 +465,55 @@ public sealed class EmberFurnitureTest
             {
                 serverEnts.DeleteEntity(uid);
             }
+        });
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    /// You can spin a chair you are sitting in. You cannot spin a sofa, because it is bolted down.
+    /// </summary>
+    /// <remarks>
+    /// This is the one place Bay's furniture checks whether it is anchored: <c>/obj/structure/bed/chair/rotate</c>
+    /// turns ninety degrees and never asks, while <c>/obj/structure/bed/sofa/rotate</c> refuses outright when
+    /// anchored. A sofa is built in sections along a wall — turning one section from the seat is nonsense, and
+    /// letting it happen is what putting <c>rotateWhileAnchored</c> on the shared base did.
+    /// </remarks>
+    [Test]
+    public async Task AChairTurnsWhereItStandsAndASofaDoesNot()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        var entities = server.ResolveDependency<IEntityManager>();
+        var map = await pair.CreateTestMap();
+
+        await server.WaitPost(() =>
+        {
+            var verbs = entities.System<SharedVerbSystem>();
+            var user = entities.SpawnEntity("MobHuman", map.GridCoords);
+
+            bool CanTurn(string id)
+            {
+                var furniture = entities.SpawnEntity(id, map.GridCoords);
+
+                Assert.That(entities.GetComponent<TransformComponent>(furniture).Anchored, Is.True,
+                    $"{id} was not bolted down, so this proves nothing about anchored furniture.");
+
+                var found = verbs.GetLocalVerbs(furniture, user, typeof(Verb))
+                    .Any(verb => verb.Category == VerbCategory.Rotate);
+
+                entities.DeleteEntity(furniture);
+                return found;
+            }
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(CanTurn("EmberChair"), Is.True, "A chair bolted to the floor will not turn.");
+                Assert.That(CanTurn("EmberSofa"), Is.False, "A sofa bolted to the floor turns like a chair.");
+                Assert.That(CanTurn("EmberSofaCorner"), Is.False, "A corner sofa turns like a chair.");
+                Assert.That(CanTurn("EmberRoundedChair"), Is.True,
+                    "A rounded chair is a chair on Bay and should turn like one.");
+            });
         });
 
         await pair.CleanReturnAsync();

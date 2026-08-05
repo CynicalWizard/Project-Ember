@@ -56,21 +56,6 @@ public static class EmberProceduralTableVisuals
     public static string ReinforcementStateBase(EmberMaterialPrototype plating) => plating.TableIconReinforced;
 
     /// <summary>
-    /// Which way a table goes over: away from whoever is tipping it, snapped to a compass point.
-    /// </summary>
-    /// <remarks>
-    /// Bay uses <c>get_cardinal_dir</c>, and snapping matters more for us than for it — moving between tiles
-    /// rather than on them means a player is almost never exactly square with the table, and an unsnapped
-    /// direction comes out diagonal nearly every time. The angle has to be taken the way entities measure
-    /// rotation, where zero is south, and not the way maths does, where zero is east; the two are ninety degrees
-    /// apart and the table goes over the wrong way if they are mixed up.
-    /// </remarks>
-    public static Direction FlipDirection(Vector2 user, Vector2 table)
-    {
-        return (table - user).ToWorldAngle().GetCardinalDir();
-    }
-
-    /// <summary>
     /// Turns the lip a flipped table blocks with — written for a table lying against the south edge of its own
     /// tile — round to whichever edge it actually lies against.
     /// </summary>

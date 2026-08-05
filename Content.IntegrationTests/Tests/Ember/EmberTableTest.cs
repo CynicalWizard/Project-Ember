@@ -155,35 +155,138 @@ public sealed class EmberTableTest
 
 
     /// <summary>
-    /// Where the table ends up has been wrong three times over, each time for a different reason, so it is
-    /// checked here with real entities on a real grid rather than by reasoning about angles.
+    /// Wherever the pusher is standing, the table goes over away from them — and goes over the same way from
+    /// anywhere on the same tile.
     /// </summary>
+    /// <remarks>
+    /// The second half is the part that was wrong. The direction used to be read off the two world positions,
+    /// and a player does not stand on the middle of their tile: anywhere near the line running through the
+    /// table, a few pixels either way swung the answer between two edges, and standing on the table it swung
+    /// between all four. From the player's side that is a table which goes over the right way, the wrong way or
+    /// refuses, on nothing they can see. So this sweeps a whole tile's worth of standing spots per tile and
+    /// insists the answer never changes within one of them.
+    ///
+    /// A single table, because a row is only allowed over along its own line and the refusals would drown out
+    /// what is being measured here; the row rule has its own test.
+    /// </remarks>
     [Test]
-    [TestCase(0f, 1f, Direction.South)]
-    [TestCase(0f, -1f, Direction.North)]
-    [TestCase(1f, 0f, Direction.West)]
-    [TestCase(-1f, 0f, Direction.East)]
-    [TestCase(0.2f, 1f, Direction.South)]
-    [TestCase(-0.3f, 1f, Direction.South)]
-    public async Task ATableIsPushedAwayFromWhoeverPushesIt(float offsetX, float offsetY, Direction expected)
+    public async Task ATableIsPushedAwayFromWhoeverPushesItAndTheSameWayFromAnywhereOnATile()
     {
         await using var pair = await PoolManager.GetServerClient();
         var server = pair.Server;
         var entManager = server.ResolveDependency<IEntityManager>();
+        var transform = server.System<SharedTransformSystem>();
+        var map = await pair.CreateTestMap();
+
+        var wrongWay = new List<string>();
+        var unstable = new List<string>();
+
+        await server.WaitPost(() =>
+        {
+            var maps = entManager.System<SharedMapSystem>();
+            var tile = new Tile(server.ResolveDependency<ITileDefinitionManager>()["Plating"].TileId);
+
+            for (var x = -2; x <= 2; x++)
+            for (var y = -2; y <= 2; y++)
+            {
+                maps.SetTile(map.Grid.Owner, map.Grid.Comp, new EntityCoordinates(map.Grid, x, y), tile);
+            }
+
+            var table = entManager.SpawnEntity("Table", new EntityCoordinates(map.Grid, 0, 0));
+            var comp = entManager.GetComponent<EmberProceduralTableComponent>(table);
+            var flip = entManager.System<EmberTableFlipSystem>();
+            var user = entManager.SpawnEntity("MobHuman", new EntityCoordinates(map.Grid, 0, -2));
+            var centre = transform.GetWorldPosition(table);
+
+            // Middle and both edges of each tile, along each axis: where a player actually ends up standing.
+            const float step = 0.4f;
+
+            foreach (var (tileX, tileY) in Surrounding())
+            {
+                Direction? agreed = null;
+
+                for (var subX = -1; subX <= 1; subX++)
+                for (var subY = -1; subY <= 1; subY++)
+                {
+                    var offset = new Vector2(tileX + subX * step, tileY + subY * step);
+                    transform.SetWorldPosition(user, centre + offset);
+
+                    if (!flip.TryGetFacing((table, comp), user, out var facing))
+                    {
+                        unstable.Add($"standing at ({tileX},{tileY}) offset {offset} it refused to go over");
+                        continue;
+                    }
+
+                    if (Vector2.Dot(-offset, facing.ToVec()) <= 0f)
+                        wrongWay.Add($"standing at {offset} pushed it {facing}, which is towards them");
+
+                    agreed ??= facing;
+
+                    if (agreed != facing)
+                    {
+                        unstable.Add(
+                            $"on the tile at ({tileX},{tileY}) it goes {agreed} from one spot and {facing} "
+                            + $"from {offset}");
+                    }
+
+                    flip.SetFlipped((table, comp), facing, false);
+                }
+            }
+        });
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(wrongWay, Is.Empty, string.Join("\n", wrongWay));
+            Assert.That(unstable, Is.Empty, string.Join("\n", unstable));
+        });
+
+        await pair.CleanReturnAsync();
+
+        // The eight tiles touching the table, and the four one step further out along the compass points.
+        static IEnumerable<(int X, int Y)> Surrounding()
+        {
+            for (var x = -1; x <= 1; x++)
+            for (var y = -1; y <= 1; y++)
+            {
+                if (x != 0 || y != 0)
+                    yield return (x, y);
+            }
+
+            yield return (0, 2);
+            yield return (0, -2);
+            yield return (2, 0);
+            yield return (-2, 0);
+        }
+    }
+
+    /// <summary>
+    /// A table you are standing on has no away to go over in, so it does not go over.
+    /// </summary>
+    /// <remarks>
+    /// Climbing onto tables is ordinary, and the direction used to come out of the difference between two world
+    /// positions — which on the same tile is nearly zero, so a hair of a step decided between all four edges.
+    /// Bay refuses this case, by accident of asking which turf you are on; refusing it on purpose says the same
+    /// thing and says it out loud.
+    /// </remarks>
+    [Test]
+    public async Task ATableYouAreStandingOnDoesNotGoOver()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        var entManager = server.ResolveDependency<IEntityManager>();
+        var transform = server.System<SharedTransformSystem>();
         var map = await pair.CreateTestMap();
 
         await server.WaitPost(() =>
         {
             var table = entManager.SpawnEntity("Table", map.GridCoords);
-            var transform = entManager.System<SharedTransformSystem>();
-            var where = transform.GetWorldPosition(table) + new Vector2(offsetX, offsetY);
-            var user = entManager.SpawnEntity(null, new MapCoordinates(where, map.MapId));
-
             var comp = entManager.GetComponent<EmberProceduralTableComponent>(table);
+            var user = entManager.SpawnEntity("MobHuman", map.GridCoords);
 
-            Assert.That(entManager.System<EmberTableFlipSystem>().TryGetFacing((table, comp), user, out var facing),
-                Is.True);
-            Assert.That(facing, Is.EqualTo(expected));
+            transform.SetWorldPosition(user, transform.GetWorldPosition(table));
+
+            Assert.That(entManager.System<EmberTableFlipSystem>().TryGetFacing((table, comp), user, out _),
+                Is.False, "It went over while somebody was standing on it, in a direction picked out of the air.");
         });
 
         await pair.CleanReturnAsync();
