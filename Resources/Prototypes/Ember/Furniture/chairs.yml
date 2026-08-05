@@ -1,0 +1,161 @@
+# Мебель Bay: каркас и обивка — разные материалы, разные слои, разные цвета.
+#
+# Спинка, и подлокотники когда на стуле кто-то сидит, рисуются компаньоном EmberFurnitureOver поверх сидящего.
+# Его порождает сервер, руками сюда добавлять не надо.
+
+- type: entity
+  abstract: true
+  id: EmberSeatBase
+  parent: ChairBase
+  components:
+  - type: Sprite
+    sprite: Ember/Structures/Furniture/furniture.rsi
+    noRot: true
+  - type: EmberProceduralFurniture
+    baseState: chair
+
+- type: entity
+  id: EmberChair
+  parent: EmberSeatBase
+  name: chair
+  description: You sit in this. Either by will or force.
+  components:
+  - type: EmberProceduralFurniture
+    baseState: chair
+    material: Steel
+
+- type: entity
+  id: EmberComfyChair
+  parent: EmberSeatBase
+  name: comfy chair
+  description: It looks comfy.
+  components:
+  - type: EmberProceduralFurniture
+    baseState: comfychair
+    material: Steel
+    padding: Carpet
+
+- type: entity
+  id: EmberOfficeChair
+  parent: EmberSeatBase
+  name: office chair
+  description: A padded chair on wheels.
+  components:
+  - type: EmberProceduralFurniture
+    baseState: officechair
+    material: Steel
+    padding: Cloth
+
+- type: entity
+  id: EmberComfyOfficeChair
+  parent: EmberSeatBase
+  name: comfy office chair
+  description: A padded chair on wheels, with arms.
+  components:
+  - type: EmberProceduralFurniture
+    baseState: comfyofficechair
+    material: Steel
+    padding: Leather
+
+- type: entity
+  id: EmberWoodenChair
+  parent: EmberSeatBase
+  name: wooden chair
+  description: Rustic, and hard on the back.
+  components:
+  - type: EmberProceduralFurniture
+    baseState: wooden_chair
+    material: Wood
+
+# Золото на капитанском кресле — часть рисунка, а не материала, поэтому special и не красится.
+- type: entity
+  id: EmberCaptainChair
+  parent: EmberSeatBase
+  name: captain's chair
+  description: A grand chair for a grand person.
+  components:
+  - type: EmberProceduralFurniture
+    baseState: capchair
+    material: Steel
+    padding: Carpet
+    special: true
+
+- type: entity
+  id: EmberShuttleChair
+  parent: EmberSeatBase
+  name: shuttle chair
+  description: A padded seat with a five-point harness.
+  components:
+  - type: EmberProceduralFurniture
+    baseState: shuttle_chair
+    material: Steel
+    padding: Cloth
+    special: true
+
+- type: entity
+  id: EmberRoundedChair
+  parent: EmberSeatBase
+  name: rounded chair
+  description: It's a rounded chair. It looks comfy.
+  components:
+  - type: Sprite
+    sprite: Ember/Structures/Furniture/sofas.rsi
+    noRot: true
+  - type: EmberProceduralFurniture
+    baseState: roundedchair
+    sprite: /Textures/Ember/Structures/Furniture/sofas.rsi
+    material: Steel
+    padding: Cloth
+
+# Диван прикручен к полу и стоит по сетке, поэтому угол — отдельная сущность, а не поворот на 45 градусов.
+# Диагональные кадры баевского восьминаправленного листа вырезаны в состояние sofa_corner.
+- type: entity
+  id: EmberSofa
+  parent: EmberSeatBase
+  name: sofa
+  description: Two seats' worth of comfort.
+  components:
+  - type: Sprite
+    sprite: Ember/Structures/Furniture/sofas.rsi
+    noRot: true
+  - type: EmberProceduralFurniture
+    baseState: sofa
+    sprite: /Textures/Ember/Structures/Furniture/sofas.rsi
+    material: Wood
+    padding: Carpet
+
+- type: entity
+  id: EmberSofaCorner
+  parent: EmberSofa
+  name: corner sofa
+  description: Where two sofas meet.
+  components:
+  - type: EmberProceduralFurniture
+    baseState: sofa_corner
+    sprite: /Textures/Ember/Structures/Furniture/sofas.rsi
+    material: Wood
+    padding: Carpet
+
+- type: entity
+  id: EmberSofaLeft
+  parent: EmberSofa
+  name: sofa
+  suffix: Left
+  components:
+  - type: EmberProceduralFurniture
+    baseState: sofa_l
+    sprite: /Textures/Ember/Structures/Furniture/sofas.rsi
+    material: Wood
+    padding: Carpet
+
+- type: entity
+  id: EmberSofaRight
+  parent: EmberSofa
+  name: sofa
+  suffix: Right
+  components:
+  - type: EmberProceduralFurniture
+    baseState: sofa_r
+    sprite: /Textures/Ember/Structures/Furniture/sofas.rsi
+    material: Wood
+    padding: Carpet

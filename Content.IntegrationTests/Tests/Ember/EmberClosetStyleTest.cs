@@ -26,7 +26,7 @@ public sealed class EmberClosetStyleTest
     [Test]
     public async Task EveryMarkingExistsInItsSheet()
     {
-        await using var pair = await PoolManager.GetServerClient();
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
         var protoManager = pair.Server.ResolveDependency<IPrototypeManager>();
         var cache = pair.Client.ResolveDependency<IResourceCache>();
 
@@ -76,7 +76,7 @@ public sealed class EmberClosetStyleTest
     [Test]
     public async Task EveryProceduralContainerIsMadeOfSomething()
     {
-        await using var pair = await PoolManager.GetServerClient();
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
         var protoManager = pair.Server.ResolveDependency<IPrototypeManager>();
         var factory = pair.Server.ResolveDependency<IComponentFactory>();
 
