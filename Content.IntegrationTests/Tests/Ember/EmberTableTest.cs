@@ -11,6 +11,7 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Content.Shared.Ember.Materials;
 using Content.Shared.Ember.Structures;
+using Robust.Client.GameObjects;
 using Robust.Shared.ContentPack;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
@@ -288,6 +289,73 @@ public sealed class EmberTableTest
             Assert.That(entManager.System<EmberTableFlipSystem>().TryGetFacing((table, comp), user, out _),
                 Is.False, "It went over while somebody was standing on it, in a direction picked out of the air.");
         });
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    /// A table on its side leans against the same edge on screen as the one it blocks, whichever way the table
+    /// itself has been turned.
+    /// </summary>
+    /// <remarks>
+    /// Which edge it goes over against is worked out in tiles, so the collision was right all along; the picture
+    /// was not. The frame is picked with a direction override, which skips the frame the entity's own angle
+    /// would have chosen but not the turn that angle applies to the sprite — so a table a mapper had turned drew
+    /// its lean turned by that much on top. Half a turn drew it leaning against the opposite edge from the one
+    /// it was blocking; a quarter turn put it against a side and mirrored which end of a row was capped, since
+    /// the end pieces turn with the frame.
+    ///
+    /// Reported as the table going over the right way by collision and the wrong way by eye, which is exactly
+    /// what it was doing.
+    /// </remarks>
+    [Test]
+    public async Task ATippedTableLeansAgainstTheEdgeItBlocksHoweverItIsTurned()
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
+        var server = pair.Server;
+        var serverEnts = server.ResolveDependency<IEntityManager>();
+        var clientEnts = pair.Client.ResolveDependency<IEntityManager>();
+        var transform = server.System<SharedTransformSystem>();
+        var map = await pair.CreateTestMap();
+
+        var problems = new List<string>();
+
+        foreach (var spin in new[] { 0, 90, 180, 270 })
+        foreach (var facing in new[] { Direction.North, Direction.South, Direction.East, Direction.West })
+        {
+            EntityUid table = default;
+
+            await server.WaitPost(() =>
+            {
+                table = serverEnts.SpawnEntity("Table", map.GridCoords);
+                transform.SetLocalRotation(table, Angle.FromDegrees(spin));
+
+                var comp = serverEnts.GetComponent<EmberProceduralTableComponent>(table);
+                serverEnts.System<EmberTableFlipSystem>().SetFlipped((table, comp), facing, true);
+            });
+
+            await pair.RunTicksSync(15);
+
+            await pair.Client.WaitPost(() =>
+            {
+                var clientUid = clientEnts.GetEntity(serverEnts.GetNetEntity(table));
+                var sprite = clientEnts.GetComponent<SpriteComponent>(clientUid);
+                var rotation = clientEnts.GetComponent<TransformComponent>(clientUid).LocalRotation;
+
+                Assert.That(sprite.EnableDirectionOverride, Is.True,
+                    "A flipped table is drawn by whichever frame its angle happens to suggest.");
+
+                // The frame is drawn turned by the entity's own rotation, so that is where it ends up pointing.
+                var drawn = (sprite.DirectionOverride.ToAngle() + rotation).GetCardinalDir();
+
+                if (drawn != facing)
+                    problems.Add($"turned {spin} and pushed {facing}, it is drawn leaning {drawn}");
+            });
+
+            await server.WaitPost(() => serverEnts.DeleteEntity(table));
+        }
+
+        Assert.That(problems, Is.Empty, string.Join("\n", problems));
 
         await pair.CleanReturnAsync();
     }

@@ -23,7 +23,6 @@ public sealed class EmberProceduralTableSystem : EntitySystem
     private static readonly ProtoId<TagPrototype> WindowTag = "Window";
     private static readonly ProtoId<TagPrototype> DirectionalTag = "Directional";
 
-    [Dependency] private readonly IEyeManager _eye = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IResourceCache _resource = default!;
     [Dependency] private readonly TagSystem _tag = default!;
@@ -31,7 +30,6 @@ public sealed class EmberProceduralTableSystem : EntitySystem
     private readonly Queue<EntityUid> _dirty = new();
     private readonly Queue<EntityUid> _anchorChanged = new();
     private int _generation;
-    private Angle _lastEyeRotation;
 
     public override void Initialize()
     {
@@ -41,6 +39,16 @@ public sealed class EmberProceduralTableSystem : EntitySystem
         SubscribeLocalEvent<EmberProceduralTableComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<EmberProceduralTableComponent, AnchorStateChangedEvent>(OnAnchorChanged);
         SubscribeLocalEvent<EmberProceduralTableComponent, AfterAutoHandleStateEvent>(OnAfterAutoHandleState);
+        SubscribeLocalEvent<EmberProceduralTableComponent, MoveEvent>(OnMoved);
+    }
+
+    /// <summary>
+    /// A table's own rotation decides which frame it has to ask for, so turning one has to redraw it.
+    /// </summary>
+    private void OnMoved(EntityUid uid, EmberProceduralTableComponent component, ref MoveEvent args)
+    {
+        if (args.OldRotation != args.NewRotation)
+            _dirty.Enqueue(uid);
     }
 
     private void OnStartup(EntityUid uid, EmberProceduralTableComponent component, ComponentStartup args)
@@ -88,23 +96,6 @@ public sealed class EmberProceduralTableSystem : EntitySystem
         {
             if (tables.TryGetComponent(uid, out var table))
                 DirtyNeighbours(uid, table);
-        }
-
-        // A flipped table picks its frame outright, and the engine only leaves eye rotation out of that
-        // choice. Turning the camera therefore has to redraw them, or every table keeps leaning the way it
-        // leant before the view moved.
-        var eye = _eye.CurrentEye.Rotation;
-
-        if (!eye.EqualsApprox(_lastEyeRotation))
-        {
-            _lastEyeRotation = eye;
-
-            var flipped = AllEntityQuery<EmberProceduralTableComponent>();
-            while (flipped.MoveNext(out var uid, out var table))
-            {
-                if (table.Flipped)
-                    _dirty.Enqueue(uid);
-            }
         }
 
         if (_dirty.Count == 0)
@@ -250,11 +241,18 @@ public sealed class EmberProceduralTableSystem : EntitySystem
         var facing = component.FlipFacing;
 
         // The frame to draw is chosen outright rather than by turning the entity, so that what you see and what
-        // you walk into are decided by the same networked value. The engine picks a frame from the angle the
-        // entity has on screen, which an override skips entirely, so the camera has to be added back by hand:
-        // otherwise a turned view leaves the table leaning against an edge it is not blocking.
+        // you walk into are decided by the same networked value.
+        //
+        // An override skips the frame the entity's own angle would have picked, but not the turn that angle
+        // applies to the sprite: a frame drawn for one edge ends up on screen against that edge turned by the
+        // entity's rotation. So the rotation has to come back out of the frame being asked for, or a table a
+        // mapper turned leans against an edge it is not blocking — half a turn puts it against the opposite one,
+        // a quarter turn puts it against a side and mirrors which end of a row is capped.
+        //
+        // Which edge it should lean against is decided in tiles, so this is the table's rotation on its grid,
+        // and the camera does not come into it: the eye turns the sprite and the grid together.
         sprite.EnableDirectionOverride = true;
-        sprite.DirectionOverride = (facing.ToAngle() + _eye.CurrentEye.Rotation).GetCardinalDir();
+        sprite.DirectionOverride = (facing.ToAngle() - xform.LocalRotation).GetCardinalDir();
 
         var run = "0";
 
