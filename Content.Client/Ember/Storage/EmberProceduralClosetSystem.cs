@@ -1,6 +1,8 @@
 using System.Linq;
 using Content.Shared.Ember.Storage;
 using Content.Shared.Labels;
+using Content.Client.Lock.Visualizers;
+using Content.Client.Storage.Visualizers;
 using Content.Shared.Lock;
 using Content.Shared.Storage;
 using Content.Shared.Tools.Components;
@@ -32,6 +34,14 @@ public sealed class EmberProceduralClosetSystem : EntitySystem
 {
     private const string BasePath = "/Textures/Ember/Structures/Storage/bases";
     private const string DecalPath = "/Textures/Ember/Structures/Storage/decals";
+
+    /// <summary>The layers the vanilla visualisers drew a container with, which this system replaces.</summary>
+    private static readonly object[] VanillaLayers =
+    {
+        StorageVisualLayers.Base,
+        StorageVisualLayers.Door,
+        LockVisualLayers.Lock,
+    };
 
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
@@ -74,9 +84,23 @@ public sealed class EmberProceduralClosetSystem : EntitySystem
             return;
         }
 
-        // Only the layers this owns are cleared. The foreign ones stay: the blank frames the vanilla
-        // visualisers insist on setting states on, and the paper label. The label has to stay on top of the
-        // container and the container has to stay on top of the blanks, so this goes in just under the label.
+        // The vanilla visualisers go first, components and layers both. They are client-side markers that
+        // draw a container out of one flat sheet, which is the job this system has taken over; leaving them
+        // in means two containers drawn on the same entity and a visualiser setting states on layers that no
+        // longer hold the sheet it expects. Trying to neuter them from YAML did not hold: with two parents the
+        // sprite resolved to the vanilla one while the visualiser settings resolved to ours, so the states we
+        // told it to use were being looked up in a sheet that never had them.
+        RemComp<EntityStorageVisualsComponent>(ent);
+        RemComp<LockVisualsComponent>(ent);
+
+        foreach (var layer in VanillaLayers)
+        {
+            if (sprite.LayerMapTryGet(layer, out _))
+                sprite.RemoveLayer(layer);
+        }
+
+        // What is left is this system's own layers, cleared for a fresh pass, and the paper label, which is
+        // the one thing that belongs above the container rather than under it.
         Clear(sprite);
 
         var shape = ShapeName(style.Shape);
@@ -237,13 +261,15 @@ public sealed class EmberProceduralClosetSystem : EntitySystem
         };
     }
 
-    private enum EmberClosetLayer : byte
-    {
-        Base,
-        Door,
-        Lock,
-        Interior,
-        Light,
-        Welded,
-    }
+}
+
+/// <summary>The layers a procedural container is drawn out of, in the order they are drawn.</summary>
+public enum EmberClosetLayer : byte
+{
+    Base,
+    Door,
+    Lock,
+    Interior,
+    Light,
+    Welded,
 }

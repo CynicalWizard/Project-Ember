@@ -1,14 +1,9 @@
-# Слои, которые процедурный контейнер НЕ рисует сам, и материал, из которого он сделан.
+# Из чего сделан контейнер. Больше эти базы ни за что не отвечают.
 #
-# EmberProceduralClosetSystem вставляет свои слои в начало списка, так что всё объявленное здесь остаётся
-# сверху. У каждого слоя тут указан свой sprite, потому что контейнер может переопределить sprite: у Sprite
-# целиком — тогда слой без собственного листа поедет за ним.
-#
-# Три слоя существуют только чтобы ванильным визуализаторам было что дёргать. LockVisualizerSystem меняет
-# видимость своего слоя не проверяя, что слой есть, а EntityStorageVisualizerSystem при инициализации ставит
-# состояние на базовый слой — оба уронили бы контейнер, которого не ждали. Скрыть их мало: визуализатор сам
-# включает свой слой обратно. Поэтому им выдана пустая рамка и состояния, которых кроме неё нет — пусть ставит
-# что хочет, рисовать там нечего.
+# Раньше здесь лежал ещё и Sprite с пустыми слоями под ванильные визуализаторы. Не сработало: у сущности с
+# двумя родителями Sprite разрешился в ванильный, а настройки визуализатора — в наши, и он искал наши состояния
+# в чужом листе. Слои и сами визуализаторы теперь снимает EmberProceduralClosetSystem, где порядок разрешения
+# ни на что не влияет.
 #
 # Материал баевский: /obj/structure/closet объявляет сталь и использует её ровно в одном месте — при разрезке
 # контейнер отдаёт два листа. Здесь он ещё и решает, при какой температуре ящик поплывёт.
@@ -17,31 +12,6 @@
   abstract: true
   id: EmberProceduralClosetVisuals
   components:
-  - type: Sprite
-    noRot: true
-    sprite: Ember/Structures/Storage/bases/closet.rsi
-    layers:
-    - state: blank
-      visible: false
-      sprite: Ember/Structures/Storage/bases/closet.rsi
-      map: ["enum.StorageVisualLayers.Base"]
-    - state: blank
-      visible: false
-      sprite: Ember/Structures/Storage/bases/closet.rsi
-      map: ["enum.StorageVisualLayers.Door"]
-    - state: blank
-      sprite: Ember/Structures/Storage/bases/closet.rsi
-      map: ["enum.LockVisualLayers.Lock"]
-    - state: paper
-      visible: false
-      sprite: Structures/Storage/closet_labels.rsi
-      offset: "-0.065,0"
-      map: ["enum.PaperLabelVisuals.Layer"]
-  - type: EntityStorageVisuals
-    stateBaseClosed: blank
-    stateBaseOpen: blank
-    stateDoorOpen: blank
-    stateDoorClosed: blank
   - type: EmberMaterialComposition
     materials:
     - Steel
@@ -50,30 +20,6 @@
   abstract: true
   id: EmberProceduralCrateVisuals
   components:
-  - type: Sprite
-    noRot: true
-    sprite: Ember/Structures/Storage/bases/crate.rsi
-    layers:
-    - state: blank
-      visible: false
-      sprite: Ember/Structures/Storage/bases/crate.rsi
-      map: ["enum.StorageVisualLayers.Base"]
-    - state: blank
-      visible: false
-      sprite: Ember/Structures/Storage/bases/crate.rsi
-      map: ["enum.StorageVisualLayers.Door"]
-    - state: blank
-      sprite: Ember/Structures/Storage/bases/crate.rsi
-      map: ["enum.LockVisualLayers.Lock"]
-    - state: paper
-      visible: false
-      sprite: Structures/Storage/Crates/labels.rsi
-      map: ["enum.PaperLabelVisuals.Layer"]
-  - type: EntityStorageVisuals
-    stateBaseClosed: blank
-    stateBaseOpen: blank
-    stateDoorOpen: blank
-    stateDoorClosed: blank
   - type: EmberMaterialComposition
     materials:
     - Steel
@@ -82,26 +28,6 @@
   abstract: true
   id: EmberProceduralWallClosetVisuals
   components:
-  - type: Sprite
-    noRot: true
-    sprite: Ember/Structures/Storage/bases/wall.rsi
-    layers:
-    - state: blank
-      visible: false
-      sprite: Ember/Structures/Storage/bases/wall.rsi
-      map: ["enum.StorageVisualLayers.Base"]
-    - state: blank
-      visible: false
-      sprite: Ember/Structures/Storage/bases/wall.rsi
-      map: ["enum.StorageVisualLayers.Door"]
-    - state: blank
-      sprite: Ember/Structures/Storage/bases/wall.rsi
-      map: ["enum.LockVisualLayers.Lock"]
-  - type: EntityStorageVisuals
-    stateBaseClosed: blank
-    stateBaseOpen: blank
-    stateDoorOpen: blank
-    stateDoorClosed: blank
   - type: EmberMaterialComposition
     materials:
     - Steel
