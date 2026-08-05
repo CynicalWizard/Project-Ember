@@ -1,6 +1,7 @@
 using Content.Server.Atmos;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
+using Content.Shared.CCVar;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Ember.Doors;
@@ -8,6 +9,7 @@ using Content.Shared.Ember.Materials;
 using Content.Shared.Ember.Structures;
 using Content.Shared.Ember.Walls;
 using Content.Shared.FixedPoint;
+using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -26,6 +28,7 @@ namespace Content.Server.Ember.Materials;
 public sealed class EmberMaterialHeatSystem : EntitySystem
 {
     [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
+    [Dependency] private readonly IConfigurationManager _config = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly FlammableSystem _flammable = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
@@ -48,9 +51,16 @@ public sealed class EmberMaterialHeatSystem : EntitySystem
 
     private static readonly ProtoId<DamageTypePrototype> Heat = "Heat";
 
+    /// <summary>
+    /// See <see cref="CCVars.EmberFireMaterialTemperatureCap"/>: Bay's damage curve against our temperatures.
+    /// </summary>
+    private float _temperatureCap;
+
     public override void Initialize()
     {
         base.Initialize();
+
+        Subs.CVar(_config, CCVars.EmberFireMaterialTemperatureCap, value => _temperatureCap = value, true);
 
         // One subscription per component that can name a material, since that is the only thing they share.
         SubscribeLocalEvent<EmberProceduralWallComponent, TileFireEvent>(OnTileFire);
@@ -96,7 +106,7 @@ public sealed class EmberMaterialHeatSystem : EntitySystem
         if (!HasComp<DamageableComponent>(uid) || MeltingPoint(uid) is not { } melting)
             return;
 
-        var damage = EmberMaterialHeat.Damage(temperature, melting);
+        var damage = EmberMaterialHeat.Damage(MathF.Min(temperature, _temperatureCap), melting);
 
         if (damage <= 0f)
             return;
@@ -122,6 +132,9 @@ public sealed class EmberMaterialHeatSystem : EntitySystem
     /// Only some materials have an ignition point at all — wood, cloth, carpet, cardboard, vox resin — and for
     /// those it sits below the melting point, so they catch before they soften. Anything already burning is
     /// left alone rather than being fed a fresh stack every tick.
+    ///
+    /// This one reads the real temperature rather than the capped one: catching fire is a threshold and not a
+    /// curve, so a fire hotter than anything Bay ever saw still lights wood, it just does not eat steel.
     /// </remarks>
     private bool Ignites(EntityUid uid, float temperature)
     {

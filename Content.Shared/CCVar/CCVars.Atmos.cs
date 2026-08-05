@@ -168,4 +168,23 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<bool> SpaceWindVisuals =
         CVarDef.Create("atmos.space_wind_visuals", true, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     The hottest a fire counts as when working out what it does to the material a thing is made of.
+    /// </summary>
+    /// <remarks>
+    ///     Bay charges a point of damage for every hundred kelvin a fire runs above a material's melting point,
+    ///     and that curve is calibrated to Bay's fires, which are deliberately cool: its turf fire releases
+    ///     50 kJ per mole of burnt oxygen with the comment "we want it to be less hot than real fire though",
+    ///     and tops out at 1023 K by its own defines. Ours releases 284 kJ per mole of hydrogen and a canister
+    ///     of tritium against one of oxygen reaches temperatures an order of magnitude past anything Bay sees,
+    ///     which turned the same formula into hundreds of points a second and took hull apart in seconds.
+    ///
+    ///     This is where the two are pinned together rather than in the formula, because it is a balance number
+    ///     and not a fact about Bay. At the default a steel bulkhead — 1800 K, 225 health, and a sixteen point
+    ///     hardness floor — takes 32 a tick from the worst fire in the game and stands in it for about fifteen
+    ///     seconds. Raise it for a crueller station, lower it to make fire a nuisance rather than a threat.
+    /// </remarks>
+    public static readonly CVarDef<float> EmberFireMaterialTemperatureCap =
+        CVarDef.Create("atmos.ember_fire_material_temperature_cap", 5000f, CVar.SERVERONLY);
 }

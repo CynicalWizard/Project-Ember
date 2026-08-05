@@ -1,5 +1,6 @@
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Damage.Events;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;
 using Content.Shared.Ember.Structures;
@@ -16,6 +17,53 @@ public sealed class EmberMaterialArmorSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<EmberProceduralStructureComponent, DamageModifyEvent>(OnDamageModify);
+        SubscribeLocalEvent<EmberProceduralStructureComponent, BeforeDamageChangedEvent>(OnBeforeDamage);
+    }
+
+    /// <summary>
+    /// Bay's hardness floor for a pane: <c>health_min_damage = round(material.hardness * 1.25 / 10)</c>, plus
+    /// five eighths of the reinforcement's hardness before the division.
+    /// </summary>
+    /// <remarks>
+    /// Walls have had this since the walls were ported; panes never did, and it is the whole reason a window
+    /// popped the moment anything warm came near it. Bay checks it against the raw hit and before any
+    /// resistance, so a weak blow is ignored outright rather than reduced — which is what makes a borosilicate
+    /// pane worth the trouble instead of merely slower to break. Only panes: Bay gives its grilles and its wall
+    /// frames no floor at all, and neither do we.
+    /// </remarks>
+    private void OnBeforeDamage(Entity<EmberProceduralStructureComponent> ent, ref BeforeDamageChangedEvent args)
+    {
+        if (ent.Comp.Role != EmberProceduralStructureRole.Window)
+            return;
+
+        var total = (float) args.Damage.GetTotal();
+
+        // Repairs arrive as negative damage, and Bay only gates damage_health, never restore_health.
+        if (total <= 0f || !TryGetPhysical(ent.Comp.Material, out var material))
+            return;
+
+        var floor = material.Hardness * 1.25f;
+
+        if (TryComp<EmberMaterialReinforcementComponent>(ent, out var reinforcement) &&
+            _prototypeManager.TryIndex(reinforcement.Material, out EmberMaterialPrototype? lattice))
+        {
+            floor += MathF.Round(lattice.Hardness * 0.625f);
+        }
+
+        // DM's single-argument round floors, and this one is compared against as an integer.
+        if (total < MathF.Floor(floor / 10f))
+            args.Cancelled = true;
+    }
+
+    private bool TryGetPhysical(
+        ProtoId<EmberWallMaterialPrototype> id,
+        [System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out EmberMaterialPrototype? material)
+    {
+        material = null;
+
+        return _prototypeManager.TryIndex(id, out EmberWallMaterialPrototype? wall) &&
+               wall.PhysicalMaterial is { } physical &&
+               _prototypeManager.TryIndex(physical, out material);
     }
 
     private void OnDamageModify(Entity<EmberProceduralStructureComponent> ent, ref DamageModifyEvent args)
