@@ -43,7 +43,7 @@ public sealed class EmberGirderFireTest
         await pair.CleanReturnAsync();
     }
 
-    private static async Task AssertBurns(Pair.TestPair pair, string prototype, float temperature = 3000f)
+    private static async Task AssertBurns(Pair.TestPair pair, string prototype, float temperature = 8000f)
     {
         var server = pair.Server;
         var entManager = server.ResolveDependency<IEntityManager>();
@@ -61,6 +61,9 @@ public sealed class EmberGirderFireTest
             Assert.That((float) damage.TotalDamage, Is.Zero,
                 $"A fire cooler than steel damaged {prototype}.");
 
+            // Eight thousand kelvin rather than three: the damage curve bends above two thousand, so a fire
+            // has to be a real one before it gets past steel's armour at all.
+            //
             // A tick is Bay's whole blow one time in thirty rather than a thirtieth of it every time, so this
             // waits for the first one to land. Two thousand chances at one in thirty leaves no room for luck,
             // and stopping at the first keeps the thing alive to be measured.

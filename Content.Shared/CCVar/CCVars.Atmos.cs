@@ -170,21 +170,32 @@ public sealed partial class CCVars
         CVarDef.Create("atmos.space_wind_visuals", true, CVar.SERVERONLY);
 
     /// <summary>
-    ///     The hottest a fire counts as when working out what it does to the material a thing is made of.
+    ///     The temperature past which a fire stops being taken at face value by the material damage curve.
     /// </summary>
     /// <remarks>
     ///     Bay charges a point of damage for every hundred kelvin a fire runs above a material's melting point,
     ///     and that curve is calibrated to Bay's fires, which are deliberately cool: its turf fire releases
     ///     50 kJ per mole of burnt oxygen with the comment "we want it to be less hot than real fire though",
-    ///     and tops out at 1023 K by its own defines. Ours releases 284 kJ per mole of hydrogen and a canister
-    ///     of tritium against one of oxygen reaches temperatures an order of magnitude past anything Bay sees,
-    ///     which turned the same formula into hundreds of points a second and took hull apart in seconds.
+    ///     and tops out at 1023 K by its own defines. Ours releases 284 kJ per mole of hydrogen and reaches an
+    ///     order of magnitude past anything Bay sees, which turned the same formula into hundreds of points a
+    ///     second and went through osmium-carbide plasteel.
     ///
-    ///     This is where the two are pinned together rather than in the formula, because it is a balance number
-    ///     and not a fact about Bay. At the default a steel bulkhead — 1800 K, 225 health, and a sixteen point
-    ///     hardness floor — takes 32 a tick from the worst fire in the game and stands in it for about fifteen
-    ///     seconds. Raise it for a crueller station, lower it to make fire a nuisance rather than a threat.
+    ///     Below this, temperatures pass through untouched and Bay's numbers are Bay's numbers. Above it they
+    ///     keep climbing but logarithmically, so hull still fails in an inferno -- nothing survives a million
+    ///     kelvin -- without an ordinary fire counting for ten times what Bay meant.
+    ///
+    ///     The default is where it is because of one measured fact, from EmberFireTemperatureTest: a tritium
+    ///     flame settles around 68000 K whatever its size, because the temperature follows the ratio of fuel to
+    ///     oxidiser and not the amount of either. Five moles burn as hot as two canisters. That means a burn
+    ///     chamber has no gentle setting to be built for, and the only question is what it has to be lined with.
+    ///     At 2000 that flame counts as 9000 K: an osmium-carbide chamber holds it indefinitely, plasteel takes
+    ///     30 a tick and steel 72, so the lining is a real decision with a real answer. At 3000 nothing holds
+    ///     it, and at 5000 nothing comes close.
+    ///
+    ///     None of which makes this the right model. Temperature alone cannot tell a candle from a star; the
+    ///     honest formula works from the energy the fire actually delivers, and that is a much longer job than
+    ///     this line of code.
     /// </remarks>
-    public static readonly CVarDef<float> EmberFireMaterialTemperatureCap =
-        CVarDef.Create("atmos.ember_fire_material_temperature_cap", 5000f, CVar.SERVERONLY);
+    public static readonly CVarDef<float> EmberFireTemperatureKnee =
+        CVarDef.Create("atmos.ember_fire_temperature_knee", 2000f, CVar.SERVERONLY);
 }

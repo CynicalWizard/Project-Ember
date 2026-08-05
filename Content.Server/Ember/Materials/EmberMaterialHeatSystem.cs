@@ -52,15 +52,15 @@ public sealed class EmberMaterialHeatSystem : EntitySystem
     private static readonly ProtoId<DamageTypePrototype> Heat = "Heat";
 
     /// <summary>
-    /// See <see cref="CCVars.EmberFireMaterialTemperatureCap"/>: Bay's damage curve against our temperatures.
+    /// See <see cref="CCVars.EmberFireTemperatureKnee"/>: where Bay's damage curve stops being taken literally.
     /// </summary>
-    private float _temperatureCap;
+    private float _temperatureKnee;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        Subs.CVar(_config, CCVars.EmberFireMaterialTemperatureCap, value => _temperatureCap = value, true);
+        Subs.CVar(_config, CCVars.EmberFireTemperatureKnee, value => _temperatureKnee = value, true);
 
         // One subscription per component that can name a material, since that is the only thing they share.
         SubscribeLocalEvent<EmberProceduralWallComponent, TileFireEvent>(OnTileFire);
@@ -106,7 +106,7 @@ public sealed class EmberMaterialHeatSystem : EntitySystem
         if (!HasComp<DamageableComponent>(uid) || MeltingPoint(uid) is not { } melting)
             return;
 
-        var damage = EmberMaterialHeat.Damage(MathF.Min(temperature, _temperatureCap), melting);
+        var damage = EmberMaterialHeat.Damage(EmberMaterialHeat.Effective(temperature, _temperatureKnee), melting);
 
         if (damage <= 0f)
             return;

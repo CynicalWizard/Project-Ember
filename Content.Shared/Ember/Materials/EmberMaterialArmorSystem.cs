@@ -21,7 +21,7 @@ public sealed class EmberMaterialArmorSystem : EntitySystem
     }
 
     /// <summary>
-    /// Bay's hardness floor for a pane: <c>health_min_damage = round(material.hardness * 1.25 / 10)</c>, plus
+    /// The hardness floor. For a pane it is Bay's: <c>health_min_damage = round(material.hardness * 1.25 / 10)</c>, plus
     /// five eighths of the reinforcement's hardness before the division.
     /// </summary>
     /// <remarks>
@@ -33,7 +33,7 @@ public sealed class EmberMaterialArmorSystem : EntitySystem
     /// </remarks>
     private void OnBeforeDamage(Entity<EmberProceduralStructureComponent> ent, ref BeforeDamageChangedEvent args)
     {
-        if (ent.Comp.Role != EmberProceduralStructureRole.Window)
+        if (ent.Comp.Role == EmberProceduralStructureRole.Grille)
             return;
 
         var total = (float) args.Damage.GetTotal();
@@ -42,12 +42,24 @@ public sealed class EmberMaterialArmorSystem : EntitySystem
         if (total <= 0f || !TryGetPhysical(ent.Comp.Material, out var material))
             return;
 
-        var floor = material.Hardness * 1.25f;
+        float floor;
 
-        if (TryComp<EmberMaterialReinforcementComponent>(ent, out var reinforcement) &&
-            _prototypeManager.TryIndex(reinforcement.Material, out EmberMaterialPrototype? lattice))
+        if (ent.Comp.Role == EmberProceduralStructureRole.WallFrame)
         {
-            floor += MathF.Round(lattice.Hardness * 0.625f);
+            // Bay gives its wall frames no floor at all, which is the one place we are not following it: a low
+            // wall is made of a material like everything else, and a plasteel one that any warm draught can
+            // chip is not a low wall anyone would build. It takes the wall's figure, because that is what it is.
+            floor = material.Hardness * 2.6f;
+        }
+        else
+        {
+            floor = material.Hardness * 1.25f;
+
+            if (TryComp<EmberMaterialReinforcementComponent>(ent, out var reinforcement) &&
+                _prototypeManager.TryIndex(reinforcement.Material, out EmberMaterialPrototype? lattice))
+            {
+                floor += MathF.Round(lattice.Hardness * 0.625f);
+            }
         }
 
         // DM's single-argument round floors, and this one is compared against as an integer.

@@ -1,6 +1,7 @@
 using Content.Server.Atmos;
 using Content.Server.Ember.Materials;
 using Content.Shared.CCVar;
+using Content.Shared.Ember.Materials;
 using Content.Shared.Damage;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects;
@@ -37,53 +38,84 @@ public sealed class EmberMeltingPointTest
     };
 
     /// <summary>
-    /// Bay's damage curve is calibrated to Bay's fires, which are deliberately cool -- its turf fire releases
-    /// 50 kJ per burnt mole of oxygen and tops out at 1023 K. Ours releases 284 kJ per mole of hydrogen and a
-    /// tritium fire runs an order of magnitude hotter than anything Bay sees, which turned the same formula
-    /// into hundreds of points a second. The cap is where the two are pinned together; these are the numbers
-    /// it produces for the things that were reported dissolving.
+    /// The curve has a knee, not a ceiling.
+    /// </summary>
+    /// <remarks>
+    /// The first attempt at this clamped the temperature, which made every material above the clamp immune to
+    /// fire outright — a wall that shrugs off a million kelvin is no more defensible than one that dissolves in
+    /// a candle. Bending the curve instead means damage keeps climbing for as long as the fire does, just far
+    /// more slowly than a straight line would.
+    ///
+    /// Whether a given wall then feels it is a separate question with a separate answer: Bay's hardness floor
+    /// ignores any hit under it, and osmium-carbide's is twenty six, so at the current knee it takes a fire
+    /// beyond anything the station can produce before an OCP bulkhead registers one. That is the floor doing
+    /// its job, not the knee acting as a ceiling, and these check the two apart.
+    /// </remarks>
+    [Test]
+    public void TheCurveHasAKneeAndNotACeiling()
+    {
+        const float knee = 2000f;
+
+        // Steel, because it starts feeling a fire early enough to watch the curve climb.
+        var last = 0f;
+        foreach (var temperature in new[] { 3_000f, 10_000f, 100_000f, 1_000_000f, 100_000_000f })
+        {
+            var damage = EmberMaterialHeat.Damage(EmberMaterialHeat.Effective(temperature, knee), 1_800f);
+
+            Assert.That(damage, Is.GreaterThan(last),
+                $"{temperature} K did no more to steel than the fire below it.");
+
+            last = damage;
+        }
+
+        // And osmium-carbide, which a station fire never troubles, still gives way to something absurd. That
+        // is the difference between a knee and a ceiling.
+        Assert.That(EmberMaterialHeat.Damage(EmberMaterialHeat.Effective(67_816f, knee), 12_000f), Is.Zero,
+            "A tritium flame got through osmium-carbide, so a burn chamber cannot be lined with it.");
+
+        Assert.That(EmberMaterialHeat.Damage(EmberMaterialHeat.Effective(100_000_000f, knee), 12_000f),
+            Is.GreaterThan(0f),
+            "A hundred million kelvin left osmium-carbide untouched, so the knee is a ceiling after all.");
+
+        // And below the knee it is Bay's arithmetic untouched, because at Bay's temperatures Bay was right.
+        Assert.That(EmberMaterialHeat.Effective(1_500f, knee), Is.EqualTo(1_500f));
+        Assert.That(EmberMaterialHeat.Damage(EmberMaterialHeat.Effective(1_900f, knee), 1_800f), Is.EqualTo(1f));
+    }
+
+    /// <summary>
+    /// A steel bulkhead in the worst fire the station can make: it has to go, and it has to take long enough
+    /// that someone could have done something about it.
     /// </summary>
     [Test]
-    public async Task AFireCannotCountAsHotterThanTheCap()
+    public async Task ASteelWallBurnsInATritiumFireButNotInstantly()
     {
         await using var pair = await PoolManager.GetServerClient();
         var server = pair.Server;
         var entManager = server.ResolveDependency<IEntityManager>();
-        var config = server.ResolveDependency<IConfigurationManager>();
         var map = await pair.CreateTestMap();
-
-        var cap = config.GetCVar(CCVars.EmberFireMaterialTemperatureCap);
 
         await server.WaitPost(() =>
         {
-            // A low wall of osmium-carbide plasteel: 12000 K, well past anything the cap admits.
-            var low = entManager.SpawnEntity("WallFrameOCP", map.GridCoords);
-            var damage = entManager.GetComponent<DamageableComponent>(low);
+            var wall = entManager.SpawnEntity("WallSolid", map.GridCoords);
+            var damage = entManager.GetComponent<DamageableComponent>(wall);
 
-            var inferno = new TileFireEvent(1_000_000f, 2500f);
-            for (var i = 0; i < 2000; i++)
+            // What EmberFireTemperatureTest measures a tritium flame settling at.
+            var fire = new TileFireEvent(67_816f, 2500f);
+            var hits = 0;
+            for (var i = 0; i < 20_000 && damage.TotalDamage <= 0; i++)
             {
-                entManager.EventBus.RaiseLocalEvent(low, ref inferno);
+                entManager.EventBus.RaiseLocalEvent(wall, ref fire);
+                hits++;
             }
 
-            Assert.That((float) damage.TotalDamage, Is.Zero,
-                $"A fire capped at {cap} K melted a low wall that gives way at 12000.");
+            Assert.That((float) damage.TotalDamage, Is.GreaterThan(0f),
+                "A tritium fire did nothing at all to a steel wall.");
 
-            entManager.DeleteEntity(low);
+            // A blow lands one tick in thirty, so this is the first of many rather than the end of the wall.
+            Assert.That((float) damage.TotalDamage, Is.LessThan(100f),
+                $"One tick of a tritium fire took {damage.TotalDamage} off a steel wall after {hits} ticks.");
 
-            // Borosilicate melts at 4273, so the capped fire is worth seven points against a floor of seven.
-            var window = entManager.SpawnEntity("ReinforcedBorosilicateWindow", map.GridCoords);
-            var pane = entManager.GetComponent<DamageableComponent>(window);
-
-            for (var i = 0; i < 2000; i++)
-            {
-                entManager.EventBus.RaiseLocalEvent(window, ref inferno);
-            }
-
-            Assert.That((float) pane.TotalDamage, Is.Zero,
-                "A borosilicate pane shattered in a fire it is supposed to stand in.");
-
-            entManager.DeleteEntity(window);
+            entManager.DeleteEntity(wall);
         });
 
         await pair.CleanReturnAsync();
