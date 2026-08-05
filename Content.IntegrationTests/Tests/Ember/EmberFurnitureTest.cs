@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using Content.Client.Clickable;
 using EmberDrawDepth = Content.Shared.DrawDepth.DrawDepth;
 using Content.Shared.Ember.Furniture;
@@ -386,39 +385,86 @@ public sealed class EmberFurnitureTest
     /// Click detection runs over the pixels of the entity's own sprite, and every Bay seat facing north has
     /// none — the whole chair is in the half the companion draws, and the companion is not a click target at
     /// all. Without an explicit bound the chair is there, visible, and cannot be sat in.
+    ///
+    /// This asks the thing that actually decides. Checking that the prototype carries a bound would only prove
+    /// the bound is written down, not that a click lands on the chair.
     /// </remarks>
     [Test]
     public async Task ASeatFacingNorthCanStillBeClicked()
     {
-        // The client's, because Clickable is a client component and the server drops it on the floor.
         await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
-        var protoManager = pair.Client.ResolveDependency<IPrototypeManager>();
-        var factory = pair.Client.ResolveDependency<IComponentFactory>();
+        var server = pair.Server;
+        var serverEnts = server.ResolveDependency<IEntityManager>();
+        var clientEnts = pair.Client.ResolveDependency<IEntityManager>();
+        var transform = server.System<SharedTransformSystem>();
+        var map = await pair.CreateTestMap();
+
+        // Every seat, because the bound lives on the shared base and one of them wandering off it is exactly
+        // the kind of thing nobody would notice until a player could not sit down.
+        var seats = new List<string>();
+        var factory = server.ResolveDependency<IComponentFactory>();
+        var protoManager = server.ResolveDependency<IPrototypeManager>();
+
+        await server.WaitPost(() =>
+        {
+            foreach (var proto in protoManager.EnumeratePrototypes<EntityPrototype>())
+            {
+                if (!proto.Abstract &&
+                    proto.TryGetComponent<EmberProceduralFurnitureComponent>(out var furniture, factory) &&
+                    !furniture.DrawsOver)
+                {
+                    seats.Add(proto.ID);
+                }
+            }
+        });
+
+        Assert.That(seats, Is.Not.Empty, "No furniture to check, so this test would prove nothing.");
+
+        var spawned = new List<(string Prototype, EntityUid Uid)>();
+
+        await server.WaitPost(() =>
+        {
+            foreach (var id in seats)
+            {
+                var uid = serverEnts.SpawnEntity(id, map.GridCoords);
+                transform.SetLocalRotation(uid, Angle.FromDegrees(180));
+                spawned.Add((id, uid));
+            }
+        });
+
+        await pair.RunTicksSync(30);
 
         var problems = new List<string>();
 
         await pair.Client.WaitPost(() =>
         {
-            foreach (var proto in protoManager.EnumeratePrototypes<EntityPrototype>())
-            {
-                if (proto.Abstract ||
-                    !proto.TryGetComponent<EmberProceduralFurnitureComponent>(out var furniture, factory) ||
-                    furniture.DrawsOver)
-                {
-                    continue;
-                }
+            var clickables = clientEnts.System<ClickableSystem>();
+            var clientTransform = clientEnts.System<SharedTransformSystem>();
+            var eye = pair.Client.ResolveDependency<IEyeManager>().CurrentEye;
 
-                if (!proto.TryGetComponent<ClickableComponent>(out var clickable, factory) ||
-                    clickable.Bounds is not { } bounds ||
-                    bounds.North.Size == Vector2.Zero)
-                {
-                    problems.Add(proto.ID);
-                }
+            foreach (var (id, uid) in spawned)
+            {
+                var clientUid = clientEnts.GetEntity(serverEnts.GetNetEntity(uid));
+                var sprite = clientEnts.GetComponent<SpriteComponent>(clientUid);
+                var clickable = clientEnts.GetComponentOrNull<ClickableComponent>(clientUid);
+
+                // The middle of the tile it is standing on: where a player aiming at the chair clicks.
+                var worldPos = clientTransform.GetWorldPosition(clientUid);
+
+                if (!clickables.CheckClick((clientUid, clickable, sprite, null), worldPos, eye, out _, out _, out _))
+                    problems.Add($"{id} facing north cannot be clicked");
             }
         });
 
-        Assert.That(problems, Is.Empty,
-            "These have nothing to click when they face north:\n" + string.Join("\n", problems));
+        Assert.That(problems, Is.Empty, string.Join("\n", problems));
+
+        await server.WaitPost(() =>
+        {
+            foreach (var (_, uid) in spawned)
+            {
+                serverEnts.DeleteEntity(uid);
+            }
+        });
 
         await pair.CleanReturnAsync();
     }
