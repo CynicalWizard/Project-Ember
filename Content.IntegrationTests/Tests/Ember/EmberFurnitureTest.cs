@@ -4,6 +4,7 @@ using EmberDrawDepth = Content.Shared.DrawDepth.DrawDepth;
 using Content.Shared.Ember.Furniture;
 using Robust.Client.GameObjects;
 using Robust.Shared.GameObjects;
+using Robust.Shared.Maths;
 
 namespace Content.IntegrationTests.Tests.Ember;
 
@@ -57,11 +58,18 @@ public sealed class EmberFurnitureTest
 
             Assert.Multiple(() =>
             {
-                // Under the sitter: frame, upholstery, and the gold that belongs to the design.
-                Assert.That(States(seat), Is.EquivalentTo(new[] { "capchair", "capchair_padding", "capchair_special" }));
+                // Under the sitter: the frame and its upholstery, and nothing else.
+                Assert.That(States(seat), Is.EquivalentTo(new[] { "capchair", "capchair_padding" }));
 
-                // Above: the back and the upholstery on it. No arms, because nobody is sitting there yet.
-                Assert.That(States(over), Is.EquivalentTo(new[] { "capchair_over", "capchair_padding_over" }));
+                // Above: the back, the upholstery on it, and the gold — Bay puts its trim above the sitter
+                // too, which is the whole point of a badge on the back of a chair. No arms, because nobody
+                // is sitting there yet.
+                Assert.That(States(over),
+                    Is.EquivalentTo(new[] { "capchair_over", "capchair_padding_over", "capchair_special" }));
+
+                // Gold stays gold: unlike a shuttle seat's harness, this is not part of the frame.
+                Assert.That(Colour(over, "capchair_special"), Is.EqualTo(Color.White),
+                    "The captain's gold was painted with the chair.");
 
                 Assert.That((int) over.DrawDepth, Is.EqualTo((int) EmberDrawDepth.OverMobs),
                     "The half that is supposed to cover the sitter is not drawn above mobs.");
@@ -89,6 +97,111 @@ public sealed class EmberFurnitureTest
 
             Assert.That(States(over), Does.Contain("capchair_armrest"),
                 "Nobody's arms are on the armrests, because the chair never drew them.");
+        });
+
+        // Bay draws almost nothing in the base state when a chair faces north and puts the whole back into
+        // _over, so a companion that does not turn with the chair leaves an empty tile. It rides on the chair,
+        // so it should be facing wherever the chair is facing without being told.
+        await server.WaitPost(() =>
+        {
+            var xform = serverEnts.GetComponent<TransformComponent>(chair);
+            serverEnts.System<SharedTransformSystem>().SetLocalRotation(chair, Angle.FromDegrees(180), xform);
+        });
+
+        await pair.RunTicksSync(10);
+
+        await server.WaitPost(() =>
+        {
+            var transform = serverEnts.System<SharedTransformSystem>();
+
+            Assert.That(transform.GetWorldRotation(overlay).Theta,
+                Is.EqualTo(transform.GetWorldRotation(chair).Theta).Within(0.001),
+                "The companion is facing a different way from the chair it belongs to, so a chair turned "
+                + "north would be drawn as an empty tile.");
+        });
+
+        await server.WaitPost(() => serverEnts.DeleteEntity(chair));
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    /// The shuttle seat, which was reported broken and was.
+    /// </summary>
+    /// <remarks>
+    /// Three things about it are unlike every other chair, and the first pass got all three wrong. Its trim is
+    /// the harness rather than decoration, so it takes the frame's colour instead of keeping its own. The
+    /// harness is hanging open, so it goes the moment anyone is strapped in. And <c>post_buckle_mob</c> swaps
+    /// the whole seat to <c>shuttle_chair-b</c>, which is the one with arms — the harness closed around its
+    /// occupant. Drawing the open harness under the sitter, untinted, on the unoccupied seat is what made it
+    /// look like two chairs on one tile.
+    /// </remarks>
+    [Test]
+    public async Task AShuttleSeatClosesItsHarnessAroundWhoeverSitsInIt()
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
+        var server = pair.Server;
+        var serverEnts = server.ResolveDependency<IEntityManager>();
+        var clientEnts = pair.Client.ResolveDependency<IEntityManager>();
+        var furniture = server.System<Content.Server.Ember.Furniture.EmberProceduralFurnitureSystem>();
+        var map = await pair.CreateTestMap();
+
+        EntityUid chair = default;
+        EntityUid overlay = default;
+
+        await server.WaitPost(() =>
+        {
+            chair = serverEnts.SpawnEntity("EmberShuttleChair", map.GridCoords);
+            overlay = serverEnts.GetComponent<EmberProceduralFurnitureComponent>(chair).Overlay!.Value;
+        });
+
+        await pair.RunTicksSync(10);
+
+        await pair.Client.WaitPost(() =>
+        {
+            var seat = clientEnts.GetComponent<SpriteComponent>(
+                clientEnts.GetEntity(serverEnts.GetNetEntity(chair)));
+            var over = clientEnts.GetComponent<SpriteComponent>(
+                clientEnts.GetEntity(serverEnts.GetNetEntity(overlay)));
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(States(seat), Is.EquivalentTo(new[] { "shuttle_chair", "shuttle_chair_padding" }));
+
+                // The harness hangs open above the seat, painted with the seat rather than left white.
+                Assert.That(States(over), Does.Contain("shuttle_chair_special"));
+                Assert.That(Colour(over, "shuttle_chair_special"), Is.Not.EqualTo(Color.White),
+                    "The harness is part of the seat and should be painted with it.");
+            });
+        });
+
+        await server.WaitPost(() =>
+        {
+            var comp = serverEnts.GetComponent<EmberProceduralFurnitureComponent>(chair);
+            comp.Occupied = true;
+            serverEnts.Dirty(chair, comp);
+            furniture.Sync((chair, comp));
+        });
+
+        await pair.RunTicksSync(10);
+
+        await pair.Client.WaitPost(() =>
+        {
+            var seat = clientEnts.GetComponent<SpriteComponent>(
+                clientEnts.GetEntity(serverEnts.GetNetEntity(chair)));
+            var over = clientEnts.GetComponent<SpriteComponent>(
+                clientEnts.GetEntity(serverEnts.GetNetEntity(overlay)));
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(States(seat), Is.EquivalentTo(new[] { "shuttle_chair-b", "shuttle_chair-b_padding" }),
+                    "A seat with someone in it is still drawn as the empty one.");
+
+                Assert.That(States(over), Does.Contain("shuttle_chair-b_armrest"),
+                    "The harness never closed around its occupant.");
+
+                Assert.That(States(over), Does.Not.Contain("shuttle_chair_special"),
+                    "The open harness is still hanging there with someone strapped in behind it.");
+            });
         });
 
         await server.WaitPost(() => serverEnts.DeleteEntity(chair));
@@ -137,6 +250,11 @@ public sealed class EmberFurnitureTest
 
         await server.WaitPost(() => serverEnts.DeleteEntity(chair));
         await pair.CleanReturnAsync();
+    }
+
+    private static Color Colour(SpriteComponent sprite, string state)
+    {
+        return sprite.AllLayers.First(layer => layer.Rsi != null && layer.RsiState.Name == state).Color;
     }
 
     private static List<string> States(SpriteComponent sprite)

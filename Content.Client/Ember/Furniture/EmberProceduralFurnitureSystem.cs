@@ -62,27 +62,32 @@ public sealed class EmberProceduralFurnitureSystem : EntitySystem
         var frame = Colour(ent.Comp.Material);
         var padding = ent.Comp.Padding is { } id ? Colour(id) : (Color?) null;
 
+        // A shuttle seat is drawn from a different set of parts once someone is strapped into it.
+        var name = ent.Comp.Occupied && ent.Comp.OccupiedState is { } occupied
+            ? occupied
+            : ent.Comp.BaseState;
+
         if (ent.Comp.DrawsOver)
         {
-            Add(sprite, rsi, ent.Comp, "_over", frame);
-            Add(sprite, rsi, ent.Comp, "_padding_over", padding);
+            Add(sprite, rsi, ent.Comp, name, "_over", frame);
+            Add(sprite, rsi, ent.Comp, name, "_padding_over", padding);
 
             // The arms close around an occupant and are drawn only when there is one to close around.
             if (ent.Comp.Occupied)
             {
-                Add(sprite, rsi, ent.Comp, "_armrest", frame);
-                Add(sprite, rsi, ent.Comp, "_padding_armrest", padding);
+                Add(sprite, rsi, ent.Comp, name, "_armrest", frame);
+                Add(sprite, rsi, ent.Comp, name, "_padding_armrest", padding);
             }
+
+            // Bay puts the trim above the sitter too, alongside the back of the chair.
+            if (ent.Comp.Special && (ent.Comp.SpecialWhenOccupied || !ent.Comp.Occupied))
+                Add(sprite, rsi, ent.Comp, name, "_special", ent.Comp.SpecialTinted ? frame : Color.White);
 
             return;
         }
 
-        Add(sprite, rsi, ent.Comp, string.Empty, frame);
-        Add(sprite, rsi, ent.Comp, "_padding", padding);
-
-        // Trim that belongs to the design rather than the material, so it keeps its own colours.
-        if (ent.Comp.Special)
-            Add(sprite, rsi, ent.Comp, "_special", Color.White);
+        Add(sprite, rsi, ent.Comp, name, string.Empty, frame);
+        Add(sprite, rsi, ent.Comp, name, "_padding", padding);
     }
 
     /// <summary>Adds one part, if the sheet has it and there is a colour to draw it in.</summary>
@@ -90,13 +95,14 @@ public sealed class EmberProceduralFurnitureSystem : EntitySystem
         SpriteComponent sprite,
         RSI rsi,
         EmberProceduralFurnitureComponent furniture,
+        string name,
         string suffix,
         Color? color)
     {
         if (color is not { } tint)
             return;
 
-        var state = furniture.BaseState + suffix;
+        var state = name + suffix;
         if (!rsi.TryGetState(state, out _))
             return;
 

@@ -11,6 +11,10 @@
   - type: Sprite
     sprite: Ember/Structures/Furniture/furniture.rsi
     noRot: true
+  # Bay даёт повернуть стул, на котором сидишь: /obj/structure/bed/chair/rotate крутит его на 90 градусов и не
+  # спрашивает, прикручен он или нет. Ванильный Rotatable по умолчанию отказывает прикрученному.
+  - type: Rotatable
+    rotateWhileAnchored: true
   - type: EmberProceduralFurniture
     baseState: chair
 
@@ -78,6 +82,7 @@
     baseState: capchair
     material: Steel
     padding: Carpet
+    # Золото остаётся золотом и остаётся на месте, когда в кресло садятся.
     special: true
 
 - type: entity
@@ -86,11 +91,17 @@
   name: shuttle chair
   description: A padded seat with a five-point harness.
   components:
+  # Ремни у шаттлового кресла — это его же металл, а не отдельная деталь, поэтому красятся вместе с ним.
+  # Пока никто не пристёгнут, они висят открытыми; как только пристегнулись, кресло целиком меняет набор
+  # деталей на shuttle_chair-b, у которого вместо открытых ремней сомкнутые подлокотники.
   - type: EmberProceduralFurniture
     baseState: shuttle_chair
+    occupiedState: shuttle_chair-b
     material: Steel
     padding: Cloth
     special: true
+    specialTinted: true
+    specialWhenOccupied: false
 
 - type: entity
   id: EmberRoundedChair

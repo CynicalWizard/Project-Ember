@@ -90,6 +90,9 @@ public sealed class EmberProceduralFurnitureSystem : EntitySystem
         over.Material = ent.Comp.Material;
         over.Padding = ent.Comp.Padding;
         over.Special = ent.Comp.Special;
+        over.SpecialTinted = ent.Comp.SpecialTinted;
+        over.SpecialWhenOccupied = ent.Comp.SpecialWhenOccupied;
+        over.OccupiedState = ent.Comp.OccupiedState;
         over.Occupied = ent.Comp.Occupied;
         Dirty(overlay, over);
     }

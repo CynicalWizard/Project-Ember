@@ -20,6 +20,11 @@
   - type: Sprite
     drawdepth: OverMobs
     noRot: true
+  # Он не предмет и трогать его нельзя, но ПКМ по тайлу находит всё, у чего есть видимый спрайт, и показывал
+  # игрокам «furniture» рядом со стулом. Тег — то, чем VerbSystem вычёркивает такое из меню.
+  - type: Tag
+    tags:
+    - HideContextMenu
   - type: EmberProceduralFurniture
     baseState: chair
     drawsOver: true
