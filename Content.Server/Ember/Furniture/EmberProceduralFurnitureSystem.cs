@@ -2,6 +2,7 @@ using Content.Shared.Buckle.Components;
 using Content.Shared.Ember.Furniture;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
+using Robust.Shared.Maths;
 
 namespace Content.Server.Ember.Furniture;
 
@@ -40,6 +41,11 @@ public sealed class EmberProceduralFurnitureSystem : EntitySystem
 
         ent.Comp.Overlay = Spawn(ent.Comp.OverlayPrototype, Transform(ent).Coordinates);
         _transform.SetParent(ent.Comp.Overlay.Value, ent);
+
+        // SetParent keeps world rotation, so a companion spawned facing south onto a chair a mapper already
+        // turned north lands with a local rotation of -180 and stays a half-turn behind it forever. Bay draws
+        // almost nothing under the sitter at north and the whole chair above, so that chair is an empty tile.
+        _transform.SetLocalRotation(ent.Comp.Overlay.Value, Angle.Zero);
 
         Sync(ent);
     }

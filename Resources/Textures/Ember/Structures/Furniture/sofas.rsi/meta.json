@@ -104,15 +104,15 @@
       "directions": 4
     },
     {
-      "name": "sofa_preview_corner",
+      "name": "sofa_corner_preview",
       "directions": 4
     },
     {
-      "name": "sofa_padding_corner",
+      "name": "sofa_corner_padding",
       "directions": 4
     },
     {
-      "name": "sofa_padding_over_corner",
+      "name": "sofa_corner_padding_over",
       "directions": 4
     },
     {
@@ -120,7 +120,7 @@
       "directions": 4
     },
     {
-      "name": "sofa_over_corner",
+      "name": "sofa_corner_over",
       "directions": 4
     }
   ]

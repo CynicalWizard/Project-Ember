@@ -1,10 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
+using Content.Client.Clickable;
 using EmberDrawDepth = Content.Shared.DrawDepth.DrawDepth;
 using Content.Shared.Ember.Furniture;
 using Robust.Client.GameObjects;
+using Robust.Client.Graphics;
+using Robust.Client.ResourceManagement;
 using Robust.Shared.GameObjects;
+using Robust.Shared.Map;
 using Robust.Shared.Maths;
+using Robust.Shared.Prototypes;
 
 namespace Content.IntegrationTests.Tests.Ember;
 
@@ -249,6 +255,171 @@ public sealed class EmberFurnitureTest
         });
 
         await server.WaitPost(() => serverEnts.DeleteEntity(chair));
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    /// Every part a piece of furniture is supposed to be built from has to be in the sheet under the name the
+    /// component will look for.
+    /// </summary>
+    /// <remarks>
+    /// A part the sheet does not have is silently skipped, which is what lets one system serve a stool and a
+    /// captain's chair — and also what let the corner sofa ship as a bare frame. Its states were cut out under
+    /// Bay's own names, <c>sofa_over_corner</c> and <c>sofa_padding_corner</c>, while the component builds its
+    /// part names as base plus suffix and was asking for <c>sofa_corner_over</c>. Nothing anywhere complained;
+    /// the sofa just lost its upholstery and its back and looked like a wooden bench from every side.
+    ///
+    /// So: whatever a prototype claims to have, the sheet must actually have. Upholstery it names has to exist
+    /// somewhere, and so does the set of parts it swaps to when someone sits down.
+    /// </remarks>
+    [Test]
+    public async Task EveryPieceOfFurnitureFindsItsPartsInTheSheet()
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
+        var protoManager = pair.Server.ResolveDependency<IPrototypeManager>();
+        var cache = pair.Client.ResolveDependency<IResourceCache>();
+        var factory = pair.Server.ResolveDependency<IComponentFactory>();
+
+        var problems = new List<string>();
+
+        await pair.Client.WaitPost(() =>
+        {
+            foreach (var proto in protoManager.EnumeratePrototypes<EntityPrototype>())
+            {
+                if (proto.Abstract ||
+                    !proto.TryGetComponent<EmberProceduralFurnitureComponent>(out var furniture, factory))
+                {
+                    continue;
+                }
+
+                // The companion is handed its parts by the piece it belongs to and carries a placeholder here.
+                if (furniture.DrawsOver)
+                    continue;
+
+                var rsi = cache.GetResource<RSIResource>(furniture.Sprite).RSI;
+                var names = new List<string> { furniture.BaseState };
+
+                if (furniture.OccupiedState is { } occupied)
+                    names.Add(occupied);
+
+                foreach (var name in names)
+                {
+                    // Something has to be drawn under the sitter or above them, or there is no chair at all.
+                    if (!rsi.TryGetState(name, out _) && !rsi.TryGetState($"{name}_over", out _))
+                        problems.Add($"{proto.ID}: {furniture.Sprite} has nothing called {name}");
+
+                    if (furniture.Padding == null)
+                        continue;
+
+                    if (!rsi.TryGetState($"{name}_padding", out _) &&
+                        !rsi.TryGetState($"{name}_padding_over", out _))
+                    {
+                        problems.Add($"{proto.ID}: upholstered in {furniture.Padding}, but {furniture.Sprite} "
+                            + $"has no {name}_padding to draw it on");
+                    }
+                }
+
+                if (furniture.Special && !rsi.TryGetState($"{furniture.BaseState}_special", out _))
+                    problems.Add($"{proto.ID}: has trim, but {furniture.Sprite} has no {furniture.BaseState}_special");
+            }
+        });
+
+        Assert.That(problems, Is.Empty, string.Join("\n", problems));
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    /// A chair a mapper already turned north still has to face north once the round starts.
+    /// </summary>
+    /// <remarks>
+    /// The companion is spawned facing south and then parented to the chair, and parenting keeps world rotation
+    /// — so onto a chair that is already turned it lands with a local rotation cancelling the chair's, and stays
+    /// exactly that far behind it forever after. Bay draws nothing under the sitter at north and the whole chair
+    /// above, so such a chair is an empty tile in the direction it is most often mapped facing.
+    /// </remarks>
+    [Test]
+    public async Task FurnitureMappedFacingNorthIsStillFacingNorthWhenTheRoundStarts()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        var entities = server.ResolveDependency<IEntityManager>();
+        var maps = server.System<SharedMapSystem>();
+        var transform = server.System<SharedTransformSystem>();
+
+        // Uninitialized, so the chair can be turned before map init the way a mapper turns it in the editor.
+        var map = await pair.CreateTestMap(initialized: false);
+
+        EntityUid chair = default;
+
+        await server.WaitPost(() =>
+        {
+            chair = entities.SpawnEntity("EmberComfyChair", map.GridCoords);
+            transform.SetLocalRotation(chair, Angle.FromDegrees(180));
+
+            Assert.That(entities.GetComponent<EmberProceduralFurnitureComponent>(chair).Overlay, Is.Null,
+                "The companion appeared before map init, so this proves nothing about mapped furniture.");
+        });
+
+        await server.WaitPost(() => maps.InitializeMap(map.MapId));
+        await server.WaitRunTicks(5);
+
+        await server.WaitPost(() =>
+        {
+            var overlay = entities.GetComponent<EmberProceduralFurnitureComponent>(chair).Overlay;
+
+            Assert.That(overlay, Is.Not.Null, "Map init never gave the chair its other half.");
+
+            Assert.That(transform.GetWorldRotation(overlay!.Value).Theta,
+                Is.EqualTo(transform.GetWorldRotation(chair).Theta).Within(0.001),
+                "A chair mapped facing north got a companion facing south, so the tile is drawn empty.");
+        });
+
+        await server.WaitPost(() => entities.DeleteEntity(chair));
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    /// A seat drawn entirely above the sitter still has to be clickable.
+    /// </summary>
+    /// <remarks>
+    /// Click detection runs over the pixels of the entity's own sprite, and every Bay seat facing north has
+    /// none — the whole chair is in the half the companion draws, and the companion is not a click target at
+    /// all. Without an explicit bound the chair is there, visible, and cannot be sat in.
+    /// </remarks>
+    [Test]
+    public async Task ASeatFacingNorthCanStillBeClicked()
+    {
+        // The client's, because Clickable is a client component and the server drops it on the floor.
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
+        var protoManager = pair.Client.ResolveDependency<IPrototypeManager>();
+        var factory = pair.Client.ResolveDependency<IComponentFactory>();
+
+        var problems = new List<string>();
+
+        await pair.Client.WaitPost(() =>
+        {
+            foreach (var proto in protoManager.EnumeratePrototypes<EntityPrototype>())
+            {
+                if (proto.Abstract ||
+                    !proto.TryGetComponent<EmberProceduralFurnitureComponent>(out var furniture, factory) ||
+                    furniture.DrawsOver)
+                {
+                    continue;
+                }
+
+                if (!proto.TryGetComponent<ClickableComponent>(out var clickable, factory) ||
+                    clickable.Bounds is not { } bounds ||
+                    bounds.North.Size == Vector2.Zero)
+                {
+                    problems.Add(proto.ID);
+                }
+            }
+        });
+
+        Assert.That(problems, Is.Empty,
+            "These have nothing to click when they face north:\n" + string.Join("\n", problems));
+
         await pair.CleanReturnAsync();
     }
 
