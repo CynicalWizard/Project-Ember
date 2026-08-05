@@ -1,0 +1,334 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from SierraBay (Baystation12)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "bar_stool_base"
+    },
+    {
+      "name": "bar_stool_padding"
+    },
+    {
+      "name": "bar_stool_preview"
+    },
+    {
+      "name": "bar_stool_padded_preview"
+    },
+    {
+      "name": "stool_base"
+    },
+    {
+      "name": "stool_padding"
+    },
+    {
+      "name": "stool_preview"
+    },
+    {
+      "name": "stool_padded_preview"
+    },
+    {
+      "name": "chair",
+      "directions": 4
+    },
+    {
+      "name": "chair_preview",
+      "directions": 4
+    },
+    {
+      "name": "chair_over",
+      "directions": 4
+    },
+    {
+      "name": "chair_padding",
+      "directions": 4
+    },
+    {
+      "name": "chair_padding_over",
+      "directions": 4
+    },
+    {
+      "name": "bed"
+    },
+    {
+      "name": "bed_padding"
+    },
+    {
+      "name": "wheelchair",
+      "directions": 4
+    },
+    {
+      "name": "w_overlay",
+      "directions": 4
+    },
+    {
+      "name": "blank"
+    },
+    {
+      "name": "psychbed"
+    },
+    {
+      "name": "psychbed_padding"
+    },
+    {
+      "name": "officechair",
+      "directions": 4
+    },
+    {
+      "name": "officechair_preview",
+      "directions": 4
+    },
+    {
+      "name": "officechair_over",
+      "directions": 4
+    },
+    {
+      "name": "officechair_padding",
+      "directions": 4
+    },
+    {
+      "name": "officechair_padding_over",
+      "directions": 4
+    },
+    {
+      "name": "comfyofficechair",
+      "directions": 4
+    },
+    {
+      "name": "comfyofficechair_preview",
+      "directions": 4
+    },
+    {
+      "name": "comfyofficechair_over",
+      "directions": 4
+    },
+    {
+      "name": "comfyofficechair_armrest",
+      "directions": 4
+    },
+    {
+      "name": "comfyofficechair_padding",
+      "directions": 4
+    },
+    {
+      "name": "comfyofficechair_padding_over",
+      "directions": 4
+    },
+    {
+      "name": "comfyofficechair_padding_armrest",
+      "directions": 4
+    },
+    {
+      "name": "wooden_chair",
+      "directions": 4
+    },
+    {
+      "name": "wooden_chair_preview",
+      "directions": 4
+    },
+    {
+      "name": "wooden_chair_over",
+      "directions": 4
+    },
+    {
+      "name": "wooden_chair_wings",
+      "directions": 4
+    },
+    {
+      "name": "wooden_chair_wings_preview",
+      "directions": 4
+    },
+    {
+      "name": "wooden_chair_wings_over",
+      "directions": 4
+    },
+    {
+      "name": "comfychair",
+      "directions": 4
+    },
+    {
+      "name": "comfychair_preview",
+      "directions": 4
+    },
+    {
+      "name": "comfychair_over",
+      "directions": 4
+    },
+    {
+      "name": "comfychair_armrest",
+      "directions": 4
+    },
+    {
+      "name": "comfychair_padding",
+      "directions": 4
+    },
+    {
+      "name": "comfychair_padding_over",
+      "directions": 4
+    },
+    {
+      "name": "comfychair_padding_armrest",
+      "directions": 4
+    },
+    {
+      "name": "dogbed"
+    },
+    {
+      "name": "capchair",
+      "directions": 4
+    },
+    {
+      "name": "capchair_preview",
+      "directions": 4
+    },
+    {
+      "name": "capchair_over",
+      "directions": 4
+    },
+    {
+      "name": "capchair_special",
+      "directions": 4
+    },
+    {
+      "name": "capchair_armrest",
+      "directions": 4
+    },
+    {
+      "name": "capchair_padding",
+      "directions": 4
+    },
+    {
+      "name": "capchair_padding_over",
+      "directions": 4
+    },
+    {
+      "name": "shuttle_chair",
+      "directions": 4
+    },
+    {
+      "name": "shuttle_chair_preview",
+      "directions": 4
+    },
+    {
+      "name": "shuttle_chair_over",
+      "directions": 4
+    },
+    {
+      "name": "shuttle_chair_padding",
+      "directions": 4
+    },
+    {
+      "name": "shuttle_chair_special",
+      "directions": 4
+    },
+    {
+      "name": "shuttle_chair-b",
+      "directions": 4
+    },
+    {
+      "name": "shuttle_chair-b_over",
+      "directions": 4
+    },
+    {
+      "name": "shuttle_chair-b_padding",
+      "directions": 4
+    },
+    {
+      "name": "shuttle_chair-b_armrest",
+      "directions": 4
+    },
+    {
+      "name": "armchair_preview",
+      "directions": 4
+    },
+    {
+      "name": "armchair_padding",
+      "directions": 4
+    },
+    {
+      "name": "armchair_padding_over",
+      "directions": 4
+    },
+    {
+      "name": "dirty_mattress"
+    },
+    {
+      "name": "mattress"
+    },
+    {
+      "name": "pew"
+    },
+    {
+      "name": "pew_left"
+    },
+    {
+      "name": "nest_chair"
+    },
+    {
+      "name": "nest_chair_padding"
+    },
+    {
+      "name": "nest_chair_large"
+    },
+    {
+      "name": "nest_chair_large_padding"
+    },
+    {
+      "name": "echair0",
+      "directions": 4
+    },
+    {
+      "name": "echair1",
+      "directions": 4
+    },
+    {
+      "name": "echair_over",
+      "directions": 4
+    },
+    {
+      "name": "echair_shock",
+      "directions": 4,
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "rack"
+    }
+  ]
+}

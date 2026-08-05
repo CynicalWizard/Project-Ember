@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from SierraBay (Baystation12)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "roundedchair_preview",
+      "directions": 4
+    },
+    {
+      "name": "roundedchair_padding",
+      "directions": 4
+    },
+    {
+      "name": "roundedchair_padding_over",
+      "directions": 4
+    },
+    {
+      "name": "roundedchair_padding_armrest",
+      "directions": 4
+    },
+    {
+      "name": "roundedchair",
+      "directions": 4
+    },
+    {
+      "name": "roundedchair_over",
+      "directions": 4
+    },
+    {
+      "name": "roundedchair_armrest",
+      "directions": 4
+    },
+    {
+      "name": "sofa_preview",
+      "directions": 4
+    },
+    {
+      "name": "sofa_padding",
+      "directions": 4
+    },
+    {
+      "name": "sofa_padding_over",
+      "directions": 4
+    },
+    {
+      "name": "sofa",
+      "directions": 4
+    },
+    {
+      "name": "sofa_over",
+      "directions": 4
+    },
+    {
+      "name": "sofa_l_preview",
+      "directions": 4
+    },
+    {
+      "name": "sofa_l_padding",
+      "directions": 4
+    },
+    {
+      "name": "sofa_l_padding_over",
+      "directions": 4
+    },
+    {
+      "name": "sofa_l",
+      "directions": 4
+    },
+    {
+      "name": "sofa_l_over",
+      "directions": 4
+    },
+    {
+      "name": "sofa_l_padding_armrest",
+      "directions": 4
+    },
+    {
+      "name": "sofa_r_preview",
+      "directions": 4
+    },
+    {
+      "name": "sofa_r_padding",
+      "directions": 4
+    },
+    {
+      "name": "sofa_r_padding_over",
+      "directions": 4
+    },
+    {
+      "name": "sofa_r",
+      "directions": 4
+    },
+    {
+      "name": "sofa_r_over",
+      "directions": 4
+    },
+    {
+      "name": "sofa_r_padding_armrest",
+      "directions": 4
+    },
+    {
+      "name": "sofa_preview_corner",
+      "directions": 4
+    },
+    {
+      "name": "sofa_padding_corner",
+      "directions": 4
+    },
+    {
+      "name": "sofa_padding_over_corner",
+      "directions": 4
+    },
+    {
+      "name": "sofa_corner",
+      "directions": 4
+    },
+    {
+      "name": "sofa_over_corner",
+      "directions": 4
+    }
+  ]
+}
