@@ -25,9 +25,13 @@
   - type: InteractionOutline
   - type: Transform
     anchored: true
+  # Спрайт с Bay. Он направленный: у Bay свой рисунок на каждую стену, боковые нарисованы в перспективе и
+  # поворотом из южного не получаются, поэтому noRot и четыре направления в листе, а не одна крутящаяся
+  # картинка. Смещение на четверть тайка в комнату уже вложено в сам арт при конвертации.
   - type: Sprite
     drawdepth: WallMountedItems
-    sprite: Structures/Power/apc.rsi
+    noRot: true
+    sprite: Ember/Structures/Power/apc.rsi
     layers:
     - state: base
     - state: panel
@@ -39,9 +43,6 @@
     - state: lock0-unlocked
       shader: unshaded
       map: ["enum.ApcVisualLayers.InterfaceLock"]
-    - state: lock1-unlocked
-      shader: unshaded
-      map: ["enum.ApcVisualLayers.PanelLock"]
     - state: channel0-auto_on
       shader: unshaded
       map: ["enum.ApcVisualLayers.Equipment"]
@@ -52,7 +53,9 @@
       shader: unshaded
       map: ["enum.ApcVisualLayers.Environment"]
   - type: Appearance
+  # У Bay один индикатор замка, а не два: apcox, зелёный когда открыт и красный когда заперт.
   - type: ApcVisuals
+    numLockIndicators: 1
   - type: Battery
     maxCharge: 50000
     startingCharge: 0
@@ -71,7 +74,7 @@
     sourceNode: input
     loadNode: output
     collectionName: apc
-    sprite: Structures/Power/apc.rsi
+    sprite: Ember/Structures/Power/apc.rsi
     state: static
   - type: BatteryCharger
     voltage: Medium
@@ -160,7 +163,8 @@
     anchored: true
   - type: Sprite
     drawdepth: WallMountedItems
-    sprite: Structures/Power/apc.rsi
+    noRot: true
+    sprite: Ember/Structures/Power/apc.rsi
     state: frame
   - type: Construction
     graph: APC
