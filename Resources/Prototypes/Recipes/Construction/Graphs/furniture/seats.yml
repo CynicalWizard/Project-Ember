@@ -29,17 +29,17 @@
         - to: chairOffice
           steps:
             - material: Steel
-              amount: 2
+              amount: 5
               doAfter: 1
         - to: chairOfficeDark
           steps:
             - material: Steel
-              amount: 2
+              amount: 5
               doAfter: 1
         - to: chairComfy
           steps:
             - material: Steel
-              amount: 2
+              amount: 3
               doAfter: 1
         - to: chairPilotSeat
           steps:
@@ -66,7 +66,7 @@
         - to: chairSteelBench
           steps:
             - material: Steel
-              amount: 2
+              amount: 4
               doAfter: 1
         - to: chairWoodBench
           steps:
@@ -87,6 +87,47 @@
               doAfter: 1
             - material: Cloth
               amount: 1
+
+        - to: chairComfyOffice
+          steps:
+            - material: Steel
+              amount: 7
+              doAfter: 2
+        - to: armchair
+          steps:
+            - material: Steel
+              amount: 4
+              doAfter: 1
+        - to: chairRounded
+          steps:
+            - material: Steel
+              amount: 3
+              doAfter: 1
+        - to: chairWoodFancy
+          steps:
+            - material: WoodPlank
+              amount: 3
+              doAfter: 1
+        - to: sofa
+          steps:
+            - material: WoodPlank
+              amount: 3
+              doAfter: 1
+        - to: sofaCorner
+          steps:
+            - material: WoodPlank
+              amount: 3
+              doAfter: 1
+        - to: sofaLeft
+          steps:
+            - material: WoodPlank
+              amount: 3
+              doAfter: 1
+        - to: sofaRight
+          steps:
+            - material: WoodPlank
+              amount: 3
+              doAfter: 1
 
     - node: chair
       entity: Chair
@@ -139,7 +180,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1
-              amount: 2
+              amount: 5
           steps:
             - tool: Screwing
               doAfter: 1
@@ -151,7 +192,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1
-              amount: 2
+              amount: 5
           steps:
             - tool: Screwing
               doAfter: 1
@@ -163,7 +204,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1
-              amount: 2
+              amount: 3
           steps:
             - tool: Screwing
               doAfter: 1
@@ -226,7 +267,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1
-              amount: 2
+              amount: 4
           steps:
             - tool: Screwing
               doAfter: 1
@@ -274,5 +315,101 @@
           steps:
             - tool: Cutting
               doAfter: 1
+            - tool: Screwing
+              doAfter: 1
+
+    - node: chairComfyOffice
+      entity: EmberComfyOfficeChair
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 7
+          steps:
+            - tool: Screwing
+              doAfter: 1
+
+    - node: armchair
+      entity: EmberArmchair
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 4
+          steps:
+            - tool: Screwing
+              doAfter: 1
+
+    - node: chairRounded
+      entity: EmberRoundedChair
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 3
+          steps:
+            - tool: Screwing
+              doAfter: 1
+
+    - node: chairWoodFancy
+      entity: EmberFancyWoodenChair
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 3
+          steps:
+            - tool: Screwing
+              doAfter: 1
+
+    - node: sofa
+      entity: EmberSofa
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 3
+          steps:
+            - tool: Screwing
+              doAfter: 1
+
+    - node: sofaCorner
+      entity: EmberSofaCorner
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 3
+          steps:
+            - tool: Screwing
+              doAfter: 1
+
+    - node: sofaLeft
+      entity: EmberSofaLeft
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 3
+          steps:
+            - tool: Screwing
+              doAfter: 1
+
+    - node: sofaRight
+      entity: EmberSofaRight
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 3
+          steps:
             - tool: Screwing
               doAfter: 1

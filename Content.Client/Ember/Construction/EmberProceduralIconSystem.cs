@@ -27,6 +27,9 @@ public sealed class EmberProceduralIconSystem : EntitySystem
         "EmberMaterialTint",
         "EmberMaterialStack",
         "EmberProceduralAirlock",
+        "EmberProceduralFurniture",
+        "EmberProceduralCloset",
+        "EmberProceduralTable",
     };
 
     private static readonly Dictionary<string, string> ConstructionIconPrototypes = new()

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Content.Client.Clickable;
+using Content.Shared.Construction;
+using Content.Shared.Construction.Prototypes;
 using Content.Shared.Verbs;
 using EmberDrawDepth = Content.Shared.DrawDepth.DrawDepth;
 using Content.Shared.Ember.Furniture;
@@ -26,6 +28,8 @@ namespace Content.IntegrationTests.Tests.Ember;
 [TestFixture]
 public sealed class EmberFurnitureTest
 {
+    private static readonly ProtoId<ConstructionGraphPrototype> SeatGraph = "Seat";
+
     [Test]
     public async Task AChairIsDrawnInTwoHalvesAcrossTwoEntities()
     {
@@ -156,7 +160,7 @@ public sealed class EmberFurnitureTest
 
         await server.WaitPost(() =>
         {
-            chair = serverEnts.SpawnEntity("EmberShuttleChair", map.GridCoords);
+            chair = serverEnts.SpawnEntity("ChairPilotSeat", map.GridCoords);
             overlay = serverEnts.GetComponent<EmberProceduralFurnitureComponent>(chair).Overlay!.Value;
         });
 
@@ -232,7 +236,7 @@ public sealed class EmberFurnitureTest
         await server.WaitPost(() =>
         {
             // A wooden chair has no upholstery on Bay and no _padding state to draw it with.
-            chair = serverEnts.SpawnEntity("EmberWoodenChair", map.GridCoords);
+            chair = serverEnts.SpawnEntity("ChairWood", map.GridCoords);
         });
 
         await pair.RunTicksSync(10);
@@ -304,15 +308,15 @@ public sealed class EmberFurnitureTest
 
                 foreach (var name in names)
                 {
-                    // Something has to be drawn under the sitter or above them, or there is no chair at all.
-                    if (!rsi.TryGetState(name, out _) && !rsi.TryGetState($"{name}_over", out _))
-                        problems.Add($"{proto.ID}: {furniture.Sprite} has nothing called {name}");
+                    var upholstery = rsi.TryGetState($"{name}_padding", out _) ||
+                                     rsi.TryGetState($"{name}_padding_over", out _);
 
-                    if (furniture.Padding == null)
-                        continue;
+                    // An armchair has no frame on the sheet at all: the upholstery is the whole chair. So what
+                    // is asked is that something gets drawn, not that a frame in particular does.
+                    if (!rsi.TryGetState(name, out _) && !rsi.TryGetState($"{name}_over", out _) && !upholstery)
+                        problems.Add($"{proto.ID}: {furniture.Sprite} has no parts called {name}");
 
-                    if (!rsi.TryGetState($"{name}_padding", out _) &&
-                        !rsi.TryGetState($"{name}_padding_over", out _))
+                    if (furniture.Padding != null && !upholstery)
                     {
                         problems.Add($"{proto.ID}: upholstered in {furniture.Padding}, but {furniture.Sprite} "
                             + $"has no {name}_padding to draw it on");
@@ -354,7 +358,7 @@ public sealed class EmberFurnitureTest
 
         await server.WaitPost(() =>
         {
-            chair = entities.SpawnEntity("EmberComfyChair", map.GridCoords);
+            chair = entities.SpawnEntity("ComfyChair", map.GridCoords);
             transform.SetLocalRotation(chair, Angle.FromDegrees(180));
 
             Assert.That(entities.GetComponent<EmberProceduralFurnitureComponent>(chair).Overlay, Is.Null,
@@ -508,13 +512,138 @@ public sealed class EmberFurnitureTest
 
             Assert.Multiple(() =>
             {
-                Assert.That(CanTurn("EmberChair"), Is.True, "A chair bolted to the floor will not turn.");
+                Assert.That(CanTurn("Chair"), Is.True, "A chair bolted to the floor will not turn.");
                 Assert.That(CanTurn("EmberSofa"), Is.False, "A sofa bolted to the floor turns like a chair.");
                 Assert.That(CanTurn("EmberSofaCorner"), Is.False, "A corner sofa turns like a chair.");
                 Assert.That(CanTurn("EmberRoundedChair"), Is.True,
                     "A rounded chair is a chair on Bay and should turn like one.");
             });
         });
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    /// The seats the game already had are the ones this system draws, rather than a second set standing next to
+    /// them.
+    /// </summary>
+    /// <remarks>
+    /// Converting them where they stand is what keeps the maps and the recipes working: every map in the repo
+    /// says <c>Chair</c>, and a parallel <c>EmberChair</c> would mean every one of them still had the old
+    /// picture. Named one by one, because a seat quietly dropping off this list is exactly the failure that
+    /// would not show up anywhere else.
+    /// </remarks>
+    [Test]
+    public async Task TheSeatsTheGameAlreadyHadAreDrawnByThisSystem()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var protoManager = pair.Server.ResolveDependency<IPrototypeManager>();
+        var factory = pair.Server.ResolveDependency<IComponentFactory>();
+
+        var converted = new[]
+        {
+            "Chair", "ChairGreyscale", "Stool", "StoolBar", "ChairOfficeLight", "ChairOfficeDark",
+            "ComfyChair", "ChairPilotSeat", "ChairWood", "SteelBench", "WoodenBench",
+        };
+
+        var problems = new List<string>();
+
+        await pair.Server.WaitPost(() =>
+        {
+            foreach (var id in converted)
+            {
+                if (!protoManager.TryIndex<EntityPrototype>(id, out var proto))
+                {
+                    problems.Add($"{id} no longer exists");
+                    continue;
+                }
+
+                if (!proto.TryGetComponent<EmberProceduralFurnitureComponent>(out _, factory))
+                    problems.Add($"{id} is still drawn as one flat picture");
+            }
+
+            // And the ones with art of their own were moved off the wooden chair rather than inheriting its
+            // parts, which would have drawn them as wooden chairs.
+            foreach (var id in new[] { "ChairRitual", "ChairCursed" })
+            {
+                if (protoManager.TryIndex<EntityPrototype>(id, out var proto) &&
+                    proto.TryGetComponent<EmberProceduralFurnitureComponent>(out _, factory))
+                {
+                    problems.Add($"{id} has art of its own but inherited a wooden chair's parts");
+                }
+            }
+        });
+
+        Assert.That(problems, Is.Empty, string.Join("\n", problems));
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    /// Every seat you can build actually builds a seat, and one drawn by this system.
+    /// </summary>
+    /// <remarks>
+    /// A construction recipe names a graph node, the node names an entity, and nothing checks that the entity
+    /// is the one the recipe's picture is of. The menu renders procedural furniture by spawning what the recipe
+    /// says it builds, so a recipe pointing at a prototype that no longer exists is a blank square in the menu
+    /// and a runtime error when it is built.
+    /// </remarks>
+    [Test]
+    public async Task EverySeatRecipeBuildsASeatThisSystemDraws()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var protoManager = pair.Server.ResolveDependency<IPrototypeManager>();
+        var factory = pair.Server.ResolveDependency<IComponentFactory>();
+        var entities = pair.Server.ResolveDependency<IEntityManager>();
+
+        var problems = new List<string>();
+        var found = 0;
+
+        await pair.Server.WaitPost(() =>
+        {
+            var graph = protoManager.Index<ConstructionGraphPrototype>(SeatGraph);
+
+            foreach (var recipe in protoManager.EnumeratePrototypes<ConstructionPrototype>())
+            {
+                if (recipe.Graph != SeatGraph)
+                    continue;
+
+                var node = graph.Nodes.GetValueOrDefault(recipe.TargetNode);
+
+                // A node can pick what it builds at the time, so it is asked rather than read.
+                if (node?.Entity.GetId(null, null, new GraphNodeEntityArgs(entities)) is not { } entity)
+                {
+                    problems.Add($"{recipe.ID} builds node {recipe.TargetNode}, which makes nothing");
+                    continue;
+                }
+
+                if (!protoManager.TryIndex<EntityPrototype>(entity, out var proto))
+                {
+                    problems.Add($"{recipe.ID} builds {entity}, which does not exist");
+                    continue;
+                }
+
+                // The picture in the menu is drawn by spawning what the recipe says it builds, so a recipe
+                // whose id is not the entity's has to say which entity that is.
+                if (proto.TryGetComponent<EmberProceduralFurnitureComponent>(out _, factory))
+                {
+                    found++;
+
+                    if (recipe.IconEntity is not { } icon)
+                    {
+                        if (recipe.ID != entity)
+                            problems.Add($"{recipe.ID} builds {entity} and has no iconEntity, so it draws blank");
+                    }
+                    else if (icon != entity)
+                    {
+                        problems.Add($"{recipe.ID} builds {entity} but shows a picture of {icon}");
+                    }
+                }
+            }
+        });
+
+        Assert.That(found, Is.GreaterThan(10), "Hardly any seat recipes build procedural furniture.");
+        Assert.That(problems, Is.Empty, string.Join("\n", problems));
 
         await pair.CleanReturnAsync();
     }

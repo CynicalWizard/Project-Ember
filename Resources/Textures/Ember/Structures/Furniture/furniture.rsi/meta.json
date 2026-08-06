@@ -8,7 +8,7 @@
   },
   "states": [
     {
-      "name": "bar_stool_base"
+      "name": "bar_stool"
     },
     {
       "name": "bar_stool_padding"
@@ -20,7 +20,7 @@
       "name": "bar_stool_padded_preview"
     },
     {
-      "name": "stool_base"
+      "name": "stool"
     },
     {
       "name": "stool_padding"
