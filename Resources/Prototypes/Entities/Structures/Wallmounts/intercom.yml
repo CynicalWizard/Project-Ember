@@ -41,9 +41,9 @@
       board: !type:Container
       key_slots: !type:Container
   - type: Sprite
-    noRot: false
+    noRot: true
     drawdepth: SmallObjects
-    sprite: Structures/Wallmounts/intercom.rsi
+    sprite: Ember/Structures/Wallmounts/intercom.rsi
     layers:
     - state: base
     - state: unshaded
@@ -134,8 +134,9 @@
   - type: Clickable
   - type: InteractionOutline
   - type: Sprite
+    noRot: true
     drawdepth: SmallObjects
-    sprite: Structures/Wallmounts/intercom.rsi
+    sprite: Ember/Structures/Wallmounts/intercom.rsi
     layers:
     - state: build
     - state: panel
