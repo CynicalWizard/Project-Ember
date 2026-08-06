@@ -214,7 +214,8 @@
   name: wall recharger
   components:
   - type: Sprite
-    sprite: Structures/Power/wall_recharger.rsi
+    noRot: true
+    sprite: Ember/Structures/Power/wall_recharger.rsi
     layers:
     - map: ["enum.PowerChargerVisualLayers.Base"]
       state: "empty"

@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from SierraBay (Baystation12)",
+  "size": {
+    "x": 48,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "empty",
+      "directions": 4
+    },
+    {
+      "name": "full",
+      "directions": 4
+    },
+    {
+      "name": "light-off",
+      "directions": 4
+    },
+    {
+      "name": "light-empty",
+      "directions": 4
+    },
+    {
+      "name": "light-charging",
+      "directions": 4,
+      "delays": [
+        [
+          0.4,
+          0.2
+        ],
+        [
+          0.4,
+          0.2
+        ],
+        [
+          0.4,
+          0.2
+        ],
+        [
+          0.4,
+          0.2
+        ]
+      ]
+    },
+    {
+      "name": "light-charged",
+      "directions": 4,
+      "delays": [
+        [
+          0.2,
+          0.1
+        ],
+        [
+          0.2,
+          0.1
+        ],
+        [
+          0.2,
+          0.1
+        ],
+        [
+          0.2,
+          0.1
+        ]
+      ]
+    }
+  ]
+}
