@@ -24,14 +24,6 @@
       "directions": 4
     },
     {
-      "name": "panel",
-      "directions": 4
-    },
-    {
-      "name": "maint",
-      "directions": 4
-    },
-    {
       "name": "display-lack",
       "directions": 4,
       "delays": [
@@ -148,26 +140,12 @@
       ]
     },
     {
+      "name": "panel",
+      "directions": 4
+    },
+    {
       "name": "emag-unlit",
-      "directions": 4,
-      "delays": [
-        [
-          0.5,
-          0.5
-        ],
-        [
-          0.5,
-          0.5
-        ],
-        [
-          0.5,
-          0.5
-        ],
-        [
-          0.5,
-          0.5
-        ]
-      ]
+      "directions": 4
     },
     {
       "name": "lock0-unlocked",
