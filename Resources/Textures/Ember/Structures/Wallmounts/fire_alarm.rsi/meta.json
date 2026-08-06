@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from SierraBay (Baystation12)",
+  "size": {
+    "x": 48,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "fire0",
+      "directions": 4
+    },
+    {
+      "name": "fire_off",
+      "directions": 4
+    },
+    {
+      "name": "fire_on",
+      "directions": 4
+    },
+    {
+      "name": "fire_emagged",
+      "directions": 4
+    },
+    {
+      "name": "fire_b1",
+      "directions": 4
+    },
+    {
+      "name": "fire_b2",
+      "directions": 4
+    },
+    {
+      "name": "fire_0",
+      "directions": 4
+    },
+    {
+      "name": "fire_1",
+      "directions": 4
+    },
+    {
+      "name": "fire_2",
+      "directions": 4,
+      "delays": [
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ]
+      ]
+    },
+    {
+      "name": "fire_3",
+      "directions": 4,
+      "delays": [
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ]
+      ]
+    }
+  ]
+}

@@ -342,7 +342,7 @@
   category: construction-category-structures
   description: A fire alarm. Spicy!
   icon:
-    sprite: Structures/Wallmounts/air_monitors.rsi
+    sprite: Ember/Structures/Wallmounts/fire_alarm.rsi
     state: fire0
   placementMode: SnapgridCenter
   objectType: Structure
