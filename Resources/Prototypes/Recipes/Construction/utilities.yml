@@ -324,7 +324,7 @@
   category: construction-category-structures
   description: An air alarm. Alarms... air?
   icon:
-    sprite: Structures/Wallmounts/air_monitors.rsi
+    sprite: Ember/Structures/Wallmounts/air_alarm.rsi
     state: alarm0
   placementMode: SnapgridCenter
   objectType: Structure
