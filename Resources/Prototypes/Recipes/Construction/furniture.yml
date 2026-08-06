@@ -934,7 +934,7 @@
   targetNode: noticeBoard
   category: construction-category-furniture
   icon:
-    sprite: Structures/Wallmounts/noticeboard.rsi
+    sprite: Ember/Structures/Wallmounts/noticeboard.rsi
     state: noticeboard
   objectType: Structure
   placementMode: SnapgridCenter

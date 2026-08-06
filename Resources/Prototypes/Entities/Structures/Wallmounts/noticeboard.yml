@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: NoticeBoard
   name: notice board
   description: Is there a job for a witcher?
@@ -7,8 +7,9 @@
   components:
   - type: WallMount
   - type: Sprite
+    noRot: true
     drawdepth: WallMountedItems
-    sprite: Structures/Wallmounts/noticeboard.rsi
+    sprite: Ember/Structures/Wallmounts/noticeboard.rsi
     layers:
       - state: noticeboard
       - state: notice-0

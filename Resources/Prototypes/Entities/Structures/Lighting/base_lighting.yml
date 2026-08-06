@@ -21,6 +21,15 @@
   - type: Construction
     graph: LightFixture
     node: tubeLight
+  # Стены рисуются высокими, поэтому светильник на дальней стене должен уезжать вверх по её лицу, а на ближней
+  # ему ехать некуда. Числа баевские: /obj/machinery/light/on_update_icon двигает на 21 пиксель к северной
+  # стене и на 10 к боковой, южную оставляет в покое. У Bay dir — это стена, у нас направление взгляда,
+  # поэтому ключи здесь по взгляду: смотрит на юг значит стена северная.
+  - type: EmberWallFixtureOffset
+    depth:
+      South: 21
+      East: 10
+      West: 10
   - type: Sprite
     sprite: Structures/Wallmounts/Lighting/light_tube.rsi
     drawdepth: WallMountedItems
