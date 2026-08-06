@@ -56,3 +56,50 @@
     cost: 2
     delay: 2
     fx: EffectRCDDeconstruct2
+
+# Плитка, положенная поверх решётки. У Bay это /obj/catwalk_plated — спавнер, который на загрузке карты
+# исчезает и оставляет после себя обычный catwalk с plated_tile внутри; сама плитка рисуется одним плоским
+# слоем поверх сглаженной решётки и красится цветом того тайла, из которого сделана.
+#
+# Сглаживание пишет только в нулевой слой, поэтому решётка остаётся им, а плитка ложится следующим.
+- type: entity
+  id: CatwalkPlated
+  parent: Catwalk
+  name: plated catwalk
+  description: A catwalk with floor tiles laid over it.
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Structures/catwalk.rsi
+      state: catwalk_0
+    - sprite: Ember/Structures/catwalk_plated.rsi
+      state: plated
+  - type: Icon
+    sprite: Ember/Structures/catwalk_plated.rsi
+    state: plated
+
+- type: entity
+  id: CatwalkPlatedDark
+  parent: CatwalkPlated
+  suffix: Dark
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Structures/catwalk.rsi
+      state: catwalk_0
+    - sprite: Ember/Structures/catwalk_plated.rsi
+      state: plated
+      color: "#404040"
+
+- type: entity
+  id: CatwalkPlatedWhite
+  parent: CatwalkPlated
+  suffix: White
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Structures/catwalk.rsi
+      state: catwalk_0
+    - sprite: Ember/Structures/catwalk_plated.rsi
+      state: plated
+      color: "#eeeeee"

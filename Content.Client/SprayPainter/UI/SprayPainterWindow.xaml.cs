@@ -176,6 +176,8 @@ public sealed partial class SprayPainterWindow : DefaultWindow
         AddAirlockAction(SprayPainterAirlockMode.ClearStripe, "spray-painter-airlock-mode-clear-stripe");
         AddAirlockAction(SprayPainterAirlockMode.PaintWindow, "spray-painter-airlock-mode-paint-window");
         AddAirlockAction(SprayPainterAirlockMode.ClearWindow, "spray-painter-airlock-mode-clear-window");
+        AddAirlockAction(SprayPainterAirlockMode.PaintDocking, "spray-painter-airlock-mode-paint-docking");
+        AddAirlockAction(SprayPainterAirlockMode.ClearDocking, "spray-painter-airlock-mode-clear-docking");
     }
 
     private void AddAirlockAction(SprayPainterAirlockMode mode, string locKey)

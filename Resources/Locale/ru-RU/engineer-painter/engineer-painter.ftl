@@ -63,3 +63,5 @@ spray-painter-color-blue = синий
 spray-painter-color-white = белый
 
 spray-painter-color-black = чёрный
+spray-painter-airlock-mode-paint-docking = Покрасить стыковочный воротник
+spray-painter-airlock-mode-clear-docking = Удалить покраску воротника

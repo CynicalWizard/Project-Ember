@@ -48,6 +48,12 @@ public sealed partial class EmberProceduralAirlockComponent : Component
     [DataField, AutoNetworkedField]
     public Color? WindowColor;
 
+    /// <summary>
+    /// What colour the docking collar is sprayed, if anyone has bothered. Left alone it is bare clamp metal.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public Color? DockingColor;
+
     [DataField]
     public ResPath DoorSprite = new("/Textures/Ember/Structures/Doors/Airlocks/Station/door.rsi");
 

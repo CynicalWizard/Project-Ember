@@ -35,3 +35,5 @@ spray-painter-color-cyan = cyan
 spray-painter-color-blue = blue
 spray-painter-color-white = white
 spray-painter-color-black = black
+spray-painter-airlock-mode-paint-docking = Paint docking collar
+spray-painter-airlock-mode-clear-docking = Remove collar paint

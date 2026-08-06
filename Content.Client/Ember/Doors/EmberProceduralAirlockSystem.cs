@@ -153,6 +153,7 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
 
         SetLayerColorSafely(sprite, EmberAirlockLayer.Color, visuals.DoorColor ?? Color.White);
         SetLayerColorSafely(sprite, EmberAirlockLayer.Fill, visuals.FillColor);
+        SetLayerColorSafely(sprite, EmberAirlockLayer.Docking, component.DockingColor ?? Color.White);
         SetLayerColorSafely(sprite, EmberAirlockLayer.Stripe, visuals.StripeColor ?? Color.White);
         SetLayerColorSafely(sprite, EmberAirlockLayer.StripeFill, visuals.StripeColor ?? Color.White);
 

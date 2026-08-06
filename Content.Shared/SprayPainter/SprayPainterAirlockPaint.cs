@@ -8,7 +8,8 @@ public static class SprayPainterAirlockPaint
     {
         return mode is SprayPainterAirlockMode.PaintDoor
             or SprayPainterAirlockMode.PaintStripe
-            or SprayPainterAirlockMode.PaintWindow;
+            or SprayPainterAirlockMode.PaintWindow
+            or SprayPainterAirlockMode.PaintDocking;
     }
 
     public static void Apply(EmberProceduralAirlockComponent airlock, SprayPainterAirlockMode mode, Color? color)
@@ -33,6 +34,12 @@ public static class SprayPainterAirlockPaint
             case SprayPainterAirlockMode.ClearWindow:
                 airlock.WindowColor = null;
                 break;
+            case SprayPainterAirlockMode.PaintDocking:
+                airlock.DockingColor = color;
+                break;
+            case SprayPainterAirlockMode.ClearDocking:
+                airlock.DockingColor = null;
+                break;
         }
     }
 }
@@ -46,4 +53,6 @@ public enum SprayPainterAirlockMode : byte
     ClearStripe,
     PaintWindow,
     ClearWindow,
+    PaintDocking,
+    ClearDocking,
 }
