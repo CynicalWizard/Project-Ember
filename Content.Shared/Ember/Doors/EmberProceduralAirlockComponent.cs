@@ -16,6 +16,29 @@ public sealed partial class EmberProceduralAirlockComponent : Component
     [DataField, AutoNetworkedField]
     public bool Glass;
 
+    /// <summary>
+    /// Whether this is a docking port, and draws the collar a shuttle clamps onto.
+    /// </summary>
+    /// <remarks>
+    /// The collar goes on the edge the door faces, which is the edge a shuttle has to arrive at: docking pairs
+    /// two ports whose world rotations point at each other, so the rotation is the mapper's to set and the
+    /// player's to read. It is not painted with the door, so the direction stays legible whatever colour
+    /// somebody sprays it.
+    /// </remarks>
+    [DataField, AutoNetworkedField]
+    public bool Docking;
+
+    /// <summary>
+    /// Whether the door turns its picture to sit square in the walls beside it.
+    /// </summary>
+    /// <remarks>
+    /// Every other door should: mappers leave whatever rotation, and Bay picks the dir from the neighbours
+    /// rather than trusting it. A docking port must not, because for that one the rotation is the data —
+    /// turning the picture off it would draw a port facing somewhere no shuttle can arrive from.
+    /// </remarks>
+    [DataField, AutoNetworkedField]
+    public bool FacesWalls = true;
+
     [DataField, AutoNetworkedField]
     public Color? DoorColor;
 
@@ -39,6 +62,9 @@ public sealed partial class EmberProceduralAirlockComponent : Component
 
     [DataField]
     public ResPath GlassFillSprite = new("/Textures/Ember/Structures/Doors/Airlocks/Station/fill_glass.rsi");
+
+    [DataField]
+    public ResPath DockingSprite = new("/Textures/Ember/Structures/Doors/Airlocks/External/docking.rsi");
 
     [DataField]
     public ResPath StripeSprite = new("/Textures/Ember/Structures/Doors/Airlocks/Station/stripe.rsi");

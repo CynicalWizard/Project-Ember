@@ -121,8 +121,10 @@ public sealed class EmberProceduralDoorFacingSystem : EntitySystem
         if (_firelockQuery.TryGetComponent(uid, out var firelock))
             return firelock.Enabled ? EmberDoorBlendTargets.Firelock : null;
 
+        // A docking port opts out: its rotation is where a shuttle arrives from, not a mapper's leftover, and
+        // turning the picture off it would draw a port facing somewhere nothing can dock.
         if (_airlockQuery.TryGetComponent(uid, out var airlock))
-            return airlock.Enabled ? EmberDoorBlendTargets.Airlock : null;
+            return airlock is { Enabled: true, FacesWalls: true } ? EmberDoorBlendTargets.Airlock : null;
 
         return null;
     }

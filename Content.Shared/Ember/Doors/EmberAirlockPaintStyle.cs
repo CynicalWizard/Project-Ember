@@ -8,6 +8,7 @@ public static class EmberAirlockPaintStyle
         ["basic"] = "EmberAirlockBasic",
         ["cargo"] = "EmberAirlockLogistics",
         ["command"] = "EmberAirlockCommand",
+        ["docking"] = "EmberAirlockDocking",
         ["engineering"] = "EmberAirlockEngineering",
         ["external"] = "EmberAirlockExternal",
         ["freezer"] = "EmberAirlockFreezer",
@@ -18,7 +19,6 @@ public static class EmberAirlockPaintStyle
         ["roboticist"] = "EmberAirlockRoboticist",
         ["science"] = "EmberAirlockEpistemics",
         ["security"] = "EmberAirlockSecurity",
-        ["shuttle"] = "EmberAirlockBasic",
         ["syndicate"] = "EmberAirlockSyndicate",
         ["virology"] = "EmberAirlockVirology",
     };
@@ -29,6 +29,7 @@ public static class EmberAirlockPaintStyle
         ["basic"] = "Airlock",
         ["cargo"] = "AirlockCargo",
         ["command"] = "AirlockCommand",
+        ["docking"] = "AirlockShuttle",
         ["engineering"] = "AirlockEngineering",
         ["external"] = "AirlockExternal",
         ["freezer"] = "AirlockFreezer",
@@ -39,7 +40,6 @@ public static class EmberAirlockPaintStyle
         ["roboticist"] = "AirlockRoboticist",
         ["science"] = "AirlockScience",
         ["security"] = "AirlockSecurity",
-        ["shuttle"] = "AirlockShuttle",
         ["syndicate"] = "AirlockSyndicate",
         ["virology"] = "AirlockVirology",
     };

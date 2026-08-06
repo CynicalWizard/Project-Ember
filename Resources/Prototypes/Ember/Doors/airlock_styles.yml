@@ -89,3 +89,13 @@
 
 - type: emberAirlockStyle
   id: EmberAirlockVault
+
+# Стыковочный шлюз — тот же внешний, но янтарный, чтобы не путать его с обычным внешним, который часто стоит
+# рядом. Красится краскопультом в любой цвет; воротник, по которому видно сторону стыковки, не красится.
+- type: emberAirlockStyle
+  id: EmberAirlockDocking
+  doorColor: "#c98a12"
+
+- type: emberAirlockStyle
+  id: EmberAirlockDockingSyndicate
+  doorColor: "#9d2300"

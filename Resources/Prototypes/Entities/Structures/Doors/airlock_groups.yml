@@ -55,13 +55,13 @@
   id: Shuttle
   iconPriority: 50
   stylePaths:
-    shuttle:     Structures/Doors/Airlocks/Standard/shuttle.rsi
+    docking:     Structures/Doors/Airlocks/Standard/shuttle.rsi
 
 - type: AirlockGroup
   id: ShuttleGlass
   iconPriority: 40
   stylePaths:
-    shuttle:     Structures/Doors/Airlocks/Glass/shuttle.rsi
+    docking:     Structures/Doors/Airlocks/Glass/shuttle.rsi
 
 # fun
 - type: airlockDepartments

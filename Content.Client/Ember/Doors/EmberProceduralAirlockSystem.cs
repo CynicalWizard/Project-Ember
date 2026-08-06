@@ -24,6 +24,7 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
         WiresVisualLayers.MaintenancePanel,
         EmberAirlockLayer.Color,
         EmberAirlockLayer.Fill,
+        EmberAirlockLayer.Docking,
         EmberAirlockLayer.Stripe,
         EmberAirlockLayer.StripeFill,
         EmberAirlockLayer.GreenLights,
@@ -68,6 +69,7 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
 
         SetupLayer(sprite, EmberAirlockLayer.Color, component.ColorSprite, "closed");
         SetupLayer(sprite, EmberAirlockLayer.Fill, component.SteelFillSprite, "closed");
+        SetupLayer(sprite, EmberAirlockLayer.Docking, component.DockingSprite, "closed");
         SetupLayer(sprite, EmberAirlockLayer.Stripe, component.StripeSprite, "closed");
         SetupLayer(sprite, EmberAirlockLayer.StripeFill, component.StripeFillSprite, "closed");
         SetupLayer(sprite, EmberAirlockLayer.GreenLights, component.GreenLightsSprite, "opening");
@@ -141,6 +143,8 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
 
         SetSpriteState(sprite, EmberAirlockLayer.Color, component.ColorSprite, stateName, animateState);
         SetSpriteState(sprite, EmberAirlockLayer.Fill, FillSprite(component, visuals.Fill), stateName, animateState);
+        SetSpriteState(sprite, EmberAirlockLayer.Docking, component.DockingSprite,
+            state == DoorState.Open ? "open" : "closed");
         SetSpriteState(sprite, EmberAirlockLayer.Stripe, component.StripeSprite, stateName, animateState);
         SetSpriteState(sprite, EmberAirlockLayer.StripeFill, component.StripeFillSprite, stateName, animateState);
         SetSpriteState(sprite, EmberAirlockLayer.DenyLights, component.DenyLightsSprite, "deny", state == DoorState.Denying);
@@ -154,6 +158,7 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
 
         SetLayerVisibleSafely(sprite, EmberAirlockLayer.Color, visuals.DoorColor != null);
         SetLayerVisibleSafely(sprite, EmberAirlockLayer.Fill, true);
+        SetLayerVisibleSafely(sprite, EmberAirlockLayer.Docking, component.Docking);
         SetLayerVisibleSafely(sprite, EmberAirlockLayer.Stripe, visuals.StripeColor != null);
         SetLayerVisibleSafely(sprite, EmberAirlockLayer.StripeFill, visuals.ShowStripeFill);
         SetLayerVisibleSafely(sprite, DoorVisualLayers.BaseUnlit, false);
@@ -276,6 +281,7 @@ public sealed class EmberProceduralAirlockSystem : EntitySystem
     {
         Color,
         Fill,
+        Docking,
         Stripe,
         StripeFill,
         GreenLights,
