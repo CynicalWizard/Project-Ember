@@ -89,9 +89,6 @@ public sealed class EmberWallFixtureOffsetTest
             await pair.Client.WaitPost(() =>
             {
                 var clientLight = clientEnts.GetEntity(serverEnts.GetNetEntity(light));
-                clientEnts.System<Content.Client.Ember.Structures.EmberWallFixtureOffsetSystem>()
-                    .Update((clientLight, clientEnts.GetComponent<EmberWallFixtureOffsetComponent>(clientLight)));
-
                 var sprite = clientEnts.GetComponent<SpriteComponent>(clientLight);
 
                 // Straight up in the sprite's own frame is straight into the wall, whichever wall that is.

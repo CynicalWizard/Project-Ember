@@ -25,6 +25,7 @@ public sealed class EmberProceduralWallSystem : EntitySystem
 
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly EmberProceduralDoorFacingSystem _doorFacing = default!;
+    [Dependency] private readonly EmberWallFixtureOffsetSystem _fixtures = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly EmberProceduralStructureSystem _structures = default!;
@@ -266,6 +267,9 @@ public sealed class EmberProceduralWallSystem : EntitySystem
 
         // Grilles and low walls smooth into walls too, and until this was here the traffic only went one way.
         _structures.DirtyStructuresAround(grid, pos);
+
+        // And a light leans on whichever wall is behind it, so building or breaking one has to move it.
+        _fixtures.DirtyAround(grid, pos);
 
         DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(1, 0)));
         DirtyEntities(grid.GetAnchoredEntitiesEnumerator(pos + new Vector2i(-1, 0)));

@@ -4,7 +4,9 @@ using Content.Shared.Maps;
 using Content.Shared.Physics;
 using Robust.Client.GameObjects;
 using Robust.Shared.GameObjects;
+using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Map.Enumerators;
 
 namespace Content.Client.Ember.Structures;
 
@@ -19,15 +21,27 @@ namespace Content.Client.Ember.Structures;
 ///
 /// Nothing happens unless the tile behind is actually blocked, which is Bay's rule and matters: a light on a
 /// pole in the middle of a room would otherwise stand a fifth of a tile away from where it is.
+///
+/// The work is queued rather than done on the spot because of what arrives when. A fitting loaded off a map is
+/// built before the wall it hangs on, so asking at that moment gets the answer "open floor" and the fitting
+/// never moves; one a player builds is dropped into a world that already has its wall, and looks right. That is
+/// exactly the difference between a station's own lights and a freshly placed one, and it is why this waits a
+/// frame before deciding. Walls also call in when they change, so building or breaking one moves whatever hangs
+/// beside it.
 /// </remarks>
 public sealed class EmberWallFixtureOffsetSystem : EntitySystem
 {
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
+
+    private readonly Queue<EntityUid> _dirty = new();
+
+    private EntityQuery<EmberWallFixtureOffsetComponent> _query;
 
     public override void Initialize()
     {
         base.Initialize();
+
+        _query = GetEntityQuery<EmberWallFixtureOffsetComponent>();
 
         SubscribeLocalEvent<EmberWallFixtureOffsetComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<EmberWallFixtureOffsetComponent, MoveEvent>(OnMoved);
@@ -36,17 +50,46 @@ public sealed class EmberWallFixtureOffsetSystem : EntitySystem
 
     private void OnStartup(Entity<EmberWallFixtureOffsetComponent> ent, ref ComponentStartup args)
     {
-        Update(ent);
+        _dirty.Enqueue(ent);
     }
 
     private void OnMoved(Entity<EmberWallFixtureOffsetComponent> ent, ref MoveEvent args)
     {
-        Update(ent);
+        _dirty.Enqueue(ent);
     }
 
     private void OnAnchorChanged(Entity<EmberWallFixtureOffsetComponent> ent, ref AnchorStateChangedEvent args)
     {
-        Update(ent);
+        _dirty.Enqueue(ent);
+    }
+
+    public override void FrameUpdate(float frameTime)
+    {
+        base.FrameUpdate(frameTime);
+
+        while (_dirty.TryDequeue(out var uid))
+        {
+            if (_query.TryGetComponent(uid, out var component))
+                Update((uid, component));
+        }
+    }
+
+    /// <summary>Whatever hangs on the four tiles around this one has to look again.</summary>
+    public void DirtyAround(MapGridComponent grid, Vector2i pos)
+    {
+        foreach (var direction in new[] { Direction.North, Direction.South, Direction.East, Direction.West })
+        {
+            Enqueue(grid.GetAnchoredEntitiesEnumerator(pos.Offset(direction)));
+        }
+    }
+
+    private void Enqueue(AnchoredEntitiesEnumerator entities)
+    {
+        while (entities.MoveNext(out var entity))
+        {
+            if (_query.HasComponent(entity.Value))
+                _dirty.Enqueue(entity.Value);
+        }
     }
 
     public void Update(Entity<EmberWallFixtureOffsetComponent> ent)
