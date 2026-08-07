@@ -73,6 +73,10 @@
     baseState: comfyofficechair
     material: Steel
     padding: Leather
+  # Seven sheets on Bay (stack_recipe/furniture/chair/office/comfy), and a seat worth less than the steel in
+  # it is an autolathe that prints money.
+  - type: StaticPrice
+    price: 105
 
 # У кресла с подлокотниками каркаса на листе нет вовсе: обивка и есть всё кресло. Деталь, которой в листе нет,
 # просто не рисуется, поэтому отдельного случая это не требует.
@@ -92,6 +96,9 @@
     baseState: armchair
     material: Steel
     padding: Leather
+  # Four sheets, same reason.
+  - type: StaticPrice
+    price: 60
   - type: Construction
     graph: Seat
     node: armchair
