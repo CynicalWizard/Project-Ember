@@ -659,6 +659,7 @@
     whitelist:
       tags:
       - Ore
+  - type: EmberMaterialProcessor
   - type: Lathe
     idleState: icon
     runningState: building

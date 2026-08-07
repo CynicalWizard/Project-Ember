@@ -138,7 +138,7 @@ namespace Content.Client.Construction.UI
             BuildButton.Disabled = false;
             BuildButton.Text = Loc.GetString(isItem ? "construction-menu-place-ghost" : "construction-menu-craft");
             TargetName.SetMessage(name);
-            TargetDesc.SetMessage(description);
+            TargetDesc.SetMessage(Robust.Shared.Utility.FormattedMessage.FromMarkupPermissive(description));
             TargetTexture.Texture = iconTexture;
             FavoriteButton.Visible = true;
             FavoriteButton.Text = Loc.GetString(

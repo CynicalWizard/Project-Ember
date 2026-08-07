@@ -32,7 +32,7 @@
   objectType: Item
 
 - type: construction
-  name: plasma glass
+  name: phoron glass
   description: A sheet of translucent plasma.
   id: SheetPGlass
   graph: Glass
@@ -43,7 +43,7 @@
   objectType: Item
 
 - type: construction
-  name: reinforced plasma glass
+  name: reinforced phoron glass
   description: A reinforced sheet of translucent plasma.
   id: SheetRPGlass
   graph: Glass
@@ -54,7 +54,7 @@
   objectType: Item
 
 - type: construction
-  name: reinforced plasma glass
+  name: reinforced phoron glass
   description: A reinforced sheet of translucent plasma.
   id: SheetRPGlass0
   graph: Glass
@@ -65,7 +65,7 @@
   objectType: Item
 
 - type: construction
-  name: reinforced plasma glass
+  name: reinforced phoron glass
   description: A reinforced sheet of translucent plasma.
   id: SheetRPGlass1
   graph: Glass

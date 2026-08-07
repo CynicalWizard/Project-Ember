@@ -1,0 +1,220 @@
+- type: constructionGraph
+  id: EmberRodIron
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: rod
+      completed:
+      - !type:SetStackCount
+        amount: 2
+      steps:
+      - material: Iron
+        amount: 1
+        doAfter: 0.5
+  - node: rod
+    entity: EmberRodIron1
+
+- type: constructionGraph
+  id: EmberRodAluminium
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: rod
+      completed:
+      - !type:SetStackCount
+        amount: 2
+      steps:
+      - material: EmberAluminium
+        amount: 1
+        doAfter: 0.5
+  - node: rod
+    entity: EmberRodAluminium1
+
+- type: constructionGraph
+  id: EmberRodPlasteel
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: rod
+      completed:
+      - !type:SetStackCount
+        amount: 2
+      steps:
+      - material: Plasteel
+        amount: 1
+        doAfter: 0.5
+  - node: rod
+    entity: EmberRodPlasteel1
+
+- type: constructionGraph
+  id: EmberRodTitanium
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: rod
+      completed:
+      - !type:SetStackCount
+        amount: 2
+      steps:
+      - material: Titanium
+        amount: 1
+        doAfter: 0.5
+  - node: rod
+    entity: EmberRodTitanium1
+
+- type: constructionGraph
+  id: EmberRodOsmiumCarbidePlasteel
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: rod
+      completed:
+      - !type:SetStackCount
+        amount: 2
+      steps:
+      - material: OsmiumCarbidePlasteel
+        amount: 1
+        doAfter: 0.5
+  - node: rod
+    entity: EmberRodOsmiumCarbidePlasteel1
+
+- type: constructionGraph
+  id: EmberRodOsmium
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: rod
+      completed:
+      - !type:SetStackCount
+        amount: 2
+      steps:
+      - material: Osmium
+        amount: 1
+        doAfter: 0.5
+  - node: rod
+    entity: EmberRodOsmium1
+
+- type: constructionGraph
+  id: EmberRodGold
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: rod
+      completed:
+      - !type:SetStackCount
+        amount: 2
+      steps:
+      - material: Gold
+        amount: 1
+        doAfter: 0.5
+  - node: rod
+    entity: EmberRodGold1
+
+- type: constructionGraph
+  id: EmberRodSilver
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: rod
+      completed:
+      - !type:SetStackCount
+        amount: 2
+      steps:
+      - material: Silver
+        amount: 1
+        doAfter: 0.5
+  - node: rod
+    entity: EmberRodSilver1
+
+- type: constructionGraph
+  id: EmberRodElectrum
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: rod
+      completed:
+      - !type:SetStackCount
+        amount: 2
+      steps:
+      - material: Electrum
+        amount: 1
+        doAfter: 0.5
+  - node: rod
+    entity: EmberRodElectrum1
+
+- type: constructionGraph
+  id: EmberRodCopper
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: rod
+      completed:
+      - !type:SetStackCount
+        amount: 2
+      steps:
+      - material: EmberCopper
+        amount: 1
+        doAfter: 0.5
+  - node: rod
+    entity: EmberRodCopper1
+
+- type: constructionGraph
+  id: EmberRodBronze
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: rod
+      completed:
+      - !type:SetStackCount
+        amount: 2
+      steps:
+      - material: Bronze
+        amount: 1
+        doAfter: 0.5
+  - node: rod
+    entity: EmberRodBronze1
+
+- type: constructionGraph
+  id: EmberRodPlatinum
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: rod
+      completed:
+      - !type:SetStackCount
+        amount: 2
+      steps:
+      - material: Platinum
+        amount: 1
+        doAfter: 0.5
+  - node: rod
+    entity: EmberRodPlatinum1
+
+- type: constructionGraph
+  id: EmberRodUranium
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: rod
+      completed:
+      - !type:SetStackCount
+        amount: 2
+      steps:
+      - material: Uranium
+        amount: 1
+        doAfter: 0.5
+  - node: rod
+    entity: EmberRodUranium1

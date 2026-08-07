@@ -1,62 +1,61 @@
 <!--
-This is a semi-strict format, you can add/remove sections as needed but the order/format should be kept the same
-Remove these comments before submitting
+Формат полустрогий: разделы можно добавлять и убирать по необходимости, но порядок и оформление лучше сохранять
+Эти комментарии перед отправкой удаляются
 -->
 
-# Description
+# Описание
 
 <!--
-Explain this PR in as much detail as applicable
+Опиши PR настолько подробно, насколько это уместно
 
-Some example prompts to consider:
-How might this affect the game? The codebase?
-What might be some alternatives to this?
-How/Who does this benefit/hurt [the game/codebase]?
+О чём стоит подумать:
+Как это скажется на игре? На кодовой базе?
+Какие были альтернативы?
+Кому и чем это помогает или мешает?
 -->
 
-Description.
+Описание.
 
 ---
 
 # TODO
 
 <!--
-A list of everything you have to do before this PR is "complete"
-You probably won't have to complete everything before merging but it's good to leave future references
+Список всего, что нужно сделать, чтобы PR считался законченным
+Закрывать всё до вливания не обязательно, но список полезно оставить на будущее
 -->
 
-- [ ] Task
-- [x] Completed Task
+- [ ] Задача
+- [x] Сделанная задача
 
 ---
 
 <!--
-This is default collapsed, readers click to expand it and see all your media
-The PR media section can get very large at times, so this is a good way to keep it clean
-The title is written using HTML tags
-The title must be within the <summary> tags or you won't see it
+По умолчанию свёрнуто: читатель разворачивает и смотрит все вложения
+Медиа в PR бывает много, так что это способ не раздувать описание
+Заголовок пишется HTML-тегами и должен находиться внутри <summary>, иначе его не будет видно
 -->
 
-<details><summary><h1>Media</h1></summary>
+<details><summary><h1>Медиа</h1></summary>
 <p>
 
-![Example Media Embed](https://example.com/thisimageisntreal.png)
+![Пример вложения](https://example.com/thisimageisntreal.png)
 
 </p>
 </details>
 
 ---
 
-# Changelog
+# Чейнджлог
 
 <!--
-You can add an author after the `:cl:` to change the name that appears in the changelog (ex: `:cl: Death`)
-Leaving it blank will default to your GitHub display name
-This includes all available types for the changelog
+После `:cl:` можно указать автора, и в чейнджлоге появится это имя (например, `:cl: Death`)
+Если оставить пустым, возьмётся отображаемое имя с GitHub
+Ниже перечислены все доступные типы записей
 -->
 
 :cl:
-- add: Added fun :D
-- tweak: Tweaked fun
-- fix: Fixed fun!
-- remove: Removed fun :(
+- add: Добавлено веселье :D
+- tweak: Веселье подкручено
+- fix: Веселье починено!
+- remove: Веселье убрано :(

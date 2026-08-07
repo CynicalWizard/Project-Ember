@@ -8,6 +8,7 @@ using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Client.Utility;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.Markdown.Value;
 using static Robust.Client.UserInterface.Controls.BaseButton;
 
 namespace Content.Client.Decals.UI;
@@ -25,6 +26,12 @@ public sealed partial class DecalPlacerWindow : DefaultWindow
     private PaletteColorPicker? _picker;
 
     private SortedDictionary<string, Texture>? _decals;
+
+    /// <summary>Which category each decal belongs to, so the list can be narrowed to one of them.</summary>
+    private readonly Dictionary<string, string> _categoryOf = new();
+
+    private readonly List<string> _categories = new();
+    private string? _category;
     private string? _selected;
     private Color _color = Color.White;
     private bool _useColor;
@@ -34,6 +41,9 @@ public sealed partial class DecalPlacerWindow : DefaultWindow
     private int _zIndex;
 
     private bool _auto;
+
+    /// <summary>Gives up rather than looping forever if a prototype somehow inherits from itself.</summary>
+    private const int MaximumDepth = 16;
 
     public DecalPlacerWindow()
     {
@@ -51,6 +61,19 @@ public sealed partial class DecalPlacerWindow : DefaultWindow
         SpinBoxContainer.AddChild(RotationSpinBox);
 
         Search.OnTextChanged += _ => RefreshList();
+        Category.OnItemSelected += args =>
+        {
+            Category.SelectId(args.Id);
+            _category = args.Id == 0 ? null : _categories[args.Id - 1];
+            RefreshList();
+        };
+
+        // Most decals are drawn facing one way and turned to suit, and reaching for a number every time is a
+        // poor way to say "the other way up". The spin box is still there for anything that needs an odd angle.
+        FaceSouth.OnPressed += _ => SetRotation(0f);
+        FaceEast.OnPressed += _ => SetRotation(90f);
+        FaceNorth.OnPressed += _ => SetRotation(180f);
+        FaceWest.OnPressed += _ => SetRotation(270f);
         ColorPicker.OnColorChanged += OnColorPicked;
 
         PickerOpen.OnPressed += _ =>
@@ -113,6 +136,13 @@ public sealed partial class DecalPlacerWindow : DefaultWindow
         };
     }
 
+    private void SetRotation(float degrees)
+    {
+        _rotation = degrees;
+        RotationSpinBox.Value = degrees;
+        UpdateDecalPlacementInfo();
+    }
+
     private void OnColorPicked(Color color)
     {
         _color = color;
@@ -136,10 +166,13 @@ public sealed partial class DecalPlacerWindow : DefaultWindow
         if (_decals == null)
             return;
 
-        var filter = Search.Text;
+        var filter = Search.Text.ToLowerInvariant();
         foreach (var (decal, tex) in _decals)
         {
-            if (!decal.ToLowerInvariant().Contains(filter.ToLowerInvariant()))
+            if (!decal.ToLowerInvariant().Contains(filter))
+                continue;
+
+            if (_category != null && (!_categoryOf.TryGetValue(decal, out var category) || category != _category))
                 continue;
 
             var button = new TextureButton
@@ -194,6 +227,7 @@ public sealed partial class DecalPlacerWindow : DefaultWindow
             _useColor = decal.DefaultCustomColor;
             _snap = decal.DefaultSnap;
         }
+        SelectedLabel.Text = decalId;
         UpdateDecalPlacementInfo();
         RefreshList();
     }
@@ -201,13 +235,62 @@ public sealed partial class DecalPlacerWindow : DefaultWindow
     public void Populate(IEnumerable<DecalPrototype> prototypes)
     {
         _decals = new SortedDictionary<string, Texture>();
+        _categoryOf.Clear();
+        _categories.Clear();
+
         foreach (var decalPrototype in prototypes)
         {
-            if (decalPrototype.ShowMenu)
-                _decals.Add(decalPrototype.ID, decalPrototype.Sprite.Frame0());
+            if (!decalPrototype.ShowMenu)
+                continue;
+
+            _decals.Add(decalPrototype.ID, decalPrototype.Sprite.Frame0());
+
+            if (RootOf(decalPrototype.ID) is { } category)
+                _categoryOf[decalPrototype.ID] = category;
         }
 
+        _categories.AddRange(_categoryOf.Values.Distinct().OrderBy(CategoryName));
+
+        Category.Clear();
+        Category.AddItem(Loc.GetString("decal-placer-window-category-all"), 0);
+        for (var i = 0; i < _categories.Count; i++)
+        {
+            Category.AddItem(CategoryName(_categories[i]), i + 1);
+        }
+
+        Category.SelectId(_category == null ? 0 : _categories.IndexOf(_category) + 1);
         RefreshList();
+    }
+
+    /// <summary>
+    /// The outermost prototype a decal inherits from, which is what its category is: decals are grouped by
+    /// inheritance, the same way the mapping window groups them.
+    /// </summary>
+    /// <remarks>
+    /// Walked through the raw prototype data rather than through indexed prototypes, because the ancestors are
+    /// abstract and only exist as YAML.
+    /// </remarks>
+    private string? RootOf(string id)
+    {
+        string? root = null;
+
+        for (var depth = 0; depth < MaximumDepth; depth++)
+        {
+            if (!_prototype.TryGetMapping(typeof(DecalPrototype), id, out var node) ||
+                !node.TryGet("parent", out ValueDataNode? parent))
+            {
+                return root;
+            }
+
+            root = id = parent.Value;
+        }
+
+        return root;
+    }
+
+    private string CategoryName(string id)
+    {
+        return Loc.TryGetString($"decal-category-{id.ToLowerInvariant()}", out var name) ? name : id;
     }
 
     protected override void Opened()

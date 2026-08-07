@@ -492,6 +492,10 @@
     - FloorSteel
     - Plating
     - Catwalk
+    - WallFrame
+    - WallFrameReinforced
+    - WallFrameGold
+    - WallFrameSilver
     - Grille
     - Window
     - WindowDirectional

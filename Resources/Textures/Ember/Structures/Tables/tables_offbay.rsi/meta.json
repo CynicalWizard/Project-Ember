@@ -1,0 +1,368 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from SierraBay (Baystation12)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "frame"
+    },
+    {
+      "name": "reinf_preview"
+    },
+    {
+      "name": "plain_preview"
+    },
+    {
+      "name": "solid_preview"
+    },
+    {
+      "name": "holo_preview"
+    },
+    {
+      "name": "stone_preview"
+    },
+    {
+      "name": "gamble_preview"
+    },
+    {
+      "name": "0",
+      "directions": 4
+    },
+    {
+      "name": "1",
+      "directions": 4
+    },
+    {
+      "name": "2",
+      "directions": 4
+    },
+    {
+      "name": "3",
+      "directions": 4
+    },
+    {
+      "name": "4",
+      "directions": 4
+    },
+    {
+      "name": "5",
+      "directions": 4
+    },
+    {
+      "name": "6",
+      "directions": 4
+    },
+    {
+      "name": "7",
+      "directions": 4
+    },
+    {
+      "name": "flip0",
+      "directions": 4
+    },
+    {
+      "name": "flip1+",
+      "directions": 4
+    },
+    {
+      "name": "flip1-",
+      "directions": 4
+    },
+    {
+      "name": "flip2",
+      "directions": 4
+    },
+    {
+      "name": "stone_0",
+      "directions": 4
+    },
+    {
+      "name": "stone_1",
+      "directions": 4
+    },
+    {
+      "name": "stone_2",
+      "directions": 4
+    },
+    {
+      "name": "stone_3",
+      "directions": 4
+    },
+    {
+      "name": "stone_4",
+      "directions": 4
+    },
+    {
+      "name": "stone_5",
+      "directions": 4
+    },
+    {
+      "name": "stone_6",
+      "directions": 4
+    },
+    {
+      "name": "stone_7",
+      "directions": 4
+    },
+    {
+      "name": "solid_0",
+      "directions": 4
+    },
+    {
+      "name": "solid_1",
+      "directions": 4
+    },
+    {
+      "name": "solid_2",
+      "directions": 4
+    },
+    {
+      "name": "solid_3",
+      "directions": 4
+    },
+    {
+      "name": "solid_4",
+      "directions": 4
+    },
+    {
+      "name": "solid_5",
+      "directions": 4
+    },
+    {
+      "name": "solid_6",
+      "directions": 4
+    },
+    {
+      "name": "solid_7",
+      "directions": 4
+    },
+    {
+      "name": "solid_flip0",
+      "directions": 4
+    },
+    {
+      "name": "solid_flip1+",
+      "directions": 4
+    },
+    {
+      "name": "solid_flip1-",
+      "directions": 4
+    },
+    {
+      "name": "solid_flip2",
+      "directions": 4
+    },
+    {
+      "name": "reinf_over_0",
+      "directions": 4
+    },
+    {
+      "name": "reinf_over_1",
+      "directions": 4
+    },
+    {
+      "name": "reinf_over_2",
+      "directions": 4
+    },
+    {
+      "name": "reinf_over_3",
+      "directions": 4
+    },
+    {
+      "name": "reinf_over_4",
+      "directions": 4
+    },
+    {
+      "name": "reinf_over_5",
+      "directions": 4
+    },
+    {
+      "name": "reinf_over_6",
+      "directions": 4
+    },
+    {
+      "name": "reinf_over7",
+      "directions": 4
+    },
+    {
+      "name": "metal_0",
+      "directions": 4
+    },
+    {
+      "name": "metal_1",
+      "directions": 4
+    },
+    {
+      "name": "metal_2",
+      "directions": 4
+    },
+    {
+      "name": "metal_3",
+      "directions": 4
+    },
+    {
+      "name": "metal_4",
+      "directions": 4
+    },
+    {
+      "name": "metal_5",
+      "directions": 4
+    },
+    {
+      "name": "metal_6",
+      "directions": 4
+    },
+    {
+      "name": "metal_7",
+      "directions": 4
+    },
+    {
+      "name": "metal_flip0",
+      "directions": 4
+    },
+    {
+      "name": "metal_flip1+",
+      "directions": 4
+    },
+    {
+      "name": "metal_flip1-",
+      "directions": 4
+    },
+    {
+      "name": "metal_flip2",
+      "directions": 4
+    },
+    {
+      "name": "reinf_metal_0",
+      "directions": 4
+    },
+    {
+      "name": "reinf_metal_1",
+      "directions": 4
+    },
+    {
+      "name": "reinf_metal_2",
+      "directions": 4
+    },
+    {
+      "name": "reinf_metal_3",
+      "directions": 4
+    },
+    {
+      "name": "reinf_metal_4",
+      "directions": 4
+    },
+    {
+      "name": "reinf_metal_5",
+      "directions": 4
+    },
+    {
+      "name": "reinf_metal_6",
+      "directions": 4
+    },
+    {
+      "name": "reinf_metal_7",
+      "directions": 4
+    },
+    {
+      "name": "carpet_0",
+      "directions": 4
+    },
+    {
+      "name": "carpet_1",
+      "directions": 4
+    },
+    {
+      "name": "carpet_2",
+      "directions": 4
+    },
+    {
+      "name": "carpet_3",
+      "directions": 4
+    },
+    {
+      "name": "carpet_4",
+      "directions": 4
+    },
+    {
+      "name": "carpet_5",
+      "directions": 4
+    },
+    {
+      "name": "carpet_6",
+      "directions": 4
+    },
+    {
+      "name": "carpet_7",
+      "directions": 4
+    },
+    {
+      "name": "carpet_flip0",
+      "directions": 4
+    },
+    {
+      "name": "carpet_flip1-",
+      "directions": 4
+    },
+    {
+      "name": "carpet_flip1+",
+      "directions": 4
+    },
+    {
+      "name": "carpet_flip2",
+      "directions": 4
+    },
+    {
+      "name": "wood_0",
+      "directions": 4
+    },
+    {
+      "name": "wood_1",
+      "directions": 4
+    },
+    {
+      "name": "wood_2",
+      "directions": 4
+    },
+    {
+      "name": "wood_3",
+      "directions": 4
+    },
+    {
+      "name": "wood_4",
+      "directions": 4
+    },
+    {
+      "name": "wood_5",
+      "directions": 4
+    },
+    {
+      "name": "wood_6",
+      "directions": 4
+    },
+    {
+      "name": "wood_7",
+      "directions": 4
+    },
+    {
+      "name": "wood_flip0",
+      "directions": 4
+    },
+    {
+      "name": "wood_flip1+",
+      "directions": 4
+    },
+    {
+      "name": "wood_flip1-",
+      "directions": 4
+    },
+    {
+      "name": "wood_flip2",
+      "directions": 4
+    }
+  ]
+}

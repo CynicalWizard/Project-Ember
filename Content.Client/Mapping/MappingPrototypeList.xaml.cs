@@ -32,6 +32,12 @@ public sealed partial class MappingPrototypeList : Control
     /// </summary>
     public Color? TexturesModulate { get; set; }
 
+    /// <summary>
+    ///     A color for one entry, for lists whose entries are not all the same colour. Loses to
+    ///     <see cref="TexturesModulate"/>.
+    /// </summary>
+    public Func<IPrototype, Color?>? GetPrototypeModulate;
+
     public Action<IPrototype, List<Texture>>? GetPrototypeData;
     public event Action<MappingPrototypeList, MappingSpawnButton, IPrototype?>? SelectionChanged;
     public event Action<MappingPrototype>? FavoriteChanged;
@@ -94,8 +100,11 @@ public sealed partial class MappingPrototypeList : Control
         if (_insertTextures.Count > 0)
         {
             button.SetTextures(_insertTextures);
+
             if (TexturesModulate is { } modulate)
                 button.Texture.Modulate = modulate;
+            else if (prototype != null && GetPrototypeModulate?.Invoke(prototype) is { } perEntry)
+                button.Texture.Modulate = perEntry;
         }
 
         if (prototype != null && button.Prototype == Selected?.Prototype)

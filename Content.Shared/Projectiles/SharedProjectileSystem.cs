@@ -17,6 +17,7 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Serialization;
+using Robust.Shared.Network;
 using Robust.Shared.Timing;
 using Content.Shared.Standing;
 
@@ -32,6 +33,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly StandingStateSystem _standing = default!;
 
@@ -172,7 +174,12 @@ public abstract partial class SharedProjectileSystem : EntitySystem
 
         if (component.DeleteOnRemove)
         {
-            QueueDel(uid);
+            // Update runs on both sides so the fall-off popup can be predicted, but a networked entity is the
+            // server's to delete. The client used to queue it too and log an error every time an embedded
+            // projectile timed out, which you would notice as soon as anything died with one stuck in it.
+            if (_net.IsServer)
+                QueueDel(uid);
+
             return;
         }
 

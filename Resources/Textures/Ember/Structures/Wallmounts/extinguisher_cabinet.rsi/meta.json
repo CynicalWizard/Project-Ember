@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from SierraBay (Baystation12)",
+  "size": {
+    "x": 48,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "frame",
+      "directions": 4
+    },
+    {
+      "name": "open",
+      "directions": 4
+    },
+    {
+      "name": "closed",
+      "directions": 4
+    },
+    {
+      "name": "extinguisher",
+      "directions": 4
+    },
+    {
+      "name": "extinguisher-mini",
+      "directions": 4
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+# Bay makes debris out of whatever broke, so one prototype covers every material rather than one per material.
+# It hangs off ShardBase so stepping on it, welding it and sharpening it into a shiv all keep working.
+- type: entity
+  parent: ShardBase
+  id: EmberShard
+  name: shard
+  suffix: Procedural
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Ember/Objects/Materials/shards.rsi
+      state: shardlarge
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: Item
+    sprite: Ember/Objects/Materials/shards.rsi
+    size: Tiny
+  # The shape comes from the material, so the generic roll has nothing left to pick.
+  - type: RandomSprite
+    available: []
+  - type: EmberProceduralShard
+    material: Steel

@@ -1,6 +1,6 @@
 - type: entity
   id: LockerBase
-  parent: ClosetBase
+  parent: [ClosetBase, EmberProceduralClosetVisuals]
   abstract: true
   components:
   - type: AccessReader
@@ -59,10 +59,12 @@
       types:
         Blunt: 10
     staminaCost: 35
+  - type: EmberProceduralCloset
+    style: EmberClosetBase
 
 - type: entity
   id: LockerBaseSecure
-  parent: LockerBase
+  parent: [LockerBase, EmberProceduralClosetVisuals]
   abstract: true
   components:
   - type: Damageable
@@ -76,3 +78,5 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+  - type: EmberProceduralCloset
+    style: EmberClosetSecureCloset

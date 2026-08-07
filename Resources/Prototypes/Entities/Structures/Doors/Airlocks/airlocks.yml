@@ -5,6 +5,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/freezer.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockFreezer
   - type: Wires
     layoutId: AirlockService
 
@@ -15,6 +17,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/engineering.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockEngineering
   - type: PaintableAirlock
     department: Engineering
   - type: Wires
@@ -27,6 +31,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/atmospherics.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockAtmospherics
 
 - type: entity
   parent: Airlock
@@ -35,6 +41,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/cargo.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockLogistics
   - type: PaintableAirlock
     department: Logistics
   - type: Wires
@@ -47,6 +55,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/medical.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockMedical
   - type: PaintableAirlock
     department: Medical
   - type: Wires
@@ -59,6 +69,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/virology.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockVirology
 
 - type: entity
   parent: AirlockMedical
@@ -72,6 +84,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/science.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockEpistemics
   - type: PaintableAirlock
     department: Epistemics
   - type: Wires
@@ -84,6 +98,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/command.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockCommand
   - type: WiresPanelSecurity
     securityLevel: medSecurity
   - type: PaintableAirlock
@@ -99,6 +115,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/security.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockSecurity
   - type: PaintableAirlock
     department: Security
   - type: Wires
@@ -112,6 +130,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockMaintenance
 
 - type: entity
   parent: AirlockSecurity # if you get syndie door somehow it counts as sec
@@ -120,6 +140,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/syndicate.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockSyndicate
 
 - type: entity
   parent: AirlockCargo
@@ -128,6 +150,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/mining.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockMining
   - type: Wires
     layoutId: AirlockCargo
 
@@ -138,6 +162,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/centcomm.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockCentralCommand
 
 - type: entity
   parent: Airlock
@@ -146,6 +172,18 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/hatch.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockHatch
+    doorSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/door.rsi
+    steelFillSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/fill_steel.rsi
+    stripeSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/stripe.rsi
+    stripeFillSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/fill_stripe.rsi
+    greenLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/lights_green.rsi
+    denyLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/lights_deny.rsi
+    boltLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/lights_bolts.rsi
+    panelSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/panel.rsi
+    weldedSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/welded.rsi
+    emagSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/emag.rsi
 
 - type: entity
   parent: Airlock
@@ -154,6 +192,18 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/hatch_maint.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockHatchMaintenance
+    doorSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/door.rsi
+    steelFillSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/fill_steel.rsi
+    stripeSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/stripe.rsi
+    stripeFillSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/fill_stripe.rsi
+    greenLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/lights_green.rsi
+    denyLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/lights_deny.rsi
+    boltLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/lights_bolts.rsi
+    panelSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/panel.rsi
+    weldedSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/welded.rsi
+    emagSprite: /Textures/Ember/Structures/Doors/Airlocks/Hatch/emag.rsi
 
 # Glass
 - type: entity
@@ -163,6 +213,9 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/engineering.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockEngineering
+    glass: true
   - type: PaintableAirlock
     department: Engineering
   - type: Wires
@@ -175,6 +228,9 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/maint.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockMaintenance
+    glass: true
 
 - type: entity
   parent: AirlockEngineeringGlass
@@ -183,6 +239,9 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/atmospherics.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockAtmospherics
+    glass: true
 
 - type: entity
   parent: AirlockGlass
@@ -191,6 +250,9 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/cargo.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockLogistics
+    glass: true
   - type: PaintableAirlock
     department: Logistics
   - type: Wires
@@ -203,6 +265,9 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/medical.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockMedical
+    glass: true
   - type: PaintableAirlock
     department: Medical
   - type: Wires
@@ -220,6 +285,9 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/virology.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockVirology
+    glass: true
 
 - type: entity
   parent: AirlockGlass
@@ -228,6 +296,9 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/science.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockEpistemics
+    glass: true
   - type: PaintableAirlock
     department: Epistemics
   - type: Wires
@@ -240,6 +311,9 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/command.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockCommand
+    glass: true
   - type: PaintableAirlock
     department: Command
   - type: WiresPanelSecurity
@@ -255,6 +329,9 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/security.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockSecurity
+    glass: true
   - type: PaintableAirlock
     department: Security
   - type: Wires
@@ -267,6 +344,9 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/syndicate.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockSyndicate
+    glass: true
 
 - type: entity
   parent: AirlockCargoGlass
@@ -275,6 +355,9 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/mining.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockMining
+    glass: true
 
 - type: entity
   parent: AirlockCommandGlass # see standard
@@ -283,3 +366,6 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/centcomm.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockCentralCommand
+    glass: true

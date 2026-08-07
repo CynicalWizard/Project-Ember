@@ -1,0 +1,4 @@
+- files: ["bases/closet.rsi", "bases/crate.rsi", "bases/large_crate.rsi", "bases/cabinet.rsi", "bases/cart.rsi", "bases/wall.rsi", "decals/closet.rsi", "decals/crate.rsi", "decals/large_crate.rsi", "decals/cart.rsi", "decals/wall.rsi", "fridge.rsi"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Taken from SierraBay (Baystation12)"
+  source: "https://github.com/Baystation12/Baystation12"

@@ -1,6 +1,7 @@
 ﻿using Content.Client.Administration.Managers;
 using Content.Client.Gameplay;
 using Content.Client.Markers;
+using Content.Client.Ember.Tiles;
 using Content.Client.Sandbox;
 using Content.Client.SubFloor;
 using Content.Client.UserInterface.Controls;
@@ -46,7 +47,8 @@ public sealed class SandboxUIController : UIController, IOnStateChanged<Gameplay
 
     // TODO hud refactor cache
     private EntitySpawningUIController EntitySpawningController => UIManager.GetUIController<EntitySpawningUIController>();
-    private TileSpawningUIController TileSpawningController => UIManager.GetUIController<TileSpawningUIController>();
+    // Ember: the engine list is a flat column of names, which a floor per material makes unusable.
+    private EmberTileSpawnUIController TileSpawningController => UIManager.GetUIController<EmberTileSpawnUIController>();
     private DecalPlacerUIController DecalPlacerController => UIManager.GetUIController<DecalPlacerUIController>();
 
     private MenuButton? SandboxButton => UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>()?.SandboxButton;

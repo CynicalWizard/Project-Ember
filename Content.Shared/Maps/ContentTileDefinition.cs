@@ -35,6 +35,13 @@ namespace Content.Shared.Maps
         public string Name { get; private set; } = "";
         [DataField("sprite")] public ResPath? Sprite { get; private set; }
 
+        /// <summary>
+        /// Multiplied into <see cref="Sprite"/> when the tile atlas is built, so that one greyscale image can
+        /// serve a whole family of tiles. Baystation floors are drawn this way, and it is what keeps a floor
+        /// per material from meaning a texture per material.
+        /// </summary>
+        [DataField("color")] public Color Color { get; private set; } = Color.White;
+
         [DataField("edgeSprites")] public Dictionary<Direction, ResPath> EdgeSprites { get; private set; } = new();
 
         [DataField("edgeSpritePriority")] public int EdgeSpritePriority { get; private set; } = 0;

@@ -90,10 +90,68 @@
 - type: rcd
   id: Grille
   category: WindowsAndGrilles
-  sprite: /Textures/Interface/Radial/RCD/grille.png
+  sprite:
+    sprite: Ember/Structures/Grilles/grille.rsi
+    state: grille
   mode: ConstructObject
   prototype: Grille
   cost: 4
+  delay: 2
+  collisionMask: FullTileMask
+  rotation: Fixed
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: WallFrame
+  category: WindowsAndGrilles
+  sprite:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  mode: ConstructObject
+  prototype: WallFrame
+  cost: 4
+  delay: 2
+  collisionMask: FullTileMask
+  rotation: Fixed
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: WallFrameReinforced
+  category: WindowsAndGrilles
+  sprite:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  mode: ConstructObject
+  prototype: WallFrameReinforced
+  cost: 6
+  delay: 2
+  collisionMask: FullTileMask
+  rotation: Fixed
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: WallFrameGold
+  category: WindowsAndGrilles
+  sprite:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  mode: ConstructObject
+  prototype: WallFrameGold
+  cost: 6
+  delay: 2
+  collisionMask: FullTileMask
+  rotation: Fixed
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: WallFrameSilver
+  category: WindowsAndGrilles
+  sprite:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  mode: ConstructObject
+  prototype: WallFrameSilver
+  cost: 6
   delay: 2
   collisionMask: FullTileMask
   rotation: Fixed
@@ -103,7 +161,9 @@
 - type: rcd
   id: Window
   category: WindowsAndGrilles
-  sprite: /Textures/Interface/Radial/RCD/window.png
+  sprite:
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window_full
   mode: ConstructObject
   prototype: Window
   cost: 3
@@ -117,7 +177,9 @@
 - type: rcd
   id: WindowDirectional
   category: WindowsAndGrilles
-  sprite: /Textures/Interface/Radial/RCD/directional.png
+  sprite:
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window
   mode: ConstructObject
   prototype: WindowDirectional
   cost: 2
@@ -132,7 +194,9 @@
 - type: rcd
   id: ReinforcedWindow
   category: WindowsAndGrilles
-  sprite: /Textures/Interface/Radial/RCD/window_reinforced.png
+  sprite:
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow_full
   mode: ConstructObject
   prototype: ReinforcedWindow
   cost: 4
@@ -146,7 +210,9 @@
 - type: rcd
   id: WindowReinforcedDirectional
   category: WindowsAndGrilles
-  sprite: /Textures/Interface/Radial/RCD/directional_reinforced.png
+  sprite:
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow
   mode: ConstructObject
   prototype: WindowReinforcedDirectional
   cost: 3

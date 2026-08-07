@@ -2,7 +2,13 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Doors.Components;
+using Content.Shared.Ember.Doors;
+using Content.Shared.Ember.Materials;
+using Content.Shared.Ember.Storage;
+using Content.Shared.Ember.Structures;
+using Content.Shared.Ember.Walls;
 using Content.Shared.Interaction;
+using Content.Shared.Lock;
 using Content.Shared.Popups;
 using Content.Shared.Paint;
 using Content.Shared.SprayPainter.Components;
@@ -29,6 +35,12 @@ public abstract class SharedSprayPainterSystem : EntitySystem
     public List<AirlockStyle> Styles { get; private set; } = new();
     public List<AirlockGroupPrototype> Groups { get; private set; } = new();
 
+    /// <summary>
+    /// Every container appearance that can be sprayed on, in a fixed order so the index means the same thing
+    /// on both sides of the wire.
+    /// </summary>
+    public List<ProtoId<EmberClosetStylePrototype>> ClosetStyles { get; private set; } = new();
+
     [ValidatePrototypeId<AirlockDepartmentsPrototype>]
     private const string Departments = "Departments";
 
@@ -40,13 +52,22 @@ public abstract class SharedSprayPainterSystem : EntitySystem
 
         SubscribeLocalEvent<SprayPainterComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<SprayPainterComponent, SprayPainterDoorDoAfterEvent>(OnDoorDoAfter);
+        SubscribeLocalEvent<SprayPainterComponent, SprayPainterWallDoAfterEvent>(OnWallDoAfter);
+        SubscribeLocalEvent<SprayPainterComponent, SprayPainterClosetDoAfterEvent>(OnClosetDoAfter);
         Subs.BuiEvents<SprayPainterComponent>(SprayPainterUiKey.Key, subs =>
         {
             subs.Event<SprayPainterSpritePickedMessage>(OnSpritePicked);
             subs.Event<SprayPainterColorPickedMessage>(OnColorPicked);
+            subs.Event<SprayPainterCustomColorPickedMessage>(OnCustomColorPicked);
+            subs.Event<SprayPainterWallModePickedMessage>(OnWallModePicked);
+            subs.Event<SprayPainterAirlockModePickedMessage>(OnAirlockModePicked);
+            subs.Event<SprayPainterClosetPickedMessage>(OnClosetPicked);
         });
 
         SubscribeLocalEvent<PaintableAirlockComponent, InteractUsingEvent>(OnAirlockInteract);
+        SubscribeLocalEvent<EmberProceduralWallComponent, InteractUsingEvent>(OnWallInteract);
+        SubscribeLocalEvent<EmberProceduralStructureComponent, InteractUsingEvent>(OnStructureInteract);
+        SubscribeLocalEvent<EmberProceduralClosetComponent, InteractUsingEvent>(OnClosetInteract);
 
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
     }
@@ -56,7 +77,9 @@ public abstract class SharedSprayPainterSystem : EntitySystem
         if (ent.Comp.ColorPalette.Count == 0)
             return;
 
-        SetColor(ent, ent.Comp.ColorPalette.First().Key);
+        SetColor(ent, ent.Comp.ColorPalette.ContainsKey("white")
+            ? "white"
+            : ent.Comp.ColorPalette.First().Key);
     }
 
     private void OnDoorDoAfter(Entity<SprayPainterComponent> ent, ref SprayPainterDoorDoAfterEvent args)
@@ -72,8 +95,33 @@ public abstract class SharedSprayPainterSystem : EntitySystem
         if (!TryComp<PaintableAirlockComponent>(target, out var airlock))
             return;
 
+        if (args.Mode != SprayPainterAirlockMode.ApplyStyle)
+        {
+            if (!TryComp<EmberProceduralAirlockComponent>(target, out var emberPaintAirlock))
+                return;
+
+            SprayPainterAirlockPaint.Apply(emberPaintAirlock, args.Mode, args.Color);
+            Dirty(target, emberPaintAirlock);
+
+            Audio.PlayPredicted(ent.Comp.SpraySound, ent, args.Args.User);
+            _adminLogger.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(args.Args.User):user} painted {ToPrettyString(args.Args.Target.Value):target}");
+
+            args.Handled = true;
+            return;
+        }
+
         airlock.Department = args.Department;
         Dirty(target, airlock);
+
+        if (TryComp<EmberProceduralAirlockComponent>(target, out var emberAirlock) &&
+            EmberAirlockPaintStyle.TryGetStyle(args.StyleName, out var emberStyle))
+        {
+            emberAirlock.Style = emberStyle;
+            emberAirlock.DoorColor = null;
+            emberAirlock.StripeColor = null;
+            emberAirlock.WindowColor = null;
+            Dirty(target, emberAirlock);
+        }
 
         Audio.PlayPredicted(ent.Comp.SpraySound, ent, args.Args.User);
         Appearance.SetData(target, DoorVisuals.BaseRSI, args.Sprite);
@@ -89,6 +137,13 @@ public abstract class SharedSprayPainterSystem : EntitySystem
         SetColor(ent, args.Key);
     }
 
+    private void OnCustomColorPicked(Entity<SprayPainterComponent> ent, ref SprayPainterCustomColorPickedMessage args)
+    {
+        ent.Comp.PickedCustomColor = true;
+        ent.Comp.CustomColor = args.Color.WithAlpha(1f);
+        Dirty(ent, ent.Comp);
+    }
+
     private void OnSpritePicked(Entity<SprayPainterComponent> ent, ref SprayPainterSpritePickedMessage args)
     {
         if (args.Index >= Styles.Count)
@@ -98,14 +153,39 @@ public abstract class SharedSprayPainterSystem : EntitySystem
         Dirty(ent, ent.Comp);
     }
 
+    private void OnWallModePicked(Entity<SprayPainterComponent> ent, ref SprayPainterWallModePickedMessage args)
+    {
+        ent.Comp.WallMode = args.Mode;
+        Dirty(ent, ent.Comp);
+    }
+
+    private void OnAirlockModePicked(Entity<SprayPainterComponent> ent, ref SprayPainterAirlockModePickedMessage args)
+    {
+        ent.Comp.AirlockMode = args.Mode;
+        Dirty(ent, ent.Comp);
+    }
+
+    private void OnClosetPicked(Entity<SprayPainterComponent> ent, ref SprayPainterClosetPickedMessage args)
+    {
+        if (args.Index < 0 || args.Index >= ClosetStyles.Count)
+            return;
+
+        ent.Comp.ClosetIndex = args.Index;
+        Dirty(ent, ent.Comp);
+    }
+
     private void SetColor(Entity<SprayPainterComponent> ent, string? paletteKey)
     {
-        if (paletteKey == null || paletteKey == ent.Comp.PickedColor)
+        if (paletteKey == null)
             return;
 
         if (!ent.Comp.ColorPalette.ContainsKey(paletteKey))
             return;
 
+        if (!ent.Comp.PickedCustomColor && paletteKey == ent.Comp.PickedColor)
+            return;
+
+        ent.Comp.PickedCustomColor = false;
         ent.Comp.PickedColor = paletteKey;
         Dirty(ent, ent.Comp);
     }
@@ -120,6 +200,50 @@ public abstract class SharedSprayPainterSystem : EntitySystem
         if (!TryComp<SprayPainterComponent>(args.Used, out var painter) || painter.AirlockDoAfter != null)
             return;
 
+        if (painter.AirlockMode != SprayPainterAirlockMode.ApplyStyle)
+        {
+            if (!HasComp<EmberProceduralAirlockComponent>(ent))
+            {
+                string msg = Loc.GetString("spray-painter-style-not-available");
+                _popup.PopupClient(msg, args.User, args.User);
+                return;
+            }
+
+            Color? color = null;
+            if (SprayPainterAirlockPaint.RequiresColor(painter.AirlockMode))
+            {
+                if (!SprayPainterColorSelection.TryGetPickedColor(painter, out var pickedColor))
+                {
+                    _popup.PopupClient(Loc.GetString("pipe-painter-no-color-selected"), args.User, args.User);
+                    return;
+                }
+
+                color = pickedColor;
+            }
+
+            var customDoAfter = new DoAfterArgs(
+                EntityManager,
+                args.User,
+                painter.AirlockSprayTime,
+                new SprayPainterDoorDoAfterEvent(string.Empty, null, string.Empty, painter.AirlockMode, color),
+                args.Used,
+                target: ent,
+                used: args.Used)
+            {
+                BreakOnMove = true,
+                BreakOnDamage = true,
+                NeedHand = true,
+            };
+
+            if (!DoAfter.TryStartDoAfter(customDoAfter, out var customId))
+                return;
+
+            painter.AirlockDoAfter = customId;
+            args.Handled = true;
+            _adminLogger.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(args.User):user} is painting {ToPrettyString(ent):target} at {Transform(ent).Coordinates:targetlocation}");
+            return;
+        }
+
         var group = Proto.Index<AirlockGroupPrototype>(ent.Comp.Group);
 
         var style = Styles[painter.Index];
@@ -132,7 +256,7 @@ public abstract class SharedSprayPainterSystem : EntitySystem
 
         RemComp<PaintedComponent>(ent);
 
-        var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, painter.AirlockSprayTime, new SprayPainterDoorDoAfterEvent(sprite, style.Department), args.Used, target: ent, used: args.Used)
+        var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, painter.AirlockSprayTime, new SprayPainterDoorDoAfterEvent(sprite, style.Department, style.Name), args.Used, target: ent, used: args.Used)
         {
             BreakOnMove = true,
             BreakOnDamage = true,
@@ -150,27 +274,249 @@ public abstract class SharedSprayPainterSystem : EntitySystem
         _adminLogger.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(args.User):user} is painting {ToPrettyString(ent):target} to '{style.Name}' at {Transform(ent).Coordinates:targetlocation}");
     }
 
+    /// <summary>
+    /// The paintable flags live on the physical material, which is where the Bay data was ported to.
+    /// </summary>
+    private EmberMaterialPrototype? GetPhysicalMaterial(ProtoId<EmberWallMaterialPrototype> id)
+    {
+        if (string.IsNullOrEmpty(id.Id) ||
+            !Proto.TryIndex(id, out EmberWallMaterialPrototype? wall) ||
+            wall.PhysicalMaterial is not { } physical)
+        {
+            return null;
+        }
+
+        return Proto.TryIndex(physical, out EmberMaterialPrototype? material) ? material : null;
+    }
+
+    private void OnWallInteract(Entity<EmberProceduralWallComponent> ent, ref InteractUsingEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        if (!TryComp<SprayPainterComponent>(args.Used, out var painter) ||
+            painter.AirlockDoAfter != null)
+            return;
+
+        if (!SprayPainterWallPaint.CanApply(GetPhysicalMaterial(ent.Comp.Material), painter.WallMode))
+        {
+            _popup.PopupClient(Loc.GetString("spray-painter-wall-mode-not-available"), args.User, args.User);
+            return;
+        }
+
+        Color? color = null;
+        var pickedColor = default(Color);
+        if (SprayPainterWallPaint.RequiresColor(painter.WallMode) &&
+            !SprayPainterColorSelection.TryGetPickedColor(painter, out pickedColor))
+        {
+            _popup.PopupClient(Loc.GetString("pipe-painter-no-color-selected"), args.User, args.User);
+            return;
+        }
+
+        if (SprayPainterWallPaint.RequiresColor(painter.WallMode))
+            color = pickedColor;
+
+        var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, painter.AirlockSprayTime, new SprayPainterWallDoAfterEvent(painter.WallMode, color), args.Used, target: ent, used: args.Used)
+        {
+            BreakOnMove = true,
+            BreakOnDamage = true,
+            NeedHand = true,
+        };
+
+        if (!DoAfter.TryStartDoAfter(doAfterEventArgs, out var id))
+            return;
+
+        painter.AirlockDoAfter = id;
+        args.Handled = true;
+        _adminLogger.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(args.User):user} is painting {ToPrettyString(ent):target} at {Transform(ent).Coordinates:targetlocation}");
+    }
+
+    private void OnStructureInteract(Entity<EmberProceduralStructureComponent> ent, ref InteractUsingEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        if (!TryComp<SprayPainterComponent>(args.Used, out var painter) ||
+            painter.AirlockDoAfter != null)
+            return;
+
+        if (!SprayPainterStructurePaint.CanApply(ent.Comp, painter.WallMode))
+        {
+            _popup.PopupClient(Loc.GetString("spray-painter-wall-mode-not-available"), args.User, args.User);
+            return;
+        }
+
+        Color? color = null;
+        if (SprayPainterWallPaint.RequiresColor(painter.WallMode))
+        {
+            if (!SprayPainterColorSelection.TryGetPickedColor(painter, out var pickedColor))
+            {
+                _popup.PopupClient(Loc.GetString("pipe-painter-no-color-selected"), args.User, args.User);
+                return;
+            }
+
+            color = pickedColor;
+        }
+
+        var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, painter.AirlockSprayTime, new SprayPainterWallDoAfterEvent(painter.WallMode, color), args.Used, target: ent, used: args.Used)
+        {
+            BreakOnMove = true,
+            BreakOnDamage = true,
+            NeedHand = true,
+        };
+
+        if (!DoAfter.TryStartDoAfter(doAfterEventArgs, out var id))
+            return;
+
+        painter.AirlockDoAfter = id;
+        args.Handled = true;
+        _adminLogger.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(args.User):user} is painting {ToPrettyString(ent):target} at {Transform(ent).Coordinates:targetlocation}");
+    }
+
+    /// <summary>
+    /// A closet or a crate takes whichever appearance is picked, and the user's own colour over the top of it
+    /// if they picked one. Containers are crafted plain — one recipe per shape rather than one per department —
+    /// so this is how a crate becomes a medical crate.
+    /// </summary>
+    private void OnClosetInteract(Entity<EmberProceduralClosetComponent> ent, ref InteractUsingEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        if (!TryComp<SprayPainterComponent>(args.Used, out var painter) || painter.AirlockDoAfter != null)
+            return;
+
+        if (painter.ClosetIndex < 0 || painter.ClosetIndex >= ClosetStyles.Count)
+            return;
+
+        if (!Proto.TryIndex(ClosetStyles[painter.ClosetIndex], out var picked) ||
+            !Proto.TryIndex(ent.Comp.Style, out var current))
+        {
+            return;
+        }
+
+        // Paint does not reshape anything. A crate is a crate however it is painted, and an appearance drawn
+        // on another shape's sheet would be a closet wearing a crate's markings.
+        if (picked.Shape != current.Shape)
+        {
+            _popup.PopupClient(Loc.GetString("spray-painter-closet-shape-not-available"), args.User, args.User);
+            return;
+        }
+
+        // Nor does it fit or remove a lock. An appearance that draws a lock light on a container with no lock
+        // is telling the room something that is not true, and the same the other way round.
+        if (picked.CanLock != HasComp<LockComponent>(ent))
+        {
+            _popup.PopupClient(Loc.GetString("spray-painter-closet-lock-not-available"), args.User, args.User);
+            return;
+        }
+
+        // Only a colour the user chose themselves overrides the appearance. Picking one off the palette is how
+        // pipes and stripes are done and would otherwise repaint every container the same shade by accident.
+        Color? color = painter.PickedCustomColor ? painter.CustomColor : null;
+
+        var doAfterEventArgs = new DoAfterArgs(
+            EntityManager,
+            args.User,
+            painter.AirlockSprayTime,
+            new SprayPainterClosetDoAfterEvent(ClosetStyles[painter.ClosetIndex], color),
+            args.Used,
+            target: ent,
+            used: args.Used)
+        {
+            BreakOnMove = true,
+            BreakOnDamage = true,
+            NeedHand = true,
+        };
+
+        if (!DoAfter.TryStartDoAfter(doAfterEventArgs, out var id))
+            return;
+
+        painter.AirlockDoAfter = id;
+        args.Handled = true;
+        _adminLogger.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(args.User):user} is painting {ToPrettyString(ent):target} at {Transform(ent).Coordinates:targetlocation}");
+    }
+
+    private void OnClosetDoAfter(Entity<SprayPainterComponent> ent, ref SprayPainterClosetDoAfterEvent args)
+    {
+        ent.Comp.AirlockDoAfter = null;
+
+        if (args.Handled || args.Cancelled)
+            return;
+
+        if (args.Args.Target is not { } target || !TryComp<EmberProceduralClosetComponent>(target, out var closet))
+            return;
+
+        closet.Style = args.Style;
+        closet.Color = args.Color;
+        Dirty(target, closet);
+
+        Audio.PlayPredicted(ent.Comp.SpraySound, ent, args.Args.User);
+        _adminLogger.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(args.Args.User):user} painted {ToPrettyString(target):target}");
+
+        args.Handled = true;
+    }
+
+    private void OnWallDoAfter(Entity<SprayPainterComponent> ent, ref SprayPainterWallDoAfterEvent args)
+    {
+        ent.Comp.AirlockDoAfter = null;
+
+        if (args.Handled || args.Cancelled)
+            return;
+
+        if (args.Args.Target is not { } target)
+            return;
+
+        if (TryComp<EmberProceduralWallComponent>(target, out var wall))
+        {
+            SprayPainterWallPaint.Apply(wall, args.Mode, args.Color);
+            Dirty(target, wall);
+        }
+        else if (TryComp<EmberProceduralStructureComponent>(target, out var structure) &&
+                 SprayPainterStructurePaint.CanApply(structure, args.Mode))
+        {
+            SprayPainterStructurePaint.Apply(structure, args.Mode, args.Color);
+            Dirty(target, structure);
+        }
+        else
+        {
+            return;
+        }
+
+        Audio.PlayPredicted(ent.Comp.SpraySound, ent, args.Args.User);
+        _adminLogger.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(args.Args.User):user} painted {ToPrettyString(args.Args.Target.Value):target}");
+
+        args.Handled = true;
+    }
+
     #region Style caching
 
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs args)
     {
-        if (!args.WasModified<AirlockGroupPrototype>() && !args.WasModified<AirlockDepartmentsPrototype>())
+        if (!args.WasModified<AirlockGroupPrototype>() &&
+            !args.WasModified<AirlockDepartmentsPrototype>() &&
+            !args.WasModified<EmberClosetStylePrototype>())
+        {
             return;
+        }
 
         Styles.Clear();
         Groups.Clear();
+        ClosetStyles.Clear();
         CacheStyles();
 
         // style index might be invalid now so check them all
         var max = Styles.Count - 1;
+        var closetMax = ClosetStyles.Count - 1;
         var query = AllEntityQuery<SprayPainterComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
-            if (comp.Index > max)
-            {
-                comp.Index = max;
-                Dirty(uid, comp);
-            }
+            if (comp.Index <= max && comp.ClosetIndex <= closetMax)
+                continue;
+
+            comp.Index = Math.Min(comp.Index, max);
+            comp.ClosetIndex = Math.Min(comp.ClosetIndex, closetMax);
+            Dirty(uid, comp);
         }
     }
 
@@ -188,6 +534,15 @@ public abstract class SharedSprayPainterSystem : EntitySystem
         }
 
         // get their department ids too for the final style list
+        // Sorted rather than in load order, so the index a client sends means the same style the server read.
+        foreach (var style in Proto.EnumeratePrototypes<EmberClosetStylePrototype>())
+        {
+            if (!style.Abstract)
+                ClosetStyles.Add(style.ID);
+        }
+
+        ClosetStyles.Sort((a, b) => string.CompareOrdinal(a.Id, b.Id));
+
         var departments = Proto.Index<AirlockDepartmentsPrototype>(Departments);
         Styles.Capacity = names.Count;
         foreach (var name in names)

@@ -1,0 +1,2407 @@
+# Сгенерировано. Полы Baystation12 и SierraBay плюс материальные семейства.
+#
+# Картинка — серая маска, цвет задаёт сам тайл, поэтому новый материал не добавляет ни одной
+# картинки. Категории в меню маппинга строятся из наследования, как у декалей, так что каждая
+# из них — абстрактный тайл без родителя.
+#
+# EMBER-TODO: материал у пола — пока только цвет. Прочность, температура плавления,
+# теплопроводность и броня у материалов уже описаны и здесь не используются, поэтому
+# урановый пол ничем не отличается от золотого. Упрётся в то же, что и повреждения
+# пола: тайлу негде хранить состояние.
+
+# полы с бэя
+- type: tile
+  id: EmberTileCategoryBay
+  abstract: true
+  name: ember-tiles-category-bay
+
+# полы из металлов
+- type: tile
+  id: EmberTileCategoryMetal
+  abstract: true
+  name: ember-tiles-category-metal
+
+# полы из камня
+- type: tile
+  id: EmberTileCategoryStone
+  abstract: true
+  name: ember-tiles-category-stone
+
+# деревянные полы
+- type: tile
+  id: EmberTileCategoryWood
+  abstract: true
+  name: ember-tiles-category-wood
+
+# укреплённые полы
+- type: tile
+  id: EmberTileCategoryReinforced
+  abstract: true
+  name: ember-tiles-category-reinforced
+
+# решётки
+- type: tile
+  id: EmberTileCategoryLattice
+  abstract: true
+  name: ember-tiles-category-lattice
+
+- type: tile
+  id: EmberFloorTechfloor
+  parent: EmberTileCategoryBay
+  name: ember-tiles-techfloor
+  sprite: /Textures/Ember/Tiles/techfloor.png
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepHull
+  itemDrop: EmberFloorTileItemTechfloor
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorTechfloorGrid
+  parent: EmberTileCategoryBay
+  name: ember-tiles-techfloorgrid
+  sprite: /Textures/Ember/Tiles/techfloor_grid.png
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepHull
+  itemDrop: EmberFloorTileItemTechfloorGrid
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorStone
+  parent: EmberTileCategoryBay
+  name: ember-tiles-stone
+  sprite: /Textures/Ember/Tiles/stone.png
+  color: "#4c535b"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemStone
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorTileOld
+  parent: EmberTileCategoryBay
+  name: ember-tiles-tileold
+  sprite: /Textures/Ember/Tiles/tile_old.png
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSteel
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorCargo
+  parent: EmberTileCategoryBay
+  name: ember-tiles-cargo
+  sprite: /Textures/Ember/Tiles/cargo.png
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSteel
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorKafel
+  parent: EmberTileCategoryBay
+  name: ember-tiles-kafel
+  sprite: /Textures/Ember/Tiles/kafel.png
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSteel
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberTileMetalSteelBase
+  parent: EmberTileCategoryMetal
+  abstract: true
+  name: ember-tiles-metal-steel
+
+- type: tile
+  id: EmberTileMetalIronBase
+  parent: EmberTileCategoryMetal
+  abstract: true
+  name: ember-tiles-metal-iron
+
+- type: tile
+  id: EmberFloorMetalIron
+  parent: EmberTileMetalIronBase
+  name: ember-tiles-metal-iron-plain
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#5C5454"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalIron
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalIronMono
+  parent: EmberTileMetalIronBase
+  name: ember-tiles-metal-iron-mono
+  sprite: /Textures/Ember/Tiles/monotile.png
+  color: "#5C5454"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalIronMono
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalIronGrid
+  parent: EmberTileMetalIronBase
+  name: ember-tiles-metal-iron-grid
+  sprite: /Textures/Ember/Tiles/grid.png
+  color: "#5C5454"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalIronGrid
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalIronRidged
+  parent: EmberTileMetalIronBase
+  name: ember-tiles-metal-iron-ridged
+  sprite: /Textures/Ember/Tiles/ridged.png
+  color: "#5C5454"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalIronRidged
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalIronDiagonal
+  parent: EmberTileMetalIronBase
+  name: ember-tiles-metal-iron-diagonal
+  sprite: /Textures/Ember/Tiles/diagonal.png
+  color: "#5C5454"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalIronDiagonal
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalIronDiagonalMini
+  parent: EmberTileMetalIronBase
+  name: ember-tiles-metal-iron-diagonalmini
+  sprite: /Textures/Ember/Tiles/diagonal_mini.png
+  color: "#5C5454"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalIronDiagonalMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalIronHerringbone
+  parent: EmberTileMetalIronBase
+  name: ember-tiles-metal-iron-herringbone
+  sprite: /Textures/Ember/Tiles/herringbone.png
+  color: "#5C5454"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalIronHerringbone
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalIronMini
+  parent: EmberTileMetalIronBase
+  name: ember-tiles-metal-iron-mini
+  sprite: /Textures/Ember/Tiles/mini.png
+  color: "#5C5454"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalIronMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorReinforcedIron
+  parent: EmberTileCategoryReinforced
+  name: ember-tiles-reinforced-iron
+  sprite: /Textures/Ember/Tiles/reinforced_light.png
+  color: "#5C5454"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepHull
+  reinforced: true
+  itemDrop: EmberRodIron1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberLatticeIron
+  parent: EmberTileCategoryLattice
+  name: ember-tiles-lattice-iron
+  sprite: /Textures/Ember/Tiles/lattice.png
+  color: "#5C5454"
+  baseTurf: Space
+  isSubfloor: true
+  deconstructTools: [ Cutting ]
+  weather: true
+  footstepSounds:
+    collection: FootstepPlating
+  friction: 0.3
+  isSpace: true
+  itemDrop: EmberRodIron1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberTileMetalAluminiumBase
+  parent: EmberTileCategoryMetal
+  abstract: true
+  name: ember-tiles-metal-aluminium
+
+- type: tile
+  id: EmberFloorMetalAluminium
+  parent: EmberTileMetalAluminiumBase
+  name: ember-tiles-metal-aluminium-plain
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#CCCDCC"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalAluminium
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalAluminiumMono
+  parent: EmberTileMetalAluminiumBase
+  name: ember-tiles-metal-aluminium-mono
+  sprite: /Textures/Ember/Tiles/monotile.png
+  color: "#CCCDCC"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalAluminiumMono
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalAluminiumGrid
+  parent: EmberTileMetalAluminiumBase
+  name: ember-tiles-metal-aluminium-grid
+  sprite: /Textures/Ember/Tiles/grid.png
+  color: "#CCCDCC"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalAluminiumGrid
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalAluminiumRidged
+  parent: EmberTileMetalAluminiumBase
+  name: ember-tiles-metal-aluminium-ridged
+  sprite: /Textures/Ember/Tiles/ridged.png
+  color: "#CCCDCC"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalAluminiumRidged
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalAluminiumDiagonal
+  parent: EmberTileMetalAluminiumBase
+  name: ember-tiles-metal-aluminium-diagonal
+  sprite: /Textures/Ember/Tiles/diagonal.png
+  color: "#CCCDCC"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalAluminiumDiagonal
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalAluminiumDiagonalMini
+  parent: EmberTileMetalAluminiumBase
+  name: ember-tiles-metal-aluminium-diagonalmini
+  sprite: /Textures/Ember/Tiles/diagonal_mini.png
+  color: "#CCCDCC"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalAluminiumDiagonalMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalAluminiumHerringbone
+  parent: EmberTileMetalAluminiumBase
+  name: ember-tiles-metal-aluminium-herringbone
+  sprite: /Textures/Ember/Tiles/herringbone.png
+  color: "#CCCDCC"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalAluminiumHerringbone
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalAluminiumMini
+  parent: EmberTileMetalAluminiumBase
+  name: ember-tiles-metal-aluminium-mini
+  sprite: /Textures/Ember/Tiles/mini.png
+  color: "#CCCDCC"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalAluminiumMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorReinforcedAluminium
+  parent: EmberTileCategoryReinforced
+  name: ember-tiles-reinforced-aluminium
+  sprite: /Textures/Ember/Tiles/reinforced_light.png
+  color: "#CCCDCC"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepHull
+  reinforced: true
+  itemDrop: EmberRodAluminium1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberLatticeAluminium
+  parent: EmberTileCategoryLattice
+  name: ember-tiles-lattice-aluminium
+  sprite: /Textures/Ember/Tiles/lattice.png
+  color: "#CCCDCC"
+  baseTurf: Space
+  isSubfloor: true
+  deconstructTools: [ Cutting ]
+  weather: true
+  footstepSounds:
+    collection: FootstepPlating
+  friction: 0.3
+  isSpace: true
+  itemDrop: EmberRodAluminium1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberTileMetalPlasteelBase
+  parent: EmberTileCategoryMetal
+  abstract: true
+  name: ember-tiles-metal-plasteel
+
+- type: tile
+  id: EmberFloorMetalPlasteel
+  parent: EmberTileMetalPlasteelBase
+  name: ember-tiles-metal-plasteel-plain
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#A8A9B2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalPlasteel
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalPlasteelMono
+  parent: EmberTileMetalPlasteelBase
+  name: ember-tiles-metal-plasteel-mono
+  sprite: /Textures/Ember/Tiles/monotile.png
+  color: "#A8A9B2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalPlasteelMono
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalPlasteelGrid
+  parent: EmberTileMetalPlasteelBase
+  name: ember-tiles-metal-plasteel-grid
+  sprite: /Textures/Ember/Tiles/grid.png
+  color: "#A8A9B2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalPlasteelGrid
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalPlasteelRidged
+  parent: EmberTileMetalPlasteelBase
+  name: ember-tiles-metal-plasteel-ridged
+  sprite: /Textures/Ember/Tiles/ridged.png
+  color: "#A8A9B2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalPlasteelRidged
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalPlasteelDiagonal
+  parent: EmberTileMetalPlasteelBase
+  name: ember-tiles-metal-plasteel-diagonal
+  sprite: /Textures/Ember/Tiles/diagonal.png
+  color: "#A8A9B2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalPlasteelDiagonal
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalPlasteelDiagonalMini
+  parent: EmberTileMetalPlasteelBase
+  name: ember-tiles-metal-plasteel-diagonalmini
+  sprite: /Textures/Ember/Tiles/diagonal_mini.png
+  color: "#A8A9B2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalPlasteelDiagonalMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalPlasteelHerringbone
+  parent: EmberTileMetalPlasteelBase
+  name: ember-tiles-metal-plasteel-herringbone
+  sprite: /Textures/Ember/Tiles/herringbone.png
+  color: "#A8A9B2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalPlasteelHerringbone
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalPlasteelMini
+  parent: EmberTileMetalPlasteelBase
+  name: ember-tiles-metal-plasteel-mini
+  sprite: /Textures/Ember/Tiles/mini.png
+  color: "#A8A9B2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalPlasteelMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorReinforcedPlasteel
+  parent: EmberTileCategoryReinforced
+  name: ember-tiles-reinforced-plasteel
+  sprite: /Textures/Ember/Tiles/reinforced_light.png
+  color: "#A8A9B2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepHull
+  reinforced: true
+  itemDrop: EmberRodPlasteel1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberLatticePlasteel
+  parent: EmberTileCategoryLattice
+  name: ember-tiles-lattice-plasteel
+  sprite: /Textures/Ember/Tiles/lattice.png
+  color: "#A8A9B2"
+  baseTurf: Space
+  isSubfloor: true
+  deconstructTools: [ Cutting ]
+  weather: true
+  footstepSounds:
+    collection: FootstepPlating
+  friction: 0.3
+  isSpace: true
+  itemDrop: EmberRodPlasteel1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberTileMetalTitaniumBase
+  parent: EmberTileCategoryMetal
+  abstract: true
+  name: ember-tiles-metal-titanium
+
+- type: tile
+  id: EmberFloorMetalTitanium
+  parent: EmberTileMetalTitaniumBase
+  name: ember-tiles-metal-titanium-plain
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalTitanium
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalTitaniumMono
+  parent: EmberTileMetalTitaniumBase
+  name: ember-tiles-metal-titanium-mono
+  sprite: /Textures/Ember/Tiles/monotile.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalTitaniumMono
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalTitaniumGrid
+  parent: EmberTileMetalTitaniumBase
+  name: ember-tiles-metal-titanium-grid
+  sprite: /Textures/Ember/Tiles/grid.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalTitaniumGrid
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalTitaniumRidged
+  parent: EmberTileMetalTitaniumBase
+  name: ember-tiles-metal-titanium-ridged
+  sprite: /Textures/Ember/Tiles/ridged.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalTitaniumRidged
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalTitaniumDiagonal
+  parent: EmberTileMetalTitaniumBase
+  name: ember-tiles-metal-titanium-diagonal
+  sprite: /Textures/Ember/Tiles/diagonal.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalTitaniumDiagonal
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalTitaniumDiagonalMini
+  parent: EmberTileMetalTitaniumBase
+  name: ember-tiles-metal-titanium-diagonalmini
+  sprite: /Textures/Ember/Tiles/diagonal_mini.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalTitaniumDiagonalMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalTitaniumHerringbone
+  parent: EmberTileMetalTitaniumBase
+  name: ember-tiles-metal-titanium-herringbone
+  sprite: /Textures/Ember/Tiles/herringbone.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalTitaniumHerringbone
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalTitaniumMini
+  parent: EmberTileMetalTitaniumBase
+  name: ember-tiles-metal-titanium-mini
+  sprite: /Textures/Ember/Tiles/mini.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalTitaniumMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorReinforcedTitanium
+  parent: EmberTileCategoryReinforced
+  name: ember-tiles-reinforced-titanium
+  sprite: /Textures/Ember/Tiles/reinforced_light.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepHull
+  reinforced: true
+  itemDrop: EmberRodTitanium1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberLatticeTitanium
+  parent: EmberTileCategoryLattice
+  name: ember-tiles-lattice-titanium
+  sprite: /Textures/Ember/Tiles/lattice.png
+  color: "#D1E6E3"
+  baseTurf: Space
+  isSubfloor: true
+  deconstructTools: [ Cutting ]
+  weather: true
+  footstepSounds:
+    collection: FootstepPlating
+  friction: 0.3
+  isSpace: true
+  itemDrop: EmberRodTitanium1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberTileMetalOsmiumCarbidePlasteelBase
+  parent: EmberTileCategoryMetal
+  abstract: true
+  name: ember-tiles-metal-osmiumcarbideplasteel
+
+- type: tile
+  id: EmberFloorMetalOsmiumCarbidePlasteel
+  parent: EmberTileMetalOsmiumCarbidePlasteelBase
+  name: ember-tiles-metal-osmiumcarbideplasteel-plain
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#9BC6F2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalOsmiumCarbidePlasteel
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalOsmiumCarbidePlasteelMono
+  parent: EmberTileMetalOsmiumCarbidePlasteelBase
+  name: ember-tiles-metal-osmiumcarbideplasteel-mono
+  sprite: /Textures/Ember/Tiles/monotile.png
+  color: "#9BC6F2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalOsmiumCarbidePlasteelMono
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalOsmiumCarbidePlasteelGrid
+  parent: EmberTileMetalOsmiumCarbidePlasteelBase
+  name: ember-tiles-metal-osmiumcarbideplasteel-grid
+  sprite: /Textures/Ember/Tiles/grid.png
+  color: "#9BC6F2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalOsmiumCarbidePlasteelGrid
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalOsmiumCarbidePlasteelRidged
+  parent: EmberTileMetalOsmiumCarbidePlasteelBase
+  name: ember-tiles-metal-osmiumcarbideplasteel-ridged
+  sprite: /Textures/Ember/Tiles/ridged.png
+  color: "#9BC6F2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalOsmiumCarbidePlasteelRidged
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalOsmiumCarbidePlasteelDiagonal
+  parent: EmberTileMetalOsmiumCarbidePlasteelBase
+  name: ember-tiles-metal-osmiumcarbideplasteel-diagonal
+  sprite: /Textures/Ember/Tiles/diagonal.png
+  color: "#9BC6F2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalOsmiumCarbidePlasteelDiagonal
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalOsmiumCarbidePlasteelDiagonalMini
+  parent: EmberTileMetalOsmiumCarbidePlasteelBase
+  name: ember-tiles-metal-osmiumcarbideplasteel-diagonalmini
+  sprite: /Textures/Ember/Tiles/diagonal_mini.png
+  color: "#9BC6F2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalOsmiumCarbidePlasteelDiagonalMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalOsmiumCarbidePlasteelHerringbone
+  parent: EmberTileMetalOsmiumCarbidePlasteelBase
+  name: ember-tiles-metal-osmiumcarbideplasteel-herringbone
+  sprite: /Textures/Ember/Tiles/herringbone.png
+  color: "#9BC6F2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalOsmiumCarbidePlasteelHerringbone
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalOsmiumCarbidePlasteelMini
+  parent: EmberTileMetalOsmiumCarbidePlasteelBase
+  name: ember-tiles-metal-osmiumcarbideplasteel-mini
+  sprite: /Textures/Ember/Tiles/mini.png
+  color: "#9BC6F2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalOsmiumCarbidePlasteelMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorReinforcedOsmiumCarbidePlasteel
+  parent: EmberTileCategoryReinforced
+  name: ember-tiles-reinforced-osmiumcarbideplasteel
+  sprite: /Textures/Ember/Tiles/reinforced_light.png
+  color: "#9BC6F2"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepHull
+  reinforced: true
+  itemDrop: EmberRodOsmiumCarbidePlasteel1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberLatticeOsmiumCarbidePlasteel
+  parent: EmberTileCategoryLattice
+  name: ember-tiles-lattice-osmiumcarbideplasteel
+  sprite: /Textures/Ember/Tiles/lattice.png
+  color: "#9BC6F2"
+  baseTurf: Space
+  isSubfloor: true
+  deconstructTools: [ Cutting ]
+  weather: true
+  footstepSounds:
+    collection: FootstepPlating
+  friction: 0.3
+  isSpace: true
+  itemDrop: EmberRodOsmiumCarbidePlasteel1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberTileMetalOsmiumBase
+  parent: EmberTileCategoryMetal
+  abstract: true
+  name: ember-tiles-metal-osmium
+
+- type: tile
+  id: EmberFloorMetalOsmium
+  parent: EmberTileMetalOsmiumBase
+  name: ember-tiles-metal-osmium-plain
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#9999FF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalOsmium
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalOsmiumMono
+  parent: EmberTileMetalOsmiumBase
+  name: ember-tiles-metal-osmium-mono
+  sprite: /Textures/Ember/Tiles/monotile.png
+  color: "#9999FF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalOsmiumMono
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalOsmiumGrid
+  parent: EmberTileMetalOsmiumBase
+  name: ember-tiles-metal-osmium-grid
+  sprite: /Textures/Ember/Tiles/grid.png
+  color: "#9999FF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalOsmiumGrid
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalOsmiumRidged
+  parent: EmberTileMetalOsmiumBase
+  name: ember-tiles-metal-osmium-ridged
+  sprite: /Textures/Ember/Tiles/ridged.png
+  color: "#9999FF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalOsmiumRidged
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalOsmiumDiagonal
+  parent: EmberTileMetalOsmiumBase
+  name: ember-tiles-metal-osmium-diagonal
+  sprite: /Textures/Ember/Tiles/diagonal.png
+  color: "#9999FF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalOsmiumDiagonal
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalOsmiumDiagonalMini
+  parent: EmberTileMetalOsmiumBase
+  name: ember-tiles-metal-osmium-diagonalmini
+  sprite: /Textures/Ember/Tiles/diagonal_mini.png
+  color: "#9999FF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalOsmiumDiagonalMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalOsmiumHerringbone
+  parent: EmberTileMetalOsmiumBase
+  name: ember-tiles-metal-osmium-herringbone
+  sprite: /Textures/Ember/Tiles/herringbone.png
+  color: "#9999FF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalOsmiumHerringbone
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalOsmiumMini
+  parent: EmberTileMetalOsmiumBase
+  name: ember-tiles-metal-osmium-mini
+  sprite: /Textures/Ember/Tiles/mini.png
+  color: "#9999FF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalOsmiumMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorReinforcedOsmium
+  parent: EmberTileCategoryReinforced
+  name: ember-tiles-reinforced-osmium
+  sprite: /Textures/Ember/Tiles/reinforced_light.png
+  color: "#9999FF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepHull
+  reinforced: true
+  itemDrop: EmberRodOsmium1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberLatticeOsmium
+  parent: EmberTileCategoryLattice
+  name: ember-tiles-lattice-osmium
+  sprite: /Textures/Ember/Tiles/lattice.png
+  color: "#9999FF"
+  baseTurf: Space
+  isSubfloor: true
+  deconstructTools: [ Cutting ]
+  weather: true
+  footstepSounds:
+    collection: FootstepPlating
+  friction: 0.3
+  isSpace: true
+  itemDrop: EmberRodOsmium1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberTileMetalGoldBase
+  parent: EmberTileCategoryMetal
+  abstract: true
+  name: ember-tiles-metal-gold
+
+- type: tile
+  id: EmberFloorMetalGold
+  parent: EmberTileMetalGoldBase
+  name: ember-tiles-metal-gold-plain
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#FFCC33"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalGold
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalGoldMono
+  parent: EmberTileMetalGoldBase
+  name: ember-tiles-metal-gold-mono
+  sprite: /Textures/Ember/Tiles/monotile.png
+  color: "#FFCC33"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalGoldMono
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalGoldGrid
+  parent: EmberTileMetalGoldBase
+  name: ember-tiles-metal-gold-grid
+  sprite: /Textures/Ember/Tiles/grid.png
+  color: "#FFCC33"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalGoldGrid
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalGoldRidged
+  parent: EmberTileMetalGoldBase
+  name: ember-tiles-metal-gold-ridged
+  sprite: /Textures/Ember/Tiles/ridged.png
+  color: "#FFCC33"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalGoldRidged
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalGoldDiagonal
+  parent: EmberTileMetalGoldBase
+  name: ember-tiles-metal-gold-diagonal
+  sprite: /Textures/Ember/Tiles/diagonal.png
+  color: "#FFCC33"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalGoldDiagonal
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalGoldDiagonalMini
+  parent: EmberTileMetalGoldBase
+  name: ember-tiles-metal-gold-diagonalmini
+  sprite: /Textures/Ember/Tiles/diagonal_mini.png
+  color: "#FFCC33"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalGoldDiagonalMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalGoldHerringbone
+  parent: EmberTileMetalGoldBase
+  name: ember-tiles-metal-gold-herringbone
+  sprite: /Textures/Ember/Tiles/herringbone.png
+  color: "#FFCC33"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalGoldHerringbone
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalGoldMini
+  parent: EmberTileMetalGoldBase
+  name: ember-tiles-metal-gold-mini
+  sprite: /Textures/Ember/Tiles/mini.png
+  color: "#FFCC33"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalGoldMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorReinforcedGold
+  parent: EmberTileCategoryReinforced
+  name: ember-tiles-reinforced-gold
+  sprite: /Textures/Ember/Tiles/reinforced_light.png
+  color: "#FFCC33"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepHull
+  reinforced: true
+  itemDrop: EmberRodGold1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberLatticeGold
+  parent: EmberTileCategoryLattice
+  name: ember-tiles-lattice-gold
+  sprite: /Textures/Ember/Tiles/lattice.png
+  color: "#FFCC33"
+  baseTurf: Space
+  isSubfloor: true
+  deconstructTools: [ Cutting ]
+  weather: true
+  footstepSounds:
+    collection: FootstepPlating
+  friction: 0.3
+  isSpace: true
+  itemDrop: EmberRodGold1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberTileMetalSilverBase
+  parent: EmberTileCategoryMetal
+  abstract: true
+  name: ember-tiles-metal-silver
+
+- type: tile
+  id: EmberFloorMetalSilver
+  parent: EmberTileMetalSilverBase
+  name: ember-tiles-metal-silver-plain
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalSilver
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalSilverMono
+  parent: EmberTileMetalSilverBase
+  name: ember-tiles-metal-silver-mono
+  sprite: /Textures/Ember/Tiles/monotile.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalSilverMono
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalSilverGrid
+  parent: EmberTileMetalSilverBase
+  name: ember-tiles-metal-silver-grid
+  sprite: /Textures/Ember/Tiles/grid.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalSilverGrid
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalSilverRidged
+  parent: EmberTileMetalSilverBase
+  name: ember-tiles-metal-silver-ridged
+  sprite: /Textures/Ember/Tiles/ridged.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalSilverRidged
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalSilverDiagonal
+  parent: EmberTileMetalSilverBase
+  name: ember-tiles-metal-silver-diagonal
+  sprite: /Textures/Ember/Tiles/diagonal.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalSilverDiagonal
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalSilverDiagonalMini
+  parent: EmberTileMetalSilverBase
+  name: ember-tiles-metal-silver-diagonalmini
+  sprite: /Textures/Ember/Tiles/diagonal_mini.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalSilverDiagonalMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalSilverHerringbone
+  parent: EmberTileMetalSilverBase
+  name: ember-tiles-metal-silver-herringbone
+  sprite: /Textures/Ember/Tiles/herringbone.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalSilverHerringbone
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalSilverMini
+  parent: EmberTileMetalSilverBase
+  name: ember-tiles-metal-silver-mini
+  sprite: /Textures/Ember/Tiles/mini.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalSilverMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorReinforcedSilver
+  parent: EmberTileCategoryReinforced
+  name: ember-tiles-reinforced-silver
+  sprite: /Textures/Ember/Tiles/reinforced_light.png
+  color: "#D1E6E3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepHull
+  reinforced: true
+  itemDrop: EmberRodSilver1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberLatticeSilver
+  parent: EmberTileCategoryLattice
+  name: ember-tiles-lattice-silver
+  sprite: /Textures/Ember/Tiles/lattice.png
+  color: "#D1E6E3"
+  baseTurf: Space
+  isSubfloor: true
+  deconstructTools: [ Cutting ]
+  weather: true
+  footstepSounds:
+    collection: FootstepPlating
+  friction: 0.3
+  isSpace: true
+  itemDrop: EmberRodSilver1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberTileMetalElectrumBase
+  parent: EmberTileCategoryMetal
+  abstract: true
+  name: ember-tiles-metal-electrum
+
+- type: tile
+  id: EmberFloorMetalElectrum
+  parent: EmberTileMetalElectrumBase
+  name: ember-tiles-metal-electrum-plain
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#E7C697"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalElectrum
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalElectrumMono
+  parent: EmberTileMetalElectrumBase
+  name: ember-tiles-metal-electrum-mono
+  sprite: /Textures/Ember/Tiles/monotile.png
+  color: "#E7C697"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalElectrumMono
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalElectrumGrid
+  parent: EmberTileMetalElectrumBase
+  name: ember-tiles-metal-electrum-grid
+  sprite: /Textures/Ember/Tiles/grid.png
+  color: "#E7C697"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalElectrumGrid
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalElectrumRidged
+  parent: EmberTileMetalElectrumBase
+  name: ember-tiles-metal-electrum-ridged
+  sprite: /Textures/Ember/Tiles/ridged.png
+  color: "#E7C697"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalElectrumRidged
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalElectrumDiagonal
+  parent: EmberTileMetalElectrumBase
+  name: ember-tiles-metal-electrum-diagonal
+  sprite: /Textures/Ember/Tiles/diagonal.png
+  color: "#E7C697"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalElectrumDiagonal
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalElectrumDiagonalMini
+  parent: EmberTileMetalElectrumBase
+  name: ember-tiles-metal-electrum-diagonalmini
+  sprite: /Textures/Ember/Tiles/diagonal_mini.png
+  color: "#E7C697"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalElectrumDiagonalMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalElectrumHerringbone
+  parent: EmberTileMetalElectrumBase
+  name: ember-tiles-metal-electrum-herringbone
+  sprite: /Textures/Ember/Tiles/herringbone.png
+  color: "#E7C697"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalElectrumHerringbone
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalElectrumMini
+  parent: EmberTileMetalElectrumBase
+  name: ember-tiles-metal-electrum-mini
+  sprite: /Textures/Ember/Tiles/mini.png
+  color: "#E7C697"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalElectrumMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorReinforcedElectrum
+  parent: EmberTileCategoryReinforced
+  name: ember-tiles-reinforced-electrum
+  sprite: /Textures/Ember/Tiles/reinforced_light.png
+  color: "#E7C697"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepHull
+  reinforced: true
+  itemDrop: EmberRodElectrum1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberLatticeElectrum
+  parent: EmberTileCategoryLattice
+  name: ember-tiles-lattice-electrum
+  sprite: /Textures/Ember/Tiles/lattice.png
+  color: "#E7C697"
+  baseTurf: Space
+  isSubfloor: true
+  deconstructTools: [ Cutting ]
+  weather: true
+  footstepSounds:
+    collection: FootstepPlating
+  friction: 0.3
+  isSpace: true
+  itemDrop: EmberRodElectrum1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberTileMetalCopperBase
+  parent: EmberTileCategoryMetal
+  abstract: true
+  name: ember-tiles-metal-copper
+
+- type: tile
+  id: EmberFloorMetalCopper
+  parent: EmberTileMetalCopperBase
+  name: ember-tiles-metal-copper-plain
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#B87333"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalCopper
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalCopperMono
+  parent: EmberTileMetalCopperBase
+  name: ember-tiles-metal-copper-mono
+  sprite: /Textures/Ember/Tiles/monotile.png
+  color: "#B87333"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalCopperMono
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalCopperGrid
+  parent: EmberTileMetalCopperBase
+  name: ember-tiles-metal-copper-grid
+  sprite: /Textures/Ember/Tiles/grid.png
+  color: "#B87333"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalCopperGrid
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalCopperRidged
+  parent: EmberTileMetalCopperBase
+  name: ember-tiles-metal-copper-ridged
+  sprite: /Textures/Ember/Tiles/ridged.png
+  color: "#B87333"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalCopperRidged
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalCopperDiagonal
+  parent: EmberTileMetalCopperBase
+  name: ember-tiles-metal-copper-diagonal
+  sprite: /Textures/Ember/Tiles/diagonal.png
+  color: "#B87333"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalCopperDiagonal
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalCopperDiagonalMini
+  parent: EmberTileMetalCopperBase
+  name: ember-tiles-metal-copper-diagonalmini
+  sprite: /Textures/Ember/Tiles/diagonal_mini.png
+  color: "#B87333"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalCopperDiagonalMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalCopperHerringbone
+  parent: EmberTileMetalCopperBase
+  name: ember-tiles-metal-copper-herringbone
+  sprite: /Textures/Ember/Tiles/herringbone.png
+  color: "#B87333"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalCopperHerringbone
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalCopperMini
+  parent: EmberTileMetalCopperBase
+  name: ember-tiles-metal-copper-mini
+  sprite: /Textures/Ember/Tiles/mini.png
+  color: "#B87333"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalCopperMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorReinforcedCopper
+  parent: EmberTileCategoryReinforced
+  name: ember-tiles-reinforced-copper
+  sprite: /Textures/Ember/Tiles/reinforced_light.png
+  color: "#B87333"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepHull
+  reinforced: true
+  itemDrop: EmberRodCopper1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberLatticeCopper
+  parent: EmberTileCategoryLattice
+  name: ember-tiles-lattice-copper
+  sprite: /Textures/Ember/Tiles/lattice.png
+  color: "#B87333"
+  baseTurf: Space
+  isSubfloor: true
+  deconstructTools: [ Cutting ]
+  weather: true
+  footstepSounds:
+    collection: FootstepPlating
+  friction: 0.3
+  isSpace: true
+  itemDrop: EmberRodCopper1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberTileMetalBronzeBase
+  parent: EmberTileCategoryMetal
+  abstract: true
+  name: ember-tiles-metal-bronze
+
+- type: tile
+  id: EmberFloorMetalBronze
+  parent: EmberTileMetalBronzeBase
+  name: ember-tiles-metal-bronze-plain
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#EDD12F"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalBronze
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalBronzeMono
+  parent: EmberTileMetalBronzeBase
+  name: ember-tiles-metal-bronze-mono
+  sprite: /Textures/Ember/Tiles/monotile.png
+  color: "#EDD12F"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalBronzeMono
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalBronzeGrid
+  parent: EmberTileMetalBronzeBase
+  name: ember-tiles-metal-bronze-grid
+  sprite: /Textures/Ember/Tiles/grid.png
+  color: "#EDD12F"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalBronzeGrid
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalBronzeRidged
+  parent: EmberTileMetalBronzeBase
+  name: ember-tiles-metal-bronze-ridged
+  sprite: /Textures/Ember/Tiles/ridged.png
+  color: "#EDD12F"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalBronzeRidged
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalBronzeDiagonal
+  parent: EmberTileMetalBronzeBase
+  name: ember-tiles-metal-bronze-diagonal
+  sprite: /Textures/Ember/Tiles/diagonal.png
+  color: "#EDD12F"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalBronzeDiagonal
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalBronzeDiagonalMini
+  parent: EmberTileMetalBronzeBase
+  name: ember-tiles-metal-bronze-diagonalmini
+  sprite: /Textures/Ember/Tiles/diagonal_mini.png
+  color: "#EDD12F"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalBronzeDiagonalMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalBronzeHerringbone
+  parent: EmberTileMetalBronzeBase
+  name: ember-tiles-metal-bronze-herringbone
+  sprite: /Textures/Ember/Tiles/herringbone.png
+  color: "#EDD12F"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalBronzeHerringbone
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalBronzeMini
+  parent: EmberTileMetalBronzeBase
+  name: ember-tiles-metal-bronze-mini
+  sprite: /Textures/Ember/Tiles/mini.png
+  color: "#EDD12F"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalBronzeMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorReinforcedBronze
+  parent: EmberTileCategoryReinforced
+  name: ember-tiles-reinforced-bronze
+  sprite: /Textures/Ember/Tiles/reinforced_light.png
+  color: "#EDD12F"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepHull
+  reinforced: true
+  itemDrop: EmberRodBronze1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberLatticeBronze
+  parent: EmberTileCategoryLattice
+  name: ember-tiles-lattice-bronze
+  sprite: /Textures/Ember/Tiles/lattice.png
+  color: "#EDD12F"
+  baseTurf: Space
+  isSubfloor: true
+  deconstructTools: [ Cutting ]
+  weather: true
+  footstepSounds:
+    collection: FootstepPlating
+  friction: 0.3
+  isSpace: true
+  itemDrop: EmberRodBronze1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberTileMetalPlatinumBase
+  parent: EmberTileCategoryMetal
+  abstract: true
+  name: ember-tiles-metal-platinum
+
+- type: tile
+  id: EmberFloorMetalPlatinum
+  parent: EmberTileMetalPlatinumBase
+  name: ember-tiles-metal-platinum-plain
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#DEDDFF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalPlatinum
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalPlatinumMono
+  parent: EmberTileMetalPlatinumBase
+  name: ember-tiles-metal-platinum-mono
+  sprite: /Textures/Ember/Tiles/monotile.png
+  color: "#DEDDFF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalPlatinumMono
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalPlatinumGrid
+  parent: EmberTileMetalPlatinumBase
+  name: ember-tiles-metal-platinum-grid
+  sprite: /Textures/Ember/Tiles/grid.png
+  color: "#DEDDFF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalPlatinumGrid
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalPlatinumRidged
+  parent: EmberTileMetalPlatinumBase
+  name: ember-tiles-metal-platinum-ridged
+  sprite: /Textures/Ember/Tiles/ridged.png
+  color: "#DEDDFF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalPlatinumRidged
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalPlatinumDiagonal
+  parent: EmberTileMetalPlatinumBase
+  name: ember-tiles-metal-platinum-diagonal
+  sprite: /Textures/Ember/Tiles/diagonal.png
+  color: "#DEDDFF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalPlatinumDiagonal
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalPlatinumDiagonalMini
+  parent: EmberTileMetalPlatinumBase
+  name: ember-tiles-metal-platinum-diagonalmini
+  sprite: /Textures/Ember/Tiles/diagonal_mini.png
+  color: "#DEDDFF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalPlatinumDiagonalMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalPlatinumHerringbone
+  parent: EmberTileMetalPlatinumBase
+  name: ember-tiles-metal-platinum-herringbone
+  sprite: /Textures/Ember/Tiles/herringbone.png
+  color: "#DEDDFF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalPlatinumHerringbone
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalPlatinumMini
+  parent: EmberTileMetalPlatinumBase
+  name: ember-tiles-metal-platinum-mini
+  sprite: /Textures/Ember/Tiles/mini.png
+  color: "#DEDDFF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalPlatinumMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorReinforcedPlatinum
+  parent: EmberTileCategoryReinforced
+  name: ember-tiles-reinforced-platinum
+  sprite: /Textures/Ember/Tiles/reinforced_light.png
+  color: "#DEDDFF"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepHull
+  reinforced: true
+  itemDrop: EmberRodPlatinum1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberLatticePlatinum
+  parent: EmberTileCategoryLattice
+  name: ember-tiles-lattice-platinum
+  sprite: /Textures/Ember/Tiles/lattice.png
+  color: "#DEDDFF"
+  baseTurf: Space
+  isSubfloor: true
+  deconstructTools: [ Cutting ]
+  weather: true
+  footstepSounds:
+    collection: FootstepPlating
+  friction: 0.3
+  isSpace: true
+  itemDrop: EmberRodPlatinum1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberTileMetalUraniumBase
+  parent: EmberTileCategoryMetal
+  abstract: true
+  name: ember-tiles-metal-uranium
+
+- type: tile
+  id: EmberFloorMetalUranium
+  parent: EmberTileMetalUraniumBase
+  name: ember-tiles-metal-uranium-plain
+  sprite: /Textures/Ember/Tiles/tiled.png
+  color: "#007A00"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalUranium
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalUraniumMono
+  parent: EmberTileMetalUraniumBase
+  name: ember-tiles-metal-uranium-mono
+  sprite: /Textures/Ember/Tiles/monotile.png
+  color: "#007A00"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalUraniumMono
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalUraniumGrid
+  parent: EmberTileMetalUraniumBase
+  name: ember-tiles-metal-uranium-grid
+  sprite: /Textures/Ember/Tiles/grid.png
+  color: "#007A00"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalUraniumGrid
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalUraniumRidged
+  parent: EmberTileMetalUraniumBase
+  name: ember-tiles-metal-uranium-ridged
+  sprite: /Textures/Ember/Tiles/ridged.png
+  color: "#007A00"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalUraniumRidged
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalUraniumDiagonal
+  parent: EmberTileMetalUraniumBase
+  name: ember-tiles-metal-uranium-diagonal
+  sprite: /Textures/Ember/Tiles/diagonal.png
+  color: "#007A00"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalUraniumDiagonal
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalUraniumDiagonalMini
+  parent: EmberTileMetalUraniumBase
+  name: ember-tiles-metal-uranium-diagonalmini
+  sprite: /Textures/Ember/Tiles/diagonal_mini.png
+  color: "#007A00"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalUraniumDiagonalMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalUraniumHerringbone
+  parent: EmberTileMetalUraniumBase
+  name: ember-tiles-metal-uranium-herringbone
+  sprite: /Textures/Ember/Tiles/herringbone.png
+  color: "#007A00"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalUraniumHerringbone
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorMetalUraniumMini
+  parent: EmberTileMetalUraniumBase
+  name: ember-tiles-metal-uranium-mini
+  sprite: /Textures/Ember/Tiles/mini.png
+  color: "#007A00"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemMetalUraniumMini
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorReinforcedUranium
+  parent: EmberTileCategoryReinforced
+  name: ember-tiles-reinforced-uranium
+  sprite: /Textures/Ember/Tiles/reinforced_light.png
+  color: "#007A00"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepHull
+  reinforced: true
+  itemDrop: EmberRodUranium1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberLatticeUranium
+  parent: EmberTileCategoryLattice
+  name: ember-tiles-lattice-uranium
+  sprite: /Textures/Ember/Tiles/lattice.png
+  color: "#007A00"
+  baseTurf: Space
+  isSubfloor: true
+  deconstructTools: [ Cutting ]
+  weather: true
+  footstepSounds:
+    collection: FootstepPlating
+  friction: 0.3
+  isSpace: true
+  itemDrop: EmberRodUranium1
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorSteelGrid
+  parent: EmberTileMetalSteelBase
+  name: ember-tiles-steelgrid
+  sprite: /Textures/Ember/Tiles/grid.png
+  color: "#545c68"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemSteelGrid
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorSteelRidged
+  parent: EmberTileMetalSteelBase
+  name: ember-tiles-steelridged
+  sprite: /Textures/Ember/Tiles/ridged.png
+  color: "#545c68"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemSteelRidged
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorStoneSandstone
+  parent: EmberTileCategoryStone
+  name: ember-tiles-stone-sandstone
+  sprite: /Textures/Ember/Tiles/stone.png
+  color: "#D9C179"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemStoneSandstone
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorStoneMarble
+  parent: EmberTileCategoryStone
+  name: ember-tiles-stone-marble
+  sprite: /Textures/Ember/Tiles/stone.png
+  color: "#AAAAAA"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemStoneMarble
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorStoneConcrete
+  parent: EmberTileCategoryStone
+  name: ember-tiles-stone-concrete
+  sprite: /Textures/Ember/Tiles/stone.png
+  color: "#808080"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemStoneConcrete
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorStoneQuartz
+  parent: EmberTileCategoryStone
+  name: ember-tiles-stone-quartz
+  sprite: /Textures/Ember/Tiles/stone.png
+  color: "#EFFFFE"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemStoneQuartz
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorStonePyrite
+  parent: EmberTileCategoryStone
+  name: ember-tiles-stone-pyrite
+  sprite: /Textures/Ember/Tiles/stone.png
+  color: "#CCC9A3"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemStonePyrite
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorStoneSpodumene
+  parent: EmberTileCategoryStone
+  name: ember-tiles-stone-spodumene
+  sprite: /Textures/Ember/Tiles/stone.png
+  color: "#E5BECB"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemStoneSpodumene
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorStoneCinnabar
+  parent: EmberTileCategoryStone
+  name: ember-tiles-stone-cinnabar
+  sprite: /Textures/Ember/Tiles/stone.png
+  color: "#E54E4E"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemStoneCinnabar
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorStonePhosphorite
+  parent: EmberTileCategoryStone
+  name: ember-tiles-stone-phosphorite
+  sprite: /Textures/Ember/Tiles/stone.png
+  color: "#ACAD95"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemStonePhosphorite
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorStoneRockSalt
+  parent: EmberTileCategoryStone
+  name: ember-tiles-stone-rocksalt
+  sprite: /Textures/Ember/Tiles/stone.png
+  color: "#D1C0BC"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemStoneRockSalt
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorStonePotash
+  parent: EmberTileCategoryStone
+  name: ember-tiles-stone-potash
+  sprite: /Textures/Ember/Tiles/stone.png
+  color: "#B77464"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemStonePotash
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorStoneBauxite
+  parent: EmberTileCategoryStone
+  name: ember-tiles-stone-bauxite
+  sprite: /Textures/Ember/Tiles/stone.png
+  color: "#D8AD97"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemStoneBauxite
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorStoneRutile
+  parent: EmberTileCategoryStone
+  name: ember-tiles-stone-rutile
+  sprite: /Textures/Ember/Tiles/stone.png
+  color: "#D8AD97"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemStoneRutile
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorStoneBorax
+  parent: EmberTileCategoryStone
+  name: ember-tiles-stone-borax
+  sprite: /Textures/Ember/Tiles/stone.png
+  color: "#9DD6E0"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemStoneBorax
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorStonePitchblende
+  parent: EmberTileCategoryStone
+  name: ember-tiles-stone-pitchblende
+  sprite: /Textures/Ember/Tiles/stone.png
+  color: "#917D1A"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: EmberFloorTileItemStonePitchblende
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorWoodMahogany
+  parent: EmberTileCategoryWood
+  name: ember-tiles-wood-mahogany
+  sprite: /Textures/Ember/Tiles/wood.png
+  color: "#792f27"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  variants: 4
+  itemDrop: EmberFloorTileItemWoodMahogany
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorWoodMaple
+  parent: EmberTileCategoryWood
+  name: ember-tiles-wood-maple
+  sprite: /Textures/Ember/Tiles/wood.png
+  color: "#d2bc9d"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  variants: 4
+  itemDrop: EmberFloorTileItemWoodMaple
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorWoodEbony
+  parent: EmberTileCategoryWood
+  name: ember-tiles-wood-ebony
+  sprite: /Textures/Ember/Tiles/wood.png
+  color: "#332521"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  variants: 4
+  itemDrop: EmberFloorTileItemWoodEbony
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorWoodWalnut
+  parent: EmberTileCategoryWood
+  name: ember-tiles-wood-walnut
+  sprite: /Textures/Ember/Tiles/wood.png
+  color: "#543c30"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  variants: 4
+  itemDrop: EmberFloorTileItemWoodWalnut
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorWoodBamboo
+  parent: EmberTileCategoryWood
+  name: ember-tiles-wood-bamboo
+  sprite: /Textures/Ember/Tiles/wood.png
+  color: "#e6d2ba"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  variants: 4
+  itemDrop: EmberFloorTileItemWoodBamboo
+  heatCapacity: 10000
+
+- type: tile
+  id: EmberFloorWoodYew
+  parent: EmberTileCategoryWood
+  name: ember-tiles-wood-yew
+  sprite: /Textures/Ember/Tiles/wood.png
+  color: "#e3994e"
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  variants: 4
+  itemDrop: EmberFloorTileItemWoodYew
+  heatCapacity: 10000

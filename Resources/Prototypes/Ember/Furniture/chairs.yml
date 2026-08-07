@@ -1,0 +1,216 @@
+# Мебель Bay: каркас и обивка — разные материалы, разные слои, разные цвета.
+#
+# Спинка, и подлокотники когда на стуле кто-то сидит, рисуются компаньоном EmberFurnitureOver поверх сидящего.
+# Его порождает сервер, руками сюда добавлять не надо.
+#
+# Здесь только то, чему в ванили нет пары. Ванильные стул, табурет, барный табурет, офисные кресла, мягкое
+# кресло, деревянный стул, кресло пилота и обе лавки переведены на эту же систему у себя в
+# Entities/Structures/Furniture/chairs.yml — прототипы там, чтобы карты и рецепты не переписывать.
+
+- type: entity
+  abstract: true
+  id: EmberSeatBase
+  parent: ChairBase
+  components:
+  - type: Sprite
+    sprite: Ember/Structures/Furniture/furniture.rsi
+    noRot: true
+  # Bay даёт повернуть стул, на котором сидишь: /obj/structure/bed/chair/rotate крутит его на 90 градусов и не
+  # спрашивает, прикручен он или нет. Ванильный Rotatable по умолчанию отказывает прикрученному.
+  - type: Rotatable
+    rotateWhileAnchored: true
+  # Клик по сущности ищется по пикселям её собственного спрайта. Каждое баевское сиденье, смотрящее на север,
+  # нарисовано целиком выше сидящего, то есть у самого стула на этой стороне ноль пикселей, а компаньон, который
+  # их рисует, кликов не ловит вовсе. Явная рамка — то, чем движок для этого и снабжён.
+  - type: Clickable
+    bounds:
+      north: "-0.5,-0.5,0.5,0.5"
+  - type: EmberProceduralFurniture
+    baseState: chair
+
+# Табурет и деревянный стул у Bay не прикручены — их носят с собой.
+- type: entity
+  abstract: true
+  id: EmberLooseSeatBase
+  parent: UnanchoredChairBase
+  components:
+  - type: Sprite
+    sprite: Ember/Structures/Furniture/furniture.rsi
+    noRot: true
+  - type: Rotatable
+    rotateWhileAnchored: true
+  - type: Clickable
+    bounds:
+      north: "-0.5,-0.5,0.5,0.5"
+  - type: EmberProceduralFurniture
+    baseState: chair
+
+# Золото на капитанском кресле — часть рисунка, а не материала, поэтому special и не красится.
+- type: entity
+  id: EmberCaptainChair
+  parent: EmberSeatBase
+  name: captain's chair
+  description: A grand chair for a grand person.
+  components:
+  - type: Sprite
+    state: capchair_preview
+  - type: EmberProceduralFurniture
+    baseState: capchair
+    material: Steel
+    padding: Carpet
+    # Золото остаётся золотом и остаётся на месте, когда в кресло садятся.
+    special: true
+
+- type: entity
+  id: EmberComfyOfficeChair
+  parent: EmberSeatBase
+  name: comfy office chair
+  description: A padded chair on wheels, with arms.
+  components:
+  - type: Sprite
+    state: comfyofficechair_preview
+  - type: EmberProceduralFurniture
+    baseState: comfyofficechair
+    material: Steel
+    padding: Leather
+  # Seven sheets on Bay (stack_recipe/furniture/chair/office/comfy), and a seat worth less than the steel in
+  # it is an autolathe that prints money.
+  - type: StaticPrice
+    price: 105
+
+# У кресла с подлокотниками каркаса на листе нет вовсе: обивка и есть всё кресло. Деталь, которой в листе нет,
+# просто не рисуется, поэтому отдельного случая это не требует.
+  - type: Construction
+    graph: Seat
+    node: chairComfyOffice
+
+- type: entity
+  id: EmberArmchair
+  parent: EmberSeatBase
+  name: armchair
+  description: It's an armchair. It looks comfy.
+  components:
+  - type: Sprite
+    state: armchair_preview
+  - type: EmberProceduralFurniture
+    baseState: armchair
+    material: Steel
+    padding: Leather
+  # Four sheets, same reason.
+  - type: StaticPrice
+    price: 60
+  - type: Construction
+    graph: Seat
+    node: armchair
+
+- type: entity
+  id: EmberFancyWoodenChair
+  parent: EmberLooseSeatBase
+  name: fancy wooden chair
+  description: Rustic, with a carved back.
+  components:
+  - type: Sprite
+    state: wooden_chair_wings_preview
+  - type: EmberProceduralFurniture
+    baseState: wooden_chair_wings
+    material: Wood
+  - type: Construction
+    graph: Seat
+    node: chairWoodFancy
+
+- type: entity
+  id: EmberRoundedChair
+  parent: EmberSeatBase
+  name: rounded chair
+  description: It's a rounded chair. It looks comfy.
+  components:
+  - type: Sprite
+    sprite: Ember/Structures/Furniture/sofas.rsi
+    state: roundedchair_preview
+    noRot: true
+  - type: EmberProceduralFurniture
+    baseState: roundedchair
+    sprite: /Textures/Ember/Structures/Furniture/sofas.rsi
+    material: Steel
+    padding: Cloth
+
+# Диван прикручен к полу и стоит по сетке, поэтому угол — отдельная сущность, а не поворот на 45 градусов.
+# Диагональные кадры баевского восьминаправленного листа вырезаны в состояние sofa_corner.
+  - type: Construction
+    graph: Seat
+    node: chairRounded
+
+- type: entity
+  id: EmberSofa
+  parent: EmberSeatBase
+  name: sofa
+  description: Two seats' worth of comfort.
+  components:
+  - type: Sprite
+    sprite: Ember/Structures/Furniture/sofas.rsi
+    state: sofa_preview
+    noRot: true
+  # У Bay это единственная мебель, у которой поворот проверяет якорь: /obj/structure/bed/sofa/rotate отказывает
+  # прикрученному, а /obj/structure/bed/chair/rotate — нет. Диван стоит вдоль стены и собирается из секций;
+  # крутиться на нём, как на стуле, разворачивая всю секцию, он не должен. Открутил — крути.
+  - type: Rotatable
+    rotateWhileAnchored: false
+  - type: EmberProceduralFurniture
+    baseState: sofa
+    sprite: /Textures/Ember/Structures/Furniture/sofas.rsi
+    material: Wood
+    padding: Carpet
+  - type: Construction
+    graph: Seat
+    node: sofa
+
+- type: entity
+  id: EmberSofaCorner
+  parent: EmberSofa
+  name: corner sofa
+  description: Where two sofas meet.
+  components:
+  - type: Sprite
+    state: sofa_corner_preview
+  - type: EmberProceduralFurniture
+    baseState: sofa_corner
+    sprite: /Textures/Ember/Structures/Furniture/sofas.rsi
+    material: Wood
+    padding: Carpet
+  - type: Construction
+    graph: Seat
+    node: sofaCorner
+
+- type: entity
+  id: EmberSofaLeft
+  parent: EmberSofa
+  name: sofa
+  suffix: Left
+  components:
+  - type: Sprite
+    state: sofa_l_preview
+  - type: EmberProceduralFurniture
+    baseState: sofa_l
+    sprite: /Textures/Ember/Structures/Furniture/sofas.rsi
+    material: Wood
+    padding: Carpet
+  - type: Construction
+    graph: Seat
+    node: sofaLeft
+
+- type: entity
+  id: EmberSofaRight
+  parent: EmberSofa
+  name: sofa
+  suffix: Right
+  components:
+  - type: Sprite
+    state: sofa_r_preview
+  - type: EmberProceduralFurniture
+    baseState: sofa_r
+    sprite: /Textures/Ember/Structures/Furniture/sofas.rsi
+    material: Wood
+    padding: Carpet
+  - type: Construction
+    graph: Seat
+    node: sofaRight

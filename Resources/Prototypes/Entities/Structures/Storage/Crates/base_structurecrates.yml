@@ -6,13 +6,15 @@
   description: A large container for items.
   components:
   - type: Animateable
+  # Ящики у Bay нарисованы на четыре стороны, и перенесённые листы эти четыре стороны несут. Без вращения
+  # они все смотрели бы на юг, и три четверти картинки не рисовались бы никогда.
   - type: Transform
-    noRot: true
+    noRot: false
   - type: Icon
     sprite: Structures/Storage/Crates/generic.rsi
     state: icon
   - type: Sprite
-    noRot: true
+    noRot: false
     sprite: Structures/Storage/Crates/generic.rsi
     layers:
     - state: base
@@ -96,15 +98,17 @@
   - type: RequireProjectileTarget
 
 - type: entity
-  parent: CrateGeneric
+  parent: [CrateGeneric, EmberProceduralCrateVisuals]
   id: CrateBaseWeldable
   categories: [ HideSpawnMenu ]
   components:
   - type: Weldable
   - type: ResistLocker
+  - type: EmberProceduralCloset
+    style: EmberClosetCrate
 
 - type: entity
-  parent: CrateBaseWeldable
+  parent: [CrateBaseWeldable, EmberProceduralCrateVisuals]
   id: CrateBaseSecure
   suffix: Secure
   components:
@@ -153,6 +157,8 @@
     - Energy
     reflectProb: 0.2
     spread: 90
+  - type: EmberProceduralCloset
+    style: EmberClosetCrateSecure
 
 - type: entity
   parent: CrateBaseSecure

@@ -1,0 +1,18 @@
+# Bay reinforces glass by running a lattice of rods through the pane, and it does so at the sheet: the reinforced
+# sheet is its own material, and everything built out of it inherits the reinforcement for free.
+
+- type: constructionGraph
+  id: EmberReinforcedBorosilicateGlass
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: sheet
+      steps:
+      - material: BorosilicateGlass
+        amount: 1
+      - material: MetalRod
+        amount: 1
+        doAfter: 1
+  - node: sheet
+    entity: EmberSheetReinforcedBorosilicateGlass1

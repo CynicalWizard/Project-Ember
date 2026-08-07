@@ -56,7 +56,7 @@
   category: construction-category-utilities
   description: "Area Power Controller (APC). Controls power. In an area."
   icon:
-    sprite: Structures/Power/apc.rsi
+    sprite: Ember/Structures/Power/apc.rsi
     state: base
   objectType: Structure
   placementMode: SnapgridCenter
@@ -324,7 +324,7 @@
   category: construction-category-structures
   description: An air alarm. Alarms... air?
   icon:
-    sprite: Structures/Wallmounts/air_monitors.rsi
+    sprite: Ember/Structures/Wallmounts/air_alarm.rsi
     state: alarm0
   placementMode: SnapgridCenter
   objectType: Structure
@@ -342,7 +342,7 @@
   category: construction-category-structures
   description: A fire alarm. Spicy!
   icon:
-    sprite: Structures/Wallmounts/air_monitors.rsi
+    sprite: Ember/Structures/Wallmounts/fire_alarm.rsi
     state: fire0
   placementMode: SnapgridCenter
   objectType: Structure
@@ -808,7 +808,7 @@
   category: construction-category-structures
   description: An intercom. For when the station just needs to know something.
   icon:
-    sprite: Structures/Wallmounts/intercom.rsi
+    sprite: Ember/Structures/Wallmounts/intercom.rsi
     state: base
   placementMode: SnapgridCenter
   objectType: Structure

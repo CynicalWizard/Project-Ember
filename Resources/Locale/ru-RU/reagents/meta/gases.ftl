@@ -2,9 +2,9 @@ reagent-name-oxygen = кислород
 
 reagent-desc-oxygen = Окисляющий, бесцветный газ.
 
-reagent-name-plasma = плазма
+reagent-name-plasma = форон
 
-reagent-desc-plasma = Причудливая, космически-магическая пыльца фей. Вам, наверное, не стоит это есть, но мы оба знаем, что вы все равно это сделаете.
+reagent-desc-plasma = Летучее оранжевое кристаллическое вещество во взвеси: токсичный и горючий газ.
 
 reagent-name-tritium = тритий
 

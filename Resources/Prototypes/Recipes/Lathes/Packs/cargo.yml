@@ -11,6 +11,10 @@
   recipes:
   - OreProcessorMachineCircuitboard
   - SalvageMagnetMachineCircuitboard
+  - EmberOreUnloaderMachineCircuitboard
+  - EmberOreProcessorMachineCircuitboard
+  - EmberOreStackerMachineCircuitboard
+  - EmberOreConsoleCircuitboard
 
 ## Dynamic
 

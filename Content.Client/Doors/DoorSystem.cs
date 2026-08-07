@@ -11,6 +11,7 @@ public sealed class DoorSystem : SharedDoorSystem
 {
     [Dependency] private readonly AnimationPlayerSystem _animationSystem = default!;
     [Dependency] private readonly IResourceCache _resourceCache = default!;
+    [Dependency] private readonly SpriteSystem _spriteSystem = default!;
 
     public override void Initialize()
     {
@@ -81,10 +82,7 @@ public sealed class DoorSystem : SharedDoorSystem
             {
                 Log.Error("Unable to load RSI '{0}'. Trace:\n{1}", baseRsi, Environment.StackTrace);
             }
-            foreach (var layer in args.Sprite.AllLayers)
-            {
-                layer.Rsi = res?.RSI;
-            }
+            _spriteSystem.SetBaseRsi((uid, args.Sprite), res?.RSI);
         }
 
         TryComp<AnimationPlayerComponent>(uid, out var animPlayer);
@@ -116,8 +114,10 @@ public sealed class DoorSystem : SharedDoorSystem
                     _animationSystem.Play((uid, animPlayer), (Animation)comp.ClosingAnimation, DoorComponent.AnimationKey);
                 break;
             case DoorState.Denying:
-                if (animPlayer != null)
-                    _animationSystem.Play((uid, animPlayer), (Animation)comp.DenyingAnimation, DoorComponent.AnimationKey);
+                // Only AirlockSystem populates DenyingAnimation, but doors without an airlock (firelocks, shutters)
+                // reach this state too, so it can legitimately be null.
+                if (animPlayer != null && comp.DenyingAnimation is Animation denyingAnimation)
+                    _animationSystem.Play((uid, animPlayer), denyingAnimation, DoorComponent.AnimationKey);
                 break;
             case DoorState.Welded:
                 break;

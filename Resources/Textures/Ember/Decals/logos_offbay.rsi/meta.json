@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from SierraBay (Baystation12): psionics mod by Roche Hendson and nasend_, sourced from final-destination.space; farfleet map mod",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "foundation_top_left"
+    },
+    {
+      "name": "foundation_top_center"
+    },
+    {
+      "name": "foundation_top_right"
+    },
+    {
+      "name": "foundation_center_left"
+    },
+    {
+      "name": "foundation_center"
+    },
+    {
+      "name": "foundation_center_right"
+    },
+    {
+      "name": "foundation_bottom_left"
+    },
+    {
+      "name": "foundation_bottom_center"
+    },
+    {
+      "name": "foundation_bottom_right"
+    },
+    {
+      "name": "gcc_top_left"
+    },
+    {
+      "name": "gcc_top_center"
+    },
+    {
+      "name": "gcc_top_right"
+    },
+    {
+      "name": "gcc_center_left"
+    },
+    {
+      "name": "gcc_center"
+    },
+    {
+      "name": "gcc_center_right"
+    },
+    {
+      "name": "gcc_bottom_left"
+    },
+    {
+      "name": "gcc_bottom_center"
+    },
+    {
+      "name": "gcc_bottom_right"
+    },
+    {
+      "name": "gcc_gcc_corner"
+    }
+  ]
+}

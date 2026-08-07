@@ -104,6 +104,7 @@
 - type: construction
   name: comfy chair
   id: ChairComfy
+  iconEntity: ComfyChair
   graph: Seat
   startNode: start
   targetNode: chairComfy
@@ -121,6 +122,7 @@
 - type: construction
   name: pilots chair
   id: chairPilotSeat
+  iconEntity: ChairPilotSeat
   graph: Seat
   startNode: start
   targetNode: chairPilotSeat
@@ -206,6 +208,7 @@
 - type: construction
   name: steel bench
   id: ChairSteelBench
+  iconEntity: SteelBench
   graph: Seat
   startNode: start
   targetNode: chairSteelBench
@@ -223,6 +226,7 @@
 - type: construction
   name: wooden bench
   id: ChairWoodBench
+  iconEntity: WoodenBench
   graph: Seat
   startNode: start
   targetNode: chairWoodBench
@@ -341,13 +345,13 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: plasma glass table
+  name: phoron glass table
   id: TablePlasmaGlass
   graph: Table
   startNode: start
   targetNode: TablePlasmaGlass
   category: construction-category-furniture
-  description: A square piece of plasma glass, standing on four metal legs. Pretty!
+  description: A square piece of phoron glass, standing on four metal legs. Pretty!
   icon:
     sprite: Structures/Furniture/Tables/plasma.rsi
     state: full
@@ -930,7 +934,7 @@
   targetNode: noticeBoard
   category: construction-category-furniture
   icon:
-    sprite: Structures/Wallmounts/noticeboard.rsi
+    sprite: Ember/Structures/Wallmounts/noticeboard.rsi
     state: noticeboard
   objectType: Structure
   placementMode: SnapgridCenter
@@ -953,6 +957,150 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: true
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: comfy office chair
+  id: ChairComfyOffice
+  iconEntity: EmberComfyOfficeChair
+  graph: Seat
+  startNode: start
+  targetNode: chairComfyOffice
+  category: construction-category-furniture
+  description: A padded chair on wheels, with arms.
+  icon:
+    sprite: Ember/Structures/Furniture/furniture.rsi
+    state: comfyofficechair_preview
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: armchair
+  id: Armchair
+  iconEntity: EmberArmchair
+  graph: Seat
+  startNode: start
+  targetNode: armchair
+  category: construction-category-furniture
+  description: It's an armchair. It looks comfy.
+  icon:
+    sprite: Ember/Structures/Furniture/furniture.rsi
+    state: armchair_preview
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: rounded chair
+  id: ChairRounded
+  iconEntity: EmberRoundedChair
+  graph: Seat
+  startNode: start
+  targetNode: chairRounded
+  category: construction-category-furniture
+  description: It's a rounded chair. It looks comfy.
+  icon:
+    sprite: Ember/Structures/Furniture/sofas.rsi
+    state: roundedchair_preview
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: fancy wooden chair
+  id: ChairWoodFancy
+  iconEntity: EmberFancyWoodenChair
+  graph: Seat
+  startNode: start
+  targetNode: chairWoodFancy
+  category: construction-category-furniture
+  description: Rustic, with a carved back.
+  icon:
+    sprite: Ember/Structures/Furniture/furniture.rsi
+    state: wooden_chair_wings_preview
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: sofa
+  id: Sofa
+  iconEntity: EmberSofa
+  graph: Seat
+  startNode: start
+  targetNode: sofa
+  category: construction-category-furniture
+  description: Two seats' worth of comfort.
+  icon:
+    sprite: Ember/Structures/Furniture/sofas.rsi
+    state: sofa_preview
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: corner sofa
+  id: SofaCorner
+  iconEntity: EmberSofaCorner
+  graph: Seat
+  startNode: start
+  targetNode: sofaCorner
+  category: construction-category-furniture
+  description: Where two sofas meet.
+  icon:
+    sprite: Ember/Structures/Furniture/sofas.rsi
+    state: sofa_corner_preview
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: sofa, left
+  id: SofaLeft
+  iconEntity: EmberSofaLeft
+  graph: Seat
+  startNode: start
+  targetNode: sofaLeft
+  category: construction-category-furniture
+  description: Two seats' worth of comfort.
+  icon:
+    sprite: Ember/Structures/Furniture/sofas.rsi
+    state: sofa_l_preview
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: sofa, right
+  id: SofaRight
+  iconEntity: EmberSofaRight
+  graph: Seat
+  startNode: start
+  targetNode: sofaRight
+  category: construction-category-furniture
+  description: Two seats' worth of comfort.
+  icon:
+    sprite: Ember/Structures/Furniture/sofas.rsi
+    state: sofa_r_preview
+  objectType: Structure
+  placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked

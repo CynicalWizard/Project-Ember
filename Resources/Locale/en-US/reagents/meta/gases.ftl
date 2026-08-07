@@ -1,8 +1,8 @@
 reagent-name-oxygen = oxygen
 reagent-desc-oxygen = An oxidizing, colorless gas.
 
-reagent-name-plasma = plasma
-reagent-desc-plasma = Funky, space-magic pixie dust. You probably shouldn't eat this, but we both know you will anyways.
+reagent-name-plasma = phoron
+reagent-desc-plasma = A volatile orange crystalline substance suspended as a toxic, combustible gas.
 
 reagent-name-tritium = tritium
 reagent-desc-tritium = Radioactive space-magic pixie dust.

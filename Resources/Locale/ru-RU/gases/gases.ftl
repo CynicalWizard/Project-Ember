@@ -4,13 +4,14 @@ gases-nitrogen = Азот
 
 gases-co2 = Диоксид углерода
 
-gases-plasma = Плазма
+gases-plasma = Форон
+gases-phoron = Форон
 
 gases-tritium = Тритий
 
 gases-water-vapor = Водяной пар
 
-gases-ammonia = Ammonia
+gases-ammonia = Аммиак
 
 gases-n2o = Оксид азота
 

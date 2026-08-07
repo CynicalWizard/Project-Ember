@@ -159,10 +159,13 @@
 - type: entity
   name: chair
   id: Chair
-  parent: ChairBase
+  parent: EmberSeatBase
   components:
   - type: Sprite
-    state: chair
+    state: chair_preview
+  - type: EmberProceduralFurniture
+    baseState: chair
+    material: Steel
   - type: Construction
     graph: Seat
     node: chair
@@ -174,16 +177,25 @@
   suffix: White
   components:
   - type: Sprite
-    state: chair-greyscale
+    state: chair_preview
+  # Ванильный «серый» стул существовал, чтобы его перекрашивали целиком. Здесь красить нечего: цвет у стула
+  # берётся из материала каркаса и обивки, поэтому белый — это стул с белой тканью на сиденье.
+  - type: EmberProceduralFurniture
+    baseState: chair
+    material: Steel
+    padding: Cloth
 
 - type: entity
   name: stool
   id: Stool
-  parent: UnanchoredChairBase
+  parent: EmberLooseSeatBase
   description: Apply butt.
   components:
   - type: Sprite
-    state: stool
+    state: stool_preview
+  - type: EmberProceduralFurniture
+    baseState: stool
+    material: Steel
   - type: Construction
     graph: Seat
     node: stool
@@ -191,10 +203,13 @@
 - type: entity
   name: bar stool
   id: StoolBar
-  parent: StoolBase
+  parent: EmberSeatBase
   components:
   - type: Sprite
-    state: bar
+    state: bar_stool_preview
+  - type: EmberProceduralFurniture
+    baseState: bar_stool
+    material: Steel
   - type: Construction
     graph: Seat
     node: stoolBar
@@ -213,10 +228,18 @@
 - type: entity
   name: white office chair
   id: ChairOfficeLight
-  parent: OfficeChairBase
+  parent: EmberLooseSeatBase
   components:
   - type: Sprite
-    state: office-white
+    state: officechair_preview
+  - type: EmberProceduralFurniture
+    baseState: officechair
+    material: Steel
+    padding: Cloth
+  # Bay's office chair is five sheets (stack_recipe/furniture/chair/office), where the vanilla one was two, and
+  # a chair worth less than the steel in it is a licence to print money at the nearest autolathe.
+  - type: StaticPrice
+    price: 75
   - type: Construction
     graph: Seat
     node: chairOffice
@@ -231,7 +254,11 @@
   parent: ChairOfficeLight
   components:
   - type: Sprite
-    state: office-dark
+    state: officechair_preview
+  - type: EmberProceduralFurniture
+    baseState: officechair
+    material: Steel
+    padding: Leather
   - type: Construction
     graph: Seat
     node: chairOfficeDark
@@ -250,6 +277,9 @@
   components:
   - type: Sprite
     state: office-white
+  # Unlocking the wheels does not melt two sheets of steel down, so it is worth what the standing one is.
+  - type: StaticPrice
+    price: 75
   - type: Construction
     graph: Seat
     node: chairOffice
@@ -279,11 +309,15 @@
 - type: entity
   name: comfy chair
   id: ComfyChair
-  parent: ChairBase
+  parent: EmberSeatBase
   description: It looks comfy.
   components:
   - type: Sprite
-    state: comfy
+    state: comfychair_preview
+  - type: EmberProceduralFurniture
+    baseState: comfychair
+    material: Steel
+    padding: Carpet
   - type: Construction
     graph: Seat
     node: chairComfy
@@ -291,11 +325,22 @@
 - type: entity
   name: pilot seat
   id: ChairPilotSeat
-  parent: ChairBase
+  parent: EmberSeatBase
   description: The pilot seat of a prestigious ship.
   components:
   - type: Sprite
-    state: shuttle
+    state: shuttle_chair_preview
+  # Ремни у шаттлового кресла — это его же металл, а не отдельная деталь, поэтому красятся вместе с ним.
+  # Пока никто не пристёгнут, они висят открытыми; как только пристегнулись, кресло целиком меняет набор
+  # деталей на shuttle_chair-b, у которого вместо открытых ремней сомкнутые подлокотники.
+  - type: EmberProceduralFurniture
+    baseState: shuttle_chair
+    occupiedState: shuttle_chair-b
+    material: Steel
+    padding: Cloth
+    special: true
+    specialTinted: true
+    specialWhenOccupied: false
   - type: Construction
     graph: Seat
     node: chairPilotSeat
@@ -303,10 +348,13 @@
 - type: entity
   name: wooden chair
   id: ChairWood
-  parent: UnanchoredChairBase
+  parent: EmberLooseSeatBase
   components:
   - type: Sprite
-    state: wooden
+    state: wooden_chair_preview
+  - type: EmberProceduralFurniture
+    baseState: wooden_chair
+    material: Wood
   - type: Construction
     graph: Seat
     node: chairWood
@@ -337,11 +385,34 @@
 - type: entity
   name: ritual chair
   id: ChairRitual
-  parent: ChairWood
+  parent: UnanchoredChairBase
   description: Looks uncomfortable.
   components:
   - type: Sprite
     state: ritual
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Tag
+    tags:
+    - Wooden
+  - type: StaticPrice
+    price: 75
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 25
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWoodPlank:
+            min: 1
+            max: 1
   - type: Construction
     graph: RitualSeat
     node: chairRitual
@@ -361,11 +432,18 @@
 - type: entity
   name: cursed chair
   id: ChairCursed
-  parent: ChairWood
+  parent: UnanchoredChairBase
   description: It's staring back.
   components:
   - type: Sprite
     state: cursed
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Tag
+    tags:
+    - Wooden
+  - type: StaticPrice
+    price: 75
   - type: Strap
     buckleSound:
       collection: MaleScreams
@@ -467,11 +545,17 @@
 - type: entity
   name: steel bench
   id: SteelBench
-  parent: ChairBase
+  parent: EmberSeatBase
   description: A long chair made for a metro. Really standard design.
   components:
   - type: Sprite
-    state: steel-bench
+    state: pew
+  - type: EmberProceduralFurniture
+    baseState: pew
+    material: Steel
+  # Four sheets go into a bench, so four sheets is the least it can be worth.
+  - type: StaticPrice
+    price: 60
   - type: Construction
     graph: Seat
     node: chairSteelBench
@@ -479,11 +563,14 @@
 - type: entity
   name: wooden bench
   id: WoodenBench
-  parent: ChairBase
+  parent: EmberSeatBase
   description: Did you get a splinter? Well, at least it’s eco friendly.
   components:
   - type: Sprite
-    state: wooden-bench
+    state: pew_left
+  - type: EmberProceduralFurniture
+    baseState: pew_left
+    material: Wood
   - type: Construction
     graph: Seat
     node: chairWoodBench

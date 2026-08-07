@@ -30,6 +30,20 @@
         hard: false
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/shuttle.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockDocking
+    docking: true
+    facesWalls: false
+    doorSprite: /Textures/Ember/Structures/Doors/Airlocks/External/door.rsi
+    colorSprite: /Textures/Ember/Structures/Doors/Airlocks/External/color.rsi
+    colorFillSprite: /Textures/Ember/Structures/Doors/Airlocks/External/fill_color.rsi
+    steelFillSprite: /Textures/Ember/Structures/Doors/Airlocks/External/fill_steel.rsi
+    glassFillSprite: /Textures/Ember/Structures/Doors/Airlocks/External/fill_glass.rsi
+    dockingSprite: /Textures/Ember/Structures/Doors/Airlocks/External/docking.rsi
+    greenLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/External/lights_green.rsi
+    denyLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/External/lights_deny.rsi
+    boltLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/External/lights_bolts.rsi
+    emagSprite: /Textures/Ember/Structures/Doors/Airlocks/External/emag.rsi
   - type: Wires
     layoutId: Docking
   - type: Door
@@ -69,6 +83,21 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/shuttle.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockDocking
+    glass: true
+    docking: true
+    facesWalls: false
+    doorSprite: /Textures/Ember/Structures/Doors/Airlocks/External/door.rsi
+    colorSprite: /Textures/Ember/Structures/Doors/Airlocks/External/color.rsi
+    colorFillSprite: /Textures/Ember/Structures/Doors/Airlocks/External/fill_color.rsi
+    steelFillSprite: /Textures/Ember/Structures/Doors/Airlocks/External/fill_steel.rsi
+    glassFillSprite: /Textures/Ember/Structures/Doors/Airlocks/External/fill_glass.rsi
+    dockingSprite: /Textures/Ember/Structures/Doors/Airlocks/External/docking.rsi
+    greenLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/External/lights_green.rsi
+    denyLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/External/lights_deny.rsi
+    boltLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/External/lights_bolts.rsi
+    emagSprite: /Textures/Ember/Structures/Doors/Airlocks/External/emag.rsi
   - type: Occluder
     enabled: false
   - type: PaintableAirlock
@@ -83,7 +112,7 @@
 
 - type: entity
   id: AirlockShuttleAssembly
-  parent: AirlockAssembly
+  parent: BaseAirlockAssembly
   name: external airlock assembly
   suffix: Docking
   description: An incomplete structure necessary for connecting two space craft together.
@@ -109,6 +138,21 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/shuttle_syndicate.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockDockingSyndicate
+    glass: true
+    docking: true
+    facesWalls: false
+    doorSprite: /Textures/Ember/Structures/Doors/Airlocks/External/door.rsi
+    colorSprite: /Textures/Ember/Structures/Doors/Airlocks/External/color.rsi
+    colorFillSprite: /Textures/Ember/Structures/Doors/Airlocks/External/fill_color.rsi
+    steelFillSprite: /Textures/Ember/Structures/Doors/Airlocks/External/fill_steel.rsi
+    glassFillSprite: /Textures/Ember/Structures/Doors/Airlocks/External/fill_glass.rsi
+    dockingSprite: /Textures/Ember/Structures/Doors/Airlocks/External/docking.rsi
+    greenLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/External/lights_green.rsi
+    denyLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/External/lights_deny.rsi
+    boltLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/External/lights_bolts.rsi
+    emagSprite: /Textures/Ember/Structures/Doors/Airlocks/External/emag.rsi
 
 - type: entity
   parent: AirlockShuttle
@@ -119,3 +163,17 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/shuttle_syndicate.rsi
+  - type: EmberProceduralAirlock
+    style: EmberAirlockDockingSyndicate
+    docking: true
+    facesWalls: false
+    doorSprite: /Textures/Ember/Structures/Doors/Airlocks/External/door.rsi
+    colorSprite: /Textures/Ember/Structures/Doors/Airlocks/External/color.rsi
+    colorFillSprite: /Textures/Ember/Structures/Doors/Airlocks/External/fill_color.rsi
+    steelFillSprite: /Textures/Ember/Structures/Doors/Airlocks/External/fill_steel.rsi
+    glassFillSprite: /Textures/Ember/Structures/Doors/Airlocks/External/fill_glass.rsi
+    dockingSprite: /Textures/Ember/Structures/Doors/Airlocks/External/docking.rsi
+    greenLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/External/lights_green.rsi
+    denyLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/External/lights_deny.rsi
+    boltLightsSprite: /Textures/Ember/Structures/Doors/Airlocks/External/lights_bolts.rsi
+    emagSprite: /Textures/Ember/Structures/Doors/Airlocks/External/emag.rsi

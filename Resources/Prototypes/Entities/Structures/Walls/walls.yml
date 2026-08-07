@@ -1,9 +1,14 @@
+# Стены собраны в одну ветку меню маппинга. Своего имени у категории нет намеренно:
+# половина стен не задаёт имени и берёт его у родителя, так что названная категория
+# переименовала бы их все. Дерево показывает идентификатор и локализует его.
+- type: entity
+  abstract: true
+  id: EmberWallCategory
+
 - type: entity
   abstract: true
   parent: BaseStructure
   id: BaseWall
-  name: basewall
-  description: Keeps the air in and the greytide out.
   placement:
     mode: SnapgridCenter
     snap:
@@ -12,12 +17,10 @@
   - type: RangedDamageSound
     soundGroups:
       Brute:
-        collection:
-          MetalBulletImpact
+        collection: MetalBulletImpact
     soundTypes:
       Heat:
-        collection:
-          MetalLaserImpact
+        collection: MetalLaserImpact
   - type: Tag
     tags:
     - Wall
@@ -36,8 +39,7 @@
   - type: Fixtures
     fixtures:
       fix1:
-        shape:
-          !type:PhysShapeAabb
+        shape: !type:PhysShapeAabb
           bounds: "-0.5,-0.5,0.5,0.5"
         mask:
         - FullTileMask
@@ -55,7 +57,6 @@
 - type: entity
   parent: BaseWall
   id: WallBrick
-  name: brick wall
   components:
   - type: Sprite
     sprite: Structures/Walls/brick.rsi
@@ -67,8 +68,7 @@
     fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 300
       behaviors:
       - !type:SpawnEntitiesBehavior
@@ -77,7 +77,7 @@
             min: 1
             max: 1
       - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+        acts: ["Destruction"]
 
   - type: IconSmooth
     key: bricks
@@ -86,11 +86,10 @@
 - type: entity
   parent: BaseWall
   id: WallClock
-  name: clock wall
   components:
   - type: Tag
     tags:
-      - Wall
+    - Wall
   - type: Sprite
     sprite: Structures/Walls/clock.rsi
   - type: Icon
@@ -100,8 +99,7 @@
     node: clockworkWall
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 300
       behaviors:
       - !type:SpawnEntitiesBehavior
@@ -110,7 +108,7 @@
             min: 1
             max: 1
       - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+        acts: ["Destruction"]
   - type: IconSmooth
     key: walls
     base: clock
@@ -118,11 +116,10 @@
 - type: entity
   parent: BaseWall
   id: WallClown
-  name: bananium wall
   components:
   - type: Tag
     tags:
-      - Wall
+    - Wall
   - type: Sprite
     sprite: Structures/Walls/clown.rsi
   - type: Icon
@@ -136,8 +133,7 @@
     fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 300
       behaviors:
       - !type:SpawnEntitiesBehavior
@@ -146,7 +142,7 @@
             min: 1
             max: 1
       - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+        acts: ["Destruction"]
   - type: IconSmooth
     key: walls
     base: clown
@@ -154,13 +150,11 @@
 - type: entity
   parent: BaseWall
   id: WallMeat
-  name: meat wall
-  description: Sticky.
   components:
   - type: Tag
     tags:
-      - Wall
-      - Structure
+    - Wall
+    - Structure
   - type: Sprite
     sprite: Structures/Walls/meat.rsi
   - type: Icon
@@ -170,8 +164,7 @@
     node: meatWall
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 100 # weak
       behaviors:
       - !type:SpawnEntitiesBehavior
@@ -180,7 +173,7 @@
             min: 1
             max: 1
       - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+        acts: ["Destruction"]
   - type: IconSmooth
     key: walls
     base: meat
@@ -188,20 +181,17 @@
 - type: entity
   parent: BaseWall
   id: WallCult
-  name: cult wall
-  description: Keeps the cult in and the crew out.
   components:
   - type: Tag
     tags:
-      - Wall
+    - Wall
   - type: Sprite
     sprite: Structures/Walls/cult.rsi
   - type: Icon
     sprite: Structures/Walls/cult.rsi
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 300
       behaviors:
       - !type:SpawnEntitiesBehavior
@@ -210,7 +200,7 @@
             min: 1
             max: 1
       - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+        acts: ["Destruction"]
   - type: IconSmooth
     key: walls
     base: cult
@@ -221,21 +211,19 @@
 - type: entity
   parent: BaseWall
   id: WallDebug
-  name: debug wall
   suffix: DEBUG
   components:
   - type: Tag
     tags:
-      - Wall
-      - Debug
+    - Wall
+    - Debug
   - type: Sprite
     sprite: Structures/Walls/debug.rsi
   - type: Icon
     sprite: Structures/Walls/debug.rsi
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 300
       behaviors:
       - !type:SpawnEntitiesBehavior
@@ -244,31 +232,30 @@
             min: 1
             max: 1
       - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+        acts: ["Destruction"]
   - type: IconSmooth
     key: walls
     base: debug
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallDiamond
-  name: diamond wall
   components:
   - type: Tag
     tags:
-      - Wall
+    - Wall
   - type: Sprite
-    sprite: Structures/Walls/diamond.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/diamond.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
   - type: RCDDeconstructable
     cost: 6
     delay: 8
     fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 300
       behaviors:
       - !type:SpawnEntitiesBehavior
@@ -277,23 +264,23 @@
             min: 1
             max: 1
       - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-  - type: IconSmooth
-    key: walls
-    base: diamond
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallDiamond
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallGold
-  name: gold wall
   components:
   - type: Tag
     tags:
-      - Wall
+    - Wall
   - type: Sprite
-    sprite: Structures/Walls/gold.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/gold.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
   - type: Construction
     graph: Girder
     node: goldWall
@@ -303,8 +290,7 @@
     fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 300
       behaviors:
       - !type:PlaySoundBehavior
@@ -312,8 +298,8 @@
           collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
-    - trigger:
-        !type:DamageTrigger
+      - !type:EmberSpawnMaterialDebrisBehavior
+    - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
       - !type:PlaySoundBehavior
@@ -323,26 +309,24 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: IconSmooth
-    key: walls
-    base: gold
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallGold
 
 - type: entity
   parent: BaseWall
   id: WallIce
-  name: ice wall
   components:
   - type: Tag
     tags:
-      - Wall
+    - Wall
   - type: Sprite
     sprite: Structures/Walls/ice.rsi
   - type: Icon
     sprite: Structures/Walls/ice.rsi
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 300
       behaviors:
       - !type:SpawnEntitiesBehavior
@@ -351,34 +335,33 @@
             min: 1
             max: 1
       - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+        acts: ["Destruction"]
   - type: IconSmooth
     key: walls
     base: ice
 
 - type: entity
-  parent: BaseWall
-  id: WallPlasma
-  name: plasma wall
+  parent: [BaseWall, EmberWallCategory]
+  id: WallPhoron
   components:
   - type: Tag
     tags:
-      - Wall
+    - Wall
   - type: Sprite
-    sprite: Structures/Walls/plasma.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/plasma.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: solid
   - type: Construction
     graph: Girder
-    node: plasmaWall
+    node: phoronWall
   - type: RCDDeconstructable
     cost: 6
     delay: 8
     fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 300
       behaviors:
       - !type:PlaySoundBehavior
@@ -386,8 +369,8 @@
           collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
-    - trigger:
-        !type:DamageTrigger
+      - !type:EmberSpawnMaterialDebrisBehavior
+    - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
       - !type:PlaySoundBehavior
@@ -397,24 +380,24 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: IconSmooth
-    key: walls
-    base: plasma
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallPhoron
   - type: RadiationBlocker
     resistance: 7
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallPlastic
-  name: plastic wall
   components:
   - type: Tag
     tags:
-      - Wall
+    - Wall
   - type: Sprite
-    sprite: Structures/Walls/plastic.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/plastic.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: plastic
   - type: Construction
     graph: Girder
     node: plasticWall
@@ -424,17 +407,16 @@
     fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 300
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
       - !type:PlaySoundBehavior
@@ -444,54 +426,50 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: IconSmooth
-    key: walls
-    base: plastic
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallPlastic
 
 - type: entity
   parent: BaseWall
   id: WallPlastitaniumIndestructible
-  name: plastitanium wall
   suffix: indestructible
   components:
-    - type: Tag
-      tags:
-        - Wall
-    - type: Sprite
-      sprite: Structures/Walls/plastitanium.rsi
-    - type: Icon
-      sprite: Structures/Walls/plastitanium.rsi
-    - type: IconSmooth
-      key: walls
-      base: plastitanium
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Structures/Walls/plastitanium.rsi
+  - type: Icon
+    sprite: Structures/Walls/plastitanium.rsi
+  - type: IconSmooth
+    key: walls
+    base: plastitanium
 
 - type: entity
   parent: WallPlastitaniumIndestructible
   id: WallPlastitanium
-  name: plastitanium wall
   suffix: ""
   components:
-    - type: Tag
-      tags:
-        - Wall
-    - type: Destructible
-      thresholds:
-        - trigger:
-            !type:DamageTrigger
-            damage: 1000
-          behaviors:
-            - !type:SpawnEntitiesBehavior
-              spawn:
-                Girder:
-                  min: 1
-                  max: 1
-            - !type:DoActsBehavior
-              acts: [ "Destruction" ]
+  - type: Tag
+    tags:
+    - Wall
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 1000
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
 
 - type: entity
   parent: WallShuttleDiagonal
   id: WallPlastitaniumDiagonal
-  name: plastitanium wall
   suffix: diagonal
   placement:
     mode: SnapgridCenter
@@ -511,17 +489,15 @@
     state: state0
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 2000
       behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:PlaySoundBehavior
-          sound:
-            collection: MetalSlam
-    - trigger:
-        !type:DamageTrigger
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger: !type:DamageTrigger
         damage: 1000
       behaviors:
       - !type:ChangeConstructionNodeBehavior
@@ -534,9 +510,7 @@
 
 - type: entity
   id: WallPlastitaniumDiagonalIndestructible
-  name: plastitanium wall
   suffix: diagonal, indestructible
-  description: Keeps the air in and the greytide out.
   placement:
     mode: SnapgridCenter
     snap:
@@ -570,27 +544,29 @@
   - type: Fixtures
     fixtures:
       fix1:
-        shape:
-          !type:PolygonShape
-            vertices:
-            - "-0.5,-0.5"
-            - "0.5,0.5"
-            - "0.5,-0.5"
+        shape: !type:PolygonShape
+          vertices:
+          - "-0.5,-0.5"
+          - "0.5,0.5"
+          - "0.5,-0.5"
         mask:
         - FullTileMask
         layer:
         - WallLayer
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallReinforced
-  name: reinforced wall
   components:
   - type: Sprite
-    sprite: Structures/Walls/solid.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/solid.rsi
-    state: rgeneric
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: solid
+  - type: EmberProceduralWall
+    material: EmberWallSteel
+    reinforced: true
+    reinforcementMaterial: EmberWallPlasteel
   - type: Construction
     graph: Girder
     node: reinforcedWall
@@ -599,17 +575,16 @@
     damageModifierSet: StructuralMetallicStrong
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 600
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 400
       behaviors:
       - !type:PlaySoundBehavior
@@ -619,21 +594,20 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: IconSmooth
-    key: walls
-    base: reinf_over
+      - !type:EmberSpawnMaterialDebrisBehavior
+
   - type: Appearance
   - type: GenericVisualizer
     visuals:
       enum.ReinforcedWallVisuals.DeconstructionStage:
         ReinforcedWallVisualLayers.Deconstruction:
-          -1: { visible: false }
-          0: { state: reinf_construct-0, visible: true}
-          1: { state: reinf_construct-1, visible: true}
-          2: { state: reinf_construct-2, visible: true}
-          3: { state: reinf_construct-3, visible: true}
-          4: { state: reinf_construct-4, visible: true}
-          5: { state: reinf_construct-5, visible: true}
+          -1: {visible: false}
+          0: {state: reinf_construct-0, visible: true}
+          1: {state: reinf_construct-1, visible: true}
+          2: {state: reinf_construct-2, visible: true}
+          3: {state: reinf_construct-3, visible: true}
+          4: {state: reinf_construct-4, visible: true}
+          5: {state: reinf_construct-5, visible: true}
   - type: ReinforcedWallReplacementMarker
   - type: StaticPrice
     price: 250
@@ -641,34 +615,33 @@
     resistance: 8
 
 - type: entity
-  parent: WallReinforced
+  parent: [WallReinforced, EmberWallCategory]
   id: WallReinforcedRust
   suffix: rusted
   components:
   - type: Sprite
-    sprite: Structures/Walls/solid_rust.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/solid_rust.rsi
-    state: rgeneric
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: solid
   - type: Construction
     graph: Girder
     node: reinforcedWallRust
-  - type: IconSmooth
-    key: walls
-    base: reinf_over
+  - type: EmberProceduralWall
+    material: EmberWallRustedSteel
+    reinforced: true
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 500
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 350
       behaviors:
       - !type:PlaySoundBehavior
@@ -678,12 +651,46 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+
+- type: entity
+  parent: [WallReinforced, EmberWallCategory]
+  id: WallOCP
+  components:
+  - type: Construction
+    graph: Girder
+    node: ocpWall
+  - type: EmberProceduralWall
+    material: EmberWallOCP
+    reinforced: true
+    reinforcementMaterial: EmberWallOCP
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 700
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger: !type:DamageTrigger
+        damage: 450
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: reinforcedGirder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
 
 
 - type: entity
   parent: WallShuttleDiagonal
   id: WallReinforcedDiagonal
-  name: reinforced wall
   suffix: diagonal
   placement:
     mode: SnapgridCenter
@@ -709,11 +716,10 @@
 - type: entity
   parent: BaseWall
   id: WallRiveted
-  name: riveted wall
   components:
   - type: Tag
     tags:
-      - Wall
+    - Wall
   - type: Sprite
     sprite: Structures/Walls/riveted.rsi
   - type: Icon
@@ -723,8 +729,7 @@
     damageModifierSet: StructuralMetallicStrong
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 1000
       behaviors:
       - !type:SpawnEntitiesBehavior
@@ -733,7 +738,7 @@
             min: 1
             max: 1
       - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+        acts: ["Destruction"]
   - type: IconSmooth
     key: walls
     base: riveted
@@ -741,25 +746,24 @@
     price: 150
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallSandstone
-  name: sandstone wall
   components:
   - type: Tag
     tags:
-      - Wall
+    - Wall
   - type: Sprite
-    sprite: Structures/Walls/sandstone.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/sandstone.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
   - type: RCDDeconstructable
     cost: 6
     delay: 8
     fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 300
       behaviors:
       - !type:SpawnEntitiesBehavior
@@ -768,23 +772,23 @@
             min: 1
             max: 1
       - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-  - type: IconSmooth
-    key: walls
-    base: sandstone
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallSandstone
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallSilver
-  name: silver wall
   components:
   - type: Tag
     tags:
-      - Wall
+    - Wall
   - type: Sprite
-    sprite: Structures/Walls/silver.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/silver.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
   - type: Construction
     graph: Girder
     node: silverWall
@@ -794,17 +798,16 @@
     fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 300
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
       - !type:PlaySoundBehavior
@@ -814,16 +817,14 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: IconSmooth
-    key: walls
-    base: silver
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallSilver
 
 #shuttle walls
 - type: entity
   id: WallShuttleDiagonal
-  name: shuttle wall
   suffix: Diagonal
-  description: Keeps the air in and the greytide out.
   placement:
     mode: SnapgridCenter
     snap:
@@ -861,29 +862,26 @@
   - type: Fixtures
     fixtures:
       fix1:
-        shape:
-          !type:PolygonShape
-            vertices:
-            - "-0.5,-0.5"
-            - "0.5,0.5"
-            - "0.5,-0.5"
+        shape: !type:PolygonShape
+          vertices:
+          - "-0.5,-0.5"
+          - "0.5,0.5"
+          - "0.5,-0.5"
         mask:
         - FullTileMask
         layer:
         - WallLayer
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 600
       behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:PlaySoundBehavior
-          sound:
-            collection: MetalSlam
-    - trigger:
-        !type:DamageTrigger
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger: !type:DamageTrigger
         damage: 300
       behaviors:
       - !type:ChangeConstructionNodeBehavior
@@ -900,15 +898,13 @@
 - type: entity
   parent: BaseWall
   id: WallShuttle
-  name: shuttle wall
   components:
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 600
       behaviors:
       - !type:DoActsBehavior
@@ -916,8 +912,7 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 400
       behaviors:
       - !type:PlaySoundBehavior
@@ -947,47 +942,51 @@
     visuals:
       enum.ShuttleWallVisuals.DeconstructionStage:
         ShuttleWallVisualLayers.Deconstruction:
-          -1: { visible: false }
-          0: { state: shuttle_construct-0, visible: true}
-          1: { state: shuttle_construct-1, visible: true}
-          2: { state: shuttle_construct-2, visible: true}
-          3: { state: shuttle_construct-3, visible: true}
-          4: { state: shuttle_construct-4, visible: true}
-          5: { state: shuttle_construct-5, visible: true}
+          -1: {visible: false}
+          0: {state: shuttle_construct-0, visible: true}
+          1: {state: shuttle_construct-1, visible: true}
+          2: {state: shuttle_construct-2, visible: true}
+          3: {state: shuttle_construct-3, visible: true}
+          4: {state: shuttle_construct-4, visible: true}
+          5: {state: shuttle_construct-5, visible: true}
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallSolid
-  name: solid wall
+  name: steel wall
+  description: It seems to be a section of hull plated with steel.
   components:
   - type: Tag
     tags:
-      - Wall
+    - Wall
   - type: Sprite
-    sprite: Structures/Walls/solid.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: solid
+  - type: EmberProceduralWall
+    material: EmberWallSteel
   - type: WallReplacementMarker
   - type: Construction
     graph: Girder
     node: wall
   - type: Icon
-    sprite: Structures/Walls/solid.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: solid
   - type: RCDDeconstructable
     cost: 6
     delay: 8
     fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 400
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 200
       behaviors:
       - !type:PlaySoundBehavior
@@ -997,14 +996,12 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: IconSmooth
-    key: walls
-    base: solid
+      - !type:EmberSpawnMaterialDebrisBehavior
+
 
 - type: entity
   parent: WallShuttleDiagonal
   id: WallSolidDiagonal
-  name: solid wall
   suffix: diagonal
   placement:
     mode: SnapgridCenter
@@ -1024,34 +1021,32 @@
     state: state0
 
 - type: entity
-  parent: WallSolid
+  parent: [WallSolid, EmberWallCategory]
   id: WallSolidRust
   suffix: rusted
   components:
   - type: Sprite
-    sprite: Structures/Walls/solid_rust.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/solid_rust.rsi
-    state: full
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: solid
   - type: Construction
     graph: Girder
     node: wallrust
-  - type: IconSmooth
-    key: walls
-    base: solid
+  - type: EmberProceduralWall
+    material: EmberWallRustedSteel
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 300
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
       - !type:PlaySoundBehavior
@@ -1061,32 +1056,32 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallUranium
-  name: uranium wall
   components:
   - type: Sprite
-    sprite: Structures/Walls/uranium.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/uranium.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
   - type: Construction
     graph: Girder
     node: uraniumWall
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 300
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
       - !type:PlaySoundBehavior
@@ -1096,38 +1091,36 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: IconSmooth
-    key: walls
-    base: uranium
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallUranium
   - type: RadiationBlocker
     resistance: 10
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, EmberWallCategory]
   id: WallWood
-  name: wood wall
-  description: The traditional greytide defense.
   components:
   - type: Sprite
-    sprite: Structures/Walls/wood.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
   - type: Icon
-    sprite: Structures/Walls/wood.rsi
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: wood
   - type: Construction
     graph: Barricade
     node: woodWall
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 300
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
       - !type:PlaySoundBehavior
         sound:
           collection: WoodDestroyHeavy
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 150
       behaviors:
       - !type:PlaySoundBehavior
@@ -1137,39 +1130,35 @@
         node: Barricade
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: IconSmooth
-    key: woods
-    base: wood
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallWood
 
 - type: entity
   parent: BaseWall
   id: WallWeb
-  name: web wall
-  description: Keeps the spiders in and the greytide out.
   components:
   - type: Clickable
   - type: MeleeSound
     soundGroups:
       Brute:
-        path:
-          "/Audio/Weapons/slash.ogg"
+        path: "/Audio/Weapons/slash.ogg"
   - type: Damageable
     damageModifierSet: Web
   - type: Tag
     tags:
-      - Wall
+    - Wall
   - type: Sprite
     sprite: Structures/Walls/web.rsi
   - type: Icon
     sprite: Structures/Walls/web.rsi
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 30
       behaviors:
       - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+        acts: ["Destruction"]
       - !type:SpawnEntitiesBehavior
         spawn:
           MaterialWebSilk:
@@ -1191,23 +1180,21 @@
 - type: entity
   parent: BaseWall
   id: WallNecropolis
-  name: stone wall
   components:
   - type: Tag
     tags:
-      - Wall
+    - Wall
   - type: Sprite
     sprite: Structures/Walls/necropolis.rsi
   - type: Icon
     sprite: Structures/Walls/necropolis.rsi
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 1000
       behaviors:
       - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+        acts: ["Destruction"]
   - type: IconSmooth
     key: walls
     base: necropolis
@@ -1215,23 +1202,21 @@
 - type: entity
   parent: BaseWall
   id: WallMining
-  name: mining wall
   components:
   - type: Tag
     tags:
-      - Wall
+    - Wall
   - type: Sprite
     sprite: Structures/Walls/mining.rsi
   - type: Icon
     sprite: Structures/Walls/mining.rsi
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 700
       behaviors:
       - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+        acts: ["Destruction"]
   - type: IconSmooth
     key: walls
     base: mining
@@ -1244,7 +1229,6 @@
 - type: entity
   parent: WallShuttleDiagonal
   id: WallMiningDiagonal
-  name: mining wall
   suffix: diagonal
   placement:
     mode: SnapgridCenter
@@ -1269,8 +1253,6 @@
 - type: entity
   parent: BaseWall
   id: WallVaultAlien
-  name: alien vault wall
-  description: A mysterious ornate looking wall. There may be ancient dangers inside.
   components:
   - type: Sprite
     sprite: Structures/Walls/vault.rsi
@@ -1280,17 +1262,15 @@
     state: alienvault
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 500
       behaviors:
       - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+        acts: ["Destruction"]
 
 - type: entity
   parent: WallVaultAlien
   id: WallVaultRock
-  name: rock vault wall
   components:
   - type: Sprite
     sprite: Structures/Walls/vault.rsi
@@ -1302,7 +1282,6 @@
 - type: entity
   parent: WallVaultAlien
   id: WallVaultSandstone
-  name: sandstone vault wall
   components:
   - type: Sprite
     sprite: Structures/Walls/vault.rsi
@@ -1315,21 +1294,19 @@
 
 - type: entity
   id: WallInvisible
-  name: invisible wall
   components:
   - type: TimedDespawn
     lifetime: 15
   - type: Tag
     tags:
-      - Wall
+    - Wall
   - type: Physics
     bodyType: Static
   - type: Fixtures
     fixtures:
       fix1:
-        shape:
-          !type:PhysShapeAabb
-            bounds: "-0.5,-0.5,0.5,0.5"
+        shape: !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
         mask:
         - FullTileMask
         layer:
@@ -1338,44 +1315,40 @@
 
 - type: entity
   id: WallForce
-  name: force wall
   components:
-    - type: TimedDespawn
-      lifetime: 12
-    - type: Tag
-      tags:
-        - Wall
-    - type: Physics
-      bodyType: Static
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape:
-            !type:PhysShapeAabb
-            bounds: "-0.5,-0.5,0.5,0.5"
-          mask:
-            - FullTileMask
-          layer:
-            - WallLayer
-    - type: Airtight
-    - type: Sprite
-      sprite: Structures/Magic/forcewall.rsi
-      state: forcewall
-    - type: Icon
-      sprite: Structures/Magic/forcewall.rsi
-      state: forcewall
+  - type: TimedDespawn
+    lifetime: 12
+  - type: Tag
+    tags:
+    - Wall
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+  - type: Airtight
+  - type: Sprite
+    sprite: Structures/Magic/forcewall.rsi
+    state: forcewall
+  - type: Icon
+    sprite: Structures/Magic/forcewall.rsi
+    state: forcewall
   #    - type: Dispellable
-    - type: Clickable #Nyano
+  - type: Clickable   #Nyano
 
 - type: entity
   parent: BaseWall
   id: WallCobblebrick
-  name: cobblestone brick wall
-  description: Stone by stone, perfectly fitted together to form a wall.
   components:
   - type: Tag
     tags:
-      - Wall
+    - Wall
   - type: Sprite
     sprite: Structures/Walls/cobblebrick.rsi
   - type: Icon
@@ -1386,12 +1359,11 @@
     fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 100
       behaviors:
       - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+        acts: ["Destruction"]
   - type: IconSmooth
     key: cobblebricks
     base: cobblebrick
@@ -1399,7 +1371,6 @@
 - type: entity
   parent: WallCobblebrick
   id: WallBasaltCobblebrick
-  name: basalt brick wall
   components:
   - type: Sprite
     sprite: Structures/Walls/cobblebrick_basalt.rsi
@@ -1412,8 +1383,6 @@
 - type: entity
   parent: WallCobblebrick
   id: WallSnowCobblebrick
-  name: snow brick wall
-  description: A cold, not-so-impenetrable wall.
   components:
   - type: Sprite
     sprite: Structures/Walls/cobblebrick_snow.rsi
@@ -1426,7 +1395,6 @@
 - type: entity
   parent: WallCobblebrick
   id: WallAsteroidCobblebrick
-  name: asteroid stone brick wall
   components:
   - type: Sprite
     sprite: Structures/Walls/cobblebrick_asteroid.rsi
@@ -1439,7 +1407,6 @@
 - type: entity
   parent: WallCobblebrick
   id: WallSandCobblebrick
-  name: sandstone brick wall
   components:
   - type: Sprite
     sprite: Structures/Walls/cobblebrick_sand.rsi
@@ -1452,7 +1419,6 @@
 - type: entity
   parent: WallCobblebrick
   id: WallChromiteCobblebrick
-  name: chromite brick wall
   components:
   - type: Sprite
     sprite: Structures/Walls/cobblebrick_chromite.rsi
@@ -1465,7 +1431,6 @@
 - type: entity
   parent: WallCobblebrick
   id: WallAndesiteCobblebrick
-  name: andesite brick wall
   components:
   - type: Sprite
     sprite: Structures/Walls/cobblebrick_andesite.rsi
@@ -1474,3 +1439,879 @@
   - type: IconSmooth
     key: cobblebricks
     base: cobblebrick
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallIron
+  name: iron wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
+  - type: Construction
+    graph: Girder
+    node: ironWall
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+    - trigger: !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallIron
+
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallAluminium
+  name: aluminium wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
+  - type: Construction
+    graph: Girder
+    node: aluminiumWall
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+    - trigger: !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallAluminium
+
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallTitanium
+  name: titanium wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
+  - type: Construction
+    graph: Girder
+    node: titaniumWall
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+    - trigger: !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallTitanium
+
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallOsmium
+  name: osmium wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
+  - type: Construction
+    graph: Girder
+    node: osmiumWall
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+    - trigger: !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallOsmium
+
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallElectrum
+  name: electrum wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
+  - type: Construction
+    graph: Girder
+    node: electrumWall
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+    - trigger: !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallElectrum
+
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallCopper
+  name: copper wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
+  - type: Construction
+    graph: Girder
+    node: copperWall
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+    - trigger: !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallCopper
+
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallBronze
+  name: bronze wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
+  - type: Construction
+    graph: Girder
+    node: bronzeWall
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+    - trigger: !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallBronze
+
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallPlatinum
+  name: platinum wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: metal
+  - type: Construction
+    graph: Girder
+    node: platinumWall
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+    - trigger: !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallPlatinum
+
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallMarble
+  name: marble wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: Construction
+    graph: Girder
+    node: marbleWall
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+    - trigger: !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallMarble
+
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallConcrete
+  name: concrete wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: Construction
+    graph: Girder
+    node: concreteWall
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+    - trigger: !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallConcrete
+
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallStone
+  name: stone wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: Construction
+    graph: Girder
+    node: stoneWall
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+    - trigger: !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallStone
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallQuartz
+  name: quartz wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallQuartz
+  - type: Construction
+    graph: Girder
+    node: quartzWall
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallPyrite
+  name: pyrite wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallPyrite
+  - type: Construction
+    graph: Girder
+    node: pyriteWall
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallSpodumene
+  name: spodumene wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallSpodumene
+  - type: Construction
+    graph: Girder
+    node: spodumeneWall
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallCinnabar
+  name: cinnabar wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallCinnabar
+  - type: Construction
+    graph: Girder
+    node: cinnabarWall
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallPhosphorite
+  name: phosphorite wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallPhosphorite
+  - type: Construction
+    graph: Girder
+    node: phosphoriteWall
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallPotash
+  name: potash wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallPotash
+  - type: Construction
+    graph: Girder
+    node: potashWall
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallBauxite
+  name: bauxite wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallBauxite
+  - type: Construction
+    graph: Girder
+    node: bauxiteWall
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallRutile
+  name: rutile wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallRutile
+  - type: Construction
+    graph: Girder
+    node: rutileWall
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallBorax
+  name: borax wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallBorax
+  - type: Construction
+    graph: Girder
+    node: boraxWall
+
+- type: entity
+  parent: [BaseWall, EmberWallCategory]
+  id: WallPitchblende
+  name: pitchblende wall
+  components:
+  - type: Tag
+    tags:
+    - Wall
+  - type: Sprite
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+  - type: Icon
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: stone
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:EmberSpawnMaterialDebrisBehavior
+  - type: EmberProceduralWall
+    material: EmberWallPitchblende
+  - type: Construction
+    graph: Girder
+    node: pitchblendeWall

@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from SierraBay (Baystation12)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "stripes_closed"
+    },
+    {
+      "name": "stripe_inner_closed"
+    },
+    {
+      "name": "stripe_outer_closed"
+    },
+    {
+      "name": "cross_closed"
+    },
+    {
+      "name": "vent_closed"
+    },
+    {
+      "name": "vent_open"
+    },
+    {
+      "name": "glass_closed"
+    },
+    {
+      "name": "glass_open"
+    }
+  ]
+}

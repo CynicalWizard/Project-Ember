@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: Airlock
   parent: BaseStructure
   name: airlock
@@ -63,6 +63,12 @@
   - type: AccessReader
     containerAccessProvider: board
   - type: Door
+    openTimeOne: 0.8
+    openTimeTwo: 0.4
+    closeTimeOne: 0.8
+    closeTimeTwo: 0.4
+    openingAnimationTime: 1.2
+    closingAnimationTime: 1.2
     crushDamage:
       types:
         Blunt: 15
@@ -79,6 +85,8 @@
     fuel: 5
     time: 3
   - type: Airlock
+  - type: EmberProceduralAirlock
+    style: EmberAirlockBasic
   - type: NavMapDoor
   - type: DoorBolt
   - type: Appearance
@@ -204,6 +212,8 @@
         collection: GlassSmack
   - type: Door
     occludes: false
+    openingAnimationTime: 1.2
+    closingAnimationTime: 1.2
   - type: Occluder
     enabled: false
   - type: Sprite
@@ -228,6 +238,9 @@
     node: glassAirlock
   - type: PaintableAirlock
     group: Glass
+  - type: EmberProceduralAirlock
+    style: EmberAirlockBasic
+    glass: true
   - type: RadiationBlocker
     resistance: 1
   - type: Tag

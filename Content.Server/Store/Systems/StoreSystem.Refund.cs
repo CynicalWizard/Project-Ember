@@ -24,7 +24,8 @@ public sealed partial class StoreSystem
 
     private void OnEntityInserted(EntityUid uid, StoreRefundComponent component, EntInsertedIntoContainerMessage args)
     {
-        if (component.StoreEntity == null || _actions.TryGetActionData(uid, out _) || !TryComp<StoreComponent>(component.StoreEntity.Value, out var storeComp))
+        // Not being an action is the normal case here, so ask quietly -- same as OnEntityRemoved above.
+        if (component.StoreEntity == null || _actions.TryGetActionData(uid, out _, false) || !TryComp<StoreComponent>(component.StoreEntity.Value, out var storeComp))
             return;
 
         DisableRefund(component.StoreEntity.Value, storeComp);

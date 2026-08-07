@@ -1,4 +1,4 @@
-﻿<mapping:MappingScreen
+<mapping:MappingScreen
     xmlns="https://spacestation14.io"
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
     xmlns:menuBar="clr-namespace:Content.Client.UserInterface.Systems.MenuBar.Widgets"
@@ -73,6 +73,12 @@
                                                       ToolTip="{Loc 'mapping-grid-vv-tooltip'}" />
                         <mapping:MappingActionsButton Name="PipesColor" Access="Public"
                                                       ToolTip="{Loc 'mapping-pipes-color-tooltip'}" />
+                        <mapping:MappingActionsButton Name="EmberPaint" Access="Public"
+                                                      ToolTip="{Loc 'mapping-ember-paint-tooltip'}" />
+                        <BoxContainer Orientation="Horizontal" VerticalAlignment="Center" Margin="4 0">
+                            <OptionButton Name="EmberPaintMode" MinWidth="200" Margin="0 0 4 0" />
+                            <OptionButton Name="EmberPaintPreset" MinWidth="140" />
+                        </BoxContainer>
                         <BoxContainer HorizontalExpand="True"/>
                         <mapping:MappingActionsButton Name="ChatButton" Access="Public"
                                                       ToolTip="{Loc 'mapping-chat-button-tooltip'}" />

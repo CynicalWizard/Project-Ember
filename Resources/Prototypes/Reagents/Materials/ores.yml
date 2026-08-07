@@ -48,7 +48,7 @@
   name: materials-raw-plasma
   unit: materials-unit-chunk
   icon: { sprite: Objects/Materials/ore.rsi, state: plasma }
-  color: "#7e009e"
+  color: "#e37108"
   price: 0.2
 
 - type: material

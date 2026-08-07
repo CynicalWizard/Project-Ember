@@ -1,93 +1,135 @@
-materials-glass = стекло
-
-materials-reinforced-glass = бронестекло
-
-materials-plasma-glass = плазменное стекло
-
-materials-reinforced-plasma-glass = плазменное бронестекло
-
 materials-steel = сталь
-
-materials-gold = золото
-
-materials-silver = серебро
-
-materials-plasteel = пласталь
-
+materials-steel-genitive = стали
+materials-iron = железо
+materials-iron-genitive = железа
 materials-aluminium = алюминий
-
+materials-aluminium-genitive = алюминия
+materials-plasteel = пласталь
+materials-plasteel-genitive = пластали
+materials-titanium = титан
+materials-titanium-genitive = титана
+materials-osmiumcarbideplasteel = осмиево-карбидная пласталь
+materials-osmium = осмий
+materials-osmium-genitive = осмия
+materials-gold = золото
+materials-gold-genitive = золота
+materials-raw-gold = самородное золото
+materials-silver = серебро
+materials-silver-genitive = серебра
+materials-raw-silver = самородное серебро
+materials-electrum = электрум
+materials-raw-electrum = электрум
 materials-copper = медь
-
-materials-tungsten = карбид вольфрама
-
-materials-lead = свинец
-
-materials-biomass = биомасса
-
-materials-cardboard = картон
-
-materials-cloth = ткань
-
-materials-durathread = дюраткань
-
-materials-plasma = плазма
-
-materials-plastic = пластик
-
-materials-wood = дерево
-
-materials-paper = бумага
-
+materials-copper-genitive = меди
+materials-raw-copper = тетраэдрит
+materials-bronze = бронза
+materials-bronze-genitive = бронзы
+materials-platinum = платина
+materials-platinum-genitive = платины
+materials-raw-platinum = самородная платина
 materials-uranium = уран
+materials-uranium-genitive = урана
+materials-deuterium = дейтерий
+materials-tritium = тритий
+materials-metallichydrogen = металлический водород
+materials-raw-metallichydrogen = сырой водород
+materials-phoron = форон
+materials-phoron-genitive = форона
+materials-raw-phoron = форон
+materials-supermatter = суперматерия
+materials-glass = стекло
+materials-glass-genitive = стекла
+materials-borosilicateglass = боросиликатное стекло
+materials-reinforcedborosilicateglass = укреплённое боросиликатное стекло
+materials-diamond = алмаз
+materials-diamond-genitive = алмаза
+materials-crystal = кристалл
+materials-sandstone = песчаник
+materials-sandstone-genitive = песчаника
+materials-marble = мрамор
+materials-marble-genitive = мрамора
+materials-concrete = бетон
+materials-concrete-genitive = бетона
+materials-plastic = пластик
+materials-plastic-genitive = пластика
+materials-cardboard = картон
+materials-cardboard-genitive = картона
+materials-cloth = хлопок
+materials-carpet = красный ковер
+materials-wood = дерево
+materials-wood-genitive = дерева
+materials-mahogany = красное дерево
+materials-mahogany-genitive = красного дерева
+materials-maple = клён
+materials-maple-genitive = клёна
+materials-ebony = эбеновое дерево
+materials-ebony-genitive = чёрного дерева
+materials-walnut = орех
+materials-walnut-genitive = ореха
+materials-bamboo = бамбук
+materials-bamboo-genitive = бамбука
+materials-yew = тис
+materials-voxbioresin = биосмола воксов
+materials-borax = бура
+materials-pitchblende = настуран
+materials-graphite = графит
+materials-graphite-genitive = графита
+materials-quartz = кварц
+materials-pyrite = пирит
+materials-spodumene = сподумен
+materials-cinnabar = киноварь
+materials-phosphorite = фосфорит
+materials-rocksalt = каменная соль
+materials-potash = поташ
+materials-bauxite = боксит
+materials-sand = песок
+materials-hematite = гематит
+materials-raw-hematite = гематит
+materials-rutile = рутил
+materials-raw-rutile = рутил
+materials-waste = шлак
+materials-cultstone = тревожный камень
+materials-reinforcedcultstone = рунические надписи
+materials-voxalloy = прочный сплав
+materials-elevatorium = панели лифта
+materials-alienalloy = инопланетный сплав
+materials-skin = кожа
+materials-lizardskin = кожа ящерицы
+materials-chitin = хитин
+materials-fur = коричневый мех
+materials-grayfur = серый мех
+materials-whitefur = белый мех
+materials-orangefur = оранжевый мех
+materials-blackfur = черный мех
+materials-heavyfur = густой мех
+materials-goathide = козья шкура
+materials-cowhide = коровья шкура
+materials-sharkskin = акулья кожа
+materials-fishskin = рыбья кожа
+materials-purplefishskin = пурпурная рыбья кожа
+materials-bone = кость
+materials-fishbone = рыбья кость
+materials-cartilage = хрящ
+materials-leather = выделанная кожа
+materials-scaledhide = чешуйчатая шкура
+materials-furredhide = меховая шкура
+materials-treatedchitin = обработанный хитин
+materials-growth = нарост
 
-materials-bananium = бананиум
-
-materials-meat = мясо
-
-materials-web = шёлк
-
-materials-bones = кости
-
-materials-coal = уголь
-
-materials-diamond = алмазы
-
-materials-gunpowder = чёрный порох
-
-materials-bluespace = блюспейс
-
-materials-normality = нормальность
-
-materials-raw-iron = необработанное железо
-
-materials-raw-quartz = необработанный кварц
-
-materials-raw-gold = необработанное золото
-
-materials-raw-silver = необработанная серебра
-
-materials-raw-plasma = необработанная плазма
-
-materials-raw-uranium = необработанный уран
-
-materials-raw-bananium = необработанный бананиум
-
-materials-raw-salt = каменная соль
-
-materials-raw-diamond = необработанный алмаз
-
-materials-raw-bluespace = необработанное синее пространство
-
-materials-raw-normality = необработанная нормальность
-
-materials-raw-aluminium = необработанный алюминий
-
-materials-raw-lead = необработанный свинец
-
-materials-raw-sulfur = необработанная сера
-
-materials-raw-copper = необработанная медь
-
-materials-raw-tungsten = необработанный вольфрам
-
-material-reclaimer-upgrade-process-rate = скорость обработки
+# Названия руд, ключи берутся из oreName в Ember/Materials/materials.yml
+materials-gold-ore-name = самородное золото
+materials-silver-ore-name = самородное серебро
+materials-electrum-ore-name = электрум
+materials-copper-ore-name = тетраэдрит
+materials-platinum-ore-name = самородная платина
+materials-metallichydrogen-ore-name = сырой водород
+materials-phoron-ore-name = форон
+materials-hematite-ore-name = гематит
+materials-rutile-ore-name = рутил
+materials-rustedsteel = ржавая сталь
+materials-stone = камень
+materials-bauxite-ore-name = боксит
+materials-diamond-ore-name = неогранённые алмазы
+materials-graphite-ore-name = графит
+materials-pitchblende-ore-name = настуран
+materials-sand-ore-name = песок

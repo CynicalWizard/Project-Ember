@@ -14,6 +14,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -32,6 +33,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -68,6 +70,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -86,6 +89,26 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+
+- type: construction
+  name: osmium-carbide plasteel wall
+  id: WallOCP
+  graph: Girder
+  startNode: start
+  targetNode: ocpWall
+  category: construction-category-structures
+  description: Keeps the air in and the greytide out.
+  icon:
+    sprite: Ember/Structures/Walls/wall_masks_offbay.rsi
+    state: solid
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -104,6 +127,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -122,6 +146,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -140,6 +165,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -158,6 +184,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -176,14 +203,15 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
-  name: plasma wall
-  id: PlasmaWall
+  name: phoron wall
+  id: PhoronWall
   graph: Girder
   startNode: start
-  targetNode: plasmaWall
+  targetNode: phoronWall
   category: construction-category-structures
   description: Keeps the air in and the greytide out.
   icon:
@@ -194,6 +222,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -212,6 +241,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -230,24 +260,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
-
-- type: construction
-  name: diagonal shuttle wall
-  id: DiagonalShuttleWall
-  graph: Girder
-  startNode: start
-  targetNode: diagonalshuttleWall
-  category: construction-category-structures
-  description: Keeps the air in and the greytide out.
-  icon:
-    sprite: Structures/Walls/shuttle_diagonal.rsi
-    state: state0
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canRotate: true
-  canBuildInImpassable: false
-  conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -266,6 +279,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction
@@ -284,7 +298,388 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
+  - !type:EmberNoWallInTile
   - !type:TileNotBlocked
+
+- type: construction
+  name: low wall
+  id: WallFrame
+  graph: WallFrame
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: reinforced low wall
+  id: WallFrameReinforced
+  graph: WallFrameReinforced
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A reinforced low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: gold low wall
+  id: WallFrameGold
+  graph: WallFrameGold
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A gold low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: silver low wall
+  id: WallFrameSilver
+  graph: WallFrameSilver
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A silver low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: phoron low wall
+  id: WallFramePhoron
+  graph: WallFramePhoron
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A phoron low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: uranium low wall
+  id: WallFrameUranium
+  graph: WallFrameUranium
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A uranium low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: plastic low wall
+  id: WallFramePlastic
+  graph: WallFramePlastic
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A plastic low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: wood low wall
+  id: WallFrameWood
+  graph: WallFrameWood
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A wood low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: iron low wall
+  id: WallFrameIron
+  graph: WallFrameIron
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: aluminium low wall
+  id: WallFrameAluminium
+  graph: WallFrameAluminium
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: titanium low wall
+  id: WallFrameTitanium
+  graph: WallFrameTitanium
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: osmium-carbide plasteel low wall
+  id: WallFrameOCP
+  graph: WallFrameOCP
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: osmium low wall
+  id: WallFrameOsmium
+  graph: WallFrameOsmium
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: electrum low wall
+  id: WallFrameElectrum
+  graph: WallFrameElectrum
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: copper low wall
+  id: WallFrameCopper
+  graph: WallFrameCopper
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: bronze low wall
+  id: WallFrameBronze
+  graph: WallFrameBronze
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: platinum low wall
+  id: WallFramePlatinum
+  graph: WallFramePlatinum
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: marble low wall
+  id: WallFrameMarble
+  graph: WallFrameMarble
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: sandstone low wall
+  id: WallFrameSandstone
+  graph: WallFrameSandstone
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: concrete low wall
+  id: WallFrameConcrete
+  graph: WallFrameConcrete
+  startNode: start
+  targetNode: wallFrame
+  category: construction-category-structures
+  description: A low wall section which serves as the base of windows, amongst other things.
+  conditions:
+    - !type:EmberNoWallInTile
+    - !type:TileNotBlocked
+      failIfSpace: false
+  icon:
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
 
 - type: construction
   name: grille
@@ -295,10 +690,12 @@
   category: construction-category-structures
   description: A flimsy framework of iron rods.
   conditions:
+    - !type:EmberNoWallInTile
+      allowLowWalls: true
     - !type:TileNotBlocked
       failIfSpace: false
   icon:
-    sprite: Structures/Walls/grille.rsi
+    sprite: Ember/Structures/Grilles/grille.rsi
     state: grille
   objectType: Structure
   placementMode: SnapgridCenter
@@ -323,40 +720,6 @@
   canRotate: false
 
 - type: construction
-  name: diagonal grille
-  id: GrilleDiagonal
-  graph: GrilleDiagonal
-  startNode: start
-  targetNode: grilleDiagonal
-  category: construction-category-structures
-  description: A flimsy framework of iron rods.
-  conditions:
-    - !type:TileNotBlocked
-      failIfSpace: false
-  icon:
-    sprite: Structures/Walls/grille.rsi
-    state: grille_diagonal
-  objectType: Structure
-  placementMode: SnapgridCenter
-
-- type: construction
-  name: diagonal clockwork grille
-  id: ClockworkGrilleDiagonal
-  graph: GrilleDiagonal
-  startNode: start
-  targetNode: clockworkGrilleDiagonal
-  category: construction-category-structures
-  description: A flimsy framework of iron rods assembled in traditional ratvarian fashion.
-  conditions:
-    - !type:TileNotBlocked
-      failIfSpace: false
-  icon:
-    sprite: Structures/Walls/clockwork_grille.rsi
-    state: ratvargrille_diagonal
-  objectType: Structure
-  placementMode: SnapgridCenter
-
-- type: construction
   name: window
   id: Window
   graph: Window
@@ -369,29 +732,11 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/window.rsi
-    state: full
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window_full
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
-
-- type: construction
-  name: diagonal window
-  id: WindowDiagonal
-  graph: WindowDiagonal
-  startNode: start
-  targetNode: windowDiagonal
-  category: construction-category-structures
-  description: Clear.
-  canBuildInImpassable: true
-  conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
-  icon:
-    sprite: Structures/Windows/window_diagonal.rsi
-    state: state1
-  objectType: Structure
-  placementMode: SnapgridCenter
 
 - type: construction
   name: reinforced window
@@ -406,29 +751,11 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/reinforced_window.rsi
-    state: full
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow_full
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
-
-- type: construction
-  name: diagonal reinforced window
-  id: ReinforcedWindowDiagonal
-  graph: WindowDiagonal
-  startNode: start
-  targetNode: reinforcedWindowDiagonal
-  category: construction-category-structures
-  description: Clear but tough.
-  canBuildInImpassable: true
-  conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
-  icon:
-    sprite: Structures/Windows/reinforced_window_diagonal.rsi
-    state: state1
-  objectType: Structure
-  placementMode: SnapgridCenter
 
 - type: construction
   name: tinted window
@@ -443,8 +770,8 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/tinted_window.rsi
-    state: full
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow_full
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -469,29 +796,11 @@
   canRotate: false
 
 - type: construction
-  name: diagonal clockwork window
-  id: ClockworkWindowDiagonal
-  graph: WindowDiagonal
-  startNode: start
-  targetNode: clockworkWindowDiagonal
-  category: construction-category-structures
-  description: Clear and tough, with a golden tint.
-  canBuildInImpassable: true
-  conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
-  icon:
-    sprite: Structures/Windows/clockwork_diagonal.rsi
-    state: state0
-  objectType: Structure
-  placementMode: SnapgridCenter
-
-- type: construction
-  name: plasma window
-  id: PlasmaWindow
+  name: phoron window
+  id: PhoronWindow
   graph: Window
   startNode: start
-  targetNode: plasmaWindow
+  targetNode: phoronWindow
   category: construction-category-structures
   canBuildInImpassable: true
   description: Clear, with a purple tint.
@@ -499,14 +808,52 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/plasma_window.rsi
-    state: full
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window_full
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
 
 - type: construction
-  name: reinforced plasma window
+  name: borosilicate window
+  id: BorosilicateWindow
+  graph: Window
+  startNode: start
+  targetNode: borosilicateWindow
+  category: construction-category-structures
+  canBuildInImpassable: true
+  description: Clear, fire resistant glass.
+  conditions:
+    - !type:EmptyOrWindowValidInTile
+    - !type:NoWindowsInTile
+  icon:
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window_full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: reinforced borosilicate window
+  id: ReinforcedBorosilicateWindow
+  graph: Window
+  startNode: start
+  targetNode: reinforcedBorosilicateWindow
+  category: construction-category-structures
+  canBuildInImpassable: true
+  description: Clear, fire resistant glass laced with steel.
+  conditions:
+    - !type:EmptyOrWindowValidInTile
+    - !type:NoWindowsInTile
+  icon:
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow_full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: reinforced phoron window
   id: ReinforcedPlasmaWindow
   graph: Window
   startNode: start
@@ -518,8 +865,8 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/reinforced_plasma_window.rsi
-    state: full
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow_full
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -544,42 +891,6 @@
   canRotate: false
 
 - type: construction
-  name: diagonal plasma window
-  id: PlasmaWindowDiagonal
-  graph: WindowDiagonal
-  startNode: start
-  targetNode: plasmaWindowDiagonal
-  category: construction-category-structures
-  canBuildInImpassable: true
-  description: Clear, with a purple tint.
-  conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
-  icon:
-    sprite: Structures/Windows/plasma_diagonal.rsi
-    state: state1
-  objectType: Structure
-  placementMode: SnapgridCenter
-
-- type: construction
-  name: diagonal reinforced plasma window
-  id: ReinforcedPlasmaWindowDiagonal
-  graph: WindowDiagonal
-  startNode: start
-  targetNode: reinforcedPlasmaWindowDiagonal
-  category: construction-category-structures
-  canBuildInImpassable: true
-  description: Clear and even tougher, with a purple tint.
-  conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
-  icon:
-    sprite: Structures/Windows/reinforced_plasma_diagonal.rsi
-    state: state1
-  objectType: Structure
-  placementMode: SnapgridCenter
-
-- type: construction
   name: directional window
   id: WindowDirectional
   graph: WindowDirectional
@@ -592,7 +903,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/directional.rsi
+    sprite: Ember/Structures/Windows/window.rsi
     state: window
   objectType: Structure
   placementMode: SnapgridCenter
@@ -610,8 +921,8 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/directional.rsi
-    state: reinforced_window
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow
   objectType: Structure
   placementMode: SnapgridCenter
 
@@ -628,14 +939,14 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/directional.rsi
-    state: clock_window
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow
   objectType: Structure
   placementMode: SnapgridCenter
 
 - type: construction
-  name: directional plasma window
-  id: PlasmaWindowDirectional
+  name: directional phoron window
+  id: PhoronWindowDirectional
   graph: WindowDirectional
   startNode: start
   targetNode: plasmaWindowDirectional
@@ -646,13 +957,49 @@
   - !type:EmptyOrWindowValidInTile
   - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/directional.rsi
-    state: plasma_window
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window
   objectType: Structure
   placementMode: SnapgridCenter
 
 - type: construction
-  name: directional reinforced plasma window
+  name: directional borosilicate window
+  id: BorosilicateWindowDirectional
+  graph: WindowDirectional
+  startNode: start
+  targetNode: borosilicateWindowDirectional
+  category: construction-category-structures
+  canBuildInImpassable: true
+  description: Clear, fire resistant glass.
+  conditions:
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
+  icon:
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: directional reinforced borosilicate window
+  id: ReinforcedBorosilicateWindowDirectional
+  graph: WindowDirectional
+  startNode: start
+  targetNode: reinforcedBorosilicateWindowDirectional
+  category: construction-category-structures
+  canBuildInImpassable: true
+  description: Clear, fire resistant glass laced with steel.
+  conditions:
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
+  icon:
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: directional reinforced phoron window
   id: PlasmaReinforcedWindowDirectional
   graph: WindowDirectional
   startNode: start
@@ -664,8 +1011,8 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/directional.rsi
-    state: plasma_reinforced_window
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow
   objectType: Structure
   placementMode: SnapgridCenter
 
@@ -682,8 +1029,8 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/uranium_window.rsi
-    state: full
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window_full
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -701,47 +1048,11 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/reinforced_uranium_window.rsi
-    state: full
+    sprite: Ember/Structures/Windows/window.rsi
+    state: rwindow_full
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
-
-- type: construction
-  name: diagonal uranium window
-  id: UraniumWindowDiagonal
-  graph: WindowDiagonal
-  startNode: start
-  targetNode: uraniumWindowDiagonal
-  category: construction-category-structures
-  canBuildInImpassable: true
-  description: Clear, with added RadAbsorb to protect you from deadly radiation.
-  conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
-  icon:
-    sprite: Structures/Windows/uranium_window_diagonal.rsi
-    state: state1
-  objectType: Structure
-  placementMode: SnapgridCenter
-
-- type: construction
-  name: diagonal reinforced uranium window
-  id: ReinforcedUraniumWindowDiagonal
-  graph: WindowDiagonal
-  startNode: start
-  targetNode: reinforcedUraniumWindowDiagonal
-  category: construction-category-structures
-  canBuildInImpassable: true
-  description: Clear and even tougher, with added RadAbsorb to protect you from deadly radiation.
-  conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
-  icon:
-    sprite: Structures/Windows/reinforced_uranium_diagonal.rsi
-    state: state1
-  objectType: Structure
-  placementMode: SnapgridCenter
 
 - type: construction
   name: directional uranium window
@@ -788,7 +1099,7 @@
   category: construction-category-structures
   description: This is a firelock - it locks an area when a fire alarm in the area is triggered. Don't get squished!
   icon:
-    sprite: Structures/Doors/Airlocks/Standard/firelock.rsi
+    sprite: Ember/Structures/Doors/Firelocks/firelock.rsi
     state: closed
   objectType: Structure
   placementMode: SnapgridCenter
@@ -806,7 +1117,7 @@
   category: construction-category-structures
   description: This is a firelock - it locks an area when a fire alarm in the area is triggered. Don't get squished!
   icon:
-    sprite: Structures/Doors/Airlocks/Glass/firelock.rsi
+    sprite: Ember/Structures/Doors/Firelocks/firelock.rsi
     state: closed
   objectType: Structure
   placementMode: SnapgridCenter
@@ -841,8 +1152,8 @@
   category: construction-category-structures
   description: This is a shutter - connect it to a button to open and close it.
   icon:
-    sprite: Structures/Doors/Shutters/shutters.rsi
-    state: closed
+    sprite: Ember/Structures/Doors/rapid_pdoor.rsi
+    state: shutter1
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
@@ -856,8 +1167,8 @@
   category: construction-category-structures
   description: This is a shutter - connect it to a button to open and close it.
   icon:
-    sprite: Structures/Doors/Shutters/shutters_window.rsi
-    state: closed
+    sprite: Ember/Structures/Doors/rapid_pdoor.rsi
+    state: shutter1
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
@@ -871,8 +1182,8 @@
   category: construction-category-structures
   description: This is a shutter - connect it to a button to open and close it.
   icon:
-    sprite: Structures/Doors/Shutters/shutters_radiation.rsi
-    state: closed
+    sprite: Ember/Structures/Doors/rapid_pdoor.rsi
+    state: shutter1
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
@@ -886,8 +1197,8 @@
   category: construction-category-structures
   description: This one says 'BLAST DONGER'.
   icon:
-    sprite: Structures/Doors/Shutters/blastdoor.rsi
-    state: closed
+    sprite: Ember/Structures/Doors/rapid_pdoor.rsi
+    state: pdoor1
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
@@ -1582,11 +1893,11 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: plasma door
-  id: PlasmaDoor
+  name: phoron door
+  id: PhoronDoor
   graph: DoorGraph
   startNode: start
-  targetNode: plasmaDoor
+  targetNode: phoronDoor
   category: construction-category-structures
   description: A primitive door with manual operation like the cavemen used.
   objectType: Structure
@@ -1764,5 +2075,107 @@
   icon:
     sprite: Structures/Doors/secret_door.rsi
     state: closed
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: iron door
+  id: IronDoor
+  graph: DoorGraph
+  startNode: start
+  targetNode: ironDoor
+  category: construction-category-structures
+  description: A primitive door with manual operation like the cavemen used.
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  icon:
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
+    state: metal
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: sandstone door
+  id: SandstoneDoor
+  graph: DoorGraph
+  startNode: start
+  targetNode: sandstoneDoor
+  category: construction-category-structures
+  description: A primitive door with manual operation like the cavemen used.
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  icon:
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
+    state: stone
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: uranium door
+  id: UraniumDoor
+  graph: DoorGraph
+  startNode: start
+  targetNode: uraniumDoor
+  category: construction-category-structures
+  description: A primitive door with manual operation like the cavemen used.
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  icon:
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
+    state: stone
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: diamond door
+  id: DiamondDoor
+  graph: DoorGraph
+  startNode: start
+  targetNode: diamondDoor
+  category: construction-category-structures
+  description: A primitive door with manual operation like the cavemen used.
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  icon:
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
+    state: metal
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: plastic door
+  id: PlasticDoor
+  graph: DoorGraph
+  startNode: start
+  targetNode: plasticDoor
+  category: construction-category-structures
+  description: A primitive door with manual operation like the cavemen used.
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  icon:
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
+    state: plastic
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: glass door
+  id: GlassDoor
+  graph: DoorGraph
+  startNode: start
+  targetNode: glassDoor
+  category: construction-category-structures
+  description: A primitive door with manual operation like the cavemen used.
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  icon:
+    sprite: Ember/Structures/Doors/MaterialDoors/material_doors.rsi
+    state: stone
   conditions:
     - !type:TileNotBlocked

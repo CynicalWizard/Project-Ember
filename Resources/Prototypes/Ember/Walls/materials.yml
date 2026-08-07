@@ -1,0 +1,215 @@
+- type: emberWallMaterial
+  id: EmberWallSteel
+  physicalMaterial: Steel
+  stateBase: solid
+  reinforcementStateBase: reinf_over
+  reinforcementColor: "#a8a9b2"
+
+- type: emberWallMaterial
+  id: EmberWallIron
+  physicalMaterial: Iron
+  stateBase: metal
+
+- type: emberWallMaterial
+  id: EmberWallAluminium
+  physicalMaterial: Aluminium
+  stateBase: metal
+
+- type: emberWallMaterial
+  id: EmberWallTitanium
+  physicalMaterial: Titanium
+  stateBase: metal
+
+- type: emberWallMaterial
+  id: EmberWallPlasteel
+  physicalMaterial: Plasteel
+  stateBase: solid
+  reinforcementStateBase: reinf_over
+  reinforcementColor: "#A8A9B2"
+
+- type: emberWallMaterial
+  id: EmberWallOCP
+  physicalMaterial: OsmiumCarbidePlasteel
+  stateBase: solid
+  reinforcementStateBase: reinf_over
+  reinforcementColor: "#9BC6F2"
+
+- type: emberWallMaterial
+  id: EmberWallRustedSteel
+  physicalMaterial: RustedSteel
+  stateBase: solid
+  reinforcementStateBase: reinf_over
+  reinforcementColor: "#7A4A2A"
+
+- type: emberWallMaterial
+  id: EmberWallDiamond
+  physicalMaterial: Diamond
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallGold
+  physicalMaterial: Gold
+  stateBase: metal
+
+- type: emberWallMaterial
+  id: EmberWallOsmium
+  physicalMaterial: Osmium
+  stateBase: metal
+
+- type: emberWallMaterial
+  id: EmberWallElectrum
+  physicalMaterial: Electrum
+  stateBase: metal
+
+- type: emberWallMaterial
+  id: EmberWallCopper
+  physicalMaterial: Copper
+  stateBase: metal
+
+- type: emberWallMaterial
+  id: EmberWallBronze
+  physicalMaterial: Bronze
+  stateBase: metal
+
+- type: emberWallMaterial
+  id: EmberWallPlatinum
+  physicalMaterial: Platinum
+  stateBase: metal
+
+- type: emberWallMaterial
+  id: EmberWallPhoron
+  physicalMaterial: Phoron
+  stateBase: stone # /material/phoron is wall_icon_base "stone" in Bay, and its blend table assumes that
+
+- type: emberWallMaterial
+  id: EmberWallPlastic
+  physicalMaterial: Plastic
+  stateBase: solid
+
+- type: emberWallMaterial
+  id: EmberWallSandstone
+  physicalMaterial: Sandstone
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallMarble
+  physicalMaterial: Marble
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallConcrete
+  physicalMaterial: Concrete
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallSilver
+  physicalMaterial: Silver
+  stateBase: metal
+
+- type: emberWallMaterial
+  id: EmberWallUranium
+  physicalMaterial: Uranium
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallWood
+  physicalMaterial: Wood
+  stateBase: wood
+
+- type: emberWallMaterial
+  id: EmberWallStone
+  physicalMaterial: Stone
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberGlass
+  physicalMaterial: Glass
+  stateBase: solid
+  color: "#AACCFFB0"
+
+- type: emberWallMaterial
+  id: EmberBorosilicateGlass
+  physicalMaterial: BorosilicateGlass
+  stateBase: solid
+  color: "#899EBDB0"
+
+- type: emberWallMaterial
+  id: EmberPhoronGlass
+  physicalMaterial: BorosilicateGlass
+  stateBase: solid
+  color: "#E37108B0"
+
+
+- type: emberWallMaterial
+  id: EmberUraniumGlass
+  physicalMaterial: Glass
+  stateBase: solid
+  color: "#66CC66B0"
+
+- type: emberWallMaterial
+  id: EmberShuttleGlass
+  physicalMaterial: Glass
+  stateBase: solid
+  color: "#AACCFFB0"
+
+- type: emberWallMaterial
+  id: EmberBrassGlass
+  physicalMaterial: Glass
+  stateBase: solid
+  color: "#B08D28B0"
+
+- type: emberWallMaterial
+  id: EmberMiningGlass
+  physicalMaterial: Glass
+  stateBase: solid
+  color: "#D6B56DB0"
+
+- type: emberWallMaterial
+  id: EmberWallQuartz
+  physicalMaterial: Quartz
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallPyrite
+  physicalMaterial: Pyrite
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallSpodumene
+  physicalMaterial: Spodumene
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallCinnabar
+  physicalMaterial: Cinnabar
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallPhosphorite
+  physicalMaterial: Phosphorite
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallPotash
+  physicalMaterial: Potash
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallBauxite
+  physicalMaterial: Bauxite
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallRutile
+  physicalMaterial: Rutile
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallBorax
+  physicalMaterial: Borax
+  stateBase: stone
+
+- type: emberWallMaterial
+  id: EmberWallPitchblende
+  physicalMaterial: Pitchblende
+  stateBase: stone

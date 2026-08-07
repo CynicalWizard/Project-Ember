@@ -6,11 +6,15 @@
   components:
   - type: AccessReader
   - type: Sprite
-    sprite: Structures/Doors/Shutters/blastdoor.rsi
+    sprite: Ember/Structures/Doors/rapid_pdoor.rsi
     layers:
-    - state: closed
+    - state: pdoor1
       map: ["enum.DoorVisualLayers.Base"]
   - type: Door
+    openSpriteState: pdoor0
+    closedSpriteState: pdoor1
+    openingSpriteState: pdoorc0
+    closingSpriteState: pdoorc1
     closeTimeOne: 0.4
     closeTimeTwo: 0.4
     openTimeOne: 0.4
@@ -62,8 +66,8 @@
   description: This one says 'BLAST DONGER'.
   components:
   - type: Sprite
-    sprite: Structures/Doors/Shutters/blastdoor.rsi
-    state: assembly
+    sprite: Ember/Structures/Doors/rapid_pdoor.rsi
+    state: pdoor1
   - type: InteractionOutline
   - type: Damageable
     damageContainer: StructuralInorganic

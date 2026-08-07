@@ -22,8 +22,11 @@ public sealed partial class AtmosphereSystem
 {
     private EntProtoId _spaceWindProto = "SpaceWindVisual";
     private readonly HashSet<Entity<MovedByPressureComponent>> _activePressures = new();
+    private readonly List<Entity<MovedByPressureComponent>> _activePressuresToRemove = new();
+
     private void UpdateHighPressure(float frameTime)
     {
+        _activePressuresToRemove.Clear();
         foreach (var ent in _activePressures)
         {
             if (!ent.Comp.Throwing || _gameTiming.CurTime < ent.Comp.ThrowingCutoffTarget
@@ -40,6 +43,11 @@ public sealed partial class AtmosphereSystem
             _physics.SetSleepingAllowed(ent.Owner, physics, true);
 
             ent.Comp.Throwing = false;
+            _activePressuresToRemove.Add(ent);
+        }
+
+        foreach (var ent in _activePressuresToRemove)
+        {
             _activePressures.Remove(ent);
         }
     }
@@ -180,9 +188,8 @@ public sealed partial class AtmosphereSystem
         if (!alwaysThrow && pVecLength < coefficientOfFriction)
             return;
 
-        // Yes this technically increases the magnitude by a small amount... I detest having to swap between "World" and "Local" vectors.
-        // ThrowingSystem increments linear velocity by a given vector, but we have to do this anyways because reasons.
-        var velocity = _transformSystem.GetWorldRotation(uid).ToWorldVec() + pressureVector;
+        // We just use the pressureVector as the throw direction.
+        var velocity = pressureVector;
 
         _throwing.TryThrow(uid, velocity, physics, xform, projectileQuery,
             1, doSpin: physics.AngularVelocity < SpaceWindMaxAngularVelocity);

@@ -285,8 +285,7 @@ public sealed class SharedSkillsSystem : EntitySystem
         float factor = 0.3f,
         SkillSetComponent? component = null)
     {
-        var points = GetSkillValue(uid, skill, component);
-        return Math.Max(0f, 1f + ((int) SkillLevels.Baseline - (int) points) * factor);
+        return GetDelayMultiplier(GetSkillValue(uid, skill, component), factor);
     }
 
     public int GetSkillFailChance(
@@ -297,7 +296,28 @@ public sealed class SharedSkillsSystem : EntitySystem
         float factor = 1f,
         SkillSetComponent? component = null)
     {
-        var points = GetSkillValue(uid, skill, component);
+        return GetFailChance(GetSkillValue(uid, skill, component), failChance, noMoreFail, factor);
+    }
+
+    /// <summary>
+    /// Bay's <c>skill_delay_mult</c>. Trained is the baseline that takes the listed time; every level either side
+    /// of it moves the time by <paramref name="factor"/>.
+    /// </summary>
+    public static float GetDelayMultiplier(SkillLevel points, float factor = 0.3f)
+    {
+        return Math.Max(0f, 1f + ((int) SkillLevels.Baseline - (int) points) * factor);
+    }
+
+    /// <summary>
+    /// Bay's <c>skill_fail_chance</c>. <paramref name="failChance"/> is the chance at Unskilled and it halves per
+    /// level, down to nothing once <paramref name="noMoreFail"/> is reached.
+    /// </summary>
+    public static int GetFailChance(
+        SkillLevel points,
+        int failChance,
+        SkillLevel noMoreFail = SkillLevel.Master,
+        float factor = 1f)
+    {
         if (points >= noMoreFail)
             return 0;
 

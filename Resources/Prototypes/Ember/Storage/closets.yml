@@ -1,0 +1,48 @@
+# Из чего сделан контейнер. Больше эти базы ни за что не отвечают.
+#
+# Раньше здесь лежал ещё и Sprite с пустыми слоями под ванильные визуализаторы. Не сработало: у сущности с
+# двумя родителями Sprite разрешился в ванильный, а настройки визуализатора — в наши, и он искал наши состояния
+# в чужом листе. Слои и сами визуализаторы теперь снимает EmberProceduralClosetSystem, где порядок разрешения
+# ни на что не влияет.
+#
+# Материал баевский: /obj/structure/closet объявляет сталь и использует её ровно в одном месте — при разрезке
+# контейнер отдаёт два листа. Здесь он ещё и решает, при какой температуре ящик поплывёт.
+
+- type: entity
+  abstract: true
+  id: EmberProceduralClosetVisuals
+  components:
+  - type: EmberMaterialComposition
+    materials:
+    - Steel
+
+- type: entity
+  abstract: true
+  id: EmberProceduralCrateVisuals
+  components:
+  - type: EmberMaterialComposition
+    materials:
+    - Steel
+
+- type: entity
+  abstract: true
+  id: EmberProceduralWallClosetVisuals
+  components:
+  - type: EmberMaterialComposition
+    materials:
+    - Steel
+
+# Ящик, который переживает пожар. Всё остальное из этого списка сделано из стали и плывёт при 1800 K, чего
+# тритиевому пожару хватает с запасом; осмий-карбидный плестил держит 12000 K, и это единственное, что можно
+# оставить в горящем отсеке с расчётом найти его там же.
+- type: entity
+  id: CrateThermal
+  parent: CrateGenericSteel
+  name: thermal crate
+  description: A crate lined with osmium-carbide plasteel. Whatever is inside will outlive the room it is in.
+  components:
+  - type: EmberProceduralCloset
+    style: EmberClosetCrateSecureHazard
+  - type: EmberMaterialComposition
+    materials:
+    - OsmiumCarbidePlasteel

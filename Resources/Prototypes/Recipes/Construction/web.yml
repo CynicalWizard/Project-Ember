@@ -17,6 +17,7 @@
     tags:
     - SpiderCraft
   conditions:
+    - !type:EmberNoWallInTile
     - !type:TileNotBlocked
 
 - type: construction

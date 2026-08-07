@@ -283,7 +283,12 @@ namespace Content.Server.Construction
                     {
                         var doAfterEv = new ConstructionInteractDoAfterEvent(EntityManager, interactUsing);
 
-                        var doAfterEventArgs = new DoAfterArgs(EntityManager, interactUsing.User, step.DoAfter, doAfterEv, uid, uid, interactUsing.Used)
+                        // Bay runs every construction step through do_skilled, not just the first one. Without this
+                        // an unskilled builder was slowed down raising a girder and then finished the wall at the
+                        // same speed as an engineer.
+                        var stepTime = step.DoAfter * GetConstructionSpeedModifier(interactUsing.User);
+
+                        var doAfterEventArgs = new DoAfterArgs(EntityManager, interactUsing.User, stepTime, doAfterEv, uid, uid, interactUsing.Used)
                         {
                             BreakOnDamage = false,
                             BreakOnMove = true,
@@ -360,11 +365,14 @@ namespace Content.Server.Construction
                     if (doAfterState == DoAfterState.Completed)
                         return  HandleResult.True;
 
+                    // Bay's tool steps go through do_skilled as well, on top of the tool's own speed.
+                    var toolTime = toolInsertStep.DoAfter * GetConstructionSpeedModifier(interactUsing.User);
+
                     var result  = _toolSystem.UseTool(
                         interactUsing.Used,
                         interactUsing.User,
                         uid,
-                        TimeSpan.FromSeconds(toolInsertStep.DoAfter),
+                        TimeSpan.FromSeconds(toolTime),
                         new [] { toolInsertStep.Tool },
                         new ConstructionInteractDoAfterEvent(EntityManager, interactUsing),
                         out var doAfter,

@@ -1,0 +1,145 @@
+using System.Diagnostics.CodeAnalysis;
+using Content.Shared.Ember.Doors;
+using Content.Shared.Ember.Structures;
+using Content.Shared.Ember.Walls;
+using Robust.Shared.Prototypes;
+
+namespace Content.Shared.Ember.Materials;
+
+/// <summary>
+/// What a thing is built out of, wherever it happens to keep that.
+/// </summary>
+/// <remarks>
+/// There is no one component that means "made of something": a wall names a wall material that points at the
+/// physical one, a table names its plating and its reinforcement separately, and a sheet names itself. Anything
+/// that wants to reason about the material — what a thing melts at, what it leaves behind when it breaks — needs
+/// the same lookup, so it lives here rather than in each of them.
+/// </remarks>
+public static class EmberMaterialLookup
+{
+    /// <summary>The frame under a table's plating is steel whatever it is topped with, exactly as on Bay.</summary>
+    public static readonly ProtoId<EmberMaterialPrototype> TableFrame = "Steel";
+
+    /// <summary>What an airlock is, since a style says nothing about substance.</summary>
+    public static readonly ProtoId<EmberMaterialPrototype> AirlockShell = "Steel";
+
+    /// <summary>And what is set into a glass one.</summary>
+    public static readonly ProtoId<EmberMaterialPrototype> AirlockWindow = "Glass";
+
+    /// <summary>
+    /// Every material an entity is made of, most important first. Most things are one material; a table is
+    /// three, and a reinforced wall is two.
+    /// </summary>
+    public static IEnumerable<ProtoId<EmberMaterialPrototype>> Materials(
+        IEntityManager entities,
+        IPrototypeManager prototypes,
+        EntityUid uid)
+    {
+        if (entities.TryGetComponent(uid, out EmberProceduralWallComponent? wall))
+        {
+            if (Physical(prototypes, wall.Material) is { } material)
+                yield return material;
+
+            if (wall.ReinforcementMaterial is { } reinforcement &&
+                Physical(prototypes, reinforcement) is { } reinforcementMaterial)
+            {
+                yield return reinforcementMaterial;
+            }
+
+            yield break;
+        }
+
+        if (entities.TryGetComponent(uid, out EmberProceduralStructureComponent? structure))
+        {
+            if (Physical(prototypes, structure.Material) is { } material)
+                yield return material;
+
+            yield break;
+        }
+
+        if (entities.TryGetComponent(uid, out EmberProceduralTableComponent? table))
+        {
+            yield return TableFrame;
+
+            if (table.Material is { } plating)
+                yield return plating;
+
+            if (table.Reinforcement is { } reinforcement)
+                yield return reinforcement;
+
+            yield break;
+        }
+
+        if (entities.TryGetComponent(uid, out EmberMaterialTintComponent? tint))
+        {
+            if (Physical(prototypes, tint.Material) is { } material)
+                yield return material;
+
+            yield break;
+        }
+
+        if (entities.TryGetComponent(uid, out EmberProceduralAirlockComponent? airlock))
+        {
+            // An airlock carries a style, which is a set of colours rather than a substance. Bay's station
+            // airlocks are steel, and a glass one is steel and a pane, which is what it counts as made of.
+            yield return AirlockShell;
+
+            if (airlock.Glass)
+                yield return AirlockWindow;
+
+            yield break;
+        }
+
+        if (entities.TryGetComponent(uid, out EmberProceduralMaterialDoorComponent? door))
+        {
+            yield return door.Material;
+            yield break;
+        }
+
+        if (entities.TryGetComponent(uid, out EmberMaterialStackComponent? stack) &&
+            stack.Material is { } stackMaterial)
+        {
+            yield return stackMaterial;
+            yield break;
+        }
+
+        // Last, because it is the one that says nothing about how the thing looks: whatever named it did so
+        // only so that the material could be asked about.
+        if (entities.TryGetComponent(uid, out EmberMaterialCompositionComponent? composition))
+        {
+            foreach (var material in composition.Materials)
+            {
+                yield return material;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Looks up something a component names, tolerating a component that names nothing at all.
+    /// </summary>
+    /// <remarks>
+    /// A material id is only ever as good as the prototype it was written on, and a component added to a bare
+    /// entity carries no id in that field whatsoever. Handed that, the prototype manager does not answer "no" —
+    /// it looks the empty id up in a dictionary and throws. Every startup that reads a material off its own
+    /// component can be reached that way, which is exactly what the integration tests do to every component in
+    /// the game, so they all ask through here.
+    /// </remarks>
+    public static bool TryResolve<T>(
+        IPrototypeManager prototypes,
+        ProtoId<T> id,
+        [NotNullWhen(true)] out T? prototype)
+        where T : class, IPrototype
+    {
+        prototype = null;
+        return !string.IsNullOrEmpty(id.Id) && prototypes.TryIndex(id, out prototype);
+    }
+
+    private static ProtoId<EmberMaterialPrototype>? Physical(
+        IPrototypeManager prototypes,
+        ProtoId<EmberWallMaterialPrototype> material)
+    {
+        return TryResolve(prototypes, material, out EmberWallMaterialPrototype? wall)
+            ? wall.PhysicalMaterial
+            : null;
+    }
+}

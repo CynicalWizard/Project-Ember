@@ -4,11 +4,23 @@
   graph:
     - node: start
       edges:
-        - to: plasmaWindow
+        - to: phoronWindow
           steps:
             - material: PlasmaGlass
-              amount: 2
+              amount: 4
               doAfter: 2
+
+        - to: borosilicateWindow
+          steps:
+            - material: BorosilicateGlass
+              amount: 4
+              doAfter: 2
+
+        - to: reinforcedBorosilicateWindow
+          steps:
+            - material: ReinforcedBorosilicateGlass
+              amount: 2
+              doAfter: 3
 
         - to: reinforcedWindow
           steps:
@@ -19,25 +31,25 @@
         - to: tintedWindow
           steps:
             - material: ReinforcedGlass
-              amount: 2
+              amount: 4
               doAfter: 2
 
         - to: reinforcedPlasmaWindow
           steps:
             - material: ReinforcedPlasmaGlass
-              amount: 2
+              amount: 4
               doAfter: 3
 
         - to: uraniumWindow
           steps:
             - material: UraniumGlass
-              amount: 2
+              amount: 4
               doAfter: 2
 
         - to: reinforcedUraniumWindow
           steps:
             - material: ReinforcedUraniumGlass
-              amount: 2
+              amount: 4
               doAfter: 3
 
         - to: window
@@ -49,15 +61,15 @@
         - to: shuttleWindow
           steps:
           - material: Plasteel
-            amount: 2
+            amount: 4
           - material: ReinforcedGlass
-            amount: 2
+            amount: 4
             doAfter: 4
 
         - to: clockworkWindow
           steps:
           - material: ClockworkGlass
-            amount: 2
+            amount: 4
             doAfter: 3
 
     - node: window
@@ -105,7 +117,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: SheetRGlass1
-              amount: 2
+              amount: 4
             - !type:DeleteEntity {}
           steps:
             - tool: Screwing
@@ -117,20 +129,62 @@
             - tool: Anchoring
               doAfter: 2
 
-    - node: plasmaWindow
-      entity: PlasmaWindow
+    - node: phoronWindow
+      entity: PhoronWindow
       edges:
         - to: start
           completed:
             - !type:SpawnPrototype
               prototype: SheetPGlass1
-              amount: 2
+              amount: 4
             - !type:DeleteEntity {}
           steps:
             - tool: Screwing
               doAfter: 2
             - tool: Prying
               doAfter: 3
+            - tool: Screwing
+              doAfter: 2
+            - tool: Anchoring
+              doAfter: 3
+
+    - node: borosilicateWindow
+      entity: BorosilicateWindow
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: EmberSheetBorosilicateGlass1
+              amount: 4
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 2
+            - tool: Prying
+              doAfter: 3
+            - tool: Screwing
+              doAfter: 2
+            - tool: Anchoring
+              doAfter: 3
+
+    - node: reinforcedBorosilicateWindow
+      entity: ReinforcedBorosilicateWindow
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: EmberSheetReinforcedBorosilicateGlass1
+              amount: 2
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Welding
+              doAfter: 5
+            - tool: Screwing
+              doAfter: 2
+            - tool: Prying
+              doAfter: 3
+            - tool: Welding
+              doAfter: 5
             - tool: Screwing
               doAfter: 2
             - tool: Anchoring
@@ -143,7 +197,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: SheetRPGlass1
-              amount: 2
+              amount: 4
             - !type:DeleteEntity {}
           steps:
             - tool: Welding
@@ -166,7 +220,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: SheetUGlass1
-              amount: 2
+              amount: 4
             - !type:DeleteEntity {}
           steps:
             - tool: Screwing
@@ -185,7 +239,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: SheetRUGlass1
-              amount: 2
+              amount: 4
             - !type:DeleteEntity {}
           steps:
             - tool: Welding
@@ -208,7 +262,7 @@
         completed:
         - !type:SpawnPrototype
           prototype: SheetClockworkGlass1
-          amount: 2
+          amount: 4
         - !type:DeleteEntity {}
         steps:
         - tool: Welding
@@ -231,10 +285,10 @@
         completed:
         - !type:SpawnPrototype
           prototype: SheetRGlass1
-          amount: 2
+          amount: 4
         - !type:SpawnPrototype
           prototype: SheetPlasteel1
-          amount: 2
+          amount: 4
         - !type:DeleteEntity {}
         steps:
         #To-Do: Add deconstruct visuals

@@ -7,7 +7,8 @@
   components:
   - type: WallMount
   - type: Sprite
-    sprite: Structures/Wallmounts/noticeboard.rsi
+    noRot: true
+    sprite: Ember/Structures/Wallmounts/noticeboard.rsi
     layers:
       - state: noticeboard
       - state: notice-0

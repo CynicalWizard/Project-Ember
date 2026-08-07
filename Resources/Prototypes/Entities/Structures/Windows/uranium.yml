@@ -4,11 +4,11 @@
   parent: WindowRCDResistant
   components:
   - type: Sprite
-    drawdepth: WallTops
-    sprite: Structures/Windows/uranium_window.rsi
+    drawdepth: Objects
+    sprite: Ember/Structures/Windows/window.rsi
   - type: Icon
-    sprite: Structures/Windows/uranium_window.rsi
-    state: full
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window_full
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Glass
@@ -34,8 +34,12 @@
             max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: IconSmooth
-    base: uwindow
+  - type: EmberProceduralStructure
+    role: Window
+    material: EmberUraniumGlass
+    stateBase: window
+    alpha: 0.7058824
+    sprite: /Textures/Ember/Structures/Windows/window.rsi
   - type: Construction
     graph: Window
     node: uraniumWindow
@@ -45,9 +49,9 @@
     damageDivisor: 3
     trackAllDamage: true
     damageOverlay:
-      sprite: Structures/Windows/cracks.rsi
+      sprite: Ember/Structures/Windows/window_damage_overlay.rsi
   - type: StaticPrice
-    price: 200
+    price: 400
   - type: RadiationBlocker
     resistance: 5
 
@@ -62,11 +66,14 @@
     - Window
   components:
   - type: Sprite
-    sprite: Structures/Windows/directional.rsi
-    state: uranium_window
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window
+  - type: EmberMaterialTint
+    material: EmberUraniumGlass
+    alpha: 0.7058824
   - type: Icon
-    sprite: Structures/Windows/directional.rsi
-    state: uranium_window
+    sprite: Ember/Structures/Windows/window.rsi
+    state: window
   - type: Construction
     graph: WindowDirectional
     node: uraniumWindowDirectional
@@ -104,50 +111,3 @@
   - type: RadiationBlocker
     resistance: 1.5
 
-- type: entity
-  parent: UraniumWindow
-  id: UraniumWindowDiagonal
-  suffix: diagonal
-  placement:
-    mode: SnapgridCenter
-    snap:
-    - Window
-  components:
-  - type: Sprite
-    drawdepth: WallTops
-    sprite: Structures/Windows/uranium_window_diagonal.rsi
-    state: state0
-  - type: Tag
-    tags:
-    - Diagonal
-  - type: IconSmooth
-    mode: Diagonal
-    key: windows
-    base: state
-  - type: Icon
-    sprite: Structures/Windows/uranium_window_diagonal.rsi
-    state: state0
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PolygonShape
-            vertices:
-            - "-0.5,-0.5"
-            - "0.5,0.5"
-            - "0.5,-0.5"
-        mask:
-        - FullTileMask
-        layer:
-        - GlassLayer
-  - type: Airtight
-    noAirWhenFullyAirBlocked: false
-    airBlockedDirection:
-    - South
-    - East
-  - type: DamageVisuals
-    damageOverlay:
-      sprite: Structures/Windows/cracks_diagonal.rsi
-  - type: Construction
-    graph: WindowDiagonal
-    node: uraniumWindowDiagonal

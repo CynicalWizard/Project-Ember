@@ -1,4 +1,4 @@
-cd ..\..\
+cd /d "%~dp0..\.."
 
 mkdir Scripts\logs
 

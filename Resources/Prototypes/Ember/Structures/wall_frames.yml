@@ -1,0 +1,263 @@
+- type: entity
+  id: WallFrame
+  name: steel low wall
+  description: A low wall section which serves as the base of windows, amongst other things.
+  parent: BaseStructure
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    drawdepth: Walls
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  - type: Icon
+    sprite: Ember/Structures/WallFrames/wall_frame_offbay.rsi
+    state: frame
+  - type: EmberProceduralStructure
+    role: WallFrame
+    material: EmberWallSteel
+    stateBase: frame
+    sprite: /Textures/Ember/Structures/WallFrames/wall_frame_offbay.rsi
+  - type: CanBuildWindowOnTop
+  - type: RCDDeconstructable
+    cost: 4
+    delay: 2
+    fx: EffectRCDDeconstruct2
+  - type: Construction
+    graph: WallFrame
+    node: wallFrame
+    deconstructionTarget: start
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Physics
+    bodyType: Static
+  - type: Climbable
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+
+- type: entity
+  id: WallFrameReinforced
+  name: reinforced wall frame
+  parent: WallFrame
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallPlasteel
+  - type: Construction
+    graph: WallFrameReinforced
+    node: wallFrame
+
+- type: entity
+  id: WallFrameIron
+  name: iron wall frame
+  parent: WallFrame
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallIron
+  - type: Construction
+    graph: WallFrameIron
+    node: wallFrame
+
+- type: entity
+  id: WallFrameAluminium
+  name: aluminium wall frame
+  parent: WallFrame
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallAluminium
+  - type: Construction
+    graph: WallFrameAluminium
+    node: wallFrame
+
+- type: entity
+  id: WallFrameTitanium
+  name: titanium wall frame
+  parent: WallFrame
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallTitanium
+  - type: Construction
+    graph: WallFrameTitanium
+    node: wallFrame
+
+- type: entity
+  id: WallFrameOCP
+  name: OCP wall frame
+  parent: WallFrame
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallOCP
+  - type: Construction
+    graph: WallFrameOCP
+    node: wallFrame
+
+- type: entity
+  id: WallFrameOsmium
+  name: osmium wall frame
+  parent: WallFrame
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallOsmium
+  - type: Construction
+    graph: WallFrameOsmium
+    node: wallFrame
+
+- type: entity
+  id: WallFrameElectrum
+  name: electrum wall frame
+  parent: WallFrame
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallElectrum
+  - type: Construction
+    graph: WallFrameElectrum
+    node: wallFrame
+
+- type: entity
+  id: WallFrameCopper
+  name: copper wall frame
+  parent: WallFrame
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallCopper
+  - type: Construction
+    graph: WallFrameCopper
+    node: wallFrame
+
+- type: entity
+  id: WallFrameBronze
+  name: bronze wall frame
+  parent: WallFrame
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallBronze
+  - type: Construction
+    graph: WallFrameBronze
+    node: wallFrame
+
+- type: entity
+  id: WallFramePlatinum
+  name: platinum wall frame
+  parent: WallFrame
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallPlatinum
+  - type: Construction
+    graph: WallFramePlatinum
+    node: wallFrame
+
+- type: entity
+  id: WallFrameGold
+  name: gold wall frame
+  parent: WallFrame
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallGold
+  - type: Construction
+    graph: WallFrameGold
+    node: wallFrame
+
+- type: entity
+  id: WallFrameSilver
+  name: silver wall frame
+  parent: WallFrame
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallSilver
+  - type: Construction
+    graph: WallFrameSilver
+    node: wallFrame
+
+- type: entity
+  id: WallFramePhoron
+  name: phoron wall frame
+  parent: WallFrame
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallPhoron
+  - type: Construction
+    graph: WallFramePhoron
+    node: wallFrame
+
+- type: entity
+  id: WallFrameUranium
+  name: uranium wall frame
+  parent: WallFrame
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallUranium
+  - type: Construction
+    graph: WallFrameUranium
+    node: wallFrame
+
+- type: entity
+  id: WallFramePlastic
+  name: plastic wall frame
+  parent: WallFrame
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallPlastic
+  - type: Construction
+    graph: WallFramePlastic
+    node: wallFrame
+
+- type: entity
+  id: WallFrameWood
+  name: wood wall frame
+  parent: WallFrame
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallWood
+  - type: Construction
+    graph: WallFrameWood
+    node: wallFrame
+
+- type: entity
+  id: WallFrameSandstone
+  name: sandstone wall frame
+  parent: WallFrame
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallSandstone
+  - type: Construction
+    graph: WallFrameSandstone
+    node: wallFrame
+
+- type: entity
+  id: WallFrameMarble
+  name: marble wall frame
+  parent: WallFrame
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallMarble
+  - type: Construction
+    graph: WallFrameMarble
+    node: wallFrame
+
+- type: entity
+  id: WallFrameConcrete
+  name: concrete wall frame
+  parent: WallFrame
+  components:
+  - type: EmberProceduralStructure
+    material: EmberWallConcrete
+  - type: Construction
+    graph: WallFrameConcrete
+    node: wallFrame

@@ -1,0 +1,861 @@
+# Сгенерировано из /singleton/closet_appearance на SierraBay. Править генератор, а не этот файл.
+
+# Дерево наследования — Баевское: ребёнок берёт форму, цвет и декали родителя и меняет своё.
+
+
+
+- type: emberClosetStyle
+  id: EmberClosetBase
+
+- type: emberClosetStyle
+  id: EmberClosetTactical
+  parent: EmberClosetBase
+  color: "#AA5F61"
+  extraDecals:
+  - state: inset
+    color: "#808080"
+
+- type: emberClosetStyle
+  id: EmberClosetTacticalAlt
+  parent: EmberClosetTactical
+  color: "#57967F"
+
+- type: emberClosetStyle
+  id: EmberClosetWardrobe
+  parent: EmberClosetBase
+  extraDecals:
+  - state: stripe_horizontal
+    color: "#8BBBD5"
+  - state: stripe_w
+    color: "#808080"
+
+- type: emberClosetStyle
+  id: EmberClosetWardrobeMixed
+  parent: EmberClosetWardrobe
+  extraDecals:
+  - state: stripe_horizontal_upper
+    color: "#A2819E"
+  - state: stripe_horizontal_lower
+    color: "#CC9090"
+  - state: stripe_w
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetWardrobeOrange
+  parent: EmberClosetWardrobe
+  extraDecals:
+  - state: stripe_horizontal
+    color: "#B88A3B"
+  - state: stripe_w
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetWardrobeGreen
+  parent: EmberClosetWardrobe
+  extraDecals:
+  - state: stripe_horizontal
+    color: "#8DAF6A"
+  - state: stripe_w
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetWardrobeGrey
+  parent: EmberClosetWardrobe
+  extraDecals:
+  - state: stripe_horizontal
+    color: "#808080"
+  - state: stripe_w
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetWardrobePink
+  parent: EmberClosetWardrobe
+  extraDecals:
+  - state: stripe_horizontal
+    color: "#BF89BA"
+  - state: stripe_w
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetWardrobeBlack
+  parent: EmberClosetWardrobe
+  extraDecals:
+  - state: stripe_horizontal
+    color: "#333333"
+  - state: stripe_w
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetWardrobeYellow
+  parent: EmberClosetWardrobe
+  extraDecals:
+  - state: stripe_horizontal
+    color: "#C1BB7A"
+  - state: stripe_w
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetWardrobeRed
+  parent: EmberClosetWardrobe
+  extraDecals:
+  - state: stripe_horizontal
+    color: "#AA5F61"
+  - state: stripe_w
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetWardrobeWhite
+  parent: EmberClosetWardrobe
+  extraDecals:
+  - state: stripe_horizontal
+    color: "#808080"
+  - state: stripe_w
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetBio
+  parent: EmberClosetBase
+  color: "#B88A3B"
+  decals:
+  - state: l3
+    color: "#EEEEEE"
+  - state: stripe_horizontal_narrow
+    color: "#FF9900"
+  extraDecals:
+  - state: biohazard
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetBioCommand
+  parent: EmberClosetBio
+  extraDecals:
+  - state: lower_half_solid
+    color: "#6A97B0"
+  - state: biohazard
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetBioScience
+  parent: EmberClosetBio
+  extraDecals:
+  - state: lower_half_solid
+    color: "#C1BB7A"
+  - state: biohazard
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetBioSecurity
+  parent: EmberClosetBio
+  extraDecals:
+  - state: lower_half_solid
+    color: "#AA5F61"
+  - state: biohazard
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetBioJanitor
+  parent: EmberClosetBio
+  color: "#800080"
+  decals:
+  - state: l3
+    color: "#EEEEEE"
+  extraDecals:
+  - state: stripe_horizontal_broad
+    color: "#FF9900"
+  - state: biohazard
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetBioVirology
+  parent: EmberClosetBio
+  extraDecals:
+  - state: lower_half_solid
+    color: "#8DAF6A"
+  - state: biohazard
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureCloset
+  parent: EmberClosetBase
+  canLock: true
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetEngineering
+  parent: EmberClosetSecureCloset
+  color: "#C9A344"
+  decals:
+  - state: upper_side_vent
+  - state: lower_side_vent
+  extraDecals:
+  - state: stripe_vertical_right_partial
+    color: "#663300"
+  - state: stripe_vertical_left_partial
+    color: "#663300"
+  - state: eng
+    color: "#663300"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetEngineeringElectrical
+  parent: EmberClosetSecureClosetEngineering
+  decals:
+  - state: lower_vent
+  extraDecals:
+  - state: electric
+    color: "#663300"
+  - state: vertical_stripe_simple
+    color: "#663300"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetEngineeringAtmos
+  parent: EmberClosetSecureClosetEngineering
+  extraDecals:
+  - state: stripe_vertical_right_partial
+    color: "#3366CC"
+  - state: stripe_vertical_mid_partial
+    color: "#3366CC"
+  - state: atmos
+    color: "#3366CC"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetEngineeringWelding
+  parent: EmberClosetSecureClosetEngineering
+  decals:
+  - state: lower_vent
+  extraDecals:
+  - state: fire
+    color: "#663300"
+  - state: vertical_stripe_simple
+    color: "#663300"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetEngineeringTools
+  parent: EmberClosetSecureClosetEngineering
+  canLock: false
+  decals:
+  - state: lower_vent
+  extraDecals:
+  - state: tool
+    color: "#663300"
+  - state: vertical_stripe_simple
+    color: "#663300"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetEngineeringToolsRadiation
+  parent: EmberClosetSecureClosetEngineeringTools
+  extraDecals:
+  - state: l2
+    color: "#663300"
+  - state: rads
+    color: "#663300"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetEngineeringCe
+  parent: EmberClosetSecureClosetEngineering
+  color: "#EEEEEE"
+  extraDecals:
+  - state: stripe_vertical_right_partial
+    color: "#6D6133"
+  - state: stripe_vertical_mid_partial
+    color: "#6D6133"
+  - state: eng_narrow
+    color: "#6D6133"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetMining
+  parent: EmberClosetSecureCloset
+  color: "#B3863C"
+  decals:
+  - state: upper_side_vent
+  - state: lower_side_vent
+  extraDecals:
+  - state: stripe_vertical_mid_partial
+    color: "#663300"
+  - state: stripe_vertical_left_partial
+    color: "#663300"
+  - state: mining
+    color: "#663300"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetMiningSec
+  parent: EmberClosetSecureClosetMining
+  decals:
+  - state: stripe_vertical_mid_partial
+    color: "#9D2300"
+  - state: stripe_vertical_left_partial
+    color: "#9D2300"
+  - state: mining
+    color: "#9D2300"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetCommand
+  parent: EmberClosetSecureCloset
+  color: "#6A97B0"
+  decals:
+  - state: lower_holes
+  - state: upper_holes
+  extraDecals:
+  - state: stripe_vertical_left_partial
+    color: "#6D6133"
+  - state: stripe_vertical_right_partial
+    color: "#6D6133"
+  - state: captain
+    color: "#6D6133"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetCommandHop
+  parent: EmberClosetSecureClosetCommand
+  color: "#8BBBD5"
+  extraDecals:
+  - state: stripe_vertical_mid_partial
+    color: "#6D6133"
+  - state: hop
+    color: "#6D6133"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetCmo
+  parent: EmberClosetSecureCloset
+  color: "#89CFF0"
+  decals:
+  - state: upper_side_vent
+  - state: lower_side_vent
+  extraDecals:
+  - state: medcircle
+    color: "#6D6133"
+  - state: stripe_vertical_right_partial
+    color: "#6D6133"
+  - state: stripe_vertical_mid_partial
+    color: "#6D6133"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetMedical
+  parent: EmberClosetSecureCloset
+  color: "#EEEEEE"
+  decals: []
+  extraDecals:
+  - state: circle
+    color: "#6A97B0"
+  - state: stripes_horizontal
+    color: "#6A97B0"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetMedicalVirology
+  parent: EmberClosetSecureClosetMedical
+  decals:
+  - state: upper_side_vent
+  - state: lower_side_vent
+  extraDecals:
+  - state: stripe_vertical_right_partial
+    color: "#1F6B4F"
+  - state: stripe_vertical_mid_partial
+    color: "#1F6B4F"
+  - state: viro
+    color: "#1F6B4F"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetMedicalAlt
+  parent: EmberClosetSecureClosetMedical
+  extraDecals:
+  - state: medcircle
+    color: "#6A97B0"
+  - state: stripe_vertical_right_partial
+    color: "#6A97B0"
+  - state: stripe_vertical_mid_partial
+    color: "#6A97B0"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetCargo
+  parent: EmberClosetSecureCloset
+  color: "#B3863C"
+  decals:
+  - state: upper_side_vent
+  - state: lower_side_vent
+  extraDecals:
+  - state: cargo
+    color: "#666666"
+  - state: stripe_vertical_left_partial
+    color: "#666666"
+  - state: stripe_vertical_mid_partial
+    color: "#666666"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetCargoQm
+  parent: EmberClosetSecureClosetCargo
+  extraDecals:
+  - state: cargo
+    color: "#663300"
+  - state: stripe_vertical_left_partial
+    color: "#663300"
+  - state: stripe_vertical_mid_partial
+    color: "#663300"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetSecurity
+  parent: EmberClosetSecureCloset
+  color: "#9D2300"
+  decals:
+  - state: lower_holes
+  extraDecals:
+  - state: stripe_vertical_mid_full
+    color: "#B3863C"
+  - state: security
+    color: "#B3863C"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetSecurityWarden
+  parent: EmberClosetSecureClosetSecurity
+  extraDecals:
+  - state: stripe_vertical_left_full
+    color: "#B3863C"
+  - state: stripe_vertical_right_full
+    color: "#B3863C"
+  - state: security
+    color: "#B3863C"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetSecurityHos
+  parent: EmberClosetSecureClosetSecurity
+  extraDecals:
+  - state: stripe_vertical_left_full
+    color: "#B3863C"
+  - state: stripe_vertical_right_full
+    color: "#B3863C"
+  - state: stripe_vertical_mid_full
+    color: "#6D6133"
+  - state: security
+    color: "#6D6133"
+
+- type: emberClosetStyle
+  id: EmberClosetBomb
+  parent: EmberClosetBase
+  color: "#54654C"
+  decals:
+  - state: l4
+    color: "#EEEEEE"
+  extraDecals:
+  - state: lower_half_solid
+    color: "#8DAF6A"
+
+- type: emberClosetStyle
+  id: EmberClosetBombSecurity
+  parent: EmberClosetBomb
+  extraDecals:
+  - state: lower_half_solid
+    color: "#B3863C"
+
+- type: emberClosetStyle
+  id: EmberClosetOxygen
+  parent: EmberClosetBase
+  color: "#66CCFF"
+  decals:
+  - state: lower_vent
+  extraDecals:
+  - state: oxy
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetOxygenFire
+  parent: EmberClosetOxygen
+  color: "#AA5F61"
+  extraDecals:
+  - state: extinguisher
+    color: "#EEEEEE"
+  - state: vertical_stripe_simple
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetAlien
+  parent: EmberClosetBase
+  color: "#800080"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetExpedition
+  parent: EmberClosetSecureCloset
+  color: "#6A97B0"
+  decals:
+  - state: lower_side_vent
+  extraDecals:
+  - state: stripe_vertical_mid_full
+    color: "#800080"
+  - state: security
+    color: "#800080"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetExpeditionPathfinder
+  parent: EmberClosetSecureClosetExpedition
+  extraDecals:
+  - state: stripe_vertical_left_full
+    color: "#800080"
+  - state: stripe_vertical_mid_full
+    color: "#6D6133"
+  - state: stripe_vertical_right_full
+    color: "#800080"
+  - state: security
+    color: "#6D6133"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetExpeditionScience
+  parent: EmberClosetSecureClosetExpedition
+  extraDecals:
+  - state: stripe_vertical_mid_full
+    color: "#800080"
+  - state: research
+    color: "#800080"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetRd
+  parent: EmberClosetSecureCloset
+  color: "#1F6B4F"
+  decals:
+  - state: lower_holes
+  extraDecals:
+  - state: stripe_vertical_mid_full
+    color: "#FFCC33"
+  - state: stripe_vertical_left_full
+    color: "#800080"
+  - state: stripe_vertical_right_full
+    color: "#800080"
+  - state: research
+    color: "#FFCC33"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetCorporate
+  parent: EmberClosetSecureCloset
+  color: "#8DAF6A"
+  decals:
+  - state: lower_holes
+  extraDecals:
+  - state: stripe_vertical_mid_full
+    color: "#CCCCCC"
+  - state: research
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetHydroponics
+  parent: EmberClosetSecureCloset
+  color: "#8DAF6A"
+  decals:
+  - state: lower_side_vent
+  - state: upper_side_vent
+  extraDecals:
+  - state: stripe_vertical_right_partial
+    color: "#54654C"
+  - state: stripe_vertical_mid_partial
+    color: "#54654C"
+  - state: hydro
+    color: "#54654C"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetChaplain
+  parent: EmberClosetSecureCloset
+  decals:
+  - state: lower_side_vent
+  - state: upper_side_vent
+  extraDecals:
+  - state: stripe_vertical_right_full
+    color: "#333333"
+  - state: stripe_vertical_mid_full
+    color: "#333333"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetSol
+  parent: EmberClosetSecureCloset
+  color: "#89CFF0"
+  decals:
+  - state: lower_side_vent
+  extraDecals:
+  - state: stripe_vertical_mid_full
+    color: "#1F6B4F"
+  - state: security
+    color: "#1F6B4F"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetSolTwo
+  parent: EmberClosetSecureClosetSol
+  extraDecals:
+  - state: stripe_vertical_left_full
+    color: "#1F6B4F"
+  - state: stripe_vertical_right_full
+    color: "#1F6B4F"
+  - state: security
+    color: "#1F6B4F"
+
+- type: emberClosetStyle
+  id: EmberClosetSecureClosetSolTwoDark
+  parent: EmberClosetSecureClosetSolTwo
+  color: "#3E4855"
+
+- type: emberClosetStyle
+  id: EmberClosetCrate
+  parent: EmberClosetBase
+  shape: Crate
+  markings: Crate
+  color: "#666666"
+  decals: []
+  extraDecals: []
+
+- type: emberClosetStyle
+  id: EmberClosetCratePlastic
+  parent: EmberClosetCrate
+  color: "#CCCCCC"
+
+- type: emberClosetStyle
+  id: EmberClosetCrateOxygen
+  parent: EmberClosetCrate
+  color: "#3366CC"
+  decals:
+  - state: crate_stripes
+    color: "#EEEEEE"
+  - state: crate_oxy
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetCrateMedical
+  parent: EmberClosetCrate
+  color: "#CCCCCC"
+  decals:
+  - state: crate_stripe
+    color: "#B3863C"
+  - state: crate_cross
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetCrateMedicalTrauma
+  parent: EmberClosetCrateMedical
+  decals:
+  - state: crate_stripe
+    color: "#9D2300"
+  - state: crate_cross
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetCrateMedicalOxygen
+  parent: EmberClosetCrateMedical
+  decals:
+  - state: crate_stripe
+    color: "#89CFF0"
+  - state: crate_cross
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetCrateMedicalToxins
+  parent: EmberClosetCrateMedical
+  decals:
+  - state: crate_stripe
+    color: "#8DAF6A"
+  - state: crate_cross
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetCrateHydroponics
+  parent: EmberClosetCrate
+  decals:
+  - state: crate_stripe_left
+    color: "#8DAF6A"
+  - state: crate_stripe_right
+    color: "#8DAF6A"
+
+- type: emberClosetStyle
+  id: EmberClosetCrateRadiation
+  parent: EmberClosetCrate
+  color: "#824B28"
+  extraDecals:
+  - state: crate_radiation_left
+    color: "#B3863C"
+  - state: crate_radiation_right
+    color: "#B3863C"
+  - state: lid_stripes
+    color: "#9D2300"
+
+- type: emberClosetStyle
+  id: EmberClosetCrateFreezer
+  parent: EmberClosetCrate
+  color: "#89CFF0"
+
+- type: emberClosetStyle
+  id: EmberClosetCrateSecure
+  parent: EmberClosetCrate
+  canLock: true
+
+- type: emberClosetStyle
+  id: EmberClosetCrateSecureHazard
+  parent: EmberClosetCrateSecure
+  color: "#9D2300"
+  decals:
+  - state: crate_bracing
+  extraDecals:
+  - state: crate_stripe_left
+    color: "#EEEEEE"
+  - state: crate_stripe_right
+    color: "#EEEEEE"
+  - state: toxin
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetCrateSecureWeapon
+  parent: EmberClosetCrateSecure
+  color: "#8DAF6A"
+  decals:
+  - state: crate_bracing
+  extraDecals:
+  - state: crate_stripe_left
+    color: "#EEEEEE"
+  - state: crate_stripe_right
+    color: "#EEEEEE"
+  - state: hazard
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetCrateSecureHydroponics
+  parent: EmberClosetCrateSecure
+  extraDecals:
+  - state: crate_stripe_left
+    color: "#8DAF6A"
+  - state: crate_stripe_right
+    color: "#8DAF6A"
+
+- type: emberClosetStyle
+  id: EmberClosetCrateSecureShuttle
+  parent: EmberClosetCrateSecure
+  extraDecals:
+  - state: crate_stripe_left
+    color: "#C9A344"
+  - state: crate_stripe_right
+    color: "#C9A344"
+
+- type: emberClosetStyle
+  id: EmberClosetLargeCrate
+  parent: EmberClosetBase
+  shape: LargeCrate
+  markings: LargeCrate
+  decals: []
+  extraDecals: []
+
+- type: emberClosetStyle
+  id: EmberClosetLargeCrateCritter
+  parent: EmberClosetLargeCrate
+  decals:
+  - state: airholes
+  extraDecals:
+  - state: oxy
+    color: "#FFFFFF"
+
+- type: emberClosetStyle
+  id: EmberClosetLargeCrateHydroponics
+  parent: EmberClosetLargeCrate
+  extraDecals:
+  - state: stripes
+    color: "#8DAF6A"
+  - state: text
+    color: "#8DAF6A"
+
+- type: emberClosetStyle
+  id: EmberClosetLargeCrateSecure
+  parent: EmberClosetLargeCrate
+  canLock: true
+
+- type: emberClosetStyle
+  id: EmberClosetLargeCrateSecureHazard
+  parent: EmberClosetLargeCrateSecure
+  color: "#9D2300"
+  decals:
+  - state: crate_bracing
+  extraDecals:
+  - state: marking
+    color: "#EEEEEE"
+  - state: text_upper
+    color: "#EEEEEE"
+
+- type: emberClosetStyle
+  id: EmberClosetCabinet
+  parent: EmberClosetBase
+  shape: Cabinet
+  color: "#792F27"
+  decals: []
+  extraDecals: []
+
+- type: emberClosetStyle
+  id: EmberClosetCabinetSecure
+  parent: EmberClosetCabinet
+  canLock: true
+
+- type: emberClosetStyle
+  id: EmberClosetWall
+  parent: EmberClosetBase
+  shape: Wall
+  markings: Wall
+  decals:
+  - state: vent
+  extraDecals: []
+
+- type: emberClosetStyle
+  id: EmberClosetWallEmergency
+  parent: EmberClosetWall
+  decals: []
+  extraDecals:
+  - state: glass
+    color: "#FFFFFF"
+
+- type: emberClosetStyle
+  id: EmberClosetWallMedical
+  parent: EmberClosetWall
+  color: "#EEEEEE"
+  decals: []
+  extraDecals:
+  - state: stripe_outer
+    color: "#6A97B0"
+  - state: stripe_inner
+    color: "#EEEEEE"
+  - state: cross
+    color: "#6A97B0"
+
+- type: emberClosetStyle
+  id: EmberClosetWallShipping
+  parent: EmberClosetWall
+  color: "#B3863C"
+  decals: []
+  extraDecals:
+  - state: stripes
+    color: "#663300"
+  - state: glass
+    color: "#FFFFFF"
+
+- type: emberClosetStyle
+  id: EmberClosetWallHydrant
+  parent: EmberClosetWall
+  color: "#9D2300"
+  decals: []
+  extraDecals:
+  - state: stripes
+    color: "#EEEEEE"
+  - state: glass
+    color: "#FFFFFF"
+
+- type: emberClosetStyle
+  id: EmberClosetCart
+  parent: EmberClosetBase
+  shape: Cart
+  markings: Cart
+  color: "#333333"
+  decals: []
+  extraDecals: []
+
+- type: emberClosetStyle
+  id: EmberClosetCartTrash
+  parent: EmberClosetCart
+  color: "#1F6B4F"
+
+- type: emberClosetStyle
+  id: EmberClosetCartBiohazard
+  parent: EmberClosetCart
+  canLock: true
+  decals:
+  - state: biohazard
+    color: "#CCCCCC"
+
+- type: emberClosetStyle
+  id: EmberClosetCartBiohazardAlt
+  parent: EmberClosetCartBiohazard
+  color: "#E0F2F6"
+  decals:
+  - state: biohazard
+    color: "#AA5F61"

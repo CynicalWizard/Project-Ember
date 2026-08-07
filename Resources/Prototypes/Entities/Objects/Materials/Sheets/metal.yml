@@ -49,16 +49,21 @@
     stackType: Steel
     baseLayer: base
     layerStates:
-    - steel
-    - steel_2
-    - steel_3
+    - sheet
+    - sheet-mult
+    - sheet-max
+  - type: EmberMaterialStack
+    renameEntity: false
+    material: Steel
   - type: Sprite
-    state: steel_3
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet-max
     layers:
-    - state: steel_3
+    - state: sheet-max
       map: ["base"]
   - type: Item
-    heldPrefix: steel
+    sprite: Ember/Objects/Materials/materials.rsi
+    heldPrefix: sheet
   - type: Appearance
   - type: FloorTile
     outputs:
@@ -159,7 +164,8 @@
   suffix: 10
   components:
   - type: Sprite
-    state: steel
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet
   - type: Stack
     stackType: Steel
     count: 10
@@ -171,7 +177,8 @@
   suffix: Single
   components:
   - type: Sprite
-    state: steel
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet
   - type: Stack
     stackType: Steel
     count: 1
@@ -192,6 +199,9 @@
   description: A sheet of brass, primarily used by clockwork enthusiasts and the remnants of Ratvarian cults.
   suffix: Full
   components:
+  - type: EmberMaterialStack
+    renameEntity: false
+    material: Bronze
   - type: Material
   - type: PhysicalComposition
     materialComposition:
@@ -200,16 +210,18 @@
     stackType: Brass
     baseLayer: base
     layerStates:
-    - brass
-    - brass_2
-    - brass_3
+    - sheet-sheen
+    - sheet-sheen-mult
+    - sheet-sheen-max
   - type: Sprite
-    state: brass_3
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet-sheen-max
     layers:
-    - state: brass_3
+    - state: sheet-sheen-max
       map: ["base"]
   - type: Item
-    heldPrefix: brass
+    sprite: Ember/Objects/Materials/materials.rsi
+    heldPrefix: sheet
   - type: Appearance
   - type: FloorTile
     outputs:
@@ -232,7 +244,8 @@
   suffix: 10
   components:
   - type: Sprite
-    state: brass
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet-sheen
   - type: Stack
     stackType: Brass
     count: 10
@@ -244,7 +257,8 @@
   suffix: Single
   components:
   - type: Sprite
-    state: brass
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet-sheen
   - type: Stack
     stackType: Brass
     count: 1
@@ -263,16 +277,21 @@
     stackType: Plasteel
     baseLayer: base
     layerStates:
-    - plasteel
-    - plasteel_2
-    - plasteel_3
+    - sheet-reinf
+    - sheet-reinf-mult
+    - sheet-reinf-max
+  - type: EmberMaterialStack
+    renameEntity: false
+    material: Plasteel
   - type: Sprite
-    state: plasteel_3
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet-reinf-max
     layers:
-    - state: plasteel_3
+    - state: sheet-reinf-max
       map: ["base"]
   - type: Item
-    heldPrefix: plasteel
+    sprite: Ember/Objects/Materials/materials.rsi
+    heldPrefix: sheet
   - type: Appearance
   - type: Extractable
     grindableSolutionName: plasteel
@@ -308,7 +327,8 @@
   suffix: 10
   components:
   - type: Sprite
-    state: plasteel
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet-reinf
   - type: Stack
     stackType: Plasteel
     count: 10
@@ -320,7 +340,8 @@
   suffix: Single
   components:
   - type: Sprite
-    state: plasteel
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: sheet-reinf
   - type: Stack
     stackType: Plasteel
     count: 1

@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Client.Administration.Managers;
 using Content.Client.ContextMenu.UI;
 using Content.Client.Decals;
@@ -10,6 +10,8 @@ using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Client.Verbs;
 using Content.Shared.Administration;
 using Content.Shared.Decals;
+using Content.Shared.Ember.Walls;
+using Content.Shared.Ember.Structures;
 using Content.Shared.Input;
 using Content.Shared.Mapping;
 using Content.Shared.Maps;
@@ -123,8 +125,10 @@ public sealed class MappingState : GameplayStateBase
         Screen.DecalSystem = _decal;
 
         Screen.Entities.GetPrototypeData += OnGetData;
+        Screen.Entities.GetPrototypeModulate = OnGetEntityColor;
         Screen.Entities.SelectionChanged += OnSelected;
         Screen.Tiles.GetPrototypeData += OnGetData;
+        Screen.Tiles.GetPrototypeModulate = OnGetTileColor;
         Screen.Tiles.SelectionChanged += OnSelected;
         Screen.Decals.GetPrototypeData += OnGetData;
         Screen.Decals.SelectionChanged += OnSelected;
@@ -141,6 +145,7 @@ public sealed class MappingState : GameplayStateBase
         Screen.MoveGrid.OnPressed += OnMoveGridPressed;
         Screen.GridVV.OnPressed += OnGridVVPressed;
         Screen.PipesColor.OnPressed += OnPipesColorPressed;
+        Screen.EmberPaint.OnPressed += OnEmberPaintPressed;
         Screen.ChatButton.OnPressed += OnChatButtonPressed;
         _placement.PlacementChanged += OnPlacementChanged;
         _mapping.OnFavoritePrototypesLoaded += OnFavoritesLoaded;
@@ -174,8 +179,10 @@ public sealed class MappingState : GameplayStateBase
         CommandBinds.Unregister<MappingState>();
 
         Screen.Entities.GetPrototypeData -= OnGetData;
+        Screen.Entities.GetPrototypeModulate = null;
         Screen.Entities.SelectionChanged -= OnSelected;
         Screen.Tiles.GetPrototypeData -= OnGetData;
+        Screen.Tiles.GetPrototypeModulate = null;
         Screen.Tiles.SelectionChanged -= OnSelected;
         Screen.Decals.GetPrototypeData -= OnGetData;
         Screen.Decals.SelectionChanged -= OnSelected;
@@ -192,6 +199,7 @@ public sealed class MappingState : GameplayStateBase
         Screen.MoveGrid.OnPressed -= OnMoveGridPressed;
         Screen.GridVV.OnPressed -= OnGridVVPressed;
         Screen.PipesColor.OnPressed -= OnPipesColorPressed;
+        Screen.EmberPaint.OnPressed -= OnEmberPaintPressed;
         Screen.ChatButton.OnPressed -= OnChatButtonPressed;
         _placement.PlacementChanged -= OnPlacementChanged;
         _prototypeManager.PrototypesReloaded -= OnPrototypesReloaded;
@@ -407,6 +415,12 @@ public sealed class MappingState : GameplayStateBase
                 var name = node.TryGet("name", out ValueDataNode? nameNode)
                     ? nameNode.Value
                     : id;
+
+                // Abstract prototypes are what the categories in this tree are made of, and a tile or a decal
+                // names itself with a loc id rather than with text. Entity names are already text, and those
+                // are simply never keys.
+                if (_locale.TryGetString(name, out var localized))
+                    name = localized;
 
                 if (node.TryGet("suffix", out ValueDataNode? suffix))
                     name = $"{name} [{suffix.Value}]";
@@ -679,6 +693,43 @@ public sealed class MappingState : GameplayStateBase
                     textures.Add(_resources.GetResource<TextureResource>(sprite).Texture);
                 break;
         }
+    }
+
+    /// <summary>
+    ///     What a procedural entity is going to be coloured once it exists.
+    /// </summary>
+    /// <remarks>
+    ///     A wall, a window, a low wall and a girder frame all draw a grey mask and take their colour from
+    ///     their material at runtime, so the list showed a column of identical grey walls. The material is on
+    ///     the prototype already; it just has nobody to ask before the entity is spawned.
+    /// </remarks>
+    private Color? OnGetEntityColor(IPrototype prototype)
+    {
+        if (prototype is not EntityPrototype entity)
+            return null;
+
+        ProtoId<EmberWallMaterialPrototype>? material = null;
+
+        if (entity.Components.TryGetComponent("EmberProceduralWall", out var wall))
+            material = ((EmberProceduralWallComponent) wall).Material;
+        else if (entity.Components.TryGetComponent("EmberProceduralStructure", out var structure))
+            material = ((EmberProceduralStructureComponent) structure).Material;
+        else if (entity.Components.TryGetComponent("EmberMaterialTint", out var tint))
+            material = ((EmberMaterialTintComponent) tint).Material;
+
+        if (material is not { } id || !_prototypeManager.TryIndex(id, out EmberWallMaterialPrototype? found))
+            return null;
+
+        return found.Color;
+    }
+
+    /// <summary>
+    ///     A tile's sprite can be a greyscale mask shared by a whole family, in which case the colour is the
+    ///     only thing telling them apart. The atlas applies it wherever the tile is actually drawn.
+    /// </summary>
+    private Color? OnGetTileColor(IPrototype prototype)
+    {
+        return prototype is ContentTileDefinition tile ? tile.Color : null;
     }
 
     private void OnSelected(MappingPrototypeList list, MappingPrototype mapping)
@@ -1012,6 +1063,21 @@ public sealed class MappingState : GameplayStateBase
         }
     }
 
+    private void OnEmberPaintPressed(ButtonEventArgs args)
+    {
+        if (args.Button.Pressed)
+        {
+            Deselect();
+            Meta.State = CursorState.Entity;
+            Meta.Color = PickColor;
+            Screen.UnPressActionsExcept(args.Button);
+        }
+        else
+        {
+            Meta.State = CursorState.None;
+        }
+    }
+
     private void OnChatButtonPressed(ButtonEventArgs args)
     {
         Screen.Chat.Visible = args.Button.Pressed;
@@ -1232,6 +1298,20 @@ public sealed class MappingState : GameplayStateBase
             Meta.State = CursorState.None;
             if (GetHoveredEntity() is { } entity)
                 _consoleHost.ExecuteCommand($"colornetwork {_entityManager.GetNetEntity(entity).Id} Pipe {Screen.DecalColor.ToHex()}");
+
+            return true;
+        }
+
+        if (Screen.EmberPaint.Pressed)
+        {
+            if (GetHoveredEntity() is { } entity)
+            {
+                var mode = Screen.SelectedEmberPaintMode;
+                var value = mode == "preset"
+                    ? Screen.SelectedEmberPaintPreset ?? ""
+                    : Screen.DecalColor.ToHex();
+                _consoleHost.ExecuteCommand($"emberpaint {_entityManager.GetNetEntity(entity).Id} {mode} {value}");
+            }
 
             return true;
         }

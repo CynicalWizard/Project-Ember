@@ -1,8 +1,13 @@
 using System.Linq;
 using System.Numerics;
+using Content.Client.Ember.Construction;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Systems.MenuBar.Widgets;
 using Content.Shared.Construction.Prototypes;
+using Content.Shared.Construction.Steps;
+using Content.Shared.Ember.Materials;
+using Content.Shared.Ember.Skills;
+using Content.Shared.Stacks;
 using Content.Shared.Whitelist;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -13,6 +18,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.Utility;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 using static Robust.Client.UserInterface.Controls.BaseButton;
 
 namespace Content.Client.Construction.UI
@@ -33,6 +39,7 @@ namespace Content.Client.Construction.UI
 
         private readonly IConstructionMenuView _constructionView;
         private readonly EntityWhitelistSystem _whitelistSystem;
+        private readonly EmberProceduralIconSystem _emberProceduralIcons;
         private readonly SpriteSystem _spriteSystem;
 
         private ConstructionSystem? _constructionSystem;
@@ -87,6 +94,7 @@ namespace Content.Client.Construction.UI
             IoCManager.InjectDependencies(this);
             _constructionView = new ConstructionMenu();
             _whitelistSystem = _entManager.System<EntityWhitelistSystem>();
+            _emberProceduralIcons = _entManager.System<EmberProceduralIconSystem>();
             _spriteSystem = _entManager.System<SpriteSystem>();
 
             // This is required so that if we load after the system is initialized, we can bind to it immediately
@@ -231,7 +239,7 @@ namespace Content.Client.Construction.UI
                 {
                     var itemButton = new TextureButton
                     {
-                        TextureNormal = _spriteSystem.Frame0(recipe.Icon),
+                        TextureNormal = GetRecipeIcon(recipe),
                         VerticalAlignment = Control.VAlignment.Center,
                         Name = recipe.Name,
                         ToolTip = recipe.Name,
@@ -335,8 +343,39 @@ namespace Content.Client.Construction.UI
         {
             _constructionView.ClearRecipeInfo();
 
+            var description = prototype.Description;
+
+            if (_playerManager.LocalEntity is { } localPlayer &&
+                _entManager.TrySystem<SharedSkillsSystem>(out var skillsSys))
+            {
+                var difficulty = 1;
+                if (_prototypeManager.TryIndex<ConstructionGraphPrototype>(prototype.Graph, out var graph) &&
+                    graph.Edge(prototype.StartNode, prototype.TargetNode) is { } edge)
+                {
+                    difficulty = EmberConstructionSkill.GetDifficulty(
+                        edge,
+                        _prototypeManager,
+                        _entManager.ComponentFactory);
+                }
+
+                var currentSkill = (int) skillsSys.GetSkillValue(localPlayer, EmberConstructionSkill.Skill);
+                if (currentSkill < difficulty)
+                {
+                    var diff = difficulty - currentSkill;
+                    var warningKey = diff switch
+                    {
+                        1 => "construction-system-skill-warning-1",
+                        2 => "construction-system-skill-warning-2",
+                        _ => "construction-system-skill-warning-3"
+                    };
+                    
+                    var warning = Loc.GetString(warningKey);
+                    description += $"\n\n[color=red]{warning}[/color]";
+                }
+            }
+
             _constructionView.SetRecipeInfo(
-                prototype.Name, prototype.Description, _spriteSystem.Frame0(prototype.Icon),
+                prototype.Name, description, GetRecipeIcon(prototype),
                 prototype.Type != ConstructionType.Item,
                 !_favoritedRecipes.Contains(prototype));
 
@@ -348,7 +387,6 @@ namespace Content.Client.Construction.UI
         {
             if (_constructionSystem?.GetGuide(prototype) is not { } guide)
                 return;
-
 
             foreach (var entry in guide.Entries)
             {
@@ -364,7 +402,7 @@ namespace Content.Client.Construction.UI
                 // The padding needs to be applied regardless of text length... (See PadLeft documentation)
                 text = text.PadLeft(text.Length + entry.Padding);
 
-                var icon = entry.Icon != null ? _spriteSystem.Frame0(entry.Icon) : Texture.Transparent;
+                var icon = entry.Icon != null && entry.Icon != SpriteSpecifier.Invalid ? _spriteSystem.Frame0(entry.Icon) : Texture.Transparent;
                 stepList.AddItem(text, icon, false);
             }
         }
@@ -375,10 +413,20 @@ namespace Content.Client.Construction.UI
             {
                 Metadata = recipe,
                 Text = recipe.Name,
-                Icon = _spriteSystem.Frame0(recipe.Icon),
+                Icon = GetRecipeIcon(recipe),
                 TooltipEnabled = true,
                 TooltipText = recipe.Description,
             };
+        }
+
+        private Texture GetRecipeIcon(ConstructionPrototype recipe)
+        {
+            if (_emberProceduralIcons.TryGetConstructionIcon(recipe, out var texture))
+                return texture;
+
+            return recipe.Icon == SpriteSpecifier.Invalid
+                ? Texture.Transparent
+                : _spriteSystem.Frame0(recipe.Icon);
         }
 
         private void BuildButtonToggled(bool pressed)

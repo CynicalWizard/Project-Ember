@@ -1,0 +1,23 @@
+- type: emberPaintPreset
+  id: Hull
+  name: Hull (Sol)
+  paintColor: "#436b8e"
+  stripeColor: "#436b8e"
+
+- type: emberPaintPreset
+  id: HullVox
+  name: Hull (Vox)
+  paintColor: "#8daf6a"
+  stripeColor: "#8daf6a"
+
+- type: emberPaintPreset
+  id: Prepainted
+  name: Prepainted
+  paintColor: "#353a42"
+  stripeColor: "#545c68"
+
+- type: emberPaintPreset
+  id: PrepaintedFleet
+  name: Prepainted (Fleet)
+  paintColor: "#3e4855"
+  stripeColor: "#353a42"

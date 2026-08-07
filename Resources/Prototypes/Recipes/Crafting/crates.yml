@@ -21,6 +21,17 @@
   objectType: Structure
 
 - type: construction
+  name: thermal crate
+  id: CrateThermal
+  graph: CrateThermal
+  startNode: start
+  targetNode: cratethermal
+  category: construction-category-storage
+  description: A crate lined with osmium-carbide plasteel. Whatever is inside will outlive the room it is in.
+  icon: { sprite: Ember/Structures/Storage/bases/crate.rsi, state: base }
+  objectType: Structure
+
+- type: construction
   name: secure crate
   id: CrateSecure
   graph: CrateSecure

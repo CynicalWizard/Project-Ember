@@ -1,0 +1,142 @@
+- type: construction
+  name: iron rod
+  id: EmberRodIron
+  graph: EmberRodIron
+  startNode: start
+  targetNode: rod
+  category: construction-category-materials
+  description: Some rods. Can be used for building, or something.
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: rod }
+  objectType: Item
+
+- type: construction
+  name: aluminium rod
+  id: EmberRodAluminium
+  graph: EmberRodAluminium
+  startNode: start
+  targetNode: rod
+  category: construction-category-materials
+  description: Some rods. Can be used for building, or something.
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: rod }
+  objectType: Item
+
+- type: construction
+  name: plasteel rod
+  id: EmberRodPlasteel
+  graph: EmberRodPlasteel
+  startNode: start
+  targetNode: rod
+  category: construction-category-materials
+  description: Some rods. Can be used for building, or something.
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: rod }
+  objectType: Item
+
+- type: construction
+  name: titanium rod
+  id: EmberRodTitanium
+  graph: EmberRodTitanium
+  startNode: start
+  targetNode: rod
+  category: construction-category-materials
+  description: Some rods. Can be used for building, or something.
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: rod }
+  objectType: Item
+
+- type: construction
+  name: osmium-carbide plasteel rod
+  id: EmberRodOsmiumCarbidePlasteel
+  graph: EmberRodOsmiumCarbidePlasteel
+  startNode: start
+  targetNode: rod
+  category: construction-category-materials
+  description: Some rods. Can be used for building, or something.
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: rod }
+  objectType: Item
+
+- type: construction
+  name: osmium rod
+  id: EmberRodOsmium
+  graph: EmberRodOsmium
+  startNode: start
+  targetNode: rod
+  category: construction-category-materials
+  description: Some rods. Can be used for building, or something.
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: rod }
+  objectType: Item
+
+- type: construction
+  name: gold rod
+  id: EmberRodGold
+  graph: EmberRodGold
+  startNode: start
+  targetNode: rod
+  category: construction-category-materials
+  description: Some rods. Can be used for building, or something.
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: rod }
+  objectType: Item
+
+- type: construction
+  name: silver rod
+  id: EmberRodSilver
+  graph: EmberRodSilver
+  startNode: start
+  targetNode: rod
+  category: construction-category-materials
+  description: Some rods. Can be used for building, or something.
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: rod }
+  objectType: Item
+
+- type: construction
+  name: electrum rod
+  id: EmberRodElectrum
+  graph: EmberRodElectrum
+  startNode: start
+  targetNode: rod
+  category: construction-category-materials
+  description: Some rods. Can be used for building, or something.
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: rod }
+  objectType: Item
+
+- type: construction
+  name: copper rod
+  id: EmberRodCopper
+  graph: EmberRodCopper
+  startNode: start
+  targetNode: rod
+  category: construction-category-materials
+  description: Some rods. Can be used for building, or something.
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: rod }
+  objectType: Item
+
+- type: construction
+  name: bronze rod
+  id: EmberRodBronze
+  graph: EmberRodBronze
+  startNode: start
+  targetNode: rod
+  category: construction-category-materials
+  description: Some rods. Can be used for building, or something.
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: rod }
+  objectType: Item
+
+- type: construction
+  name: platinum rod
+  id: EmberRodPlatinum
+  graph: EmberRodPlatinum
+  startNode: start
+  targetNode: rod
+  category: construction-category-materials
+  description: Some rods. Can be used for building, or something.
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: rod }
+  objectType: Item
+
+- type: construction
+  name: uranium rod
+  id: EmberRodUranium
+  graph: EmberRodUranium
+  startNode: start
+  targetNode: rod
+  category: construction-category-materials
+  description: Some rods. Can be used for building, or something.
+  icon: { sprite: Ember/Objects/Materials/materials.rsi, state: rod }
+  objectType: Item

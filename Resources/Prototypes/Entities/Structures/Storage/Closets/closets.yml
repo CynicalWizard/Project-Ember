@@ -2,153 +2,130 @@
 - type: entity
   id: ClosetTool
   name: tool closet
-  parent: ClosetSteelBase
+  parent: [ClosetSteelBase, EmberProceduralClosetVisuals]
   description: It's a storage unit for tools.
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: eng
-    stateDoorOpen: eng_open
-    stateDoorClosed: eng_tool_door
+  - type: EmberProceduralCloset
+    style: EmberClosetSecureClosetEngineeringTools
 
 # Radiation suit closet
 - type: entity
   id: ClosetRadiationSuit
   name: radiation suit closet
-  parent: ClosetSteelBase
+  parent: [ClosetSteelBase, EmberProceduralClosetVisuals]
   description: "More comfortable than radiation poisioning."
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: eng
-    stateDoorOpen: eng_open
-    stateDoorClosed: eng_rad_door
+  - type: EmberProceduralCloset
+    style: EmberClosetSecureClosetEngineeringToolsRadiation
 
 # Emergency closet
 - type: entity
   id: ClosetEmergency
   name: emergency closet
-  parent: ClosetSteelBase
+  parent: [ClosetSteelBase, EmberProceduralClosetVisuals]
   description: It's a storage unit for emergency breath masks and O2 tanks.
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: emergency
-    stateDoorOpen: emergency_open
-    stateDoorClosed: emergency_door
+  - type: EmberProceduralCloset
+    style: EmberClosetOxygen
 
 # Emergency N2 closet
 - type: entity
   id: ClosetEmergencyN2
   name: emergency nitrogen closet
-  parent: ClosetSteelBase
+  parent: [ClosetSteelBase, EmberProceduralClosetVisuals]
   description: It's full of life-saving equipment. Assuming, that is, that you breathe nitrogen.
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: n2
-    stateDoorOpen: n2_open
-    stateDoorClosed: n2_door
+  - type: EmberProceduralCloset
+    style: EmberClosetOxygen
 
 # Fire safety closet
 - type: entity
   id: ClosetFire
   name: fire-safety closet
-  parent: ClosetSteelBase
+  parent: [ClosetSteelBase, EmberProceduralClosetVisuals]
   description: It's a storage unit for fire-fighting supplies.
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: fire
-    stateDoorOpen: fire_open
-    stateDoorClosed: fire_door
+  - type: EmberProceduralCloset
+    style: EmberClosetOxygenFire
 
 # EOD closet
 - type: entity
   id: ClosetBomb
   name: EOD closet
-  parent: ClosetSteelBase
+  parent: [ClosetSteelBase, EmberProceduralClosetVisuals]
   description: It's a storage unit for explosion-protective suits.
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: bomb
-    stateDoorOpen: bomb_open
-    stateDoorClosed: bomb_door
+  - type: EmberProceduralCloset
+    style: EmberClosetBomb
 
 # Janitorial bomb suit closet
 - type: entity
   id: ClosetJanitorBomb
   name: janitorial bomb suit closet
-  parent: ClosetSteelBase
+  parent: [ClosetSteelBase, EmberProceduralClosetVisuals]
   description: It's a storage unit for janitorial explosion-protective suits.
   categories: [ DoNotMap ]
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: janitor_bomb
-    stateDoorOpen: janitor_bomb_open
-    stateDoorClosed: janitor_bomb_door
+  - type: EmberProceduralCloset
+    style: EmberClosetBombSecurity
 
 # Biohazard
 
 # Base level 3 bio hazard closet
 - type: entity
   id: ClosetL3
-  parent: ClosetSteelBase
+  parent: [ClosetSteelBase, EmberProceduralClosetVisuals]
   name: level 3 biohazard gear closet
   description: It's a storage unit for level 3 biohazard gear.
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: bio
-    stateDoorOpen: bio_open
-    stateDoorClosed: bio_door
+  - type: EmberProceduralCloset
+    style: EmberClosetBio
 
 # Virology variant
 - type: entity
   id: ClosetL3Virology
-  parent: ClosetL3
+  parent: [ClosetL3, EmberProceduralClosetVisuals]
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: bio_viro
-    stateDoorOpen: bio_viro_open
-    stateDoorClosed: bio_viro_door
+  - type: EmberProceduralCloset
+    style: EmberClosetBioVirology
 
 # Security variant
 - type: entity
   id: ClosetL3Security
-  parent: ClosetL3
+  parent: [ClosetL3, EmberProceduralClosetVisuals]
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: bio_sec
-    stateDoorOpen: bio_sec_open
-    stateDoorClosed: bio_sec_door
+  - type: EmberProceduralCloset
+    style: EmberClosetBioSecurity
 
 # Janitor variant
 - type: entity
   id: ClosetL3Janitor
-  parent: ClosetL3
+  parent: [ClosetL3, EmberProceduralClosetVisuals]
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: bio_jan
-    stateDoorOpen: bio_jan_open
-    stateDoorClosed: bio_jan_door
+  - type: EmberProceduralCloset
+    style: EmberClosetBioJanitor
 
 # Maintenance closet
 - type: entity
   id: ClosetMaintenance
   name: maintenance closet
-  parent: ClosetSteelBase
+  parent: [ClosetSteelBase, EmberProceduralClosetVisuals]
   description: It's a storage unit.
   components:
   - type: Appearance
-  - type: EntityStorageVisuals
-    stateDoorOpen: generic_open
-    stateDoorClosed: generic_door
+  - type: EmberProceduralCloset
+    style: EmberClosetBase
 
 # Syndicate
 - type: entity

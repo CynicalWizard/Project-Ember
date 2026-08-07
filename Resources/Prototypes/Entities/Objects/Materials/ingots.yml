@@ -40,16 +40,21 @@
     stackType: Gold
     baseLayer: base
     layerStates:
-    - gold
-    - gold_2
-    - gold_3
+    - ingot
+    - ingot-mult
+    - ingot-max
+  - type: EmberMaterialStack
+    renameEntity: false
+    material: Gold
   - type: Sprite
-    state: gold_3
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: ingot-max
     layers:
-    - state: gold_3
+    - state: ingot-max
       map: ["base"]
   - type: Item
-    heldPrefix: gold
+    sprite: Ember/Objects/Materials/materials.rsi
+    heldPrefix: sheet
   - type: Appearance
   - type: Extractable
     grindableSolutionName: gold
@@ -67,7 +72,8 @@
   suffix: Single
   components:
   - type: Sprite
-    state: gold
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: ingot
   - type: Stack
     count: 1
 
@@ -85,16 +91,21 @@
     stackType: Silver
     baseLayer: base
     layerStates:
-    - silver
-    - silver_2
-    - silver_3
+    - ingot
+    - ingot-mult
+    - ingot-max
+  - type: EmberMaterialStack
+    renameEntity: false
+    material: Silver
   - type: Sprite
-    state: silver_3
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: ingot-max
     layers:
-    - state: silver_3
+    - state: ingot-max
       map: ["base"]
   - type: Item
-    heldPrefix: silver
+    sprite: Ember/Objects/Materials/materials.rsi
+    heldPrefix: sheet
   - type: Appearance
   - type: Extractable
     grindableSolutionName: gold
@@ -112,7 +123,8 @@
   suffix: Single
   components:
   - type: Sprite
-    state: silver
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: ingot
   - type: Stack
     count: 1
 
@@ -122,6 +134,9 @@
   name: tungsten-carbide bar
   suffix: Full
   components:
+  - type: EmberMaterialStack
+    renameEntity: false
+    material: Titanium
   - type: Material
   - type: PhysicalComposition
     materialComposition:
@@ -130,16 +145,18 @@
     stackType: Tungsten
     baseLayer: base
     layerStates:
-    - tungsten_1
-    - tungsten_2
-    - tungsten_3
+    - ingot
+    - ingot-mult
+    - ingot-max
   - type: Sprite
-    state: tungsten_3
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: ingot-max
     layers:
-    - state: tungsten_3
+    - state: ingot-max
       map: ["base"]
   - type: Item
-    heldPrefix: tungsten
+    sprite: Ember/Objects/Materials/materials.rsi
+    heldPrefix: sheet
   - type: Appearance
 
 - type: entity
@@ -149,6 +166,7 @@
   suffix: Single
   components:
   - type: Sprite
-    state: tungsten_1
+    sprite: Ember/Objects/Materials/materials.rsi
+    state: ingot
   - type: Stack
     count: 1

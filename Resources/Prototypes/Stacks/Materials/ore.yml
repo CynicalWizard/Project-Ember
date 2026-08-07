@@ -1,7 +1,14 @@
 - type: stack
+  id: EmberWasteOre
+  name: slag
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: dust }
+  spawn: EmberWasteOre1
+  maxCount: 30
+
+- type: stack
   id: GoldOre
-  name: gold ore
-  icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: gold }
+  name: native gold
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: nugget }
   spawn: GoldOre1
   maxCount: 30
 
@@ -14,22 +21,22 @@
 
 - type: stack
   id: SteelOre
-  name: iron ore
-  icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: iron }
+  name: hematite
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: lump }
   spawn: SteelOre1
   maxCount: 30
 
 - type: stack
   id: PlasmaOre
-  name: plasma ore
-  icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: plasma }
+  name: phoron
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: gems }
   spawn: PlasmaOre1
   maxCount: 30
 
 - type: stack
   id: SilverOre
-  name: silver ore
-  icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: silver }
+  name: native silver
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: shiny }
   spawn: SilverOre1
   maxCount: 30
 
@@ -42,8 +49,8 @@
 
 - type: stack
   id: UraniumOre
-  name: uranium ore
-  icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: uranium }
+  name: pitchblende
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: lump }
   spawn: UraniumOre1
   maxCount: 30
 
@@ -56,15 +63,15 @@
 
 - type: stack
   id: Coal
-  name: coal
-  icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: coal }
+  name: graphite
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: lump }
   spawn: Coal1
   maxCount: 30
 
 - type: stack
   id: SaltOre
-  name: salt
-  icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: salt }
+  name: rock salt
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: lump }
   spawn: Salt1
   maxCount: 30
 
@@ -87,4 +94,95 @@
   name: raw wolframite
   icon: { sprite: Objects/Materials/ore.rsi, state: tungsten }
   spawn: TungstenOre1
+  maxCount: 30
+
+- type: stack
+  id: SandOre
+  name: sand
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: dust }
+  spawn: EmberSandOre1
+  maxCount: 30
+
+- type: stack
+  id: PlatinumOre
+  name: raw platinum
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: shiny }
+  spawn: EmberPlatinumOre1
+  maxCount: 30
+
+- type: stack
+  id: HydrogenOre
+  name: raw hydrogen
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: gems }
+  spawn: EmberHydrogenOre1
+  maxCount: 30
+
+- type: stack
+  id: BauxiteOre
+  name: bauxite
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: lump }
+  spawn: EmberBauxiteOre1
+  maxCount: 30
+
+- type: stack
+  id: RutileOre
+  name: rutile
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: lump }
+  spawn: EmberRutileOre1
+  maxCount: 30
+
+- type: stack
+  id: EmberCopperOre
+  name: tetrahedrite
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: shiny }
+  spawn: EmberCopperOre1
+  maxCount: 30
+
+- type: stack
+  id: ElectrumOre
+  name: electrum
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: shiny }
+  spawn: EmberElectrumOre1
+  maxCount: 30
+
+- type: stack
+  id: BoraxOre
+  name: borax
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: lump }
+  spawn: EmberBoraxOre1
+  maxCount: 30
+
+- type: stack
+  id: PyriteOre
+  name: pyrite
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: lump }
+  spawn: EmberPyriteOre1
+  maxCount: 30
+
+- type: stack
+  id: SpodumeneOre
+  name: spodumene
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: lump }
+  spawn: EmberSpodumeneOre1
+  maxCount: 30
+
+- type: stack
+  id: CinnabarOre
+  name: cinnabar
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: lump }
+  spawn: EmberCinnabarOre1
+  maxCount: 30
+
+- type: stack
+  id: PhosphoriteOre
+  name: phosphorite
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: lump }
+  spawn: EmberPhosphoriteOre1
+  maxCount: 30
+
+- type: stack
+  id: PotashOre
+  name: potash
+  icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: lump }
+  spawn: EmberPotashOre1
   maxCount: 30

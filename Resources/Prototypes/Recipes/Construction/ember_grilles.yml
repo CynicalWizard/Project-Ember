@@ -1,0 +1,259 @@
+- type: construction
+  name: iron grille
+  id: GrilleIron
+  graph: GrilleIron
+  startNode: start
+  targetNode: grille
+  category: construction-category-structures
+  description: A flimsy framework of iron rods.
+  conditions:
+  - !type:EmberNoWallInTile
+    allowLowWalls: true
+  - !type:TileNotBlocked
+    failIfSpace: false
+  icon:
+    sprite: Ember/Structures/Grilles/grille.rsi
+    state: grille
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: aluminium grille
+  id: GrilleAluminium
+  graph: GrilleAluminium
+  startNode: start
+  targetNode: grille
+  category: construction-category-structures
+  description: A flimsy framework of aluminium rods.
+  conditions:
+  - !type:EmberNoWallInTile
+    allowLowWalls: true
+  - !type:TileNotBlocked
+    failIfSpace: false
+  icon:
+    sprite: Ember/Structures/Grilles/grille.rsi
+    state: grille
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: plasteel grille
+  id: GrillePlasteel
+  graph: GrillePlasteel
+  startNode: start
+  targetNode: grille
+  category: construction-category-structures
+  description: A flimsy framework of plasteel rods.
+  conditions:
+  - !type:EmberNoWallInTile
+    allowLowWalls: true
+  - !type:TileNotBlocked
+    failIfSpace: false
+  icon:
+    sprite: Ember/Structures/Grilles/grille.rsi
+    state: grille
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: titanium grille
+  id: GrilleTitanium
+  graph: GrilleTitanium
+  startNode: start
+  targetNode: grille
+  category: construction-category-structures
+  description: A flimsy framework of titanium rods.
+  conditions:
+  - !type:EmberNoWallInTile
+    allowLowWalls: true
+  - !type:TileNotBlocked
+    failIfSpace: false
+  icon:
+    sprite: Ember/Structures/Grilles/grille.rsi
+    state: grille
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: osmium-carbide plasteel grille
+  id: GrilleOsmiumCarbidePlasteel
+  graph: GrilleOsmiumCarbidePlasteel
+  startNode: start
+  targetNode: grille
+  category: construction-category-structures
+  description: A flimsy framework of osmium-carbide plasteel rods.
+  conditions:
+  - !type:EmberNoWallInTile
+    allowLowWalls: true
+  - !type:TileNotBlocked
+    failIfSpace: false
+  icon:
+    sprite: Ember/Structures/Grilles/grille.rsi
+    state: grille
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: osmium grille
+  id: GrilleOsmium
+  graph: GrilleOsmium
+  startNode: start
+  targetNode: grille
+  category: construction-category-structures
+  description: A flimsy framework of osmium rods.
+  conditions:
+  - !type:EmberNoWallInTile
+    allowLowWalls: true
+  - !type:TileNotBlocked
+    failIfSpace: false
+  icon:
+    sprite: Ember/Structures/Grilles/grille.rsi
+    state: grille
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: gold grille
+  id: GrilleGold
+  graph: GrilleGold
+  startNode: start
+  targetNode: grille
+  category: construction-category-structures
+  description: A flimsy framework of gold rods.
+  conditions:
+  - !type:EmberNoWallInTile
+    allowLowWalls: true
+  - !type:TileNotBlocked
+    failIfSpace: false
+  icon:
+    sprite: Ember/Structures/Grilles/grille.rsi
+    state: grille
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: silver grille
+  id: GrilleSilver
+  graph: GrilleSilver
+  startNode: start
+  targetNode: grille
+  category: construction-category-structures
+  description: A flimsy framework of silver rods.
+  conditions:
+  - !type:EmberNoWallInTile
+    allowLowWalls: true
+  - !type:TileNotBlocked
+    failIfSpace: false
+  icon:
+    sprite: Ember/Structures/Grilles/grille.rsi
+    state: grille
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: electrum grille
+  id: GrilleElectrum
+  graph: GrilleElectrum
+  startNode: start
+  targetNode: grille
+  category: construction-category-structures
+  description: A flimsy framework of electrum rods.
+  conditions:
+  - !type:EmberNoWallInTile
+    allowLowWalls: true
+  - !type:TileNotBlocked
+    failIfSpace: false
+  icon:
+    sprite: Ember/Structures/Grilles/grille.rsi
+    state: grille
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: copper grille
+  id: GrilleCopper
+  graph: GrilleCopper
+  startNode: start
+  targetNode: grille
+  category: construction-category-structures
+  description: A flimsy framework of copper rods.
+  conditions:
+  - !type:EmberNoWallInTile
+    allowLowWalls: true
+  - !type:TileNotBlocked
+    failIfSpace: false
+  icon:
+    sprite: Ember/Structures/Grilles/grille.rsi
+    state: grille
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: bronze grille
+  id: GrilleBronze
+  graph: GrilleBronze
+  startNode: start
+  targetNode: grille
+  category: construction-category-structures
+  description: A flimsy framework of bronze rods.
+  conditions:
+  - !type:EmberNoWallInTile
+    allowLowWalls: true
+  - !type:TileNotBlocked
+    failIfSpace: false
+  icon:
+    sprite: Ember/Structures/Grilles/grille.rsi
+    state: grille
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: platinum grille
+  id: GrillePlatinum
+  graph: GrillePlatinum
+  startNode: start
+  targetNode: grille
+  category: construction-category-structures
+  description: A flimsy framework of platinum rods.
+  conditions:
+  - !type:EmberNoWallInTile
+    allowLowWalls: true
+  - !type:TileNotBlocked
+    failIfSpace: false
+  icon:
+    sprite: Ember/Structures/Grilles/grille.rsi
+    state: grille
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: uranium grille
+  id: GrilleUranium
+  graph: GrilleUranium
+  startNode: start
+  targetNode: grille
+  category: construction-category-structures
+  description: A flimsy framework of uranium rods.
+  conditions:
+  - !type:EmberNoWallInTile
+    allowLowWalls: true
+  - !type:TileNotBlocked
+    failIfSpace: false
+  icon:
+    sprite: Ember/Structures/Grilles/grille.rsi
+    state: grille
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false

@@ -1,0 +1,28 @@
+- type: constructionGraph
+  id: CrateThermal
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: cratethermal
+          steps:
+            - material: OsmiumCarbidePlasteel
+              amount: 5
+              doAfter: 10
+
+    - node: cratethermal
+      entity: CrateThermal
+      edges:
+        - to: start
+          steps:
+            - tool: Screwing
+              doAfter: 10
+          conditions:
+            - !type:StorageWelded
+              welded: false
+          completed:
+            - !type:SpawnPrototype
+              prototype: EmberSheetOCP1
+              amount: 5
+            - !type:EmptyAllContainers
+            - !type:DeleteEntity

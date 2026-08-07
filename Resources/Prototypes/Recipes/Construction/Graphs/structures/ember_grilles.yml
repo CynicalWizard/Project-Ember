@@ -1,0 +1,610 @@
+- type: constructionGraph
+  id: GrilleIron
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: grille
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: EmberRodIron
+        amount: 2
+        doAfter: 1
+
+  - node: grille
+    entity: GrilleIron
+    edges:
+    - to: start
+      completed:
+      - !type:AdminLog
+        message: "A grille was cut"
+      - !type:SpawnPrototype
+        prototype: EmberRodIron1
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+        doAfter: 0.25
+
+  - node: grilleBroken
+    entity: GrilleBrokenIron
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberRodIron1
+        amount: 1
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+    - to: grille
+      steps:
+      - material: EmberRodIron
+        amount: 1
+        doAfter: 0.5
+
+- type: constructionGraph
+  id: GrilleAluminium
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: grille
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: EmberRodAluminium
+        amount: 2
+        doAfter: 1
+
+  - node: grille
+    entity: GrilleAluminium
+    edges:
+    - to: start
+      completed:
+      - !type:AdminLog
+        message: "A grille was cut"
+      - !type:SpawnPrototype
+        prototype: EmberRodAluminium1
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+        doAfter: 0.25
+
+  - node: grilleBroken
+    entity: GrilleBrokenAluminium
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberRodAluminium1
+        amount: 1
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+    - to: grille
+      steps:
+      - material: EmberRodAluminium
+        amount: 1
+        doAfter: 0.5
+
+- type: constructionGraph
+  id: GrillePlasteel
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: grille
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: EmberRodPlasteel
+        amount: 2
+        doAfter: 1
+
+  - node: grille
+    entity: GrillePlasteel
+    edges:
+    - to: start
+      completed:
+      - !type:AdminLog
+        message: "A grille was cut"
+      - !type:SpawnPrototype
+        prototype: EmberRodPlasteel1
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+        doAfter: 0.25
+
+  - node: grilleBroken
+    entity: GrilleBrokenPlasteel
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberRodPlasteel1
+        amount: 1
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+    - to: grille
+      steps:
+      - material: EmberRodPlasteel
+        amount: 1
+        doAfter: 0.5
+
+- type: constructionGraph
+  id: GrilleTitanium
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: grille
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: EmberRodTitanium
+        amount: 2
+        doAfter: 1
+
+  - node: grille
+    entity: GrilleTitanium
+    edges:
+    - to: start
+      completed:
+      - !type:AdminLog
+        message: "A grille was cut"
+      - !type:SpawnPrototype
+        prototype: EmberRodTitanium1
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+        doAfter: 0.25
+
+  - node: grilleBroken
+    entity: GrilleBrokenTitanium
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberRodTitanium1
+        amount: 1
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+    - to: grille
+      steps:
+      - material: EmberRodTitanium
+        amount: 1
+        doAfter: 0.5
+
+- type: constructionGraph
+  id: GrilleOsmiumCarbidePlasteel
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: grille
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: EmberRodOsmiumCarbidePlasteel
+        amount: 2
+        doAfter: 1
+
+  - node: grille
+    entity: GrilleOsmiumCarbidePlasteel
+    edges:
+    - to: start
+      completed:
+      - !type:AdminLog
+        message: "A grille was cut"
+      - !type:SpawnPrototype
+        prototype: EmberRodOsmiumCarbidePlasteel1
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+        doAfter: 0.25
+
+  - node: grilleBroken
+    entity: GrilleBrokenOsmiumCarbidePlasteel
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberRodOsmiumCarbidePlasteel1
+        amount: 1
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+    - to: grille
+      steps:
+      - material: EmberRodOsmiumCarbidePlasteel
+        amount: 1
+        doAfter: 0.5
+
+- type: constructionGraph
+  id: GrilleOsmium
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: grille
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: EmberRodOsmium
+        amount: 2
+        doAfter: 1
+
+  - node: grille
+    entity: GrilleOsmium
+    edges:
+    - to: start
+      completed:
+      - !type:AdminLog
+        message: "A grille was cut"
+      - !type:SpawnPrototype
+        prototype: EmberRodOsmium1
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+        doAfter: 0.25
+
+  - node: grilleBroken
+    entity: GrilleBrokenOsmium
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberRodOsmium1
+        amount: 1
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+    - to: grille
+      steps:
+      - material: EmberRodOsmium
+        amount: 1
+        doAfter: 0.5
+
+- type: constructionGraph
+  id: GrilleGold
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: grille
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: EmberRodGold
+        amount: 2
+        doAfter: 1
+
+  - node: grille
+    entity: GrilleGold
+    edges:
+    - to: start
+      completed:
+      - !type:AdminLog
+        message: "A grille was cut"
+      - !type:SpawnPrototype
+        prototype: EmberRodGold1
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+        doAfter: 0.25
+
+  - node: grilleBroken
+    entity: GrilleBrokenGold
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberRodGold1
+        amount: 1
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+    - to: grille
+      steps:
+      - material: EmberRodGold
+        amount: 1
+        doAfter: 0.5
+
+- type: constructionGraph
+  id: GrilleSilver
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: grille
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: EmberRodSilver
+        amount: 2
+        doAfter: 1
+
+  - node: grille
+    entity: GrilleSilver
+    edges:
+    - to: start
+      completed:
+      - !type:AdminLog
+        message: "A grille was cut"
+      - !type:SpawnPrototype
+        prototype: EmberRodSilver1
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+        doAfter: 0.25
+
+  - node: grilleBroken
+    entity: GrilleBrokenSilver
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberRodSilver1
+        amount: 1
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+    - to: grille
+      steps:
+      - material: EmberRodSilver
+        amount: 1
+        doAfter: 0.5
+
+- type: constructionGraph
+  id: GrilleElectrum
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: grille
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: EmberRodElectrum
+        amount: 2
+        doAfter: 1
+
+  - node: grille
+    entity: GrilleElectrum
+    edges:
+    - to: start
+      completed:
+      - !type:AdminLog
+        message: "A grille was cut"
+      - !type:SpawnPrototype
+        prototype: EmberRodElectrum1
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+        doAfter: 0.25
+
+  - node: grilleBroken
+    entity: GrilleBrokenElectrum
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberRodElectrum1
+        amount: 1
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+    - to: grille
+      steps:
+      - material: EmberRodElectrum
+        amount: 1
+        doAfter: 0.5
+
+- type: constructionGraph
+  id: GrilleCopper
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: grille
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: EmberRodCopper
+        amount: 2
+        doAfter: 1
+
+  - node: grille
+    entity: GrilleCopper
+    edges:
+    - to: start
+      completed:
+      - !type:AdminLog
+        message: "A grille was cut"
+      - !type:SpawnPrototype
+        prototype: EmberRodCopper1
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+        doAfter: 0.25
+
+  - node: grilleBroken
+    entity: GrilleBrokenCopper
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberRodCopper1
+        amount: 1
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+    - to: grille
+      steps:
+      - material: EmberRodCopper
+        amount: 1
+        doAfter: 0.5
+
+- type: constructionGraph
+  id: GrilleBronze
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: grille
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: EmberRodBronze
+        amount: 2
+        doAfter: 1
+
+  - node: grille
+    entity: GrilleBronze
+    edges:
+    - to: start
+      completed:
+      - !type:AdminLog
+        message: "A grille was cut"
+      - !type:SpawnPrototype
+        prototype: EmberRodBronze1
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+        doAfter: 0.25
+
+  - node: grilleBroken
+    entity: GrilleBrokenBronze
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberRodBronze1
+        amount: 1
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+    - to: grille
+      steps:
+      - material: EmberRodBronze
+        amount: 1
+        doAfter: 0.5
+
+- type: constructionGraph
+  id: GrillePlatinum
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: grille
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: EmberRodPlatinum
+        amount: 2
+        doAfter: 1
+
+  - node: grille
+    entity: GrillePlatinum
+    edges:
+    - to: start
+      completed:
+      - !type:AdminLog
+        message: "A grille was cut"
+      - !type:SpawnPrototype
+        prototype: EmberRodPlatinum1
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+        doAfter: 0.25
+
+  - node: grilleBroken
+    entity: GrilleBrokenPlatinum
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberRodPlatinum1
+        amount: 1
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+    - to: grille
+      steps:
+      - material: EmberRodPlatinum
+        amount: 1
+        doAfter: 0.5
+
+- type: constructionGraph
+  id: GrilleUranium
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: grille
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: EmberRodUranium
+        amount: 2
+        doAfter: 1
+
+  - node: grille
+    entity: GrilleUranium
+    edges:
+    - to: start
+      completed:
+      - !type:AdminLog
+        message: "A grille was cut"
+      - !type:SpawnPrototype
+        prototype: EmberRodUranium1
+        amount: 2
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+        doAfter: 0.25
+
+  - node: grilleBroken
+    entity: GrilleBrokenUranium
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: EmberRodUranium1
+        amount: 1
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+    - to: grille
+      steps:
+      - material: EmberRodUranium
+        amount: 1
+        doAfter: 0.5

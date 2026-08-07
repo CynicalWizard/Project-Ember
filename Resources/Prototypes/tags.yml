@@ -542,6 +542,10 @@
 - type: Tag
   id: EmagImmune
 
+# Ember procedural walls never smooth into anything carrying this, matching Bay's wall_noblend_objects.
+- type: Tag
+  id: EmberWallNoBlend
+
 - type: Tag
   id: EmitterBolt
 

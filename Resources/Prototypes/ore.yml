@@ -104,6 +104,86 @@
   minOreYield: 1
   maxOreYield: 1
 
+# Ember ores, ported from SierraBay. Yields are Bay's ore_result_amount; a vein drops a random slice of that
+# rather than the flat maximum, which is how the rest of this file behaves.
+- type: ore
+  id: OreEmberBauxite
+  oreEntity: EmberBauxiteOre1
+  minOreYield: 1
+  maxOreYield: 10
+
+- type: ore
+  id: OreEmberBorax
+  oreEntity: EmberBoraxOre1
+  minOreYield: 1
+  maxOreYield: 3
+
+- type: ore
+  id: OreEmberCinnabar
+  oreEntity: EmberCinnabarOre1
+  minOreYield: 1
+  maxOreYield: 10
+
+- type: ore
+  id: OreEmberElectrum
+  oreEntity: EmberElectrumOre1
+  minOreYield: 1
+  maxOreYield: 3
+
+- type: ore
+  id: OreEmberPhosphorite
+  oreEntity: EmberPhosphoriteOre1
+  minOreYield: 1
+  maxOreYield: 10
+
+- type: ore
+  id: OreEmberPlatinum
+  oreEntity: EmberPlatinumOre1
+  minOreYield: 1
+  maxOreYield: 5
+
+- type: ore
+  id: OreEmberPotash
+  oreEntity: EmberPotashOre1
+  minOreYield: 1
+  maxOreYield: 10
+
+- type: ore
+  id: OreEmberPyrite
+  oreEntity: EmberPyriteOre1
+  minOreYield: 1
+  maxOreYield: 10
+
+- type: ore
+  id: OreEmberRutile
+  oreEntity: EmberRutileOre1
+  minOreYield: 1
+  maxOreYield: 5
+
+- type: ore
+  id: OreEmberSand
+  oreEntity: EmberSandOre1
+  minOreYield: 1
+  maxOreYield: 10
+
+- type: ore
+  id: OreEmberSpodumene
+  oreEntity: EmberSpodumeneOre1
+  minOreYield: 1
+  maxOreYield: 10
+
+- type: ore
+  id: OreEmberTetrahedrite
+  oreEntity: EmberCopperOre1
+  minOreYield: 1
+  maxOreYield: 5
+
+- type: ore
+  id: OreEmberHydrogen
+  oreEntity: EmberHydrogenOre1
+  minOreYield: 1
+  maxOreYield: 1
+
 - type: weightedRandomOre
   id: RandomOreDistributionStandard
   weights:
@@ -121,6 +201,20 @@
     OreAluminium: 2
     OreLead: 2
     OreCopper: 2
+    # Ember ores; weights are Bay ore_spread_chance / 10.
+    OreEmberBauxite: 1
+    OreEmberBorax: 1.5
+    OreEmberCinnabar: 1
+    OreEmberElectrum: 1
+    OreEmberPhosphorite: 1
+    OreEmberPlatinum: 1
+    OreEmberPotash: 1
+    OreEmberPyrite: 1
+    OreEmberRutile: 1.5
+    OreEmberSand: 1
+    OreEmberSpodumene: 1
+    OreEmberTetrahedrite: 1
+    OreEmberHydrogen: 0.3
 
 - type: weightedRandomOre
   id: RandomOreDistributionBasalt
@@ -140,6 +234,20 @@
     OreLead: 1.6
     OreCopper: 1.6
     OreTungsten: 5
+    # Ember ores; weights are Bay ore_spread_chance / 10.
+    OreEmberBauxite: 1
+    OreEmberBorax: 1.5
+    OreEmberCinnabar: 1
+    OreEmberElectrum: 1
+    OreEmberPhosphorite: 1
+    OreEmberPlatinum: 1
+    OreEmberPotash: 1
+    OreEmberPyrite: 1
+    OreEmberRutile: 1.5
+    OreEmberSand: 1
+    OreEmberSpodumene: 1
+    OreEmberTetrahedrite: 1
+    OreEmberHydrogen: 0.3
 
 - type: weightedRandomOre
   id: OreCrab

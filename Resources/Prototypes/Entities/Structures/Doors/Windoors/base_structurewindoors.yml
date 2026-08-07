@@ -57,6 +57,7 @@
   - type: Tag
     tags:
     - WeldbotFixableStructure
+    - EmberWallNoBlend # Bay never smooths walls into a windoor
   - type: ApcPowerReceiver
   - type: ExtensionCableReceiver
   - type: DoorSignalControl
@@ -242,6 +243,7 @@
   - type: Tag
     tags:
     - SecureWindoor
+    - EmberWallNoBlend # Bay never smooths walls into a windoor
     # This tag is used to nagivate the Airlock construction graph. It's needed because the construction graph is shared between Airlock, AirlockGlass, and HighSecDoor
 
 #Plasma Windoors
@@ -378,6 +380,7 @@
   - type: Tag
     tags:
     - SecurePlasmaWindoor
+    - EmberWallNoBlend # Bay never smooths walls into a windoor
     # This tag is used to nagivate the Airlock construction graph. It's needed because the construction graph is shared between Airlock, AirlockGlass, and HighSecDoor
 
 #Uranium Windoors
@@ -514,5 +517,6 @@
   - type: Tag
     tags:
     - SecureUraniumWindoor
+    - EmberWallNoBlend # Bay never smooths walls into a windoor
     # This tag is used to nagivate the Airlock construction graph. It's needed because the construction graph is shared between Airlock, AirlockGlass, and HighSecDoor
 
