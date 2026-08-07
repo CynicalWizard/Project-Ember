@@ -32,4 +32,8 @@ public sealed partial class EmberWallFixtureOffsetComponent : Component
 
     [ViewVariables]
     public Direction Facing = Direction.Invalid;
+
+    /// <summary>Whether the sprite is currently drawn, which a wall in the way can take away.</summary>
+    [ViewVariables]
+    public bool Shown = true;
 }
