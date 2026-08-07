@@ -13,7 +13,9 @@ public sealed class EmberAirlockPaintStyleTest
     [TestCase("cargo", "EmberAirlockLogistics", "AirlockCargo")]
     [TestCase("science", "EmberAirlockEpistemics", "AirlockScience")]
     [TestCase("external", "EmberAirlockExternal", "AirlockExternal")]
-    [TestCase("shuttle", "EmberAirlockBasic", "AirlockShuttle")]
+    // A docking port is its own style rather than a shuttle-shaped repaint of the basic one, so it is the
+    // amber collar that answers here.
+    [TestCase("docking", "EmberAirlockDocking", "AirlockShuttle")]
     public void KnownSprayPainterStylesMapToEmberProceduralStylesAndPreviewEntities(
         string sprayStyle,
         string expectedEmberStyle,
