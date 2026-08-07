@@ -7,7 +7,9 @@ on:
 
 jobs:
   this_aint_right:
-    if: github.actor != 'sleepyyapril' && github.actor != 'VMSolidus' && github.actor != 'DEATHB4DEFEAT'
+    # Upstream's three maintainers were the only ones allowed to move the engine here. Ember carries its own
+    # fork of it on purpose, so the name that may move it is the one that maintains this repository.
+    if: github.actor != 'CynicalWizard'
     name: Submodule update in pr found
     runs-on: ubuntu-latest
     steps:
