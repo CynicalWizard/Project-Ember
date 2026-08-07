@@ -1,4 +1,6 @@
+#nullable enable
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Destructible;
 using Content.Server.Destructible.Thresholds.Triggers;
@@ -229,7 +231,7 @@ public sealed class EmberWallMaterialDamageTest
     private static bool TryGetPhysical(
         IPrototypeManager protoManager,
         ProtoId<EmberWallMaterialPrototype> id,
-        out EmberMaterialPrototype? material)
+        [NotNullWhen(true)] out EmberMaterialPrototype? material)
     {
         material = null;
 

@@ -1,3 +1,4 @@
+#nullable enable
 using System.Collections.Generic;
 using Content.Shared.Doors.Components;
 using Content.Shared.Ember.Doors;

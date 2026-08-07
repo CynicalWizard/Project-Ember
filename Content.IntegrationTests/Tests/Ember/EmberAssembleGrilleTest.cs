@@ -1,3 +1,4 @@
+#nullable enable
 using System.Collections.Generic;
 using Content.Shared.Ember.Materials;
 using Content.Shared.Ember.Structures;
