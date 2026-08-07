@@ -80,6 +80,6 @@ public static class EmberConstructionSkill
             return false;
         }
 
-        return prototype.TryIndex(stackComponent.Material, out material);
+        return EmberMaterialLookup.TryResolve(prototype, stackComponent.Material, out material);
     }
 }

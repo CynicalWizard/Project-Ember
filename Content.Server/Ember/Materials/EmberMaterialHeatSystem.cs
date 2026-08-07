@@ -197,7 +197,7 @@ public sealed class EmberMaterialHeatSystem : EntitySystem
 
         // A lattice set into a pane is worth a quarter of itself, and no more: the pane is still glass.
         if (TryComp<EmberMaterialReinforcementComponent>(uid, out var reinforcement) &&
-            _prototype.TryIndex(reinforcement.Material, out EmberMaterialPrototype? lattice) &&
+            EmberMaterialLookup.TryResolve(_prototype, reinforcement.Material, out EmberMaterialPrototype? lattice) &&
             !lattice.Unmeltable)
         {
             point += ReinforcementShare * lattice.MeltingPoint;

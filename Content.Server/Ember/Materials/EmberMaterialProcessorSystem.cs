@@ -299,7 +299,7 @@ public sealed class EmberMaterialProcessorSystem : EntitySystem
     {
         if (!CanHandleLooseItem(machine, uid) ||
             !TryComp<EmberOreComponent>(uid, out var ore) ||
-            !_prototype.TryIndex(ore.Material, out EmberMaterialPrototype? material))
+            !EmberMaterialLookup.TryResolve(_prototype, ore.Material, out EmberMaterialPrototype? material))
         {
             return;
         }

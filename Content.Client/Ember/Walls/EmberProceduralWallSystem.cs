@@ -133,7 +133,7 @@ public sealed class EmberProceduralWallSystem : EntitySystem
     private void SetupLayers(EntityUid uid, EmberProceduralWallComponent component)
     {
         if (!TryComp<SpriteComponent>(uid, out var sprite) ||
-            !_prototype.TryIndex(component.Material, out EmberWallMaterialPrototype? material))
+            !EmberMaterialLookup.TryResolve(_prototype, component.Material, out EmberWallMaterialPrototype? material))
             return;
 
         var visuals = EmberProceduralWallVisuals.Resolve(component, material, ResolvePhysical(material));
@@ -175,7 +175,7 @@ public sealed class EmberProceduralWallSystem : EntitySystem
             !wall.Running ||
             wall.UpdateGeneration == _generation ||
             !spriteQuery.TryGetComponent(uid, out var sprite) ||
-            !_prototype.TryIndex(wall.Material, out EmberWallMaterialPrototype? material))
+            !EmberMaterialLookup.TryResolve(_prototype, wall.Material, out EmberWallMaterialPrototype? material))
             return;
 
         wall.UpdateGeneration = _generation;
@@ -472,7 +472,7 @@ public sealed class EmberProceduralWallSystem : EntitySystem
 
         // Only the neighbour's smooth key matters, so there is no need to resolve its full visuals here.
         if (wallQuery.TryGetComponent(entity, out var other) &&
-            _prototype.TryIndex(other.Material, out EmberWallMaterialPrototype? otherMaterial))
+            EmberMaterialLookup.TryResolve(_prototype, other.Material, out EmberWallMaterialPrototype? otherMaterial))
         {
             return EmberProceduralWallBlending.Classify(
                 visuals.SmoothKey,

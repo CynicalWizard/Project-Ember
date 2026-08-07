@@ -26,7 +26,7 @@ public sealed class EmberOreVisualSystem : EntitySystem
     private void UpdateVisuals(EntityUid uid, EmberOreComponent component)
     {
         if (!TryComp<SpriteComponent>(uid, out var sprite) ||
-            !_prototype.TryIndex(component.Material, out EmberMaterialPrototype? material))
+            !EmberMaterialLookup.TryResolve(_prototype, component.Material, out EmberMaterialPrototype? material))
         {
             return;
         }

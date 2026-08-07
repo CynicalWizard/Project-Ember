@@ -64,7 +64,7 @@ public sealed class EmberMaterialStackVisualSystem : EntitySystem
     {
         color = default;
 
-        if (!_prototype.TryIndex(component.Material, out EmberMaterialPrototype? material))
+        if (!EmberMaterialLookup.TryResolve(_prototype, component.Material, out EmberMaterialPrototype? material))
             return false;
 
         color = material.Color;

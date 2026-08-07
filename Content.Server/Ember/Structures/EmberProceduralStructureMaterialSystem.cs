@@ -26,7 +26,7 @@ public sealed class EmberProceduralStructureMaterialSystem : EntitySystem
 
     private void OnMapInit(Entity<EmberProceduralStructureComponent> ent, ref MapInitEvent args)
     {
-        if (!_prototype.TryIndex(ent.Comp.Material, out EmberWallMaterialPrototype? wallMaterial) ||
+        if (!EmberMaterialLookup.TryResolve(_prototype, ent.Comp.Material, out EmberWallMaterialPrototype? wallMaterial) ||
             wallMaterial.PhysicalMaterial is not { } physicalId ||
             !_prototype.TryIndex(physicalId, out EmberMaterialPrototype? material))
         {

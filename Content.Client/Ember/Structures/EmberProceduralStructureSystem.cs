@@ -154,7 +154,7 @@ public sealed class EmberProceduralStructureSystem : EntitySystem
         if (!structureQuery.TryGetComponent(uid, out var component) ||
             component.UpdateGeneration == _generation ||
             !spriteQuery.TryGetComponent(uid, out var sprite) ||
-            !_prototype.TryIndex(component.Material, out EmberWallMaterialPrototype? material) ||
+            !EmberMaterialLookup.TryResolve(_prototype, component.Material, out EmberWallMaterialPrototype? material) ||
             !xformQuery.TryGetComponent(uid, out var xform))
             return;
 

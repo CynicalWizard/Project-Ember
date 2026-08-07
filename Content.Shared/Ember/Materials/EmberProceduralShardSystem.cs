@@ -30,7 +30,7 @@ public sealed class EmberProceduralShardSystem : EntitySystem
 
     private void OnMapInit(Entity<EmberProceduralShardComponent> ent, ref MapInitEvent args)
     {
-        if (!_prototype.TryIndex(ent.Comp.Material, out EmberMaterialPrototype? material))
+        if (!EmberMaterialLookup.TryResolve(_prototype, ent.Comp.Material, out EmberMaterialPrototype? material))
             return;
 
         if (_net.IsServer)

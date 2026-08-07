@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Ember.Doors;
 using Content.Shared.Ember.Structures;
 using Content.Shared.Ember.Walls;
@@ -113,11 +114,31 @@ public static class EmberMaterialLookup
         }
     }
 
+    /// <summary>
+    /// Looks up something a component names, tolerating a component that names nothing at all.
+    /// </summary>
+    /// <remarks>
+    /// A material id is only ever as good as the prototype it was written on, and a component added to a bare
+    /// entity carries no id in that field whatsoever. Handed that, the prototype manager does not answer "no" —
+    /// it looks the empty id up in a dictionary and throws. Every startup that reads a material off its own
+    /// component can be reached that way, which is exactly what the integration tests do to every component in
+    /// the game, so they all ask through here.
+    /// </remarks>
+    public static bool TryResolve<T>(
+        IPrototypeManager prototypes,
+        ProtoId<T> id,
+        [NotNullWhen(true)] out T? prototype)
+        where T : class, IPrototype
+    {
+        prototype = null;
+        return !string.IsNullOrEmpty(id.Id) && prototypes.TryIndex(id, out prototype);
+    }
+
     private static ProtoId<EmberMaterialPrototype>? Physical(
         IPrototypeManager prototypes,
         ProtoId<EmberWallMaterialPrototype> material)
     {
-        return prototypes.TryIndex(material, out EmberWallMaterialPrototype? wall)
+        return TryResolve(prototypes, material, out EmberWallMaterialPrototype? wall)
             ? wall.PhysicalMaterial
             : null;
     }

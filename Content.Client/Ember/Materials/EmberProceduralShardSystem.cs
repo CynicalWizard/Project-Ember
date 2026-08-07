@@ -33,7 +33,7 @@ public sealed class EmberProceduralShardSystem : EntitySystem
     private void Apply(Entity<EmberProceduralShardComponent> ent)
     {
         if (!TryComp<SpriteComponent>(ent, out var sprite) ||
-            !_prototype.TryIndex(ent.Comp.Material, out EmberMaterialPrototype? material) ||
+            !EmberMaterialLookup.TryResolve(_prototype, ent.Comp.Material, out EmberMaterialPrototype? material) ||
             EmberShardTypes.GetIconBase(material.ShardType) is not { } iconBase)
         {
             return;

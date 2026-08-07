@@ -119,7 +119,7 @@ public sealed class EmberAssembleStructureSystem : EntitySystem
     {
         grille = default;
 
-        if (!_prototype.TryIndex(stack.Material, out EmberMaterialPrototype? material) ||
+        if (!EmberMaterialLookup.TryResolve(_prototype, stack.Material, out EmberMaterialPrototype? material) ||
             material.RodStack is not { } rods ||
             material.GrilleEntity is not { } result)
         {

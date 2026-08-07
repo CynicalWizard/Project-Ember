@@ -28,7 +28,7 @@ public sealed class EmberProceduralMaterialDoorSystem : EntitySystem
 
     private void OnStartup(EntityUid uid, EmberProceduralMaterialDoorComponent component, ComponentStartup args)
     {
-        if (!_prototype.TryIndex(component.Material, out EmberMaterialPrototype? material) ||
+        if (!EmberMaterialLookup.TryResolve(_prototype, component.Material, out EmberMaterialPrototype? material) ||
             !TryComp<SpriteComponent>(uid, out var sprite) ||
             !TryComp<DoorComponent>(uid, out var door))
         {

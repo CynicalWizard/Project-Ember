@@ -56,7 +56,7 @@ public sealed class EmberMaterialArmorSystem : EntitySystem
             floor = material.Hardness * 1.25f;
 
             if (TryComp<EmberMaterialReinforcementComponent>(ent, out var reinforcement) &&
-                _prototypeManager.TryIndex(reinforcement.Material, out EmberMaterialPrototype? lattice))
+                EmberMaterialLookup.TryResolve(_prototypeManager, reinforcement.Material, out EmberMaterialPrototype? lattice))
             {
                 floor += MathF.Round(lattice.Hardness * 0.625f);
             }

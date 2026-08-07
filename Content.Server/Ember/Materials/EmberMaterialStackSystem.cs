@@ -25,7 +25,7 @@ public sealed class EmberMaterialStackSystem : EntitySystem
         if (!component.RenameEntity || string.IsNullOrEmpty(component.Material))
             return;
 
-        if (!_prototype.TryIndex(component.Material, out EmberMaterialPrototype? material))
+        if (!EmberMaterialLookup.TryResolve(_prototype, component.Material, out EmberMaterialPrototype? material))
             return;
 
         _metaData.SetEntityName(uid, Loc.GetString(material.DisplayName));

@@ -31,7 +31,7 @@ public sealed class EmberMaterialTintSystem : EntitySystem
     private void Apply(EntityUid uid, EmberMaterialTintComponent component)
     {
         if (!TryComp<SpriteComponent>(uid, out var sprite) ||
-            !_prototype.TryIndex(component.Material, out EmberWallMaterialPrototype? material))
+            !EmberMaterialLookup.TryResolve(_prototype, component.Material, out EmberWallMaterialPrototype? material))
             return;
 
         sprite.Color = (component.Color ?? ResolveColor(material)).WithAlpha(component.Alpha);

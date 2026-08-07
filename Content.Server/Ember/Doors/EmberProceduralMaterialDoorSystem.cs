@@ -31,7 +31,7 @@ public sealed class EmberProceduralMaterialDoorSystem : EntitySystem
 
     private void OnMapInit(EntityUid uid, EmberProceduralMaterialDoorComponent component, MapInitEvent args)
     {
-        if (!_prototype.TryIndex(component.Material, out EmberMaterialPrototype? material))
+        if (!EmberMaterialLookup.TryResolve(_prototype, component.Material, out EmberMaterialPrototype? material))
             return;
 
         // Bay flips a door to glass below half opacity, which also means it no longer blocks vision.
