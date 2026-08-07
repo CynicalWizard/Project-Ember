@@ -215,6 +215,10 @@
   components:
   - type: Sprite
     noRot: true
+    # The floor rechargers snap to cardinals because their art is one picture; the Bay wall one has a picture
+    # per direction, and snapping four-directional art is what the engine asserts on. No-rot already keeps it
+    # upright, which is all the snapping was doing here.
+    snapCardinals: false
     sprite: Ember/Structures/Power/wall_recharger.rsi
     layers:
     - map: ["enum.PowerChargerVisualLayers.Base"]
