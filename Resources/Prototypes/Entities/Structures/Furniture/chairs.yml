@@ -236,6 +236,10 @@
     baseState: officechair
     material: Steel
     padding: Cloth
+  # Bay's office chair is five sheets (stack_recipe/furniture/chair/office), where the vanilla one was two, and
+  # a chair worth less than the steel in it is a licence to print money at the nearest autolathe.
+  - type: StaticPrice
+    price: 75
   - type: Construction
     graph: Seat
     node: chairOffice
@@ -273,6 +277,9 @@
   components:
   - type: Sprite
     state: office-white
+  # Unlocking the wheels does not melt two sheets of steel down, so it is worth what the standing one is.
+  - type: StaticPrice
+    price: 75
   - type: Construction
     graph: Seat
     node: chairOffice
@@ -546,6 +553,9 @@
   - type: EmberProceduralFurniture
     baseState: pew
     material: Steel
+  # Four sheets go into a bench, so four sheets is the least it can be worth.
+  - type: StaticPrice
+    price: 60
   - type: Construction
     graph: Seat
     node: chairSteelBench
