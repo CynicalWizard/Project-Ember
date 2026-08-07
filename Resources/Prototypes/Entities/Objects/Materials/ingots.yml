@@ -54,7 +54,7 @@
       map: ["base"]
   - type: Item
     sprite: Ember/Objects/Materials/materials.rsi
-    heldPrefix: gold
+    heldPrefix: sheet
   - type: Appearance
   - type: Extractable
     grindableSolutionName: gold
@@ -105,7 +105,7 @@
       map: ["base"]
   - type: Item
     sprite: Ember/Objects/Materials/materials.rsi
-    heldPrefix: silver
+    heldPrefix: sheet
   - type: Appearance
   - type: Extractable
     grindableSolutionName: gold
@@ -156,7 +156,7 @@
       map: ["base"]
   - type: Item
     sprite: Ember/Objects/Materials/materials.rsi
-    heldPrefix: tungsten
+    heldPrefix: sheet
   - type: Appearance
 
 - type: entity

@@ -192,7 +192,7 @@
       map: ["base"]
   - type: Item
     sprite: Ember/Objects/Materials/materials.rsi
-    heldPrefix: plastic
+    heldPrefix: sheet
   - type: Appearance
   - type: Extractable
     grindableSolutionName: plastic
@@ -273,7 +273,7 @@
   - type: Appearance
   - type: Item
     sprite: Ember/Objects/Materials/materials.rsi
-    heldPrefix: uranium
+    heldPrefix: sheet
   - type: Extractable
     grindableSolutionName: food
   - type: SolutionContainerManager

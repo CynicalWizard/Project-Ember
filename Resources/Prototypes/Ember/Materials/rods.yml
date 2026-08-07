@@ -5,14 +5,9 @@
   parent: EmberMaterialStackBase
   id: EmberRodBase
   components:
-  # Held sprites are the one part of a material stack that is not procedural. Bay is no better off: its in-hand
-  # icons are ordinary drawn states (rods, sheet-metal, sheet-glass) that merely get the material colour
-  # multiplied over them, so there is no paintable set to port.
-  # EMBER-TODO: draw a greyscale in-hand mask in the Ember material sheet and tint it like everything else.
-  # Until then every metal is carried like steel.
   - type: Item
-    sprite: Objects/Materials/parts.rsi
-    heldPrefix: rods
+    sprite: Ember/Objects/Materials/materials.rsi
+    heldPrefix: rod
 
 - type: entity
   parent: EmberRodBase

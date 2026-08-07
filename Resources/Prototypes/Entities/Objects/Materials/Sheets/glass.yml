@@ -81,7 +81,7 @@
     - state: sheet-clear-max
       map: ["base"]
   - type: Item
-    heldPrefix: glass
+    heldPrefix: sheet
   - type: FloorTile
     outputs:
     - FloorGlass
@@ -169,7 +169,7 @@
     - state: sheet-glass-reinf-max
       map: ["base"]
   - type: Item
-    heldPrefix: rglass
+    heldPrefix: sheet
   - type: FloorTile
     outputs:
     - FloorRGlass
@@ -278,7 +278,7 @@
     - state: sheet-clear-max
       map: ["base"]
   - type: Item
-    heldPrefix: pglass
+    heldPrefix: sheet
   - type: Construction
     graph: Glass
     node: SheetPGlass
@@ -381,7 +381,7 @@
     - state: sheet-glass-reinf-max
       map: ["base"]
   - type: Item
-    heldPrefix: rpglass
+    heldPrefix: sheet
   - type: Construction
     graph: Glass
     node: SheetRPGlass
@@ -463,7 +463,7 @@
     - state: sheet-clear-max
       map: ["base"]
   - type: Item
-    heldPrefix: uglass
+    heldPrefix: sheet
   - type: Construction
     graph: Glass
     node: SheetUGlass
@@ -565,7 +565,7 @@
     - state: sheet-glass-reinf-max
       map: ["base"]
   - type: Item
-    heldPrefix: ruglass
+    heldPrefix: sheet
   - type: Construction
     graph: Glass
     node: SheetRUGlass
@@ -647,7 +647,7 @@
     - state: sheet-clear-max
       map: ["base"]
   - type: Item
-    heldPrefix: cglass
+    heldPrefix: sheet
   - type: Construction
     graph: Glass
     node: SheetClockworkGlass

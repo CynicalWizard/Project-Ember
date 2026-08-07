@@ -9,8 +9,11 @@
     layers:
     - state: sheet
       map: ["base"]
+  # The held sprite is one greyscale mask for every material, the way Bay holds them: its in-hand icons are
+  # ordinary drawn states that only ever get the material colour multiplied over them.
   - type: Item
     sprite: Ember/Objects/Materials/materials.rsi
+    heldPrefix: sheet
     size: Normal
   - type: Material
   - type: Appearance

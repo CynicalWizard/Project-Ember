@@ -63,7 +63,7 @@
       map: ["base"]
   - type: Item
     sprite: Ember/Objects/Materials/materials.rsi
-    heldPrefix: steel
+    heldPrefix: sheet
   - type: Appearance
   - type: FloorTile
     outputs:
@@ -221,7 +221,7 @@
       map: ["base"]
   - type: Item
     sprite: Ember/Objects/Materials/materials.rsi
-    heldPrefix: brass
+    heldPrefix: sheet
   - type: Appearance
   - type: FloorTile
     outputs:
@@ -291,7 +291,7 @@
       map: ["base"]
   - type: Item
     sprite: Ember/Objects/Materials/materials.rsi
-    heldPrefix: plasteel
+    heldPrefix: sheet
   - type: Appearance
   - type: Extractable
     grindableSolutionName: plasteel

@@ -43,7 +43,8 @@
       map: ["base"]
   - type: Item
     size: Normal
-    heldPrefix: rods
+    sprite: Ember/Objects/Materials/materials.rsi
+    heldPrefix: rod
   - type: Construction
     graph: MetalRod
     node: MetalRod
