@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using Content.Shared.Ember.Structures;
 using Robust.Client.GameObjects;
+using Robust.Client.Graphics;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Maths;
@@ -17,6 +18,14 @@ namespace Content.IntegrationTests.Tests.Ember;
 /// north, 10 into one to either side, nothing for one to the south. It only applies them when the tile it
 /// looks at is actually dense, and so does this — a light on a pole in the middle of a room would otherwise
 /// stand a fifth of a tile away from where it is.
+///
+/// The wall goes up after the light on purpose. That is the order a map loads in, and the first version of this
+/// passed only because it reached in and recomputed the offset by hand — which nothing in a round does, so every
+/// light already on a station stayed where it was while freshly built ones came out right.
+///
+/// Which wall is the far one is a question about the screen, and the walls already answer it that way: turn the
+/// view and their pictures change. A fitting that answered it about the grid instead leant the wrong way the
+/// moment anyone pressed NUM 4.
 /// </remarks>
 [TestFixture]
 public sealed class EmberWallFixtureOffsetTest
@@ -91,11 +100,14 @@ public sealed class EmberWallFixtureOffsetTest
                 var clientLight = clientEnts.GetEntity(serverEnts.GetNetEntity(light));
                 var sprite = clientEnts.GetComponent<SpriteComponent>(clientLight);
 
-                // Straight up in the sprite's own frame is straight into the wall, whichever wall that is.
-                if (!MathHelper.CloseTo(sprite.Offset.Y, depth, 0.001f) ||
-                    !MathHelper.CloseTo(sprite.Offset.X, 0f, 0.001f))
+                // The offset is kept in the sprite's own frame, which the light turns; on screen, where the
+                // three-quarter view lives, it has to come out pointing straight up into the far wall.
+                var onScreen = Angle.FromDegrees(degrees).RotateVec(sprite.Offset);
+
+                if (!MathHelper.CloseTo(onScreen.Y, depth, 0.01f) ||
+                    !MathHelper.CloseTo(onScreen.X, 0f, 0.01f))
                 {
-                    problems.Add($"facing {facing} against a wall, it sank {sprite.Offset} rather than 0,{depth}");
+                    problems.Add($"facing {facing} against a wall, it leans {onScreen} rather than 0,{depth}");
                 }
             });
 
@@ -110,4 +122,74 @@ public sealed class EmberWallFixtureOffsetTest
 
         await pair.CleanReturnAsync();
     }
+
+    /// <summary>
+    /// Turning the camera turns which wall is the far one, so the lean has to follow it.
+    /// </summary>
+    [Test]
+    public async Task TurningTheCameraTurnsWhichWayALightLeans()
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
+        var server = pair.Server;
+        var serverEnts = server.ResolveDependency<IEntityManager>();
+        var clientEnts = pair.Client.ResolveDependency<IEntityManager>();
+        var map = await pair.CreateTestMap();
+
+        EntityUid light = default;
+
+        await server.WaitPost(() =>
+        {
+            var maps = serverEnts.System<SharedMapSystem>();
+            var tile = new Tile(server.ResolveDependency<ITileDefinitionManager>()["Plating"].TileId);
+
+            for (var x = -1; x <= 1; x++)
+            for (var y = -1; y <= 1; y++)
+            {
+                maps.SetTile(map.Grid.Owner, map.Grid.Comp, new EntityCoordinates(map.Grid, x, y), tile);
+            }
+
+            // Facing south with its wall to the north: the deepest lean there is.
+            light = serverEnts.SpawnEntity("PoweredlightEmpty", new EntityCoordinates(map.Grid, 0, 0));
+            serverEnts.SpawnEntity("WallSolid", new EntityCoordinates(map.Grid, 0, 1));
+        });
+
+        await pair.RunTicksSync(15);
+
+        var problems = new List<string>();
+
+        // A quarter turn of the camera puts that wall on the side of the screen, where the lean is shallower,
+        // and half a turn puts it at the bottom, where there is nothing to climb.
+        foreach (var (degrees, expected) in new[] { (0, 21f / 32f), (90, 10f / 32f), (180, 0f), (270, 10f / 32f) })
+        {
+            await pair.Client.WaitPost(() =>
+                pair.Client.ResolveDependency<IEyeManager>().CurrentEye.Rotation = Angle.FromDegrees(degrees));
+
+            await pair.RunTicksSync(5);
+
+            await pair.Client.WaitPost(() =>
+            {
+                var sprite = clientEnts.GetComponent<SpriteComponent>(
+                    clientEnts.GetEntity(serverEnts.GetNetEntity(light)));
+
+                // Whatever the offset is in the sprite's own frame, on screen it has to point straight up by
+                // however much that wall is worth.
+                var onScreen = Angle.FromDegrees(degrees).RotateVec(sprite.Offset);
+
+                if (!MathHelper.CloseTo(onScreen.Y, expected, 0.01f) ||
+                    !MathHelper.CloseTo(onScreen.X, 0f, 0.01f))
+                {
+                    problems.Add($"with the camera at {degrees}, it leans {onScreen} rather than 0,{expected}");
+                }
+            });
+        }
+
+        await pair.Client.WaitPost(() =>
+            pair.Client.ResolveDependency<IEyeManager>().CurrentEye.Rotation = Angle.Zero);
+
+        Assert.That(problems, Is.Empty, string.Join(NewLine, problems));
+
+        await pair.CleanReturnAsync();
+    }
+
+    private const string NewLine = "\n";
 }

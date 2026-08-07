@@ -3,6 +3,7 @@ using Content.Shared.Ember.Structures;
 using Content.Shared.Maps;
 using Content.Shared.Physics;
 using Robust.Client.GameObjects;
+using Robust.Client.Graphics;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -31,11 +32,14 @@ namespace Content.Client.Ember.Structures;
 /// </remarks>
 public sealed class EmberWallFixtureOffsetSystem : EntitySystem
 {
+    [Dependency] private readonly IEyeManager _eye = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
 
     private readonly Queue<EntityUid> _dirty = new();
 
     private EntityQuery<EmberWallFixtureOffsetComponent> _query;
+    private Angle _lastEyeRotation;
 
     public override void Initialize()
     {
@@ -66,6 +70,21 @@ public sealed class EmberWallFixtureOffsetSystem : EntitySystem
     public override void FrameUpdate(float frameTime)
     {
         base.FrameUpdate(frameTime);
+
+        // Which wall is the far one is a question about the screen, not the grid, so turning the camera changes
+        // the answer for every fitting at once.
+        var eye = _eye.CurrentEye.Rotation;
+
+        if (!eye.EqualsApprox(_lastEyeRotation))
+        {
+            _lastEyeRotation = eye;
+
+            var all = AllEntityQuery<EmberWallFixtureOffsetComponent>();
+            while (all.MoveNext(out var uid, out _))
+            {
+                _dirty.Enqueue(uid);
+            }
+        }
 
         while (_dirty.TryDequeue(out var uid))
         {
@@ -98,7 +117,13 @@ public sealed class EmberWallFixtureOffsetSystem : EntitySystem
             return;
 
         var xform = Transform(ent);
-        var facing = xform.LocalRotation.GetCardinalDir();
+
+        // Everything about a three-quarter view is a statement about the screen. A wall drawn tall is the one
+        // above you as you look at it, and it stops being that the moment the camera turns — which it does,
+        // and which the walls themselves already follow, since a sprite picks its direction from the angle it
+        // has on screen. So both how far to sink and which way that is are asked in screen terms.
+        var onScreen = _transform.GetWorldRotation(xform) + _eye.CurrentEye.Rotation;
+        var facing = onScreen.GetCardinalDir();
 
         var depth = 0;
 
@@ -107,7 +132,9 @@ public sealed class EmberWallFixtureOffsetSystem : EntitySystem
             TryComp<MapGridComponent>(gridUid, out var grid) &&
             ent.Comp.Depth.TryGetValue(facing, out var wanted))
         {
-            var behind = grid.TileIndicesFor(xform.Coordinates).Offset(facing.GetOpposite());
+            // The wall itself is where it always was, so that question stays on the grid.
+            var behindOnGrid = xform.LocalRotation.GetCardinalDir().GetOpposite();
+            var behind = grid.TileIndicesFor(xform.Coordinates).Offset(behindOnGrid);
 
             if (_turf.IsTileBlocked(gridUid, behind, CollisionGroup.Impassable, grid))
                 depth = wanted;
@@ -116,7 +143,8 @@ public sealed class EmberWallFixtureOffsetSystem : EntitySystem
         ent.Comp.Facing = facing;
         ent.Comp.AgainstWall = depth != 0;
 
-        // Straight up in the sprite's own frame is straight into the wall behind, whichever wall that is.
-        sprite.Offset = new Vector2(0f, depth / 32f);
+        // Up the screen is away from the viewer, which is where the far wall is. The sprite's own frame is
+        // turned by the fitting and then by the camera, so that has to come back out of the offset.
+        sprite.Offset = (-onScreen).RotateVec(new Vector2(0f, depth / 32f));
     }
 }
