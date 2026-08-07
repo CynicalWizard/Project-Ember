@@ -206,9 +206,12 @@
             - tool: Prying
               doAfter: 1
 
+        # Bay pads a table with a carpet tile, not with cloth, and the felt it draws is the same green as the
+        # carpet of that colour. The fancy green table is built from the same tile; which one you get is the
+        # one you asked the menu for.
         - to: TableCarpet
           steps:
-            - material: Cloth
+            - material: FloorCarpetGreen
               amount: 1
               doAfter: 1
               
@@ -278,7 +281,7 @@
         - to: TableWood
           completed:
             - !type:SpawnPrototype
-              prototype: MaterialCloth1
+              prototype: FloorCarpetItemGreen
               amount: 1
           steps:
             - tool: Prying
