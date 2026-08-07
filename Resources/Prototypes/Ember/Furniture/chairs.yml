@@ -76,6 +76,10 @@
 
 # У кресла с подлокотниками каркаса на листе нет вовсе: обивка и есть всё кресло. Деталь, которой в листе нет,
 # просто не рисуется, поэтому отдельного случая это не требует.
+  - type: Construction
+    graph: Seat
+    node: chairComfyOffice
+
 - type: entity
   id: EmberArmchair
   parent: EmberSeatBase
@@ -88,6 +92,9 @@
     baseState: armchair
     material: Steel
     padding: Leather
+  - type: Construction
+    graph: Seat
+    node: armchair
 
 - type: entity
   id: EmberFancyWoodenChair
@@ -100,6 +107,9 @@
   - type: EmberProceduralFurniture
     baseState: wooden_chair_wings
     material: Wood
+  - type: Construction
+    graph: Seat
+    node: chairWoodFancy
 
 - type: entity
   id: EmberRoundedChair
@@ -119,6 +129,10 @@
 
 # Диван прикручен к полу и стоит по сетке, поэтому угол — отдельная сущность, а не поворот на 45 градусов.
 # Диагональные кадры баевского восьминаправленного листа вырезаны в состояние sofa_corner.
+  - type: Construction
+    graph: Seat
+    node: chairRounded
+
 - type: entity
   id: EmberSofa
   parent: EmberSeatBase
@@ -139,6 +153,9 @@
     sprite: /Textures/Ember/Structures/Furniture/sofas.rsi
     material: Wood
     padding: Carpet
+  - type: Construction
+    graph: Seat
+    node: sofa
 
 - type: entity
   id: EmberSofaCorner
@@ -153,6 +170,9 @@
     sprite: /Textures/Ember/Structures/Furniture/sofas.rsi
     material: Wood
     padding: Carpet
+  - type: Construction
+    graph: Seat
+    node: sofaCorner
 
 - type: entity
   id: EmberSofaLeft
@@ -167,6 +187,9 @@
     sprite: /Textures/Ember/Structures/Furniture/sofas.rsi
     material: Wood
     padding: Carpet
+  - type: Construction
+    graph: Seat
+    node: sofaLeft
 
 - type: entity
   id: EmberSofaRight
@@ -181,3 +204,6 @@
     sprite: /Textures/Ember/Structures/Furniture/sofas.rsi
     material: Wood
     padding: Carpet
+  - type: Construction
+    graph: Seat
+    node: sofaRight

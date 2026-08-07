@@ -24,6 +24,9 @@
     - EmberFloorTechfloor
   - type: Stack
     stackType: EmberFloorTileTechfloor
+  - type: Construction
+    graph: EmberTileTechfloor
+    node: tile
 
 - type: entity
   name: grid techfloor
@@ -38,6 +41,9 @@
     - EmberFloorTechfloorGrid
   - type: Stack
     stackType: EmberFloorTileTechfloorGrid
+  - type: Construction
+    graph: EmberTileTechfloorGrid
+    node: tile
 
 - type: entity
   name: stone slabs
@@ -67,6 +73,9 @@
     - EmberFloorMetalIron
   - type: Stack
     stackType: EmberFloorTileMetalIron
+  - type: Construction
+    graph: EmberTileMetalIron
+    node: tile
 
 - type: entity
   name: iron mono floor tile
@@ -82,6 +91,9 @@
     - EmberFloorMetalIronMono
   - type: Stack
     stackType: EmberFloorTileMetalIronMono
+  - type: Construction
+    graph: EmberTileMetalIronMono
+    node: tile
 
 - type: entity
   name: iron grid floor tile
@@ -97,6 +109,9 @@
     - EmberFloorMetalIronGrid
   - type: Stack
     stackType: EmberFloorTileMetalIronGrid
+  - type: Construction
+    graph: EmberTileMetalIronGrid
+    node: tile
 
 - type: entity
   name: iron ridged floor tile
@@ -112,6 +127,9 @@
     - EmberFloorMetalIronRidged
   - type: Stack
     stackType: EmberFloorTileMetalIronRidged
+  - type: Construction
+    graph: EmberTileMetalIronRidged
+    node: tile
 
 - type: entity
   name: iron diagonal floor tile
@@ -128,6 +146,9 @@
     - EmberFloorMetalIronDiagonal
   - type: Stack
     stackType: EmberFloorTileMetalIronDiagonal
+  - type: Construction
+    graph: EmberTileMetalIronDiagonal
+    node: tile
 
 - type: entity
   name: iron small diagonal floor tile
@@ -144,6 +165,9 @@
     - EmberFloorMetalIronDiagonalMini
   - type: Stack
     stackType: EmberFloorTileMetalIronDiagonalMini
+  - type: Construction
+    graph: EmberTileMetalIronDiagonalMini
+    node: tile
 
 - type: entity
   name: iron herringbone floor tile
@@ -160,6 +184,9 @@
     - EmberFloorMetalIronHerringbone
   - type: Stack
     stackType: EmberFloorTileMetalIronHerringbone
+  - type: Construction
+    graph: EmberTileMetalIronHerringbone
+    node: tile
 
 - type: entity
   name: iron small floor tile
@@ -176,6 +203,9 @@
     - EmberFloorMetalIronMini
   - type: Stack
     stackType: EmberFloorTileMetalIronMini
+  - type: Construction
+    graph: EmberTileMetalIronMini
+    node: tile
 
 - type: entity
   name: aluminium floor tile
@@ -191,6 +221,9 @@
     - EmberFloorMetalAluminium
   - type: Stack
     stackType: EmberFloorTileMetalAluminium
+  - type: Construction
+    graph: EmberTileMetalAluminium
+    node: tile
 
 - type: entity
   name: aluminium mono floor tile
@@ -206,6 +239,9 @@
     - EmberFloorMetalAluminiumMono
   - type: Stack
     stackType: EmberFloorTileMetalAluminiumMono
+  - type: Construction
+    graph: EmberTileMetalAluminiumMono
+    node: tile
 
 - type: entity
   name: aluminium grid floor tile
@@ -221,6 +257,9 @@
     - EmberFloorMetalAluminiumGrid
   - type: Stack
     stackType: EmberFloorTileMetalAluminiumGrid
+  - type: Construction
+    graph: EmberTileMetalAluminiumGrid
+    node: tile
 
 - type: entity
   name: aluminium ridged floor tile
@@ -236,6 +275,9 @@
     - EmberFloorMetalAluminiumRidged
   - type: Stack
     stackType: EmberFloorTileMetalAluminiumRidged
+  - type: Construction
+    graph: EmberTileMetalAluminiumRidged
+    node: tile
 
 - type: entity
   name: aluminium diagonal floor tile
@@ -252,6 +294,9 @@
     - EmberFloorMetalAluminiumDiagonal
   - type: Stack
     stackType: EmberFloorTileMetalAluminiumDiagonal
+  - type: Construction
+    graph: EmberTileMetalAluminiumDiagonal
+    node: tile
 
 - type: entity
   name: aluminium small diagonal floor tile
@@ -268,6 +313,9 @@
     - EmberFloorMetalAluminiumDiagonalMini
   - type: Stack
     stackType: EmberFloorTileMetalAluminiumDiagonalMini
+  - type: Construction
+    graph: EmberTileMetalAluminiumDiagonalMini
+    node: tile
 
 - type: entity
   name: aluminium herringbone floor tile
@@ -284,6 +332,9 @@
     - EmberFloorMetalAluminiumHerringbone
   - type: Stack
     stackType: EmberFloorTileMetalAluminiumHerringbone
+  - type: Construction
+    graph: EmberTileMetalAluminiumHerringbone
+    node: tile
 
 - type: entity
   name: aluminium small floor tile
@@ -300,6 +351,9 @@
     - EmberFloorMetalAluminiumMini
   - type: Stack
     stackType: EmberFloorTileMetalAluminiumMini
+  - type: Construction
+    graph: EmberTileMetalAluminiumMini
+    node: tile
 
 - type: entity
   name: plasteel floor tile
@@ -315,6 +369,9 @@
     - EmberFloorMetalPlasteel
   - type: Stack
     stackType: EmberFloorTileMetalPlasteel
+  - type: Construction
+    graph: EmberTileMetalPlasteel
+    node: tile
 
 - type: entity
   name: plasteel mono floor tile
@@ -330,6 +387,9 @@
     - EmberFloorMetalPlasteelMono
   - type: Stack
     stackType: EmberFloorTileMetalPlasteelMono
+  - type: Construction
+    graph: EmberTileMetalPlasteelMono
+    node: tile
 
 - type: entity
   name: plasteel grid floor tile
@@ -345,6 +405,9 @@
     - EmberFloorMetalPlasteelGrid
   - type: Stack
     stackType: EmberFloorTileMetalPlasteelGrid
+  - type: Construction
+    graph: EmberTileMetalPlasteelGrid
+    node: tile
 
 - type: entity
   name: plasteel ridged floor tile
@@ -360,6 +423,9 @@
     - EmberFloorMetalPlasteelRidged
   - type: Stack
     stackType: EmberFloorTileMetalPlasteelRidged
+  - type: Construction
+    graph: EmberTileMetalPlasteelRidged
+    node: tile
 
 - type: entity
   name: plasteel diagonal floor tile
@@ -376,6 +442,9 @@
     - EmberFloorMetalPlasteelDiagonal
   - type: Stack
     stackType: EmberFloorTileMetalPlasteelDiagonal
+  - type: Construction
+    graph: EmberTileMetalPlasteelDiagonal
+    node: tile
 
 - type: entity
   name: plasteel small diagonal floor tile
@@ -392,6 +461,9 @@
     - EmberFloorMetalPlasteelDiagonalMini
   - type: Stack
     stackType: EmberFloorTileMetalPlasteelDiagonalMini
+  - type: Construction
+    graph: EmberTileMetalPlasteelDiagonalMini
+    node: tile
 
 - type: entity
   name: plasteel herringbone floor tile
@@ -408,6 +480,9 @@
     - EmberFloorMetalPlasteelHerringbone
   - type: Stack
     stackType: EmberFloorTileMetalPlasteelHerringbone
+  - type: Construction
+    graph: EmberTileMetalPlasteelHerringbone
+    node: tile
 
 - type: entity
   name: plasteel small floor tile
@@ -424,6 +499,9 @@
     - EmberFloorMetalPlasteelMini
   - type: Stack
     stackType: EmberFloorTileMetalPlasteelMini
+  - type: Construction
+    graph: EmberTileMetalPlasteelMini
+    node: tile
 
 - type: entity
   name: titanium floor tile
@@ -439,6 +517,9 @@
     - EmberFloorMetalTitanium
   - type: Stack
     stackType: EmberFloorTileMetalTitanium
+  - type: Construction
+    graph: EmberTileMetalTitanium
+    node: tile
 
 - type: entity
   name: titanium mono floor tile
@@ -454,6 +535,9 @@
     - EmberFloorMetalTitaniumMono
   - type: Stack
     stackType: EmberFloorTileMetalTitaniumMono
+  - type: Construction
+    graph: EmberTileMetalTitaniumMono
+    node: tile
 
 - type: entity
   name: titanium grid floor tile
@@ -469,6 +553,9 @@
     - EmberFloorMetalTitaniumGrid
   - type: Stack
     stackType: EmberFloorTileMetalTitaniumGrid
+  - type: Construction
+    graph: EmberTileMetalTitaniumGrid
+    node: tile
 
 - type: entity
   name: titanium ridged floor tile
@@ -484,6 +571,9 @@
     - EmberFloorMetalTitaniumRidged
   - type: Stack
     stackType: EmberFloorTileMetalTitaniumRidged
+  - type: Construction
+    graph: EmberTileMetalTitaniumRidged
+    node: tile
 
 - type: entity
   name: titanium diagonal floor tile
@@ -500,6 +590,9 @@
     - EmberFloorMetalTitaniumDiagonal
   - type: Stack
     stackType: EmberFloorTileMetalTitaniumDiagonal
+  - type: Construction
+    graph: EmberTileMetalTitaniumDiagonal
+    node: tile
 
 - type: entity
   name: titanium small diagonal floor tile
@@ -516,6 +609,9 @@
     - EmberFloorMetalTitaniumDiagonalMini
   - type: Stack
     stackType: EmberFloorTileMetalTitaniumDiagonalMini
+  - type: Construction
+    graph: EmberTileMetalTitaniumDiagonalMini
+    node: tile
 
 - type: entity
   name: titanium herringbone floor tile
@@ -532,6 +628,9 @@
     - EmberFloorMetalTitaniumHerringbone
   - type: Stack
     stackType: EmberFloorTileMetalTitaniumHerringbone
+  - type: Construction
+    graph: EmberTileMetalTitaniumHerringbone
+    node: tile
 
 - type: entity
   name: titanium small floor tile
@@ -548,6 +647,9 @@
     - EmberFloorMetalTitaniumMini
   - type: Stack
     stackType: EmberFloorTileMetalTitaniumMini
+  - type: Construction
+    graph: EmberTileMetalTitaniumMini
+    node: tile
 
 - type: entity
   name: osmium-carbide plasteel floor tile
@@ -563,6 +665,9 @@
     - EmberFloorMetalOsmiumCarbidePlasteel
   - type: Stack
     stackType: EmberFloorTileMetalOsmiumCarbidePlasteel
+  - type: Construction
+    graph: EmberTileMetalOsmiumCarbidePlasteel
+    node: tile
 
 - type: entity
   name: osmium-carbide plasteel mono floor tile
@@ -578,6 +683,9 @@
     - EmberFloorMetalOsmiumCarbidePlasteelMono
   - type: Stack
     stackType: EmberFloorTileMetalOsmiumCarbidePlasteelMono
+  - type: Construction
+    graph: EmberTileMetalOsmiumCarbidePlasteelMono
+    node: tile
 
 - type: entity
   name: osmium-carbide plasteel grid floor tile
@@ -593,6 +701,9 @@
     - EmberFloorMetalOsmiumCarbidePlasteelGrid
   - type: Stack
     stackType: EmberFloorTileMetalOsmiumCarbidePlasteelGrid
+  - type: Construction
+    graph: EmberTileMetalOsmiumCarbidePlasteelGrid
+    node: tile
 
 - type: entity
   name: osmium-carbide plasteel ridged floor tile
@@ -608,6 +719,9 @@
     - EmberFloorMetalOsmiumCarbidePlasteelRidged
   - type: Stack
     stackType: EmberFloorTileMetalOsmiumCarbidePlasteelRidged
+  - type: Construction
+    graph: EmberTileMetalOsmiumCarbidePlasteelRidged
+    node: tile
 
 - type: entity
   name: osmium-carbide plasteel diagonal floor tile
@@ -624,6 +738,9 @@
     - EmberFloorMetalOsmiumCarbidePlasteelDiagonal
   - type: Stack
     stackType: EmberFloorTileMetalOsmiumCarbidePlasteelDiagonal
+  - type: Construction
+    graph: EmberTileMetalOsmiumCarbidePlasteelDiagonal
+    node: tile
 
 - type: entity
   name: osmium-carbide plasteel small diagonal floor tile
@@ -640,6 +757,9 @@
     - EmberFloorMetalOsmiumCarbidePlasteelDiagonalMini
   - type: Stack
     stackType: EmberFloorTileMetalOsmiumCarbidePlasteelDiagonalMini
+  - type: Construction
+    graph: EmberTileMetalOsmiumCarbidePlasteelDiagonalMini
+    node: tile
 
 - type: entity
   name: osmium-carbide plasteel herringbone floor tile
@@ -656,6 +776,9 @@
     - EmberFloorMetalOsmiumCarbidePlasteelHerringbone
   - type: Stack
     stackType: EmberFloorTileMetalOsmiumCarbidePlasteelHerringbone
+  - type: Construction
+    graph: EmberTileMetalOsmiumCarbidePlasteelHerringbone
+    node: tile
 
 - type: entity
   name: osmium-carbide plasteel small floor tile
@@ -672,6 +795,9 @@
     - EmberFloorMetalOsmiumCarbidePlasteelMini
   - type: Stack
     stackType: EmberFloorTileMetalOsmiumCarbidePlasteelMini
+  - type: Construction
+    graph: EmberTileMetalOsmiumCarbidePlasteelMini
+    node: tile
 
 - type: entity
   name: osmium floor tile
@@ -687,6 +813,9 @@
     - EmberFloorMetalOsmium
   - type: Stack
     stackType: EmberFloorTileMetalOsmium
+  - type: Construction
+    graph: EmberTileMetalOsmium
+    node: tile
 
 - type: entity
   name: osmium mono floor tile
@@ -702,6 +831,9 @@
     - EmberFloorMetalOsmiumMono
   - type: Stack
     stackType: EmberFloorTileMetalOsmiumMono
+  - type: Construction
+    graph: EmberTileMetalOsmiumMono
+    node: tile
 
 - type: entity
   name: osmium grid floor tile
@@ -717,6 +849,9 @@
     - EmberFloorMetalOsmiumGrid
   - type: Stack
     stackType: EmberFloorTileMetalOsmiumGrid
+  - type: Construction
+    graph: EmberTileMetalOsmiumGrid
+    node: tile
 
 - type: entity
   name: osmium ridged floor tile
@@ -732,6 +867,9 @@
     - EmberFloorMetalOsmiumRidged
   - type: Stack
     stackType: EmberFloorTileMetalOsmiumRidged
+  - type: Construction
+    graph: EmberTileMetalOsmiumRidged
+    node: tile
 
 - type: entity
   name: osmium diagonal floor tile
@@ -748,6 +886,9 @@
     - EmberFloorMetalOsmiumDiagonal
   - type: Stack
     stackType: EmberFloorTileMetalOsmiumDiagonal
+  - type: Construction
+    graph: EmberTileMetalOsmiumDiagonal
+    node: tile
 
 - type: entity
   name: osmium small diagonal floor tile
@@ -764,6 +905,9 @@
     - EmberFloorMetalOsmiumDiagonalMini
   - type: Stack
     stackType: EmberFloorTileMetalOsmiumDiagonalMini
+  - type: Construction
+    graph: EmberTileMetalOsmiumDiagonalMini
+    node: tile
 
 - type: entity
   name: osmium herringbone floor tile
@@ -780,6 +924,9 @@
     - EmberFloorMetalOsmiumHerringbone
   - type: Stack
     stackType: EmberFloorTileMetalOsmiumHerringbone
+  - type: Construction
+    graph: EmberTileMetalOsmiumHerringbone
+    node: tile
 
 - type: entity
   name: osmium small floor tile
@@ -796,6 +943,9 @@
     - EmberFloorMetalOsmiumMini
   - type: Stack
     stackType: EmberFloorTileMetalOsmiumMini
+  - type: Construction
+    graph: EmberTileMetalOsmiumMini
+    node: tile
 
 - type: entity
   name: gold floor tile
@@ -811,6 +961,9 @@
     - EmberFloorMetalGold
   - type: Stack
     stackType: EmberFloorTileMetalGold
+  - type: Construction
+    graph: EmberTileMetalGold
+    node: tile
 
 - type: entity
   name: gold mono floor tile
@@ -826,6 +979,9 @@
     - EmberFloorMetalGoldMono
   - type: Stack
     stackType: EmberFloorTileMetalGoldMono
+  - type: Construction
+    graph: EmberTileMetalGoldMono
+    node: tile
 
 - type: entity
   name: gold grid floor tile
@@ -841,6 +997,9 @@
     - EmberFloorMetalGoldGrid
   - type: Stack
     stackType: EmberFloorTileMetalGoldGrid
+  - type: Construction
+    graph: EmberTileMetalGoldGrid
+    node: tile
 
 - type: entity
   name: gold ridged floor tile
@@ -856,6 +1015,9 @@
     - EmberFloorMetalGoldRidged
   - type: Stack
     stackType: EmberFloorTileMetalGoldRidged
+  - type: Construction
+    graph: EmberTileMetalGoldRidged
+    node: tile
 
 - type: entity
   name: gold diagonal floor tile
@@ -872,6 +1034,9 @@
     - EmberFloorMetalGoldDiagonal
   - type: Stack
     stackType: EmberFloorTileMetalGoldDiagonal
+  - type: Construction
+    graph: EmberTileMetalGoldDiagonal
+    node: tile
 
 - type: entity
   name: gold small diagonal floor tile
@@ -888,6 +1053,9 @@
     - EmberFloorMetalGoldDiagonalMini
   - type: Stack
     stackType: EmberFloorTileMetalGoldDiagonalMini
+  - type: Construction
+    graph: EmberTileMetalGoldDiagonalMini
+    node: tile
 
 - type: entity
   name: gold herringbone floor tile
@@ -904,6 +1072,9 @@
     - EmberFloorMetalGoldHerringbone
   - type: Stack
     stackType: EmberFloorTileMetalGoldHerringbone
+  - type: Construction
+    graph: EmberTileMetalGoldHerringbone
+    node: tile
 
 - type: entity
   name: gold small floor tile
@@ -920,6 +1091,9 @@
     - EmberFloorMetalGoldMini
   - type: Stack
     stackType: EmberFloorTileMetalGoldMini
+  - type: Construction
+    graph: EmberTileMetalGoldMini
+    node: tile
 
 - type: entity
   name: silver floor tile
@@ -935,6 +1109,9 @@
     - EmberFloorMetalSilver
   - type: Stack
     stackType: EmberFloorTileMetalSilver
+  - type: Construction
+    graph: EmberTileMetalSilver
+    node: tile
 
 - type: entity
   name: silver mono floor tile
@@ -950,6 +1127,9 @@
     - EmberFloorMetalSilverMono
   - type: Stack
     stackType: EmberFloorTileMetalSilverMono
+  - type: Construction
+    graph: EmberTileMetalSilverMono
+    node: tile
 
 - type: entity
   name: silver grid floor tile
@@ -965,6 +1145,9 @@
     - EmberFloorMetalSilverGrid
   - type: Stack
     stackType: EmberFloorTileMetalSilverGrid
+  - type: Construction
+    graph: EmberTileMetalSilverGrid
+    node: tile
 
 - type: entity
   name: silver ridged floor tile
@@ -980,6 +1163,9 @@
     - EmberFloorMetalSilverRidged
   - type: Stack
     stackType: EmberFloorTileMetalSilverRidged
+  - type: Construction
+    graph: EmberTileMetalSilverRidged
+    node: tile
 
 - type: entity
   name: silver diagonal floor tile
@@ -996,6 +1182,9 @@
     - EmberFloorMetalSilverDiagonal
   - type: Stack
     stackType: EmberFloorTileMetalSilverDiagonal
+  - type: Construction
+    graph: EmberTileMetalSilverDiagonal
+    node: tile
 
 - type: entity
   name: silver small diagonal floor tile
@@ -1012,6 +1201,9 @@
     - EmberFloorMetalSilverDiagonalMini
   - type: Stack
     stackType: EmberFloorTileMetalSilverDiagonalMini
+  - type: Construction
+    graph: EmberTileMetalSilverDiagonalMini
+    node: tile
 
 - type: entity
   name: silver herringbone floor tile
@@ -1028,6 +1220,9 @@
     - EmberFloorMetalSilverHerringbone
   - type: Stack
     stackType: EmberFloorTileMetalSilverHerringbone
+  - type: Construction
+    graph: EmberTileMetalSilverHerringbone
+    node: tile
 
 - type: entity
   name: silver small floor tile
@@ -1044,6 +1239,9 @@
     - EmberFloorMetalSilverMini
   - type: Stack
     stackType: EmberFloorTileMetalSilverMini
+  - type: Construction
+    graph: EmberTileMetalSilverMini
+    node: tile
 
 - type: entity
   name: electrum floor tile
@@ -1059,6 +1257,9 @@
     - EmberFloorMetalElectrum
   - type: Stack
     stackType: EmberFloorTileMetalElectrum
+  - type: Construction
+    graph: EmberTileMetalElectrum
+    node: tile
 
 - type: entity
   name: electrum mono floor tile
@@ -1074,6 +1275,9 @@
     - EmberFloorMetalElectrumMono
   - type: Stack
     stackType: EmberFloorTileMetalElectrumMono
+  - type: Construction
+    graph: EmberTileMetalElectrumMono
+    node: tile
 
 - type: entity
   name: electrum grid floor tile
@@ -1089,6 +1293,9 @@
     - EmberFloorMetalElectrumGrid
   - type: Stack
     stackType: EmberFloorTileMetalElectrumGrid
+  - type: Construction
+    graph: EmberTileMetalElectrumGrid
+    node: tile
 
 - type: entity
   name: electrum ridged floor tile
@@ -1104,6 +1311,9 @@
     - EmberFloorMetalElectrumRidged
   - type: Stack
     stackType: EmberFloorTileMetalElectrumRidged
+  - type: Construction
+    graph: EmberTileMetalElectrumRidged
+    node: tile
 
 - type: entity
   name: electrum diagonal floor tile
@@ -1120,6 +1330,9 @@
     - EmberFloorMetalElectrumDiagonal
   - type: Stack
     stackType: EmberFloorTileMetalElectrumDiagonal
+  - type: Construction
+    graph: EmberTileMetalElectrumDiagonal
+    node: tile
 
 - type: entity
   name: electrum small diagonal floor tile
@@ -1136,6 +1349,9 @@
     - EmberFloorMetalElectrumDiagonalMini
   - type: Stack
     stackType: EmberFloorTileMetalElectrumDiagonalMini
+  - type: Construction
+    graph: EmberTileMetalElectrumDiagonalMini
+    node: tile
 
 - type: entity
   name: electrum herringbone floor tile
@@ -1152,6 +1368,9 @@
     - EmberFloorMetalElectrumHerringbone
   - type: Stack
     stackType: EmberFloorTileMetalElectrumHerringbone
+  - type: Construction
+    graph: EmberTileMetalElectrumHerringbone
+    node: tile
 
 - type: entity
   name: electrum small floor tile
@@ -1168,6 +1387,9 @@
     - EmberFloorMetalElectrumMini
   - type: Stack
     stackType: EmberFloorTileMetalElectrumMini
+  - type: Construction
+    graph: EmberTileMetalElectrumMini
+    node: tile
 
 - type: entity
   name: copper floor tile
@@ -1183,6 +1405,9 @@
     - EmberFloorMetalCopper
   - type: Stack
     stackType: EmberFloorTileMetalCopper
+  - type: Construction
+    graph: EmberTileMetalCopper
+    node: tile
 
 - type: entity
   name: copper mono floor tile
@@ -1198,6 +1423,9 @@
     - EmberFloorMetalCopperMono
   - type: Stack
     stackType: EmberFloorTileMetalCopperMono
+  - type: Construction
+    graph: EmberTileMetalCopperMono
+    node: tile
 
 - type: entity
   name: copper grid floor tile
@@ -1213,6 +1441,9 @@
     - EmberFloorMetalCopperGrid
   - type: Stack
     stackType: EmberFloorTileMetalCopperGrid
+  - type: Construction
+    graph: EmberTileMetalCopperGrid
+    node: tile
 
 - type: entity
   name: copper ridged floor tile
@@ -1228,6 +1459,9 @@
     - EmberFloorMetalCopperRidged
   - type: Stack
     stackType: EmberFloorTileMetalCopperRidged
+  - type: Construction
+    graph: EmberTileMetalCopperRidged
+    node: tile
 
 - type: entity
   name: copper diagonal floor tile
@@ -1244,6 +1478,9 @@
     - EmberFloorMetalCopperDiagonal
   - type: Stack
     stackType: EmberFloorTileMetalCopperDiagonal
+  - type: Construction
+    graph: EmberTileMetalCopperDiagonal
+    node: tile
 
 - type: entity
   name: copper small diagonal floor tile
@@ -1260,6 +1497,9 @@
     - EmberFloorMetalCopperDiagonalMini
   - type: Stack
     stackType: EmberFloorTileMetalCopperDiagonalMini
+  - type: Construction
+    graph: EmberTileMetalCopperDiagonalMini
+    node: tile
 
 - type: entity
   name: copper herringbone floor tile
@@ -1276,6 +1516,9 @@
     - EmberFloorMetalCopperHerringbone
   - type: Stack
     stackType: EmberFloorTileMetalCopperHerringbone
+  - type: Construction
+    graph: EmberTileMetalCopperHerringbone
+    node: tile
 
 - type: entity
   name: copper small floor tile
@@ -1292,6 +1535,9 @@
     - EmberFloorMetalCopperMini
   - type: Stack
     stackType: EmberFloorTileMetalCopperMini
+  - type: Construction
+    graph: EmberTileMetalCopperMini
+    node: tile
 
 - type: entity
   name: bronze floor tile
@@ -1307,6 +1553,9 @@
     - EmberFloorMetalBronze
   - type: Stack
     stackType: EmberFloorTileMetalBronze
+  - type: Construction
+    graph: EmberTileMetalBronze
+    node: tile
 
 - type: entity
   name: bronze mono floor tile
@@ -1322,6 +1571,9 @@
     - EmberFloorMetalBronzeMono
   - type: Stack
     stackType: EmberFloorTileMetalBronzeMono
+  - type: Construction
+    graph: EmberTileMetalBronzeMono
+    node: tile
 
 - type: entity
   name: bronze grid floor tile
@@ -1337,6 +1589,9 @@
     - EmberFloorMetalBronzeGrid
   - type: Stack
     stackType: EmberFloorTileMetalBronzeGrid
+  - type: Construction
+    graph: EmberTileMetalBronzeGrid
+    node: tile
 
 - type: entity
   name: bronze ridged floor tile
@@ -1352,6 +1607,9 @@
     - EmberFloorMetalBronzeRidged
   - type: Stack
     stackType: EmberFloorTileMetalBronzeRidged
+  - type: Construction
+    graph: EmberTileMetalBronzeRidged
+    node: tile
 
 - type: entity
   name: bronze diagonal floor tile
@@ -1368,6 +1626,9 @@
     - EmberFloorMetalBronzeDiagonal
   - type: Stack
     stackType: EmberFloorTileMetalBronzeDiagonal
+  - type: Construction
+    graph: EmberTileMetalBronzeDiagonal
+    node: tile
 
 - type: entity
   name: bronze small diagonal floor tile
@@ -1384,6 +1645,9 @@
     - EmberFloorMetalBronzeDiagonalMini
   - type: Stack
     stackType: EmberFloorTileMetalBronzeDiagonalMini
+  - type: Construction
+    graph: EmberTileMetalBronzeDiagonalMini
+    node: tile
 
 - type: entity
   name: bronze herringbone floor tile
@@ -1400,6 +1664,9 @@
     - EmberFloorMetalBronzeHerringbone
   - type: Stack
     stackType: EmberFloorTileMetalBronzeHerringbone
+  - type: Construction
+    graph: EmberTileMetalBronzeHerringbone
+    node: tile
 
 - type: entity
   name: bronze small floor tile
@@ -1416,6 +1683,9 @@
     - EmberFloorMetalBronzeMini
   - type: Stack
     stackType: EmberFloorTileMetalBronzeMini
+  - type: Construction
+    graph: EmberTileMetalBronzeMini
+    node: tile
 
 - type: entity
   name: platinum floor tile
@@ -1431,6 +1701,9 @@
     - EmberFloorMetalPlatinum
   - type: Stack
     stackType: EmberFloorTileMetalPlatinum
+  - type: Construction
+    graph: EmberTileMetalPlatinum
+    node: tile
 
 - type: entity
   name: platinum mono floor tile
@@ -1446,6 +1719,9 @@
     - EmberFloorMetalPlatinumMono
   - type: Stack
     stackType: EmberFloorTileMetalPlatinumMono
+  - type: Construction
+    graph: EmberTileMetalPlatinumMono
+    node: tile
 
 - type: entity
   name: platinum grid floor tile
@@ -1461,6 +1737,9 @@
     - EmberFloorMetalPlatinumGrid
   - type: Stack
     stackType: EmberFloorTileMetalPlatinumGrid
+  - type: Construction
+    graph: EmberTileMetalPlatinumGrid
+    node: tile
 
 - type: entity
   name: platinum ridged floor tile
@@ -1476,6 +1755,9 @@
     - EmberFloorMetalPlatinumRidged
   - type: Stack
     stackType: EmberFloorTileMetalPlatinumRidged
+  - type: Construction
+    graph: EmberTileMetalPlatinumRidged
+    node: tile
 
 - type: entity
   name: platinum diagonal floor tile
@@ -1492,6 +1774,9 @@
     - EmberFloorMetalPlatinumDiagonal
   - type: Stack
     stackType: EmberFloorTileMetalPlatinumDiagonal
+  - type: Construction
+    graph: EmberTileMetalPlatinumDiagonal
+    node: tile
 
 - type: entity
   name: platinum small diagonal floor tile
@@ -1508,6 +1793,9 @@
     - EmberFloorMetalPlatinumDiagonalMini
   - type: Stack
     stackType: EmberFloorTileMetalPlatinumDiagonalMini
+  - type: Construction
+    graph: EmberTileMetalPlatinumDiagonalMini
+    node: tile
 
 - type: entity
   name: platinum herringbone floor tile
@@ -1524,6 +1812,9 @@
     - EmberFloorMetalPlatinumHerringbone
   - type: Stack
     stackType: EmberFloorTileMetalPlatinumHerringbone
+  - type: Construction
+    graph: EmberTileMetalPlatinumHerringbone
+    node: tile
 
 - type: entity
   name: platinum small floor tile
@@ -1540,6 +1831,9 @@
     - EmberFloorMetalPlatinumMini
   - type: Stack
     stackType: EmberFloorTileMetalPlatinumMini
+  - type: Construction
+    graph: EmberTileMetalPlatinumMini
+    node: tile
 
 - type: entity
   name: uranium floor tile
@@ -1555,6 +1849,9 @@
     - EmberFloorMetalUranium
   - type: Stack
     stackType: EmberFloorTileMetalUranium
+  - type: Construction
+    graph: EmberTileMetalUranium
+    node: tile
 
 - type: entity
   name: uranium mono floor tile
@@ -1570,6 +1867,9 @@
     - EmberFloorMetalUraniumMono
   - type: Stack
     stackType: EmberFloorTileMetalUraniumMono
+  - type: Construction
+    graph: EmberTileMetalUraniumMono
+    node: tile
 
 - type: entity
   name: uranium grid floor tile
@@ -1585,6 +1885,9 @@
     - EmberFloorMetalUraniumGrid
   - type: Stack
     stackType: EmberFloorTileMetalUraniumGrid
+  - type: Construction
+    graph: EmberTileMetalUraniumGrid
+    node: tile
 
 - type: entity
   name: uranium ridged floor tile
@@ -1600,6 +1903,9 @@
     - EmberFloorMetalUraniumRidged
   - type: Stack
     stackType: EmberFloorTileMetalUraniumRidged
+  - type: Construction
+    graph: EmberTileMetalUraniumRidged
+    node: tile
 
 - type: entity
   name: uranium diagonal floor tile
@@ -1616,6 +1922,9 @@
     - EmberFloorMetalUraniumDiagonal
   - type: Stack
     stackType: EmberFloorTileMetalUraniumDiagonal
+  - type: Construction
+    graph: EmberTileMetalUraniumDiagonal
+    node: tile
 
 - type: entity
   name: uranium small diagonal floor tile
@@ -1632,6 +1941,9 @@
     - EmberFloorMetalUraniumDiagonalMini
   - type: Stack
     stackType: EmberFloorTileMetalUraniumDiagonalMini
+  - type: Construction
+    graph: EmberTileMetalUraniumDiagonalMini
+    node: tile
 
 - type: entity
   name: uranium herringbone floor tile
@@ -1648,6 +1960,9 @@
     - EmberFloorMetalUraniumHerringbone
   - type: Stack
     stackType: EmberFloorTileMetalUraniumHerringbone
+  - type: Construction
+    graph: EmberTileMetalUraniumHerringbone
+    node: tile
 
 - type: entity
   name: uranium small floor tile
@@ -1664,6 +1979,9 @@
     - EmberFloorMetalUraniumMini
   - type: Stack
     stackType: EmberFloorTileMetalUraniumMini
+  - type: Construction
+    graph: EmberTileMetalUraniumMini
+    node: tile
 
 - type: entity
   name: grey grid floor
@@ -1678,6 +1996,9 @@
     - EmberFloorSteelGrid
   - type: Stack
     stackType: EmberFloorTileSteelGrid
+  - type: Construction
+    graph: EmberTileSteelGrid
+    node: tile
 
 - type: entity
   name: grey ridged floor
@@ -1692,6 +2013,9 @@
     - EmberFloorSteelRidged
   - type: Stack
     stackType: EmberFloorTileSteelRidged
+  - type: Construction
+    graph: EmberTileSteelRidged
+    node: tile
 
 - type: entity
   name: sandstone slab
@@ -1707,6 +2031,9 @@
     - EmberFloorStoneSandstone
   - type: Stack
     stackType: EmberFloorTileStoneSandstone
+  - type: Construction
+    graph: EmberTileStoneSandstone
+    node: tile
 
 - type: entity
   name: marble slab
@@ -1722,6 +2049,9 @@
     - EmberFloorStoneMarble
   - type: Stack
     stackType: EmberFloorTileStoneMarble
+  - type: Construction
+    graph: EmberTileStoneMarble
+    node: tile
 
 - type: entity
   name: concrete slab
@@ -1737,6 +2067,9 @@
     - EmberFloorStoneConcrete
   - type: Stack
     stackType: EmberFloorTileStoneConcrete
+  - type: Construction
+    graph: EmberTileStoneConcrete
+    node: tile
 
 - type: entity
   name: quartz slab
@@ -1752,6 +2085,9 @@
     - EmberFloorStoneQuartz
   - type: Stack
     stackType: EmberFloorTileStoneQuartz
+  - type: Construction
+    graph: EmberTileStoneQuartz
+    node: tile
 
 - type: entity
   name: pyrite slab
@@ -1767,6 +2103,9 @@
     - EmberFloorStonePyrite
   - type: Stack
     stackType: EmberFloorTileStonePyrite
+  - type: Construction
+    graph: EmberTileStonePyrite
+    node: tile
 
 - type: entity
   name: spodumene slab
@@ -1782,6 +2121,9 @@
     - EmberFloorStoneSpodumene
   - type: Stack
     stackType: EmberFloorTileStoneSpodumene
+  - type: Construction
+    graph: EmberTileStoneSpodumene
+    node: tile
 
 - type: entity
   name: cinnabar slab
@@ -1797,6 +2139,9 @@
     - EmberFloorStoneCinnabar
   - type: Stack
     stackType: EmberFloorTileStoneCinnabar
+  - type: Construction
+    graph: EmberTileStoneCinnabar
+    node: tile
 
 - type: entity
   name: phosphorite slab
@@ -1812,6 +2157,9 @@
     - EmberFloorStonePhosphorite
   - type: Stack
     stackType: EmberFloorTileStonePhosphorite
+  - type: Construction
+    graph: EmberTileStonePhosphorite
+    node: tile
 
 - type: entity
   name: rock salt slab
@@ -1827,6 +2175,9 @@
     - EmberFloorStoneRockSalt
   - type: Stack
     stackType: EmberFloorTileStoneRockSalt
+  - type: Construction
+    graph: EmberTileStoneRockSalt
+    node: tile
 
 - type: entity
   name: potash slab
@@ -1842,6 +2193,9 @@
     - EmberFloorStonePotash
   - type: Stack
     stackType: EmberFloorTileStonePotash
+  - type: Construction
+    graph: EmberTileStonePotash
+    node: tile
 
 - type: entity
   name: bauxite slab
@@ -1857,6 +2211,9 @@
     - EmberFloorStoneBauxite
   - type: Stack
     stackType: EmberFloorTileStoneBauxite
+  - type: Construction
+    graph: EmberTileStoneBauxite
+    node: tile
 
 - type: entity
   name: rutile slab
@@ -1872,6 +2229,9 @@
     - EmberFloorStoneRutile
   - type: Stack
     stackType: EmberFloorTileStoneRutile
+  - type: Construction
+    graph: EmberTileStoneRutile
+    node: tile
 
 - type: entity
   name: borax slab
@@ -1887,6 +2247,9 @@
     - EmberFloorStoneBorax
   - type: Stack
     stackType: EmberFloorTileStoneBorax
+  - type: Construction
+    graph: EmberTileStoneBorax
+    node: tile
 
 - type: entity
   name: pitchblende slab
@@ -1902,6 +2265,9 @@
     - EmberFloorStonePitchblende
   - type: Stack
     stackType: EmberFloorTileStonePitchblende
+  - type: Construction
+    graph: EmberTileStonePitchblende
+    node: tile
 
 - type: entity
   name: mahogany floor tile
