@@ -54,6 +54,11 @@ public sealed class EmberProceduralFirelockSystem : EntitySystem
         if (!TryComp<SpriteComponent>(uid, out var sprite))
             return;
 
+        // Drawn upright whatever rotation a mapper left on it, exactly as the airlocks are. Which of the four
+        // directions each layer picks is still EmberProceduralDoorFacingSystem's business, and that reads the
+        // angle on screen, which no-rot leaves alone.
+        sprite.NoRotation = true;
+
         // The hazard sheet has no unlit open/close glow, only the Bay alert lamp.
         if (sprite.LayerMapTryGet(DoorVisualLayers.BaseUnlit, out _))
             sprite.LayerSetState(DoorVisualLayers.BaseUnlit, component.AlertState);

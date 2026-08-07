@@ -36,9 +36,10 @@
         acts: ["Destruction"]
   - type: Sprite
     # EmberProceduralFirelock picks which of the four RSI directions to draw from the surrounding walls, like Bay
-    # does; snapCardinals keeps the sprite upright whatever rotation the mapper left on the entity.
+    # does. Keeping it upright against whatever rotation a mapper left on the entity is the client system's job,
+    # the same way the airlocks do it: snapping to cardinals is only allowed on one-directional art, and every
+    # state on this sheet has four.
     sprite: Ember/Structures/Doors/Firelocks/firelock.rsi
-    snapCardinals: true
     layers:
     - state: closed
       map: ["enum.DoorVisualLayers.Base"]
