@@ -12,7 +12,7 @@ Space Station 14, очевидно, вдохновлён Space Station 13 и р�
 
 ## Ссылки
 
-[Website](https://project-ember.space) | [Discord](placeholder) | [Steam(Space Station Beyond лаунчер)](https://store.steampowered.com/app/3731580/Space_Station_Beyond/) | [Steam(WizDen лаунчер)](https://store.steampowered.com/app/1255460/Space_Station_14/)
+[Website (отключён)](https://project-ember.space) | [Discord](placeholder) | [Steam(Space Station Beyond лаунчер)](https://store.steampowered.com/app/3731580/Space_Station_Beyond/) | [Steam(WizDen лаунчер)](https://store.steampowered.com/app/1255460/Space_Station_14/)
 
 ## Вклад в проект
 
