@@ -8,6 +8,18 @@
     - outerClothing
   - type: Sprite
     state: icon
+  # Ember: coats and jackets take the decorative half of the accessory categories, the way Bay's
+  # labcoats and job suits do. Armour plating stays opt-in on the prototypes that should have it.
+  - type: EmberAccessoryHolder
+    validSlots:
+    - Decor
+    - Armband
+    - Rank
+    - Medal
+    - Insignia
+    restrictedSlots:
+    - Armband
+    - Rank
 
 - type: entity
   abstract: true

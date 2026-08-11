@@ -1,19 +1,20 @@
 ﻿- type: entity
   parent: ClothingNeckBase
   id: ClothingNeckChameleon
-  name: striped red scarf
-  description: A stylish striped red scarf. The perfect winter accessory for those with a keen fashion sense, and those who just can't handle a cold breeze on their necks.
+  # Ember: scarves are accessories now, so a neck chameleon can no longer disguise itself as one.
+  name: tie
+  description: A neosilk clip-on tie.
   suffix: Chameleon
   components:
     - type: Tag
       tags: [] # ignore "WhitelistChameleon" tag
     - type: Sprite
-      sprite: Clothing/Neck/Scarfs/red.rsi
+      sprite: Clothing/Neck/Ties/color.rsi
     - type: Clothing
-      sprite: Clothing/Neck/Scarfs/red.rsi
+      sprite: Clothing/Neck/Ties/color.rsi
     - type: ChameleonClothing
       slot: [neck]
-      default: ClothingNeckScarfStripedRed
+      default: ClothingNeckTieColor
     - type: UserInterface
       interfaces:
         enum.ChameleonUiKey.Key:

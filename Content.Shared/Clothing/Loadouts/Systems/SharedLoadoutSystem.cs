@@ -3,6 +3,7 @@ using Content.Shared.Body.Systems;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Clothing.Loadouts.Prototypes;
 using Content.Shared.Customization.Systems;
+using Content.Shared.Ember.Clothing;
 using Content.Shared.Inventory;
 using Content.Shared.Paint;
 using Content.Shared.Preferences;
@@ -19,6 +20,7 @@ namespace Content.Shared.Clothing.Loadouts.Systems;
 
 public sealed class SharedLoadoutSystem : EntitySystem
 {
+    [Dependency] private readonly EmberAccessorySystem _accessory = default!;
     [Dependency] private readonly SharedStationSpawningSystem _station = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -157,8 +159,10 @@ public sealed class SharedLoadoutSystem : EntitySystem
                     _appearance.SetData(item, PaintVisuals.Painted, !data);
                 }
 
-                // Equip the loadout
-                if (!_inventory.TryEquip(uid, item, slot, true, !string.IsNullOrEmpty(slot), true))
+                // Ember: accessories attach to clothing the character is already wearing rather
+                // than filling an inventory slot, so they must not be treated as failed loadouts.
+                if (!_accessory.TryAttachToWearer(uid, item)
+                    && !_inventory.TryEquip(uid, item, slot, true, !string.IsNullOrEmpty(slot), true))
                     failedLoadouts.Add(item);
 
                 RaiseLocalEvent(item, new SpawnedViaLoadoutEvent(uid, job.ID, profile));

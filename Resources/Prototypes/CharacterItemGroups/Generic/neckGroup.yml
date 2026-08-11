@@ -12,22 +12,6 @@
     - type: loadout
       id: LoadoutNeckDogtags
     - type: loadout
-      id: LoadoutNeckScarfStripedRed
-    - type: loadout
-      id: LoadoutNeckScarfStripedBlue
-    - type: loadout
-      id: LoadoutNeckScarfStripedGreen
-    - type: loadout
-      id: LoadoutNeckScarfStripedBlack
-    - type: loadout
-      id: LoadoutNeckScarfStripedBrown
-    - type: loadout
-      id: LoadoutNeckScarfStripedOrange
-    - type: loadout
-      id: LoadoutNeckScarfStripedPurple
-    - type: loadout
-      id: LoadoutNeckScarfStripedZebra
-    - type: loadout
       id: LoadoutNeckTieWhite
     - type: loadout
       id: LoadoutNeckTieShort
