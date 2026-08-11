@@ -6,6 +6,11 @@
   id: Uncategorized
   root: true
 
+# Ember: things that attach to clothing rather than filling an inventory slot.
+- type: loadoutCategory
+  id: Accessories
+  root: true
+
 - type: loadoutCategory
   id: Backpacks
   root: true

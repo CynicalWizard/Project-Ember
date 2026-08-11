@@ -1,0 +1,15 @@
+# Accessories attach to a piece of clothing instead of taking an inventory slot of their own,
+# the way SierraBay12's /obj/item/clothing/accessory does. They deliberately have no Clothing
+# component: an accessory is not equippable, it is attached.
+
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: EmberClothingAccessoryBase
+  components:
+  - type: Sprite
+    state: icon
+  - type: Item
+    size: Small
+  - type: EmberAccessory
+    slot: Decor

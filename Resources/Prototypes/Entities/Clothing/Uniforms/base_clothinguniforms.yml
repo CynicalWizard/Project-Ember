@@ -9,6 +9,23 @@
     slots: [innerclothing]
     equipSound:
       path: /Audio/Items/jumpsuit_equip.ogg
+  # Ember: uniforms take accessories, matching /obj/item/clothing/under on SierraBay12.
+  - type: EmberAccessoryHolder
+    validSlots:
+    - Decor
+    - Utility
+    - Holster
+    - Armband
+    - Rank
+    - Flash
+    - Medal
+    - Insignia
+    restrictedSlots:
+    - Utility
+    - Holster
+    - Armband
+    - Rank
+    - Flash
   - type: EmitSoundOnPickup # Not sure why this wasn't set to the base; as all clothes should have clothing sounds.
     sound: /Audio/SimpleStation14/Items/Handling/cloth_pickup.ogg
   - type: EmitSoundOnDrop

@@ -30,14 +30,36 @@
     - ClothMade
     - WhitelistChameleon
 
+# Ember: a scarf is an accessory that goes on a uniform or coat, not a neck garment.
+# It keeps the cloth behaviour ClothingNeckBase used to give it, minus the Clothing component.
 - type: entity
   abstract: true
-  parent: ClothingNeckBase
+  parent: EmberClothingAccessoryBase
   id: ClothingScarfBase
   components:
+  - type: EmberAccessory
+    slot: Decor
+    # Reuse the ordinary onmob sprite, drawn over the clothing it is attached to.
+    equippedState: equipped-NECK
   - type: TemperatureProtection
     heatingCoefficient: 1.025
     coolingCoefficient: 0.8
+  - type: Butcherable
+    butcheringType: Knife
+    spawned:
+    - id: MaterialCloth1
+      amount: 2
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 10
   - type: Tag
     tags:
     - Scarf
+    - ClothMade
+    - WhitelistChameleon

@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared.Dataset;
 using Content.Shared.Customization.Systems;
+using Content.Shared.Ember.Clothing;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
@@ -30,6 +31,7 @@ public abstract class SharedStationSpawningSystem : EntitySystem
     [Dependency] private readonly MetaDataSystem _metadata = default!;
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
     [Dependency] private readonly CharacterRequirementsSystem _characterRequirements = default!;
+    [Dependency] private readonly EmberAccessorySystem _accessory = default!;
 
     private EntityQuery<HandsComponent> _handsQuery;
     private EntityQuery<InventoryComponent> _inventoryQuery;
@@ -93,6 +95,10 @@ public abstract class SharedStationSpawningSystem : EntitySystem
 
         if (InventorySystem.TryGetSlots(entity, out var slotDefinitions))
         {
+            // Ember: accessories cannot go in an inventory slot, so they are held back until the
+            // clothing they attach to has been equipped.
+            var accessories = new ValueList<EntityUid>();
+
             foreach (var slot in slotDefinitions)
             {
                 var equipmentStr = startingGear.GetGear(slot.Name);
@@ -100,7 +106,19 @@ public abstract class SharedStationSpawningSystem : EntitySystem
                     continue;
 
                 var equipmentEntity = EntityManager.SpawnEntity(equipmentStr, xform.Coordinates);
+
+                if (HasComp<EmberAccessoryComponent>(equipmentEntity))
+                {
+                    accessories.Add(equipmentEntity);
+                    continue;
+                }
+
                 InventorySystem.TryEquip(entity, equipmentEntity, slot.Name, true, force: true);
+            }
+
+            foreach (var accessory in accessories)
+            {
+                _accessory.TryAttachToWearer(entity, accessory);
             }
         }
 

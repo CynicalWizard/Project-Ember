@@ -1,0 +1,25 @@
+# Accessories no longer compete with cloaks and mantles for the neck slot, so they get their own
+# group. maxItems is deliberately conservative for now - a uniform will take several decorative
+# accessories at once, so this can be raised once there is more than scarves to choose from.
+- type: characterItemGroup
+  id: LoadoutAccessory
+  maxItems: 1
+  items:
+    - type: loadout
+      id: LoadoutNeckScarfStripedRed
+    - type: loadout
+      id: LoadoutNeckScarfStripedBlue
+    - type: loadout
+      id: LoadoutNeckScarfStripedGreen
+    - type: loadout
+      id: LoadoutNeckScarfStripedBlack
+    - type: loadout
+      id: LoadoutNeckScarfStripedBrown
+    - type: loadout
+      id: LoadoutNeckScarfStripedLightBlue
+    - type: loadout
+      id: LoadoutNeckScarfStripedOrange
+    - type: loadout
+      id: LoadoutNeckScarfStripedPurple
+    - type: loadout
+      id: LoadoutNeckScarfStripedZebra

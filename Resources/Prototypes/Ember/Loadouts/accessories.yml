@@ -1,0 +1,95 @@
+# Accessories attach to a uniform or coat rather than taking the neck slot, so they live in their
+# own loadout category instead of competing with cloaks and mantles for LoadoutNeck.
+# The ids are unchanged from when these lived in Loadouts/Generic/neck.yml so that saved
+# character preferences keep working.
+
+# Scarves
+- type: loadout
+  id: LoadoutNeckScarfStripedRed
+  category: Accessories
+  cost: 0
+  items:
+    - ClothingNeckScarfStripedRed
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: LoadoutAccessory
+
+- type: loadout
+  id: LoadoutNeckScarfStripedBlue
+  category: Accessories
+  cost: 0
+  items:
+    - ClothingNeckScarfStripedBlue
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: LoadoutAccessory
+
+- type: loadout
+  id: LoadoutNeckScarfStripedGreen
+  category: Accessories
+  cost: 0
+  items:
+    - ClothingNeckScarfStripedGreen
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: LoadoutAccessory
+
+- type: loadout
+  id: LoadoutNeckScarfStripedBlack
+  category: Accessories
+  cost: 0
+  items:
+    - ClothingNeckScarfStripedBlack
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: LoadoutAccessory
+
+- type: loadout
+  id: LoadoutNeckScarfStripedBrown
+  category: Accessories
+  cost: 0
+  items:
+    - ClothingNeckScarfStripedBrown
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: LoadoutAccessory
+
+- type: loadout
+  id: LoadoutNeckScarfStripedLightBlue
+  category: Accessories
+  cost: 0
+  items:
+    - ClothingNeckScarfStripedLightBlue
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: LoadoutAccessory
+
+- type: loadout
+  id: LoadoutNeckScarfStripedOrange
+  category: Accessories
+  cost: 0
+  items:
+    - ClothingNeckScarfStripedOrange
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: LoadoutAccessory
+
+- type: loadout
+  id: LoadoutNeckScarfStripedPurple
+  category: Accessories
+  cost: 0
+  items:
+    - ClothingNeckScarfStripedPurple
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: LoadoutAccessory
+
+- type: loadout
+  id: LoadoutNeckScarfStripedZebra
+  category: Accessories
+  cost: 0
+  items:
+    - ClothingNeckScarfStripedZebra
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: LoadoutAccessory
