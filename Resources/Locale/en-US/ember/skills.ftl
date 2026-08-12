@@ -17,12 +17,12 @@ skill-antag-remaining-entry = {$level}: {$count}
 skill-antag-submit = Submit selection
 
 humanoid-profile-editor-job-skills-button = Skills
-humanoid-profile-editor-job-skills-button-tooltip = Edit skills for {$job}
+humanoid-profile-editor-job-skills-button-tooltip = Edit this character's skills
 humanoid-profile-editor-skills-tab = Skills
-humanoid-profile-editor-skills-window-title = Skills: {$job}
+humanoid-profile-editor-skills-window-title = Skills
 humanoid-profile-editor-skills-no-profile = Select a character profile to edit skills.
 humanoid-profile-editor-skills-no-job = Pick a preferred job to edit job skills.
-humanoid-profile-editor-skills-job-label = Skill plan for {$job}
+humanoid-profile-editor-skills-hint = Skills belong to the character, not to a job. Spend once.
 humanoid-profile-editor-skills-points-label = {$points} / {$max} points remaining
 humanoid-profile-editor-skills-lower = Lower this skill
 humanoid-profile-editor-skills-raise = Raise this skill

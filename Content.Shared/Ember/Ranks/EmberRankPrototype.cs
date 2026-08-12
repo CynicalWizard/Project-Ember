@@ -23,11 +23,11 @@ namespace Content.Shared.Ember.Ranks;
 public sealed partial class EmberRankPrototype : IPrototype
 {
     [IdDataField]
-    public string ID { get; private set; } = default!;
+    public string ID { get; set; } = default!;
 
     /// <summary>Fluent id of the full rank name. Bay: <c>name</c>.</summary>
     [DataField(required: true)]
-    public LocId Name { get; private set; } = default!;
+    public LocId Name { get; set; } = default!;
 
     /// <summary>
     /// Fluent id of the abbreviation used as a prefix to the wearer's name on IDs and the crew
@@ -35,7 +35,7 @@ public sealed partial class EmberRankPrototype : IPrototype
     /// appointed ones. Bay: <c>name_short</c>.
     /// </summary>
     [DataField]
-    public LocId? ShortName { get; private set; }
+    public LocId? ShortName { get; set; }
 
     /// <summary>
     /// Position in this branch's ladder. Higher is senior; equal is equal; zero means the rank
@@ -50,20 +50,20 @@ public sealed partial class EmberRankPrototype : IPrototype
     /// follow it should set <see cref="CategoryOverride"/> rather than distort its numbers.
     /// </remarks>
     [DataField]
-    public int SortOrder { get; private set; }
+    public int SortOrder { get; set; }
 
     /// <summary>
     /// Overrides the class that would otherwise be read off <see cref="SortOrder"/>.
     /// </summary>
     [DataField("category")]
-    public EmberRankCategory? CategoryOverride { get; private set; }
+    public EmberRankCategory? CategoryOverride { get; set; }
 
     /// <summary>
     /// Insignia attached to the wearer's uniform on spawn: shoulder boards, rate badges, a
     /// warrant badge, a clan token. Bay: <c>accessory</c>, equipped by the job code.
     /// </summary>
     [DataField]
-    public List<EntProtoId> Accessories { get; private set; } = new();
+    public List<EntProtoId> Accessories { get; set; } = new();
 
     /// <summary>
     /// Species allowed to hold this rank. Empty means "no whitelist" — whatever the branch
@@ -71,11 +71,11 @@ public sealed partial class EmberRankPrototype : IPrototype
     /// on the rank means one place to look instead of two.
     /// </summary>
     [DataField]
-    public HashSet<ProtoId<SpeciesPrototype>> SpeciesWhitelist { get; private set; } = new();
+    public HashSet<ProtoId<SpeciesPrototype>> SpeciesWhitelist { get; set; } = new();
 
     /// <summary>Species barred from this rank even if the branch admits them.</summary>
     [DataField]
-    public HashSet<ProtoId<SpeciesPrototype>> SpeciesBlacklist { get; private set; } = new();
+    public HashSet<ProtoId<SpeciesPrototype>> SpeciesBlacklist { get; set; } = new();
 
     /// <summary>
     /// The rank's class. Explicit if the prototype says so, otherwise read off

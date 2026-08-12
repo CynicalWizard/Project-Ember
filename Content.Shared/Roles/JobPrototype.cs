@@ -25,17 +25,19 @@ namespace Content.Shared.Roles
         [DataField("playTimeTracker", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<PlayTimeTrackerPrototype>))]
         public string PlayTimeTracker { get; private set; } = string.Empty;
 
-        [DataField]
-        public int SkillPoints { get; set; } = 16;
-
+        /// <summary>
+        /// Skill floors a character must already clear to take this job.
+        /// </summary>
+        /// <remarks>
+        /// Ember departs from SierraBay12 here. In Bay these are levels the job hands out for
+        /// free, on top of a per-job point budget. With one set of skills per character there is
+        /// nothing to hand out: the job states a requirement, and the character either meets it
+        /// or cannot take the job. That is also what makes overlapping roles fall out of the
+        /// data — two jobs that ask for the same things are interchangeable without anyone
+        /// writing down that they are.
+        /// </remarks>
         [DataField]
         public Dictionary<ProtoId<SkillPrototype>, SkillLevel> MinSkills { get; set; } = new();
-
-        [DataField]
-        public Dictionary<ProtoId<SkillPrototype>, SkillLevel> MaxSkills { get; set; } = new();
-
-        [DataField]
-        public bool NoSkillBuffs { get; set; }
 
         /// <summary>
         ///     Who is the supervisor for this job.

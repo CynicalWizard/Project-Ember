@@ -30,22 +30,22 @@ namespace Content.Shared.Ember.Ranks;
 public sealed partial class EmberBranchPrototype : IPrototype
 {
     [IdDataField]
-    public string ID { get; private set; } = default!;
+    public string ID { get; set; } = default!;
 
     /// <summary>Fluent id of the full branch name. Bay: <c>name</c>.</summary>
     [DataField(required: true)]
-    public LocId Name { get; private set; } = default!;
+    public LocId Name { get; set; } = default!;
 
     /// <summary>Fluent id of the abbreviation: SCGEC, SCGF. Bay: <c>name_short</c>.</summary>
     [DataField(required: true)]
-    public LocId ShortName { get; private set; } = default!;
+    public LocId ShortName { get; set; } = default!;
 
     /// <summary>
     /// Every rank this branch has, including ones no player can pick.
     /// Bay: <c>rank_types</c>.
     /// </summary>
     [DataField(required: true)]
-    public List<ProtoId<EmberRankPrototype>> Ranks { get; private set; } = new();
+    public List<ProtoId<EmberRankPrototype>> Ranks { get; set; } = new();
 
     /// <summary>
     /// The subset of <see cref="Ranks"/> a player may choose at character creation. Admiral
@@ -53,7 +53,7 @@ public sealed partial class EmberBranchPrototype : IPrototype
     /// Bay: <c>spawn_rank_types</c>.
     /// </summary>
     [DataField]
-    public List<ProtoId<EmberRankPrototype>> SpawnRanks { get; private set; } = new();
+    public List<ProtoId<EmberRankPrototype>> SpawnRanks { get; set; } = new();
 
     /// <summary>
     /// Skills everyone in the branch has regardless of job. This is what answers "why does any
@@ -61,36 +61,36 @@ public sealed partial class EmberBranchPrototype : IPrototype
     /// Bay: <c>min_skill</c>.
     /// </summary>
     [DataField]
-    public Dictionary<ProtoId<SkillPrototype>, SkillLevel> MinSkills { get; private set; } = new();
+    public Dictionary<ProtoId<SkillPrototype>, SkillLevel> MinSkills { get; set; } = new();
 
     /// <summary>
     /// Fallback job for members of this branch who cannot get the one they wanted.
     /// Bay: <c>assistant_job</c>.
     /// </summary>
     [DataField]
-    public ProtoId<JobPrototype>? AssistantJob { get; private set; }
+    public ProtoId<JobPrototype>? AssistantJob { get; set; }
 
     /// <summary>Domain for the character's email address. Flavour. Bay: <c>email_domain</c>.</summary>
     [DataField]
-    public string EmailDomain { get; private set; } = "freemail.net";
+    public string EmailDomain { get; set; } = "freemail.net";
 
     /// <summary>
     /// Whether members may set their own email address. True for civilians, false for anyone
     /// issued an address by an organisation. Bay: <c>allow_custom_email</c>.
     /// </summary>
     [DataField]
-    public bool AllowCustomEmail { get; private set; }
+    public bool AllowCustomEmail { get; set; }
 
     /// <summary>
     /// Species allowed into this branch. Empty means no whitelist. Bay keeps this on the map
     /// datum as <c>species_to_branch_whitelist</c>.
     /// </summary>
     [DataField]
-    public HashSet<ProtoId<SpeciesPrototype>> SpeciesWhitelist { get; private set; } = new();
+    public HashSet<ProtoId<SpeciesPrototype>> SpeciesWhitelist { get; set; } = new();
 
     /// <summary>Species barred from this branch. Bay: <c>species_to_branch_blacklist</c>.</summary>
     [DataField]
-    public HashSet<ProtoId<SpeciesPrototype>> SpeciesBlacklist { get; private set; } = new();
+    public HashSet<ProtoId<SpeciesPrototype>> SpeciesBlacklist { get; set; } = new();
 
     /// <summary>
     /// Whether this branch is an armed force rather than a civil or civilian one.
@@ -102,5 +102,5 @@ public sealed partial class EmberBranchPrototype : IPrototype
     /// SCG's rule, not a property of this field.
     /// </remarks>
     [DataField]
-    public bool Military { get; private set; }
+    public bool Military { get; set; }
 }

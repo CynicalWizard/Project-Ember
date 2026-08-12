@@ -185,6 +185,11 @@
                 <ScrollContainer HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True" VScrollEnabled="True">
                     <BoxContainer HorizontalExpand="True" Orientation="Vertical">
                         <OptionButton Name="PreferenceUnavailableButton" StyleClasses="OpenBoth" />
+                        <!-- Ember: service and competence belong to the character, not to a
+                             single job, so they sit above the list rather than in each row. -->
+                        <BoxContainer HorizontalExpand="True" Margin="3 6 3 6">
+                            <Button Name="SkillsButton" Text="{Loc 'humanoid-profile-editor-job-skills-button'}" MinWidth="120" />
+                        </BoxContainer>
                         <BoxContainer Name="JobList" Orientation="Vertical" />
                     </BoxContainer>
                 </ScrollContainer>

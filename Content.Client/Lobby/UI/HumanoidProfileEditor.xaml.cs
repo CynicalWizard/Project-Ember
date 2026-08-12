@@ -113,7 +113,6 @@ namespace Content.Client.Lobby.UI
 
         private List<(string, RequirementsSelector)> _jobPriorities = new();
         private SkillSetupWindow? _skillSetupWindow;
-        private JobPrototype? _skillSetupJob;
 
         private readonly Dictionary<string, BoxContainer> _jobCategories;
 
@@ -503,6 +502,9 @@ namespace Content.Client.Lobby.UI
             #region Jobs
 
             Jobs.Orphan();
+            SkillsButton.OnPressed += _ => OpenSkillSetup();
+            SkillsButton.ToolTip = Loc.GetString("humanoid-profile-editor-job-skills-button-tooltip");
+
             CTabContainer.AddTab(Jobs, Loc.GetString("humanoid-profile-editor-jobs-tab"));
 
             PreferenceUnavailableButton.AddItem(
@@ -1090,17 +1092,6 @@ namespace Content.Client.Lobby.UI
                     var jobContainer = new BoxContainer { Orientation = LayoutOrientation.Horizontal, HorizontalExpand = true, };
                     var selector = new RequirementsSelector { Margin = new(3f, 3f, 3f, 0f), HorizontalExpand = true, };
                     selector.OnOpenGuidebook += OnOpenGuidebook;
-                    var skillsButton = new Button
-                    {
-                        Text = Loc.GetString("humanoid-profile-editor-job-skills-button"),
-                        MinWidth = 90,
-                        Margin = new(3f, 3f, 3f, 0f),
-                        VerticalAlignment = VAlignment.Center,
-                        ToolTip = Loc.GetString("humanoid-profile-editor-job-skills-button-tooltip",
-                            ("job", job.LocalizedName)),
-                    };
-                    skillsButton.OnPressed += _ => OpenSkillSetup(job);
-
                     var icon = new TextureRect
                     {
                         TextureScale = new(2, 2),
@@ -1159,7 +1150,6 @@ namespace Content.Client.Lobby.UI
 
                     _jobPriorities.Add((job.ID, selector));
                     jobContainer.AddChild(selector);
-                    jobContainer.AddChild(skillsButton);
                     category.AddChild(jobContainer);
                 }
             }
@@ -1281,7 +1271,6 @@ namespace Content.Client.Lobby.UI
 
             _skillSetupWindow?.Close();
             _skillSetupWindow = null;
-            _skillSetupJob = null;
 
             _entManager.DeleteEntity(PreviewDummy);
             PreviewDummy = EntityUid.Invalid;
@@ -1490,12 +1479,10 @@ namespace Content.Client.Lobby.UI
             RefreshSkillSetupWindow();
         }
 
-        private void OpenSkillSetup(JobPrototype job)
+        private void OpenSkillSetup()
         {
             if (Profile == null)
                 return;
-
-            _skillSetupJob = job;
 
             if (_skillSetupWindow == null)
             {
@@ -1506,7 +1493,6 @@ namespace Content.Client.Lobby.UI
                         return;
 
                     _skillSetupWindow = null;
-                    _skillSetupJob = null;
                 };
 
                 _skillSetupWindow = window;
@@ -1520,20 +1506,16 @@ namespace Content.Client.Lobby.UI
 
         private void RefreshSkillSetupWindow()
         {
-            if (_skillSetupWindow == null || _skillSetupJob == null || Profile == null)
+            if (_skillSetupWindow == null || Profile == null)
                 return;
 
             var skills = GetOrderedSkills();
-            var allocation = Profile.SkillPreferences.TryGetValue(_skillSetupJob.ID, out var stored)
-                ? new Dictionary<ProtoId<SkillPrototype>, byte>(stored)
-                : new Dictionary<ProtoId<SkillPrototype>, byte>();
 
             _prototypeManager.TryIndex(Profile.Species, out SpeciesPrototype? speciesPrototype);
-            var skillPointBudget = SharedSkillsSystem.GetSkillPointBudget(_skillSetupJob, speciesPrototype, Profile.Age);
-            allocation = SharedSkillsSystem.SanitizeAllocation(_skillSetupJob, skills, allocation, skillPointBudget);
+            var skillPointBudget = SharedSkillsSystem.GetSkillPointBudget(speciesPrototype, Profile.Age);
+            var allocation = SharedSkillsSystem.SanitizeAllocation(skills, Profile.Skills, skillPointBudget);
 
             _skillSetupWindow.SetSkills(
-                _skillSetupJob,
                 skills,
                 allocation,
                 skillPointBudget,
@@ -1541,13 +1523,12 @@ namespace Content.Client.Lobby.UI
                 SetSkillLevel);
         }
 
-        private void SetSkillLevel(JobPrototype job, SkillPrototype skill, SkillLevel target, SkillLevel min)
+        private void SetSkillLevel(SkillPrototype skill, SkillLevel target)
         {
             if (Profile == null)
                 return;
 
-            var allocation = (byte) Math.Max(0, (int) target - (int) min);
-            Profile = Profile.WithSkillAllocation(job.ID, skill.ID, allocation);
+            Profile = Profile.WithSkill(skill.ID, target);
             IsDirty = true;
             UpdateSkills();
         }

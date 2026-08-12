@@ -1,7 +1,6 @@
 using System.Numerics;
 using Content.Client.Stylesheets;
 using Content.Shared.Ember.Skills;
-using Content.Shared.Roles;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
@@ -12,15 +11,14 @@ namespace Content.Client.Ember.Skills;
 
 public sealed class SkillSetupWindow : DefaultWindow
 {
-    private readonly Label _jobLabel;
+    private readonly Label _hintLabel;
     private readonly Label _pointsLabel;
     private readonly ProgressBar _pointsBar;
     private readonly BoxContainer _content;
 
-    private JobPrototype? _job;
     private IReadOnlyList<SkillPrototype> _skills = Array.Empty<SkillPrototype>();
     private Func<ProtoId<SkillCategoryPrototype>, string>? _getCategoryName;
-    private Action<JobPrototype, SkillPrototype, SkillLevel, SkillLevel>? _onSelected;
+    private Action<SkillPrototype, SkillLevel>? _onSelected;
 
     public SkillSetupWindow()
     {
@@ -37,12 +35,13 @@ public sealed class SkillSetupWindow : DefaultWindow
             VerticalExpand = true,
         };
 
-        _jobLabel = new Label
+        _hintLabel = new Label
         {
             HorizontalAlignment = HAlignment.Center,
             HorizontalExpand = true,
+            Text = Loc.GetString("humanoid-profile-editor-skills-hint"),
         };
-        root.AddChild(_jobLabel);
+        root.AddChild(_hintLabel);
 
         _pointsLabel = new Label
         {
@@ -82,34 +81,30 @@ public sealed class SkillSetupWindow : DefaultWindow
     }
 
     public void SetSkills(
-        JobPrototype job,
         IReadOnlyList<SkillPrototype> skills,
-        IReadOnlyDictionary<ProtoId<SkillPrototype>, byte> allocation,
+        IReadOnlyDictionary<ProtoId<SkillPrototype>, SkillLevel> allocation,
         int skillPointBudget,
         Func<ProtoId<SkillCategoryPrototype>, string> getCategoryName,
-        Action<JobPrototype, SkillPrototype, SkillLevel, SkillLevel> onSelected)
+        Action<SkillPrototype, SkillLevel> onSelected)
     {
-        _job = job;
         _skills = skills;
         _getCategoryName = getCategoryName;
         _onSelected = onSelected;
 
-        Title = Loc.GetString("humanoid-profile-editor-skills-window-title", ("job", job.LocalizedName));
+        Title = Loc.GetString("humanoid-profile-editor-skills-window-title");
         Rebuild(allocation, skillPointBudget);
     }
 
     private void Rebuild(
-        IReadOnlyDictionary<ProtoId<SkillPrototype>, byte> allocation,
+        IReadOnlyDictionary<ProtoId<SkillPrototype>, SkillLevel> allocation,
         int skillPointBudget)
     {
-        if (_job == null || _getCategoryName == null)
+        if (_getCategoryName == null)
             return;
 
-        var values = SharedSkillsSystem.GetFinalSkillValues(_job, _skills, allocation);
-        var remaining = SharedSkillsSystem.GetRemainingPoints(_job, _skills, allocation, skillPointBudget);
+        var values = SharedSkillsSystem.SanitizeAllocation(_skills, allocation, skillPointBudget);
+        var remaining = SharedSkillsSystem.GetRemainingPoints(_skills, values, skillPointBudget);
 
-        _jobLabel.Text = Loc.GetString("humanoid-profile-editor-skills-job-label",
-            ("job", _job.LocalizedName));
         _pointsLabel.Text = Loc.GetString("humanoid-profile-editor-skills-points-label",
             ("points", remaining),
             ("max", skillPointBudget));
@@ -129,12 +124,12 @@ public sealed class SkillSetupWindow : DefaultWindow
                 categoryRows = AddCategory(_getCategoryName(skill.Category));
             }
 
-            var min = SharedSkillsSystem.GetMinSkill(_job, skill);
-            var max = SharedSkillsSystem.GetMaxSkill(_job, skill);
-            var level = values.GetValueOrDefault(skill.ID, min);
-            var availablePoints = remaining + SharedSkillsSystem.GetLevelCost(_job, skill, level);
+            var level = values.GetValueOrDefault(skill.ID, SkillLevels.Min);
+            // Refunding what this skill already costs lets the player move it up and down
+            // freely without first having to zero it out.
+            var availablePoints = remaining + SharedSkillsSystem.GetTotalCost(skill, level);
 
-            categoryRows!.AddChild(CreateSkillRow(skill, min, max, level, values, availablePoints));
+            categoryRows!.AddChild(CreateSkillRow(skill, level, values, availablePoints));
         }
     }
 
@@ -182,13 +177,10 @@ public sealed class SkillSetupWindow : DefaultWindow
 
     private BoxContainer CreateSkillRow(
         SkillPrototype skill,
-        SkillLevel min,
-        SkillLevel max,
         SkillLevel level,
         IReadOnlyDictionary<ProtoId<SkillPrototype>, SkillLevel> values,
         int availablePoints)
     {
-        var job = _job!;
         var row = new BoxContainer
         {
             Orientation = BoxContainer.LayoutOrientation.Horizontal,
@@ -216,25 +208,22 @@ public sealed class SkillSetupWindow : DefaultWindow
         row.AddChild(new SkillLevelBar(
             skill,
             level,
-            target => CanSetSkillLevel(job, skill, target, min, max, values, availablePoints),
-            target => _onSelected?.Invoke(job, skill, target, min)));
+            target => CanSetSkillLevel(skill, target, values, availablePoints),
+            target => _onSelected?.Invoke(skill, target)));
 
         return row;
     }
 
     private static bool CanSetSkillLevel(
-        JobPrototype job,
         SkillPrototype skill,
         SkillLevel target,
-        SkillLevel min,
-        SkillLevel max,
         IReadOnlyDictionary<ProtoId<SkillPrototype>, SkillLevel> values,
         int availablePoints)
     {
-        if (target < min || target > max)
+        if (target < SkillLevels.Min || target > skill.DefaultMax)
             return false;
 
-        if (SharedSkillsSystem.GetLevelCost(job, skill, target) > availablePoints)
+        if (SharedSkillsSystem.GetTotalCost(skill, target) > availablePoints)
             return false;
 
         var targetValues = new Dictionary<ProtoId<SkillPrototype>, SkillLevel>(values)

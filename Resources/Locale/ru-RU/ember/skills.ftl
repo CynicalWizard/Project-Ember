@@ -17,12 +17,12 @@ skill-antag-remaining-entry = {$level}: {$count}
 skill-antag-submit = Подтвердить выбор
 
 humanoid-profile-editor-job-skills-button = Навыки
-humanoid-profile-editor-job-skills-button-tooltip = Настроить навыки для должности {$job}
+humanoid-profile-editor-job-skills-button-tooltip = Изменить навыки персонажа
 humanoid-profile-editor-skills-tab = Навыки
-humanoid-profile-editor-skills-window-title = Навыки: {$job}
+humanoid-profile-editor-skills-window-title = Навыки
 humanoid-profile-editor-skills-no-profile = Выберите профиль персонажа, чтобы настроить навыки.
 humanoid-profile-editor-skills-no-job = Выберите предпочитаемую профессию, чтобы настроить навыки.
-humanoid-profile-editor-skills-job-label = План навыков для {$job}
+humanoid-profile-editor-skills-hint = Навыки принадлежат персонажу, а не должности. Распределяются один раз.
 humanoid-profile-editor-skills-points-label = Осталось очков: {$points} / {$max}
 humanoid-profile-editor-skills-lower = Понизить этот навык
 humanoid-profile-editor-skills-raise = Повысить этот навык
