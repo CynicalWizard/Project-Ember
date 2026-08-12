@@ -1,0 +1,94 @@
+# Ranks of the SCG Expeditionary Corps, ported from SierraBay12's maps/torch/torch_ranks.dm.
+#
+# The ladder is deliberately shorter than the Fleet's: E-1, E-3, E-5, E-7 and O-1, O-3, O-5,
+# O-6, O-8, O-10. The gaps are not omissions, the Corps simply has no grades there.
+#
+# EMBER-TODO: `accessories` is empty everywhere here. The shoulder boards are
+# `accessory/solgov/rank/ec/*` in maps/torch/items/clothing/solgov-accessory.dm and get
+# converted in a later pass. The Corps has no specialty badge, so one accessory per rank.
+#
+# EMBER-TODO: the species blacklists below name the two xeno species that exist today. The rule
+# behind them — a non-citizen never holds a commission — is meant to live in code, so that a
+# species added later is covered without anyone remembering to edit this file.
+
+- type: emberRank
+  id: EmberRankCorpsE1
+  name: ember-rank-corps-e1-name
+  shortName: ember-rank-corps-e1-short
+  sortOrder: 10
+
+- type: emberRank
+  id: EmberRankCorpsE3
+  name: ember-rank-corps-e3-name
+  shortName: ember-rank-corps-e3-short
+  sortOrder: 30
+
+- type: emberRank
+  id: EmberRankCorpsE5
+  name: ember-rank-corps-e5-name
+  shortName: ember-rank-corps-e5-short
+  sortOrder: 50
+
+# Xeno personnel top out at E-5. Chief Explorer is a leadership grade.
+- type: emberRank
+  id: EmberRankCorpsE7
+  name: ember-rank-corps-e7-name
+  shortName: ember-rank-corps-e7-short
+  sortOrder: 70
+  speciesBlacklist:
+  - Reptilian
+  - Tajaran
+
+- type: emberRank
+  id: EmberRankCorpsO1
+  name: ember-rank-corps-o1-name
+  shortName: ember-rank-corps-o1-short
+  sortOrder: 110
+  speciesBlacklist:
+  - Reptilian
+  - Tajaran
+
+- type: emberRank
+  id: EmberRankCorpsO3
+  name: ember-rank-corps-o3-name
+  shortName: ember-rank-corps-o3-short
+  sortOrder: 130
+  speciesBlacklist:
+  - Reptilian
+  - Tajaran
+
+- type: emberRank
+  id: EmberRankCorpsO5
+  name: ember-rank-corps-o5-name
+  shortName: ember-rank-corps-o5-short
+  sortOrder: 150
+  speciesBlacklist:
+  - Reptilian
+  - Tajaran
+
+- type: emberRank
+  id: EmberRankCorpsO6
+  name: ember-rank-corps-o6-name
+  shortName: ember-rank-corps-o6-short
+  sortOrder: 160
+  speciesBlacklist:
+  - Reptilian
+  - Tajaran
+
+- type: emberRank
+  id: EmberRankCorpsO8
+  name: ember-rank-corps-o8-name
+  shortName: ember-rank-corps-o8-short
+  sortOrder: 180
+  speciesBlacklist:
+  - Reptilian
+  - Tajaran
+
+- type: emberRank
+  id: EmberRankCorpsO10
+  name: ember-rank-corps-o10-name
+  shortName: ember-rank-corps-o10-short
+  sortOrder: 200
+  speciesBlacklist:
+  - Reptilian
+  - Tajaran

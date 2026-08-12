@@ -1,0 +1,33 @@
+# Statuses for people aboard who serve in no organisation, and for machines, which serve in
+# one but hold no rank in it.
+#
+# None of these are graded, so sortOrder stays 0 and `category` resolves to None. None of them
+# prefixes a name either, so `shortName` is left unset: the manifest reads "Ivanov, Passenger",
+# not "Civ Ivanov".
+#
+# Not under SCG/, because none of it belongs to the SCG. A civilian is a civilian anywhere.
+
+- type: emberRank
+  id: EmberRankCivilian
+  name: ember-rank-civilian-name
+
+- type: emberRank
+  id: EmberRankContractor
+  name: ember-rank-contractor-name
+
+# Bay's `/datum/mil_rank/civ/offduty`, from the Sierra rather than the Torch. A crew member who
+# is not on shift: the branch stays whatever it was, only the duty status changes.
+- type: emberRank
+  id: EmberRankOffDuty
+  name: ember-rank-off-duty-name
+
+# A machine is property, not a person, and property is not commissioned. Instead of a rank it
+# carries an assignment: a unit designation, the department it is attached to, and an owner.
+# That is why sortOrder is 0 here and why this is the only entry an IPC may hold — a graded
+# rank issued to a machine would be the state conceding that it is someone.
+- type: emberRank
+  id: EmberRankMachineAssigned
+  name: ember-rank-machine-assigned-name
+  shortName: ember-rank-machine-assigned-short
+  speciesWhitelist:
+  - IPC

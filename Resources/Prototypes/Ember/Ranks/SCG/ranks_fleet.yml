@@ -1,0 +1,158 @@
+# Ranks of the SCG Fleet, ported from SierraBay12's maps/torch/torch_ranks.dm.
+#
+# Grades run E-1..E-9 at sortOrder 10..90 and O-1..O-10 at 110..200; alternate ranks of the
+# same grade sit just above it so they sort adjacent without claiming the next grade.
+#
+# EMBER-TODO: `accessories` is empty everywhere here. The shoulder boards and rate badges are
+# `accessory/solgov/rank/fleet/*` and `accessory/solgov/specialty/*` in
+# maps/torch/items/clothing/solgov-accessory.dm, and get converted in a later pass. Fleet ranks
+# carry two accessories, boards plus a specialty badge, unlike the Corps which carries one.
+
+# Enlisted and non-commissioned. Per the Fleet's own lore, a "rate" — a qualification in your
+# speciality — is only earned at E-4; E-1 through E-3 are apprentices learning in the field.
+
+- type: emberRank
+  id: EmberRankFleetE1
+  name: ember-rank-fleet-e1-name
+  shortName: ember-rank-fleet-e1-short
+  sortOrder: 10
+
+- type: emberRank
+  id: EmberRankFleetE2
+  name: ember-rank-fleet-e2-name
+  shortName: ember-rank-fleet-e2-short
+  sortOrder: 20
+
+- type: emberRank
+  id: EmberRankFleetE3
+  name: ember-rank-fleet-e3-name
+  shortName: ember-rank-fleet-e3-short
+  sortOrder: 30
+
+- type: emberRank
+  id: EmberRankFleetE4
+  name: ember-rank-fleet-e4-name
+  shortName: ember-rank-fleet-e4-short
+  sortOrder: 40
+
+- type: emberRank
+  id: EmberRankFleetE5
+  name: ember-rank-fleet-e5-name
+  shortName: ember-rank-fleet-e5-short
+  sortOrder: 50
+
+- type: emberRank
+  id: EmberRankFleetE6
+  name: ember-rank-fleet-e6-name
+  shortName: ember-rank-fleet-e6-short
+  sortOrder: 60
+
+- type: emberRank
+  id: EmberRankFleetE7
+  name: ember-rank-fleet-e7-name
+  shortName: ember-rank-fleet-e7-short
+  sortOrder: 70
+
+- type: emberRank
+  id: EmberRankFleetE8
+  name: ember-rank-fleet-e8-name
+  shortName: ember-rank-fleet-e8-short
+  sortOrder: 80
+
+- type: emberRank
+  id: EmberRankFleetE9
+  name: ember-rank-fleet-e9-name
+  shortName: ember-rank-fleet-e9-short
+  sortOrder: 90
+
+- type: emberRank
+  id: EmberRankFleetE9Command
+  name: ember-rank-fleet-e9-command-name
+  shortName: ember-rank-fleet-e9-command-short
+  sortOrder: 91
+
+- type: emberRank
+  id: EmberRankFleetE9Fleet
+  name: ember-rank-fleet-e9-fleet-name
+  shortName: ember-rank-fleet-e9-fleet-short
+  sortOrder: 92
+
+- type: emberRank
+  id: EmberRankFleetE9Force
+  name: ember-rank-fleet-e9-force-name
+  shortName: ember-rank-fleet-e9-force-short
+  sortOrder: 93
+
+- type: emberRank
+  id: EmberRankFleetE9OfTheFleet
+  name: ember-rank-fleet-e9-of-the-fleet-name
+  shortName: ember-rank-fleet-e9-of-the-fleet-short
+  sortOrder: 94
+
+# Commissioned.
+
+- type: emberRank
+  id: EmberRankFleetO1
+  name: ember-rank-fleet-o1-name
+  shortName: ember-rank-fleet-o1-short
+  sortOrder: 110
+
+- type: emberRank
+  id: EmberRankFleetO2
+  name: ember-rank-fleet-o2-name
+  shortName: ember-rank-fleet-o2-short
+  sortOrder: 120
+
+- type: emberRank
+  id: EmberRankFleetO3
+  name: ember-rank-fleet-o3-name
+  shortName: ember-rank-fleet-o3-short
+  sortOrder: 130
+
+- type: emberRank
+  id: EmberRankFleetO4
+  name: ember-rank-fleet-o4-name
+  shortName: ember-rank-fleet-o4-short
+  sortOrder: 140
+
+- type: emberRank
+  id: EmberRankFleetO5
+  name: ember-rank-fleet-o5-name
+  shortName: ember-rank-fleet-o5-short
+  sortOrder: 150
+
+- type: emberRank
+  id: EmberRankFleetO6
+  name: ember-rank-fleet-o6-name
+  shortName: ember-rank-fleet-o6-short
+  sortOrder: 160
+
+- type: emberRank
+  id: EmberRankFleetO7
+  name: ember-rank-fleet-o7-name
+  shortName: ember-rank-fleet-o7-short
+  sortOrder: 170
+
+- type: emberRank
+  id: EmberRankFleetO8
+  name: ember-rank-fleet-o8-name
+  shortName: ember-rank-fleet-o8-short
+  sortOrder: 180
+
+- type: emberRank
+  id: EmberRankFleetO9
+  name: ember-rank-fleet-o9-name
+  shortName: ember-rank-fleet-o9-short
+  sortOrder: 190
+
+- type: emberRank
+  id: EmberRankFleetO10
+  name: ember-rank-fleet-o10-name
+  shortName: ember-rank-fleet-o10-short
+  sortOrder: 200
+
+- type: emberRank
+  id: EmberRankFleetO10Admiral
+  name: ember-rank-fleet-o10-admiral-name
+  shortName: ember-rank-fleet-o10-admiral-short
+  sortOrder: 201
