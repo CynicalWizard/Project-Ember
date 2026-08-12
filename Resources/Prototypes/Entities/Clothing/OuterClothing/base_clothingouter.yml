@@ -17,9 +17,10 @@
     - Rank
     - Medal
     - Insignia
-    restrictedSlots:
-    - Armband
-    - Rank
+    slotLimits:
+      Medal: 12
+      Insignia: 2
+    maxAccessories: 20
 
 - type: entity
   abstract: true

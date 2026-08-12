@@ -1,5 +1,3 @@
-using Robust.Shared.Containers;
-
 namespace Content.Shared.Ember.Clothing;
 
 /// <summary>
@@ -22,23 +20,30 @@ public sealed partial class EmberAccessoryHolderComponent : Component
     public List<EmberAccessorySlot> ValidSlots = new();
 
     /// <summary>
-    /// Categories that may only be filled once. A category in <see cref="ValidSlots"/> but not
-    /// here can be attached repeatedly (Bay lets you pile on medals, but only one holster).
-    /// Bay: restricted_accessory_slots.
+    /// How many accessories of a given category may be attached at once. Categories missing from
+    /// this map use <see cref="DefaultSlotLimit"/>.
     /// </summary>
+    /// <remarks>
+    /// Generalises Bay's restricted_accessory_slots, which is only ever "one" or "unlimited".
+    /// Unlimited is not a useful option in practice - it lets you hang a dozen scarves off one
+    /// shirt - so the numeric limit replaces it outright, and Bay's restricted categories are
+    /// simply the ones left at the default of one.
+    /// </remarks>
     [DataField]
-    public List<EmberAccessorySlot> RestrictedSlots = new();
+    public Dictionary<EmberAccessorySlot, int> SlotLimits = new();
 
     /// <summary>
-    /// Hard cap on attached accessories, as a backstop against unbounded stacking on clothing
-    /// with many unrestricted categories.
+    /// Limit applied to any category not named in <see cref="SlotLimits"/>.
+    /// </summary>
+    [DataField]
+    public int DefaultSlotLimit = 1;
+
+    /// <summary>
+    /// Hard cap across all categories, as a backstop for clothing that allows many of them.
     /// </summary>
     [DataField]
     public int MaxAccessories = 6;
 
     [DataField]
     public string ContainerId = "ember_accessories";
-
-    [ViewVariables]
-    public Container? Container;
 }

@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
 using Content.Shared.Examine;
@@ -55,7 +56,7 @@ public sealed class EmberAccessorySystem : EntitySystem
 
     private void OnHolderInit(Entity<EmberAccessoryHolderComponent> holder, ref ComponentInit args)
     {
-        holder.Comp.Container = _container.EnsureContainer<Container>(holder, holder.Comp.ContainerId);
+        _container.EnsureContainer<Container>(holder, holder.Comp.ContainerId);
     }
 
     #endregion
@@ -63,14 +64,33 @@ public sealed class EmberAccessorySystem : EntitySystem
     #region Queries
 
     /// <summary>
+    /// The container holding this clothing's accessories, looked up fresh every time.
+    /// </summary>
+    /// <remarks>
+    /// Deliberately not cached on the component. On the client the container's contents arrive as
+    /// entity state, and that can land before this component's ComponentInit has run - a cached
+    /// reference is still null at exactly the moment the insert fires, so every redraw triggered by
+    /// it quietly did nothing and the accessory never appeared. The container itself is always
+    /// present by then, so asking the container manager for it by id is both correct and cheap.
+    /// </remarks>
+    public bool TryGetContainer(
+        Entity<EmberAccessoryHolderComponent?> holder,
+        [NotNullWhen(true)] out BaseContainer? container)
+    {
+        container = null;
+
+        return Resolve(holder, ref holder.Comp, false)
+            && _container.TryGetContainer(holder, holder.Comp.ContainerId, out container);
+    }
+
+    /// <summary>
     /// Everything currently attached to this holder. Empty if it holds nothing.
     /// </summary>
     public IReadOnlyList<EntityUid> GetAccessories(Entity<EmberAccessoryHolderComponent?> holder)
     {
-        if (!Resolve(holder, ref holder.Comp, false) || holder.Comp.Container is not { } container)
-            return Array.Empty<EntityUid>();
-
-        return container.ContainedEntities;
+        return TryGetContainer(holder, out var container)
+            ? container.ContainedEntities
+            : Array.Empty<EntityUid>();
     }
 
     /// <summary>
@@ -110,11 +130,25 @@ public sealed class EmberAccessorySystem : EntitySystem
     {
         reason = null;
 
-        if (holder.Comp.Container is not { } container)
+        if (!TryGetContainer(holder.Owner, out var container))
+        {
+            reason = Loc.GetString("ember-accessory-no-attachments", ("clothing", holder.Owner));
             return false;
+        }
 
-        if (holder.Owner == accessory.Owner || container.Contains(accessory))
+        if (holder.Owner == accessory.Owner)
+        {
+            reason = Loc.GetString("ember-accessory-self-attach", ("clothing", holder.Owner));
             return false;
+        }
+
+        if (container.Contains(accessory))
+        {
+            reason = Loc.GetString("ember-accessory-already-attached",
+                ("accessory", accessory.Owner),
+                ("clothing", holder.Owner));
+            return false;
+        }
 
         if (holder.Comp.ValidSlots.Count == 0)
         {
@@ -136,19 +170,13 @@ public sealed class EmberAccessorySystem : EntitySystem
             return false;
         }
 
-        if (holder.Comp.RestrictedSlots.Contains(accessory.Comp.Slot))
+        var limit = GetSlotLimit(holder.Comp, accessory.Comp.Slot);
+        if (CountInSlot(container, accessory.Comp.Slot) >= limit)
         {
-            foreach (var attached in container.ContainedEntities)
-            {
-                if (!TryComp<EmberAccessoryComponent>(attached, out var attachedComp))
-                    continue;
-
-                if (attachedComp.Slot != accessory.Comp.Slot)
-                    continue;
-
-                reason = Loc.GetString("ember-accessory-slot-occupied", ("clothing", holder.Owner));
-                return false;
-            }
+            reason = Loc.GetString("ember-accessory-slot-occupied",
+                ("clothing", holder.Owner),
+                ("limit", limit));
+            return false;
         }
 
         var attempt = new EmberAccessoryAttachAttemptEvent(holder, accessory, user);
@@ -158,11 +186,33 @@ public sealed class EmberAccessorySystem : EntitySystem
 
         if (attempt.Cancelled)
         {
-            reason = attempt.Reason;
+            reason = attempt.Reason ?? Loc.GetString("ember-accessory-attach-refused",
+                ("accessory", accessory.Owner),
+                ("clothing", holder.Owner));
             return false;
         }
 
         return true;
+    }
+
+    /// <summary>
+    /// How many accessories of this category the holder accepts at once.
+    /// </summary>
+    public int GetSlotLimit(EmberAccessoryHolderComponent holder, EmberAccessorySlot slot)
+    {
+        return holder.SlotLimits.TryGetValue(slot, out var limit) ? limit : holder.DefaultSlotLimit;
+    }
+
+    private int CountInSlot(BaseContainer container, EmberAccessorySlot slot)
+    {
+        var count = 0;
+        foreach (var attached in container.ContainedEntities)
+        {
+            if (TryComp<EmberAccessoryComponent>(attached, out var comp) && comp.Slot == slot)
+                count++;
+        }
+
+        return count;
     }
 
     #endregion
@@ -185,8 +235,20 @@ public sealed class EmberAccessorySystem : EntitySystem
             return false;
         }
 
-        if (!_container.Insert(accessory.Owner, holder.Comp.Container!))
+        if (!TryGetContainer(holder.Owner, out var container) || !_container.Insert(accessory.Owner, container))
+        {
+            if (user != null)
+            {
+                _popup.PopupClient(
+                    Loc.GetString("ember-accessory-attach-refused",
+                        ("accessory", accessory.Owner),
+                        ("clothing", holder.Owner)),
+                    holder,
+                    user.Value);
+            }
+
             return false;
+        }
 
         var ev = new EmberAccessoryAttachedEvent(holder, accessory, user);
         RaiseLocalEvent(accessory, ev);
@@ -238,7 +300,7 @@ public sealed class EmberAccessorySystem : EntitySystem
         if (TryAttach(holder, accessory, user: null))
             return true;
 
-        if (holder.Comp.Container is not { } container)
+        if (!TryGetContainer(holder.Owner, out var container))
             return false;
 
         foreach (var attached in container.ContainedEntities)
@@ -330,8 +392,20 @@ public sealed class EmberAccessorySystem : EntitySystem
             return false;
         }
 
-        if (!_container.Remove(accessory, holder.Comp.Container!))
+        if (!TryGetContainer(holder.Owner, out var container) || !_container.Remove(accessory, container))
+        {
+            if (user != null)
+            {
+                _popup.PopupClient(
+                    Loc.GetString("ember-accessory-detach-refused",
+                        ("accessory", accessory),
+                        ("clothing", holder.Owner)),
+                    holder,
+                    user.Value);
+            }
+
             return false;
+        }
 
         var ev = new EmberAccessoryDetachedEvent(holder, accessory, user);
         RaiseLocalEvent(accessory, ev);
@@ -374,11 +448,15 @@ public sealed class EmberAccessorySystem : EntitySystem
         if (user == null)
             return true;
 
+        // ActionBlocker pops its own message for whatever is stopping them, so this one stays quiet.
         if (!_actionBlocker.CanInteract(user.Value, holder))
             return false;
 
         if (!_interaction.InRangeUnobstructed(user.Value, holder.Owner))
+        {
+            reason = Loc.GetString("ember-accessory-out-of-reach", ("clothing", holder.Owner));
             return false;
+        }
 
         return true;
     }
@@ -403,7 +481,7 @@ public sealed class EmberAccessorySystem : EntitySystem
         if (!args.IsInDetailsRange)
             return;
 
-        if (holder.Comp.Container is not { Count: > 0 } container)
+        if (!TryGetContainer(holder.Owner, out var container) || container.Count == 0)
             return;
 
         var visible = new List<EntityUid>();
@@ -479,9 +557,12 @@ public sealed class EmberAccessorySystem : EntitySystem
         EmberAccessoryHolderComponent component,
         InventoryRelayedEvent<TEvent> args)
     {
-        if (component.Container is not { } container)
+        // Nearly all worn clothing carries nothing, and some of these events fire per damage
+        // instance or per atmos tick, so the empty case gets out before touching the container.
+        if (!TryGetContainer((uid, component), out var container) || container.Count == 0)
             return;
 
+        // Relay cost is O(attached) per relayed event, which is what MaxAccessories bounds.
         // Nested holders re-raise in turn, so pouches on a rig on a uniform are all reached.
         foreach (var accessory in container.ContainedEntities)
         {

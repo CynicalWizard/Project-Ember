@@ -23,6 +23,7 @@ public sealed class EmberAccessoryMenuSystem : EntitySystem
     [Dependency] private readonly IClyde _clyde = default!;
     [Dependency] private readonly IInputManager _input = default!;
     [Dependency] private readonly IUserInterfaceManager _ui = default!;
+    [Dependency] private readonly EmberAccessorySystem _accessory = default!;
 
     private EmberAccessoryRadialMenu? _menu;
 
@@ -42,7 +43,7 @@ public sealed class EmberAccessoryMenuSystem : EntitySystem
         if (!args.CanAccess || !args.CanInteract || args.Hands == null)
             return;
 
-        if (holder.Comp.Container is not { Count: > 0 } container)
+        if (!_accessory.TryGetContainer(holder.Owner, out var container) || container.Count == 0)
             return;
 
         var removable = new List<EntityUid>();
@@ -100,7 +101,9 @@ public sealed class EmberAccessoryMenuSystem : EntitySystem
 
         var menu = _menu;
         _menu = null;
-        menu.Dispose();
+
+        // Close, not Dispose: the engine wants controls taken out of the tree rather than disposed.
+        menu.Close();
     }
 
     private void OnAccessorySelected(EntityUid accessory)

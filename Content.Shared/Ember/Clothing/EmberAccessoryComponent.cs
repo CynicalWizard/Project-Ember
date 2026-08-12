@@ -49,6 +49,25 @@ public sealed partial class EmberAccessoryComponent : Component
     public string? EquippedState;
 
     /// <summary>
+    /// Explicit sprite layers drawn on the clothing item's own icon - what you see in the
+    /// inventory slot, in hand and on the floor. Falls back to <see cref="ItemState"/>, and then
+    /// to <see cref="EquippedState"/>.
+    /// </summary>
+    /// <remarks>
+    /// Bay: get_inv_overlay(), which prefers a purpose-drawn "[state]_tie" icon and otherwise
+    /// reuses the onmob sprite facing south. Authoring a dedicated state is the tidy option -
+    /// the onmob sprite is positioned for a body, not for a folded garment icon.
+    /// </remarks>
+    [DataField]
+    public List<PrototypeLayerData>? ItemVisuals;
+
+    /// <summary>
+    /// RSI state drawn on the clothing item's own icon. Bay: the "[state]_tie" icon variant.
+    /// </summary>
+    [DataField]
+    public string? ItemState;
+
+    /// <summary>
     /// If true, the accessory stops being drawn on the wearer while something is worn in the
     /// outerClothing slot over the holder.
     /// </summary>

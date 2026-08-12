@@ -42,11 +42,8 @@ public sealed partial class EmberAccessoryRadialMenu : RadialMenu
     {
         var main = FindControl<RadialContainer>("Main");
 
-        if (!_entityManager.TryGetComponent<EmberAccessoryHolderComponent>(Entity, out var holder)
-            || holder.Container is not { } container)
-        {
+        if (!_entityManager.System<EmberAccessorySystem>().TryGetContainer(Entity, out var container))
             return;
-        }
 
         foreach (var accessory in container.ContainedEntities)
         {
