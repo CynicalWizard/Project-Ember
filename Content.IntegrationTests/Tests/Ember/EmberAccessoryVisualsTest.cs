@@ -1,3 +1,4 @@
+#nullable enable
 using System.Linq;
 using Content.Client.Inventory;
 using Content.Shared.Clothing;
