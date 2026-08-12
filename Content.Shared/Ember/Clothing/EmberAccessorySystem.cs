@@ -1,4 +1,4 @@
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
 using Content.Shared.Examine;
@@ -43,7 +43,6 @@ public sealed class EmberAccessorySystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<EmberAccessoryHolderComponent, ComponentInit>(OnHolderInit);
         SubscribeLocalEvent<EmberAccessoryHolderComponent, InteractUsingEvent>(OnHolderInteractUsing);
         SubscribeLocalEvent<EmberAccessoryHolderComponent, ExaminedEvent>(OnHolderExamined);
 
@@ -52,26 +51,18 @@ public sealed class EmberAccessorySystem : EntitySystem
         InitializeRelay();
     }
 
-    #region Setup
-
-    private void OnHolderInit(Entity<EmberAccessoryHolderComponent> holder, ref ComponentInit args)
-    {
-        _container.EnsureContainer<Container>(holder, holder.Comp.ContainerId);
-    }
-
-    #endregion
-
     #region Queries
 
     /// <summary>
-    /// The container holding this clothing's accessories, looked up fresh every time.
+    /// The container holding this clothing's accessories, looked up fresh every time. False when the
+    /// clothing has never carried an accessory, since the container is only made on first attach.
     /// </summary>
     /// <remarks>
     /// Deliberately not cached on the component. On the client the container's contents arrive as
-    /// entity state, and that can land before this component's ComponentInit has run - a cached
-    /// reference is still null at exactly the moment the insert fires, so every redraw triggered by
-    /// it quietly did nothing and the accessory never appeared. The container itself is always
-    /// present by then, so asking the container manager for it by id is both correct and cheap.
+    /// entity state, and that can land before any handler of ours has run on the entity - a cached
+    /// reference would still be null at exactly the moment the insert fires, so every redraw
+    /// triggered by it quietly did nothing and the accessory never appeared. Asking the container
+    /// manager for it by id is both correct and cheap.
     /// </remarks>
     public bool TryGetContainer(
         Entity<EmberAccessoryHolderComponent?> holder,
@@ -130,11 +121,9 @@ public sealed class EmberAccessorySystem : EntitySystem
     {
         reason = null;
 
-        if (!TryGetContainer(holder.Owner, out var container))
-        {
-            reason = Loc.GetString("ember-accessory-no-attachments", ("clothing", holder.Owner));
-            return false;
-        }
+        // No container yet simply means nothing has ever been attached to this garment. Whether it
+        // accepts accessories at all is decided by ValidSlots below.
+        TryGetContainer(holder.Owner, out var container);
 
         if (holder.Owner == accessory.Owner)
         {
@@ -142,7 +131,7 @@ public sealed class EmberAccessorySystem : EntitySystem
             return false;
         }
 
-        if (container.Contains(accessory))
+        if (container?.Contains(accessory) == true)
         {
             reason = Loc.GetString("ember-accessory-already-attached",
                 ("accessory", accessory.Owner),
@@ -164,14 +153,14 @@ public sealed class EmberAccessorySystem : EntitySystem
             return false;
         }
 
-        if (container.Count >= holder.Comp.MaxAccessories)
+        if (container != null && container.Count >= holder.Comp.MaxAccessories)
         {
             reason = Loc.GetString("ember-accessory-too-many", ("clothing", holder.Owner));
             return false;
         }
 
         var limit = GetSlotLimit(holder.Comp, accessory.Comp.Slot);
-        if (CountInSlot(container, accessory.Comp.Slot) >= limit)
+        if (container != null && CountInSlot(container, accessory.Comp.Slot) >= limit)
         {
             reason = Loc.GetString("ember-accessory-slot-occupied",
                 ("clothing", holder.Owner),
@@ -235,7 +224,12 @@ public sealed class EmberAccessorySystem : EntitySystem
             return false;
         }
 
-        if (!TryGetContainer(holder.Owner, out var container) || !_container.Insert(accessory.Owner, container))
+        // Made here rather than at init. A container created up front would land on every uniform
+        // and coat in the game - carried in the entity's saved data and in memory - when the vast
+        // majority never have anything attached to them.
+        var container = _container.EnsureContainer<Container>(holder.Owner, holder.Comp.ContainerId);
+
+        if (!_container.Insert(accessory.Owner, container))
         {
             if (user != null)
             {
