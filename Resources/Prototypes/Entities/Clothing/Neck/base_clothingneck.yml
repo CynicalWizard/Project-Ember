@@ -41,6 +41,10 @@
     slot: Decor
     # Reuse the ordinary onmob sprite, drawn over the clothing it is attached to.
     equippedState: equipped-NECK
+    # Bay hides an accessory once the suit covers its body_location, and a scarf on a uniform is
+    # drawn below the outer clothing layer anyway - so under a coat it is a layer nobody sees.
+    # Flip this off if an open jacket ought to show the scarf through it.
+    hideUnderOuterClothing: true
   - type: TemperatureProtection
     heatingCoefficient: 1.025
     coolingCoefficient: 0.8

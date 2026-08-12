@@ -10,6 +10,9 @@
     equipSound:
       path: /Audio/Items/jumpsuit_equip.ogg
   # Ember: uniforms take accessories, matching /obj/item/clothing/under on SierraBay12.
+  # Everything is one-per-category unless listed below. Bay leaves every category unlimited, which
+  # means a dozen scarves on one shirt, so the numbers are real here - but a chest full of medals
+  # is the whole point of medals, so that one stays generous.
   - type: EmberAccessoryHolder
     validSlots:
     - Decor
@@ -20,12 +23,10 @@
     - Flash
     - Medal
     - Insignia
-    restrictedSlots:
-    - Utility
-    - Holster
-    - Armband
-    - Rank
-    - Flash
+    slotLimits:
+      Medal: 12
+      Insignia: 2
+    maxAccessories: 20
   - type: EmitSoundOnPickup # Not sure why this wasn't set to the base; as all clothes should have clothing sounds.
     sound: /Audio/SimpleStation14/Items/Handling/cloth_pickup.ogg
   - type: EmitSoundOnDrop
