@@ -1,4 +1,4 @@
-#nullable enable
+﻿#nullable enable
 using System.Linq;
 using System.Collections.Generic;
 using Content.Server.Body.Components;
@@ -220,16 +220,20 @@ public sealed class NukeOpsTest
         }
         Assert.That(total, Is.GreaterThan(3));
 
-        // Check the nukie commander passed basic training and figured out how to breathe.
+        // Check the nukie commander passed basic training and figured out how to breathe. Species
+        // that do not breathe at all, like IPCs, have no respirator to check - asking for one threw
+        // and failed this test at random depending on which species the commander rolled. They still
+        // have to come out of the round start undamaged like everyone else.
         var totalSeconds = 30;
         var totalTicks = (int) Math.Ceiling(totalSeconds / server.Timing.TickPeriod.TotalSeconds);
         var increment = 5;
-        var resp = entMan.GetComponent<RespiratorComponent>(player);
+        entMan.TryGetComponent<RespiratorComponent>(player, out var resp);
         var damage = entMan.GetComponent<DamageableComponent>(player);
         for (var tick = 0; tick < totalTicks; tick += increment)
         {
             await pair.RunTicksSync(increment);
-            Assert.That(resp.SuffocationCycles, Is.LessThanOrEqualTo(resp.SuffocationCycleThreshold));
+            if (resp != null)
+                Assert.That(resp.SuffocationCycles, Is.LessThanOrEqualTo(resp.SuffocationCycleThreshold));
             Assert.That(damage.TotalDamage, Is.EqualTo(FixedPoint2.Zero));
         }
 
