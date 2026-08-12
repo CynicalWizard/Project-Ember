@@ -16890,3 +16890,12 @@ Entries:
   id: 7323
   time: '2026-08-07T18:02:00.0000000+00:00'
   url: https://github.com/Misanthropic-Wizards/Project-Ember/pull/8
+- author: CynicalWizard
+  changes:
+    - type: Add
+      message: Скелет системы аксесуаров
+    - type: Tweak
+      message: Шарфы цепляются на одежду а не занимают слот плаща
+  id: 7324
+  time: '2026-08-12T10:21:12.0000000+00:00'
+  url: https://github.com/Misanthropic-Wizards/Project-Ember/pull/9
