@@ -1,4 +1,4 @@
-namespace Content.Shared.Ember.Clothing;
+﻿namespace Content.Shared.Ember.Clothing;
 
 /// <summary>
 /// Marks a piece of clothing as able to carry accessories. Accessories live in a container on
@@ -44,6 +44,14 @@ public sealed partial class EmberAccessoryHolderComponent : Component
     [DataField]
     public int MaxAccessories = 6;
 
+    /// <remarks>
+    /// The container is made on the first attach, not at init, so clothing that never carries an
+    /// accessory does not gain one - see EmberAccessorySystem.TryAttach. A prototype that wants to
+    /// spawn with accessories already on it should attach them at map init rather than pre-filling
+    /// this container: attaching goes through CanAttach, so slot categories and limits are actually
+    /// enforced. If you do reach for ContainerFill instead, that prototype must also declare the
+    /// container itself, since ContainerFill only fills containers that already exist.
+    /// </remarks>
     [DataField]
     public string ContainerId = "ember_accessories";
 }
