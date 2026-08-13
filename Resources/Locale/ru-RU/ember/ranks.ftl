@@ -109,3 +109,29 @@ ember-rank-contractor-name = Контрактник
 ember-rank-off-duty-name = Персонал вне вахты
 ember-rank-machine-assigned-name = Приписанная единица
 ember-rank-machine-assigned-short = UNIT
+
+## Требования должностей
+
+character-branch-requirement = Вы{$inverted ->
+    [true]{" "}не должны
+    *[other]{" "}должны
+} служить в одной из ветвей: {$branches}
+
+character-rank-requirement = Вы{$inverted ->
+    [true]{" "}не должны
+    *[other]{" "}должны
+} иметь одно из званий: {$ranks}
+
+character-skill-requirement = Вы{$inverted ->
+    [true]{" "}не должны
+    *[other]{" "}должны
+} иметь квалификацию: {$skills}
+character-skill-requirement-entry = {$skill} ({$level})
+
+## Редактор персонажа
+
+humanoid-profile-editor-service-heading = Служба
+humanoid-profile-editor-branch-label = Ветвь
+humanoid-profile-editor-rank-label = Звание
+humanoid-profile-editor-branch-none = Без принадлежности
+humanoid-profile-editor-rank-none = Нет

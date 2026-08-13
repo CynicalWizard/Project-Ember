@@ -12,8 +12,8 @@
     - Muted
   - !type:CharacterEmployerRequirement
     employers:
-    - OrionExpress
-    - IdrisIncorporated
+    - GraysonManufactories
+    - ExpeditionaryCorpsOrganisation
     - NanoTrasen
   weight: 10
   startingGear: QuartermasterGear

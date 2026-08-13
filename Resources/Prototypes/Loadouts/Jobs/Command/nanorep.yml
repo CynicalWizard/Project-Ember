@@ -100,7 +100,7 @@
         - NanotrasenRepresentative
     - !type:CharacterEmployerRequirement
       employers:
-      - ZavodskoiInterstellar
+      - GraysonManufactories
   items:
     - ClothingOuterZiCorporateJacket
 
@@ -117,7 +117,7 @@
         - NanotrasenRepresentative
     - !type:CharacterEmployerRequirement
       employers:
-      - EinsteinEngines
+      - ExpeditionaryCorpsOrganisation
   items:
     - ClothingOuterEeCorporateJacket
 
@@ -134,7 +134,7 @@
         - NanotrasenRepresentative
     - !type:CharacterEmployerRequirement
       employers:
-      - HephaestusIndustries
+      - GraysonManufactories
   items:
     - ClothingOuterHiCorporateJacket
 
@@ -151,7 +151,7 @@
         - NanotrasenRepresentative
     - !type:CharacterEmployerRequirement
       employers:
-      - Interdyne
+      - ZengHuPharmaceuticals
   items:
     - ClothingOuterIdCorporateJacket
 
@@ -187,8 +187,7 @@
         - NanotrasenRepresentative
     - !type:CharacterEmployerRequirement
         employers:
-        - IdrisIncorporated
-
+        - ExpeditionaryCorpsOrganisation
 - type: loadout
   id: LoadoutClothingOuterCorporateJacketOrionExpressCorporateLiaison
   category: JobsCommandNanorep
@@ -204,8 +203,7 @@
         - NanotrasenRepresentative
     - !type:CharacterEmployerRequirement
         employers:
-        - OrionExpress
-
+        - GraysonManufactories
 # Shoes
 
 # Uniforms

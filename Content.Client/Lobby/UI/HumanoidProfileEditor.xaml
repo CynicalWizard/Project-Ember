@@ -185,11 +185,30 @@
                 <ScrollContainer HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True" VScrollEnabled="True">
                     <BoxContainer HorizontalExpand="True" Orientation="Vertical">
                         <OptionButton Name="PreferenceUnavailableButton" StyleClasses="OpenBoth" />
-                        <!-- Ember: service and competence belong to the character, not to a
-                             single job, so they sit above the list rather than in each row. -->
-                        <BoxContainer HorizontalExpand="True" Margin="3 6 3 6">
-                            <Button Name="SkillsButton" Text="{Loc 'humanoid-profile-editor-job-skills-button'}" MinWidth="120" />
-                        </BoxContainer>
+                        <!-- Ember: who you serve, what rank you hold and what you can do belong
+                             to the character rather than to any one job, so they sit above the
+                             list instead of being repeated in every row. -->
+                        <PanelContainer Margin="3 6 3 6">
+                            <PanelContainer.PanelOverride>
+                                <graphics:StyleBoxFlat BackgroundColor="#25252A" />
+                            </PanelContainer.PanelOverride>
+                            <BoxContainer Orientation="Vertical" HorizontalExpand="True" Margin="8 6 8 8">
+                                <Label Text="{Loc 'humanoid-profile-editor-service-heading'}" StyleClasses="LabelHeading" />
+                                <BoxContainer HorizontalExpand="True" Margin="0 4 0 0">
+                                    <Label Text="{Loc 'humanoid-profile-editor-branch-label'}" />
+                                    <Control HorizontalExpand="True" />
+                                    <OptionButton Name="BranchButton" HorizontalAlignment="Right" MinWidth="220" />
+                                </BoxContainer>
+                                <BoxContainer HorizontalExpand="True" Margin="0 2 0 0">
+                                    <Label Text="{Loc 'humanoid-profile-editor-rank-label'}" />
+                                    <Control HorizontalExpand="True" />
+                                    <OptionButton Name="RankButton" HorizontalAlignment="Right" MinWidth="220" />
+                                </BoxContainer>
+                                <BoxContainer HorizontalExpand="True" Margin="0 6 0 0">
+                                    <Button Name="SkillsButton" Text="{Loc 'humanoid-profile-editor-job-skills-button'}" HorizontalExpand="True" />
+                                </BoxContainer>
+                            </BoxContainer>
+                        </PanelContainer>
                         <BoxContainer Name="JobList" Orientation="Vertical" />
                     </BoxContainer>
                 </ScrollContainer>

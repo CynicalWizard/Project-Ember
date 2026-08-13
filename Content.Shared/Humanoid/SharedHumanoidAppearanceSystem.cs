@@ -47,7 +47,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
     public const string DefaultSpecies = "Human";
 
     [ValidatePrototypeId<EmployerPrototype>]
-    public const string DefaultEmployer = "NanoTrasen";
+    public const string DefaultEmployer = "Unemployed"; // Ember: a new character owes nobody anything until they say so.
 
     [ValidatePrototypeId<NationalityPrototype>]
     public const string DefaultNationality = "Bieselite";

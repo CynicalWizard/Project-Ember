@@ -180,8 +180,7 @@
       group: LoadoutOuter
     - !type:CharacterEmployerRequirement
         employers:
-        - EinsteinEngines
-
+        - ExpeditionaryCorpsOrganisation
 - type: loadout
   id: LoadoutOuterHiCorporateJacket
   category: Outer
@@ -194,8 +193,7 @@
       group: LoadoutOuter
     - !type:CharacterEmployerRequirement
         employers:
-        - HephaestusIndustries
-
+        - GraysonManufactories
 - type: loadout
   id: LoadoutOuterHmCorporateJacket
   category: Outer
@@ -217,8 +215,7 @@
       group: LoadoutOuter
     - !type:CharacterEmployerRequirement
         employers:
-        - Interdyne
-
+        - ZengHuPharmaceuticals
 - type: loadout
   id: LoadoutOuterBcCorporateJacket
   category: Outer
@@ -285,8 +282,7 @@
       group: LoadoutOuter
     - !type:CharacterEmployerRequirement
         employers:
-        - IdrisIncorporated
-
+        - ExpeditionaryCorpsOrganisation
 - type: loadout
   id: LoadoutOuterOeCorporateJacket
   category: Outer
@@ -299,8 +295,7 @@
       group: LoadoutOuter
     - !type:CharacterEmployerRequirement
         employers:
-        - OrionExpress
-
+        - GraysonManufactories
 - type: loadout
   id: LoadoutOuterIdrisIncorporatedWindbreaker
   category: Outer
@@ -311,7 +306,7 @@
       group: LoadoutOuter
     - !type:CharacterEmployerRequirement
         employers:
-        - IdrisIncorporated
+        - ExpeditionaryCorpsOrganisation
   items:
     - ClothingOuterCoatIdrisIncorporatedWindbreaker
 

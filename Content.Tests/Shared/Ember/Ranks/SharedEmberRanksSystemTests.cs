@@ -225,6 +225,98 @@ public sealed class SharedEmberRanksSystemTests
 
     #endregion
 
+    #region Age
+
+    // The age brackets live on the rank, so a post that requires a commission inherits that
+    // commission's age without anyone recomputing it per job.
+    [Test]
+    public void RankMinimumAgeIsEnforced()
+    {
+        var branch = MakeBranch("corps", "o6");
+        var captain = MakeRank("o6", 160);
+        captain.MinAge = 48;
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(SharedEmberRanksSystem.IsRankAllowed(branch, captain, Human, 47), Is.False);
+            Assert.That(SharedEmberRanksSystem.IsRankAllowed(branch, captain, Human, 48), Is.True);
+            Assert.That(SharedEmberRanksSystem.IsRankAllowed(branch, captain, Human, 60), Is.True);
+        });
+    }
+
+    // The upper end of a bracket is what the service expects, not what it forbids — people do
+    // stay in junior posts, and a hard ceiling would be the system saying they may not.
+    [Test]
+    public void RankMaximumAgeIsRecordedButNotEnforced()
+    {
+        var branch = MakeBranch("fleet", "e3");
+        var crewman = MakeRank("e3", 30);
+        crewman.MinAge = 19;
+        crewman.MaxAge = 20;
+
+        Assert.That(SharedEmberRanksSystem.IsRankAllowed(branch, crewman, Human, 55), Is.True);
+    }
+
+    // Age is optional so that callers with no character yet — the lobby before a profile loads —
+    // are not silently shown an empty list.
+    [Test]
+    public void OmittedAgeSkipsTheCheck()
+    {
+        var branch = MakeBranch("corps", "o6");
+        var captain = MakeRank("o6", 160);
+        captain.MinAge = 48;
+
+        Assert.That(SharedEmberRanksSystem.IsRankAllowed(branch, captain, Human), Is.True);
+    }
+
+    #endregion
+
+    #region Service against employment
+
+    // Serving in an organisation and drawing a company salary are alternatives, not layers. A
+    // government posts its people; it does not hire them through a firm.
+    [Test]
+    public void ServiceBranchesTakeNoEmployer()
+    {
+        var corps = MakeBranch("corps");
+        var civilian = MakeBranch("civilian");
+        civilian.AllowsEmployer = true;
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(SharedEmberRanksSystem.AllowsEmployer(corps), Is.False);
+            Assert.That(SharedEmberRanksSystem.AllowsEmployer(civilian), Is.True);
+            // No branch at all is precisely the case of someone who works for a living.
+            Assert.That(SharedEmberRanksSystem.AllowsEmployer(null), Is.True);
+        });
+    }
+
+    // The trap this guards: the Expeditionary Corps is a government service, while the
+    // Expeditionary Corps Organisation is a state-owned company. Being paid by the latter makes
+    // someone a contractor, not a member of the former, however alike the two names look.
+    [Test]
+    public void TakingAPostingClearsTheEmployer()
+    {
+        var corps = MakeBranch("corps");
+        var civilian = MakeBranch("civilian");
+        civilian.AllowsEmployer = true;
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(
+                SharedEmberRanksSystem.ResolveEmployer(corps, "NanoTrasen"),
+                Is.EqualTo(SharedEmberRanksSystem.NoEmployer));
+            Assert.That(
+                SharedEmberRanksSystem.ResolveEmployer(civilian, "NanoTrasen"),
+                Is.EqualTo("NanoTrasen"));
+            Assert.That(
+                SharedEmberRanksSystem.ResolveEmployer(null, "NanoTrasen"),
+                Is.EqualTo("NanoTrasen"));
+        });
+    }
+
+    #endregion
+
     private static EmberRankPrototype MakeRank(string id, int sortOrder = 0)
     {
         return new EmberRankPrototype

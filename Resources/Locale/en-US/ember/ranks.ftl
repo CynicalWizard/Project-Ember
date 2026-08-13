@@ -107,3 +107,29 @@ ember-rank-contractor-name = Contractor
 ember-rank-off-duty-name = Off-Duty Personnel
 ember-rank-machine-assigned-name = Assigned Unit
 ember-rank-machine-assigned-short = UNIT
+
+## Job requirements
+
+character-branch-requirement = You must{$inverted ->
+    [true]{" "}not
+    *[other]{""}
+} serve in one of these: {$branches}
+
+character-rank-requirement = You must{$inverted ->
+    [true]{" "}not
+    *[other]{""}
+} hold one of these ranks: {$ranks}
+
+character-skill-requirement = You must{$inverted ->
+    [true]{" "}not
+    *[other]{""}
+} be qualified in: {$skills}
+character-skill-requirement-entry = {$skill} ({$level})
+
+## Character editor
+
+humanoid-profile-editor-service-heading = Service
+humanoid-profile-editor-branch-label = Branch
+humanoid-profile-editor-rank-label = Rank
+humanoid-profile-editor-branch-none = Unaffiliated
+humanoid-profile-editor-rank-none = None

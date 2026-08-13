@@ -145,6 +145,8 @@
   emailDomain: freemail.net
   allowCustomEmail: true
   military: false
+  # The only branch with an employer: contractors and company staff serve nobody, they are paid.
+  allowsEmployer: true
   speciesBlacklist:
   - Vox
   ranks:

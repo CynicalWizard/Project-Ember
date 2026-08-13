@@ -9,9 +9,9 @@
     min: 3600 #DeltaV
   - !type:CharacterEmployerRequirement
     employers:
-    - IdrisIncorporated
+    - ExpeditionaryCorpsOrganisation
     - NanoTrasen
-    - OrionExpress
+    - GraysonManufactories
   startingGear: BartenderGear
   icon: "JobIconBartender"
   supervisors: job-supervisors-hop

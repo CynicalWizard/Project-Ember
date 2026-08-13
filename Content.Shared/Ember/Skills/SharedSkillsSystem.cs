@@ -27,11 +27,19 @@ public sealed class SharedSkillsSystem : EntitySystem
     /// Points every character starts with, before age is taken into account.
     /// </summary>
     /// <remarks>
-    /// EMBER-TODO: balance-critical and currently a constant. It wants to be a CVar once there
-    /// is anything to balance against — right now no system reads a skill except construction,
-    /// so tuning this would be tuning nothing.
+    /// Derived rather than picked: it is the cost of the most demanding job's requirements. The
+    /// Chief Medical Officer and the Physician both need 32 points' worth of medicine and
+    /// anatomy, so a character who is exactly that spends the whole allowance and has nothing
+    /// left over — which is the correct shape for someone who is all job. Cheaper jobs leave
+    /// room for a second trade, and age adds a little on top.
+    ///
+    /// Age gating is not this number's business: a thirty-year-old cannot be the Chief Medical
+    /// Officer because the post requires an O-3 commission, not because the points run out.
+    ///
+    /// EMBER-TODO: wants to be a CVar once there is anything to balance against — right now no
+    /// system reads a skill except construction, so tuning this would be tuning nothing.
     /// </remarks>
-    public const int BaseSkillPoints = 20;
+    public const int BaseSkillPoints = 32;
 
     #region Cost
 

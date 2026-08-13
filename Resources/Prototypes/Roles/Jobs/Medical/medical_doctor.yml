@@ -10,7 +10,6 @@
   - !type:CharacterEmployerRequirement
     employers:
     - ZengHuPharmaceuticals
-    - Interdyne
     - NanoTrasen
   startingGear: DoctorGear
   icon: "JobIconMedicalDoctor"

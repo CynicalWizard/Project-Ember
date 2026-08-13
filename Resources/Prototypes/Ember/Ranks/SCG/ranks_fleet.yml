@@ -13,78 +13,104 @@
 
 - type: emberRank
   id: EmberRankFleetE1
+  minAge: 18
+  maxAge: 19
   name: ember-rank-fleet-e1-name
   shortName: ember-rank-fleet-e1-short
   sortOrder: 10
 
 - type: emberRank
   id: EmberRankFleetE2
+  minAge: 18
+  maxAge: 20
   name: ember-rank-fleet-e2-name
   shortName: ember-rank-fleet-e2-short
   sortOrder: 20
 
 - type: emberRank
   id: EmberRankFleetE3
+  minAge: 19
+  maxAge: 22
   name: ember-rank-fleet-e3-name
   shortName: ember-rank-fleet-e3-short
   sortOrder: 30
 
 - type: emberRank
   id: EmberRankFleetE4
+  minAge: 21
+  maxAge: 25
   name: ember-rank-fleet-e4-name
   shortName: ember-rank-fleet-e4-short
   sortOrder: 40
 
 - type: emberRank
   id: EmberRankFleetE5
+  minAge: 24
+  maxAge: 29
   name: ember-rank-fleet-e5-name
   shortName: ember-rank-fleet-e5-short
   sortOrder: 50
 
 - type: emberRank
   id: EmberRankFleetE6
+  minAge: 28
+  maxAge: 34
   name: ember-rank-fleet-e6-name
   shortName: ember-rank-fleet-e6-short
   sortOrder: 60
 
 - type: emberRank
   id: EmberRankFleetE7
+  minAge: 32
+  maxAge: 40
   name: ember-rank-fleet-e7-name
   shortName: ember-rank-fleet-e7-short
   sortOrder: 70
 
 - type: emberRank
   id: EmberRankFleetE8
+  minAge: 37
+  maxAge: 45
   name: ember-rank-fleet-e8-name
   shortName: ember-rank-fleet-e8-short
   sortOrder: 80
 
 - type: emberRank
   id: EmberRankFleetE9
+  minAge: 42
+  maxAge: 55
   name: ember-rank-fleet-e9-name
   shortName: ember-rank-fleet-e9-short
   sortOrder: 90
 
 - type: emberRank
   id: EmberRankFleetE9Command
+  minAge: 44
+  maxAge: 55
   name: ember-rank-fleet-e9-command-name
   shortName: ember-rank-fleet-e9-command-short
   sortOrder: 91
 
 - type: emberRank
   id: EmberRankFleetE9Fleet
+  minAge: 46
+  maxAge: 58
   name: ember-rank-fleet-e9-fleet-name
   shortName: ember-rank-fleet-e9-fleet-short
   sortOrder: 92
 
 - type: emberRank
   id: EmberRankFleetE9Force
+  minAge: 46
+  maxAge: 58
   name: ember-rank-fleet-e9-force-name
   shortName: ember-rank-fleet-e9-force-short
   sortOrder: 93
 
 - type: emberRank
   id: EmberRankFleetE9OfTheFleet
+  minAge: 48
+  maxAge: 60
   name: ember-rank-fleet-e9-of-the-fleet-name
   shortName: ember-rank-fleet-e9-of-the-fleet-short
   sortOrder: 94
@@ -93,66 +119,88 @@
 
 - type: emberRank
   id: EmberRankFleetO1
+  minAge: 22
+  maxAge: 26
   name: ember-rank-fleet-o1-name
   shortName: ember-rank-fleet-o1-short
   sortOrder: 110
 
 - type: emberRank
   id: EmberRankFleetO2
+  minAge: 24
+  maxAge: 28
   name: ember-rank-fleet-o2-name
   shortName: ember-rank-fleet-o2-short
   sortOrder: 120
 
 - type: emberRank
   id: EmberRankFleetO3
+  minAge: 26
+  maxAge: 33
   name: ember-rank-fleet-o3-name
   shortName: ember-rank-fleet-o3-short
   sortOrder: 130
 
 - type: emberRank
   id: EmberRankFleetO4
+  minAge: 31
+  maxAge: 40
   name: ember-rank-fleet-o4-name
   shortName: ember-rank-fleet-o4-short
   sortOrder: 140
 
 - type: emberRank
   id: EmberRankFleetO5
+  minAge: 37
+  maxAge: 46
   name: ember-rank-fleet-o5-name
   shortName: ember-rank-fleet-o5-short
   sortOrder: 150
 
 - type: emberRank
   id: EmberRankFleetO6
+  minAge: 42
+  maxAge: 55
   name: ember-rank-fleet-o6-name
   shortName: ember-rank-fleet-o6-short
   sortOrder: 160
 
 - type: emberRank
   id: EmberRankFleetO7
+  minAge: 47
+  maxAge: 58
   name: ember-rank-fleet-o7-name
   shortName: ember-rank-fleet-o7-short
   sortOrder: 170
 
 - type: emberRank
   id: EmberRankFleetO8
+  minAge: 50
+  maxAge: 60
   name: ember-rank-fleet-o8-name
   shortName: ember-rank-fleet-o8-short
   sortOrder: 180
 
 - type: emberRank
   id: EmberRankFleetO9
+  minAge: 53
+  maxAge: 62
   name: ember-rank-fleet-o9-name
   shortName: ember-rank-fleet-o9-short
   sortOrder: 190
 
 - type: emberRank
   id: EmberRankFleetO10
+  minAge: 56
+  maxAge: 65
   name: ember-rank-fleet-o10-name
   shortName: ember-rank-fleet-o10-short
   sortOrder: 200
 
 - type: emberRank
   id: EmberRankFleetO10Admiral
+  minAge: 58
+  maxAge: 70
   name: ember-rank-fleet-o10-admiral-name
   shortName: ember-rank-fleet-o10-admiral-short
   sortOrder: 201

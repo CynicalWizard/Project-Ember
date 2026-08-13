@@ -345,7 +345,7 @@
         - SalvageSpecialist
     - !type:CharacterEmployerRequirement
       employers:
-        - HephaestusIndustries
+        - GraysonManufactories
   items:
     - ClothingUniformJumpsuitHephMiner
 

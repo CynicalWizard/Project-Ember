@@ -149,7 +149,7 @@
   name: skill-engines-name
   description: skill-engines-desc
   difficulty: 3
-  defaultMax: Trained
+  defaultMax: Master # Ember: mastery of this exists, and its price does the gating
   levels: *defaultLevels
 
 - type: skill
@@ -158,7 +158,7 @@
   name: skill-devices-name
   description: skill-devices-desc
   difficulty: 2
-  defaultMax: Trained
+  defaultMax: Master # Ember: mastery of this exists, and its price does the gating
   levels: *defaultLevels
 
 - type: skill
@@ -176,7 +176,7 @@
   name: skill-medical-name
   description: skill-medical-desc
   difficulty: 3
-  defaultMax: Trained
+  defaultMax: Master # Ember: mastery of this exists, and its price does the gating
   levels: *defaultLevels
 
 - type: skill
@@ -185,7 +185,7 @@
   name: skill-anatomy-name
   description: skill-anatomy-desc
   difficulty: 3
-  defaultMax: Trained
+  defaultMax: Master # Ember: mastery of this exists, and its price does the gating
   levels: *defaultLevels
 
 - type: skill

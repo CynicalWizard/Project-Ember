@@ -11,6 +11,7 @@
 
 - type: emberRank
   id: EmberRankSCGRepresentative
+  minAge: 30
   name: ember-rank-scg-representative-name
   shortName: ember-rank-scg-representative-short
 
@@ -23,16 +24,22 @@
 # ships, who keep their powers of arrest because the ship counts as SCG territory.
 - type: emberRank
   id: EmberRankFederalMarshal
+  minAge: 27
+  maxAge: 60
   name: ember-rank-federal-marshal-name
   shortName: ember-rank-federal-marshal-short
 
 - type: emberRank
   id: EmberRankFederalAgent
+  minAge: 21
+  maxAge: 60
   name: ember-rank-federal-agent-name
   shortName: ember-rank-federal-agent-short
 
 # Supervising agents are not normally attached to a ship. Here for events and admins.
 - type: emberRank
   id: EmberRankFederalSupervisor
+  minAge: 32
+  maxAge: 60
   name: ember-rank-federal-supervisor-name
   shortName: ember-rank-federal-supervisor-short

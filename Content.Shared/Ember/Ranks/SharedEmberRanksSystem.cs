@@ -31,12 +31,18 @@ public sealed class SharedEmberRanksSystem : EntitySystem
     public static bool IsRankAllowed(
         EmberBranchPrototype branch,
         EmberRankPrototype rank,
-        ProtoId<SpeciesPrototype>? species)
+        ProtoId<SpeciesPrototype>? species,
+        int? age = null)
     {
         if (!branch.Ranks.Contains(rank.ID))
             return false;
 
         if (!IsBranchAllowed(branch, species))
+            return false;
+
+        // Only the floor is enforced. The upper end of a bracket is what the service expects,
+        // not what it forbids: people do stay in junior posts.
+        if (age is { } years && years < rank.MinAge)
             return false;
 
         return IsSpeciesAllowed(rank.SpeciesWhitelist, rank.SpeciesBlacklist, species);
@@ -54,12 +60,37 @@ public sealed class SharedEmberRanksSystem : EntitySystem
     public static bool IsRankSelectable(
         EmberBranchPrototype branch,
         EmberRankPrototype rank,
-        ProtoId<SpeciesPrototype>? species)
+        ProtoId<SpeciesPrototype>? species,
+        int? age = null)
     {
-        if (!IsRankAllowed(branch, rank, species))
+        if (!IsRankAllowed(branch, rank, species, age))
             return false;
 
         return branch.SpawnRanks.Count == 0 || branch.SpawnRanks.Contains(rank.ID);
+    }
+
+    /// <summary>
+    /// Employer id meaning the character is on nobody's payroll.
+    /// </summary>
+    public const string NoEmployer = "Unemployed";
+
+    /// <summary>
+    /// Whether a character in this branch may also name an employer. An unaffiliated character
+    /// may: having no branch at all is exactly the case of someone who works for a living.
+    /// </summary>
+    public static bool AllowsEmployer(EmberBranchPrototype? branch)
+    {
+        return branch?.AllowsEmployer ?? true;
+    }
+
+    /// <summary>
+    /// Reconciles service with employment, which are alternatives rather than layers. Someone
+    /// the state has posted somewhere is not simultaneously on a company's books, so taking the
+    /// posting clears the payroll entry rather than the two sitting side by side.
+    /// </summary>
+    public static string ResolveEmployer(EmberBranchPrototype? branch, string employer)
+    {
+        return AllowsEmployer(branch) ? employer : NoEmployer;
     }
 
     /// <summary>

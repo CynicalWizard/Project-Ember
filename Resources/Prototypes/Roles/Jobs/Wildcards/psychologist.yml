@@ -15,7 +15,7 @@
   requirements:
   - !type:CharacterEmployerRequirement
     employers:
-    - Interdyne
+    - ZengHuPharmaceuticals
     - NanoTrasen
 
 - type: startingGear

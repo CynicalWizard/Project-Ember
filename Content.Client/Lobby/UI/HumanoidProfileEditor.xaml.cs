@@ -18,6 +18,7 @@ using Content.Shared.Clothing.Loadouts.Prototypes;
 using Content.Shared.Clothing.Loadouts.Systems;
 using Content.Shared.Customization.Systems;
 using Content.Shared.Dataset;
+using Content.Shared.Ember.Ranks;
 using Content.Shared.Ember.Skills;
 using Content.Shared.GameTicking;
 using Content.Shared.Guidebook;
@@ -100,6 +101,10 @@ namespace Content.Client.Lobby.UI
         private List<NationalityPrototype> _nationalies = new();
         private List<EmployerPrototype> _employers = new();
         private List<LifepathPrototype> _lifepaths = new();
+
+        // Ember: branches and the ranks selectable inside the currently chosen one.
+        private List<EmberBranchPrototype> _branches = new();
+        private List<EmberRankPrototype> _ranks = new();
         // EE - Contractor System Changes End
 
         private Dictionary<Button, ConfirmationData> _confirmationData = new();
@@ -505,6 +510,20 @@ namespace Content.Client.Lobby.UI
             SkillsButton.OnPressed += _ => OpenSkillSetup();
             SkillsButton.ToolTip = Loc.GetString("humanoid-profile-editor-job-skills-button-tooltip");
 
+            BranchButton.OnItemSelected += args =>
+            {
+                BranchButton.SelectId(args.Id);
+                SetBranch(args.Id == 0 ? null : _branches[args.Id - 1].ID);
+            };
+
+            RankButton.OnItemSelected += args =>
+            {
+                RankButton.SelectId(args.Id);
+                SetRank(args.Id == 0 ? null : _ranks[args.Id - 1].ID);
+            };
+
+            RefreshBranches();
+
             CTabContainer.AddTab(Jobs, Loc.GetString("humanoid-profile-editor-jobs-tab"));
 
             PreferenceUnavailableButton.AddItem(
@@ -742,6 +761,130 @@ namespace Content.Client.Lobby.UI
                 UpdateEmployerDescription(Profile.Employer);
         }
 
+        /// <summary>
+        /// Ember: branches the character's species may join. An unaffiliated character is a
+        /// legal state, so the list always carries a "none" entry at the top.
+        /// </summary>
+        public void RefreshBranches()
+        {
+            BranchButton.Clear();
+            _branches.Clear();
+
+            var species = Profile?.Species;
+
+            _branches.AddRange(_prototypeManager.EnumeratePrototypes<EmberBranchPrototype>()
+                .Where(branch => SharedEmberRanksSystem.IsBranchAllowed(branch, species))
+                .OrderBy(branch => Loc.GetString(branch.Name)));
+
+            BranchButton.AddItem(Loc.GetString("humanoid-profile-editor-branch-none"), 0);
+            BranchButton.SelectId(0);
+
+            for (var i = 0; i < _branches.Count; i++)
+            {
+                BranchButton.AddItem(Loc.GetString(_branches[i].Name), i + 1);
+
+                if (Profile?.Branch == _branches[i].ID)
+                    BranchButton.SelectId(i + 1);
+            }
+
+            // A branch that stopped being available takes the rank with it: a rank only means
+            // anything inside its own branch.
+            if (Profile?.Branch is { } current && _branches.All(branch => branch.ID != current))
+            {
+                SetBranch(null);
+            }
+            else
+            {
+                RefreshRanks();
+                UpdateEmployerAvailability();
+            }
+        }
+
+        /// <summary>
+        /// Ember: ranks selectable in the chosen branch. Empty and disabled without a branch,
+        /// because a rank outside one is meaningless.
+        /// </summary>
+        public void RefreshRanks()
+        {
+            RankButton.Clear();
+            _ranks.Clear();
+
+            RankButton.AddItem(Loc.GetString("humanoid-profile-editor-rank-none"), 0);
+            RankButton.SelectId(0);
+
+            var branchId = Profile?.Branch;
+            if (branchId is null || !_prototypeManager.TryIndex(branchId.Value, out var branch))
+            {
+                RankButton.Disabled = true;
+                return;
+            }
+
+            RankButton.Disabled = false;
+            var species = Profile?.Species;
+
+            _ranks.AddRange(branch.Ranks
+                .Select(id => _prototypeManager.TryIndex(id, out var rank) ? rank : null)
+                .Where(rank => rank != null
+                    && SharedEmberRanksSystem.IsRankSelectable(branch, rank, species, Profile?.Age))
+                .Select(rank => rank!)
+                .OrderBy(rank => rank.SortOrder)
+                .ThenBy(rank => Loc.GetString(rank.Name)));
+
+            for (var i = 0; i < _ranks.Count; i++)
+            {
+                RankButton.AddItem(GetRankLabel(_ranks[i]), i + 1);
+
+                if (Profile?.Rank == _ranks[i].ID)
+                    RankButton.SelectId(i + 1);
+            }
+
+            if (Profile?.Rank is { } currentRank && _ranks.All(rank => rank.ID != currentRank))
+                SetRank(null);
+        }
+
+        /// <summary>
+        /// "E-5 Petty Officer Second Class" — the grade is what people actually compare, so it
+        /// leads. Ungraded appointments simply show their name.
+        /// </summary>
+        private static string GetRankLabel(EmberRankPrototype rank)
+        {
+            var name = Loc.GetString(rank.Name);
+            return rank.Grade.Length == 0 ? name : $"{rank.Grade} {name}";
+        }
+
+        private void SetBranch(ProtoId<EmberBranchPrototype>? branch)
+        {
+            Profile = Profile?.WithBranch(branch);
+            IsDirty = true;
+            RefreshRanks();
+            UpdateEmployerAvailability();
+            UpdateJobPriorities();
+        }
+
+        /// <summary>
+        /// Ember: a posting and a payroll are alternatives. Taking service greys the employer
+        /// out and puts the character back on nobody's books.
+        /// </summary>
+        private void UpdateEmployerAvailability()
+        {
+            EmberBranchPrototype? branch = null;
+            if (Profile?.Branch is { } branchId)
+                _prototypeManager.TryIndex(branchId, out branch);
+
+            var allowed = SharedEmberRanksSystem.AllowsEmployer(branch);
+            EmployerButton.Disabled = !allowed;
+
+            if (!allowed && Profile?.Employer != SharedEmberRanksSystem.NoEmployer)
+                SetEmployer(SharedEmberRanksSystem.NoEmployer);
+        }
+
+        private void SetRank(ProtoId<EmberRankPrototype>? rank)
+        {
+            Profile = Profile?.WithRank(rank);
+            IsDirty = true;
+            UpdateJobPriorities();
+        }
+
         public void RefreshLifepaths()
         {
             LifepathButton.Clear();
@@ -962,6 +1105,7 @@ namespace Content.Client.Lobby.UI
             RefreshNationalities();
             RefreshEmployers();
             RefreshLifepaths();
+            RefreshBranches(); // Ember
             RefreshFlavorText();
             ReloadPreview();
 
@@ -1282,6 +1426,7 @@ namespace Content.Client.Lobby.UI
         {
             Profile = Profile?.WithAge(newAge);
             UpdateSkills();
+            RefreshRanks(); // Ember: ranks carry an age floor, and the budget moves with age too.
             ReloadPreview();
         }
 
@@ -1359,6 +1504,7 @@ namespace Content.Client.Lobby.UI
             UpdateWeight();
             UpdateSpeciesGuidebookIcon();
             UpdateSkills();
+            RefreshBranches(); // Ember: a species may not be admitted to the current branch.
             ReloadProfilePreview();
             ReloadClothes(); // Species may have job-specific gear, reload the clothes
         }
@@ -2757,6 +2903,7 @@ namespace Content.Client.Lobby.UI
             RefreshNationalities();
             RefreshEmployers();
             RefreshLifepaths();
+            RefreshBranches(); // Ember
             RefreshJobs();
             UpdateTraits(TraitsShowUnusableButton.Pressed);
             UpdateLoadouts(LoadoutsShowUnusableButton.Pressed);

@@ -674,17 +674,19 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         // rank with it.
         var branch = Branch;
         var rank = Rank;
+        EmberBranchPrototype? branchProto = null;
 
         if (branch is not { } branchId
-            || !prototypeManager.TryIndex(branchId, out var branchProto)
+            || !prototypeManager.TryIndex(branchId, out branchProto)
             || !SharedEmberRanksSystem.IsBranchAllowed(branchProto, Species))
         {
             branch = null;
             rank = null;
+            branchProto = null;
         }
         else if (rank is not { } rankId
                  || !prototypeManager.TryIndex(rankId, out var rankProto)
-                 || !SharedEmberRanksSystem.IsRankSelectable(branchProto, rankProto, Species))
+                 || !SharedEmberRanksSystem.IsRankSelectable(branchProto, rankProto, Species, age))
         {
             rank = null;
         }
@@ -699,6 +701,9 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         SpawnPriority = spawnPriority;
         Branch = branch; // Ember
         Rank = rank; // Ember
+        // Ember: service and employment are alternatives. Taking a posting clears the payroll
+        // entry rather than the two sitting side by side.
+        Employer = SharedEmberRanksSystem.ResolveEmployer(branchProto, Employer);
 
         _jobPriorities.Clear();
 

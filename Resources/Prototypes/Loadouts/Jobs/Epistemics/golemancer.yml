@@ -189,6 +189,6 @@
         - Roboticist
     - !type:CharacterEmployerRequirement
       employers:
-        - HephaestusIndustries
+        - GraysonManufactories
   items:
     - ClothingUniformJumpsuitHephRoboticist

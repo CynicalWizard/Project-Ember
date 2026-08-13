@@ -93,6 +93,23 @@ public sealed partial class EmberBranchPrototype : IPrototype
     public HashSet<ProtoId<SpeciesPrototype>> SpeciesBlacklist { get; set; } = new();
 
     /// <summary>
+    /// Whether members of this branch may also be employed by an outside company.
+    /// </summary>
+    /// <remarks>
+    /// False for anything a state posts people to, and that is the whole point: serving in an
+    /// organisation and being on a company's payroll are alternatives, not layers. A government
+    /// does not hire its own people through a firm — it assigns them.
+    ///
+    /// The distinction is easy to lose because the SCG's exploration effort has both. The
+    /// Expeditionary Corps is a government service; the Expeditionary Corps Organisation is a
+    /// state-owned limited company set up in 2302 as a joint platform for corporations and
+    /// government bodies. Someone on that company's payroll is a contractor in the civilian
+    /// branch, not a member of the Corps, however similar the badge on their arm looks.
+    /// </remarks>
+    [DataField]
+    public bool AllowsEmployer { get; set; }
+
+    /// <summary>
     /// Whether this branch is an armed force rather than a civil or civilian one.
     /// </summary>
     /// <remarks>

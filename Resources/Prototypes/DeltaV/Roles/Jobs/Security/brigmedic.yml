@@ -21,9 +21,8 @@
         - BrittleBoneDisease
     - !type:CharacterEmployerRequirement
       employers:
-      - ZavodskoiInterstellar
-      - Interdyne
-      - PMCG
+      - GraysonManufactories
+      - ZengHuPharmaceuticals
       - NanoTrasen
   startingGear: CorpsmanGear
   icon: "JobIconBrigmedic"

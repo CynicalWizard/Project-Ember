@@ -13,7 +13,7 @@
   requirements:
   - !type:CharacterEmployerRequirement
     employers:
-    - IdrisIncorporated
+    - ExpeditionaryCorpsOrganisation
     - NanoTrasen
   special: # Goobstation - Everyone knows lawyers are soulless.
   - !type:AddComponentSpecial

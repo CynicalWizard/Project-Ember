@@ -66,6 +66,27 @@ public sealed partial class EmberRankPrototype : IPrototype
     public List<EntProtoId> Accessories { get; set; } = new();
 
     /// <summary>
+    /// Youngest a character may be and hold this rank. Zero means no floor.
+    /// </summary>
+    /// <remarks>
+    /// The age brackets come from the SCG's own service tables, and putting them on the rank
+    /// rather than on each job is what keeps them honest: a post that requires a commission
+    /// inherits that commission's age without anyone recomputing it. A job states an age of its
+    /// own only where the profession asks for more than the rank does — a physician needs a
+    /// degree whatever is on their shoulder.
+    /// </remarks>
+    [DataField]
+    public int MinAge { get; set; }
+
+    /// <summary>
+    /// Oldest a character is normally expected to be at this rank. Recorded for display and for
+    /// character-creation hints; deliberately <em>not</em> enforced, because people do stay in
+    /// junior posts, and a hard ceiling would say they may not.
+    /// </summary>
+    [DataField]
+    public int? MaxAge { get; set; }
+
+    /// <summary>
     /// Species allowed to hold this rank. Empty means "no whitelist" — whatever the branch
     /// admits. Bay keeps this on the map datum as <c>species_to_rank_whitelist</c>; keeping it
     /// on the rank means one place to look instead of two.

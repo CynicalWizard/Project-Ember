@@ -9,8 +9,8 @@
     min: 36000
   - !type:CharacterEmployerRequirement
     employers:
-    - HephaestusIndustries
-    - EinsteinEngines
+    - GraysonManufactories
+    - ExpeditionaryCorpsOrganisation
     - NanoTrasen
   startingGear: AtmosphericTechnicianGear
   icon: "JobIconAtmosphericTechnician"
