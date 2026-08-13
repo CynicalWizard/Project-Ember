@@ -97,3 +97,27 @@ public enum EmberAccessoryFlags : byte
     /// <summary>Bay: ACCESSORY_DEFAULT_FLAGS.</summary>
     Default = Removable,
 }
+
+/// <summary>
+/// Which cut of department patch a garment takes. The patch is sewn to a different place on each
+/// kind of garment and is drawn as a different sprite, so the garment is what knows this - the
+/// character only knows which department they are in.
+/// </summary>
+/// <remarks>
+/// Bay has no equivalent because Bay does not resolve this at all: every uniform prototype names
+/// the finished patch in its own <c>accessories</c> list, which is why eight departments times
+/// three cuts is sixty-two prototypes there. Naming the cut instead lets one department own one
+/// entry and the garment supply the rest.
+/// </remarks>
+[Serializable, NetSerializable]
+public enum EmberInsigniaCut : byte
+{
+    /// <summary>Working dress. Bay's <c>dept_exped</c>.</summary>
+    Utility,
+
+    /// <summary>Service uniform and service jacket. Bay's <c>dept_exped_service</c>.</summary>
+    Service,
+
+    /// <summary>Fleet, which draws one patch for everything. Bay's <c>dept_fleet</c>.</summary>
+    Fleet,
+}

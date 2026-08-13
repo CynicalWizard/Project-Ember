@@ -1,4 +1,5 @@
 using Content.Shared.Access;
+using Content.Shared.Ember.Ranks;
 using Content.Shared.Ember.Roles;
 using Content.Shared.Ember.Skills;
 using Content.Shared.Guidebook;
@@ -149,8 +150,10 @@ namespace Content.Shared.Roles
         [DataField("antagAdvantage")]
         public int AntagAdvantage = 0;
 
+        // Ember: settable so unit tests can build a job without a prototype manager, same as
+        // MinSkills and AltTitles above. Nothing but the serialiser writes it in game code.
         [DataField("startingGear", customTypeSerializer: typeof(PrototypeIdSerializer<StartingGearPrototype>))]
-        public string? StartingGear { get; private set; }
+        public string? StartingGear { get; set; }
 
         /// <summary>
         ///     If this has a value, it will randomly set the entity name of the

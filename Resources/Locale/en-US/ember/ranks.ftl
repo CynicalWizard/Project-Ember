@@ -104,7 +104,6 @@ ember-rank-federal-supervisor-short = SAGT
 
 ember-rank-civilian-name = Civilian
 ember-rank-contractor-name = Contractor
-ember-rank-off-duty-name = Off-Duty Personnel
 ember-rank-machine-assigned-name = Assigned Unit
 ember-rank-machine-assigned-short = UNIT
 

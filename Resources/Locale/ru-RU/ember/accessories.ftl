@@ -30,6 +30,7 @@ ember-accessory-out-of-reach = Вы не дотягиваетесь до это�
 
 # Осмотр
 ember-accessory-examine = [color=lightgray]Прикреплено: {$accessory}.[/color]
+ember-accessory-examine-wearer = [color=lightgray]Знаки различия: {$accessory}.[/color]
 
 # Вербы и меню
 ember-accessory-remove-verb = Снять аксессуар

@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using Content.Client.Guidebook;
 using Content.Client.Humanoid;
 using Content.Client.Inventory;
@@ -11,6 +11,8 @@ using Content.Shared.Clothing.Loadouts.Systems;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
+using Content.Shared.Ember.Clothing;
+using Content.Shared.Ember.Roles;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Traits;
@@ -48,6 +50,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
     [UISystemDependency] private readonly GuidebookSystem _guide = default!;
     [UISystemDependency] private readonly SharedLoadoutSystem _loadouts = default!;
     [UISystemDependency] private readonly StationSpawningSystem _stationSpawning = default!;
+    [UISystemDependency] private readonly EmberInsigniaSystem _insignia = default!;
 
     private CharacterSetupGui? _characterSetup;
     private HumanoidProfileEditor? _profileEditor;
@@ -332,11 +335,12 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
     /// </summary>
     public void GiveDummyJobClothes(EntityUid dummy, JobPrototype job, HumanoidCharacterProfile profile)
     {
-        if (!_inventory.TryGetSlots(dummy, out var slots)
-            || job.StartingGear == null)
+        var gearId = job.StartingGear;
+
+        if (!_inventory.TryGetSlots(dummy, out var slots) || gearId == null)
             return;
 
-        var gear = _prototypeManager.Index<StartingGearPrototype>(job.StartingGear);
+        var gear = _prototypeManager.Index<StartingGearPrototype>(gearId);
         gear = _stationSpawning.ApplySubGear(gear, profile, job);
 
         foreach (var slot in slots)
@@ -352,6 +356,10 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
             var item = EntityManager.SpawnEntity(itemType, MapCoordinates.Nullspace);
             _inventory.TryEquip(dummy, item, slot.Name, true, true);
         }
+
+        // Ember: the same insignia the character would spawn wearing. Without this the preview
+        // shows the uniform and not the rank on it, which is the half the player is choosing.
+        _insignia.IssueInsignia(dummy, job, profile);
     }
 
     public void RemoveDummyClothes(EntityUid dummy)
@@ -402,10 +410,10 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         {
             DebugTools.Assert(job != null);
 
+            // Ember: called once. Upstream dressed the dummy here and then again under a second
+            // `if (jobClothes)` nested inside this one, which could never be false.
             GiveDummyJobClothes(dummyEnt, job, humanoid);
 
-            if (jobClothes)
-                GiveDummyJobClothes(dummyEnt, job, humanoid);
             if (loadouts)
                 GiveDummyLoadout(dummyEnt, job, humanoid);
         }

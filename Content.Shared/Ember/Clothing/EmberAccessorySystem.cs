@@ -45,6 +45,7 @@ public sealed class EmberAccessorySystem : EntitySystem
 
         SubscribeLocalEvent<EmberAccessoryHolderComponent, InteractUsingEvent>(OnHolderInteractUsing);
         SubscribeLocalEvent<EmberAccessoryHolderComponent, ExaminedEvent>(OnHolderExamined);
+        SubscribeLocalEvent<InventoryComponent, ExaminedEvent>(OnWearerExamined);
 
         SubscribeAllEvent<EmberAccessoryDetachRequestEvent>(OnDetachRequest);
 
@@ -498,6 +499,72 @@ public sealed class EmberAccessorySystem : EntitySystem
             foreach (var accessory in visible)
             {
                 args.PushMarkup(Loc.GetString("ember-accessory-examine",
+                    ("accessory", Identity.Entity(accessory, EntityManager))));
+            }
+        }
+    }
+
+    /// <summary>
+    /// Names the insignia a person is wearing when you look at the person, rather than only when
+    /// you look at the garment it is pinned to.
+    /// </summary>
+    /// <remarks>
+    /// Bay: ACCESSORY_HIGH_VISIBILITY, which the rank boards and the qualification badges carry and
+    /// the sewn-on department patch does not. That split is the whole point of the flag - rank is
+    /// the thing you are expected to read off someone across a corridor, and if everything appeared
+    /// here the rank would be buried among scarves and pen pouches.
+    ///
+    /// Reads every worn garment rather than a fixed pair of slots: a coat, a helmet and a voidsuit
+    /// all take insignia, and a rating in a voidsuit is exactly the case where you cannot go and
+    /// examine the shirt underneath.
+    /// </remarks>
+    private void OnWearerExamined(Entity<InventoryComponent> wearer, ref ExaminedEvent args)
+    {
+        if (!args.IsInDetailsRange || args.Examined != wearer.Owner)
+            return;
+
+        var found = new List<EntityUid>();
+
+        // A rating in a jacket over a uniform carries two sets of the same boards, because an outer
+        // layer hides the one underneath. That is right on the sprite and wrong in a sentence, so
+        // the line is per kind of insignia rather than per object.
+        var seen = new HashSet<string>();
+
+        var enumerator = _inventory.GetSlotEnumerator((wearer.Owner, wearer.Comp));
+        while (enumerator.NextItem(out var garment, out _))
+        {
+            if (!TryComp<EmberAccessoryHolderComponent>(garment, out var holder))
+                continue;
+
+            if (!TryGetContainer((garment, holder), out var container))
+                continue;
+
+            foreach (var accessory in container.ContainedEntities)
+            {
+                if (!TryComp<EmberAccessoryComponent>(accessory, out var comp))
+                    continue;
+
+                if ((comp.Flags & EmberAccessoryFlags.HighVisibility) == 0)
+                    continue;
+
+                // Anything spawned outside a prototype is its own kind, since there is nothing to
+                // compare it by. Nothing does that today; insignia are issued from prototypes.
+                if (MetaData(accessory).EntityPrototype?.ID is { } id && !seen.Add(id))
+                    continue;
+
+                found.Add(accessory);
+            }
+        }
+
+        if (found.Count == 0)
+            return;
+
+        using (args.PushGroup(nameof(EmberAccessoryComponent)))
+        {
+            foreach (var accessory in found)
+            {
+                args.PushMarkup(Loc.GetString("ember-accessory-examine-wearer",
+                    ("wearer", Identity.Entity(wearer.Owner, EntityManager)),
                     ("accessory", Identity.Entity(accessory, EntityManager))));
             }
         }

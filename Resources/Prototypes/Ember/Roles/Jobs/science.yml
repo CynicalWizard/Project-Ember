@@ -17,6 +17,11 @@
 # EMBER-TODO: `startingGear` and `icon` point at existing vanilla content on purpose, same as in
 # the other department files.
 #
+# `startingGear` points at an Ember kit in job_gear.yml, which inherits the vanilla kit named
+# above it for the tools and hangs the branch uniforms off it as sub-gear. The uniform therefore
+# comes from the service and the tools from the post, and a post open to three services is still
+# one post. See Resources/Prototypes/Ember/Roles/branch_uniforms.yml.
+#
 # The Corps floor — `hauling`, `science` and `EVA` at Basic — is not repeated below.
 #
 # Three routes in, and this is the only department with all three. The Corps commissions its own
@@ -76,7 +81,7 @@
   name: job-name-ember-chief-science-officer
   description: job-description-ember-chief-science-officer
   playTimeTracker: JobEmberChiefScienceOfficer
-  startingGear: ResearchDirectorGear
+  startingGear: EmberGearChiefScienceOfficer
   icon: JobIconResearchDirector
   supervisors: job-supervisors-ember-command
   weight: 18
@@ -113,7 +118,7 @@
   name: job-name-ember-senior-researcher
   description: job-description-ember-senior-researcher
   playTimeTracker: JobEmberSeniorResearcher
-  startingGear: SeniorResearcherGear
+  startingGear: EmberGearSeniorResearcher
   icon: JobIconSeniorResearcher
   supervisors: job-supervisors-ember-chief-science-officer
   weight: 15
@@ -145,7 +150,7 @@
   name: job-name-ember-researcher
   description: job-description-ember-researcher
   playTimeTracker: JobEmberResearcher
-  startingGear: ScientistGear
+  startingGear: EmberGearResearcher
   icon: JobIconScientist
   supervisors: job-supervisors-ember-laboratory
   weight: 13
@@ -180,7 +185,7 @@
   name: job-name-ember-lab-technician
   description: job-description-ember-lab-technician
   playTimeTracker: JobEmberLabTechnician
-  startingGear: ResearchAssistantGear
+  startingGear: EmberGearLabTechnician
   icon: JobIconResearchAssistant
   supervisors: job-supervisors-ember-laboratory
   weight: 11
@@ -223,7 +228,7 @@
   name: job-name-ember-field-team-leader
   description: job-description-ember-field-team-leader
   playTimeTracker: JobEmberFieldTeamLeader
-  startingGear: ResearchAssistantGear
+  startingGear: EmberGearFieldTeamLeader
   icon: JobIconScientist
   supervisors: job-supervisors-ember-chief-science-officer
   weight: 8
@@ -261,7 +266,7 @@
   name: job-name-ember-shuttle-pilot
   description: job-description-ember-shuttle-pilot
   playTimeTracker: JobEmberShuttlePilot
-  startingGear: ResearchAssistantGear
+  startingGear: EmberGearShuttlePilot
   icon: JobIconScientist
   supervisors: job-supervisors-ember-field-team
   weight: 6
@@ -301,7 +306,7 @@
   name: job-name-ember-field-specialist
   description: job-description-ember-field-specialist
   playTimeTracker: JobEmberFieldSpecialist
-  startingGear: ResearchAssistantGear
+  startingGear: EmberGearFieldSpecialist
   icon: JobIconResearchAssistant
   supervisors: job-supervisors-ember-field-team
   weight: 4

@@ -39,7 +39,6 @@
   - EmberRankCorpsO8
   - EmberRankCorpsO10
   - EmberRankMachineAssigned
-  - EmberRankOffDuty
   assistantJob: EmberCrewman
   spawnRanks:
   # E-1 is not selectable on the Torch, but our junior technician and sanitation technician sit
@@ -55,7 +54,6 @@
   - EmberRankMachineAssigned
   # Off duty is a selectable status rather than a rank to be promoted to, and the Off-Duty Watch
   # job is the only thing that asks for it. Every branch carries it for the same reason.
-  - EmberRankOffDuty
 
 - type: emberBranch
   id: EmberBranchFleet
@@ -107,7 +105,6 @@
   - EmberRankFleetO10
   - EmberRankFleetO10Admiral
   - EmberRankMachineAssigned
-  - EmberRankOffDuty
   spawnRanks:
   - EmberRankFleetE2
   - EmberRankFleetE3
@@ -123,7 +120,6 @@
   - EmberRankFleetO3
   - EmberRankFleetO4
   - EmberRankFleetO5
-  - EmberRankOffDuty
 
 - type: emberBranch
   id: EmberBranchSCGGovernment
@@ -140,12 +136,10 @@
   - EmberRankFederalMarshal
   - EmberRankFederalAgent
   - EmberRankFederalSupervisor
-  - EmberRankOffDuty
   spawnRanks:
   - EmberRankSCGRepresentative
   - EmberRankSCGScientist
   - EmberRankFederalMarshal
-  - EmberRankOffDuty
 
 - type: emberBranch
   id: EmberBranchCivilian
@@ -162,9 +156,7 @@
   - EmberRankCivilian
   - EmberRankContractor
   - EmberRankMachineAssigned
-  - EmberRankOffDuty
   spawnRanks:
   - EmberRankCivilian
   - EmberRankContractor
   - EmberRankMachineAssigned
-  - EmberRankOffDuty

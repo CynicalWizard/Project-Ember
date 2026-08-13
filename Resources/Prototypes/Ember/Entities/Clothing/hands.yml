@@ -1,0 +1,109 @@
+# Gloves of the SCG Expeditionary Corps and Fleet, converted from SierraBay12.
+#
+# Eight duty gloves in department colours and one Fleet pair. Same garment, different accent —
+# the same shape as the berets, and kept for the same reason.
+#
+# EMBER-TODO: `startingGear` does not reference any of these yet, and neither does a vendor.
+# They exist as items so the uniform vendor and the branch kits have something to point at.
+#
+# EMBER-TODO: no in-hand sprites, and no armour or temperature values — everything here is
+# cosmetic until the kit pass. Bay's numbers are in the same files these came from.
+
+- type: entity
+  parent: ClothingHandsBase
+  id: EmberClothingHandsDutyGlovesCmd
+  name: "command duty gloves"
+  description: "These black duty gloves are made from durable synthetic materials, and have a lovely gold accent color."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Hands/duty_gloves_cmd.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Hands/duty_gloves_cmd.rsi
+
+- type: entity
+  parent: ClothingHandsBase
+  id: EmberClothingHandsDutyGlovesEng
+  name: "engineering duty gloves"
+  description: "These black duty gloves are made from durable synthetic materials, and have a lovely orange accent color."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Hands/duty_gloves_eng.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Hands/duty_gloves_eng.rsi
+
+- type: entity
+  parent: ClothingHandsBase
+  id: EmberClothingHandsDutyGlovesExp
+  name: "exploration duty gloves"
+  description: "These black duty gloves are made from durable synthetic materials, and have a lovely purple accent color."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Hands/duty_gloves_exp.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Hands/duty_gloves_exp.rsi
+
+- type: entity
+  parent: ClothingHandsBase
+  id: EmberClothingHandsDutyGlovesMed
+  name: "medical duty gloves"
+  description: "These black duty gloves are made from durable synthetic materials, and have a lovely blue accent color."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Hands/duty_gloves_med.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Hands/duty_gloves_med.rsi
+
+- type: entity
+  parent: ClothingHandsBase
+  id: EmberClothingHandsDutyGlovesSci
+  name: "science duty gloves"
+  description: "These black duty gloves are made from durable synthetic materials, and have a lovely heather accent color."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Hands/duty_gloves_sci.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Hands/duty_gloves_sci.rsi
+
+- type: entity
+  parent: ClothingHandsBase
+  id: EmberClothingHandsDutyGlovesSec
+  name: "security duty gloves"
+  description: "These black duty gloves are made from durable synthetic materials, and have a lovely red accent color."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Hands/duty_gloves_sec.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Hands/duty_gloves_sec.rsi
+
+- type: entity
+  parent: ClothingHandsBase
+  id: EmberClothingHandsDutyGlovesSup
+  name: "supply duty gloves"
+  description: "These black duty gloves are made from durable synthetic materials, and have a lovely brown accent color."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Hands/duty_gloves_sup.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Hands/duty_gloves_sup.rsi
+
+- type: entity
+  parent: ClothingHandsBase
+  id: EmberClothingHandsDutyGlovesSvc
+  name: "service duty gloves"
+  description: "These black duty gloves are made from durable synthetic materials, and have a lovely green accent color."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Hands/duty_gloves_svc.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Hands/duty_gloves_svc.rsi
+
+- type: entity
+  parent: ClothingHandsBase
+  id: EmberClothingHandsFleetGloves
+  name: "fleet combat gloves"
+  description: "These thick tactical gloves are somewhat resistant to fire and impact. They will also protect the wearer from electrical shocks"
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Hands/fleet_gloves.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Hands/fleet_gloves.rsi

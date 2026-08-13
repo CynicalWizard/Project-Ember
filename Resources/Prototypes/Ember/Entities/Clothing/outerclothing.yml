@@ -1,0 +1,387 @@
+# Outer clothing of the SCG Expeditionary Corps and Fleet, converted from SierraBay12.
+#
+# Service and dress jackets, webbing vests and the two greatcoats. The rank of the wearer is in
+# the jacket here rather than on a shoulder board: Bay draws `blueservice`, `_snco`, `_off`,
+# `_comm` and `_flag` as five garments, and they stay five.
+#
+# EMBER-TODO: `startingGear` does not reference any of these yet, and neither does a vendor.
+# They exist as items so the uniform vendor and the branch kits have something to point at.
+#
+# EMBER-TODO: no in-hand sprites, and no armour or temperature values — everything here is
+# cosmetic until the kit pass. Bay's numbers are in the same files these came from.
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterBlackservice
+  name: "service jacket"
+  description: "A uniform service jacket, plain and undecorated."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/blackservice.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/blackservice.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Service
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterBlueservice
+  name: "fleet service jacket"
+  description: "A navy blue SCG Fleet service jacket."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/blueservice.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/blueservice.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterBlueserviceComm
+  name: "fleet senior officer's service jacket"
+  description: "A navy blue SCG Fleet dress jacket with gold accents."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/blueservice_comm.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/blueservice_comm.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterBlueserviceFlag
+  name: "fleet flag officer's service jacket"
+  description: "A navy blue SCG Fleet dress jacket with red accents."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/blueservice_flag.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/blueservice_flag.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterBlueserviceOff
+  name: "fleet officer's service jacket"
+  description: "A navy blue SCG Fleet dress jacket with silver accents."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/blueservice_off.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/blueservice_off.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterBlueserviceSnco
+  name: "fleet SNCO service jacket"
+  description: "A navy blue SCG Fleet service jacket with silver cuffs."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/blueservice_snco.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/blueservice_snco.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterCoatec
+  name: "expeditionary winter coat"
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/coatec.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/coatec.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Service
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterCoatfl
+  name: "fleet winter coat"
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/coatfl.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/coatfl.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterEcdressAdm
+  name: "expeditionary admiral's dress coat"
+  description: "A gold and black dress peacoat belonging to the SCG Expeditionary Corps. The height of fashion."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/ecdress_adm.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/ecdress_adm.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Service
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterEcdressCapt
+  name: "expeditionary captain's dress coat"
+  description: "A gold and black dress peacoat belonging to the SCG Expeditionary Corps. The height of fashion."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/ecdress_capt.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/ecdress_capt.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Service
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterEcdressCdr
+  name: "expeditionary commander's dress coat"
+  description: "A gold and black dress peacoat belonging to the SCG Expeditionary Corps. The height of fashion."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/ecdress_cdr.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/ecdress_cdr.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Service
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterEcdressCxpl
+  name: "expeditionary chief's dress coat"
+  description: "A silver and black dress peacoat belonging to the SCG Expeditionary Corps. Fashionable, for the 25th century at least."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/ecdress_cxpl.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/ecdress_cxpl.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Service
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterEcdressOfcr
+  name: "expeditionary officer's dress coat"
+  description: "A gold and black dress peacoat belonging to the SCG Expeditionary Corps. The height of fashion."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/ecdress_ofcr.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/ecdress_ofcr.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Service
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterEcdressSxpl
+  name: "expeditionary senior's dress coat"
+  description: "A silver and black dress peacoat belonging to the SCG Expeditionary Corps. Fashionable, for the 25th century at least."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/ecdress_sxpl.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/ecdress_sxpl.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Service
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterEcdressXpl
+  name: "dress jacket"
+  description: "A uniform dress jacket, plain and undecorated."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/ecdress_xpl.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/ecdress_xpl.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Service
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterEcserviceCrew
+  name: "expeditionary jacket"
+  description: "A uniform service jacket belonging to the SCG Expeditionary Corps."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/ecservice_crew.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/ecservice_crew.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Service
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterEcserviceOfficer
+  name: "expeditionary jacket"
+  description: "A uniform service jacket belonging to the SCG Expeditionary Corps."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/ecservice_officer.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/ecservice_officer.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Service
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterFleetSweater
+  name: "fleet service sweater"
+  description: "A navy blue SCG Fleet service sweater."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/fleet_sweater.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/fleet_sweater.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterFleetSweaterComm
+  name: "fleet senior officer's service sweater"
+  description: "A navy blue SCG Fleet service sweater with gold accents."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/fleet_sweater_comm.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/fleet_sweater_comm.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterFleetSweaterFlag
+  name: "fleet flag officer's service sweater"
+  description: "A navy blue SCG Fleet serivce sweater with red accents."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/fleet_sweater_flag.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/fleet_sweater_flag.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterFleetSweaterOff
+  name: "fleet officer's service sweater"
+  description: "A navy blue SCG Fleet service sweater with silver accents."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/fleet_sweater_off.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/fleet_sweater_off.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterSailordress
+  name: "fleet dress overwear"
+  description: "A navy blue SCG Fleet dress suit. Almost looks like a school-girl outfit."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/sailordress.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/sailordress.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterWhitedress
+  name: "fleet dress jacket"
+  description: "A navy blue SCG Fleet dress jacket. Don't get near pasta sauce or vox."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/whitedress.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/whitedress.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterWhitedressComm
+  name: "fleet senior officer's dress jacket"
+  description: "A navy blue SCG Fleet dress jacket with gold accents. Don't get near pasta sauce or vox."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/whitedress_comm.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/whitedress_comm.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterWhitedressFlag
+  name: "fleet flag officer's dress jacket"
+  description: "A navy blue SCG Fleet dress jacket with red accents. Don't get near pasta sauce or vox."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/whitedress_flag.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/whitedress_flag.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterWhitedressOff
+  name: "fleet officer's dress jacket"
+  description: "A navy blue SCG Fleet dress jacket with silver accents. Don't get near pasta sauce or vox."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/whitedress_off.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/whitedress_off.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingOuterBase
+  id: EmberClothingOuterWhitedressSnco
+  name: "fleet dress SNCO jacket"
+  description: "A navy blue SCG Fleet dress jacket with silver cuffs. Don't get near pasta sauce or vox."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/OuterClothing/whitedress_snco.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/OuterClothing/whitedress_snco.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet

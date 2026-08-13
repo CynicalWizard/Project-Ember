@@ -1,4 +1,4 @@
-using Robust.Shared.GameStates;
+﻿using Robust.Shared.GameStates;
 
 namespace Content.Shared.Ember.Clothing;
 
@@ -66,6 +66,40 @@ public sealed partial class EmberAccessoryComponent : Component
     /// </summary>
     [DataField]
     public string? ItemState;
+
+    /// <summary>
+    /// Whether the accessory keeps being drawn on a garment pulled down to the waist, when it has
+    /// no purpose-drawn variant for that state.
+    /// </summary>
+    /// <remarks>
+    /// Bay writes this per accessory as <c>on_rolled_down</c>, whose three values are "use the
+    /// base sprite", "use this other sprite" and "draw nothing". Two of those we get from the art
+    /// itself: the converted sheets carry <c>rolled-</c> and <c>down-</c> states wherever Bay drew
+    /// one, and the resolver prefers them. What is left over is the case Bay's default gets wrong
+    /// - a chest patch on a torso that is now bare skin - so the default here is to hide, and this
+    /// field is for the accessories that sit below the fold. A holster is on the belt and a scarf
+    /// is round the neck; neither goes anywhere when the shoulders come out of the uniform.
+    ///
+    /// Rolled sleeves need no equivalent. They change the forearms and nothing else, so an
+    /// accessory with no rolled variant simply keeps its own sprite.
+    /// </remarks>
+    [DataField]
+    public bool VisibleWhenRolledDown;
+
+    /// <summary>
+    /// Tint applied to the accessory on the wearer only, leaving the item's own icon alone. Null
+    /// means the sprite's own colour is used for both, which is what a patch dyed one colour wants.
+    /// </summary>
+    /// <remarks>
+    /// Bay: badgecolor, a second colour var that get_mob_overlay() applies and get_inv_overlay()
+    /// does not. It exists for the qualification badges, where the item in your hand is a
+    /// purpose-drawn icon per speciality and the thing on your chest is one grey badge that gets
+    /// the speciality's colour - the author's note being that they were not going to put nine
+    /// thousand coloured pixels in a sprite sheet. Tinting both would multiply a colour into art
+    /// that already has one.
+    /// </remarks>
+    [DataField]
+    public Color? EquippedColor;
 
     /// <summary>
     /// If true, the accessory stops being drawn on the wearer while something is worn in the

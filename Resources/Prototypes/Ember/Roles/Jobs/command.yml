@@ -4,9 +4,14 @@
 # forty-odd new jobs arriving at once, a department reads as a unit and reviews as a unit; the
 # upstream convention would scatter that across forty files for no gain.
 #
-# EMBER-TODO: `startingGear` and `icon` point at existing vanilla content on purpose. A job does
-# not need its own sprites to exist, and every one of these becomes a one-line change once the
-# SCG uniforms are converted. Nothing else here is placeholder.
+# EMBER-TODO: `icon` points at existing vanilla content on purpose. A job does not need its own
+# sprites to exist, and every one of these is a one-line change later. Nothing else here is
+# placeholder.
+#
+# `startingGear` points at an Ember kit in job_gear.yml, which inherits the vanilla kit for the
+# tools and hangs the branch uniforms off it as sub-gear. The uniform therefore comes from the
+# service and the tools from the post, and a post open to three services is still one post. See
+# Resources/Prototypes/Ember/Roles/branch_uniforms.yml.
 #
 # **Authority aboard runs by billet, not by rank or by service.** This is the single most
 # load-bearing sentence in the job files and it is easy to get backwards, because the rank data
@@ -64,10 +69,9 @@
 # listing the government's observer under Command would say the Captain commands him, which is
 # the one thing that is not true of the post.
 #
-# EMBER-TODO: the Federal Marshal belongs here too when Security is written. That supersedes the
-# earlier plan to make the Marshal a second branch on the Investigator job — a job sits in one
-# department, and putting a police officer under the head of security would say the head of
-# security runs him.
+# The Federal Marshal sits here rather than in Security, and that supersedes the earlier plan to
+# make him a second branch on the Investigator job. A job sits in one department, and putting a
+# police officer under the Chief of Security would say the Chief of Security runs him.
 - type: department
   id: EmberOversight
   name: department-EmberOversight
@@ -76,6 +80,7 @@
   weight: 21
   roles:
   - EmberSCGRepresentative
+  - EmberFederalMarshal
 
 - type: playTimeTracker
   id: JobEmberCaptain
@@ -93,6 +98,9 @@
   id: JobEmberSCGRepresentative
 
 - type: playTimeTracker
+  id: JobEmberFederalMarshal
+
+- type: playTimeTracker
   id: JobEmberLiaisonOfficer
 
 - type: playTimeTracker
@@ -106,7 +114,7 @@
   name: job-name-ember-captain
   description: job-description-ember-captain
   playTimeTracker: JobEmberCaptain
-  startingGear: CaptainGear
+  startingGear: EmberGearCaptain
   icon: JobIconCaptain
   supervisors: job-supervisors-ember-observatory
   weight: 20
@@ -136,7 +144,7 @@
   name: job-name-ember-executive-officer
   description: job-description-ember-executive-officer
   playTimeTracker: JobEmberExecutiveOfficer
-  startingGear: HoPGear
+  startingGear: EmberGearExecutiveOfficer
   icon: JobIconHeadOfPersonnel
   supervisors: job-supervisors-ember-captain
   weight: 19
@@ -164,7 +172,7 @@
   name: job-name-ember-watch-officer
   description: job-description-ember-watch-officer
   playTimeTracker: JobEmberWatchOfficer
-  startingGear: HoPGear
+  startingGear: EmberGearWatchOfficer
   icon: JobIconHeadOfPersonnel
   supervisors: job-supervisors-ember-command
   weight: 15
@@ -188,7 +196,7 @@
   name: job-name-ember-senior-enlisted-advisor
   description: job-description-ember-senior-enlisted-advisor
   playTimeTracker: JobEmberSeniorEnlistedAdvisor
-  startingGear: HoPGear
+  startingGear: EmberGearSeniorEnlistedAdvisor
   icon: JobIconHeadOfPersonnel
   supervisors: job-supervisors-ember-command
   weight: 15
@@ -213,7 +221,7 @@
   name: job-name-ember-scg-representative
   description: job-description-ember-scg-representative
   playTimeTracker: JobEmberSCGRepresentative
-  startingGear: HoPGear
+  startingGear: EmberGearSCGRepresentative
   icon: JobIconHeadOfPersonnel
   supervisors: job-supervisors-ember-scg
   weight: 15
@@ -233,6 +241,49 @@
     - EmberRankSCGRepresentative
   - !type:CharacterSkillRequirement
 
+# Sol Federal Police, Territorial Support Division, embedded aboard because an Expeditionary Corps
+# ship is SCG territory and a crime committed on it is a federal one. He is not the ship's security
+# and not its investigator: those two answer to the Chief of Security and enforce the Captain's
+# authority, and the Marshal enforces the law whether or not the Captain agrees. Nobody aboard
+# outranks him in that, and he commands nobody in anything else.
+#
+# `bureaucracy` Experienced rather than `investigation`: what a marshal actually does differently
+# from the ship's investigator is produce a case that survives a court on Luna. The evidence work
+# is the same work; the paperwork is the whole difference, and it is why the age floor is high.
+#
+# Deliberately no weapon in the kit and no Security access. Powers of arrest are not powers of
+# entry, and a marshal who could walk into the brig unaccompanied would be the Chief of Security
+# with a better hat. He asks, and being refused is the interesting half of the post.
+#
+# EMBER-TODO: `access` gives him nothing Security has, which is right, and nothing to hold a
+# prisoner in either, which is not - a federal arrest aboard has nowhere to go today. That is a
+# question about brig procedure rather than about this job.
+- type: job
+  id: EmberFederalMarshal
+  name: job-name-ember-federal-marshal
+  description: job-description-ember-federal-marshal
+  playTimeTracker: JobEmberFederalMarshal
+  startingGear: EmberGearFederalMarshal
+  icon: JobIconDetective
+  supervisors: job-supervisors-ember-federal-police
+  weight: 14
+  canBeAntag: false
+  access:
+  - Command
+  - Maintenance
+  - External
+  minSkills:
+    bureaucracy: Experienced
+    forensics: Trained
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchSCGGovernment
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankFederalMarshal
+  - !type:CharacterSkillRequirement
+
 # EMBER-TODO: mechanically thin until the telecommunications work lands — NTSL and a shipboard
 # network give this post an actual job. Kept in the list because that growth is planned, not
 # hoped for. See "08 — Должности, зависящие от взаимодействия" in the design vault.
@@ -241,7 +292,7 @@
   name: job-name-ember-liaison-officer
   description: job-description-ember-liaison-officer
   playTimeTracker: JobEmberLiaisonOfficer
-  startingGear: HoPGear
+  startingGear: EmberGearLiaisonOfficer
   icon: JobIconHeadOfPersonnel
   supervisors: job-supervisors-ember-command
   weight: 10
@@ -268,7 +319,7 @@
   name: job-name-ember-adjutant
   description: job-description-ember-adjutant
   playTimeTracker: JobEmberAdjutant
-  startingGear: HoPGear
+  startingGear: EmberGearAdjutant
   icon: JobIconHeadOfPersonnel
   supervisors: job-supervisors-ember-command
   weight: 10

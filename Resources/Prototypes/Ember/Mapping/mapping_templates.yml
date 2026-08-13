@@ -32,6 +32,8 @@
       children:
         - !type:MappingTemplatePrototype
           id: SpawnPointEmberSCGRepresentative
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberFederalMarshal
     - !type:MappingTemplatePrototype
       id: EmberJobsSecurity
       children:

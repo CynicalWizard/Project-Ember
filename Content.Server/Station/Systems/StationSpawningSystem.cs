@@ -1,4 +1,4 @@
-using Content.Server.Access.Systems;
+﻿using Content.Server.Access.Systems;
 using Content.Server.DetailExaminable;
 using Content.Server.Humanoid;
 using Content.Server.IdentityManagement;
@@ -16,6 +16,7 @@ using Content.Shared.Customization.Systems;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.PDA;
+using Content.Shared.Ember.Clothing;
 using Content.Shared.Ember.Roles;
 using Robust.Shared.Enums;
 using Content.Shared.Preferences;
@@ -50,6 +51,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
     [Dependency] private readonly IdentitySystem _identity = default!;
     [Dependency] private readonly MetaDataSystem _metaSystem = default!;
     [Dependency] private readonly InternalEncryptionKeySpawner _internalEncryption = default!;
+    [Dependency] private readonly EmberInsigniaSystem _insignia = default!; // Ember
 
     private bool _randomizeCharacters;
 
@@ -139,9 +141,11 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         if (_randomizeCharacters)
             profile = HumanoidCharacterProfile.RandomWithSpecies(speciesId);
 
-        if (prototype?.StartingGear != null)
+        var gearId = prototype?.StartingGear;
+
+        if (gearId != null)
         {
-            var startingGear = _prototypeManager.Index<StartingGearPrototype>(prototype.StartingGear);
+            var startingGear = _prototypeManager.Index<StartingGearPrototype>(gearId);
             if (profile != null)
                 startingGear = ApplySubGear(startingGear, profile, prototype);
 
@@ -151,6 +155,11 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
 
         var gearEquippedEv = new StartingGearEquippedEvent(entity.Value);
         RaiseLocalEvent(entity.Value, ref gearEquippedEv);
+
+        // Ember: rank boards and the department patch depend on the character rather than on the
+        // post, so they cannot be listed in the kit and are sewn on once the kit is worn.
+        if (profile != null && prototype != null)
+            _insignia.IssueInsignia(entity.Value, prototype, profile);
 
         if (profile != null)
         {

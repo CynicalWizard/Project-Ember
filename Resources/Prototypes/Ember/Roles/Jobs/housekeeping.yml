@@ -6,6 +6,11 @@
 # EMBER-TODO: `startingGear` and `icon` point at existing vanilla content on purpose, same as in
 # the other department files.
 #
+# `startingGear` points at an Ember kit in job_gear.yml, which inherits the vanilla kit named
+# above it for the tools and hangs the branch uniforms off it as sub-gear. The uniform therefore
+# comes from the service and the tools from the post, and a post open to three services is still
+# one post. See Resources/Prototypes/Ember/Roles/branch_uniforms.yml.
+#
 # The Corps floor — `hauling`, `science` and `EVA` at Basic — is not repeated below.
 #
 # The Crewman is what `EmberBranchExpeditionaryCorps.assistantJob` now points at, closing a
@@ -49,7 +54,7 @@
   name: job-name-ember-chief-steward
   description: job-description-ember-chief-steward
   playTimeTracker: JobEmberChiefSteward
-  startingGear: ServiceWorkerGear
+  startingGear: EmberGearChiefSteward
   icon: JobIconServiceWorker
   supervisors: job-supervisors-ember-executive-officer
   weight: 18
@@ -85,7 +90,7 @@
   name: job-name-ember-steward
   description: job-description-ember-steward
   playTimeTracker: JobEmberSteward
-  startingGear: ServiceWorkerGear
+  startingGear: EmberGearSteward
   icon: JobIconServiceWorker
   supervisors: job-supervisors-ember-housekeeping
   weight: 12
@@ -123,7 +128,7 @@
   name: job-name-ember-cook
   description: job-description-ember-cook
   playTimeTracker: JobEmberCook
-  startingGear: ChefGear
+  startingGear: EmberGearCook
   icon: JobIconChef
   supervisors: job-supervisors-ember-housekeeping
   weight: 12
@@ -165,7 +170,7 @@
   name: job-name-ember-sanitation-technician
   description: job-description-ember-sanitation-technician
   playTimeTracker: JobEmberSanitationTechnician
-  startingGear: JanitorGear
+  startingGear: EmberGearSanitationTechnician
   icon: JobIconJanitor
   supervisors: job-supervisors-ember-housekeeping
   weight: 10
@@ -200,7 +205,7 @@
   name: job-name-ember-crewman
   description: job-description-ember-crewman
   playTimeTracker: JobEmberCrewman
-  startingGear: PassengerGear
+  startingGear: EmberGearCrewman
   icon: JobIconServiceWorker
   supervisors: job-supervisors-ember-housekeeping
   weight: 5

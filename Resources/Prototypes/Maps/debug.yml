@@ -26,7 +26,9 @@
           mapNameTemplate: "Dev"
         - type: StationJobs
           availableJobs:
-            Captain: [ -1, -1 ]
+            # Ember: the dev map offers exactly one post, so it may as well be one of ours —
+            # it is the cheapest way to exercise branch, rank, skills and job titles end to end.
+            EmberCaptain: [ -1, -1 ]
         # Goobstation blob-config-start DEBUG
         - type: StationBlobConfig
           stageBegin: 20

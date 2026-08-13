@@ -1,0 +1,349 @@
+# Round-start kit, one entry per post.
+#
+# Each of these inherits the kit the post used to point at directly, so the tools, the radio and
+# the backpack come from the parent and are not copied here. What is added is the sub-gear list:
+# the services this post admits, in the order they should be applied.
+#
+# The split is the whole point. Tools belong to the post - a hard hat is a fact about the work.
+# The uniform belongs to the service, and is written once in branch_uniforms.yml rather than once
+# per post per service. SierraBay12 does the same thing by writing out a whole second outfit per
+# service on each job, which is where its `allowed_branches` list comes from and why its outfit
+# files are as long as they are.
+#
+# The crew cut is always listed before the officer cut. Sub-gears apply in order and the later one
+# wins, and the officer cut carries the rank requirement that decides whether it applies at all.
+#
+# EMBER-TODO: the parents are still vanilla kits, so the tools are vanilla tools. That is the same
+# stopgap the `startingGear` lines in the job files carried before, moved one level down rather
+# than resolved - what changes here is that the uniform is no longer part of it.
+
+- type: startingGear
+  id: EmberGearCaptain
+  parent: CaptainGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+
+- type: startingGear
+  id: EmberGearExecutiveOfficer
+  parent: HoPGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+
+- type: startingGear
+  id: EmberGearWatchOfficer
+  parent: HoPGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+
+- type: startingGear
+  id: EmberGearSeniorEnlistedAdvisor
+  parent: HoPGear
+  subGear:
+  - EmberSubGearFleet
+
+- type: startingGear
+  id: EmberGearSCGRepresentative
+  parent: HoPGear
+  subGear:
+  - EmberSubGearGovernment
+
+# The one post aboard whose kit is not a service kit. The suit comes from the government sub-gear
+# like the Representative's does; the coat and the badge are the office, and the badge is in the
+# neck slot rather than pinned to the suit because showing it is the whole gesture.
+- type: startingGear
+  id: EmberGearFederalMarshal
+  subGear:
+  - EmberSubGearGovernment
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerBlack
+    outerClothing: ClothingOuterCoatDetective
+    neck: EmberClothingNeckFederalPoliceBadge
+    back: ClothingBackpackSatchel
+    shoes: ClothingShoesBootsLaceup
+    ears: ClothingHeadsetSecurity
+    id: DetectivePDA
+    # A scanner and no sidearm. Powers of arrest are not powers of entry, and the kit is the
+    # clearest place to say so - the ship's security carries the guns, the marshal carries
+    # the evidence.
+    pocket1: ForensicScanner
+
+- type: startingGear
+  id: EmberGearLiaisonOfficer
+  parent: HoPGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+
+- type: startingGear
+  id: EmberGearAdjutant
+  parent: HoPGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+
+- type: startingGear
+  id: EmberGearChiefOfSecurity
+  parent: HoSGear
+  subGear:
+  - EmberSubGearFleet
+
+- type: startingGear
+  id: EmberGearBrigChief
+  parent: WardenGear
+  subGear:
+  - EmberSubGearFleet
+
+- type: startingGear
+  id: EmberGearInvestigator
+  parent: DetectiveGear
+  subGear:
+  - EmberSubGearFleet
+
+- type: startingGear
+  id: EmberGearMasterAtArms
+  parent: SecurityOfficerGear
+  subGear:
+  - EmberSubGearFleet
+
+- type: startingGear
+  id: EmberGearCorpsman
+  parent: ParamedicGear
+  subGear:
+  - EmberSubGearFleet
+
+- type: startingGear
+  id: EmberGearSecurityCadet
+  parent: SecurityCadetGear
+  subGear:
+  - EmberSubGearFleet
+
+- type: startingGear
+  id: EmberGearChiefEngineer
+  parent: ChiefEngineerGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+
+- type: startingGear
+  id: EmberGearSeniorEngineer
+  parent: SeniorEngineerGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+
+- type: startingGear
+  id: EmberGearEngineer
+  parent: StationEngineerGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+  - EmberSubGearCivilian
+
+- type: startingGear
+  id: EmberGearRoboticist
+  parent: ResearchAssistantGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+  - EmberSubGearCivilian
+
+- type: startingGear
+  id: EmberGearEngineerTrainee
+  parent: TechnicalAssistantGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+
+- type: startingGear
+  id: EmberGearChiefMedicalOfficer
+  parent: CMOGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+
+- type: startingGear
+  id: EmberGearPhysician
+  parent: SeniorPhysicianGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+  - EmberSubGearCivilian
+
+- type: startingGear
+  id: EmberGearMedicalResident
+  parent: DoctorGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+  - EmberSubGearCivilian
+
+- type: startingGear
+  id: EmberGearPharmacist
+  parent: ChemistGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+  - EmberSubGearCivilian
+
+- type: startingGear
+  id: EmberGearMedicalTechnician
+  parent: DoctorGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+  - EmberSubGearCivilian
+
+- type: startingGear
+  id: EmberGearEmergencyTechnician
+  parent: ParamedicGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+  - EmberSubGearCivilian
+
+- type: startingGear
+  id: EmberGearMedicalTrainee
+  parent: MedicalInternGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+
+- type: startingGear
+  id: EmberGearChiefScienceOfficer
+  parent: ResearchDirectorGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+
+- type: startingGear
+  id: EmberGearSeniorResearcher
+  parent: SeniorResearcherGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+
+- type: startingGear
+  id: EmberGearResearcher
+  parent: ScientistGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+  - EmberSubGearCivilian
+  - EmberSubGearGovernment
+
+- type: startingGear
+  id: EmberGearLabTechnician
+  parent: ResearchAssistantGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+  - EmberSubGearCivilian
+  - EmberSubGearGovernment
+
+- type: startingGear
+  id: EmberGearFieldTeamLeader
+  parent: ResearchAssistantGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+
+- type: startingGear
+  id: EmberGearShuttlePilot
+  parent: ResearchAssistantGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+  - EmberSubGearCivilian
+
+- type: startingGear
+  id: EmberGearFieldSpecialist
+  parent: ResearchAssistantGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+
+- type: startingGear
+  id: EmberGearSupplyChief
+  parent: QuartermasterGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+
+- type: startingGear
+  id: EmberGearSupplyTechnician
+  parent: CargoTechGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+  - EmberSubGearCivilian
+
+- type: startingGear
+  id: EmberGearDeckTechnician
+  parent: CargoTechGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+  - EmberSubGearCivilian
+
+- type: startingGear
+  id: EmberGearProspector
+  parent: SalvageSpecialistGear
+  subGear:
+  - EmberSubGearCivilian
+
+- type: startingGear
+  id: EmberGearChiefSteward
+  parent: ServiceWorkerGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+
+- type: startingGear
+  id: EmberGearSteward
+  parent: ServiceWorkerGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+  - EmberSubGearCivilian
+
+- type: startingGear
+  id: EmberGearCook
+  parent: ChefGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+  - EmberSubGearCivilian
+
+- type: startingGear
+  id: EmberGearSanitationTechnician
+  parent: JanitorGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+  - EmberSubGearCivilian
+
+- type: startingGear
+  id: EmberGearCrewman
+  parent: PassengerGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+
+- type: startingGear
+  id: EmberGearPassenger
+  parent: PassengerGear
+  subGear:
+  - EmberSubGearCivilian
+
+- type: startingGear
+  id: EmberGearOffDutyWatch
+  parent: PassengerGear
+  subGear:
+  - EmberSubGearCorps
+  - EmberSubGearCorpsOfficer
+  - EmberSubGearFleet
+  - EmberSubGearCivilian
+  - EmberSubGearGovernment

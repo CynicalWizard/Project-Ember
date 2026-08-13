@@ -25,11 +25,10 @@
   minAge: 18
   name: ember-rank-contractor-name
 
-# Bay's `/datum/mil_rank/civ/offduty`, from the Sierra rather than the Torch. A crew member who
-# is not on shift: the branch stays whatever it was, only the duty status changes.
-- type: emberRank
-  id: EmberRankOffDuty
-  name: ember-rank-off-duty-name
+# Bay has a `/datum/mil_rank/civ/offduty` and we deliberately do not. Being off shift changes no
+# fact about a person: a commodore on his day off is still a commodore, and putting him in an
+# "off duty" rank would take away the one thing that does not go away. What he loses is the billet
+# and everything that hung off it, and a billet is a job. See EmberOffDutyWatch in unattached.yml.
 
 # A machine is property, not a person, and property is not commissioned. Instead of a rank it
 # carries an assignment: a unit designation, the department it is attached to, and an owner.

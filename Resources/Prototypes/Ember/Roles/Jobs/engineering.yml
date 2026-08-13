@@ -9,6 +9,11 @@
 # EMBER-TODO: `startingGear` and `icon` point at existing vanilla content on purpose, same as in
 # command.yml and security.yml.
 #
+# `startingGear` points at an Ember kit in job_gear.yml, which inherits the vanilla kit named
+# above it for the tools and hangs the branch uniforms off it as sub-gear. The uniform therefore
+# comes from the service and the tools from the post, and a post open to three services is still
+# one post. See Resources/Prototypes/Ember/Roles/branch_uniforms.yml.
+#
 # The Corps floor — `hauling`, `science` and `EVA` at Basic — is not repeated below; it lives on
 # the branch and is merged in when requirements are checked. A contractor has no service and so
 # has no floor, which is a real difference and is meant to be: the hired electrician was hired
@@ -62,7 +67,7 @@
   name: job-name-ember-chief-engineer
   description: job-description-ember-chief-engineer
   playTimeTracker: JobEmberChiefEngineer
-  startingGear: ChiefEngineerGear
+  startingGear: EmberGearChiefEngineer
   icon: JobIconChiefEngineer
   supervisors: job-supervisors-ember-command
   weight: 18
@@ -105,7 +110,7 @@
   name: job-name-ember-senior-engineer
   description: job-description-ember-senior-engineer
   playTimeTracker: JobEmberSeniorEngineer
-  startingGear: SeniorEngineerGear
+  startingGear: EmberGearSeniorEngineer
   icon: JobIconSeniorEngineer
   supervisors: job-supervisors-ember-chief-engineer
   weight: 15
@@ -146,7 +151,7 @@
   name: job-name-ember-engineer
   description: job-description-ember-engineer
   playTimeTracker: JobEmberEngineer
-  startingGear: StationEngineerGear
+  startingGear: EmberGearEngineer
   icon: JobIconStationEngineer
   supervisors: job-supervisors-ember-engineering
   weight: 10
@@ -213,7 +218,7 @@
   name: job-name-ember-roboticist
   description: job-description-ember-roboticist
   playTimeTracker: JobEmberRoboticist
-  startingGear: ResearchAssistantGear
+  startingGear: EmberGearRoboticist
   icon: JobIconRoboticist
   supervisors: job-supervisors-ember-chief-engineer
   weight: 10
@@ -262,7 +267,7 @@
   name: job-name-ember-engineer-trainee
   description: job-description-ember-engineer-trainee
   playTimeTracker: JobEmberEngineerTrainee
-  startingGear: TechnicalAssistantGear
+  startingGear: EmberGearEngineerTrainee
   icon: JobIconTechnicalAssistant
   supervisors: job-supervisors-ember-engineering
   weight: 5

@@ -14,6 +14,11 @@
 # EMBER-TODO: `startingGear` and `icon` point at existing vanilla content on purpose, same as in
 # the other department files.
 #
+# `startingGear` points at an Ember kit in job_gear.yml, which inherits the vanilla kit named
+# above it for the tools and hangs the branch uniforms off it as sub-gear. The uniform therefore
+# comes from the service and the tools from the post, and a post open to three services is still
+# one post. See Resources/Prototypes/Ember/Roles/branch_uniforms.yml.
+#
 # The Corps floor — `hauling`, `science` and `EVA` at Basic — is not repeated below. Note what
 # that does here: a contractor carries no floor, so the hired physician is four points cheaper
 # than the commissioned one and spends them on medicine instead. The company sent a doctor; the
@@ -89,7 +94,7 @@
   name: job-name-ember-chief-medical-officer
   description: job-description-ember-chief-medical-officer
   playTimeTracker: JobEmberChiefMedicalOfficer
-  startingGear: CMOGear
+  startingGear: EmberGearChiefMedicalOfficer
   icon: JobIconChiefMedicalOfficer
   supervisors: job-supervisors-ember-command
   weight: 18
@@ -129,7 +134,7 @@
   name: job-name-ember-physician
   description: job-description-ember-physician
   playTimeTracker: JobEmberPhysician
-  startingGear: SeniorPhysicianGear
+  startingGear: EmberGearPhysician
   icon: JobIconSeniorPhysician
   supervisors: job-supervisors-ember-chief-medical-officer
   weight: 15
@@ -196,7 +201,7 @@
   name: job-name-ember-medical-resident
   description: job-description-ember-medical-resident
   playTimeTracker: JobEmberMedicalResident
-  startingGear: DoctorGear
+  startingGear: EmberGearMedicalResident
   icon: JobIconMedicalDoctor
   supervisors: job-supervisors-ember-medical
   weight: 12
@@ -228,7 +233,7 @@
   name: job-name-ember-pharmacist
   description: job-description-ember-pharmacist
   playTimeTracker: JobEmberPharmacist
-  startingGear: ChemistGear
+  startingGear: EmberGearPharmacist
   icon: JobIconChemist
   supervisors: job-supervisors-ember-medical
   weight: 12
@@ -269,7 +274,7 @@
   name: job-name-ember-medical-technician
   description: job-description-ember-medical-technician
   playTimeTracker: JobEmberMedicalTechnician
-  startingGear: DoctorGear
+  startingGear: EmberGearMedicalTechnician
   icon: JobIconMedicalDoctor
   supervisors: job-supervisors-ember-medical
   weight: 10
@@ -330,7 +335,7 @@
   name: job-name-ember-emergency-technician
   description: job-description-ember-emergency-technician
   playTimeTracker: JobEmberEmergencyTechnician
-  startingGear: ParamedicGear
+  startingGear: EmberGearEmergencyTechnician
   icon: JobIconParamedic
   supervisors: job-supervisors-ember-medical
   weight: 8
@@ -374,7 +379,7 @@
   name: job-name-ember-medical-trainee
   description: job-description-ember-medical-trainee
   playTimeTracker: JobEmberMedicalTrainee
-  startingGear: MedicalInternGear
+  startingGear: EmberGearMedicalTrainee
   icon: JobIconMedicalIntern
   supervisors: job-supervisors-ember-medical
   weight: 5

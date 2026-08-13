@@ -1,0 +1,103 @@
+# Which department patch each department issues, per cut of garment.
+#
+# The id is the department's own id. Nothing points here from the department prototype and nothing
+# points from here back to it: the join is the shared name, so adding a department means adding one
+# block and forgetting to means the patch is simply not issued.
+#
+# Issued at spawn and in the lobby preview by Content.Shared/Ember/Clothing/EmberInsigniaSystem.cs,
+# to every worn garment that takes the Flash category. The garment names its own cut through
+# `EmberAccessoryHolder.insigniaCut`, because the patch is sewn to a different place on a coverall
+# than on a service jacket and Bay draws the two separately.
+#
+# Only Command and Security carry a Fleet cut, and that is not an omission. Those are the two
+# departments Fleet actually staffs aboard: one Fleet post in Command and six in Security. A Fleet
+# rating cannot reach the others, so a Fleet patch for Engineering would be an entity nothing can
+# ever be wearing.
+#
+# Unattached Personnel gets the blank patch rather than no patch. Bay draws an undyed one and
+# issues it, which is the correct answer to "no department": a rating with no posting is still in
+# uniform, and a bare sleeve would read as a missing sprite rather than as a fact about them.
+#
+# State Oversight has no entry, and that covers both posts in it. The department patch is service
+# insignia: it says which part of the ship's organisation you belong to, and neither of these two
+# belongs to it. The SolGov Representative observes the ship and the Federal Marshal polices it,
+# both on Sol's authority and both in civilian dress - what each of them wears instead is a badge
+# that says so in words. See ranks_government.yml.
+#
+# The gold Oversight patches in accessories_departments.yml are therefore drawn and unissued. They
+# are kept because the department colour exists and a ship's own liaison staff would wear it, but
+# nothing is entitled to one today.
+
+- type: emberInsignia
+  id: EmberCommand
+  cuts:
+    Utility: EmberClothingAccessoryDeptCommand
+    Service: EmberClothingAccessoryDeptCommandService
+    Fleet: EmberClothingAccessoryDeptCommandFleet
+
+- type: emberInsignia
+  id: EmberSecurity
+  cuts:
+    Utility: EmberClothingAccessoryDeptSecurity
+    Service: EmberClothingAccessoryDeptSecurityService
+    Fleet: EmberClothingAccessoryDeptSecurityFleet
+
+- type: emberInsignia
+  id: EmberEngineering
+  cuts:
+    Utility: EmberClothingAccessoryDeptEngineering
+    Service: EmberClothingAccessoryDeptEngineeringService
+
+- type: emberInsignia
+  id: EmberMedical
+  cuts:
+    Utility: EmberClothingAccessoryDeptMedical
+    Service: EmberClothingAccessoryDeptMedicalService
+
+- type: emberInsignia
+  id: EmberScience
+  cuts:
+    Utility: EmberClothingAccessoryDeptScience
+    Service: EmberClothingAccessoryDeptScienceService
+
+# The science service's field group. Three posts of one department wearing a patch the rest of it
+# does not, which is what the per-post entry exists for - the alternative was splitting Science
+# into two departments, and that would say the field team leader does not answer to the Chief
+# Science Officer, which is the one thing that is not true of them.
+- type: emberInsignia
+  id: EmberFieldTeamLeader
+  cuts:
+    Utility: EmberClothingAccessoryDeptExploration
+    Service: EmberClothingAccessoryDeptExplorationService
+
+- type: emberInsignia
+  id: EmberFieldSpecialist
+  cuts:
+    Utility: EmberClothingAccessoryDeptExploration
+    Service: EmberClothingAccessoryDeptExplorationService
+
+# The pilot flies the field group out and is part of it, whatever the lab thinks.
+- type: emberInsignia
+  id: EmberShuttlePilot
+  cuts:
+    Utility: EmberClothingAccessoryDeptExploration
+    Service: EmberClothingAccessoryDeptExplorationService
+
+- type: emberInsignia
+  id: EmberSupply
+  cuts:
+    Utility: EmberClothingAccessoryDeptSupply
+    Service: EmberClothingAccessoryDeptSupplyService
+
+- type: emberInsignia
+  id: EmberHousekeeping
+  cuts:
+    Utility: EmberClothingAccessoryDeptHousekeeping
+    Service: EmberClothingAccessoryDeptHousekeepingService
+
+- type: emberInsignia
+  id: EmberUnattached
+  cuts:
+    Utility: EmberClothingAccessoryDeptBlank
+    Service: EmberClothingAccessoryDeptBlankService
+    Fleet: EmberClothingAccessoryDeptBlankFleet

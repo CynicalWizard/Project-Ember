@@ -107,6 +107,18 @@
     - state: green
     - state: centcom
 
+- type: entity
+  id: SpawnPointEmberFederalMarshal
+  parent: SpawnPointEmberJobBase
+  name: federal marshal
+  components:
+  - type: SpawnPoint
+    job_id: EmberFederalMarshal
+  - type: Sprite
+    layers:
+    - state: green
+    - state: detective
+
 # Security
 
 - type: entity

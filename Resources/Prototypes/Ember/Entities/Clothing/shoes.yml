@@ -1,0 +1,40 @@
+# Footwear of the SCG Expeditionary Corps and Fleet.
+#
+# Nothing was converted here and nothing needed to be. SierraBay12 draws no SCG footwear at all -
+# `onmob_feet_solgov.dmi` contains RIG states and nothing else - so the Torch dresses its crew in
+# Bay's generic shoes, and two of those are the same sprite we already have under a different
+# name: Bay's dress shoes are `laceups` and so are ours.
+#
+# So these are renames rather than ports. What they carry over is the name and the description,
+# which is the part that was actually missing: a rating issued "work boots" reads as a maintenance
+# hire, and the same sprite called duty boots reads as a service.
+#
+# EMBER-TODO: the duty boot is the one that is not an exact match. Bay's `duty` state is a
+# steel-toed synthleather boot with a shine on it, ours is a work boot; near enough to issue, and
+# the first thing to draw if SCG footwear is ever worth its own sheet.
+
+- type: entity
+  parent: ClothingShoesBootsWork
+  id: EmberClothingShoesDutyBoots
+  name: duty boots
+  description: A pair of steel-toed synthleather boots with a mirror shine. Standard issue with working dress.
+
+- type: entity
+  parent: ClothingShoesBootsLaceup
+  id: EmberClothingShoesDress
+  name: dress shoes
+  description: The height of fashion, and they are pre-polished. Worn with service and dress uniform.
+
+# For the Fleet's whites, where black shoes would be the one wrong note in the set.
+- type: entity
+  parent: ClothingShoesColorWhite
+  id: EmberClothingShoesDressWhite
+  name: white dress shoes
+  description: Brilliantly white shoes, not a spot on them. Worn with the Fleet's dress whites.
+
+# Bay offers these alongside the dress shoe rather than instead of it, for the skirted sets.
+- type: entity
+  parent: ClothingShoesHighHeels
+  id: EmberClothingShoesDressHeels
+  name: dress heels
+  description: Polished black heels, issued as an alternative to the dress shoe.

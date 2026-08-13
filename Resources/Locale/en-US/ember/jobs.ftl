@@ -10,6 +10,7 @@ job-supervisors-ember-observatory = the Observatory
 job-supervisors-ember-captain = the Captain
 job-supervisors-ember-command = the command staff
 job-supervisors-ember-scg = the Sol Central Government
+job-supervisors-ember-federal-police = the Sol Federal Police
 
 job-name-ember-captain = Captain
 job-description-ember-captain = Command the Ember and answer for her. The expedition's findings, the crew's conduct and the ship's return are all your signature.
@@ -228,3 +229,6 @@ job-description-ember-emergency-technician = Get there, keep them breathing, bri
 
 job-name-ember-paramedic = Paramedic
 job-description-ember-paramedic = The same run with the training to think on it. You may form a working diagnosis at the scene and act on it, which is the whole distance between you and the technician beside you.
+
+job-name-ember-federal-marshal = Federal Marshal
+job-description-ember-federal-marshal = A marshal of the Sol Federal Police, Territorial Support Division, attached to this ship because an Expeditionary Corps hull is SCG territory and a crime aboard it is a federal one. Investigates on the law's authority rather than the Captain's, and has none of his own to give orders with.

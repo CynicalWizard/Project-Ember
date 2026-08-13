@@ -1,0 +1,193 @@
+# Qualification badges of the SCG Expeditionary Corps and Fleet.
+#
+# A qualification is not a rank and not a department. It says the wearer passed a course, and it is
+# the one piece of insignia aboard that describes what someone can actually do rather than where
+# they sit. That makes it the natural thing to hang off skills once skills gate anything, which is
+# why none of these are issued at spawn - see the EMBER-TODO at the end.
+#
+# The art is one grey badge for everyone, tinted per speciality on the wearer, with a purpose-drawn
+# icon per speciality for the item in your hand. Bay's author left the reason in a comment: they
+# were not going to put nine thousand coloured pixels in a sprite sheet. That split is what
+# `equippedColor` exists for - tinting the item icon as well would multiply a colour into art that
+# already has one.
+#
+# All of these are marked high-visibility, including the seven Bay left unflagged. Bay flags the
+# voidsuit stripe and not the badge it duplicates, which reads as an oversight rather than a rule:
+# the entire purpose of wearing a qualification is that somebody else can read it off you.
+
+- type: entity
+  abstract: true
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessorySkillBadgeBase
+  name: "skill badge"
+  description: "An Expeditionary Corps skill badge. This one is blank."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ec_badge_eva.rsi
+  - type: EmberAccessory
+    slot: Insignia
+    flags: [ Removable, HighVisibility ]
+    equippedState: equipped-ACCESSORY
+    # Bay: on_rolled_down = ACCESSORY_ROLLED_NONE. It is worn on the chest, and the chest is bare
+    # once the uniform is at the waist. This is the default here, so it is not repeated below.
+    hideUnderOuterClothing: true
+
+- type: entity
+  parent: EmberClothingAccessorySkillBadgeBase
+  id: EmberClothingAccessorySkillBadgeBotany
+  name: "field xenobotany specialist badge"
+  description: "A skill badge for the handling of exotic xenoflora. Informally, 'vine wrangler'."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ec_badge_botany.rsi
+  - type: EmberAccessory
+    equippedColor: "#387c4f"
+
+- type: entity
+  parent: EmberClothingAccessorySkillBadgeBase
+  id: EmberClothingAccessorySkillBadgeNetgun
+  name: "xenofauna acquisition specialist badge"
+  description: "A skill badge for the capture of alien wildlife with the netgun. Informally, 'xeno-cowboy'."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ec_badge_netgun.rsi
+  - type: EmberAccessory
+    equippedColor: "#6a60a1"
+
+- type: entity
+  parent: EmberClothingAccessorySkillBadgeBase
+  id: EmberClothingAccessorySkillBadgeEva
+  name: "void mobility specialist badge"
+  description: "A skill badge for moving in zero gravity under a jetpack. Informally, 'zoomer'."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ec_badge_eva.rsi
+  - type: EmberAccessory
+    equippedColor: "#4d9799"
+
+- type: entity
+  parent: EmberClothingAccessorySkillBadgeBase
+  id: EmberClothingAccessorySkillBadgeMedical
+  name: "advanced first aid specialist badge"
+  description: "A skill badge for resuscitation and field medicine. Informally, 'para-paramedic'."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ec_badge_med.rsi
+  - type: EmberAccessory
+    equippedColor: "#47799e"
+
+- type: entity
+  parent: EmberClothingAccessorySkillBadgeBase
+  id: EmberClothingAccessorySkillBadgeExosuit
+  name: "exosuit specialist badge"
+  description: "A skill badge for the piloting of exosuits. Informally, 'exonaut'."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ec_badge_exo.rsi
+  - type: EmberAccessory
+    equippedColor: "#72763d"
+
+- type: entity
+  parent: EmberClothingAccessorySkillBadgeBase
+  id: EmberClothingAccessorySkillBadgeElectrical
+  name: "electrical specialist badge"
+  description: "A skill badge for work on high-voltage systems. Informally, 'jury-rigger'."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ec_badge_electro.rsi
+  - type: EmberAccessory
+    equippedColor: "#8e633f"
+
+- type: entity
+  parent: EmberClothingAccessorySkillBadgeBase
+  id: EmberClothingAccessorySkillBadgeScience
+  name: "research specialist badge"
+  description: "A skill badge for assisting in the labs and working the sensor suites. Informally, 'peeper'."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ec_badge_sci.rsi
+  - type: EmberAccessory
+    equippedColor: "#7876ad"
+
+# The same statement, sized and glued for a voidsuit. It is a separate category because a voidsuit
+# is a separate garment with its own patch position, which is Bay's ACCESSORY_SLOT_INSIGNIA_EVA.
+#
+# EMBER-DORMANT: nothing accepts InsigniaEva yet - our voidsuits are vanilla and declare no holder.
+# The item is here because the art came across with the rest and because the suit pass is where it
+# gets picked up, not because it does anything today.
+
+- type: entity
+  abstract: true
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessorySkillStripeBase
+  name: "specialist stripe"
+  description: "A strip of spaceworthy material with vacuum-rated adhesive, for a voidsuit. It indicates training of some kind."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ec_stripe.rsi
+  - type: EmberAccessory
+    slot: InsigniaEva
+    flags: [ Removable, HighVisibility ]
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessorySkillStripeBase
+  id: EmberClothingAccessorySkillStripeBotany
+  name: "xenobotanist stripe"
+  components:
+  - type: EmberAccessory
+    equippedColor: "#387c4f"
+
+- type: entity
+  parent: EmberClothingAccessorySkillStripeBase
+  id: EmberClothingAccessorySkillStripeNetgun
+  name: "netgunner stripe"
+  components:
+  - type: EmberAccessory
+    equippedColor: "#6a60a1"
+
+- type: entity
+  parent: EmberClothingAccessorySkillStripeBase
+  id: EmberClothingAccessorySkillStripeEva
+  name: "void stripe"
+  components:
+  - type: EmberAccessory
+    equippedColor: "#4d9799"
+
+- type: entity
+  parent: EmberClothingAccessorySkillStripeBase
+  id: EmberClothingAccessorySkillStripeMedical
+  name: "first aid stripe"
+  components:
+  - type: EmberAccessory
+    equippedColor: "#47799e"
+
+- type: entity
+  parent: EmberClothingAccessorySkillStripeBase
+  id: EmberClothingAccessorySkillStripeExosuit
+  name: "exopilot stripe"
+  components:
+  - type: EmberAccessory
+    equippedColor: "#72763d"
+
+- type: entity
+  parent: EmberClothingAccessorySkillStripeBase
+  id: EmberClothingAccessorySkillStripeElectrical
+  name: "electrician stripe"
+  components:
+  - type: EmberAccessory
+    equippedColor: "#8e633f"
+
+- type: entity
+  parent: EmberClothingAccessorySkillStripeBase
+  id: EmberClothingAccessorySkillStripeScience
+  name: "researcher stripe"
+  components:
+  - type: EmberAccessory
+    equippedColor: "#7876ad"
+
+# EMBER-TODO: nothing issues any of these. They belong to the character rather than to the post,
+# like the rank boards, but unlike the rank boards there is nothing on the character to read them
+# off yet - a qualification is a skill floor that has been passed, and skills do not record which
+# course was taken to reach them. The honest options are a per-badge skill threshold or an explicit
+# list on the character, and that is a decision about skills rather than about clothing.

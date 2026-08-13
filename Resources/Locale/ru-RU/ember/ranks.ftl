@@ -106,7 +106,6 @@ ember-rank-federal-supervisor-short = SAGT
 
 ember-rank-civilian-name = Гражданское лицо
 ember-rank-contractor-name = Контрактник
-ember-rank-off-duty-name = Персонал вне вахты
 ember-rank-machine-assigned-name = Приписанная единица
 ember-rank-machine-assigned-short = UNIT
 

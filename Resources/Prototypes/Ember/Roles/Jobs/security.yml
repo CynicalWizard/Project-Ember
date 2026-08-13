@@ -32,6 +32,11 @@
 # EMBER-TODO: `startingGear` and `icon` point at existing vanilla content on purpose, same as in
 # command.yml. Nothing else here is placeholder.
 #
+# `startingGear` points at an Ember kit in job_gear.yml, which inherits the vanilla kit named
+# above it for the tools and hangs the branch uniforms off it as sub-gear. The uniform therefore
+# comes from the service and the tools from the post, and a post open to three services is still
+# one post. See Resources/Prototypes/Ember/Roles/branch_uniforms.yml.
+#
 # EMBER-TODO: none of the Ember jobs carry vanilla's `special` blocks yet — the `CommandStaff`
 # component on department heads, and the mindshield implant on security. The first is a plain
 # omission to fix in one pass across all departments; the second is not, because handing out
@@ -104,7 +109,7 @@
   name: job-name-ember-chief-of-security
   description: job-description-ember-chief-of-security
   playTimeTracker: JobEmberChiefOfSecurity
-  startingGear: HoSGear
+  startingGear: EmberGearChiefOfSecurity
   icon: JobIconHeadOfSecurity
   supervisors: job-supervisors-ember-command
   weight: 18
@@ -145,7 +150,7 @@
   name: job-name-ember-brig-chief
   description: job-description-ember-brig-chief
   playTimeTracker: JobEmberBrigChief
-  startingGear: WardenGear
+  startingGear: EmberGearBrigChief
   icon: JobIconWarden
   supervisors: job-supervisors-ember-chief-of-security
   weight: 15
@@ -180,7 +185,7 @@
   name: job-name-ember-investigator
   description: job-description-ember-investigator
   playTimeTracker: JobEmberInvestigator
-  startingGear: DetectiveGear
+  startingGear: EmberGearInvestigator
   icon: JobIconDetective
   supervisors: job-supervisors-ember-chief-of-security
   weight: 12
@@ -217,7 +222,7 @@
   name: job-name-ember-master-at-arms
   description: job-description-ember-master-at-arms
   playTimeTracker: JobEmberMasterAtArms
-  startingGear: SecurityOfficerGear
+  startingGear: EmberGearMasterAtArms
   icon: JobIconSecurityOfficer
   supervisors: job-supervisors-ember-chief-of-security
   weight: 10
@@ -257,7 +262,7 @@
   name: job-name-ember-corpsman
   description: job-description-ember-corpsman
   playTimeTracker: JobEmberCorpsman
-  startingGear: ParamedicGear
+  startingGear: EmberGearCorpsman
   icon: JobIconBrigmedic
   supervisors: job-supervisors-ember-corpsman
   weight: 10
@@ -292,7 +297,7 @@
   name: job-name-ember-security-cadet
   description: job-description-ember-security-cadet
   playTimeTracker: JobEmberSecurityCadet
-  startingGear: SecurityCadetGear
+  startingGear: EmberGearSecurityCadet
   icon: JobIconSecurityCadet
   supervisors: job-supervisors-ember-security
   weight: 5

@@ -9,6 +9,11 @@
 # EMBER-TODO: `startingGear` and `icon` point at existing vanilla content on purpose, same as in
 # the other department files.
 #
+# `startingGear` points at an Ember kit in job_gear.yml, which inherits the vanilla kit named
+# above it for the tools and hangs the branch uniforms off it as sub-gear. The uniform therefore
+# comes from the service and the tools from the post, and a post open to three services is still
+# one post. See Resources/Prototypes/Ember/Roles/branch_uniforms.yml.
+#
 # The Corps floor — `hauling`, `science` and `EVA` at Basic — is not repeated below.
 #
 # Prospecting is the one whole job aboard that is contracted out and not staffed by the service
@@ -50,7 +55,7 @@
   name: job-name-ember-supply-chief
   description: job-description-ember-supply-chief
   playTimeTracker: JobEmberSupplyChief
-  startingGear: QuartermasterGear
+  startingGear: EmberGearSupplyChief
   icon: JobIconQuarterMaster
   supervisors: job-supervisors-ember-executive-officer
   weight: 18
@@ -85,7 +90,7 @@
   name: job-name-ember-supply-technician
   description: job-description-ember-supply-technician
   playTimeTracker: JobEmberSupplyTechnician
-  startingGear: CargoTechGear
+  startingGear: EmberGearSupplyTechnician
   icon: JobIconCargoTechnician
   supervisors: job-supervisors-ember-supply
   weight: 12
@@ -120,7 +125,7 @@
   name: job-name-ember-deck-technician
   description: job-description-ember-deck-technician
   playTimeTracker: JobEmberDeckTechnician
-  startingGear: CargoTechGear
+  startingGear: EmberGearDeckTechnician
   icon: JobIconCargoTechnician
   supervisors: job-supervisors-ember-supply
   weight: 12
@@ -158,7 +163,7 @@
   name: job-name-ember-prospector
   description: job-description-ember-prospector
   playTimeTracker: JobEmberProspector
-  startingGear: SalvageSpecialistGear
+  startingGear: EmberGearProspector
   icon: JobIconCargoTechnician
   supervisors: job-supervisors-ember-supply
   weight: 10

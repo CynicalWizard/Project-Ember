@@ -3,16 +3,18 @@
 # The ladder is deliberately shorter than the Fleet's: E-1, E-3, E-5, E-7 and O-1, O-3, O-5,
 # O-6, O-8, O-10. The gaps are not omissions, the Corps simply has no grades there.
 #
-# EMBER-TODO: `accessories` is empty everywhere here. The shoulder boards are
-# `accessory/solgov/rank/ec/*` in maps/torch/items/clothing/solgov-accessory.dm and get
-# converted in a later pass. The Corps has no specialty badge, so one accessory per rank.
-#
 # EMBER-TODO: the species blacklists below name the two xeno species that exist today. The rule
 # behind them — a non-citizen never holds a commission — is meant to live in code, so that a
 # species added later is covered without anyone remembering to edit this file.
 
+# `accessories` is the shoulder board each grade wears, converted from Bay's
+# `accessory/solgov/rank/ec/*`. One per grade — the Corps has no specialty badge, unlike the
+# Fleet, so one entry is the whole of it.
+
 - type: emberRank
   id: EmberRankCorpsE1
+  accessories:
+  - EmberClothingAccessoryEcrankE1
   minAge: 18
   maxAge: 21
   name: ember-rank-corps-e1-name
@@ -21,6 +23,8 @@
 
 - type: emberRank
   id: EmberRankCorpsE3
+  accessories:
+  - EmberClothingAccessoryEcrankE3
   minAge: 19
   maxAge: 26
   name: ember-rank-corps-e3-name
@@ -29,6 +33,8 @@
 
 - type: emberRank
   id: EmberRankCorpsE5
+  accessories:
+  - EmberClothingAccessoryEcrankE5
   minAge: 24
   maxAge: 36
   name: ember-rank-corps-e5-name
@@ -38,6 +44,8 @@
 # Xeno personnel top out at E-5. Chief Explorer is a leadership grade.
 - type: emberRank
   id: EmberRankCorpsE7
+  accessories:
+  - EmberClothingAccessoryEcrankE7
   minAge: 32
   maxAge: 50
   name: ember-rank-corps-e7-name
@@ -49,6 +57,8 @@
 
 - type: emberRank
   id: EmberRankCorpsO1
+  accessories:
+  - EmberClothingAccessoryEcrankO1
   minAge: 26
   maxAge: 32
   name: ember-rank-corps-o1-name
@@ -60,6 +70,8 @@
 
 - type: emberRank
   id: EmberRankCorpsO3
+  accessories:
+  - EmberClothingAccessoryEcrankO3
   minAge: 31
   maxAge: 40
   name: ember-rank-corps-o3-name
@@ -71,6 +83,8 @@
 
 - type: emberRank
   id: EmberRankCorpsO5
+  accessories:
+  - EmberClothingAccessoryEcrankO5
   minAge: 39
   maxAge: 50
   name: ember-rank-corps-o5-name
@@ -82,6 +96,8 @@
 
 - type: emberRank
   id: EmberRankCorpsO6
+  accessories:
+  - EmberClothingAccessoryEcrankO6
   minAge: 45
   maxAge: 58
   name: ember-rank-corps-o6-name
@@ -93,6 +109,8 @@
 
 - type: emberRank
   id: EmberRankCorpsO8
+  accessories:
+  - EmberClothingAccessoryEcrankO8
   minAge: 52
   maxAge: 65
   name: ember-rank-corps-o8-name
@@ -104,6 +122,8 @@
 
 - type: emberRank
   id: EmberRankCorpsO10
+  accessories:
+  - EmberClothingAccessoryEcrankO10
   minAge: 58
   maxAge: 70
   name: ember-rank-corps-o10-name

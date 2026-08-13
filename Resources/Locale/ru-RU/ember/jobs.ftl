@@ -10,6 +10,7 @@ job-supervisors-ember-observatory = Обсерватории
 job-supervisors-ember-captain = капитану
 job-supervisors-ember-command = командованию
 job-supervisors-ember-scg = Центральному Правительству Солнечной Системы
+job-supervisors-ember-federal-police = Федеральной полиции Солнечной Системы
 
 job-name-ember-captain = Капитан
 job-description-ember-captain = Командуйте «Ember» и отвечайте за него. Результаты экспедиции, поведение экипажа и возвращение судна — всё это ваша подпись.
@@ -227,3 +228,6 @@ job-description-ember-emergency-technician = Доберитесь, не дайт
 
 job-name-ember-paramedic = Парамедик
 job-description-ember-paramedic = Тот же выезд, но с подготовкой, позволяющей думать. Вы вправе поставить предварительный диагноз на месте и действовать по нему — вся разница между вами и специалистом рядом в этом.
+
+job-name-ember-federal-marshal = Федеральный маршал
+job-description-ember-federal-marshal = Маршал Федеральной полиции Солнечной Системы, отдел территориальной поддержки, прикомандирован к судну: корпус корабля Экспедиционного корпуса — территория ЦПСС, и преступление на борту федеральное. Ведёт расследование властью закона, а не властью капитана, и своей власти отдавать приказы не имеет.

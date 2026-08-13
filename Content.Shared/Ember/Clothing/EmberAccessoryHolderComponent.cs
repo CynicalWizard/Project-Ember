@@ -44,6 +44,18 @@ public sealed partial class EmberAccessoryHolderComponent : Component
     [DataField]
     public int MaxAccessories = 6;
 
+    /// <summary>
+    /// Which cut of department patch this garment takes, when one is issued to it. Only read for
+    /// garments that accept <see cref="EmberAccessorySlot.Flash"/> at all.
+    /// </summary>
+    /// <remarks>
+    /// Left on the garment rather than worked out from the wearer because the wearer does not know
+    /// it: a Corps rating in a service jacket over a utility uniform is owed both cuts at once, and
+    /// which one goes where is a fact about the two garments.
+    /// </remarks>
+    [DataField]
+    public EmberInsigniaCut InsigniaCut = EmberInsigniaCut.Utility;
+
     /// <remarks>
     /// The container is made on the first attach, not at init, so clothing that never carries an
     /// accessory does not gain one - see EmberAccessorySystem.TryAttach. A prototype that wants to
