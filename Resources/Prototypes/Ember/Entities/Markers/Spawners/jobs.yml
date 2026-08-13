@@ -1,0 +1,554 @@
+# Round-start spawn points for the SEV Ember's posts, one per job.
+#
+# A job is not mappable without one of these: `SpawnPoint` with a `job_id` is what tells the
+# round-start code where that post's holder appears. Forty-three jobs, forty-three markers, and
+# no way around the repetition — the job id is the whole content of each.
+#
+# They carry their own suffix so the spawn menu can tell them apart from the vanilla ones, which
+# are still present and still named "captain" and "engineer". That distinction disappears with
+# the vanilla jobs; the suffix is the cheap way to survive the overlap until it does.
+#
+# EMBER-TODO: sprite states are borrowed from `Markers/jobs.rsi`, which has no Ember art in it.
+# Several posts share a marker for want of a closer one — every command rating uses the head of
+# personnel's, and three science posts use the scientist's. Harmless (a mapper reads the name,
+# not the icon) and worth redoing when the department sprites land.
+
+- type: entity
+  id: SpawnPointEmberJobBase
+  parent: SpawnPointJobBase
+  abstract: true
+  suffix: Ember Job Spawn
+
+# Command
+
+- type: entity
+  id: SpawnPointEmberCaptain
+  parent: SpawnPointEmberJobBase
+  name: captain
+  components:
+  - type: SpawnPoint
+    job_id: EmberCaptain
+  - type: Sprite
+    layers:
+    - state: green
+    - state: captain
+
+- type: entity
+  id: SpawnPointEmberExecutiveOfficer
+  parent: SpawnPointEmberJobBase
+  name: executive officer
+  components:
+  - type: SpawnPoint
+    job_id: EmberExecutiveOfficer
+  - type: Sprite
+    layers:
+    - state: green
+    - state: hop
+
+- type: entity
+  id: SpawnPointEmberWatchOfficer
+  parent: SpawnPointEmberJobBase
+  name: watch officer
+  components:
+  - type: SpawnPoint
+    job_id: EmberWatchOfficer
+  - type: Sprite
+    layers:
+    - state: green
+    - state: hop
+
+- type: entity
+  id: SpawnPointEmberSeniorEnlistedAdvisor
+  parent: SpawnPointEmberJobBase
+  name: senior enlisted advisor
+  components:
+  - type: SpawnPoint
+    job_id: EmberSeniorEnlistedAdvisor
+  - type: Sprite
+    layers:
+    - state: green
+    - state: hop
+
+- type: entity
+  id: SpawnPointEmberLiaisonOfficer
+  parent: SpawnPointEmberJobBase
+  name: liaison officer
+  components:
+  - type: SpawnPoint
+    job_id: EmberLiaisonOfficer
+  - type: Sprite
+    layers:
+    - state: green
+    - state: hop
+
+- type: entity
+  id: SpawnPointEmberAdjutant
+  parent: SpawnPointEmberJobBase
+  name: adjutant
+  components:
+  - type: SpawnPoint
+    job_id: EmberAdjutant
+  - type: Sprite
+    layers:
+    - state: green
+    - state: hop
+
+# Oversight
+
+- type: entity
+  id: SpawnPointEmberSCGRepresentative
+  parent: SpawnPointEmberJobBase
+  name: solgov representative
+  components:
+  - type: SpawnPoint
+    job_id: EmberSCGRepresentative
+  - type: Sprite
+    layers:
+    - state: green
+    - state: centcom
+
+# Security
+
+- type: entity
+  id: SpawnPointEmberChiefOfSecurity
+  parent: SpawnPointEmberJobBase
+  name: chief of security
+  components:
+  - type: SpawnPoint
+    job_id: EmberChiefOfSecurity
+  - type: Sprite
+    layers:
+    - state: green
+    - state: hos
+
+- type: entity
+  id: SpawnPointEmberBrigChief
+  parent: SpawnPointEmberJobBase
+  name: brig chief
+  components:
+  - type: SpawnPoint
+    job_id: EmberBrigChief
+  - type: Sprite
+    layers:
+    - state: green
+    - state: warden
+
+- type: entity
+  id: SpawnPointEmberInvestigator
+  parent: SpawnPointEmberJobBase
+  name: investigator
+  components:
+  - type: SpawnPoint
+    job_id: EmberInvestigator
+  - type: Sprite
+    layers:
+    - state: green
+    - state: detective
+
+- type: entity
+  id: SpawnPointEmberMasterAtArms
+  parent: SpawnPointEmberJobBase
+  name: master-at-arms
+  components:
+  - type: SpawnPoint
+    job_id: EmberMasterAtArms
+  - type: Sprite
+    layers:
+    - state: green
+    - state: security_officer
+
+- type: entity
+  id: SpawnPointEmberCorpsman
+  parent: SpawnPointEmberJobBase
+  name: corpsman
+  components:
+  - type: SpawnPoint
+    job_id: EmberCorpsman
+  - type: Sprite
+    layers:
+    - state: green
+    - state: brigmedic
+
+- type: entity
+  id: SpawnPointEmberSecurityCadet
+  parent: SpawnPointEmberJobBase
+  name: security cadet
+  components:
+  - type: SpawnPoint
+    job_id: EmberSecurityCadet
+  - type: Sprite
+    layers:
+    - state: green
+    - state: security_cadet
+
+# Engineering
+
+- type: entity
+  id: SpawnPointEmberChiefEngineer
+  parent: SpawnPointEmberJobBase
+  name: chief engineer
+  components:
+  - type: SpawnPoint
+    job_id: EmberChiefEngineer
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ce
+
+- type: entity
+  id: SpawnPointEmberSeniorEngineer
+  parent: SpawnPointEmberJobBase
+  name: senior engineer
+  components:
+  - type: SpawnPoint
+    job_id: EmberSeniorEngineer
+  - type: Sprite
+    layers:
+    - state: green
+    - state: seniorengineer
+
+- type: entity
+  id: SpawnPointEmberEngineer
+  parent: SpawnPointEmberJobBase
+  name: engineer
+  components:
+  - type: SpawnPoint
+    job_id: EmberEngineer
+  - type: Sprite
+    layers:
+    - state: green
+    - state: engineer
+
+- type: entity
+  id: SpawnPointEmberRoboticist
+  parent: SpawnPointEmberJobBase
+  name: roboticist
+  components:
+  - type: SpawnPoint
+    job_id: EmberRoboticist
+  - type: Sprite
+    layers:
+    - state: green
+    - state: roboticist
+
+- type: entity
+  id: SpawnPointEmberEngineerTrainee
+  parent: SpawnPointEmberJobBase
+  name: engineer trainee
+  components:
+  - type: SpawnPoint
+    job_id: EmberEngineerTrainee
+  - type: Sprite
+    layers:
+    - state: green
+    - state: technicalassistant
+
+# Medical
+
+- type: entity
+  id: SpawnPointEmberChiefMedicalOfficer
+  parent: SpawnPointEmberJobBase
+  name: chief medical officer
+  components:
+  - type: SpawnPoint
+    job_id: EmberChiefMedicalOfficer
+  - type: Sprite
+    layers:
+    - state: green
+    - state: cmo
+
+- type: entity
+  id: SpawnPointEmberPhysician
+  parent: SpawnPointEmberJobBase
+  name: physician
+  components:
+  - type: SpawnPoint
+    job_id: EmberPhysician
+  - type: Sprite
+    layers:
+    - state: green
+    - state: seniorphysician
+
+- type: entity
+  id: SpawnPointEmberMedicalResident
+  parent: SpawnPointEmberJobBase
+  name: medical resident
+  components:
+  - type: SpawnPoint
+    job_id: EmberMedicalResident
+  - type: Sprite
+    layers:
+    - state: green
+    - state: doctor
+
+- type: entity
+  id: SpawnPointEmberPharmacist
+  parent: SpawnPointEmberJobBase
+  name: pharmacist
+  components:
+  - type: SpawnPoint
+    job_id: EmberPharmacist
+  - type: Sprite
+    layers:
+    - state: green
+    - state: chemist
+
+- type: entity
+  id: SpawnPointEmberMedicalTechnician
+  parent: SpawnPointEmberJobBase
+  name: medical technician
+  components:
+  - type: SpawnPoint
+    job_id: EmberMedicalTechnician
+  - type: Sprite
+    layers:
+    - state: green
+    - state: doctor
+
+- type: entity
+  id: SpawnPointEmberEmergencyTechnician
+  parent: SpawnPointEmberJobBase
+  name: emergency technician
+  components:
+  - type: SpawnPoint
+    job_id: EmberEmergencyTechnician
+  - type: Sprite
+    layers:
+    - state: green
+    - state: paramedic
+
+- type: entity
+  id: SpawnPointEmberMedicalTrainee
+  parent: SpawnPointEmberJobBase
+  name: medical trainee
+  components:
+  - type: SpawnPoint
+    job_id: EmberMedicalTrainee
+  - type: Sprite
+    layers:
+    - state: green
+    - state: medicalintern
+
+# Science
+
+- type: entity
+  id: SpawnPointEmberChiefScienceOfficer
+  parent: SpawnPointEmberJobBase
+  name: chief science officer
+  components:
+  - type: SpawnPoint
+    job_id: EmberChiefScienceOfficer
+  - type: Sprite
+    layers:
+    - state: green
+    - state: rd
+
+- type: entity
+  id: SpawnPointEmberSeniorResearcher
+  parent: SpawnPointEmberJobBase
+  name: senior researcher
+  components:
+  - type: SpawnPoint
+    job_id: EmberSeniorResearcher
+  - type: Sprite
+    layers:
+    - state: green
+    - state: seniorresearcher
+
+- type: entity
+  id: SpawnPointEmberResearcher
+  parent: SpawnPointEmberJobBase
+  name: researcher
+  components:
+  - type: SpawnPoint
+    job_id: EmberResearcher
+  - type: Sprite
+    layers:
+    - state: green
+    - state: scientist
+
+- type: entity
+  id: SpawnPointEmberLabTechnician
+  parent: SpawnPointEmberJobBase
+  name: lab technician
+  components:
+  - type: SpawnPoint
+    job_id: EmberLabTechnician
+  - type: Sprite
+    layers:
+    - state: green
+    - state: researchassistant
+
+- type: entity
+  id: SpawnPointEmberFieldTeamLeader
+  parent: SpawnPointEmberJobBase
+  name: field team leader
+  components:
+  - type: SpawnPoint
+    job_id: EmberFieldTeamLeader
+  - type: Sprite
+    layers:
+    - state: green
+    - state: scientist
+
+- type: entity
+  id: SpawnPointEmberShuttlePilot
+  parent: SpawnPointEmberJobBase
+  name: shuttle pilot
+  components:
+  - type: SpawnPoint
+    job_id: EmberShuttlePilot
+  - type: Sprite
+    layers:
+    - state: green
+    - state: scientist
+
+- type: entity
+  id: SpawnPointEmberFieldSpecialist
+  parent: SpawnPointEmberJobBase
+  name: field specialist
+  components:
+  - type: SpawnPoint
+    job_id: EmberFieldSpecialist
+  - type: Sprite
+    layers:
+    - state: green
+    - state: researchassistant
+
+# Supply
+
+- type: entity
+  id: SpawnPointEmberSupplyChief
+  parent: SpawnPointEmberJobBase
+  name: supply chief
+  components:
+  - type: SpawnPoint
+    job_id: EmberSupplyChief
+  - type: Sprite
+    layers:
+    - state: green
+    - state: qm
+
+- type: entity
+  id: SpawnPointEmberSupplyTechnician
+  parent: SpawnPointEmberJobBase
+  name: supply technician
+  components:
+  - type: SpawnPoint
+    job_id: EmberSupplyTechnician
+  - type: Sprite
+    layers:
+    - state: green
+    - state: cargo_tech
+
+- type: entity
+  id: SpawnPointEmberDeckTechnician
+  parent: SpawnPointEmberJobBase
+  name: deck technician
+  components:
+  - type: SpawnPoint
+    job_id: EmberDeckTechnician
+  - type: Sprite
+    layers:
+    - state: green
+    - state: cargo_tech
+
+- type: entity
+  id: SpawnPointEmberProspector
+  parent: SpawnPointEmberJobBase
+  name: prospector
+  components:
+  - type: SpawnPoint
+    job_id: EmberProspector
+  - type: Sprite
+    layers:
+    - state: green
+    - state: salvagespecialist
+
+# Housekeeping
+
+- type: entity
+  id: SpawnPointEmberChiefSteward
+  parent: SpawnPointEmberJobBase
+  name: chief steward
+  components:
+  - type: SpawnPoint
+    job_id: EmberChiefSteward
+  - type: Sprite
+    layers:
+    - state: green
+    - state: serviceworker
+
+- type: entity
+  id: SpawnPointEmberSteward
+  parent: SpawnPointEmberJobBase
+  name: steward
+  components:
+  - type: SpawnPoint
+    job_id: EmberSteward
+  - type: Sprite
+    layers:
+    - state: green
+    - state: serviceworker
+
+- type: entity
+  id: SpawnPointEmberCook
+  parent: SpawnPointEmberJobBase
+  name: cook
+  components:
+  - type: SpawnPoint
+    job_id: EmberCook
+  - type: Sprite
+    layers:
+    - state: green
+    - state: chef
+
+- type: entity
+  id: SpawnPointEmberSanitationTechnician
+  parent: SpawnPointEmberJobBase
+  name: sanitation technician
+  components:
+  - type: SpawnPoint
+    job_id: EmberSanitationTechnician
+  - type: Sprite
+    layers:
+    - state: green
+    - state: janitor
+
+- type: entity
+  id: SpawnPointEmberCrewman
+  parent: SpawnPointEmberJobBase
+  name: crewman
+  components:
+  - type: SpawnPoint
+    job_id: EmberCrewman
+  - type: Sprite
+    layers:
+    - state: green
+    - state: passenger
+
+# Unattached
+
+- type: entity
+  id: SpawnPointEmberPassenger
+  parent: SpawnPointEmberJobBase
+  name: passenger
+  components:
+  - type: SpawnPoint
+    job_id: EmberPassenger
+  - type: Sprite
+    layers:
+    - state: green
+    - state: passenger
+
+- type: entity
+  id: SpawnPointEmberOffDutyWatch
+  parent: SpawnPointEmberJobBase
+  name: off-duty watch
+  components:
+  - type: SpawnPoint
+    job_id: EmberOffDutyWatch
+  - type: Sprite
+    layers:
+    - state: green
+    - state: passenger

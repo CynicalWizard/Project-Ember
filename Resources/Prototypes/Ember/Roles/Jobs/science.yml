@@ -1,0 +1,339 @@
+# The science service aboard the SEV Ember.
+#
+# This is the department the ship exists for. Everything else keeps it running.
+#
+# One department, two halves: a laboratory and a field team, both answering to the same head.
+# The mock-up draws them as two columns under one box, and that is exactly right — but SS14
+# departments do not nest, so the split has to be carried some other way.
+#
+# It is carried by `supervisors` and by weight. Two departments would have been the easy answer
+# and the wrong one: a department is what tells a player who answers to whom, and two of them
+# would say the lab and the field team are two chains of command. They are not. They are one
+# chain that forks one level down, and `supervisors` says that precisely — lab staff answer to
+# the Senior Researcher, field staff to the Field Team Leader, and both of those to the Chief
+# Science Officer. The weights then keep each half together in the list, so the shape survives
+# being read.
+#
+# EMBER-TODO: `startingGear` and `icon` point at existing vanilla content on purpose, same as in
+# the other department files.
+#
+# The Corps floor — `hauling`, `science` and `EVA` at Basic — is not repeated below.
+#
+# Three routes in, and this is the only department with all three. The Corps commissions its own
+# researchers; Xynergy sends xenobiologists and xenoarchaeologists under contract; and the
+# government sends its own scientists, who are neither. That last one is why
+# `EmberBranchSCGGovernment` appears outside the oversight department at all — a state
+# researcher is neither an observer nor an officer, but a civil servant with a grant.
+#
+# EMBER-TODO: the Torch splits its scientist into five names — xenoarchaeologist, xenobiologist,
+# xenobotanist, anomalist, researcher — and we deliberately have none of them, because the
+# mock-up draws one box with no slashes in it. Worth revisiting once there is xenobiology and
+# xenoarchaeology to be specialised *in*; today the names would promise content that does not
+# exist, which is worse than not offering them.
+
+- type: department
+  id: EmberScience
+  name: department-EmberScience
+  description: department-EmberScience-description
+  color: "#9a63b0"
+  weight: 15
+  roles:
+  - EmberChiefScienceOfficer
+  - EmberSeniorResearcher
+  - EmberResearcher
+  - EmberLabTechnician
+  - EmberFieldTeamLeader
+  - EmberShuttlePilot
+  - EmberFieldSpecialist
+
+- type: playTimeTracker
+  id: JobEmberChiefScienceOfficer
+
+- type: playTimeTracker
+  id: JobEmberSeniorResearcher
+
+- type: playTimeTracker
+  id: JobEmberResearcher
+
+- type: playTimeTracker
+  id: JobEmberLabTechnician
+
+- type: playTimeTracker
+  id: JobEmberFieldTeamLeader
+
+- type: playTimeTracker
+  id: JobEmberShuttlePilot
+
+- type: playTimeTracker
+  id: JobEmberFieldSpecialist
+
+# Heads both halves and answers to the Captain for the expedition's findings — which is to say,
+# for the reason the ship was sent. `bureaucracy` and `finance` at Trained are not padding: the
+# post's real work is deciding what gets studied, what gets shipped home and what the grant will
+# stand, and the Torch weights it the same way.
+- type: job
+  id: EmberChiefScienceOfficer
+  name: job-name-ember-chief-science-officer
+  description: job-description-ember-chief-science-officer
+  playTimeTracker: JobEmberChiefScienceOfficer
+  startingGear: ResearchDirectorGear
+  icon: JobIconResearchDirector
+  supervisors: job-supervisors-ember-command
+  weight: 18
+  requireAdminNotify: true
+  canBeAntag: false
+  access:
+  - ResearchDirector
+  - Research
+  - Command
+  - Maintenance
+  - External
+  - Cryogenics
+  minSkills:
+    bureaucracy: Trained
+    finance: Trained
+    computer: Basic
+    devices: Basic
+    science: Trained
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsO3
+  - !type:CharacterSkillRequirement
+
+# --- The laboratory -------------------------------------------------------------------------
+
+# Runs the benches. `anatomy` Basic is the odd entry and it is the Torch's: a research service
+# that expects to meet unfamiliar biology wants somebody who can tell a specimen from a corpse.
+- type: job
+  id: EmberSeniorResearcher
+  name: job-name-ember-senior-researcher
+  description: job-description-ember-senior-researcher
+  playTimeTracker: JobEmberSeniorResearcher
+  startingGear: SeniorResearcherGear
+  icon: JobIconSeniorResearcher
+  supervisors: job-supervisors-ember-chief-science-officer
+  weight: 15
+  access:
+  - Research
+  - Maintenance
+  - Cryogenics
+  minSkills:
+    bureaucracy: Basic
+    computer: Basic
+    anatomy: Basic
+    devices: Trained
+    science: Trained
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsO1
+  - !type:CharacterAgeRequirement
+    min: 30
+  - !type:CharacterSkillRequirement
+
+# The bench itself. Age 25 for a doctorate, which is also the floor the contractor and the civil
+# servant have to clear — neither of their ranks says anything about schooling.
+- type: job
+  id: EmberResearcher
+  name: job-name-ember-researcher
+  description: job-description-ember-researcher
+  playTimeTracker: JobEmberResearcher
+  startingGear: ScientistGear
+  icon: JobIconScientist
+  supervisors: job-supervisors-ember-laboratory
+  weight: 13
+  access:
+  - Research
+  - Maintenance
+  - Cryogenics
+  minSkills:
+    computer: Basic
+    devices: Basic
+    science: Trained
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+    - EmberBranchCivilian
+    - EmberBranchSCGGovernment
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsO1
+    - EmberRankContractor
+    - EmberRankSCGScientist
+  - !type:CharacterAgeRequirement
+    min: 25
+  - !type:CharacterSkillRequirement
+
+# Sample handling, logging, calibration and the cleaning-up. `science` Basic is written out even
+# though the Corps floor already grants it, because two of the three routes in have no floor at
+# all and a laboratory assistant who has never seen a laboratory is not one.
+- type: job
+  id: EmberLabTechnician
+  name: job-name-ember-lab-technician
+  description: job-description-ember-lab-technician
+  playTimeTracker: JobEmberLabTechnician
+  startingGear: ResearchAssistantGear
+  icon: JobIconResearchAssistant
+  supervisors: job-supervisors-ember-laboratory
+  weight: 11
+  access:
+  - Research
+  - Maintenance
+  - Cryogenics
+  minSkills:
+    science: Basic
+  altTitles:
+  # Same bench, different framing: one is staff, the other is here on somebody's grant. Nothing
+  # mechanical separates them and nothing should.
+  - id: ResearchAssistant
+    name: job-name-ember-lab-technician-research-assistant
+    description: job-description-ember-lab-technician-research-assistant
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+    - EmberBranchCivilian
+    - EmberBranchSCGGovernment
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsE1
+    - EmberRankCorpsE3
+    - EmberRankContractor
+    - EmberRankSCGScientist
+  - !type:CharacterSkillRequirement
+
+# --- The field team -------------------------------------------------------------------------
+
+# Leads the parties that go outside, which on this ship is the primary mission rather than a
+# sideline. Corps only and no contractor route: the away site is where the Corps' own mandate is
+# exercised, and a company cannot be put in charge of it.
+#
+# `pilot` Basic rather than Trained — enough to bring the shuttle home if the pilot is hurt, not
+# enough to make the pilot redundant.
+- type: job
+  id: EmberFieldTeamLeader
+  name: job-name-ember-field-team-leader
+  description: job-description-ember-field-team-leader
+  playTimeTracker: JobEmberFieldTeamLeader
+  startingGear: ResearchAssistantGear
+  icon: JobIconScientist
+  supervisors: job-supervisors-ember-chief-science-officer
+  weight: 8
+  access:
+  - Research
+  - Maintenance
+  - External
+  - Cryogenics
+  minSkills:
+    bureaucracy: Basic
+    EVA: Trained
+    science: Trained
+    pilot: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsO1
+  - !type:CharacterAgeRequirement
+    min: 25
+  - !type:CharacterSkillRequirement
+
+# Flies the survey shuttle and nothing else — which is the point, because `pilot` Trained is
+# expensive and nobody else in the department carries it.
+#
+# The Torch also admits Fleet ratings here. We do not, and the reason is what the secondment was
+# bought for: the SCG put Fleet personnel aboard Corps ships instead of funding a second armed
+# service, so the detachment is sized to that one job. Flying a survey shuttle is not it. Every
+# other seat on the ship is the Corps' own, and a hired pilot is how it gets filled when the
+# Corps cannot fill it.
+- type: job
+  id: EmberShuttlePilot
+  name: job-name-ember-shuttle-pilot
+  description: job-description-ember-shuttle-pilot
+  playTimeTracker: JobEmberShuttlePilot
+  startingGear: ResearchAssistantGear
+  icon: JobIconScientist
+  supervisors: job-supervisors-ember-field-team
+  weight: 6
+  access:
+  - Research
+  - Maintenance
+  - External
+  - Cryogenics
+  minSkills:
+    computer: Basic
+    pilot: Trained
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+    - EmberBranchCivilian
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsE5
+    - EmberRankCorpsE7
+    - EmberRankContractor
+  - !type:CharacterAgeRequirement
+    min: 24
+  - !type:CharacterSkillRequirement
+
+# Walks the away site. The job itself asks for very little beyond a voidsuit, which is honest —
+# an expedition needs hands and eyes more than it needs specialists, and the Corps enlists at
+# eighteen for exactly this.
+#
+# The two specialist names are where it gets interesting, because they are the only place aboard
+# where medicine and engineering are held by somebody outside those departments. That is
+# deliberate: a party three hours from the airlock cannot send for a doctor. It is also bounded —
+# `anatomy` Basic and no `engines` at all, so the field medic stabilises and the field engineer
+# patches, and both of them still bring the problem home.
+- type: job
+  id: EmberFieldSpecialist
+  name: job-name-ember-field-specialist
+  description: job-description-ember-field-specialist
+  playTimeTracker: JobEmberFieldSpecialist
+  startingGear: ResearchAssistantGear
+  icon: JobIconResearchAssistant
+  supervisors: job-supervisors-ember-field-team
+  weight: 4
+  access:
+  - Research
+  - Maintenance
+  - External
+  - Cryogenics
+  minSkills:
+    EVA: Trained
+  altTitles:
+  - id: FieldMedic
+    name: job-name-ember-field-specialist-medic
+    description: job-description-ember-field-specialist-medic
+    minAge: 21
+    minSkills:
+      medical: Trained
+      anatomy: Basic
+  - id: FieldEngineer
+    name: job-name-ember-field-specialist-engineer
+    description: job-description-ember-field-specialist-engineer
+    minAge: 21
+    minSkills:
+      construction: Trained
+      electrical: Basic
+      atmos: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsE3
+    - EmberRankCorpsE5
+  - !type:CharacterSkillRequirement

@@ -4,6 +4,7 @@ using Content.Shared.CCVar;
 using Content.Shared.Clothing.Loadouts.Prototypes;
 using Content.Shared.Clothing.Loadouts.Systems;
 using Content.Shared.Ember.Ranks;
+using Content.Shared.Ember.Roles;
 using Content.Shared.Ember.Skills;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
@@ -59,6 +60,13 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     // Ember: one set of skills for the character, not one per job. See SharedSkillsSystem.
     [DataField]
     private Dictionary<ProtoId<SkillPrototype>, SkillLevel> _skills = new();
+
+    // Ember: which of a job's names this character holds it under, for the jobs that have more
+    // than one. Keyed by job because job preferences are a list — a character may be an engine
+    // technician when taken as an engineer and a porter when taken as a porter. Absent means the
+    // job's own name, which is also what an unrecognised entry falls back to.
+    [DataField]
+    private Dictionary<ProtoId<JobPrototype>, string> _jobTitles = new();
 
     [DataField]
     public string Name { get; set; } = "John Doe";
@@ -141,6 +149,9 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
 
     public IReadOnlyDictionary<ProtoId<SkillPrototype>, SkillLevel> Skills => _skills;
 
+    /// <see cref="_jobTitles"/>
+    public IReadOnlyDictionary<ProtoId<JobPrototype>, string> JobTitles => _jobTitles;
+
     /// If we're unable to get one of our preferred jobs do we spawn as a fallback job or do we stay in lobby
     [DataField]
     public PreferenceUnavailableMode PreferenceUnavailable { get; private set; } =
@@ -174,7 +185,8 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         Dictionary<ProtoId<SkillPrototype>, SkillLevel>? skills = null,
         // Ember: trailing and optional so the seven existing call sites stay untouched.
         ProtoId<EmberBranchPrototype>? branch = null,
-        ProtoId<EmberRankPrototype>? rank = null)
+        ProtoId<EmberRankPrototype>? rank = null,
+        Dictionary<ProtoId<JobPrototype>, string>? jobTitles = null)
     {
         Name = name;
         FlavorText = flavortext;
@@ -203,6 +215,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         _skills = skills == null ? new() : new(skills);
         Branch = branch;
         Rank = rank;
+        _jobTitles = jobTitles == null ? new() : new(jobTitles);
 
         var hasHighPrority = false;
         foreach (var (key, value) in _jobPriorities)
@@ -248,7 +261,8 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             new HashSet<LoadoutPreference>(other.LoadoutPreferences),
             new Dictionary<ProtoId<SkillPrototype>, SkillLevel>(other.Skills),
             other.Branch,
-            other.Rank)
+            other.Rank,
+            new Dictionary<ProtoId<JobPrototype>, string>(other.JobTitles))
     {
     }
 
@@ -471,6 +485,26 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         return _skills.GetValueOrDefault(skillId, SkillLevels.Min);
     }
 
+    /// <summary>
+    /// Ember: which of the job's names this character holds it under, or null for the job's own.
+    /// </summary>
+    public string? GetJobTitle(ProtoId<JobPrototype> jobId)
+    {
+        return _jobTitles.GetValueOrDefault(jobId);
+    }
+
+    public HumanoidCharacterProfile WithJobTitle(ProtoId<JobPrototype> jobId, string? titleId)
+    {
+        var titles = new Dictionary<ProtoId<JobPrototype>, string>(_jobTitles);
+
+        if (titleId == null)
+            titles.Remove(jobId);
+        else
+            titles[jobId] = titleId;
+
+        return new(this) { _jobTitles = titles };
+    }
+
     public HumanoidCharacterProfile WithSkill(ProtoId<SkillPrototype> skillId, SkillLevel level)
     {
         var skills = new Dictionary<ProtoId<SkillPrototype>, SkillLevel>(_skills);
@@ -523,6 +557,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             && _traitPreferences.SequenceEqual(other._traitPreferences)
             && LoadoutPreferences.SequenceEqual(other.LoadoutPreferences)
             && _skills.OrderBy(pair => pair.Key.Id).SequenceEqual(other._skills.OrderBy(pair => pair.Key.Id))
+            && _jobTitles.OrderBy(pair => pair.Key.Id).SequenceEqual(other._jobTitles.OrderBy(pair => pair.Key.Id)) // Ember
             && Appearance.MemberwiseEquals(other.Appearance)
             && FlavorText == other.FlavorText;
     }
@@ -668,6 +703,22 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
 
         var skills = SharedSkillsSystem.SanitizeAllocation(prototypeManager, _skills, speciesPrototype, age);
 
+        // Ember: a title only exists inside its job, so an entry for a job that is gone, or for
+        // a name that job no longer offers, goes with it. A title this character may not hold —
+        // wrong species, or not enough years for the schooling it stands for — is dropped rather
+        // than refused: winding the age back should demote a surgeon to a doctor, not reject the
+        // character. Age is already sanitised above, so it is safe to check against.
+        var jobTitles = new Dictionary<ProtoId<JobPrototype>, string>();
+
+        foreach (var (jobId, titleId) in _jobTitles)
+        {
+            if (!priorities.ContainsKey(jobId) || !prototypeManager.TryIndex(jobId, out JobPrototype? jobProto))
+                continue;
+
+            if (SharedEmberJobTitleSystem.SanitizeTitle(jobProto, titleId, Species, age) is { } valid)
+                jobTitles[jobId] = valid;
+        }
+
         // Ember: a branch this species may not join, or a rank that is not selectable inside it,
         // falls back to unaffiliated. Species is already sanitised above, so it is safe to check
         // against. A rank only means something inside its branch, so losing the branch loses the
@@ -728,6 +779,13 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         {
             if (level > SkillLevels.Min)
                 _skills[skill] = level;
+        }
+
+        // Ember
+        _jobTitles.Clear();
+        foreach (var (jobId, titleId) in jobTitles)
+        {
+            _jobTitles[jobId] = titleId;
         }
     }
 

@@ -97,7 +97,12 @@ public sealed class SharedEmberRanksSystem : EntitySystem
     /// A whitelist says who may, a blacklist says who may not. A species named in both is a
     /// mistake in the data, and the safe reading of a mistake is to refuse.
     /// </summary>
-    private static bool IsSpeciesAllowed(
+    /// <remarks>
+    /// Public because the same pair of lists appears on things that are not ranks — job titles,
+    /// for one — and a second copy of this rule would eventually disagree with the first about
+    /// what an empty whitelist means.
+    /// </remarks>
+    public static bool IsSpeciesAllowed(
         HashSet<ProtoId<SpeciesPrototype>> whitelist,
         HashSet<ProtoId<SpeciesPrototype>> blacklist,
         ProtoId<SpeciesPrototype>? species)

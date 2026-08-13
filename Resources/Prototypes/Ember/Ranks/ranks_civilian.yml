@@ -7,12 +7,22 @@
 #
 # Not under SCG/, because none of it belongs to the SCG. A civilian is a civilian anywhere.
 
+# A bare legal floor and nothing more. `minAge` on a service rank means "the service does not
+# promote you sooner"; here it can only mean "nobody employs a child", because a company rank is
+# a job title rather than a career and says nothing about what its holder has learned.
+#
+# So this is a backstop, not a gate. Any post open to contractors states its own education floor
+# with a `CharacterAgeRequirement`, and that is what actually does the work — see the ladder at
+# the top of Roles/Jobs/medical.yml. This is here so that a post which forgets is merely wrong
+# rather than open to an eighteen-year-old surgeon.
 - type: emberRank
   id: EmberRankCivilian
+  minAge: 18
   name: ember-rank-civilian-name
 
 - type: emberRank
   id: EmberRankContractor
+  minAge: 18
   name: ember-rank-contractor-name
 
 # Bay's `/datum/mil_rank/civ/offduty`, from the Sierra rather than the Torch. A crew member who

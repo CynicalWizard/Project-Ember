@@ -7,8 +7,10 @@
 # `minSkills` here is what everyone in the branch knows regardless of job — it answers "why
 # does any crewman know how to work a voidsuit" without repeating it in thirty job prototypes.
 #
-# EMBER-TODO: `assistantJob` is unset on all of them. Bay points the two service branches at
-# `/datum/job/crew`, which is the Crewman job; ours does not exist until the job pass.
+# `assistantJob` points at the Crewman where a branch has one — Bay does the same with its
+# `/datum/job/crew`. Note that nothing reads the field yet: it is declared on the prototype and
+# no system consults it. Set anyway, because the answer is now known and leaving it blank would
+# mean rediscovering it later.
 
 - type: emberBranch
   id: EmberBranchExpeditionaryCorps
@@ -38,6 +40,7 @@
   - EmberRankCorpsO10
   - EmberRankMachineAssigned
   - EmberRankOffDuty
+  assistantJob: EmberCrewman
   spawnRanks:
   # E-1 is not selectable on the Torch, but our junior technician and sanitation technician sit
   # there, so it is open here.
@@ -50,6 +53,9 @@
   - EmberRankCorpsO5
   - EmberRankCorpsO6
   - EmberRankMachineAssigned
+  # Off duty is a selectable status rather than a rank to be promoted to, and the Off-Duty Watch
+  # job is the only thing that asks for it. Every branch carries it for the same reason.
+  - EmberRankOffDuty
 
 - type: emberBranch
   id: EmberBranchFleet
@@ -117,6 +123,7 @@
   - EmberRankFleetO3
   - EmberRankFleetO4
   - EmberRankFleetO5
+  - EmberRankOffDuty
 
 - type: emberBranch
   id: EmberBranchSCGGovernment
@@ -133,10 +140,12 @@
   - EmberRankFederalMarshal
   - EmberRankFederalAgent
   - EmberRankFederalSupervisor
+  - EmberRankOffDuty
   spawnRanks:
   - EmberRankSCGRepresentative
   - EmberRankSCGScientist
   - EmberRankFederalMarshal
+  - EmberRankOffDuty
 
 - type: emberBranch
   id: EmberBranchCivilian
@@ -158,3 +167,4 @@
   - EmberRankCivilian
   - EmberRankContractor
   - EmberRankMachineAssigned
+  - EmberRankOffDuty

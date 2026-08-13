@@ -15,8 +15,11 @@
   name: ember-rank-scg-representative-name
   shortName: ember-rank-scg-representative-short
 
+# The one civil appointment here that is a qualification rather than an office, so it is the one
+# with an education floor of its own: a degree, and then the civil service.
 - type: emberRank
   id: EmberRankSCGScientist
+  minAge: 22
   name: ember-rank-scg-scientist-name
 
 # Federal Police of the Solar System. Founded around 2231 as the single state law-enforcement

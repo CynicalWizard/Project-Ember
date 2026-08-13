@@ -18,7 +18,9 @@ using Content.Shared.Clothing.Loadouts.Prototypes;
 using Content.Shared.Clothing.Loadouts.Systems;
 using Content.Shared.Customization.Systems;
 using Content.Shared.Dataset;
+using Content.Shared.Ember.Localization;
 using Content.Shared.Ember.Ranks;
+using Content.Shared.Ember.Roles;
 using Content.Shared.Ember.Skills;
 using Content.Shared.GameTicking;
 using Content.Shared.Guidebook;
@@ -1244,23 +1246,9 @@ namespace Content.Client.Lobby.UI
                     var jobIcon = _prototypeManager.Index(job.Icon);
                     icon.Texture = jobIcon.Icon.Frame0();
                     selector.Setup(items, job.LocalizedName, 200, job.LocalizedDescription, icon, job.Guides);
+                    SetupJobTitles(job, selector); // Ember
 
-                    if (!_requirements.CheckJobWhitelist(job, out var reason))
-                        selector.LockRequirements(reason);
-                    else if (!_characterRequirementsSystem.CheckRequirementsValid(
-                        _roleSystem.GetJobRequirement(job) ?? new(),
-                        job,
-                        Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(),
-                        _requirements.GetRawPlayTimeTrackers(),
-                        _requirements.IsWhitelisted(),
-                        job,
-                        _entManager,
-                        _prototypeManager,
-                        _cfgManager,
-                        out var reasons))
-                        selector.LockRequirements(_characterRequirementsSystem.GetRequirementsText(reasons));
-                    else
-                        selector.UnlockRequirements();
+                    UpdateJobLock(job, selector);
 
                     selector.OnSelected += selectedPrio =>
                     {
@@ -1299,6 +1287,85 @@ namespace Content.Client.Lobby.UI
             }
 
             UpdateJobPriorities();
+        }
+
+        /// <summary>
+        /// Locks a job's row and says why, or unlocks it.
+        /// </summary>
+        /// <remarks>
+        /// Ember: pulled out of <see cref="RefreshJobs"/> so that a change which affects one row
+        /// can redo one row. Rebuilding the whole list from inside a control's own event handler
+        /// disposes the control mid-callback, which is a crash waiting for someone to click the
+        /// wrong thing.
+        /// </remarks>
+        private void UpdateJobLock(JobPrototype job, RequirementsSelector selector)
+        {
+            if (!_requirements.CheckJobWhitelist(job, out var reason))
+                selector.LockRequirements(reason);
+            else if (!_characterRequirementsSystem.CheckRequirementsValid(
+                _roleSystem.GetJobRequirement(job) ?? new(),
+                job,
+                Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(),
+                _requirements.GetRawPlayTimeTrackers(),
+                _requirements.IsWhitelisted(),
+                job,
+                _entManager,
+                _prototypeManager,
+                _cfgManager,
+                out var reasons))
+                selector.LockRequirements(_characterRequirementsSystem.GetRequirementsText(reasons));
+            else
+                selector.UnlockRequirements();
+        }
+
+        /// <summary>
+        /// Ember: turns a job's row name into a dropdown when the job has more than one name.
+        /// </summary>
+        /// <remarks>
+        /// The job's own name is the first entry rather than a blank one. "Engineer" is a real
+        /// answer, it reads better than an empty box, and it keeps the stored value honest —
+        /// picking it means no entry in the profile at all.
+        ///
+        /// Jobs with no alternate names are left exactly as they were: the list comes back empty
+        /// and the plain label stays.
+        /// </remarks>
+        private void SetupJobTitles(JobPrototype job, RequirementsSelector selector)
+        {
+            var titles = SharedEmberJobTitleSystem
+                .GetSelectableTitles(job, Profile?.Species, Profile?.Age)
+                .ToArray();
+
+            if (titles.Length == 0)
+                return;
+
+            var entries = new List<(string, string?)>(titles.Length + 1)
+            {
+                (job.LocalizedName, job.LocalizedDescription),
+            };
+
+            var gender = Profile?.Gender ?? Gender.Epicene;
+
+            foreach (var title in titles)
+            {
+                entries.Add((
+                    EmberGenderedName.Localize(title.Name, title.NameMale, title.NameFemale, gender),
+                    title.Description is { } description
+                        ? Loc.GetString(description)
+                        : job.LocalizedDescription));
+            }
+
+            var stored = Profile?.GetJobTitle(job.ID);
+            selector.SetupTitles(entries, Array.FindIndex(titles, title => title.Id == stored) + 1);
+
+            selector.OnTitleSelected += index =>
+            {
+                Profile = Profile?.WithJobTitle(job.ID, index == 0 ? null : titles[index - 1].Id);
+
+                // A name may ask for skills the job does not, so the row can lock or unlock on
+                // this alone. Only this row can change, and only this row is redone.
+                UpdateJobLock(job, selector);
+                SetDirty();
+            };
         }
 
         private void OnFlavorTextChange(string content)
@@ -1426,7 +1493,11 @@ namespace Content.Client.Lobby.UI
         {
             Profile = Profile?.WithAge(newAge);
             UpdateSkills();
-            RefreshRanks(); // Ember: ranks carry an age floor, and the budget moves with age too.
+            // Ember: ranks carry an age floor and the point budget moves with age, but so do the
+            // jobs themselves — a post may state a minimum, and a job title may stand for years
+            // of schooling. Age is the one field that reaches all three.
+            RefreshRanks();
+            RefreshJobs();
             ReloadPreview();
         }
 
@@ -1455,6 +1526,9 @@ namespace Content.Client.Lobby.UI
         private void SetGender(Gender newGender)
         {
             Profile = Profile?.WithGender(newGender);
+            // Ember: a job title may have a form per gender — «медсестра» against «медбрат» — so
+            // the words in the job list change with this field even though nothing else does.
+            RefreshJobs();
             ReloadPreview();
         }
 

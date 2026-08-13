@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Content.Shared.Ember.Ranks;
 using Content.Shared.Ember.Skills;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Roles;
@@ -264,6 +265,104 @@ public sealed class SharedSkillsSystemTests
             Assert.That(SharedSkillsSystem.MeetsRequirements(paramedic, character), Is.True);
             Assert.That(SharedSkillsSystem.MeetsRequirements(fieldMedic, character), Is.True);
             Assert.That(SharedSkillsSystem.MeetsRequirements(surgeon, character), Is.False);
+        });
+    }
+
+    #endregion
+
+    #region Branch floors
+
+    // The reason a branch carries minSkills at all: it states once what everyone in it is
+    // expected to know, and thirty job prototypes do not each repeat the same three lines. That
+    // only holds if the two are actually merged, which is what these cover.
+    [Test]
+    public void BranchFloorIsAddedToTheJobsOwn()
+    {
+        var eva = MakeSkill("EVA");
+        var forensics = MakeSkill("forensics");
+        var branch = new EmberBranchPrototype { MinSkills = { [eva.ID] = SkillLevel.Basic } };
+        var job = new JobPrototype { MinSkills = { [forensics.ID] = SkillLevel.Trained } };
+
+        var investigator = new Dictionary<ProtoId<SkillPrototype>, SkillLevel>
+        {
+            [forensics.ID] = SkillLevel.Trained,
+        };
+
+        Assert.Multiple(() =>
+        {
+            // Qualified for the work, and would have passed before the branch was consulted.
+            Assert.That(SharedSkillsSystem.MeetsRequirements(job, investigator), Is.True);
+            // Still cannot serve in a branch that expects everyone to manage a voidsuit.
+            Assert.That(SharedSkillsSystem.MeetsRequirements(job, investigator, branch), Is.False);
+        });
+    }
+
+    // Both sides may name the same skill. The higher of the two wins, in either direction: a
+    // service's floor never lowers a post's demand, and a post never excuses someone from what
+    // their service expects.
+    [Test]
+    public void TheHigherOfTheTwoFloorsWins()
+    {
+        var weapons = MakeSkill("weapons");
+        var branch = new EmberBranchPrototype { MinSkills = { [weapons.ID] = SkillLevel.Basic } };
+        var masterAtArms = new JobPrototype { MinSkills = { [weapons.ID] = SkillLevel.Trained } };
+        var corpsman = new JobPrototype();
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(
+                SharedSkillsSystem.GetRequiredSkills(masterAtArms, branch)[weapons.ID],
+                Is.EqualTo(SkillLevel.Trained));
+            Assert.That(
+                SharedSkillsSystem.GetRequiredSkills(corpsman, branch)[weapons.ID],
+                Is.EqualTo(SkillLevel.Basic));
+        });
+    }
+
+    // A civilian has no service to expect anything of them, so the job's own floors are the
+    // whole of it.
+    [Test]
+    public void NoBranchMeansNoExtraFloor()
+    {
+        var eva = MakeSkill("EVA");
+        var job = new JobPrototype { MinSkills = { [eva.ID] = SkillLevel.Basic } };
+
+        Assert.That(SharedSkillsSystem.GetRequiredSkills(job, null), Has.Count.EqualTo(1));
+    }
+
+    // The security cadet: asked for nothing beyond being in the Fleet. The job states no
+    // minimums of its own, and the check is still not a no-op.
+    [Test]
+    public void AJobWithNoMinimumsStillAnswersToItsBranch()
+    {
+        var eva = MakeSkill("EVA");
+        var branch = new EmberBranchPrototype { MinSkills = { [eva.ID] = SkillLevel.Basic } };
+        var cadet = new JobPrototype();
+
+        var recruit = new Dictionary<ProtoId<SkillPrototype>, SkillLevel>();
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(SharedSkillsSystem.MeetsRequirements(cadet, recruit), Is.True);
+            Assert.That(SharedSkillsSystem.MeetsRequirements(cadet, recruit, branch), Is.False);
+        });
+    }
+
+    // Merging must not write back into the prototypes it read from.
+    [Test]
+    public void MergingLeavesBothPrototypesAlone()
+    {
+        var eva = MakeSkill("EVA");
+        var forensics = MakeSkill("forensics");
+        var branch = new EmberBranchPrototype { MinSkills = { [eva.ID] = SkillLevel.Basic } };
+        var job = new JobPrototype { MinSkills = { [forensics.ID] = SkillLevel.Trained } };
+
+        SharedSkillsSystem.GetRequiredSkills(job, branch);
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(job.MinSkills, Has.Count.EqualTo(1));
+            Assert.That(branch.MinSkills, Has.Count.EqualTo(1));
         });
     }
 

@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared.Customization.Systems;
+using Content.Shared.Ember.Roles;
 using Content.Shared.Ember.Skills;
 using Content.Shared.Mind;
 using Content.Shared.Preferences;
@@ -91,16 +92,25 @@ public sealed partial class CharacterRankRequirement : CharacterRequirement
 }
 
 /// <summary>
-/// Requires the character's own skills to clear the job's <see cref="JobPrototype.MinSkills"/>.
+/// Requires the character's own skills to clear the job's <see cref="JobPrototype.MinSkills"/>,
+/// raised by whatever the character's branch expects of everyone in it.
 /// </summary>
 /// <remarks>
-/// Deliberately reads the floors off the job rather than repeating them: the requirement exists
-/// to surface in the lobby what the job already declares, and a second copy of the numbers would
-/// drift from the first.
+/// Deliberately reads the floors off the job and the branch rather than repeating them: the
+/// requirement exists to surface in the lobby what those two already declare, and a second copy
+/// of the numbers would drift from the first.
 ///
 /// This is what makes overlapping roles work without a table of them. Two jobs asking for the
 /// same skills accept the same characters, and nobody has to write down that a paramedic and a
 /// field medic are similar.
+///
+/// A chosen job title counts too, which is how a variant that is genuinely harder than its job
+/// — surgeon rather than doctor — states the difference without becoming a job of its own.
+///
+/// Because the branch floor is folded in here, a job need not restate it — a Fleet posting does
+/// not have to say "and knows how to work a voidsuit" when the Fleet already says so. It is the
+/// character's branch that counts, so a post open to two services asks each of its people for
+/// what their own service expects.
 /// </remarks>
 [UsedImplicitly, Serializable, NetSerializable]
 public sealed partial class CharacterSkillRequirement : CharacterRequirement
@@ -118,7 +128,13 @@ public sealed partial class CharacterSkillRequirement : CharacterRequirement
         int depth = 0,
         MindComponent? mind = null)
     {
-        var missing = job.MinSkills
+        EmberBranchPrototype? branch = null;
+        if (profile.Branch is { } branchId)
+            prototypeManager.TryIndex(branchId, out branch);
+
+        SharedEmberJobTitleSystem.TryGetTitle(job, profile.GetJobTitle(job.ID), out var title);
+
+        var missing = SharedSkillsSystem.GetRequiredSkills(job, branch, title)
             .Where(pair => profile.GetSkill(pair.Key) < pair.Value)
             .Select(pair => Loc.GetString(
                 "character-skill-requirement-entry",

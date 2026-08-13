@@ -1,4 +1,5 @@
 using Content.Shared.Access;
+using Content.Shared.Ember.Roles;
 using Content.Shared.Ember.Skills;
 using Content.Shared.Guidebook;
 using Content.Shared.Customization.Systems;
@@ -38,6 +39,14 @@ namespace Content.Shared.Roles
         /// </remarks>
         [DataField]
         public Dictionary<ProtoId<SkillPrototype>, SkillLevel> MinSkills { get; set; } = new();
+
+        /// <summary>
+        ///     Ember: alternate names this job may be held under. See <see cref="EmberJobTitle"/>
+        ///     — one job, several titles, so that four flavours of engineer are one line in the
+        ///     job list rather than four.
+        /// </summary>
+        [DataField]
+        public List<EmberJobTitle> AltTitles { get; set; } = new();
 
         /// <summary>
         ///     Who is the supervisor for this job.

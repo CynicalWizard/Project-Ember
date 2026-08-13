@@ -16,6 +16,8 @@ using Content.Shared.Customization.Systems;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.PDA;
+using Content.Shared.Ember.Roles;
+using Robust.Shared.Enums;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Random;
@@ -153,7 +155,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         if (profile != null)
         {
             if (prototype != null)
-                SetPdaAndIdCardData(entity.Value, profile.Name, prototype, station);
+                SetPdaAndIdCardData(entity.Value, profile.Name, prototype, station, profile); // Ember: profile carries the chosen job title
 
             _humanoidSystem.LoadProfile(entity.Value, profile, loadExtensions: false, generateLoadouts: false);
             _metaSystem.SetEntityName(entity.Value, profile.Name);
@@ -181,7 +183,17 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
     /// <param name="characterName">Character name to use for the ID.</param>
     /// <param name="jobPrototype">Job prototype to use for the PDA and ID.</param>
     /// <param name="station">The station this player is being spawned on.</param>
-    public void SetPdaAndIdCardData(EntityUid entity, string characterName, JobPrototype jobPrototype, EntityUid? station)
+    /// <param name="profile">
+    ///     Ember: the character's profile, for the name they hold the job under. A job with only
+    ///     one name ignores it, and so does every caller that has no profile to hand — a preset
+    ///     ID has no character behind it.
+    /// </param>
+    public void SetPdaAndIdCardData(
+        EntityUid entity,
+        string characterName,
+        JobPrototype jobPrototype,
+        EntityUid? station,
+        HumanoidCharacterProfile? profile = null)
     {
         if (!InventorySystem.TryGetSlotEntity(entity, "id", out var idUid))
             return;
@@ -194,7 +206,13 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             return;
 
         _cardSystem.TryChangeFullName(cardId, characterName, card);
-        _cardSystem.TryChangeJobTitle(cardId, jobPrototype.LocalizedName, card);
+        _cardSystem.TryChangeJobTitle(
+            cardId,
+            SharedEmberJobTitleSystem.GetLocalizedName(
+                jobPrototype,
+                profile?.GetJobTitle(jobPrototype.ID),
+                profile?.Gender ?? Gender.Epicene), // Ember
+            card);
 
         if (_prototypeManager.TryIndex(jobPrototype.Icon, out var jobIcon))
             _cardSystem.TryChangeJobIcon(cardId, jobIcon, card);

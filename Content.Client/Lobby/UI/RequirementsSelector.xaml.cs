@@ -19,8 +19,14 @@ public sealed partial class RequirementsSelector : BoxContainer
     private readonly StripeBack _lockStripe;
     private List<ProtoId<GuideEntryPrototype>>? _guides;
 
+    // Ember: for a job held under more than one name, the name itself becomes the control.
+    private OptionButton? _titleOptions;
+
     public event Action<int>? OnSelected;
     public event Action<List<ProtoId<GuideEntryPrototype>>>? OnOpenGuidebook;
+
+    /// Ember: index into the list passed to <see cref="SetupTitles"/>.
+    public event Action<int>? OnTitleSelected;
 
     public int Selected => _options.SelectedId;
 
@@ -101,6 +107,53 @@ public sealed partial class RequirementsSelector : BoxContainer
 
         OptionsContainer.AddChild(_options);
         OptionsContainer.AddChild(_lockStripe);
+    }
+
+    /// <summary>
+    /// Ember: turns the row's name into a dropdown over <paramref name="titles"/>.
+    /// </summary>
+    /// <remarks>
+    /// Replacing the label rather than sitting beside it, because a job with several names does
+    /// not have a name plus a setting — the name <em>is</em> the choice, and a second control off
+    /// to the side reads as an unrelated option someone forgot to explain.
+    ///
+    /// Deliberately outside <see cref="_options"/>, so it survives
+    /// <see cref="LockRequirements"/>. A name may be what locked the row — the surgeon a doctor
+    /// cannot be — and a player who cannot change it back is stuck looking at the reason.
+    ///
+    /// Call after <see cref="Setup"/>: it takes the label's place and its width.
+    /// </remarks>
+    public void SetupTitles(IReadOnlyList<(string Name, string? Description)> titles, int selected)
+    {
+        if (titles.Count == 0)
+            return;
+
+        _titleOptions = new OptionButton
+        {
+            MinSize = TitleLabel.MinSize,
+            VerticalAlignment = VAlignment.Center,
+            Margin = TitleLabel.Margin,
+        };
+
+        for (var i = 0; i < titles.Count; i++)
+        {
+            _titleOptions.AddItem(titles[i].Name, i);
+        }
+
+        _titleOptions.OnItemSelected += args =>
+        {
+            _titleOptions.SelectId(args.Id);
+            _titleOptions.ToolTip = titles[args.Id].Description;
+            OnTitleSelected?.Invoke(args.Id);
+        };
+
+        var clamped = selected >= 0 && selected < titles.Count ? selected : 0;
+        _titleOptions.SelectId(clamped);
+        _titleOptions.ToolTip = titles[clamped].Description;
+
+        AddChild(_titleOptions);
+        _titleOptions.SetPositionInParent(TitleLabel.GetPositionInParent() + 1);
+        TitleLabel.Visible = false;
     }
 
     public void LockRequirements(FormattedMessage requirements)

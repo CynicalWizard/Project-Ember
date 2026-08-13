@@ -1,4 +1,6 @@
 using System.Linq;
+using Content.Shared.Ember.Ranks;
+using Content.Shared.Ember.Roles;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
@@ -245,14 +247,65 @@ public sealed class SharedSkillsSystem : EntitySystem
     #region Job requirements
 
     /// <summary>
+    /// Everything a character must clear to hold <paramref name="job"/> while serving in
+    /// <paramref name="branch"/>: the job's own floors, raised wherever the branch asks for more.
+    /// </summary>
+    /// <remarks>
+    /// A branch's <see cref="EmberBranchPrototype.MinSkills"/> is what everyone in it is expected
+    /// to know whatever their posting — voidsuit work aboard a ship, small arms in an armed
+    /// service — and it exists so that thirty job prototypes do not each repeat the same three
+    /// lines. That only holds if something actually merges the two, which is what this does.
+    ///
+    /// Note that it is a floor and not a grant. Skills belong to the character and are paid for
+    /// out of the character's own points, so joining a service costs a few of them before a job
+    /// is even chosen. Granting them instead would hand every serviceman free points and quietly
+    /// undo the budget.
+    ///
+    /// The branch is the character's, not the job's: a post open to two branches asks each of
+    /// its people for what their own service expects, not for the union of both.
+    ///
+    /// A job title, where the character has picked one, raises the floor the same way. Most
+    /// titles are only names and add nothing; the ones that are not — surgeon rather than
+    /// doctor — are exactly what this exists for.
+    /// </remarks>
+    public static Dictionary<ProtoId<SkillPrototype>, SkillLevel> GetRequiredSkills(
+        JobPrototype job,
+        EmberBranchPrototype? branch,
+        EmberJobTitle? title = null)
+    {
+        var required = new Dictionary<ProtoId<SkillPrototype>, SkillLevel>(job.MinSkills);
+
+        if (branch != null)
+            Raise(required, branch.MinSkills);
+
+        if (title != null)
+            Raise(required, title.MinSkills);
+
+        return required;
+    }
+
+    private static void Raise(
+        Dictionary<ProtoId<SkillPrototype>, SkillLevel> required,
+        Dictionary<ProtoId<SkillPrototype>, SkillLevel> floors)
+    {
+        foreach (var (skill, level) in floors)
+        {
+            if (!required.TryGetValue(skill, out var floor) || floor < level)
+                required[skill] = level;
+        }
+    }
+
+    /// <summary>
     /// Whether a character with these skills may take this job. A job's minimums are a floor to
     /// clear, not levels it hands out.
     /// </summary>
     public static bool MeetsRequirements(
         JobPrototype job,
-        IReadOnlyDictionary<ProtoId<SkillPrototype>, SkillLevel> skills)
+        IReadOnlyDictionary<ProtoId<SkillPrototype>, SkillLevel> skills,
+        EmberBranchPrototype? branch = null,
+        EmberJobTitle? title = null)
     {
-        foreach (var (skill, required) in job.MinSkills)
+        foreach (var (skill, required) in GetRequiredSkills(job, branch, title))
         {
             if (skills.GetValueOrDefault(skill, SkillLevels.Min) < required)
                 return false;

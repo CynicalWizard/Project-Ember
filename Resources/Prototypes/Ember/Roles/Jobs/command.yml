@@ -8,11 +8,32 @@
 # not need its own sprites to exist, and every one of these becomes a one-line change once the
 # SCG uniforms are converted. Nothing else here is placeholder.
 #
+# **Authority aboard runs by billet, not by rank or by service.** This is the single most
+# load-bearing sentence in the job files and it is easy to get backwards, because the rank data
+# is so much more visible than the `supervisors` lines. The Captain commands the ship; everyone
+# embarked answers to him whatever uniform they arrived in and whatever grade they hold. The
+# Chief of Security is a Fleet officer with no career connection to a Corps captain and takes his
+# orders anyway. The Senior Enlisted Advisor sits in this department while belonging to another
+# service entirely. Neither is an anomaly — real navies work this way, and a ship that ran on
+# seniority instead of billet would stop being a ship.
+#
+# So: `requirements` says who a character *is*. `supervisors` says who gives them orders. The two
+# are independent, and where they seem to disagree, `supervisors` wins.
+#
+# The oversight department below is the exception that shows the rule. The Representative answers
+# to nobody aboard precisely because he holds no billet aboard — he is not in the ship's
+# organisation at all, which is a different thing from being high up in it.
+#
 # Note what does the gating. Command posts ask for almost nothing in skills — the Captain wants
 # nine points' worth — because the thing that keeps people out is the commission, not the
 # competence. Requiring a commission excludes every xeno species automatically, since none may
 # hold a rank above E-5, and no separate rule is needed to say so. Technical departments are the
 # other way round: their skill floors are the gate and their ranks are broad.
+#
+# A branch's own floor is not repeated in these jobs. Each service states what everyone in it is
+# expected to know — the Corps `hauling`/`science`/`EVA`, the Fleet `hauling`/`weapons`/`EVA` —
+# and that is merged in when requirements are checked. Only what a post asks for beyond its
+# service is written down here.
 #
 # A post names a *band* of ranks, not one. Real billets are filled by whoever the service has:
 # a ship of this size is commanded by a Commander or a Captain depending on who was available
@@ -35,9 +56,26 @@
   - EmberExecutiveOfficer
   - EmberWatchOfficer
   - EmberSeniorEnlistedAdvisor
-  - EmberSCGRepresentative
   - EmberLiaisonOfficer
   - EmberAdjutant
+
+# Aboard, senior, and deliberately outside the ship's chain of command. Keeping these in their
+# own department is not cosmetic: the department is what tells a player who answers to whom, and
+# listing the government's observer under Command would say the Captain commands him, which is
+# the one thing that is not true of the post.
+#
+# EMBER-TODO: the Federal Marshal belongs here too when Security is written. That supersedes the
+# earlier plan to make the Marshal a second branch on the Investigator job — a job sits in one
+# department, and putting a police officer under the head of security would say the head of
+# security runs him.
+- type: department
+  id: EmberOversight
+  name: department-EmberOversight
+  description: department-EmberOversight-description
+  color: "#c9a227"
+  weight: 21
+  roles:
+  - EmberSCGRepresentative
 
 - type: playTimeTracker
   id: JobEmberCaptain
@@ -155,9 +193,7 @@
   supervisors: job-supervisors-ember-command
   weight: 15
   minSkills:
-    EVA: Basic
     combat: Basic
-    weapons: Basic
   requirements:
   - !type:CharacterBranchRequirement
     branches:

@@ -1,0 +1,219 @@
+# The housekeeping service aboard the SEV Ember.
+#
+# Food, cleaning, quarters, and the general ratings who get sent wherever hands are short. The
+# least glamorous department and the one whose absence is noticed first.
+#
+# EMBER-TODO: `startingGear` and `icon` point at existing vanilla content on purpose, same as in
+# the other department files.
+#
+# The Corps floor — `hauling`, `science` and `EVA` at Basic — is not repeated below.
+#
+# The Crewman is what `EmberBranchExpeditionaryCorps.assistantJob` now points at, closing a
+# stopgap left in branches.yml. Bay uses its `/datum/job/crew` the same way: the post that exists
+# so that "a rating with no speciality" is an answer the game can give.
+
+- type: department
+  id: EmberHousekeeping
+  name: department-EmberHousekeeping
+  description: department-EmberHousekeeping-description
+  color: "#6f9e5a"
+  weight: 11
+  roles:
+  - EmberChiefSteward
+  - EmberSteward
+  - EmberCook
+  - EmberSanitationTechnician
+  - EmberCrewman
+
+- type: playTimeTracker
+  id: JobEmberChiefSteward
+
+- type: playTimeTracker
+  id: JobEmberSteward
+
+- type: playTimeTracker
+  id: JobEmberCook
+
+- type: playTimeTracker
+  id: JobEmberSanitationTechnician
+
+- type: playTimeTracker
+  id: JobEmberCrewman
+
+# Runs the messes, the quarters and the stores that feed them, and answers to the Executive
+# Officer rather than to anyone in this list — which is the ordinary shape of a service that
+# touches every department and belongs to none. Age 28: E-5 comes at 24, and the person who
+# decides what four dozen people eat for six months is not four years out of training.
+- type: job
+  id: EmberChiefSteward
+  name: job-name-ember-chief-steward
+  description: job-description-ember-chief-steward
+  playTimeTracker: JobEmberChiefSteward
+  startingGear: ServiceWorkerGear
+  icon: JobIconServiceWorker
+  supervisors: job-supervisors-ember-executive-officer
+  weight: 18
+  canBeAntag: false
+  access:
+  - Service
+  - Kitchen
+  - Hydroponics
+  - Bar
+  - Janitor
+  - Maintenance
+  - Cryogenics
+  minSkills:
+    bureaucracy: Trained
+    cooking: Trained
+    botany: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsE5
+    - EmberRankCorpsE7
+  - !type:CharacterAgeRequirement
+    min: 28
+  - !type:CharacterSkillRequirement
+
+# Quarters, laundry, the wardroom and the endless small errands of a ship where forty people
+# live. Asks for almost nothing, because the trade is attentiveness rather than training.
+- type: job
+  id: EmberSteward
+  name: job-name-ember-steward
+  description: job-description-ember-steward
+  playTimeTracker: JobEmberSteward
+  startingGear: ServiceWorkerGear
+  icon: JobIconServiceWorker
+  supervisors: job-supervisors-ember-housekeeping
+  weight: 12
+  access:
+  - Service
+  - Kitchen
+  - Bar
+  - Maintenance
+  - Cryogenics
+  minSkills:
+    bureaucracy: Basic
+    hauling: Trained
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+    - EmberBranchCivilian
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsE1
+    - EmberRankCorpsE3
+    - EmberRankContractor
+  - !type:CharacterAgeRequirement
+    min: 18
+  - !type:CharacterSkillRequirement
+
+# The galley and the hydroponics bay, which on a ship this size are one job with two rooms. That
+# is why the Botanist name asks for `botany` on top rather than instead: whichever they call
+# themselves, they cover both, and the name says which end they came in at.
+#
+# `chemistry` Basic is the Torch's and is not decoration — half of preserving, fermenting and
+# feeding people on a six-month cruise is chemistry that nobody calls chemistry.
+- type: job
+  id: EmberCook
+  name: job-name-ember-cook
+  description: job-description-ember-cook
+  playTimeTracker: JobEmberCook
+  startingGear: ChefGear
+  icon: JobIconChef
+  supervisors: job-supervisors-ember-housekeeping
+  weight: 12
+  access:
+  - Service
+  - Kitchen
+  - Hydroponics
+  - Bar
+  - Maintenance
+  - Cryogenics
+  minSkills:
+    cooking: Trained
+    botany: Basic
+    chemistry: Basic
+  altTitles:
+  - id: Botanist
+    name: job-name-ember-cook-botanist
+    description: job-description-ember-cook-botanist
+    minSkills:
+      botany: Trained
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+    - EmberBranchCivilian
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsE3
+    - EmberRankCorpsE5
+    - EmberRankContractor
+  - !type:CharacterAgeRequirement
+    min: 20
+  - !type:CharacterSkillRequirement
+
+# Keeps a sealed metal box with forty people in it from becoming uninhabitable. The Corps opens
+# this at E-1 deliberately: it is where a rating starts.
+- type: job
+  id: EmberSanitationTechnician
+  name: job-name-ember-sanitation-technician
+  description: job-description-ember-sanitation-technician
+  playTimeTracker: JobEmberSanitationTechnician
+  startingGear: JanitorGear
+  icon: JobIconJanitor
+  supervisors: job-supervisors-ember-housekeeping
+  weight: 10
+  access:
+  - Service
+  - Janitor
+  - Maintenance
+  - Cryogenics
+  minSkills:
+    hauling: Trained
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+    - EmberBranchCivilian
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsE1
+    - EmberRankCorpsE3
+    - EmberRankContractor
+  - !type:CharacterAgeRequirement
+    min: 18
+  - !type:CharacterSkillRequirement
+
+# A rating with no speciality, sent wherever hands are short. Asks for nothing beyond the Corps'
+# own floor, which makes it the cheapest post on the ship and the honest entry point.
+#
+# It is not the same thing as a trainee. A trainee is learning one department's work; a crewman
+# is doing every department's dull half, and will still be doing it next cruise.
+- type: job
+  id: EmberCrewman
+  name: job-name-ember-crewman
+  description: job-description-ember-crewman
+  playTimeTracker: JobEmberCrewman
+  startingGear: PassengerGear
+  icon: JobIconServiceWorker
+  supervisors: job-supervisors-ember-housekeeping
+  weight: 5
+  access:
+  - Service
+  - Maintenance
+  - Cryogenics
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsE1
+    - EmberRankCorpsE3
+  - !type:CharacterSkillRequirement

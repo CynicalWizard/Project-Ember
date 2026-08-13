@@ -1,0 +1,284 @@
+# Engineering aboard the SEV Ember.
+#
+# Expeditionary Corps, with one door left open to contractors. The Corps runs the ship; Aether
+# Atmospherics staffs the atmospheric side under contract because the Corps could not fill it,
+# which is the whole shape of the civilian presence aboard — holes in a government complement,
+# not a corporate department. So the Engineer and the Roboticist admit a contractor and nothing
+# above them does: a department head aboard a state vessel is a serviceman.
+#
+# EMBER-TODO: `startingGear` and `icon` point at existing vanilla content on purpose, same as in
+# command.yml and security.yml.
+#
+# The Corps floor — `hauling`, `science` and `EVA` at Basic — is not repeated below; it lives on
+# the branch and is merged in when requirements are checked. A contractor has no service and so
+# has no floor, which is a real difference and is meant to be: the hired electrician was hired
+# to be an electrician, not to be a crewman.
+#
+# This is the first department to use alternate job titles, so the reasoning is worth stating
+# here rather than in the design vault alone. Four kinds of engineer would be four entries in the
+# job list, four descriptions to read, and one decision — they share access, gear, supervisors
+# and department. One entry with four names is the same information at a quarter of the width.
+#
+# What makes the names more than decoration is that three of them raise the floor. Anyone may be
+# an Engineer; calling yourself an Electrician means the electrical work is yours and the data
+# says so. That is the same "who cannot do their work without whom" test the rest of these files
+# are written against, applied one level further down.
+
+- type: department
+  id: EmberEngineering
+  name: department-EmberEngineering
+  description: department-EmberEngineering-description
+  color: "#c8a445"
+  weight: 17
+  roles:
+  - EmberChiefEngineer
+  - EmberSeniorEngineer
+  - EmberEngineer
+  - EmberRoboticist
+  - EmberEngineerTrainee
+
+- type: playTimeTracker
+  id: JobEmberChiefEngineer
+
+- type: playTimeTracker
+  id: JobEmberSeniorEngineer
+
+- type: playTimeTracker
+  id: JobEmberEngineer
+
+- type: playTimeTracker
+  id: JobEmberRoboticist
+
+- type: playTimeTracker
+  id: JobEmberEngineerTrainee
+
+# Answers for the reactor, the hull and the air. `engines` Experienced is the post's whole
+# argument — nobody else aboard comes close — while `atmos` deliberately stops at Basic, so that
+# the department head can keep the air breathing but cannot quietly replace his atmospheric
+# technician. Age 27 on top of the commission: the Corps makes Ensigns at 26 and does not hand
+# them reactors.
+- type: job
+  id: EmberChiefEngineer
+  name: job-name-ember-chief-engineer
+  description: job-description-ember-chief-engineer
+  playTimeTracker: JobEmberChiefEngineer
+  startingGear: ChiefEngineerGear
+  icon: JobIconChiefEngineer
+  supervisors: job-supervisors-ember-command
+  weight: 18
+  requireAdminNotify: true
+  canBeAntag: false
+  access:
+  - ChiefEngineer
+  - Engineering
+  - Atmospherics
+  - Command
+  - Maintenance
+  - External
+  - Cryogenics
+  minSkills:
+    bureaucracy: Basic
+    computer: Trained
+    EVA: Trained
+    construction: Trained
+    electrical: Trained
+    atmos: Basic
+    engines: Experienced
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsO1
+    - EmberRankCorpsO3
+  - !type:CharacterAgeRequirement
+    min: 27
+  - !type:CharacterSkillRequirement
+
+# The department's most experienced hand, who is not its head and may well have been aboard
+# longer than whoever is. Trained across the board rather than expert at one thing, which is what
+# separates the post from the four specialists below it. Age 28, because E-5 is reachable at 24
+# and "senior" has to mean something.
+- type: job
+  id: EmberSeniorEngineer
+  name: job-name-ember-senior-engineer
+  description: job-description-ember-senior-engineer
+  playTimeTracker: JobEmberSeniorEngineer
+  startingGear: SeniorEngineerGear
+  icon: JobIconSeniorEngineer
+  supervisors: job-supervisors-ember-chief-engineer
+  weight: 15
+  access:
+  - Engineering
+  - Atmospherics
+  - Maintenance
+  - External
+  - Cryogenics
+  minSkills:
+    computer: Trained
+    EVA: Trained
+    construction: Trained
+    electrical: Trained
+    atmos: Trained
+    engines: Trained
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsE5
+    - EmberRankCorpsE7
+  - !type:CharacterAgeRequirement
+    min: 28
+  - !type:CharacterSkillRequirement
+
+# The department's working strength, under whichever of five names fits what the character
+# actually trained in. The job's own floor is the generalist's: competent at construction,
+# passing at everything else. Each specialist name then buys one thing properly.
+#
+# Note that the specialisms do not stack. A character may hold the post as an Electrician or as
+# an Atmospheric Technician, not both, and the crew can read which from the manifest. That is the
+# division of labour done in data instead of in a rule nobody reads.
+- type: job
+  id: EmberEngineer
+  name: job-name-ember-engineer
+  description: job-description-ember-engineer
+  playTimeTracker: JobEmberEngineer
+  startingGear: StationEngineerGear
+  icon: JobIconStationEngineer
+  supervisors: job-supervisors-ember-engineering
+  weight: 10
+  access:
+  - Engineering
+  - Atmospherics
+  - Maintenance
+  - External
+  - Cryogenics
+  minSkills:
+    computer: Basic
+    construction: Trained
+    electrical: Basic
+    atmos: Basic
+    engines: Basic
+  altTitles:
+  # The reactor and the drives. The one specialism the Chief Engineer also has, because a ship
+  # this far out does not go to sea with a single person who understands its power plant.
+  - id: EngineTechnician
+    name: job-name-ember-engineer-engine-technician
+    description: job-description-ember-engineer-engine-technician
+    minSkills:
+      engines: Trained
+  # Fire, flooding, breaches. Everything that is an emergency rather than a repair.
+  - id: DamageControlTechnician
+    name: job-name-ember-engineer-damage-control
+    description: job-description-ember-engineer-damage-control
+    minSkills:
+      atmos: Trained
+      EVA: Trained
+  - id: Electrician
+    name: job-name-ember-engineer-electrician
+    description: job-description-ember-engineer-electrician
+    minSkills:
+      electrical: Trained
+  # The contractor's name as much as the Corps'. Aether staffs this side aboard.
+  - id: AtmosphericTechnician
+    name: job-name-ember-engineer-atmospheric-technician
+    description: job-description-ember-engineer-atmospheric-technician
+    minSkills:
+      atmos: Trained
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+    - EmberBranchCivilian
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsE3
+    - EmberRankCorpsE5
+    - EmberRankContractor
+  # The Corps grade already says nineteen; the contractor grade says nothing at all, because a
+  # company rank is a job title and not a career. Any post open to contractors has to state its
+  # own floor or it has none.
+  - !type:CharacterAgeRequirement
+    min: 19
+  - !type:CharacterSkillRequirement
+
+# Synthetics, exosuits and the bots that do the walking. `anatomy` Trained is not a mistake: the
+# posted reason is positronic housings and cyborg shells, and the practical effect is that the
+# one person aboard who can rebuild a machine has also had to learn where a spine goes.
+- type: job
+  id: EmberRoboticist
+  name: job-name-ember-roboticist
+  description: job-description-ember-roboticist
+  playTimeTracker: JobEmberRoboticist
+  startingGear: ResearchAssistantGear
+  icon: JobIconRoboticist
+  supervisors: job-supervisors-ember-chief-engineer
+  weight: 10
+  access:
+  - Engineering
+  - Research
+  - Maintenance
+  - Cryogenics
+  minSkills:
+    computer: Trained
+    devices: Experienced
+    EVA: Trained
+    anatomy: Trained
+    construction: Basic
+    electrical: Basic
+  altTitles:
+  # `exosuit` runs unskilled, civilian, combat rather than the usual five rungs, so Basic here is
+  # the civilian qualification — the one that means "may operate a rig", not "may fight in one".
+  - id: MechsuitTechnician
+    name: job-name-ember-roboticist-mechsuit-technician
+    description: job-description-ember-roboticist-mechsuit-technician
+    minSkills:
+      exosuit: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+    - EmberBranchCivilian
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsE5
+    - EmberRankContractor
+  - !type:CharacterAgeRequirement
+    min: 25
+  - !type:CharacterSkillRequirement
+
+# Aboard to learn. Asked for the two basics that make an apprentice useful rather than merely
+# present, and nothing else — the rest is what the department is for.
+#
+# Bay hands a trainee its minimums for free and caps the points. We cannot: skills belong to the
+# character. So this is simply the cheapest post in the department, which is the same thing said
+# honestly — nothing stops a veteran from standing in a trainee's slot except that they would be
+# wasting themselves, and that is a choice the player is allowed to make.
+- type: job
+  id: EmberEngineerTrainee
+  name: job-name-ember-engineer-trainee
+  description: job-description-ember-engineer-trainee
+  playTimeTracker: JobEmberEngineerTrainee
+  startingGear: TechnicalAssistantGear
+  icon: JobIconTechnicalAssistant
+  supervisors: job-supervisors-ember-engineering
+  weight: 5
+  access:
+  - Engineering
+  - Maintenance
+  - Cryogenics
+  minSkills:
+    construction: Basic
+    electrical: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsE1
+    - EmberRankCorpsE3
+  - !type:CharacterSkillRequirement

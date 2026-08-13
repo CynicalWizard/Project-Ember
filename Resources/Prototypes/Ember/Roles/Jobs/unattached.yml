@@ -1,0 +1,91 @@
+# Unattached personnel aboard the SEV Ember.
+#
+# People who are aboard without being in the ship's organisation. Not a department in the sense
+# the others are — nobody here reports to anyone here — but the job list has to put them
+# somewhere, and putting them at the bottom under their own heading says the true thing.
+#
+# EMBER-TODO: `startingGear` and `icon` point at existing vanilla content on purpose, same as in
+# the other department files.
+#
+# Two very different reasons to be here, which is worth being clear about because they read
+# alike in a list:
+#
+# The Passenger has no billet because they are not crew. They came aboard for their own reasons,
+# the ship is carrying them, and that is the whole relationship.
+#
+# The Off-Duty Watch has no billet because they are between them. It is a day off, nothing more
+# elaborate: the branch is kept, the rank is kept, the skills are the character's and were never
+# the job's to begin with. What is not kept is the duty and the authority that came with it.
+#
+# So it is open to *every* faction — all four branches carry `EmberRankOffDuty` in `spawnRanks`
+# for this and only this — and the job itself names no branch, only the rank. That makes it the
+# one post in these files with no `CharacterBranchRequirement`, which is not an oversight: being
+# off duty is not any service's business.
+#
+# `EmberRankOffDuty` is Bay's `/datum/mil_rank/civ/offduty`. It existed in the rank data from the
+# first pass and was unreachable until this job gave it something to be for.
+
+- type: department
+  id: EmberUnattached
+  name: department-EmberUnattached
+  description: department-EmberUnattached-description
+  color: "#8a8a8a"
+  weight: 1
+  roles:
+  - EmberPassenger
+  - EmberOffDutyWatch
+
+- type: playTimeTracker
+  id: JobEmberPassenger
+
+- type: playTimeTracker
+  id: JobEmberOffDutyWatch
+
+# Carried, not employed. No skills asked and none implied — whatever this character can do, they
+# did not learn it here and nobody aboard is counting on it.
+- type: job
+  id: EmberPassenger
+  name: job-name-ember-passenger
+  description: job-description-ember-passenger
+  playTimeTracker: JobEmberPassenger
+  startingGear: PassengerGear
+  icon: JobIconPassenger
+  supervisors: job-supervisors-ember-executive-officer
+  weight: 2
+  access:
+  - Cryogenics
+  altTitles:
+  # A guest is a passenger somebody invited. Nothing mechanical separates them, and the
+  # difference is worth offering anyway because it changes how the character introduces himself.
+  - id: Guest
+    name: job-name-ember-passenger-guest
+    description: job-description-ember-passenger-guest
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchCivilian
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCivilian
+    - EmberRankContractor
+  - !type:CharacterSkillRequirement
+
+# Crew, off shift. Access is the ship's ordinary spaces and nothing else — off duty means off
+# duty: the rank is still there, the doors are not.
+- type: job
+  id: EmberOffDutyWatch
+  name: job-name-ember-off-duty-watch
+  description: job-description-ember-off-duty-watch
+  playTimeTracker: JobEmberOffDutyWatch
+  startingGear: PassengerGear
+  icon: JobIconPassenger
+  supervisors: job-supervisors-ember-command
+  weight: 1
+  access:
+  - Maintenance
+  - Cryogenics
+  requirements:
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankOffDuty
+  - !type:CharacterSkillRequirement
