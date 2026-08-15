@@ -167,85 +167,33 @@
     species:
     - Reptilian
 
+# Ahdomai carries two states, and which of them issued your papers is the whole of the tajaran
+# entry on this axis. The clans are not here: they moved to the culture axis, where a clan says
+# what a nationality says - where you are from and how you were raised - rather than who you are a
+# subject of. Sierra keeps them as factions because Sierra's Ahdomai never unified; ours did, in a
+# war, and that is exactly what stopped a clan from being a state.
+#
+# The exception is the clan the war was against.
+
 - type: emberBackground
-  id: EmberFactionTajaranHadii
+  id: EmberFactionAhdomaiCommonwealth
   passport: EmberPassportAhdomai
   axis: Faction
   weight: 60
-  name: ember-faction-tajaran-hadii
-  description: ember-faction-tajaran-hadii-desc
+  name: ember-faction-ahdomai-commonwealth
+  description: ember-faction-ahdomai-commonwealth-desc
   requirements:
   - !type:CharacterSpeciesRequirement
     species:
     - Tajaran
 
 - type: emberBackground
-  id: EmberFactionTajaranKaytam
-  passport: EmberPassportAhdomai
+  id: EmberFactionKaytam
+  passport: EmberPassportKaytam
   axis: Faction
   weight: 59
-  name: ember-faction-tajaran-kaytam
-  description: ember-faction-tajaran-kaytam-desc
-  requirements:
-  - !type:CharacterSpeciesRequirement
-    species:
-    - Tajaran
-
-- type: emberBackground
-  id: EmberFactionTajaranKsd
-  passport: EmberPassportAhdomai
-  axis: Faction
-  weight: 58
-  name: ember-faction-tajaran-ksd
-  description: ember-faction-tajaran-ksd-desc
-  requirements:
-  - !type:CharacterSpeciesRequirement
-    species:
-    - Tajaran
-
-- type: emberBackground
-  id: EmberFactionTajaranNazkiin
-  passport: EmberPassportAhdomai
-  axis: Faction
-  weight: 57
-  name: ember-faction-tajaran-nazkiin
-  description: ember-faction-tajaran-nazkiin-desc
-  requirements:
-  - !type:CharacterSpeciesRequirement
-    species:
-    - Tajaran
-
-- type: emberBackground
-  id: EmberFactionTajaranShishi
-  passport: EmberPassportAhdomai
-  axis: Faction
-  weight: 56
-  name: ember-faction-tajaran-shishi
-  description: ember-faction-tajaran-shishi-desc
-  requirements:
-  - !type:CharacterSpeciesRequirement
-    species:
-    - Tajaran
-
-- type: emberBackground
-  id: EmberFactionTajaranJarr
-  passport: EmberPassportAhdomai
-  axis: Faction
-  weight: 55
-  name: ember-faction-tajaran-jarr
-  description: ember-faction-tajaran-jarr-desc
-  requirements:
-  - !type:CharacterSpeciesRequirement
-    species:
-    - Tajaran
-
-- type: emberBackground
-  id: EmberFactionTajaranOther
-  passport: EmberPassportAhdomai
-  axis: Faction
-  weight: 54
-  name: ember-faction-tajaran-other
-  description: ember-faction-tajaran-other-desc
+  name: ember-faction-kaytam
+  description: ember-faction-kaytam-desc
   requirements:
   - !type:CharacterSpeciesRequirement
     species:

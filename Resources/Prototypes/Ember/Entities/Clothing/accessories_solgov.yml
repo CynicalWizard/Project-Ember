@@ -94,7 +94,8 @@
   parent: EmberClothingAccessoryBase
   id: EmberClothingAccessoryEcpatch3
   name: "Cultural Exchange patch"
-  description: "A radiation-shielded shoulder patch, denoting service in the the Sol Central Government Expeditionary Corps Cultural Exchange program."
+  # Bay's own line reads "in the the Sol Central Government"; the stutter is not carried across.
+  description: "A radiation-shielded shoulder patch, denoting service in the Sol Central Government Expeditionary Corps Cultural Exchange program."
   components:
   - type: Sprite
     sprite: Ember/Clothing/Accessories/ecpatch3.rsi

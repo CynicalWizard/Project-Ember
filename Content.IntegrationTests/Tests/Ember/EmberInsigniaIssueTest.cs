@@ -1,4 +1,4 @@
-#nullable enable
+﻿#nullable enable
 using System.Collections.Generic;
 using System.Linq;
 using Content.Shared.Ember.Clothing;
@@ -117,6 +117,80 @@ public sealed class EmberInsigniaIssueTest
                     "A police officer does not wear a ship's department patch.");
                 Assert.That(insignia.GetDepartmentInsignia(engineer), Is.Not.Null,
                     "Every post that is part of the ship's organisation should have one.");
+            });
+        });
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    /// A xeno serving in the Corps is issued the Cultural Exchange Programme patch; a human in the
+    /// same post is not, and neither is the same xeno on a civilian contract.
+    /// </summary>
+    /// <remarks>
+    /// The mark only means anything if it separates one from the other, and both halves of that can
+    /// break quietly. A patch issued to everybody reads as decoration; a patch issued to nobody
+    /// reads as a department with no art. Neither throws.
+    ///
+    /// The civilian case is the one that argues for hanging this off the branch rather than off the
+    /// species: the same person crewing a freighter is in no programme, and if the species carried
+    /// the patch they would wear it anyway.
+    /// </remarks>
+    [Test]
+    public async Task AXenoInTheCorpsIsIssuedTheExchangePatch()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+
+        var protoMan = server.ResolveDependency<IPrototypeManager>();
+        var entMan = server.ResolveDependency<IEntityManager>();
+        var insignia = entMan.System<EmberInsigniaSystem>();
+        var inventory = entMan.System<InventorySystem>();
+        var accessories = entMan.System<EmberAccessorySystem>();
+
+        var testMap = await pair.CreateTestMap();
+
+        await server.WaitAssertion(() =>
+        {
+            var job = protoMan.Index<JobPrototype>("EmberEngineer");
+
+            List<string> Issue(string species, string branch, string rank)
+            {
+                var profile = new HumanoidCharacterProfile
+                {
+                    Species = species,
+                    Branch = branch,
+                    Rank = rank,
+                };
+
+                var wearer = entMan.SpawnEntity("MobHuman", testMap.GridCoords);
+                var uniform = entMan.SpawnEntity("EmberClothingUniformUtilityExpeditionary", testMap.GridCoords);
+                Assert.That(inventory.TryEquip(wearer, uniform, "jumpsuit", true, force: true), Is.True);
+
+                insignia.IssueInsignia(wearer, job, profile);
+                return Attached(entMan, accessories, uniform);
+            }
+
+            var tajaran = Issue("Tajaran", "EmberBranchExpeditionaryCorps", "EmberRankCorpsE5");
+            var unathi = Issue("Reptilian", "EmberBranchExpeditionaryCorps", "EmberRankCorpsE5");
+            var human = Issue("Human", "EmberBranchExpeditionaryCorps", "EmberRankCorpsE5");
+            var contractor = Issue("Tajaran", "EmberBranchCivilian", "EmberRankContractor");
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(tajaran, Does.Contain("EmberClothingAccessoryEcpatch3"),
+                    "A tajaran in the Corps is here on an intergovernmental contract and wears the patch.");
+                Assert.That(unathi, Does.Contain("EmberClothingAccessoryEcpatch3"),
+                    "An unathi in the Corps wears it for the same reason.");
+                Assert.That(human, Does.Not.Contain("EmberClothingAccessoryEcpatch3"),
+                    "A citizen is in no exchange programme, and the mark is meaningless if everyone wears it.");
+                Assert.That(contractor, Does.Not.Contain("EmberClothingAccessoryEcpatch3"),
+                    "The patch belongs to the Corps posting, not to the species.");
+
+                // The rank boards still arrive, which is what would break if the new issue path
+                // shadowed the old one rather than running beside it.
+                Assert.That(tajaran, Does.Contain("EmberClothingAccessoryEcrankE5"),
+                    "The exchange patch is issued on top of the rank boards, not instead of them.");
             });
         });
 

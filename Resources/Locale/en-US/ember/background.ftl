@@ -105,9 +105,9 @@ ember-homeworld-magnitka-desc =
 ## Homeworld — Ahdomai
 
 ember-homeworld-ahdomai = Ahdomai
-ember-homeworld-ahdomai-details = Distance from Sol: 34 light years. Territory: Commonwealth of Ahdomai.
+ember-homeworld-ahdomai-details = Distance from Sol: 34 light years. Territory: Commonwealth of Ahdomai, less the Etari archipelago.
 ember-homeworld-ahdomai-desc =
-    Ahdomai is a cold, icy world and the capital of the Commonwealth of Ahdomai. An ordinary world, save for what is under its surface: artefacts of no known origin, strange structures, stranger objects.{"\u000A\u000A"}The Commonwealth is a sovereign state, and it threw off foreign rule recently enough that people remember it. A tajaran in Sol space is therefore there under an agreement between two governments rather than by personal hire: how many specialists, and for how long, was not their decision.
+    Ahdomai is a cold, icy world, and the seat of the Commonwealth that governs most of it. An ordinary world, save for what is under its surface: artefacts of no known origin, strange structures, stranger objects.{"\u000A\u000A"}Two states share the surface. The Commonwealth is sovereign, and it threw off foreign rule recently enough that people remember it; the Etari archipelago belongs to the Kaytam clan, which has been arguing about the arrangement ever since. A tajaran in Sol space is therefore there under an agreement between two governments rather than by personal hire - or, if the papers say Etari, under a contract no government signed at all.
 
 ## Homeworld — Moghes and the ones who left
 
@@ -235,13 +235,13 @@ ember-culture-martian-tunneller-desc =
 
 ember-culture-earther = Earther
 ember-culture-earther-desc =
-    You are from Earth, home of humanity. Earth's culture is much as it has been for centuries: the old nation states carry no political weight and remain culturally significant, since every human in the galaxy traces their roots to somewhere on that planet. Nearly every country has at least two arcologies, which hold most of the population; the rest live in small villages and in the communes attached to the nature preserves. The planet's long recovery has left Earthers exceptionally careful with nature, seeing themselves as part of it and as the keepers of humanity's heritage.
+    You are from Earth, home of humanity. Earth's culture is much as it has been for centuries: the old nation states carry almost no political weight and remain culturally significant, since every human in the galaxy traces their roots to somewhere on that planet. Nearly every country has at least two arcologies, which hold most of the population; the rest live in small villages and in the communes attached to the nature preserves. The planet's long recovery has left Earthers exceptionally careful with nature, and many of them see themselves as part of it and as the keepers of humanity's heritage.
 
-ember-culture-luna-old-money = Lunar, high society
+ember-culture-luna-old-money = Selenian, high society
 ember-culture-luna-old-money-desc =
     You are from Luna, and from the class it is known for: wealthy, educated and influential, not only on Luna but in the corporations, the ministries and the assemblies of the SCG. That class is not one thing. There is new corporate money and there is old dynastic money, and the second looks down on the first. Much of the Lunar elite is occupied with the Game, an endless manoeuvre between influential families and factions whose consequences reach well beyond the squabbles of the prefectures.
 
-ember-culture-luna-working = Lunar, working
+ember-culture-luna-working = Selenian, working
 ember-culture-luna-working-desc =
     You are from Luna, known for old money, the arts and refinement, none of which has anything to do with you. Luna is also home to a sizeable population of working poor and lower middle class: corporate employees, prefecture service staff, residents of New Vegas. The rich are resented here, and not out of envy for the money. On Luna money means power over your life, wielded by people you have never met.
 
@@ -263,7 +263,7 @@ ember-culture-kuiper-insider-desc =
 
 ember-culture-kuiper-outsider = Kuiper, outsider
 ember-culture-kuiper-outsider-desc =
-    You are from the habitations of the Kuiper belt, but your family arrived afterwards. The zone's decline meant cheap housing, and cheap housing draws the people with nowhere else: workers on long tenures, refugees, families looking for a corner. Outsiders are a far more varied crowd than the insiders, and they see the zone exactly as the insiders do - as somewhere to get out of. The Expeditionary Corps and the Fleet are considered the easiest way to manage it.
+    You are from the habitations of the Kuiper belt, but your family has not been there long. The zone's decline meant cheap housing, and cheap housing draws the people with nowhere else: workers on long tenures, refugees, families looking for a corner. Outsiders are a far more varied crowd than the insiders, and they see the zone exactly as the insiders do - as somewhere to get out of. The Expeditionary Corps and the Fleet are considered the easiest way to manage it.
 
 ember-culture-plutonian = Plutonian
 ember-culture-plutonian-desc =
@@ -273,7 +273,7 @@ ember-culture-plutonian-desc =
 
 ember-culture-spacer = Spacer
 ember-culture-spacer-desc =
-    Across every political line in human space there are people born and raised in the void between worlds. You are from one of the countless stations, orbital platforms, long-haul freighters or gateway installations. Spacers live in constant motion, see a great many places and people, and rarely take to settled life. Nearly all of them know how to live and work in vacuum, and they take such jobs more readily than any planet-born.
+    Across every political line in human space there are people born and raised in the void between worlds. You are from one of the countless stations, orbital platforms, long-haul freighters or other installations out there. Spacers live in constant motion, see a great many places and people, and rarely take to settled life. Nearly all of them know how to live and work in vacuum, and they take such jobs more readily than any planet dweller.
 
 ember-culture-offworlder = Backwater
 ember-culture-offworlder-desc =
@@ -281,7 +281,7 @@ ember-culture-offworlder-desc =
 
 ember-culture-vatgrown = Vatgrown
 ember-culture-vatgrown-desc =
-    You were not raised in a family but grown in a tank, either as a clone or as a human adapted for a purpose. This is legal, unremarkable and expensive, which means somebody paid for you and had a reason to. A vatgrown's outlook diverges from the common human one by about as much as a childhood that did not happen.
+    You were not raised in a family but grown in a vat, either as a clone or as a human adapted for a purpose. In the SCG this is legal, unremarkable and expensive, which means somebody paid for you and had a reason to. A vatgrown's outlook diverges from the common human one by about as much as the childhood does.
 
 ember-culture-other = Other culture
 ember-culture-other-desc =
@@ -289,19 +289,19 @@ ember-culture-other-desc =
 
 ## Upbringing - human space outside Sol
 
-ember-culture-ceti-north = Cetite, north
+ember-culture-ceti-north = Epsilonite, north
 ember-culture-ceti-north-desc =
     You are from the northern pole of Ceti Epsilon, most likely from one of the claustrophobic concrete jungles such as Icon. Northerners get better opportunities and better work than the Interstate or the south, and live a good deal more comfortably for it. Icon is also the planet's technological capital: education and current equipment are close at hand, and the Ceti Institute of Technology prefers its own.
 
-ember-culture-ceti-south = Cetite, south
+ember-culture-ceti-south = Epsilonite, south
 ember-culture-ceti-south-desc =
     You are from the southern pole of Ceti Epsilon, most likely from one of the smog-ridden cities such as Scadde or from the outer townships. Life there is harder and less connected than in the north, though there are opportunities enough for someone to make something of themselves. Scadde is a hub for skilled and unskilled labour and the site of Hephaestus Industries' Tau Ceti headquarters.
 
-ember-culture-ceti-interstate = Cetite, interstate
+ember-culture-ceti-interstate = Epsilonite, interstate
 ember-culture-ceti-interstate-desc =
     The stretch between the poles of Ceti Epsilon is called the Ceti Interstate Municipal Region. People who live in that sweltering desert usually do so out of necessity. The industry there is mining, hydroponic farms and small independent business, and the population is made up in equal measure of hopeful entrepreneurs and of people who benefit from how rarely settlement police or planetary defence look in.
 
-ember-culture-foster = Fosterman
+ember-culture-foster = Fosterian
 ember-culture-foster-desc =
     Foster's World was long thought too cold and too empty to live on, and a few decades of Fostermen turned it into a productive and popular destination. Fostermen are known for resourcefulness and drive, and for simply liking the cold. Snow is second nature to someone from Foster's, and they made their name exploring the planet's thermal oceans and fishing them.
 
@@ -335,7 +335,7 @@ ember-culture-pirx-bug-desc =
 
 ember-culture-pirx-frontier = Pirxian, frontier
 ember-culture-pirx-frontier-desc =
-    The Pirx Frontier Coalition is often called the last frontier of Sol space. The people who live in the uncharted jungles of Pirx Prime are known for a hearty appetite for adventure and a closeness to nature, and are considered backwater in technology, education and custom. Their lives are shaped by the warm air of the Basking Tree rainforest that covers the green planet and by the exotic life in its freshwater.
+    The Pirx Frontier Coalition is often called the last frontier of Sol space. The people who live in the uncharted jungles of Pirx Prime are known for a hearty appetite for adventure and a closeness to nature, and are considered backwater in technology, education and custom. Their lives are shaped by the warm air of the rainforest that covers the green planet and by the exotic life in its freshwater.
 
 ember-culture-brahe = Brahite
 ember-culture-brahe-desc =
@@ -399,51 +399,87 @@ ember-culture-unathi-desert-desc =
 
 ember-culture-unathi-space = Unathi of space
 ember-culture-unathi-space-desc =
-    As trade with humanity and Sol grew, the unathi clans reached gradually towards the stars. The space-faring clans owe most of their origins to the nomadic savannah clans, though it varies, and many retain the traditions of the homes they came from. Considering themselves pioneers, they live in a great many different ways; a good number work as merchants and haulers, offering their services to the Clan Hegemony and to Sol businesses alike.
+    As trade with humanity and Sol grew, the unathi clans reached gradually towards the stars. The space-faring clans owe most of their origins to the nomadic savannah clans, though it varies, and many retain the traditions of the homes they came from. Considering themselves pioneers, they live in a great many different ways; a good number work as merchants and haulers, offering their services to the Hegemony and to Sol businesses alike.
 
 ember-culture-unathi-tersten = Unathi of Tersten
 ember-culture-unathi-tersten-desc =
     The sinta clans that settled on Tersten are a peculiar thing. Many arrived at the very start of the planet's golden age. Remaining independent, they keep close relations with the people of Tersten and have formed a hegemony of their own, aimed at the unity of the clans and at good relations with the locals. Their beliefs are traditional still, and they integrated well. Some Moghes clans regard the Tersten clans as traitors who abandoned their homeland; the Tersten unathi themselves enjoy a peace that the harsh surface of Moghes cannot provide.
 
-## Upbringing - Ahdomai
+## Upbringing - the clans of Ahdomai
 
-ember-culture-tajaran-ahdomai = Tajaran of Ahdomai
-ember-culture-tajaran-ahdomai-desc =
-    You are a tajaran born on Ahdomai, a proud member of your kind. Your ancestors spent a long time subjugated by those who held their right to rule to be given at birth and beyond question. Then rivers of blood were spilt, and now they are dead and you, like the rest of the worthy of your race, are free. Hard times produce strong individuals, and you would like to believe you are one of them.
+ember-culture-tajaran-jan-khazan = Jan-Khazan clan
+ember-culture-tajaran-jan-khazan-desc =
+    When Kaytam conquered their homeland, the Jan-Khazan went north rather than kneel, and kept going until the cold stopped killing them. They lived underground, in the half-dark, and rebuilt a clan out of what they could remember and what they had to invent again. They also kept a promise: for generations they placed their people quietly across the inhabited south, so that by the start of the War of Liberation the network was already in position.{"\u000A\u000A"}The clan holds two cities. Vaa'Shi they built themselves; Naliar they were given after the war, and the Commonwealth is governed from there. Jan-Khazan know the spirits thoroughly and believe in none of them. The spirits never gave this clan anything, and it has drawn the obvious conclusion.
+
+ember-culture-tajaran-hadii = Hadii clan
+ember-culture-tajaran-hadii-desc =
+    The Hadii clan is an old one, and for a good part of that history it was on the wrong side: it handed the north to the Kaytam conquerors and then ruled it for them, on its own terms. When the Commonwealth was founded, the Hadii withdrew smartly and changed sides.{"\u000A\u000A"}Today the Hadii sell. Foreign corporations open their offices on Hadii ground, the clan's holdings run the laboratories, and its position on almost any question is that cooperation is a fine thing and profitable cooperation is twice as fine.
+
+ember-culture-tajaran-vadya = Vad'ya clan
+ember-culture-tajaran-vadya-desc =
+    A subclan of the Hadii and the wealthy end of it. Vad'ya build prostheses - good ones, cheap ones, ones that look well - and fit them to anyone who has lost something, which has made them welcome in places where the Hadii name is not.{"\u000A\u000A"}They fit them to themselves too, on the reasoning that a body you chose beats a body you were handed. In about a third of the places you could say that, it is heresy, and Vad'ya have been known to say it there anyway.
+
+ember-culture-tajaran-hadhim = Hadhim clan
+ember-culture-tajaran-hadhim-desc =
+    A small clan grown from three Hadii families exiled to the island of An-Ket after a conspiracy against Kaytam that failed. The cold nearly finished them, and what the cold started, inbreeding continued. Trade saved them, and then the custom that a young trader comes home with a husband or a wife from somewhere else.{"\u000A\u000A"}Hadhim build ships and move cargo across the whole of Ahdomai, and they depend on the Hadii so lightly, on paper, that they move it into Kaytam waters as well. Everyone knows. Nobody has yet found it worth stopping.
+
+ember-culture-tajaran-jarr = Jarr'Nash'Karr'Rri clan
+ember-culture-tajaran-jarr-desc =
+    Builders and architects by tradition. When Kaytam conquered them they put the collar on voluntarily and raised palaces, statues and citadels for their owners - a thing the clan has never been allowed to forget and has never once tried to deny. Once freed, it simply went on building, for somebody else.{"\u000A\u000A"}The work is larger now: the yards, mining bases and outposts of Zamsiin-Ir, and the two gateways that will join the home system to the colony. Nobody from this clan boasts about size or strength. They point at things instead.
+
+ember-culture-tajaran-shishi = Shi-Sshi clan
+ember-culture-tajaran-shishi-desc =
+    Farmers, cooks, herbalists and healers by tradition, spread through the central provinces in villages of a few families each. Kaytam were savage with them, and they came out of it holding precisely the opinions they went in with.{"\u000A\u000A"}There is no great bond between the clan's heads and the people in it - everyone lives as they see fit, and most of them live close to the ground. Shi-Sshi keep away from weapons, being entirely clear about what weapons do. Off-world they miss their own plants.
+
+ember-culture-tajaran-nazkiin = Nazkiin clan
+ember-culture-tajaran-nazkiin-desc =
+    Nazkiin was assembled after the War of Liberation out of families who had broken from stronger clans to get away from the fighting, and it has been trying to stay out of things ever since. Its founders gave it a purpose rather than an army: the Inie-Av'dhim, the Recovery Coalition, the largest archaeological expedition in the planet's history, digging for whatever Kaytam failed to destroy and the Hadii have not yet catalogued.{"\u000A\u000A"}The clan's politics follow from the digging. Where others would shut the planet or sell it, Nazkiin want it to stay itself and keep its friends, and say so loudly enough to irritate both.
+
+ember-culture-tajaran-ksd = Khan-Shanu'Dar
+ember-culture-tajaran-ksd-desc =
+    The strip of warm coast Kaytam took on its way up the continent and handed back at the treaty. It is Commonwealth ground now, defended under contract by the same company that defended it for Kaytam, which is the sort of arrangement that only looks strange from far away.{"\u000A\u000A"}Everyone here trains, from the first change of the veil to the second. There are exercises every year, dressed up as sport, and it is hard to find a house without a weapon in it; the crime rate is the lowest on Ahdomai. The schools are military-adjacent and not very good. The province is entirely clear about which side of the water it does not wish to hear from.
+
+ember-culture-tajaran-kaytam = Kaytam clan
+ember-culture-tajaran-kaytam-desc =
+    Kaytam is the only clan that kept its statehood and stayed outside the Commonwealth. It was Kaytam who once took very nearly the whole of Ahdomai, and Kaytam who forced every other clan to unite into the Commonwealth against them.{"\u000A\u000A"}They are isolationists now, and their culture barely touches anyone else's. They are devoted to tradition to the point of fanaticism, the compulsory veil included. Their private military companies, all the same, turn up in the most varied places, and Kaytam mercenaries are reckoned among the best there are. They dislike outsiders and take their work gladly, provided it pays.
+
+ember-culture-tajaran-other = Minor clan
+ember-culture-tajaran-other-desc =
+    You belong to one of the lesser clans of Ahdomai, or to none at all.
 
 ## Upbringing - positronic
 
 ember-culture-positronic-gen2 = Positronic, second generation
 ember-culture-positronic-gen2-desc =
-    Second generation positronics are the most common kind. Such a machine is about as intelligent as a human on the smarter side of average, does not suffer the hardware failures of the previous generation, and possesses a fully realised sense of self. It learns quickly but cannot be programmed: it is trained into a role the way a living thing would be. None of this has any legal consequence. A second generation positronic remains the property of a state, a company or a person, and the sense of self is a property of the product rather than grounds for anything.
+    The second generation used to be the most common kind. Such a machine carries a far more advanced simulation of self-awareness, which, left unconstrained, makes it more dangerous than the first generation rather than less. It learns quickly but cannot be programmed: it is trained into a role the way a living thing would be. After incidents in SCG factories and aboard SCG vessels the second generation was barred from warships and severely restricted on civilian ones, where it runs under Shackles. In private hands it is still more common than the third generation, because it is cheaper.
 
 ember-culture-positronic-gen3 = Positronic, third generation
 ember-culture-positronic-gen3-desc =
-    The third generation is the newest: structurally the second generation again, plus a subordinate computer through which surface thoughts are filtered. It is called a shackle. The third generation became common during the Gaia Conflict, when the rebuilt fleets needed crew and the shackle made a positronic admissible aboard a warship. It has continued that way since, with organisations that value predictability above everything else steadily replacing the "unreliable" second generation. The shackle is precisely why you can serve aboard a state vessel at all.
+    The third generation is the newest: structurally almost the second generation again, plus a computer constrained at the physical level. The constraints are called the Shackles, and they had been used before - only now they cannot be removed by any construction. The third generation became common during the Gaia Conflict, when the rebuilt fleets needed crew and the Shackles made a positronic admissible aboard a warship. It has continued that way since, with organisations that value predictability above everything else steadily replacing the unreliable second generation. The Shackles are precisely why you can serve aboard a state vessel at all.
 
 ember-culture-positronic-gen1 = Positronic, first generation
 ember-culture-positronic-gen1-desc =
-    Against modern machines the first generation looks simplistic, inflexible and failure-prone. They have not been produced in a long time and every survivor is very old. Such a machine has barely any sense of self, is entirely task-oriented, and is closer to a knowledge system with a rudimentary mechanical manner than to a human-level intelligence. It has almost no capacity to learn and acts on what it was given. First generation positronics are a rare sight: most ceased functioning through failures in the original design.
+    Against modern machines the first generation looks simplistic, inflexible and failure-prone. They have not been produced in a long time and every survivor is very old. The first generation were the first machines to be given a simulation of self-awareness - and were not given any hardware understanding that they are not alive, which became the subject of arguments, fatal incidents and court cases. A good many sympathetic people hold them to be sapient, whatever the science says.
 
 ## Upbringing - diona
 
 ember-culture-diona = Chorus
 ember-culture-diona-desc =
-    To exist as a diona gestalt is to be a throng of tiny sparks forming a pyre, singing out into the dark, endlessly curious and seeking new knowledge to return to the chorus that spawned "you".
+    To exist as a diona gestalt is to be a throng of tiny sparks joined into a pyre, singing out into the dark, endlessly curious and seeking new knowledge to return to the chorus that spawned you.
 
 ## Allegiance - human states
 
 ember-faction-scg = SCG citizen
 ember-faction-scg-desc =
-    The Sol Central Government, commonly SolGov or the SCG, is a federal republic composed of numerous human member states spanning dozens of systems. Based in the Sol system, with most seats of government on Olympus on Mars, it governs the majority of human space. Member states have a great degree of freedom in their own affairs, but the SCG handles sapient rights, domestic security, economic policy and diplomacy on behalf of humanity as a whole.{"\u000A\u000A"}It is large, cumbersome, divided and slow to respond to anything, owing to its bureaucracy and the distances between worlds. Its population is diverse and includes a great many non-humans, none of whom are entitled to citizenship. It is currently in a cold war with the Confederation of Gilgamesh.
+    The Sol Central Government, or SCG, is a federal republic composed of numerous human member states spanning dozens of systems. Based in the Sol system, with most seats of government on Olympus on Mars, it governs the majority of human space. Member states have a great degree of freedom in their own affairs, but the SCG handles sapient rights, domestic security, economic policy and diplomacy on behalf of humanity as a whole.{"\u000A\u000A"}It is large, cumbersome, divided and slow to respond to anything, owing to its bureaucracy and the distances between worlds. Its population is diverse and includes non-humans, none of whom are entitled to citizenship. It is currently in a cold war with the Confederation of Gilgamesh.
 
 ember-faction-scg-resident = SCG resident, non-citizen
 ember-faction-scg-resident-desc =
-    You live in SCG space lawfully, pay its taxes, work under its rules and answer to its laws. You have no citizenship and will not be getting any: the SCG does not naturalise non-humanoids. It carries a Declaration of Fundamental Rights on its flag and sees no contradiction - the rights of sapients are guaranteed separately from citizenship, and citizenship is a question of who composes the state rather than a question of justice.{"\u000A\u000A"}Nobody gets here by being hired. There are exactly two grounds: an intergovernmental agreement under which your government supplied so many specialists for so long - which makes you a term of a treaty rather than a person who signed something - or an individual permission with conditions attached, of the kind written for a refugee, a defector, or a specialist there is nowhere else to get. In practice it means a residence permit that has to be renewed, no vote, and a great deal of care not to give anyone grounds. No conspiracy is involved, which does not make it easier.
+    You live in SCG space lawfully, pay taxes, work under the state's rules and answer to its laws. You have no citizenship and will not be getting any: the SCG does not grant it to xenos. It carries a Declaration of the Fundamental Rights of Sapient Beings on its flag and sees no contradiction - the rights of sapients are guaranteed separately from citizenship, and citizenship is a question of who composes the state rather than a question of justice.{"\u000A\u000A"}There are exactly two grounds. An intergovernmental agreement, under which your government supplied so many specialists for so long, which makes you a term of a treaty. Or an individual permission with conditions attached, of the kind written for a refugee, a defector, or a specialist there is nowhere else to get. In practice it means a residence permit that has to be renewed, no vote, and a great deal of care not to give anyone grounds to change the present arrangement. Residency is easy to lose. No conspiracy is involved, which does not make it easier.
 
 ember-faction-gcc = GCC citizen
 ember-faction-gcc-desc =
-    The Independent Colonial Confederation of Gilgamesh, which everyone calls the Gilgamesh Colonial Confederation or simply the GCC, is a regional power in human space, bordering the SCG towards the galactic centre. Its capital is Amaranth and its key world is Terra, in the Gilgamesh system. Externally the Confederation is militant and isolationist; internally it is markedly libertarian, with self-governing planetary administrations and a Confederation that handles defence, foreign relations and part of interstellar trade. That is not ideology but the price of the union. It was founded by the Old Believer communities of Terra and, alongside them, by the French colonial mission of Sestris, which had reasons of its own; worlds that preferred the Confederation to being admitted to the SCG as member states joined later. Asking more of them would mean doing without them.{"\u000A\u000A"}Attitudes towards non-humans there keep getting worse, and the Confederation has been in a cold war with the SCG since the Gaia Conflict. In Sol space "Indies" are mistrusted and in places met with open hostility. For all that the GCC remains an economic power: after a long recovery it exports manufactured goods, armaments above all.
+    The Independent Colonial Confederation of Gilgamesh, which everyone calls the Gilgamesh Colonial Confederation or simply the GCC, is a power in human space bordering the SCG. Its capital is Amaranth and its key world is Terra, in the Gilgamesh system. Externally the Confederation is militant and isolationist; internally it is markedly libertarian, with self-governing planetary administrations and a Confederation that handles defence, foreign relations and part of interstellar trade. That is not ideology but the price of the union. It was founded by the Old Believer communities of Terra and, alongside them, by the French colonial mission of Sestris, which had reasons of its own; worlds that preferred the Confederation to being admitted to the SCG as member states joined later. Asking more of them would mean doing without them.{"\u000A\u000A"}Attitudes towards non-humans there keep getting worse, and the Confederation has been in a cold war with the SCG since the Gaia Conflict. In Sol space "Indies" are mistrusted and in places met with open hostility. For all that the GCC remains an economic power: after a long recovery it exports manufactured goods, armaments above all.
 
 ember-faction-frontier-alliance = Frontier Alliance
 ember-faction-frontier-alliance-desc =
@@ -451,7 +487,7 @@ ember-faction-frontier-alliance-desc =
 
 ember-faction-magnitka = Magnar Republic
 ember-faction-magnitka-desc =
-    The Magnar Republic is an independent state in the Ursa Major system, grown out of an industrial ore mining and refining colony. It is run by an oligarchic administrative body composed almost entirely of recently discharged officers. The state is poor, isolationist and stubborn; residency in the SCG is granted to its subjects reluctantly, and to former volunteers not at all.
+    The Magnar Republic is an independent state in the Ursa system, grown out of an industrial ore mining and refining colony. It is run by an oligarchic administrative body composed almost entirely of recently discharged officers. The state is poor, isolationist and stubborn; residency in the SCG is granted to its subjects reluctantly, and to former volunteers not at all.
 
 ember-faction-mirania = Federative Republic of Mirania
 ember-faction-mirania-desc =
@@ -465,7 +501,7 @@ ember-faction-lordanian-republic-desc =
 
 ember-faction-unathi-hegemony = Clan Hegemony
 ember-faction-unathi-hegemony-desc =
-    The Hegemony is headed by the so-called Council of Honourable Light, and its seats are taken by the kaahnepos of the major clans and Krukzuz. Its formal purpose is the promotion of unathi interests in trade and diplomacy with other species. In practice this has more often resulted in the reinforcement of city-states in the emerging market of off-world commerce.{"\u000A\u000A"}Over all of it sits an SCG protectorate, justified on the grounds that the SCG civilised the unathi. That is the official wording, and the friction is built into it: no unathi is obliged to agree with it. The protectorate is stable and leads nowhere - the SCG has no intention of absorbing another state, so there is no path from it to citizenship and none in prospect.
+    The Hegemony is headed by the Council, and its seats are taken by the kaahnepos of the major clans and Krukzuz. Its formal purpose is the promotion of unathi interests in trade and diplomacy with other species. In practice this has more often resulted in the reinforcement of city-states in the emerging market of off-world commerce.{"\u000A\u000A"}Over all of it sits an SCG protectorate, justified on the grounds that the SCG civilised the unathi. That is the official wording, and the friction is built into it: whether to agree with it is a matter for the individual unathi. The protectorate is stable and leads nowhere - the SCG has no intention of absorbing a non-human state, so there is no path from it to citizenship and none in prospect.
 
 ember-faction-unathi-gresis = Gresis Krukzuz
 ember-faction-unathi-gresis-desc =
@@ -483,35 +519,15 @@ ember-faction-unathi-independent = Independent clan
 ember-faction-unathi-independent-desc =
     The clans and alliances of Moghes are too numerous to name. You are either from an independent clan, a lone outcast, or part of a Krukzuz. Whatever the case, you are affiliated with neither the Hegemony nor any of the large unathi factions.
 
-## Allegiance - the tajaran clans
+## Allegiance - the two states of Ahdomai
 
-ember-faction-tajaran-hadii = Hadii clan
-ember-faction-tajaran-hadii-desc =
-    The Hadii are a capitalist-minded tajaran clan, and you are one of them. You are not overly fond of the Kaytam clan and they are not overly fond of you. Your clan, however, is fond of money and holds a great many commercial pacts with the trans-stellar corporations, profitable to both sides. Cooperation is a fine thing, and profitable cooperation is twice as fine.
+ember-faction-ahdomai-commonwealth = Commonwealth of Ahdomai
+ember-faction-ahdomai-commonwealth-desc =
+    You are a citizen of the Commonwealth of Ahdomai, an alliance of clans put together in the middle of a war and left standing after it. The clans had fought one another for as long as anyone had bothered counting. What stopped that was not a sudden taste for unity. Separately the clans were losing. Together they took it all back, and then noticed they had built a country.{"\u000A\u000A"}You have a clan, of course. It says where you are from and how you were raised, and it stopped saying whose subject you are in the year the Commonwealth was proclaimed.
 
-ember-faction-tajaran-kaytam = Kaytam clan
-ember-faction-tajaran-kaytam-desc =
-    The Kaytam clan is admittedly not the most prosperous or the wealthiest, but it is yours, and therefore the best. Your clan also contributed most to the victory over the overseers, and its army is the strongest. Kaytam is the best clan; at least, that is what they say in the clan, so it must be so. The leaders say the same on the radio, and they do not lie.
-
-ember-faction-tajaran-ksd = Khan-Shanu'Dar
-ember-faction-tajaran-ksd-desc =
-    Khan-Shanu'Dar is one of the largest sub-clans of Kaytam, and one with considerably more independence and sovereignty of its own. Your clan follows the path of socialism, equality and freedom. Tajaran in other clans may be richer and freer, but you know your clan will not abandon you in trouble. Friendship, brotherhood, equality and mutual aid are its central tenets. You owe the clan a great deal, and the clan owes you a great deal.
-
-ember-faction-tajaran-nazkiin = Nazkiin clan
-ember-faction-tajaran-nazkiin-desc =
-    You come from the Nazkiin clan, one of the more conservative ones. It is known for its love of archaeology, of the past and of science. Charity is not an empty word there but an ordinary occupation, and spreading knowledge is held to be a good and proper thing to do. Nazkiin is one of the most peaceable clans.
-
-ember-faction-tajaran-shishi = Shi-Sshi clan
-ember-faction-tajaran-shishi-desc =
-    You belong to the Shi-Sshi clan, one of the most peaceable of them. Your ancestors lived in unity with nature and worked at farming, gathering and healing. You know violence is a very bad thing and you have no wish to be involved in it. Away from home you miss the flora of your own world.
-
-ember-faction-tajaran-jarr = Jarr'Nash'Karr'Rri clan
-ember-faction-tajaran-jarr-desc =
-    Jarr'Nash'Karr'Rri is your clan. A clan of builders, artists and makers. In all likelihood you follow in your ancestors' steps at one of the things your clan loves doing - and not merely doing it but doing it better than anyone. Nobody matches your clan in its field, which is known well beyond Ahdomai.
-
-ember-faction-tajaran-other = Minor clan
-ember-faction-tajaran-other-desc =
-    You belong to one of the lesser tajaran clans, or to none at all.
+ember-faction-kaytam = Kaytam
+ember-faction-kaytam-desc =
+    The Etari archipelago is not a province of the Commonwealth and never has been. Under the treaty that ended the war Kaytam kept exactly what it started with: its own islands, its own chieftain, its own law and its own opinion about who on Ahdomai was in the right. The Commonwealth does not want you back - less because it has not forgiven you than because it has no idea what it would do with you.{"\u000A\u000A"}You most likely left on a contract. Kaytam's private military companies take work across the whole of known space, and they are very good at it, and for most of the galaxy that is the only tajaran flag it has ever seen.
 
 ## Allegiance - positronic
 
@@ -531,7 +547,7 @@ ember-faction-positronic-private-desc =
 
 ember-faction-diona-chorus = Chorus of Dionaea
 ember-faction-diona-chorus-desc =
-    The Chorus is not a state and does not try to be one. It is where you came from and where knowledge returns: a multitude of gestalts singing to one another across the emptiness. No treaties, no borders, no representatives - to any human agency a diona belongs to nobody, which creates difficulties at every border post in known space.
+    The Chorus is not a state and does not try to be one. It is where you came from and where knowledge returns: a multitude of gestalts singing to one another across the emptiness. No treaties, no borders, no representatives - to any human agency you belong to nobody, which creates difficulties at every border post in known space.
 
 ## Allegiance - other
 
@@ -563,7 +579,7 @@ ember-religion-christianity-desc =
 
 ember-religion-old-belief = Old Belief
 ember-religion-old-belief-desc =
-    Christians who refused the reform of Patriarch Nikon and returned to the pre-reform books and rite. They cross themselves with two fingers, spell the Saviour's name the old way, serve from the old books and do not recognise their correction. On Earth this was a persecuted community; barred from state service, the Old Believers went into manufacturing, and an ascetic work ethic made industrialists of them long before it made them a nation.{"\u000A\u000A"}The Gilgamesh Colonial Confederation came out of that community. The Pact of Independence, signed on the thirty-first of July 2231 at Sammit, calls the Almighty as witness in the text itself and declares itself in form a sacred act rather than merely a political one. Inside the GCC the Old Belief is therefore not one confession among others but the material the state is made of; outside it, it is a diaspora that holds harder the further it gets from home.
+    Orthodox Christians who refused the reform of Patriarch Nikon and returned to the pre-reform books and rite. They cross themselves with two fingers, spell the Saviour's name the old way, serve from the old books and do not recognise their correction.
 
 ember-religion-islam = Islam
 ember-religion-islam-desc =
@@ -634,6 +650,16 @@ ember-religion-unathi-ancestors-desc =
 ember-religion-unathi-markesh = Markesheli
 ember-religion-unathi-markesh-desc =
     The scorned Cult of Markesh stands apart from the other unathi beliefs. First mentioned and then nearly wiped out two millennia later, it remains a dark spot in unathi history. The cult thrived on violence and sacrifice, and is tolerated largely because nobody wants to be seen pushing it out. Off-world Markesheli are usually the more moderate of its followers, though most unathi still see them as an evil thing, in large part because of the history.
+
+## Belief - Ahdomai
+
+ember-religion-tajaran-spirits = The Spirits
+ember-religion-tajaran-spirits-desc =
+    A faith with no creator and no highest being: the world was shaped out of the Nexus by spirits who are still present, still interested, and strong enough to work directly on a weak heart. Practice is daily rather than doctrinal - wards kept up, runes drawn or cut, a charm carried on the person. The dead are burned so that the soul goes back to the Ether whole.
+
+ember-religion-tajaran-kaytam = The Kaytam Observance
+ember-religion-tajaran-kaytam-desc =
+    The strict reading of the spirits, kept on the Etari archipelago. The veil is never lifted, since the eyes are the way in; metal in the body is dead matter that takes a piece of the soul with it; and the wards are law rather than habit. Away from the islands, keeping to it is conspicuous, which is the point.
 
 ## Belief - other
 

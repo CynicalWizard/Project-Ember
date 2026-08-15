@@ -27,6 +27,18 @@
   speciesBlacklist:
   - Diona
   - Vox
+  # The Cultural Exchange Programme patch. A xeno in the Corps is here because their government
+  # and the SCG signed for it, and this is the mark that says so - issued at spawn rather than
+  # offered in the loadout, which is how Bay has it.
+  #
+  # Diona are barred from the branch outright, so the question does not arise for them. An IPC is
+  # left out on purpose: the patch marks participation in a programme between two states, and
+  # property is not a party to one. Their equivalent is the plate with the owner's name on it.
+  speciesAccessories:
+    Tajaran:
+    - EmberClothingAccessoryEcpatch3
+    Reptilian:
+    - EmberClothingAccessoryEcpatch3
   ranks:
   - EmberRankCorpsE1
   - EmberRankCorpsE3

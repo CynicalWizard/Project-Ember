@@ -119,6 +119,12 @@
 # The plain booklet, for the states Bay never drew a cover for.
 - type: entity
   parent: EmberPassportBase
+  id: EmberPassportKaytam
+  name: Kaytam travel document
+  description: A travel document issued on the Etari archipelago. It is a passport where Etari's word is good for one, and a curiosity everywhere else.
+
+- type: entity
+  parent: EmberPassportBase
   id: EmberPassportFrontierAlliance
   name: Frontier Alliance passport
   description: A travel document younger than most of the people carrying it. Not everyone accepts it.

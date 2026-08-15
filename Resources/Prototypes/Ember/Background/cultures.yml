@@ -560,12 +560,119 @@
     species:
     - Reptilian
 
+# The clans of Ahdomai. They were on the faction axis until the Commonwealth was written, and this
+# is where they belong: a clan is where a tajaran is from, in the sense a nationality is, and since
+# the Unification War there has been exactly one clan that is also a state.
+#
+# Weights overlap the positronic block below on purpose. Order only has to hold inside what one
+# character can see, and no character is both a tajaran and a machine, so the two runs never appear
+# in the same list.
+
 - type: emberBackground
-  id: EmberCultureTajaranAhdomai
+  id: EmberCultureTajaranJanKhazan
+  axis: Culture
+  weight: 53
+  name: ember-culture-tajaran-jan-khazan
+  description: ember-culture-tajaran-jan-khazan-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureTajaranHadii
+  axis: Culture
+  weight: 52
+  name: ember-culture-tajaran-hadii
+  description: ember-culture-tajaran-hadii-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureTajaranVadya
+  axis: Culture
+  weight: 51
+  name: ember-culture-tajaran-vadya
+  description: ember-culture-tajaran-vadya-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureTajaranHadhim
   axis: Culture
   weight: 50
-  name: ember-culture-tajaran-ahdomai
-  description: ember-culture-tajaran-ahdomai-desc
+  name: ember-culture-tajaran-hadhim
+  description: ember-culture-tajaran-hadhim-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureTajaranJarr
+  axis: Culture
+  weight: 49
+  name: ember-culture-tajaran-jarr
+  description: ember-culture-tajaran-jarr-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureTajaranShishi
+  axis: Culture
+  weight: 48
+  name: ember-culture-tajaran-shishi
+  description: ember-culture-tajaran-shishi-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureTajaranNazkiin
+  axis: Culture
+  weight: 47
+  name: ember-culture-tajaran-nazkiin
+  description: ember-culture-tajaran-nazkiin-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureTajaranKsd
+  axis: Culture
+  weight: 46
+  name: ember-culture-tajaran-ksd
+  description: ember-culture-tajaran-ksd-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureTajaranKaytam
+  axis: Culture
+  weight: 45
+  name: ember-culture-tajaran-kaytam
+  description: ember-culture-tajaran-kaytam-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureTajaranOther
+  axis: Culture
+  weight: 44
+  name: ember-culture-tajaran-other
+  description: ember-culture-tajaran-other-desc
   requirements:
   - !type:CharacterSpeciesRequirement
     species:

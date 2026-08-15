@@ -193,6 +193,31 @@
     species:
     - Reptilian
 
+# Tajaran belief. Two entries rather than one because the split is the political fault line of the
+# planet: the same spirits, read two ways, and the difference is visible from across a corridor.
+
+- type: emberBackground
+  id: EmberReligionTajaranSpirits
+  axis: Religion
+  weight: 42
+  name: ember-religion-tajaran-spirits
+  description: ember-religion-tajaran-spirits-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberReligionTajaranKaytam
+  axis: Religion
+  weight: 41
+  name: ember-religion-tajaran-kaytam
+  description: ember-religion-tajaran-kaytam-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
 - type: emberBackground
   id: EmberReligionOther
   axis: Religion

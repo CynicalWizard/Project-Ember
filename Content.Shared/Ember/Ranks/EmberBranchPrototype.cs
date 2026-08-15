@@ -1,4 +1,4 @@
-using Content.Shared.Ember.Skills;
+﻿using Content.Shared.Ember.Skills;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
@@ -91,6 +91,28 @@ public sealed partial class EmberBranchPrototype : IPrototype
     /// <summary>Species barred from this branch. Bay: <c>species_to_branch_blacklist</c>.</summary>
     [DataField]
     public HashSet<ProtoId<SpeciesPrototype>> SpeciesBlacklist { get; set; } = new();
+
+    /// <summary>
+    /// Accessories issued on account of species to anyone serving in this branch, on top of the
+    /// rank boards and the department patch. A species with no entry is issued nothing extra.
+    /// </summary>
+    /// <remarks>
+    /// This is the Cultural Exchange Programme patch and, so far, only that. A xeno is aboard
+    /// because two governments signed for them to be, not because they applied for a job, and the
+    /// patch is what says so on the sleeve - so the fact belongs to the branch that admits them
+    /// rather than to the species, which is the same person in every other setting.
+    ///
+    /// Bay has the patch as an optional loadout item in the "Xenowear" category, whitelisted to
+    /// the Corps and to four species. Ours is issued rather than offered, which is the difference
+    /// between a badge of pride and an identifying mark - and that is the intended reading.
+    ///
+    /// Removable all the same. The garment can be swapped at a vendor and accessories move across
+    /// by hand, so a patch that could not be taken off would be a patch lost at the first change
+    /// of uniform. "Mandatory" here means issued at spawn, not welded on; what follows from taking
+    /// it off is roleplay and in-character consequence, not a rule in code.
+    /// </remarks>
+    [DataField]
+    public Dictionary<ProtoId<SpeciesPrototype>, List<EntProtoId>> SpeciesAccessories { get; set; } = new();
 
     /// <summary>
     /// Whether members of this branch may also be employed by an outside company.

@@ -65,10 +65,11 @@ public sealed class EmberInsigniaSystem : EntitySystem
             : null;
 
         var insignia = GetDepartmentInsignia(job);
+        var speciesAccessories = GetSpeciesAccessories(profile);
 
         // Nothing to hand out is the ordinary case for a contractor in a civilian post, and it must
         // not cost an inventory walk.
-        if (rank is not { Accessories.Count: > 0 } && insignia == null)
+        if (rank is not { Accessories.Count: > 0 } && insignia == null && speciesAccessories == null)
             return;
 
         if (!TryComp<InventoryComponent>(wearer, out var inventory))
@@ -90,7 +91,42 @@ public sealed class EmberInsigniaSystem : EntitySystem
 
             if (insignia != null && insignia.Cuts.TryGetValue(holder.InsigniaCut, out var patch))
                 Attach(garment, holder, patch);
+
+            if (speciesAccessories == null)
+                continue;
+
+            foreach (var accessory in speciesAccessories)
+            {
+                Attach(garment, holder, accessory);
+            }
         }
+    }
+
+    /// <summary>
+    /// What this character's branch issues them for being the species they are, or null where it
+    /// issues nothing.
+    /// </summary>
+    /// <remarks>
+    /// The Cultural Exchange Programme patch, in practice: a tajaran or an unathi in the
+    /// Expeditionary Corps is there under an agreement between two governments, and the patch is
+    /// how that reads at a glance. A human in the same post has no entry and is issued nothing,
+    /// which is the asymmetry the mark exists to draw.
+    ///
+    /// Read off the branch rather than off the species because the same person crewing a civilian
+    /// freighter is in no programme and wears no patch. The species is constant; the arrangement
+    /// that put them aboard is not.
+    /// </remarks>
+    public List<EntProtoId>? GetSpeciesAccessories(HumanoidCharacterProfile profile)
+    {
+        if (profile.Branch is not { } branchId
+            || !_proto.TryIndex(branchId, out EmberBranchPrototype? branch)
+            || !branch.SpeciesAccessories.TryGetValue(profile.Species, out var accessories)
+            || accessories.Count == 0)
+        {
+            return null;
+        }
+
+        return accessories;
     }
 
     /// <summary>
