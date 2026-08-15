@@ -1,7 +1,7 @@
 # Jobs aboard the SEV Ember.
 
 department-EmberCommand = Command
-department-EmberCommand-description = The ship's officers, the government's observer, and the ratings who keep the bridge running.
+department-EmberCommand-description = The ship's officers, and the ratings who keep the bridge running.
 
 department-EmberOversight = State Oversight
 department-EmberOversight-description = The government's eyes aboard. Senior, answerable elsewhere, and not in the ship's chain of command.
@@ -13,13 +13,13 @@ job-supervisors-ember-scg = the Sol Central Government
 job-supervisors-ember-federal-police = the Sol Federal Police
 
 job-name-ember-captain = Captain
-job-description-ember-captain = Command the Ember and answer for her. The expedition's findings, the crew's conduct and the ship's return are all your signature.
+job-description-ember-captain = Command the ship and answer for her. The expedition's findings, the crew's conduct and the ship's return are all your signature.
 
 job-name-ember-executive-officer = Executive Officer
-job-description-ember-executive-officer = Run the ship so the Captain can command it. Watch rotations, department heads, discipline and everything that would otherwise reach the Captain's desk.
+job-description-ember-executive-officer = Help the Captain command the ship. Everything that would otherwise reach their desk reaches yours instead.
 
 job-name-ember-watch-officer = Watch Officer
-job-description-ember-watch-officer = Stand the watch on the bridge. Con the ship, log what happens, and know which of the sleeping officers to wake.
+job-description-ember-watch-officer = Stand the watch on the bridge. Con the ship and log what happens.
 
 job-name-ember-senior-enlisted-advisor = Senior Enlisted Advisor
 job-description-ember-senior-enlisted-advisor = Speak for the ratings to the officers, and for the officers to the ratings. You came up through the Fleet and it shows.
@@ -28,7 +28,7 @@ job-name-ember-scg-representative = SolGov Representative
 job-description-ember-scg-representative = Observe on behalf of the government and report what you see. You are not in the chain of command, which means it cannot order you and cannot dismiss you either.
 
 job-name-ember-liaison-officer = Liaison Officer
-job-description-ember-liaison-officer = Handle the ship's outside correspondence: gate traffic, message routing, and the days-long silences that pass for a conversation with Sol.
+job-description-ember-liaison-officer = Run the ship's communications and its network. A systems administrator with rank insignia.
 
 job-name-ember-adjutant = Adjutant
 job-description-ember-adjutant = Keep the command staff supplied with paperwork, coffee and accurate information, in ascending order of difficulty.
@@ -47,13 +47,13 @@ job-name-ember-brig-chief = Brig Chief
 job-description-ember-brig-chief = Run the brig and the armoury. Who is held, on what grounds, for how long, and where every weapon aboard is — written down and signed.
 
 job-name-ember-investigator = Investigator
-job-description-ember-investigator = Work the scene, take the statements, and write the report a court will read. Nobody else aboard is trained to do it.
+job-description-ember-investigator = Work the scene, take the statements, and write the report a court will read. Nobody else aboard is trained to do it. And no, you are not a noir detective.
 
 job-name-ember-master-at-arms = Master-at-Arms
 job-description-ember-master-at-arms = Patrol, respond, escort, and stand at the airlock when something is coming through it. The detachment's working strength.
 
 job-name-ember-corpsman = Corpsman
-job-description-ember-corpsman = Go out with the detachment and bring people back alive. You stabilise; the infirmary operates. Know the difference and know the distance.
+job-description-ember-corpsman = You are attached to the detachment so that everyone comes back. Stabilise the wounded and get them to the infirmary.
 
 job-name-ember-security-cadet = Security Cadet
 job-description-ember-security-cadet = Learn the job by doing it under supervision. Ask before you act, and you will be forgiven for asking.
@@ -71,7 +71,7 @@ job-name-ember-senior-engineer = Senior Engineer
 job-description-ember-senior-engineer = The department's most experienced hand, and not its head. You have probably been aboard longer than the officer you answer to. Run the watch, and be competent at all of it rather than expert at one part.
 
 job-name-ember-engineer = Engineer
-job-description-ember-engineer = Keep the ship in one piece. Build, repair, and know enough of everything to be sent anywhere.
+job-description-ember-engineer = Keep the ship in one piece. Build, repair, and know enough of everything to be sent anywhere. And keep the flask somewhere it locks.
 
 job-name-ember-engineer-engine-technician = Engine Technician
 job-description-ember-engineer-engine-technician = The reactor and the drives are yours. A ship this far out does not sail with only one person who understands its power plant, and you are the other one.
@@ -83,31 +83,31 @@ job-name-ember-engineer-electrician = Electrician
 job-description-ember-engineer-electrician = Wiring, boards and the distribution nobody thinks about until the lights go. When the ship is dark, it is your fault or your job, and usually both.
 
 job-name-ember-engineer-atmospheric-technician = Atmospheric Technician
-job-description-ember-engineer-atmospheric-technician = Air, pressure, temperature. The crew will not thank you until the day they cannot breathe, and then they will thank you very much.
+job-description-ember-engineer-atmospheric-technician = Air, pressure, temperature. The crew will not thank you until the day they cannot breathe.
 
 job-name-ember-roboticist = Roboticist
-job-description-ember-roboticist = Build, repair and upgrade the ship's synthetics and exosuits. Positronic housings and cyborg shells mean you have also had to learn where a spine goes.
+job-description-ember-roboticist = Build, repair and upgrade the ship's synthetics. Do not forget to ask them for their laws.
 
 job-name-ember-roboticist-mechsuit-technician = Mechsuit Technician
-job-description-ember-roboticist-mechsuit-technician = The exosuits are yours from the frame up, and you are qualified to walk one out of the bay yourself.
+job-description-ember-roboticist-mechsuit-technician = Build a Ripley for the prospectors and prove that a mech is not just an exosuit but a real piece of heavy plant.
 
 job-name-ember-engineer-trainee = Engineer Trainee
 job-description-ember-engineer-trainee = Aboard to learn. Carry things, watch closely, and ask the question before you turn the valve rather than after.
 
 department-EmberMedical = Medical
-department-EmberMedical-description = The infirmary. Half the Corps, half Zeng-Hu on contract, and the only department aboard where a xeno can practise.
+department-EmberMedical-description = The infirmary. Half the Corps, half Zeng-Hu on contract.
 
 job-supervisors-ember-chief-medical-officer = the Chief Medical Officer
 job-supervisors-ember-medical = the physicians and the Chief Medical Officer
 
 job-name-ember-chief-medical-officer = Chief Medical Officer
-job-description-ember-chief-medical-officer = Run the infirmary and answer for everyone in it. You are its best diagnostician and not its best pair of hands, which is why you have a surgeon.
+job-description-ember-chief-medical-officer = Command the infirmary and answer for everyone in it. You are its best diagnostician and not its best pair of hands, which is why you have a surgeon.
 
 job-name-ember-physician = Physician
-job-description-ember-physician = The ship's doctor. Diagnose, treat and decide who is fit to work. Ask the pharmacist for compounds; that bench is not yours.
+job-description-ember-physician = The ship's doctor. Diagnose, treat and decide who is fit to work.
 
 job-name-ember-physician-surgeon = Surgeon
-job-description-ember-physician-surgeon = The same post, held by the one who cuts. When the technician has done everything that can be done without opening someone, you are what is left.
+job-description-ember-physician-surgeon = It seems few people aboard know which end of a scalpel to hold. That will matter the day the Captain's appendix goes.
 
 job-name-ember-pharmacist = Pharmacist
 job-description-ember-pharmacist = Make the medicine the rest of them use. You are not a doctor and should not be treating patients — you are the reason they have anything to treat them with.
@@ -132,34 +132,34 @@ job-supervisors-ember-laboratory = the Senior Researcher and the Chief Science O
 job-supervisors-ember-field-team = the Field Team Leader and the Chief Science Officer
 
 job-name-ember-chief-science-officer = Chief Science Officer
-job-description-ember-chief-science-officer = Decide what gets studied, what goes home and what the grant will stand. You answer to the Captain for the expedition's findings, which is to say for the reason any of you are out here.
+job-description-ember-chief-science-officer = Run the science service, field group included. See that your department does not break its non-disclosure agreement, and try to keep to it yourself.
 
 job-name-ember-senior-researcher = Senior Researcher
-job-description-ember-senior-researcher = Run the benches. Set the work, check it, and be the one who knows whether a result is real before it leaves the ship.
+job-description-ember-senior-researcher = Run the benches. Set the work, check it, and be the one who knows whether a result is real.
 
 job-name-ember-researcher = Researcher
-job-description-ember-researcher = Do the work. Whatever the field team drags back through the airlock ends up on your bench, and somebody has to find out what it is.
+job-description-ember-researcher = You have a very nice lab coat. By some strange coincidence you are also responsible for most of the incidents aboard.
 
 job-name-ember-lab-technician = Lab Technician
-job-description-ember-lab-technician = Samples, logs, calibration and the clearing-up. Nothing gets studied twice if you label it wrong the first time.
+job-description-ember-lab-technician = Try not to think about where the substance on the laboratory floor came from. Just clean it up so the researchers can carry on.
 
 job-name-ember-lab-technician-research-assistant = Research Assistant
-job-description-ember-lab-technician-research-assistant = The same bench, on somebody else's grant. You are here to learn and to be useful, roughly in that order.
+job-description-ember-lab-technician-research-assistant = Assist the researchers with their work, or be the subject of it. That decision is usually not yours.
 
 job-name-ember-field-team-leader = Field Team Leader
-job-description-ember-field-team-leader = Take parties outside and bring them back. What they find is the mission; that they return is your part of it.
+job-description-ember-field-team-leader = You lead the field party, and their lives and yours usually turn on your orders. Be worth the trust.
 
 job-name-ember-shuttle-pilot = Shuttle Pilot
-job-description-ember-shuttle-pilot = Fly the survey shuttle. Nobody else aboard is qualified, so the expedition goes where you can put it down and comes back when you say.
+job-description-ember-shuttle-pilot = Unlike the autopilot, you can fly around an asteroid field. Do try to make use of that.
 
 job-name-ember-field-specialist = Field Specialist
 job-description-ember-field-specialist = Walk the away site. Carry what needs carrying, look where you are told to look, and keep your suit intact.
 
 job-name-ember-field-specialist-medic = Field Medic
-job-description-ember-field-specialist-medic = The party's medicine, three hours from the airlock. Stabilise and get them home — the infirmary does the rest, if you get them there.
+job-description-ember-field-specialist-medic = Your colleagues rarely notice that you are the only thing between the survey party and dying on a planetoid. Do remind them from time to time.
 
 job-name-ember-field-specialist-engineer = Field Engineer
-job-description-ember-field-specialist-engineer = The party's tools. Patch the suit, force the door, shore up whatever is coming down, and make it hold until the shuttle lifts.
+job-description-ember-field-specialist-engineer = There are days when "engineer, get this airlock open!" seems likely to follow you into your sleep. Your job is to keep the party's shuttle able to fly and, where possible, airtight.
 
 department-EmberSupply = Supply
 department-EmberSupply-description = The stores and the flight deck. Everything aboard was signed for by someone in here.
@@ -171,16 +171,16 @@ job-name-ember-supply-chief = Supply Chief
 job-description-ember-supply-chief = Answer for everything aboard that was bought, shipped or signed for, and for the hangar deck as well. Mostly paperwork, occasionally a shuttle.
 
 job-name-ember-supply-technician = Supply Technician
-job-description-ember-supply-technician = Keep the stores. Know what is aboard, what is left and who has it, because when it matters nobody will have time to look.
+job-description-ember-supply-technician = When something goes missing from the stores, you are usually the one left holding it. Try not to let it get that far.
 
 job-name-ember-deck-technician = Deck Technician
-job-description-ember-deck-technician = Work the flight deck. Move craft, secure loads, run the loader, and be outside in a suit while something heavy comes in.
+job-description-ember-deck-technician = A high-visibility vest and a pair of marshalling wands are your usual kit, notwithstanding that the automation lands shuttles perfectly well without you. Somebody has to inspect the craft, after all.
 
 job-name-ember-prospector = Prospector
-job-description-ember-prospector = Go where the ship stops and take what is worth taking out of the rock. You work for a company, not the Captain, and the difference will come up.
+job-description-ember-prospector = Whether or not you like the work, you were hired to break rock. And you are better at it than anyone else here.
 
 job-name-ember-prospector-salvager = Salvager
-job-description-ember-prospector-salvager = The same suit pointed at wreckage instead of rock. Cut it up, drag it back, and let somebody else decide what it was.
+job-description-ember-prospector-salvager = Whether or not you like the work, you were hired to pick through wreckage. And you are better at it than anyone else here.
 
 department-EmberHousekeeping = Housekeeping
 department-EmberHousekeeping-description = Food, cleaning, quarters and the general ratings. The least glamorous service aboard and the first one whose absence is noticed.
@@ -191,10 +191,10 @@ job-name-ember-chief-steward = Chief Steward
 job-description-ember-chief-steward = Run the messes, the quarters and the stores that feed them. You decide what four dozen people eat for six months, which is more power than it sounds like.
 
 job-name-ember-steward = Steward
-job-description-ember-steward = Quarters, laundry, the wardroom and the endless small errands of a ship where people live. The trade is attentiveness, not training.
+job-description-ember-steward = Make life aboard a little more comfortable than it would otherwise be. Hand the Adjutant the coffee and the meals for command.
 
 job-name-ember-cook = Cook
-job-description-ember-cook = The galley and the hydroponics bay, which aboard a ship this size are one job with two rooms. Feed them well; there is nowhere else to eat.
+job-description-ember-cook = The galley and the hydroponics bay, which aboard a ship this size are one job with two rooms. Feed them well; there is nowhere else to eat well.
 
 job-name-ember-cook-botanist = Botanist
 job-description-ember-cook-botanist = The same job entered from the other end. You grow it and then you have to cook it, because there is nobody else to hand it to.
@@ -209,7 +209,7 @@ department-EmberUnattached = Unattached Personnel
 department-EmberUnattached-description = Aboard without being in the ship's organisation. Some are not crew; some are crew who are not on shift.
 
 job-name-ember-passenger = Passenger
-job-description-ember-passenger = You are being carried, not employed. Whatever you can do, nobody aboard is counting on it, which is either freedom or uselessness depending on the day.
+job-description-ember-passenger = Whatever you can do, nobody aboard is counting on it. Journalist, historian, anything else — you are unlikely to be let much further than the bar.
 
 job-name-ember-passenger-guest = Guest
 job-description-ember-passenger-guest = A passenger somebody invited. It changes nothing except how you introduce yourself, and that is not nothing.
@@ -222,13 +222,13 @@ job-description-ember-off-duty-watch = A day off. Your service, your rank and ev
 job-name-ember-medical-technician-nurse = Nurse
 job-name-ember-medical-technician-nurse-male = Nurse
 job-name-ember-medical-technician-nurse-female = Nurse
-job-description-ember-medical-technician-nurse = The same post under the word the ward actually uses. Treat, dress, monitor, and be the one who noticed the patient going quiet.
+job-description-ember-medical-technician-nurse = Treat, dress, monitor, and be the one who noticed the patient going quiet.
 
 job-name-ember-emergency-technician = Emergency Technician
-job-description-ember-emergency-technician = Get there, keep them breathing, bring them back. You have a defibrillator, a voidsuit and a stretcher, and you are not qualified to guess what is wrong — only to make sure it does not finish before the infirmary sees it.
+job-description-ember-emergency-technician = Get there, keep them breathing, bring them back. You have a defibrillator, a voidsuit and a stretcher, and no business guessing what is wrong — only making sure they do not die before they reach the infirmary.
 
 job-name-ember-paramedic = Paramedic
 job-description-ember-paramedic = The same run with the training to think on it. You may form a working diagnosis at the scene and act on it, which is the whole distance between you and the technician beside you.
 
 job-name-ember-federal-marshal = Federal Marshal
-job-description-ember-federal-marshal = A marshal of the Sol Federal Police, Territorial Support Division, attached to this ship because an Expeditionary Corps hull is SCG territory and a crime aboard it is a federal one. Investigates on the law's authority rather than the Captain's, and has none of his own to give orders with.
+job-description-ember-federal-marshal = This ship is SCG territory, and you are here to remind people of it.

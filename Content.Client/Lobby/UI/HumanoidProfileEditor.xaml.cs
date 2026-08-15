@@ -1,4 +1,4 @@
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using System.Numerics;
 using Content.Client.Administration.UI;
@@ -19,6 +19,7 @@ using Content.Shared.Clothing.Loadouts.Systems;
 using Content.Shared.Customization.Systems;
 using Content.Shared.Dataset;
 using Content.Shared.Ember.Localization;
+using Content.Shared.Ember.Background;
 using Content.Shared.Ember.Ranks;
 using Content.Shared.Ember.Roles;
 using Content.Shared.Ember.Skills;
@@ -100,9 +101,11 @@ namespace Content.Client.Lobby.UI
 
         private List<SpeciesPrototype> _species = new();
         // EE - Contractor System Changes Start
-        private List<NationalityPrototype> _nationalies = new();
         private List<EmployerPrototype> _employers = new();
-        private List<LifepathPrototype> _lifepaths = new();
+
+        // Ember: one list per background axis, keyed by the axis, so the four dropdowns share a
+        // code path instead of each one owning a copy of the previous one's hundred lines.
+        private readonly Dictionary<EmberBackgroundAxis, List<EmberBackgroundPrototype>> _backgrounds = new();
 
         // Ember: branches and the ranks selectable inside the currently chosen one.
         private List<EmberBranchPrototype> _branches = new();
@@ -303,26 +306,23 @@ namespace Content.Client.Lobby.UI
                 Background.Orphan();
                 CTabContainer.AddTab(Background, Loc.GetString("humanoid-profile-editor-background-tab"));
 
-                RefreshNationalities();
+                RefreshBackgrounds();
                 RefreshEmployers();
-                RefreshLifepaths();
 
-                NationalityButton.OnItemSelected += args =>
+                foreach (var (axis, button) in BackgroundButtons)
                 {
-                    NationalityButton.SelectId(args.Id);
-                    SetNationality(_nationalies[args.Id].ID);
-                };
+                    var boundAxis = axis;
+                    button.OnItemSelected += args =>
+                    {
+                        button.SelectId(args.Id);
+                        SetBackground(boundAxis, _backgrounds[boundAxis][args.Id].ID);
+                    };
+                }
 
                 EmployerButton.OnItemSelected += args =>
                 {
                     EmployerButton.SelectId(args.Id);
                     SetEmployer(_employers[args.Id].ID);
-                };
-
-                LifepathButton.OnItemSelected += args =>
-                {
-                    LifepathButton.SelectId(args.Id);
-                    SetLifepath(_lifepaths[args.Id].ID);
                 };
             }
             else
@@ -695,38 +695,115 @@ namespace Content.Client.Lobby.UI
                 SetSpecies(SharedHumanoidAppearanceSystem.DefaultSpecies);
         }
 
-                public void RefreshNationalities()
+        /// <summary>
+        /// The dropdown that answers each axis. Ember: paired here rather than in four fields so
+        /// that adding a fifth axis is one line in two places instead of a new copy of everything.
+        /// </summary>
+        private IEnumerable<(EmberBackgroundAxis, OptionButton)> BackgroundButtons
         {
-            NationalityButton.Clear();
-            _nationalies.Clear();
-
-            _nationalies.AddRange(_prototypeManager.EnumeratePrototypes<NationalityPrototype>()
-                .Where(o => _characterRequirementsSystem.CheckRequirementsValid(o.Requirements,
-                    _controller.GetPreferredJob(Profile ?? HumanoidCharacterProfile.DefaultWithSpecies()),
-                    Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(),
-                    _requirements.GetRawPlayTimeTrackers(),
-                    _requirements.IsWhitelisted(),
-                    o,
-                    _entManager,
-                    _prototypeManager,
-                    _cfgManager, out _)));
-
-            var nationalityIds = _nationalies.Select(o => o.ID).ToList();
-
-            for (var i = 0; i < _nationalies.Count; i++)
+            get
             {
-                NationalityButton.AddItem(Loc.GetString(_nationalies[i].NameKey), i);
+                yield return (EmberBackgroundAxis.Homeworld, HomeworldButton);
+                yield return (EmberBackgroundAxis.Culture, CultureButton);
+                yield return (EmberBackgroundAxis.Faction, FactionButton);
+                yield return (EmberBackgroundAxis.Religion, ReligionButton);
+            }
+        }
 
-                if (Profile?.Nationality == _nationalies[i].ID)
-                    NationalityButton.SelectId(i);
+        private RichTextLabel BackgroundDescriptionLabel(EmberBackgroundAxis axis) => axis switch
+        {
+            EmberBackgroundAxis.Homeworld => HomeworldDescriptionLabel,
+            EmberBackgroundAxis.Culture => CultureDescriptionLabel,
+            EmberBackgroundAxis.Faction => FactionDescriptionLabel,
+            EmberBackgroundAxis.Religion => ReligionDescriptionLabel,
+            _ => throw new ArgumentOutOfRangeException(nameof(axis), axis, null),
+        };
+
+        private ProtoId<EmberBackgroundPrototype> ProfileBackground(EmberBackgroundAxis axis) => axis switch
+        {
+            EmberBackgroundAxis.Homeworld => Profile!.Homeworld,
+            EmberBackgroundAxis.Culture => Profile!.Culture,
+            EmberBackgroundAxis.Faction => Profile!.Faction,
+            EmberBackgroundAxis.Religion => Profile!.Religion,
+            _ => throw new ArgumentOutOfRangeException(nameof(axis), axis, null),
+        };
+
+        private static ProtoId<EmberBackgroundPrototype> DefaultBackground(EmberBackgroundAxis axis) => axis switch
+        {
+            EmberBackgroundAxis.Homeworld => SharedHumanoidAppearanceSystem.DefaultHomeworld,
+            EmberBackgroundAxis.Culture => SharedHumanoidAppearanceSystem.DefaultCulture,
+            EmberBackgroundAxis.Faction => SharedHumanoidAppearanceSystem.DefaultFaction,
+            EmberBackgroundAxis.Religion => SharedHumanoidAppearanceSystem.DefaultReligion,
+            _ => throw new ArgumentOutOfRangeException(nameof(axis), axis, null),
+        };
+
+        public void RefreshBackgrounds()
+        {
+            foreach (var (axis, button) in BackgroundButtons)
+                RefreshBackground(axis, button);
+        }
+
+        private void RefreshBackground(EmberBackgroundAxis axis, OptionButton button)
+        {
+            button.Clear();
+
+            // The species filter runs here rather than through the requirement system because it
+            // is the only requirement that can be answered without a job, and it is the one that
+            // decides whether the row is offered at all.
+            var available = SharedEmberBackgroundSystem.GetSelectable(
+                _prototypeManager, axis, Profile?.Species);
+
+            _backgrounds[axis] = available;
+
+            for (var i = 0; i < available.Count; i++)
+            {
+                button.AddItem(Loc.GetString(available[i].Name), i);
+
+                if (Profile != null && ProfileBackground(axis) == available[i].ID)
+                    button.SelectId(i);
             }
 
-            // If our nationality isn't available, reset it to default
-            if (Profile != null && !nationalityIds.Contains(Profile.Nationality))
-                SetNationality(SharedHumanoidAppearanceSystem.DefaultNationality);
+            if (Profile == null)
+                return;
 
-            if(Profile != null)
-                UpdateNationalityDescription(Profile.Nationality);
+            // A saved choice the character can no longer hold - most often because the species
+            // changed - falls back rather than leaving the dropdown showing something it does not
+            // have. EnsureValid does the same on load; this is the lobby's half of it.
+            if (available.All(o => o.ID != ProfileBackground(axis)))
+                SetBackground(axis, DefaultBackground(axis));
+            else
+                UpdateBackgroundDescription(axis, ProfileBackground(axis));
+        }
+
+        private void UpdateBackgroundDescription(EmberBackgroundAxis axis, ProtoId<EmberBackgroundPrototype> id)
+        {
+            if (!_prototypeManager.TryIndex(id, out EmberBackgroundPrototype? prototype))
+                return;
+
+            // The details line - capital, distance, who governs it - reads as a header above the
+            // prose rather than as part of it, which is how Bay formats the same three facts.
+            var text = prototype.Details is { } details
+                ? $"[color=#888888]{Loc.GetString(details)}[/color]" + "\n" + Loc.GetString(prototype.Description)
+                : Loc.GetString(prototype.Description);
+
+            BackgroundDescriptionLabel(axis).SetMessage(FormattedMessage.FromMarkupOrThrow(text));
+        }
+
+        private void SetBackground(EmberBackgroundAxis axis, ProtoId<EmberBackgroundPrototype> id)
+        {
+            Profile = axis switch
+            {
+                EmberBackgroundAxis.Homeworld => Profile?.WithHomeworld(id),
+                EmberBackgroundAxis.Culture => Profile?.WithCulture(id),
+                EmberBackgroundAxis.Faction => Profile?.WithFaction(id),
+                EmberBackgroundAxis.Religion => Profile?.WithReligion(id),
+                _ => throw new ArgumentOutOfRangeException(nameof(axis), axis, null),
+            };
+
+            UpdateCharacterRequired();
+            IsDirty = true;
+            ReloadProfilePreview();
+            UpdateBackgroundDescription(axis, id);
         }
 
         public void RefreshEmployers()
@@ -885,52 +962,6 @@ namespace Content.Client.Lobby.UI
             Profile = Profile?.WithRank(rank);
             IsDirty = true;
             UpdateJobPriorities();
-        }
-
-        public void RefreshLifepaths()
-        {
-            LifepathButton.Clear();
-            _lifepaths.Clear();
-
-            _lifepaths.AddRange(_prototypeManager.EnumeratePrototypes<LifepathPrototype>()
-                .Where(o => _characterRequirementsSystem.CheckRequirementsValid(o.Requirements,
-                _controller.GetPreferredJob(Profile ?? HumanoidCharacterProfile.DefaultWithSpecies()),
-                Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(),
-                _requirements.GetRawPlayTimeTrackers(),
-                _requirements.IsWhitelisted(),
-                o,
-                _entManager,
-                _prototypeManager,
-                _cfgManager, out _)));
-
-            var lifepathIds = _lifepaths.Select(o => o.ID).ToList();
-
-            for (var i = 0; i < _lifepaths.Count; i++)
-            {
-                LifepathButton.AddItem(Loc.GetString(_lifepaths[i].NameKey), i);
-
-                if (Profile?.Lifepath == _lifepaths[i].ID)
-                    LifepathButton.SelectId(i);
-            }
-
-            // If our lifepath isn't available, reset it to default
-            if (Profile != null && !lifepathIds.Contains(Profile.Lifepath))
-                SetLifepath(SharedHumanoidAppearanceSystem.DefaultLifepath);
-
-            if(Profile != null)
-                UpdateLifepathDescription(Profile.Lifepath);
-        }
-
-        private void UpdateNationalityDescription(string nationality)
-        {
-            var prototype = _prototypeManager.Index<NationalityPrototype>(nationality);
-            NationalityDescriptionLabel.SetMessage(Loc.GetString(prototype.DescriptionKey));
-        }
-
-        private void UpdateLifepathDescription(string lifepath)
-        {
-            var prototype = _prototypeManager.Index<LifepathPrototype>(lifepath);
-            LifepathDescriptionLabel.SetMessage(Loc.GetString(prototype.DescriptionKey));
         }
 
         private void UpdateEmployerDescription(string employer)
@@ -1104,9 +1135,8 @@ namespace Content.Client.Lobby.UI
             RefreshJobs();
             UpdateSkills();
             RefreshSpecies();
-            RefreshNationalities();
+            RefreshBackgrounds();
             RefreshEmployers();
-            RefreshLifepaths();
             RefreshBranches(); // Ember
             RefreshFlavorText();
             ReloadPreview();
@@ -1583,16 +1613,6 @@ namespace Content.Client.Lobby.UI
             ReloadClothes(); // Species may have job-specific gear, reload the clothes
         }
 
-        private void SetNationality(string newNationality)
-        {
-            Profile = Profile?.WithNationality(newNationality);
-            UpdateCharacterRequired();
-            IsDirty = true;
-            ReloadProfilePreview();
-            ReloadClothes(); // Nationalities may have specific gear, reload the clothes
-            UpdateNationalityDescription(newNationality);
-        }
-
         private void SetEmployer(string newEmployer)
         {
             Profile = Profile?.WithEmployer(newEmployer);
@@ -1601,16 +1621,6 @@ namespace Content.Client.Lobby.UI
             ReloadProfilePreview();
             ReloadClothes(); // Employers may have specific gear, reload the clothes
             UpdateEmployerDescription(newEmployer);
-        }
-
-        private void SetLifepath(string newLifepath)
-        {
-            Profile = Profile?.WithLifepath(newLifepath);
-            UpdateCharacterRequired();
-            IsDirty = true;
-            ReloadProfilePreview();
-            ReloadClothes(); // Lifepaths may have specific gear, reload the clothes
-            UpdateLifepathDescription(newLifepath);
         }
 
         private void SetName(string newName)
@@ -2974,9 +2984,8 @@ namespace Content.Client.Lobby.UI
 
         private void UpdateCharacterRequired()
         {
-            RefreshNationalities();
+            RefreshBackgrounds();
             RefreshEmployers();
-            RefreshLifepaths();
             RefreshBranches(); // Ember
             RefreshJobs();
             UpdateTraits(TraitsShowUnusableButton.Pressed);

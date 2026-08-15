@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from SierraBay12 at commit 31591476d5769d2af16c60da3dc6997436d5ef21, converted with RSIEdit for Project Ember",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "passport"
+    },
+    {
+      "name": "passport_scg"
+    },
+    {
+      "name": "passport_scg2"
+    },
+    {
+      "name": "passport_iccg"
+    },
+    {
+      "name": "passport_taj"
+    },
+    {
+      "name": "passport_mir"
+    },
+    {
+      "name": "passport_unathi_heg"
+    },
+    {
+      "name": "passport_unathi_conv"
+    }
+  ]
+}

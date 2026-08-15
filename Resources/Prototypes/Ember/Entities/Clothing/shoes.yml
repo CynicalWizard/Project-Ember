@@ -9,15 +9,24 @@
 # which is the part that was actually missing: a rating issued "work boots" reads as a maintenance
 # hire, and the same sprite called duty boots reads as a service.
 #
-# EMBER-TODO: the duty boot is the one that is not an exact match. Bay's `duty` state is a
-# steel-toed synthleather boot with a shine on it, ours is a work boot; near enough to issue, and
-# the first thing to draw if SCG footwear is ever worth its own sheet.
-
+# The duty boot is black, and that is the whole point of it: a steel-toed synthleather boot with a
+# mirror shine, worn with working dress. The first pass parented it to the brown workboot, which
+# put the crew in a miner's footwear - the right shape and the wrong service.
+#
+# Built on the plain shoe base with the jackboot sprite rather than on `ClothingShoesBootsJack`
+# itself, which carries a Goobstation stun modifier, a damage-slowdown modifier and a contraband
+# flag. None of those belong on standard-issue crew footwear, and Bay's duty boot holds nothing
+# either - the boot knife is a separate garment there.
 - type: entity
-  parent: ClothingShoesBootsWork
+  parent: ClothingShoesBaseButcherable
   id: EmberClothingShoesDutyBoots
   name: duty boots
   description: A pair of steel-toed synthleather boots with a mirror shine. Standard issue with working dress.
+  components:
+  - type: Sprite
+    sprite: Clothing/Shoes/Boots/jackboots.rsi
+  - type: Clothing
+    sprite: Clothing/Shoes/Boots/jackboots.rsi
 
 - type: entity
   parent: ClothingShoesBootsLaceup

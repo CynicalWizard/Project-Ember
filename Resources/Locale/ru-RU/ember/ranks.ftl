@@ -1,4 +1,4 @@
-# Ветви и звания. Русские названия — из вики-дампа Сьерры, страницы «Флот» и
+# Ветви и звания. Русские названия — из вики Сьерры, страницы «Флот» и
 # «Экспедиционный корпус». Сокращения оставлены латиницей: на погонах и в манифесте они
 # читаются как обозначения, а не как слова, и в Bay они тоже латинские.
 
@@ -8,7 +8,7 @@ ember-branch-corps-name = Экспедиционный Корпус
 ember-branch-corps-short = ЭК
 ember-branch-fleet-name = Флот
 ember-branch-fleet-short = ФЦПСС
-ember-branch-scg-government-name = Правительство Солнечной Системы
+ember-branch-scg-government-name = Центральное Правительство Солнечной Системы
 ember-branch-scg-government-short = ЦПСС
 ember-branch-civilian-name = Гражданский
 ember-branch-civilian-short = Гр.

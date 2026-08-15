@@ -585,12 +585,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutHead
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Bieselite
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingHeadHatTCAFBeretField
@@ -604,12 +598,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutHead
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Bieselite
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingHeadHatTCFLBeretDress
@@ -623,12 +611,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutHead
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Bieselite
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingHeadHatTCFLBeretField
@@ -642,12 +624,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutHead
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Bieselite
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingHeadHatTCFLBeretSentinel
@@ -661,12 +637,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutHead
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Bieselite
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingHeadHatTCFLSoftCap
@@ -680,12 +650,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutHead
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Bieselite
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 # Solarian headwear
 - type: loadout
@@ -700,12 +664,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutHead
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Solarian
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingHeadHatSANArmyField
@@ -719,12 +677,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutHead
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Solarian
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingHeadHatSANArmyFieldGrey
@@ -738,12 +690,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutHead
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Solarian
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingHeadHatSANArmyGarrison
@@ -757,12 +703,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutHead
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Solarian
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingHeadHatSANMarineUtility
@@ -776,12 +716,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutHead
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Solarian
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingHeadHatSANMarineUtilityGrey
@@ -795,12 +729,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutHead
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Solarian
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingHeadHatSANNavyCap
@@ -814,12 +742,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutHead
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Solarian
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingHeadHatSANWheelCap
@@ -833,9 +755,3 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutHead
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Solarian
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet

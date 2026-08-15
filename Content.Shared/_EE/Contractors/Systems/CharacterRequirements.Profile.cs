@@ -1,5 +1,6 @@
-using System.Linq;
+﻿using System.Linq;
 using Content.Shared._EE.Contractors.Prototypes;
+using Content.Shared.Ember.Background;
 using Content.Shared.CCVar;
 using Content.Shared.Clothing.Loadouts.Prototypes;
 using Content.Shared.Humanoid;
@@ -20,13 +21,21 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Customization.Systems;
 
 /// <summary>
-///     Requires the profile to have one of a list of nationalities
+///     Requires the profile to have one of a list of backgrounds on a given axis.
 /// </summary>
+/// <remarks>
+///     Ember: replaces the Contractors module's CharacterNationalityRequirement and
+///     CharacterLifepathRequirement. Those were one class per profile field, which would have meant
+///     four classes once the axes were split; the axis is data here instead.
+/// </remarks>
 [UsedImplicitly, Serializable, NetSerializable]
-public sealed partial class CharacterNationalityRequirement : CharacterRequirement
+public sealed partial class CharacterBackgroundRequirement : CharacterRequirement
 {
     [DataField(required: true)]
-    public HashSet<ProtoId<NationalityPrototype>> Nationalities;
+    public EmberBackgroundAxis Axis;
+
+    [DataField(required: true)]
+    public HashSet<ProtoId<EmberBackgroundPrototype>> Backgrounds;
 
     public override bool IsValid(
         JobPrototype job,
@@ -42,23 +51,26 @@ public sealed partial class CharacterNationalityRequirement : CharacterRequireme
         MindComponent? mind = null
     )
     {
-        if (!configManager.GetCVar(CCVars.ContractorsEnabled) ||
-            !configManager.GetCVar(CCVars.ContractorsCharacterRequirementsEnabled))
-        {
-            reason = "";
-            return true;
-        }
-
-        var localeString = "character-nationality-requirement";
         const string color = "green";
         reason = Loc.GetString(
-            localeString,
+            $"character-background-requirement-{Axis.ToString().ToLowerInvariant()}",
             ("inverted", Inverted),
-            ("nationality", $"[color={color}]{string.Join($"[/color], [color={color}]",
-                Nationalities.Select(s => Loc.GetString(prototypeManager.Index(s).NameKey)))}[/color]"));
-        return Nationalities.Any(o => o == profile.Nationality);
+            ("background", $"[color={color}]{string.Join($"[/color], [color={color}]",
+                Backgrounds.Select(s => Loc.GetString(prototypeManager.Index(s).Name)))}[/color]"));
+
+        var chosen = Axis switch
+        {
+            EmberBackgroundAxis.Homeworld => profile.Homeworld,
+            EmberBackgroundAxis.Culture => profile.Culture,
+            EmberBackgroundAxis.Faction => profile.Faction,
+            EmberBackgroundAxis.Religion => profile.Religion,
+            _ => throw new ArgumentOutOfRangeException(nameof(Axis), Axis, null),
+        };
+
+        return Backgrounds.Contains(chosen);
     }
 }
+
 
 /// <summary>
 ///     Requires the profile to have one of a list of employers
@@ -101,43 +113,3 @@ public sealed partial class CharacterEmployerRequirement : CharacterRequirement
     }
 }
 
-/// <summary>
-///     Requires the profile to have one of a list of lifepaths
-/// </summary>
-[UsedImplicitly, Serializable, NetSerializable]
-public sealed partial class CharacterLifepathRequirement : CharacterRequirement
-{
-    [DataField(required: true)]
-    public HashSet<ProtoId<LifepathPrototype>> Lifepaths;
-
-    public override bool IsValid(
-        JobPrototype job,
-        HumanoidCharacterProfile profile,
-        IReadOnlyDictionary<string, TimeSpan> playTimes,
-        bool whitelisted,
-        IPrototype prototype,
-        IEntityManager entityManager,
-        IPrototypeManager prototypeManager,
-        IConfigurationManager configManager,
-        out string? reason,
-        int depth = 0,
-        MindComponent? mind = null
-    )
-    {
-        if (!configManager.GetCVar(CCVars.ContractorsEnabled) ||
-            !configManager.GetCVar(CCVars.ContractorsCharacterRequirementsEnabled))
-        {
-            reason = "";
-            return true;
-        }
-
-        var localeString = "character-lifepath-requirement";
-        const string color = "green";
-        reason = Loc.GetString(
-            localeString,
-            ("inverted", Inverted),
-            ("lifepaths", $"[color={color}]{string.Join($"[/color], [color={color}]",
-                Lifepaths.Select(s => Loc.GetString(prototypeManager.Index(s).NameKey)))}[/color]"));
-        return Lifepaths.Any(o => o == profile.Lifepath);
-    }
-}

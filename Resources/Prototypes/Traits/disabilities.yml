@@ -128,10 +128,6 @@
       jobs:
         - Borg
         - MedicalBorg
-    - !type:CharacterLifepathRequirement
-      inverted: true
-      lifepaths:
-        - Clone
     - !type:CharacterSpeciesRequirement
       inverted: true
       species:

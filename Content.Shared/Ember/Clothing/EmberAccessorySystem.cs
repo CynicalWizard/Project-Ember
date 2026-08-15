@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
 using Content.Shared.Examine;
@@ -559,14 +560,16 @@ public sealed class EmberAccessorySystem : EntitySystem
         if (found.Count == 0)
             return;
 
+        // One line listing everything, not one line per item. A rating in dress uniform carries
+        // boards, a patch and three medals, and six sentences that each start the same way is not
+        // a description of a person - it is a dump of a container.
+        var names = string.Join(", ", found.Select(a => Identity.Name(a, EntityManager)));
+
         using (args.PushGroup(nameof(EmberAccessoryComponent)))
         {
-            foreach (var accessory in found)
-            {
-                args.PushMarkup(Loc.GetString("ember-accessory-examine-wearer",
-                    ("wearer", Identity.Entity(wearer.Owner, EntityManager)),
-                    ("accessory", Identity.Entity(accessory, EntityManager))));
-            }
+            args.PushMarkup(Loc.GetString("ember-accessory-examine-wearer",
+                ("wearer", Identity.Entity(wearer.Owner, EntityManager)),
+                ("accessories", names)));
         }
     }
 

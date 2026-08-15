@@ -1,8 +1,9 @@
-using System.Linq;
+﻿using System.Linq;
 using System.Text.RegularExpressions;
 using Content.Shared.CCVar;
 using Content.Shared.Clothing.Loadouts.Prototypes;
 using Content.Shared.Clothing.Loadouts.Systems;
+using Content.Shared.Ember.Background;
 using Content.Shared.Ember.Ranks;
 using Content.Shared.Ember.Roles;
 using Content.Shared.Ember.Skills;
@@ -81,14 +82,24 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
 
     // EE -- Contractors Change Start
     [DataField]
-    public string Nationality { get; set; } = SharedHumanoidAppearanceSystem.DefaultNationality;
-
-    [DataField]
     public string Employer { get; set; } = SharedHumanoidAppearanceSystem.DefaultEmployer;
+    // EE -- Contractors Change End
+
+    // Ember: the four background axes, replacing the Contractors module's single `nationality`
+    // dropdown and its `lifepath`. That one field asked "which passport do you hold" and answered
+    // several other questions by implication; these ask them separately, because they come apart.
+    // Faction is the one a passport is issued from - see EmberBackgroundPrototype.Passport.
+    [DataField]
+    public ProtoId<EmberBackgroundPrototype> Homeworld { get; set; } = SharedHumanoidAppearanceSystem.DefaultHomeworld;
 
     [DataField]
-    public string Lifepath { get; set; } = SharedHumanoidAppearanceSystem.DefaultLifepath;
-    // EE -- Contractors Change End
+    public ProtoId<EmberBackgroundPrototype> Culture { get; set; } = SharedHumanoidAppearanceSystem.DefaultCulture;
+
+    [DataField]
+    public ProtoId<EmberBackgroundPrototype> Faction { get; set; } = SharedHumanoidAppearanceSystem.DefaultFaction;
+
+    [DataField]
+    public ProtoId<EmberBackgroundPrototype> Religion { get; set; } = SharedHumanoidAppearanceSystem.DefaultReligion;
 
     // Ember: which organisation the character serves in, and their rank inside it. Kept apart
     // from Employer above on purpose — branch is who you serve, employer is who pays you, and
@@ -162,11 +173,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         string flavortext,
         string species,
         string customspeciename,
-        // EE -- Contractors Change Start
-        string nationality,
         string employer,
-        string lifepath,
-        // EE -- Contractors Change End
         float height,
         float width,
         int age,
@@ -186,17 +193,21 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         // Ember: trailing and optional so the seven existing call sites stay untouched.
         ProtoId<EmberBranchPrototype>? branch = null,
         ProtoId<EmberRankPrototype>? rank = null,
-        Dictionary<ProtoId<JobPrototype>, string>? jobTitles = null)
+        Dictionary<ProtoId<JobPrototype>, string>? jobTitles = null,
+        ProtoId<EmberBackgroundPrototype>? homeworld = null,
+        ProtoId<EmberBackgroundPrototype>? culture = null,
+        ProtoId<EmberBackgroundPrototype>? faction = null,
+        ProtoId<EmberBackgroundPrototype>? religion = null)
     {
         Name = name;
         FlavorText = flavortext;
         Species = species;
         Customspeciename = customspeciename;
-        // EE -- Contractors Change Start
-        Nationality = nationality;
         Employer = employer;
-        Lifepath = lifepath;
-        // EE -- Contractors Change End
+        Homeworld = homeworld ?? SharedHumanoidAppearanceSystem.DefaultHomeworld;
+        Culture = culture ?? SharedHumanoidAppearanceSystem.DefaultCulture;
+        Faction = faction ?? SharedHumanoidAppearanceSystem.DefaultFaction;
+        Religion = religion ?? SharedHumanoidAppearanceSystem.DefaultReligion;
         Height = height;
         Width = width;
         Age = age;
@@ -239,11 +250,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             other.FlavorText,
             other.Species,
             other.Customspeciename,
-            // EE -- Contractors Change Start
-            other.Nationality,
             other.Employer,
-            other.Lifepath,
-            // EE -- Contractors Change End
             other.Height,
             other.Width,
             other.Age,
@@ -262,7 +269,11 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             new Dictionary<ProtoId<SkillPrototype>, SkillLevel>(other.Skills),
             other.Branch,
             other.Rank,
-            new Dictionary<ProtoId<JobPrototype>, string>(other.JobTitles))
+            new Dictionary<ProtoId<JobPrototype>, string>(other.JobTitles),
+            other.Homeworld,
+            other.Culture,
+            other.Faction,
+            other.Religion)
     {
     }
 
@@ -295,9 +306,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             {
                 SkinColor = skinColor,
             },
-            Nationality = SharedHumanoidAppearanceSystem.DefaultNationality,
             Employer = SharedHumanoidAppearanceSystem.DefaultEmployer,
-            Lifepath = SharedHumanoidAppearanceSystem.DefaultLifepath,
         };
     }
 
@@ -351,9 +360,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             Gender = gender,
             Species = species,
             Appearance = HumanoidCharacterAppearance.Random(species, sex),
-            Nationality = SharedHumanoidAppearanceSystem.DefaultNationality,
             Employer = SharedHumanoidAppearanceSystem.DefaultEmployer,
-            Lifepath = SharedHumanoidAppearanceSystem.DefaultLifepath,
         };
     }
 
@@ -361,9 +368,21 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     public HumanoidCharacterProfile WithFlavorText(string flavorText) => new(this) { FlavorText = flavorText };
     public HumanoidCharacterProfile WithAge(int age) => new(this) { Age = age };
     // EE - Contractors Change Start
-    public HumanoidCharacterProfile WithNationality(string nationality) => new(this) { Nationality = nationality };
     public HumanoidCharacterProfile WithEmployer(string employer) => new(this) { Employer = employer };
-    public HumanoidCharacterProfile WithLifepath(string lifepath) => new(this) { Lifepath = lifepath };
+
+    // Ember: one setter per axis. Changing one never touches another - a character who emigrates
+    // keeps the homeworld they were born on, which is the entire reason the axes are separate.
+    public HumanoidCharacterProfile WithHomeworld(ProtoId<EmberBackgroundPrototype> homeworld) =>
+        new(this) { Homeworld = homeworld };
+
+    public HumanoidCharacterProfile WithCulture(ProtoId<EmberBackgroundPrototype> culture) =>
+        new(this) { Culture = culture };
+
+    public HumanoidCharacterProfile WithFaction(ProtoId<EmberBackgroundPrototype> faction) =>
+        new(this) { Faction = faction };
+
+    public HumanoidCharacterProfile WithReligion(ProtoId<EmberBackgroundPrototype> religion) =>
+        new(this) { Religion = religion };
 
     // Ember: changing branch drops the rank, because a rank only means anything inside the
     // branch it belongs to. The caller picks the new one.
@@ -544,9 +563,11 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             && Gender == other.Gender
             && Species == other.Species
             // EE - Contractors Change Start
-            && Nationality == other.Nationality
             && Employer == other.Employer
-            && Lifepath == other.Lifepath
+            && Homeworld == other.Homeworld
+            && Culture == other.Culture
+            && Faction == other.Faction
+            && Religion == other.Religion
             // EE - Contractors Change End
             && Branch == other.Branch // Ember
             && Rank == other.Rank // Ember
@@ -752,6 +773,17 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         SpawnPriority = spawnPriority;
         Branch = branch; // Ember
         Rank = rank; // Ember
+
+        // Ember: a background can go invalid after the fact, most often because the species
+        // changed under it. Each axis falls back to its own default rather than to the others.
+        Homeworld = SharedEmberBackgroundSystem.Resolve(prototypeManager, Homeworld,
+            EmberBackgroundAxis.Homeworld, Species, SharedHumanoidAppearanceSystem.DefaultHomeworld);
+        Culture = SharedEmberBackgroundSystem.Resolve(prototypeManager, Culture,
+            EmberBackgroundAxis.Culture, Species, SharedHumanoidAppearanceSystem.DefaultCulture);
+        Faction = SharedEmberBackgroundSystem.Resolve(prototypeManager, Faction,
+            EmberBackgroundAxis.Faction, Species, SharedHumanoidAppearanceSystem.DefaultFaction);
+        Religion = SharedEmberBackgroundSystem.Resolve(prototypeManager, Religion,
+            EmberBackgroundAxis.Religion, Species, SharedHumanoidAppearanceSystem.DefaultReligion);
         // Ember: service and employment are alternatives. Taking a posting clears the payroll
         // entry rather than the two sitting side by side.
         Employer = SharedEmberRanksSystem.ResolveEmployer(branchProto, Employer);
@@ -823,8 +855,10 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         hashCode.Add(FlavorText);
         hashCode.Add(Species);
         hashCode.Add(Employer);
-        hashCode.Add(Nationality);
-        hashCode.Add(Lifepath);
+        hashCode.Add(Homeworld);
+        hashCode.Add(Culture);
+        hashCode.Add(Faction);
+        hashCode.Add(Religion);
         hashCode.Add(Branch); // Ember
         hashCode.Add(Rank); // Ember
         hashCode.Add(Age);

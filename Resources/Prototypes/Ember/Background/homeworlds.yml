@@ -1,0 +1,670 @@
+# Where a character lives. Ported from SierraBay12's /singleton/cultural_info/location
+# (code/modules/culture_descriptor/location/), with the Russian additions from
+# mods/expanded_culture_descriptor.
+#
+# This is the axis a passport hangs off, which is why it is being done first: Bay's passport is a
+# loadout item that stamps itself from TAG_HOMEWORLD at spawn, and there is nothing for it to read
+# until these exist.
+#
+# Batch 1 of the homeworld axis: the Sol system and the three answers that are not a place. The
+# rest of human space, then Moghes, then the IPC and Diona origins follow in later batches - the
+# translation is the slow half, since Bay's core files are English, the Sierra mod's additions are
+# Russian, and no entry anywhere has both.
+#
+# Weights put Sol first because most characters are from Sol, and Bay's own ordering is file order
+# - which is why Mars leads there, Mars being the base type rather than the obvious choice.
+#
+# Bay's /root is deliberately not ported. It is the homeworld of an independent machine polity,
+# and Ember's lore has no such thing: an IPC is property of a state, a company or a person, not a
+# vid with a country - see "06 - Правовой статус ксеновидов и ИПС" in the design vault, where the
+# same premise is what takes military rank away from them entirely. Porting /root would smuggle
+# Bay's reading in through the back door of a dropdown.
+#
+# What an IPC picks instead is a human world, which for a machine reads as where the chassis was
+# built rather than where it lives. That is why the SCG entries below admit IPC alongside Human:
+# a unit assembled on Mars is from Mars in the only sense that applies to it, and its owner is a
+# separate question that the employer axis already answers.
+#
+# EMBER-TODO: nothing selects these yet. The profile still carries the Contractors module's
+# `nationality`, and swapping it for the four axes is one change to the character schema and one
+# database migration, so it waits until all four axes have their data.
+
+# Sol. The capital, and the planet most of the crew will name.
+- type: emberBackground
+  id: EmberHomeworldMars
+  axis: Homeworld
+  weight: 100
+  name: ember-homeworld-mars
+  description: ember-homeworld-mars-desc
+  details: ember-homeworld-mars-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+
+- type: emberBackground
+  id: EmberHomeworldEarth
+  axis: Homeworld
+  weight: 99
+  name: ember-homeworld-earth
+  description: ember-homeworld-earth-desc
+  details: ember-homeworld-earth-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+
+- type: emberBackground
+  id: EmberHomeworldLuna
+  axis: Homeworld
+  weight: 98
+  name: ember-homeworld-luna
+  description: ember-homeworld-luna-desc
+  details: ember-homeworld-luna-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+
+- type: emberBackground
+  id: EmberHomeworldVenus
+  axis: Homeworld
+  weight: 97
+  name: ember-homeworld-venus
+  description: ember-homeworld-venus-desc
+  details: ember-homeworld-venus-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+
+- type: emberBackground
+  id: EmberHomeworldCeres
+  axis: Homeworld
+  weight: 96
+  name: ember-homeworld-ceres
+  description: ember-homeworld-ceres-desc
+  details: ember-homeworld-ceres-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+
+# The Kuiper zone is two entries in Bay because it is two ways of living: the orbitals around the
+# administration, and everything past where the administration bothers to look.
+- type: emberBackground
+  id: EmberHomeworldKuiperBelt
+  axis: Homeworld
+  weight: 95
+  name: ember-homeworld-kuiper-belt
+  description: ember-homeworld-kuiper-belt-desc
+  details: ember-homeworld-kuiper-belt-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+
+- type: emberBackground
+  id: EmberHomeworldKuiperInterdust
+  axis: Homeworld
+  weight: 94
+  name: ember-homeworld-kuiper-interdust
+  description: ember-homeworld-kuiper-interdust-desc
+  details: ember-homeworld-kuiper-interdust-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+
+# Pluto is the Sierra mod's, and it contradicts the core files, which treat Pluto as the Kuiper
+# zone's administrative seat and little else. Kept the mod's reading - a nominal republic of two
+# cities run through by organised crime - because it is a place to be from rather than an address,
+# and because a decayed core world is squarely Future Mundane. The Kuiper entries above still name
+# Pluto as their capital, which is not a contradiction: an administrative seat can be a bad place
+# to live, and usually is.
+- type: emberBackground
+  id: EmberHomeworldPluto
+  axis: Homeworld
+  weight: 93
+  name: ember-homeworld-pluto
+  description: ember-homeworld-pluto-desc
+  details: ember-homeworld-pluto-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+
+# The three that are not a place. No species requirement on any of them: anything that walks aboard
+# can be from nowhere in particular, and the last two are conditions rather than origins.
+- type: emberBackground
+  id: EmberHomeworldOther
+  axis: Homeworld
+  weight: 10
+  name: ember-homeworld-other
+  description: ember-homeworld-other-desc
+  details: ember-homeworld-other-details
+
+# Not an origin but a legal status, and the one entry here with mechanical weight later: a stateless
+# character has no government to complain on their behalf, which is the whole point of the Federal
+# Marshal being aboard at all.
+- type: emberBackground
+  id: EmberHomeworldStateless
+  axis: Homeworld
+  weight: 9
+  name: ember-homeworld-stateless
+  description: ember-homeworld-stateless-desc
+  details: ember-homeworld-stateless-details
+
+- type: emberBackground
+  id: EmberHomeworldDeepSpace
+  axis: Homeworld
+  weight: 8
+  name: ember-homeworld-deep-space
+  description: ember-homeworld-deep-space-desc
+
+# Batch 2: the human colonies outside Sol, and Ahdomai.
+#
+# Terra and Magnitka are not SCG. They are kept because a character from a rival power aboard an
+# SCG ship is a background worth having, and because the Corps hires foreign nationals - what it
+# does not do is commission them, which is the branch requirement's job rather than this file's.
+
+- type: emberBackground
+  id: EmberHomeworldCetiEpsilon
+  axis: Homeworld
+  weight: 90
+  name: ember-homeworld-ceti-epsilon
+  description: ember-homeworld-ceti-epsilon-desc
+  details: ember-homeworld-ceti-epsilon-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+
+- type: emberBackground
+  id: EmberHomeworldEos
+  axis: Homeworld
+  weight: 89
+  name: ember-homeworld-eos
+  description: ember-homeworld-eos-desc
+  details: ember-homeworld-eos-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+
+- type: emberBackground
+  id: EmberHomeworldGaia
+  axis: Homeworld
+  weight: 88
+  name: ember-homeworld-gaia
+  description: ember-homeworld-gaia-desc
+  details: ember-homeworld-gaia-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberHomeworldCastilla
+  axis: Homeworld
+  weight: 87
+  name: ember-homeworld-castilla
+  description: ember-homeworld-castilla-desc
+  details: ember-homeworld-castilla-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+
+- type: emberBackground
+  id: EmberHomeworldFosters
+  axis: Homeworld
+  weight: 86
+  name: ember-homeworld-fosters
+  description: ember-homeworld-fosters-desc
+  details: ember-homeworld-fosters-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+
+# Outside the SCG. Brahe and Iolaus were inside it until two years ago, and the timeline in
+# "03 - Хронология" is what moved them: corporations installed a governor on Iolaus in 2324,
+# corporate security broke up the protests in 2326, the referendum came in 2328, and in 2329 the
+# planet left and the Frontier Alliance formed around it. Bay has both as firm SCG loyalists, which
+# is the opposite of the canon and was worse than having no text at all.
+#
+# Kept selectable rather than removed. A crewman from a world that seceded two years ago, aboard the
+# ship of the government it seceded from, is the most useful background in this file - and the Corps
+# hires from the frontier precisely because the frontier is where the work is.
+- type: emberBackground
+  id: EmberHomeworldTerra
+  axis: Homeworld
+  weight: 80
+  name: ember-homeworld-terra
+  description: ember-homeworld-terra-desc
+  details: ember-homeworld-terra-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberHomeworldMagnitka
+  axis: Homeworld
+  weight: 79
+  name: ember-homeworld-magnitka
+  description: ember-homeworld-magnitka-desc
+  details: ember-homeworld-magnitka-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+# Ahdomai. The only entry so far whose original is Russian and whose English had to be written -
+# it comes from mods/tajara, which the core Bay files know nothing about.
+- type: emberBackground
+  id: EmberHomeworldAhdomai
+  axis: Homeworld
+  weight: 85
+  name: ember-homeworld-ahdomai
+  description: ember-homeworld-ahdomai-desc
+  details: ember-homeworld-ahdomai-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+# Batch 4: the outer human colonies.
+#
+# Avalon is deliberately not ported. Bay gives it a medieval order in space, which is a joke this
+# setting does not tell - Future Mundane means the strange thing is that nothing is strange.
+#
+# Tersten appears twice in Bay, once written for humans and once for Unathi, and both are kept.
+# They never meet in a list: the species requirement means a player only ever sees their own, and
+# a shared world described from two sides is better than one description pretending to cover both.
+
+- type: emberBackground
+  id: EmberHomeworldTersten
+  axis: Homeworld
+  weight: 78
+  name: ember-homeworld-tersten
+  description: ember-homeworld-tersten-desc
+  details: ember-homeworld-tersten-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberHomeworldTadmor
+  axis: Homeworld
+  weight: 84
+  name: ember-homeworld-tadmor
+  description: ember-homeworld-tadmor-desc
+  details: ember-homeworld-tadmor-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+
+- type: emberBackground
+  id: EmberHomeworldSaffar
+  axis: Homeworld
+  weight: 83
+  name: ember-homeworld-saffar
+  description: ember-homeworld-saffar-desc
+  details: ember-homeworld-saffar-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+
+# The one homeworld in the file with a grudge against the Corps specifically, which makes it worth
+# more to a character than a neutral one: a Pirxan explorer chose the service that neglected them.
+- type: emberBackground
+  id: EmberHomeworldPirx
+  axis: Homeworld
+  weight: 82
+  name: ember-homeworld-pirx
+  description: ember-homeworld-pirx-desc
+  details: ember-homeworld-pirx-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+
+- type: emberBackground
+  id: EmberHomeworldBrahe
+  axis: Homeworld
+  weight: 81
+  name: ember-homeworld-brahe
+  description: ember-homeworld-brahe-desc
+  details: ember-homeworld-brahe-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+
+- type: emberBackground
+  id: EmberHomeworldIolaus
+  axis: Homeworld
+  weight: 77
+  name: ember-homeworld-iolaus
+  description: ember-homeworld-iolaus-desc
+  details: ember-homeworld-iolaus-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+
+
+# Batch 5: the Lordanian cluster, the Nyx system, and the rest of the Russian mod's additions.
+# Every entry here has a Russian original and an English translation rather than the other way
+# round - the Sierra mod wrote them and the core Bay files know none of them.
+#
+# Quig is deliberately not ported. It is a city built jointly for humans, Skrell and Resomi, and
+# two of those three are not species in this game. A place can outlive its people, but a
+# description that promises two species the player will never meet is a worse answer than leaving
+# the entry out.
+#
+# Nyx is a corporate system rather than an SCG one: Brinkburn is run by gangs, Casser by Grayson,
+# Roanok by NanoTrasen, Yuklit by Gilthari and Aether. Worth having precisely because the Corps
+# contracts Grayson for prospecting - a rating from Casser has met the company that employs half
+# the supply department.
+#
+# What Bay does not have and Ember does is a state within reach of it. Trasengate ended the era of
+# companies writing their own rules out here: the system is still outside the SCG, but the firms
+# working it are SCG-registered, so the mandate reaches the companies where it cannot reach the
+# system. Roanok and Yuklit carry that; the other three are small enough that nobody has come to
+# look. See "02 - Корпорации и Трейзенгейт" in the design vault.
+
+- type: emberBackground
+  id: EmberHomeworldKingston
+  axis: Homeworld
+  weight: 76
+  name: ember-homeworld-kingston
+  description: ember-homeworld-kingston-desc
+  details: ember-homeworld-kingston-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+- type: emberBackground
+  id: EmberHomeworldLordania
+  axis: Homeworld
+  weight: 75
+  name: ember-homeworld-lordania
+  description: ember-homeworld-lordania-desc
+  details: ember-homeworld-lordania-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+- type: emberBackground
+  id: EmberHomeworldLorriman
+  axis: Homeworld
+  weight: 74
+  name: ember-homeworld-lorriman
+  description: ember-homeworld-lorriman-desc
+  details: ember-homeworld-lorriman-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+- type: emberBackground
+  id: EmberHomeworldMirania
+  axis: Homeworld
+  weight: 73
+  name: ember-homeworld-mirania
+  description: ember-homeworld-mirania-desc
+  details: ember-homeworld-mirania-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+- type: emberBackground
+  id: EmberHomeworldCinu
+  axis: Homeworld
+  weight: 72
+  name: ember-homeworld-cinu
+  description: ember-homeworld-cinu-desc
+  details: ember-homeworld-cinu-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+- type: emberBackground
+  id: EmberHomeworldYuklidV
+  axis: Homeworld
+  weight: 67
+  name: ember-homeworld-yuklid-v
+  description: ember-homeworld-yuklid-v-desc
+  details: ember-homeworld-yuklid-v-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+- type: emberBackground
+  id: EmberHomeworldBrinkburn
+  axis: Homeworld
+  weight: 64
+  name: ember-homeworld-brinkburn
+  description: ember-homeworld-brinkburn-desc
+  details: ember-homeworld-brinkburn-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+- type: emberBackground
+  id: EmberHomeworldCasser
+  axis: Homeworld
+  weight: 63
+  name: ember-homeworld-casser
+  description: ember-homeworld-casser-desc
+  details: ember-homeworld-casser-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+- type: emberBackground
+  id: EmberHomeworldKaldark
+  axis: Homeworld
+  weight: 62
+  name: ember-homeworld-kaldark
+  description: ember-homeworld-kaldark-desc
+  details: ember-homeworld-kaldark-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+- type: emberBackground
+  id: EmberHomeworldRoanok
+  axis: Homeworld
+  weight: 61
+  name: ember-homeworld-roanok
+  description: ember-homeworld-roanok-desc
+  details: ember-homeworld-roanok-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+- type: emberBackground
+  id: EmberHomeworldYuklit
+  axis: Homeworld
+  weight: 60
+  name: ember-homeworld-yuklit
+  description: ember-homeworld-yuklit-desc
+  details: ember-homeworld-yuklit-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - IPC
+
+# Batch 3: the xeno origins for the species that exist here.
+#
+# Bay's Unathi entries are three worlds plus a fourth answer that is not a world at all - the ones
+# who left. That fourth is the one most Ember reptilians will pick, since the Corps hires
+# offworlders and the Hegemony does not send crews.
+
+- type: emberBackground
+  id: EmberHomeworldMoghes
+  axis: Homeworld
+  weight: 70
+  name: ember-homeworld-moghes
+  description: ember-homeworld-moghes-desc
+  details: ember-homeworld-moghes-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+# Ouere is deliberately not ported. Bay builds it entirely on a network of precursor gateway
+# devices linking Moghes to its sister world, and Ember has no precursors: remove them and there is
+# no entry left, only a second planet with nothing to say about itself. Same call as Quig and
+# Avalon. It comes back when the Unathi have lore of their own.
+
+# Tersten is the Sierra mod's, and it is the entry that makes a reptilian aboard an SCG ship
+# ordinary rather than remarkable: an SCG world where clans kept their autonomy and the two
+# species got on. Everything else in this file would have a Hegemony citizen explaining himself.
+- type: emberBackground
+  id: EmberHomeworldTerstenUnathi
+  axis: Homeworld
+  weight: 68
+  name: ember-homeworld-tersten-unathi
+  description: ember-homeworld-tersten-unathi-desc
+  details: ember-homeworld-tersten-unathi-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+- type: emberBackground
+  id: EmberHomeworldOffworld
+  axis: Homeworld
+  weight: 71
+  name: ember-homeworld-offworld
+  description: ember-homeworld-offworld-desc
+  details: ember-homeworld-offworld-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+# Dionaea. One system, no planets, and a species that was found rather than met.
+- type: emberBackground
+  id: EmberHomeworldDionaea
+  axis: Homeworld
+  weight: 65
+  name: ember-homeworld-dionaea
+  description: ember-homeworld-dionaea-desc
+  details: ember-homeworld-dionaea-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Diona
+
+# The Confederation's member worlds. They are in the GCC because each of them preferred it to being
+# absorbed into the SCG as a member state, and the Confederation asked less of them for it - which
+# is also why a state founded by Old Believers has a French banking world and a Hindu-descended
+# technocracy in it. See the culture entries for what that produced in the people.
+
+- type: emberBackground
+  id: EmberHomeworldNovayaZemlya
+  axis: Homeworld
+  weight: 79
+  name: ember-homeworld-novaya-zemlya
+  description: ember-homeworld-novaya-zemlya-desc
+  details: ember-homeworld-novaya-zemlya-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberHomeworldAmelia
+  axis: Homeworld
+  weight: 79
+  name: ember-homeworld-amelia
+  description: ember-homeworld-amelia-desc
+  details: ember-homeworld-amelia-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberHomeworldSevois
+  axis: Homeworld
+  weight: 79
+  name: ember-homeworld-sevois
+  description: ember-homeworld-sevois-desc
+  details: ember-homeworld-sevois-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberHomeworldPutkari
+  axis: Homeworld
+  weight: 79
+  name: ember-homeworld-putkari
+  description: ember-homeworld-putkari-desc
+  details: ember-homeworld-putkari-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberHomeworldQabil
+  axis: Homeworld
+  weight: 79
+  name: ember-homeworld-qabil
+  description: ember-homeworld-qabil-desc
+  details: ember-homeworld-qabil-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberHomeworldProvidence
+  axis: Homeworld
+  weight: 79
+  name: ember-homeworld-providence
+  description: ember-homeworld-providence-desc
+  details: ember-homeworld-providence-details
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human

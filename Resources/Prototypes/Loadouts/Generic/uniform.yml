@@ -2477,12 +2477,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutUniformsCivilian
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Bieselite
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingUniformTCFLLegate
@@ -2496,12 +2490,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutUniformsCivilian
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Bieselite
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingUniformTCFLPilot
@@ -2515,12 +2503,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutUniformsCivilian
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Bieselite
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingUniformTCFLSentinel
@@ -2534,12 +2516,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutUniformsCivilian
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Bieselite
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingUniformTCFLVolunteer
@@ -2553,12 +2529,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutUniformsCivilian
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Bieselite
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 # Solarian Aliance Uniforms
 - type: loadout
@@ -2573,12 +2543,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutUniformsCivilian
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Solarian
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingUniformJumpsuitSolFatigueGreen
@@ -2592,12 +2556,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutUniformsCivilian
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Solarian
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingUniformJumpsuitSolFatigueGrey
@@ -2611,12 +2569,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutUniformsCivilian
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Solarian
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingUniformJumpsuitSolFatigueTan
@@ -2630,12 +2582,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutUniformsCivilian
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Solarian
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingUniformJumpsuitSolNavyCoveralls
@@ -2649,12 +2595,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutUniformsCivilian
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Solarian
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingUniformJumpsuitSolNavySailor
@@ -2668,12 +2608,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutUniformsCivilian
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Solarian
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 
 - type: loadout
   id: ClothingUniformJumpsuitSolServiceWhite
@@ -2687,9 +2621,3 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutUniformsCivilian
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Solarian
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet

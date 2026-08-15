@@ -1,7 +1,8 @@
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using System.Numerics;
 using Content.Shared._EE.Contractors.Prototypes;
+using Content.Shared.Ember.Background;
 using Content.Shared.Examine;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
@@ -49,11 +50,21 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
     [ValidatePrototypeId<EmployerPrototype>]
     public const string DefaultEmployer = "Unemployed"; // Ember: a new character owes nobody anything until they say so.
 
-    [ValidatePrototypeId<NationalityPrototype>]
-    public const string DefaultNationality = "Bieselite";
+    // Ember: the four background axes replace the Contractors module's nationality and lifepath.
+    // Defaults are the least committal entry on each axis that every species can hold, so a fresh
+    // profile is valid before the player has answered anything - except the homeworld, where Mars
+    // is both the capital and the answer most characters give.
+    [ValidatePrototypeId<EmberBackgroundPrototype>]
+    public const string DefaultHomeworld = "EmberHomeworldMars";
 
-    [ValidatePrototypeId<LifepathPrototype>]
-    public const string DefaultLifepath = "Spacer";
+    [ValidatePrototypeId<EmberBackgroundPrototype>]
+    public const string DefaultCulture = "EmberCultureOther";
+
+    [ValidatePrototypeId<EmberBackgroundPrototype>]
+    public const string DefaultFaction = "EmberFactionOther";
+
+    [ValidatePrototypeId<EmberBackgroundPrototype>]
+    public const string DefaultReligion = "EmberReligionUnstated";
 
     public override void Initialize()
     {
