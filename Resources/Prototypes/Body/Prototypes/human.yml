@@ -11,6 +11,11 @@
         brain: OrganHumanBrain
         eyes: OrganHumanEyes
     torso:
+      # EMBER-TODO: the torso sprite now covers the hips because SierraBay12 draws the groin as a
+      # body part of its own and SS14 does not - the two were merged when the body art was ported
+      # (see the copyright note in Mobs/Species/Human/parts.rsi/meta.json). Bay's surgery treats
+      # the groin separately, so porting the medicine wants them split again: a GroinHuman part,
+      # its own slot between torso and legs, and the sprite cut back out of torso_m/torso_f.
       part: TorsoHuman
       connections:
       - right arm

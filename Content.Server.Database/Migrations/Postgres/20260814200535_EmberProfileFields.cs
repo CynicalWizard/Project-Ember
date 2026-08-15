@@ -129,23 +129,11 @@ namespace Content.Server.Database.Migrations.Postgres
             migrationBuilder.DropTable(
                 name: "profile_skill");
 
-            migrationBuilder.DropColumn(
-                name: "branch",
-                table: "profile");
-
-            migrationBuilder.DropColumn(
-                name: "culture",
-                table: "profile");
-
-            migrationBuilder.DropColumn(
-                name: "faction",
-                table: "profile");
-
-            migrationBuilder.DropColumn(
-                name: "rank",
-                table: "profile");
-
-            foreach (var column in new[] { "homeworld", "culture", "faction", "religion" })
+            // Every column this migration added, once each. The loop used to run beside an
+            // explicit list that already named culture and faction, so Down asked for those two
+            // twice and would have failed halfway through - on the second DropColumn, with the
+            // first half of the rollback already committed.
+            foreach (var column in new[] { "homeworld", "culture", "faction", "religion", "branch", "rank" })
             {
                 migrationBuilder.DropColumn(name: column, table: "profile");
             }
