@@ -3,6 +3,8 @@
     xmlns:humanoid="clr-namespace:Content.Client.Humanoid"
     xmlns:prefUi="clr-namespace:Content.Client.Lobby.UI"
     xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:emberLobby="clr-namespace:Content.Client.Ember.Lobby"
+    xmlns:emberSkills="clr-namespace:Content.Client.Ember.Skills"
     xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
     HorizontalExpand="True">
     <!-- Left side -->
@@ -23,125 +25,171 @@
             </prefUi:HighlightedContainer>
         </BoxContainer>
         <Control MinHeight="10" />
+        <!-- Ember: the record stands to the left of everything that edits it, so the answer to
+             "who is this character" never goes away when a section changes. -->
+        <BoxContainer Orientation="Horizontal" VerticalExpand="True" HorizontalExpand="True">
+        <PanelContainer VerticalExpand="True">
+            <PanelContainer.PanelOverride>
+                <graphics:StyleBoxFlat BackgroundColor="#25252A" />
+            </PanelContainer.PanelOverride>
+            <emberLobby:EmberDossierPanel Name="Dossier" />
+        </PanelContainer>
+        <Control MinWidth="8" />
         <!-- TabContainer -->
         <ui:NeoTabContainer Name="CTabContainer" VerticalExpand="True" HScrollEnabled="False" VScrollEnabled="False">
+            <!-- Ember: who this person is, and nothing about what they look like. Appearance
+                 used to open with fourteen form rows before the first colour, which is why the
+                 section needed two columns and still left a hole: two unrelated jobs in one
+                 place, neither of them shaped to the space. The description moves here from its
+                 own tab because it answers the same question in prose, and because a text box
+                 is the one control happy to take whatever room is left. -->
+            <BoxContainer Name="Identity" HorizontalExpand="True" Orientation="Horizontal">
+                <!-- Fixed width, not half the pane: these rows put the label at one edge and the
+                     control at the other, so every pixel of extra width is a pixel of gap. -->
+                <ScrollContainer MinWidth="580" MaxWidth="580" VerticalExpand="True" VScrollEnabled="True">
+                    <ui:AlternatingBGContainer Orientation="Vertical" HorizontalExpand="True">
+                        <!-- Species -->
+                        <BoxContainer HorizontalExpand="True">
+                            <Label Text="{Loc 'humanoid-profile-editor-species-label'}" />
+                            <Control HorizontalExpand="True"/>
+                            <TextureButton Name="SpeciesInfoButton" Scale="0.3 0.3" VerticalAlignment="Center"
+                                ToolTip="{Loc 'humanoid-profile-editor-guidebook-button-tooltip'}"/>
+                            <OptionButton Name="SpeciesButton" HorizontalAlignment="Right" />
+                        </BoxContainer>
+                        <!-- Species -->
+                        <BoxContainer Name="CCustomSpecieName" HorizontalExpand="True">
+                            <Label Text="{Loc 'humanoid-profile-editor-customspeciename-label'}" />
+                            <Control HorizontalExpand="True"/>
+                                <LineEdit Name="CCustomSpecieNameEdit" MinSize="270 0" HorizontalAlignment="Right" />
+                        </BoxContainer>
+                        <!-- Age -->
+                        <BoxContainer HorizontalExpand="True">
+                            <Label Text="{Loc 'humanoid-profile-editor-age-label'}" />
+                            <Control HorizontalExpand="True"/>
+                            <LineEdit Name="AgeEdit" MinSize="40 0" HorizontalAlignment="Right" />
+                        </BoxContainer>
+                        <!-- Sex -->
+                        <BoxContainer HorizontalExpand="True">
+                            <Label Text="{Loc 'humanoid-profile-editor-sex-label'}" />
+                            <Control HorizontalExpand="True"/>
+                            <OptionButton Name="SexButton" HorizontalAlignment="Right" />
+                        </BoxContainer>
+                        <!-- Ember: no pronoun row. Sex decides the pronouns, and two
+                             dropdowns that could disagree taught nobody which one the
+                             game reads. See EmberPronouns. -->
+                        <!-- Customizable, cosmetic pronouns -->
+                        <BoxContainer Name="CosmeticPronousContainer" HorizontalExpand="True">
+                            <Label Text="{Loc 'humanoid-profile-editor-display-pronouns-label'}" />
+                            <Control HorizontalExpand="True"/>
+                            <LineEdit Name="CosmeticPronounsNameEdit" MinSize="270 0" HorizontalAlignment="Right" />
+                        </BoxContainer>
+                        <!-- Move these when you rename the tabs, this isn't appearance technically, but it's convenient there -->
+                        <!-- Name -->
+                        <BoxContainer HorizontalExpand="True">
+                            <Label Text="{Loc 'humanoid-profile-editor-name-label'}" />
+                            <Control HorizontalExpand="True"/>
+                            <Button Name="NameRandomize" Text="{Loc 'humanoid-profile-editor-name-random-button'}" StyleClasses="OpenRight" />
+                            <LineEdit Name="NameEdit" MinSize="270 0" HorizontalAlignment="Right" />
+                        </BoxContainer>
+                        <!-- Station AI name -->
+                        <BoxContainer Name="StationAiNameContainer" HorizontalExpand="True">
+                            <Label Text="{Loc 'humanoid-profile-editor-station-ai-name-label'}" />
+                            <Control HorizontalExpand="True"/>
+                            <LineEdit Name="StationAINameEdit" MinSize="270 0" HorizontalAlignment="Right" />
+                        </BoxContainer>
+                        <!-- Cyborg name -->
+                        <BoxContainer Name="CyborgNameContainer" HorizontalExpand="True">
+                            <Label Text="{Loc 'humanoid-profile-editor-cyborg-name-label'}" />
+                            <Control HorizontalExpand="True"/>
+                            <LineEdit Name="CyborgNameEdit" MinSize="270 0" HorizontalAlignment="Right" />
+                        </BoxContainer>
+                    </ui:AlternatingBGContainer>
+                </ScrollContainer>
+                <Control MinWidth="12" />
+                <BoxContainer Name="FlavorTextColumn" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                    <Label Text="{Loc 'humanoid-profile-editor-flavortext-tab'}" Margin="10 0 0 0" />
+                    <BoxContainer Name="FlavorTextContainer" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" />
+                </BoxContainer>
+            </BoxContainer>
+
+            <!-- Ember: everything visible on the body, in one place - the build, the colours,
+                 and every marking including hair, which used to be a tab of its own. -->
             <BoxContainer Name="Appearance" HorizontalExpand="True" Orientation="Vertical">
-                <!-- appearanceList -->
                 <ScrollContainer HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True" VScrollEnabled="True">
                     <BoxContainer HorizontalExpand="True" Orientation="Vertical">
-                        <ui:AlternatingBGContainer Orientation="Vertical" HorizontalExpand="True">
-                            <!-- Species -->
-                            <BoxContainer HorizontalExpand="True">
-                                <Label Text="{Loc 'humanoid-profile-editor-species-label'}" />
-                                <Control HorizontalExpand="True"/>
-                                <TextureButton Name="SpeciesInfoButton" Scale="0.3 0.3" VerticalAlignment="Center"
-                                    ToolTip="{Loc 'humanoid-profile-editor-guidebook-button-tooltip'}"/>
-                                <OptionButton Name="SpeciesButton" HorizontalAlignment="Right" />
+                        <BoxContainer HorizontalExpand="True" Orientation="Horizontal">
+                            <!-- Build, and what the preview shows -->
+                            <ui:AlternatingBGContainer Orientation="Vertical" HorizontalExpand="True">
+                                <!-- Show clothing -->
+                                <BoxContainer HorizontalExpand="True">
+                                    <Label Text="{Loc 'humanoid-profile-editor-clothing'}" />
+                                    <Control HorizontalExpand="True"/>
+                                    <Button Name="ShowClothes" Pressed="True" ToggleMode="True" Text="{Loc 'humanoid-profile-editor-clothing-show'}" HorizontalAlignment="Right" />
+                                </BoxContainer>
+                                <!-- Show loadouts -->
+                                <BoxContainer HorizontalExpand="True">
+                                    <Label Text="{Loc 'humanoid-profile-editor-loadouts'}" />
+                                    <Control HorizontalExpand="True"/>
+                                    <Button Name="ShowLoadouts" Pressed="True" ToggleMode="True" Text="{Loc 'Show'}" HorizontalAlignment="Right" />
+                                </BoxContainer>
+                                <!-- Spawn Priority -->
+                                <BoxContainer HorizontalExpand="True">
+                                    <Label Text="{Loc 'humanoid-profile-editor-spawn-priority-label'}" />
+                                    <Control HorizontalExpand="True"/>
+                                    <OptionButton Name="SpawnPriorityButton" HorizontalAlignment="Right" />
+                                </BoxContainer>
+                                <!-- Height -->
+                                <BoxContainer HorizontalExpand="True">
+                                    <Label Name="HeightLabel" MinWidth="110" />
+                                    <Slider Name="HeightSlider" MinValue="0.5" Value="1" MaxValue="1.5" HorizontalExpand="True" Margin="5 0 5 0" />
+                                    <Button Name="HeightReset" Text="{Loc 'ui-options-bind-reset'}" />
+                                </BoxContainer>
+                                <!-- Width -->
+                                <BoxContainer HorizontalExpand="True">
+                                    <Label Name="WidthLabel" MinWidth="110" />
+                                    <Slider Name="WidthSlider" MinValue="0.5" Value="1" MaxValue="1.5" HorizontalExpand="True" Margin="5 0 5 0" />
+                                    <Button Name="WidthReset" Text="{Loc 'ui-options-bind-reset'}" />
+                                </BoxContainer>
+                                <!--Weight -->
+                                <BoxContainer HorizontalExpand="True">
+                                    <Label Name="WeightLabel" />
+                                </BoxContainer>
+                            </ui:AlternatingBGContainer>
+                            <Control MinWidth="12" />
+                            <!-- Colour -->
+                            <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+                                <!-- Skin -->
+                            <BoxContainer Margin="0 4 0 4" HorizontalExpand="True" Orientation="Vertical">
+                                <Label Text="{Loc 'humanoid-profile-editor-skin-color-label'}" />
+                                <Slider HorizontalExpand="True" Name="Skin" MinValue="0" MaxValue="100" Value="20" />
+                                <BoxContainer Name="RgbSkinColorContainer" Visible="False" Orientation="Vertical" HorizontalExpand="True"></BoxContainer>
                             </BoxContainer>
-                            <!-- Species -->
-                            <BoxContainer Name="CCustomSpecieName" HorizontalExpand="True">
-                                <Label Text="{Loc 'humanoid-profile-editor-customspeciename-label'}" />
-                                <Control HorizontalExpand="True"/>
-                                    <LineEdit Name="CCustomSpecieNameEdit" MinSize="270 0" HorizontalAlignment="Right" />
+                            <!-- Eyes -->
+                            <BoxContainer Margin="0 4 0 4" Orientation="Vertical">
+                                <Label Text="{Loc 'humanoid-profile-editor-eyes-label'}" />
+                                <humanoid:EyeColorPicker Name="EyeColorPicker" />
                             </BoxContainer>
-                            <!-- Age -->
-                            <BoxContainer HorizontalExpand="True">
-                                <Label Text="{Loc 'humanoid-profile-editor-age-label'}" />
-                                <Control HorizontalExpand="True"/>
-                                <LineEdit Name="AgeEdit" MinSize="40 0" HorizontalAlignment="Right" />
                             </BoxContainer>
-                            <!-- Sex -->
-                            <BoxContainer HorizontalExpand="True">
-                                <Label Text="{Loc 'humanoid-profile-editor-sex-label'}" />
-                                <Control HorizontalExpand="True"/>
-                                <OptionButton Name="SexButton" HorizontalAlignment="Right" />
-                            </BoxContainer>
-                            <!-- Pronouns -->
-                            <BoxContainer HorizontalExpand="True">
-                                <Label Text="{Loc 'humanoid-profile-editor-pronouns-label'}" />
-                                <Control HorizontalExpand="True"/>
-                                <OptionButton Name="PronounsButton" HorizontalAlignment="Right" />
-                            </BoxContainer>
-                            <!-- Customizable, cosmetic pronouns -->
-                            <BoxContainer Name="CosmeticPronousContainer" HorizontalExpand="True">
-                                <Label Text="{Loc 'humanoid-profile-editor-display-pronouns-label'}" />
-                                <Control HorizontalExpand="True"/>
-                                <LineEdit Name="CosmeticPronounsNameEdit" MinSize="270 0" HorizontalAlignment="Right" />
-                            </BoxContainer>
-                            <!-- Move these when you rename the tabs, this isn't appearance technically, but it's convenient there -->
-                            <!-- Name -->
-                            <BoxContainer HorizontalExpand="True">
-                                <Label Text="{Loc 'humanoid-profile-editor-name-label'}" />
-                                <Control HorizontalExpand="True"/>
-                                <Button Name="NameRandomize" Text="{Loc 'humanoid-profile-editor-name-random-button'}" StyleClasses="OpenRight" />
-                                <LineEdit Name="NameEdit" MinSize="270 0" HorizontalAlignment="Right" />
-                            </BoxContainer>
-                            <!-- Station AI name -->
-                            <BoxContainer Name="StationAiNameContainer" HorizontalExpand="True">
-                                <Label Text="{Loc 'humanoid-profile-editor-station-ai-name-label'}" />
-                                <Control HorizontalExpand="True"/>
-                                <LineEdit Name="StationAINameEdit" MinSize="270 0" HorizontalAlignment="Right" />
-                            </BoxContainer>
-                            <!-- Cyborg name -->
-                            <BoxContainer Name="CyborgNameContainer" HorizontalExpand="True">
-                                <Label Text="{Loc 'humanoid-profile-editor-cyborg-name-label'}" />
-                                <Control HorizontalExpand="True"/>
-                                <LineEdit Name="CyborgNameEdit" MinSize="270 0" HorizontalAlignment="Right" />
-                            </BoxContainer>
-                            <!-- Show clothing -->
-                            <BoxContainer HorizontalExpand="True">
-                                <Label Text="{Loc 'humanoid-profile-editor-clothing'}" />
-                                <Control HorizontalExpand="True"/>
-                                <Button Name="ShowClothes" Pressed="True" ToggleMode="True" Text="{Loc 'humanoid-profile-editor-clothing-show'}" HorizontalAlignment="Right" />
-                            </BoxContainer>
-                            <!-- Show loadouts -->
-                            <BoxContainer HorizontalExpand="True">
-                                <Label Text="{Loc 'humanoid-profile-editor-loadouts'}" />
-                                <Control HorizontalExpand="True"/>
-                                <Button Name="ShowLoadouts" Pressed="True" ToggleMode="True" Text="{Loc 'Show'}" HorizontalAlignment="Right" />
-                            </BoxContainer>
-                            <!-- Spawn Priority -->
-                            <BoxContainer HorizontalExpand="True">
-                                <Label Text="{Loc 'humanoid-profile-editor-spawn-priority-label'}" />
-                                <Control HorizontalExpand="True"/>
-                                <OptionButton Name="SpawnPriorityButton" HorizontalAlignment="Right" />
-                            </BoxContainer>
-						    <!-- Height -->
-                            <BoxContainer HorizontalExpand="True">
-                                <Label Name="HeightLabel" MinWidth="110" />
-                                <Slider Name="HeightSlider" MinValue="0.5" Value="1" MaxValue="1.5" HorizontalExpand="True" Margin="5 0 5 0" />
-                                <Button Name="HeightReset" Text="{Loc 'ui-options-bind-reset'}" />
-                            </BoxContainer>
-                            <!-- Width -->
-                            <BoxContainer HorizontalExpand="True">
-                                <Label Name="WidthLabel" MinWidth="110" />
-                                <Slider Name="WidthSlider" MinValue="0.5" Value="1" MaxValue="1.5" HorizontalExpand="True" Margin="5 0 5 0" />
-                                <Button Name="WidthReset" Text="{Loc 'ui-options-bind-reset'}" />
-                            </BoxContainer>
-                            <!--Weight -->
-                            <BoxContainer HorizontalExpand="True">
-                                <Label Name="WeightLabel" />
-                            </BoxContainer>
-                        </ui:AlternatingBGContainer>
-                        <!-- Skin -->
-                        <BoxContainer Margin="0 4 0 4" HorizontalExpand="True" Orientation="Vertical">
-                            <Label Text="{Loc 'humanoid-profile-editor-skin-color-label'}" />
-                            <Slider HorizontalExpand="True" Name="Skin" MinValue="0" MaxValue="100" Value="20" />
-                            <BoxContainer Name="RgbSkinColorContainer" Visible="False" Orientation="Vertical" HorizontalExpand="True"></BoxContainer>
                         </BoxContainer>
-                        <!-- Hair -->
-                        <BoxContainer Margin="0 4 0 4" Orientation="Horizontal">
-                            <humanoid:SingleMarkingPicker Name="HairStylePicker" Category="Hair" />
-                            <humanoid:SingleMarkingPicker Name="FacialHairPicker" Category="FacialHair" />
-                        </BoxContainer>
-                        <!-- Eyes -->
-                        <BoxContainer Margin="0 4 0 4" Orientation="Vertical">
-                            <Label Text="{Loc 'humanoid-profile-editor-eyes-label'}" />
-                            <humanoid:EyeColorPicker Name="EyeColorPicker" />
+                        <!-- Every marking, hair included, in one row. Stacked, the three pickers ran
+                             half again the height of the window, and the last of them could only be
+                             reached by scrolling past the other two. Markings takes twice the width of
+                             a hair picker because its rows carry a Customize button, and at an even
+                             third that button was cut in half. -->
+                        <BoxContainer HorizontalExpand="True" Orientation="Horizontal" Margin="0 8 0 0">
+                            <humanoid:SingleMarkingPicker Name="HairStylePicker" Category="Hair" HorizontalExpand="True" SizeFlagsStretchRatio="1" />
+                            <Control MinWidth="8" />
+                            <humanoid:SingleMarkingPicker Name="FacialHairPicker" Category="FacialHair" HorizontalExpand="True" SizeFlagsStretchRatio="1" />
+                            <Control MinWidth="8" />
+                            <BoxContainer Orientation="Vertical" HorizontalExpand="True" SizeFlagsStretchRatio="2">
+                                <Label Text="{Loc 'humanoid-profile-editor-markings-tab'}" />
+                                <humanoid:MarkingPicker Name="Markings" IgnoreCategories="Hair,FacialHair" HorizontalExpand="True" />
+                            </BoxContainer>
                         </BoxContainer>
                     </BoxContainer>
                 </ScrollContainer>
             </BoxContainer>
+
             <BoxContainer Name="Background" HorizontalExpand="True" Orientation="Vertical">
                 <!-- Background -->
                 <ui:AlternatingBGContainer Orientation="Vertical" VerticalExpand="False">
@@ -172,17 +220,6 @@
                     <BoxContainer HorizontalExpand="False">
                         <RichTextLabel Name="FactionDescriptionLabel" Text="" HorizontalExpand="False" MaxWidth="600"/>
                     </BoxContainer>
-                    <!-- Employer -->
-                    <BoxContainer HorizontalExpand="True">
-                        <Label Text="{Loc 'humanoid-profile-editor-employer-label'}" />
-                        <Control HorizontalExpand="True"/>
-                        <TextureButton Name="EmployerInfoButton" Scale="0.3 0.3" VerticalAlignment="Center"
-                                       ToolTip="{Loc 'humanoid-profile-editor-guidebook-button-tooltip'}"/>
-                        <OptionButton Name="EmployerButton" HorizontalAlignment="Right" />
-                    </BoxContainer>
-                    <BoxContainer HorizontalExpand="False">
-                        <RichTextLabel Name="EmployerDescriptionLabel" Text="" HorizontalExpand="False" MaxWidth="600"/>
-                    </BoxContainer>
                     <!-- Religion -->
                     <BoxContainer HorizontalExpand="True">
                         <Label Text="{Loc 'humanoid-profile-editor-religion-label'}" />
@@ -194,102 +231,142 @@
                     </BoxContainer>
                 </ui:AlternatingBGContainer>
             </BoxContainer>
-            <BoxContainer Name="Jobs" HorizontalExpand="True">
-                <!-- Jobs -->
-                <ScrollContainer HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True" VScrollEnabled="True">
-                    <BoxContainer HorizontalExpand="True" Orientation="Vertical">
-                        <OptionButton Name="PreferenceUnavailableButton" StyleClasses="OpenBoth" />
-                        <!-- Ember: who you serve, what rank you hold and what you can do belong
-                             to the character rather than to any one job, so they sit above the
-                             list instead of being repeated in every row. -->
-                        <PanelContainer Margin="3 6 3 6">
-                            <PanelContainer.PanelOverride>
-                                <graphics:StyleBoxFlat BackgroundColor="#25252A" />
-                            </PanelContainer.PanelOverride>
-                            <BoxContainer Orientation="Vertical" HorizontalExpand="True" Margin="8 6 8 8">
-                                <Label Text="{Loc 'humanoid-profile-editor-service-heading'}" StyleClasses="LabelHeading" />
-                                <BoxContainer HorizontalExpand="True" Margin="0 4 0 0">
-                                    <Label Text="{Loc 'humanoid-profile-editor-branch-label'}" />
-                                    <Control HorizontalExpand="True" />
-                                    <OptionButton Name="BranchButton" HorizontalAlignment="Right" MinWidth="220" />
-                                </BoxContainer>
-                                <BoxContainer HorizontalExpand="True" Margin="0 2 0 0">
-                                    <Label Text="{Loc 'humanoid-profile-editor-rank-label'}" />
-                                    <Control HorizontalExpand="True" />
-                                    <OptionButton Name="RankButton" HorizontalAlignment="Right" MinWidth="220" />
-                                </BoxContainer>
-                                <BoxContainer HorizontalExpand="True" Margin="0 6 0 0">
-                                    <Button Name="SkillsButton" Text="{Loc 'humanoid-profile-editor-job-skills-button'}" HorizontalExpand="True" />
-                                </BoxContainer>
-                            </BoxContainer>
-                        </PanelContainer>
-                        <BoxContainer Name="JobList" Orientation="Vertical" />
+            <!-- Ember: one question about who put this character aboard. A state posts people
+                 and a company hires them, so the employer row belongs beside the branch that
+                 decides whether there can be one - not on another tab where the exclusion is
+                 invisible. Rank and the skill set follow because they belong to the person's
+                 service rather than to any one post. -->
+            <BoxContainer Name="Service" HorizontalExpand="True" Orientation="Vertical">
+                <ScrollContainer HorizontalExpand="True" VerticalExpand="True" VScrollEnabled="True">
+                    <BoxContainer HorizontalExpand="True" Orientation="Vertical" Margin="8 8 8 8">
+                        <Label Text="{Loc 'humanoid-profile-editor-service-question'}" StyleClasses="LabelHeading" />
+                        <BoxContainer HorizontalExpand="True" Margin="0 6 0 0">
+                            <Label Text="{Loc 'humanoid-profile-editor-branch-label'}" />
+                            <Control HorizontalExpand="True" />
+                            <OptionButton Name="BranchButton" HorizontalAlignment="Right" MinWidth="260" />
+                        </BoxContainer>
+                        <RichTextLabel Name="BranchDescriptionLabel" Text="" MaxWidth="600" Margin="0 2 0 0" />
+
+                        <BoxContainer Name="EmployerRow" HorizontalExpand="True" Margin="0 6 0 0">
+                            <Label Text="{Loc 'humanoid-profile-editor-employer-label'}" />
+                            <Control HorizontalExpand="True" />
+                            <TextureButton Name="EmployerInfoButton" Scale="0.3 0.3" VerticalAlignment="Center"
+                                           ToolTip="{Loc 'humanoid-profile-editor-guidebook-button-tooltip'}"/>
+                            <OptionButton Name="EmployerButton" HorizontalAlignment="Right" MinWidth="260" />
+                        </BoxContainer>
+                        <RichTextLabel Name="EmployerDescriptionLabel" Text="" MaxWidth="600" Margin="0 2 0 0" />
+
+                        <BoxContainer HorizontalExpand="True" Margin="0 10 0 0">
+                            <Label Text="{Loc 'humanoid-profile-editor-rank-label'}" />
+                            <Control HorizontalExpand="True" />
+                            <OptionButton Name="RankButton" HorizontalAlignment="Right" MinWidth="260" />
+                        </BoxContainer>
+
                     </BoxContainer>
                 </ScrollContainer>
+            </BoxContainer>
+            <!-- Ember: skills and posts in one section. A skill set belongs to the character
+                 rather than to any one post, so the panel that edits it is a column here and not
+                 a window opened from a button - what a post is missing and what the character
+                 has are read together or not at all. -->
+            <BoxContainer Name="Jobs" HorizontalExpand="True" VerticalExpand="True" Orientation="Horizontal">
+                <emberSkills:EmberSkillPanel Name="SkillPanel" HorizontalExpand="True" SizeFlagsStretchRatio="1" />
+                <Control MinWidth="12" />
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" SizeFlagsStretchRatio="2">
+                    <OptionButton Name="PreferenceUnavailableButton" StyleClasses="OpenBoth" />
+                    <ScrollContainer HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True" VScrollEnabled="True">
+                        <BoxContainer HorizontalExpand="True" Orientation="Vertical">
+                            <BoxContainer Name="JobList" Orientation="Vertical" HorizontalExpand="True" />
+                            <!-- Ember: the posts inherited from upstream are not part of this
+                                 ship and most of them are for deletion, but deleting them now
+                                 would take the maps and the round-start spawns with them. Folded
+                                 away instead, behind one button, so the list a player reads is
+                                 the crew of the Ember. When the upstream departments go, this
+                                 container and its button go with them. -->
+                            <Button Name="LegacyJobsToggle" ToggleMode="True" Margin="0 12 0 0"
+                                    Text="{Loc 'humanoid-profile-editor-legacy-jobs-button'}" />
+                            <BoxContainer Name="LegacyJobList" Orientation="Vertical" HorizontalExpand="True" Visible="False" />
+                        </BoxContainer>
+                    </ScrollContainer>
                 </BoxContainer>
+            </BoxContainer>
             <BoxContainer Name="Antags" HorizontalExpand="True" Orientation="Vertical">
                 <!-- Antags -->
                 <ScrollContainer HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True" VScrollEnabled="True">
                     <BoxContainer Name="AntagList" />
                 </ScrollContainer>
             </BoxContainer>
-            <BoxContainer Name="TraitsTab" HorizontalExpand="True" Orientation="Vertical">
-                <!-- Traits -->
-                <Label Name="TraitPointsLabel" HorizontalAlignment="Stretch" Align="Center" />
-                <ProgressBar Name="TraitPointsBar" MaxValue="1" Value="1" MaxHeight="8" Margin="0 5" />
+            <!-- Ember: traits and loadouts were two tabs asking one question - what does this
+                 character bring to a shift - and answering either one without seeing the other
+                 meant switching tabs to find out what you had already spent. One section now,
+                 with both point budgets in view.
 
-                <BoxContainer HorizontalExpand="True" Margin="0 0 0 5">
-                    <Button
-                        Name="TraitsShowUnusableButton"
-                        Text="{Loc 'humanoid-profile-editor-traits-show-unusable-button'}"
-                        ToolTip="{Loc 'humanoid-profile-editor-traits-show-unusable-button-tooltip'}"
-                        ToggleMode="True"
-                        HorizontalAlignment="Stretch"
-                        HorizontalExpand="True"
-                        StyleClasses="OpenRight" />
-                    <Button
-                        Name="TraitsRemoveUnusableButton"
-                        Text="You shouldn't see this"
-                        ToolTip="{Loc 'humanoid-profile-editor-traits-remove-unusable-button-tooltip'}"
-                        HorizontalAlignment="Stretch"
-                        HorizontalExpand="True"
-                        StyleClasses="OpenLeft" />
+                 Stacked rather than side by side. Both lists want the full width - a loadout row
+                 carries a Customize button and a trait row carries a cost and a long name - so
+                 splitting the width cut both of them off at the right edge and squeezed the
+                 character preview out of the window entirely. Height is the cheap axis here.
+                 Each half still hides on its own CVar; the section appears if either is on. -->
+            <BoxContainer Name="Outfit" HorizontalExpand="True" VerticalExpand="True" Orientation="Vertical">
+                <BoxContainer Name="TraitsTab" HorizontalExpand="True" Orientation="Vertical" VerticalExpand="True" SizeFlagsStretchRatio="1">
+                    <!-- Traits -->
+                    <Label Text="{Loc 'humanoid-profile-editor-traits-tab'}" HorizontalAlignment="Stretch" Align="Center" />
+                    <Label Name="TraitPointsLabel" HorizontalAlignment="Stretch" Align="Center" />
+                    <ProgressBar Name="TraitPointsBar" MaxValue="1" Value="1" MaxHeight="8" Margin="0 5" />
+
+                    <BoxContainer HorizontalExpand="True" Margin="0 0 0 5">
+                        <Button
+                            Name="TraitsShowUnusableButton"
+                            Text="{Loc 'humanoid-profile-editor-traits-show-unusable-button'}"
+                            ToolTip="{Loc 'humanoid-profile-editor-traits-show-unusable-button-tooltip'}"
+                            ToggleMode="True"
+                            HorizontalAlignment="Stretch"
+                            HorizontalExpand="True"
+                            StyleClasses="OpenRight" />
+                        <Button
+                            Name="TraitsRemoveUnusableButton"
+                            Text="You shouldn't see this"
+                            ToolTip="{Loc 'humanoid-profile-editor-traits-remove-unusable-button-tooltip'}"
+                            HorizontalAlignment="Stretch"
+                            HorizontalExpand="True"
+                            StyleClasses="OpenLeft" />
+                    </BoxContainer>
+
+                    <!-- A third of the height against the loadouts' two thirds, by stretch
+                         ratio rather than by a fixed cap: a NeoTabContainer's minimum height is
+                         its tab strip alone, so anything that does not expand renders as a row
+                         of category buttons over nothing at all. -->
+                    <ui:NeoTabContainer Name="TraitsTabs" VerticalExpand="True" SeparatorMargin="0" />
                 </BoxContainer>
+                <Control MinHeight="10" />
+                <BoxContainer Name="LoadoutsTab" HorizontalExpand="True" Orientation="Vertical" VerticalExpand="True" SizeFlagsStretchRatio="2">
+                    <!-- Loadouts -->
+                    <Label Text="{Loc 'humanoid-profile-editor-loadouts-tab'}" HorizontalAlignment="Stretch" Align="Center" />
+                    <Label Name="LoadoutPointsLabel" HorizontalAlignment="Stretch" Align="Center" />
+                    <ProgressBar Name="LoadoutPointsBar" MaxValue="1" Value="1" MaxHeight="8" Margin="0 5" />
 
-                <ui:NeoTabContainer Name="TraitsTabs" VerticalExpand="True" SeparatorMargin="0" />
-            </BoxContainer>
-            <BoxContainer Name="LoadoutsTab" HorizontalExpand="True" Orientation="Vertical">
-                <!-- Loadouts -->
-                <Label Name="LoadoutPointsLabel" HorizontalAlignment="Stretch" Align="Center" />
-                <ProgressBar Name="LoadoutPointsBar" MaxValue="1" Value="1" MaxHeight="8" Margin="0 5" />
+                    <BoxContainer HorizontalExpand="True" Margin="0 0 0 5">
+                        <Button
+                            Name="LoadoutsShowUnusableButton"
+                            Text="{Loc 'humanoid-profile-editor-loadouts-show-unusable-button'}"
+                            ToolTip="{Loc 'humanoid-profile-editor-loadouts-show-unusable-button-tooltip'}"
+                            ToggleMode="True"
+                            HorizontalAlignment="Stretch"
+                            HorizontalExpand="True"
+                            StyleClasses="OpenRight" />
+                        <Button
+                            Name="LoadoutsRemoveUnusableButton"
+                            Text="You shouldn't see this"
+                            ToolTip="{Loc 'humanoid-profile-editor-loadouts-remove-unusable-button-tooltip'}"
+                            HorizontalAlignment="Stretch"
+                            HorizontalExpand="True"
+                            StyleClasses="OpenLeft" />
+                    </BoxContainer>
 
-                <BoxContainer HorizontalExpand="True" Margin="0 0 0 5">
-                    <Button
-                        Name="LoadoutsShowUnusableButton"
-                        Text="{Loc 'humanoid-profile-editor-loadouts-show-unusable-button'}"
-                        ToolTip="{Loc 'humanoid-profile-editor-loadouts-show-unusable-button-tooltip'}"
-                        ToggleMode="True"
-                        HorizontalAlignment="Stretch"
-                        HorizontalExpand="True"
-                        StyleClasses="OpenRight" />
-                    <Button
-                        Name="LoadoutsRemoveUnusableButton"
-                        Text="You shouldn't see this"
-                        ToolTip="{Loc 'humanoid-profile-editor-loadouts-remove-unusable-button-tooltip'}"
-                        HorizontalAlignment="Stretch"
-                        HorizontalExpand="True"
-                        StyleClasses="OpenLeft" />
+                    <ui:NeoTabContainer Name="LoadoutsTabs" VerticalExpand="True" SeparatorMargin="0" />
                 </BoxContainer>
-
-                <ui:NeoTabContainer Name="LoadoutsTabs" VerticalExpand="True" SeparatorMargin="0" />
-            </BoxContainer>
-            <BoxContainer Name="MarkingsTab" HorizontalExpand="True" Orientation="Vertical">
-                <ScrollContainer HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True" VScrollEnabled="True">
-                    <!-- Markings -->
-                    <humanoid:MarkingPicker Name="Markings" IgnoreCategories="Hair,FacialHair" />
-                </ScrollContainer>
             </BoxContainer>
         </ui:NeoTabContainer>
+        </BoxContainer>
     </BoxContainer>
     <!-- Right side -->
     <!-- Sprite View -->

@@ -1,4 +1,4 @@
-<BoxContainer xmlns="https://spacestation14.io"
+﻿<BoxContainer xmlns="https://spacestation14.io"
               Orientation="Vertical"
               HorizontalExpand="True"
               VerticalExpand="True">
@@ -12,13 +12,16 @@
     <LineEdit Name="Search" PlaceHolder="{Loc 'markings-search'}" HorizontalExpand="True" />
 
     <!-- Item list -->
+    <!-- Ember: 500 + 200 made one hair picker seven hundred pixels tall, and the appearance
+         section holds two of them beside everything else. Both lists scroll anyway, so the
+         minimum only ever decided how much of the screen they took before anyone scrolled. -->
     <BoxContainer Name="MarkingSelectorContainer" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
-        <ScrollContainer MinHeight="500" VerticalExpand="True" HorizontalExpand="True">
+        <ScrollContainer MinHeight="280" VerticalExpand="True" HorizontalExpand="True">
             <ItemList Name="MarkingList" VerticalExpand="True" />
         </ScrollContainer>
 
         <!-- Color sliders -->
-        <ScrollContainer MinHeight="200" HorizontalExpand="True">
+        <ScrollContainer MinHeight="130" HorizontalExpand="True">
             <BoxContainer Name="ColorSelectorContainer" HorizontalExpand="True" />
         </ScrollContainer>
     </BoxContainer>

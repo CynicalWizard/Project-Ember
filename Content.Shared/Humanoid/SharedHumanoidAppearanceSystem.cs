@@ -4,6 +4,7 @@ using System.Numerics;
 using Content.Shared._EE.Contractors.Prototypes;
 using Content.Shared.Ember.Background;
 using Content.Shared.Examine;
+using Content.Shared.Ember.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared._Shitmed.Humanoid.Events; // Shitmed Change
@@ -302,7 +303,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
     }
 
     /// <summary>
-    ///     Set a humanoid mob's sex. This will not change their gender.
+    ///     Set a humanoid mob's sex. Ember: this also sets their gender, which follows from it.
     /// </summary>
     /// <param name="uid">The humanoid mob's UID.</param>
     /// <param name="sex">The sex to set the mob to.</param>
@@ -316,6 +317,10 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         var oldSex = humanoid.Sex;
         humanoid.Sex = sex;
         humanoid.MarkingSet.EnsureSexes(sex, _markingManager);
+        // Ember: pronouns are no longer a separate choice, so anything that changes sex during a
+        // round has to carry them along - otherwise the one path that can change sex mid-round
+        // leaves behind exactly the mismatch the editor no longer permits.
+        SetGender(uid, EmberPronouns.GenderFor(sex), humanoid);
         RaiseLocalEvent(uid, new SexChangedEvent(oldSex, sex));
 
         if (sync)
@@ -401,9 +406,12 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         SetSpecies(uid, profile.Species, false, humanoid);
         SetSex(uid, profile.Sex, false, humanoid);
 
-        humanoid.Gender = profile.Gender;
+        // Ember: from the sex rather than from the stored field, so a profile written before the
+        // pronoun list was removed cannot bring an old pairing back in with it.
+        var gender = EmberPronouns.GenderFor(profile.Sex);
+        humanoid.Gender = gender;
         if (TryComp<GrammarComponent>(uid, out var grammar))
-            grammar.Gender = profile.Gender;
+            grammar.Gender = gender;
 
         humanoid.DisplayPronouns = profile.DisplayPronouns;
         humanoid.StationAiName = profile.StationAiName;

@@ -127,7 +127,6 @@ character-skill-requirement-entry = {$skill} ({$level})
 
 ## Character editor
 
-humanoid-profile-editor-service-heading = Service
 humanoid-profile-editor-branch-label = Branch
 humanoid-profile-editor-rank-label = Rank
 humanoid-profile-editor-branch-none = Unaffiliated

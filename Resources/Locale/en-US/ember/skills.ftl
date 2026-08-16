@@ -1,4 +1,4 @@
-skill-level-unskilled = Unskilled
+﻿skill-level-unskilled = Unskilled
 skill-level-basic = Basic
 skill-level-trained = Trained
 skill-level-experienced = Experienced
@@ -16,8 +16,6 @@ skill-antag-summary-locked = You may not reselect your antagonist skills.
 skill-antag-remaining-entry = {$level}: {$count}
 skill-antag-submit = Submit selection
 
-humanoid-profile-editor-job-skills-button = Skills
-humanoid-profile-editor-job-skills-button-tooltip = Edit this character's skills
 humanoid-profile-editor-skills-tab = Skills
 humanoid-profile-editor-skills-window-title = Skills
 humanoid-profile-editor-skills-no-profile = Select a character profile to edit skills.

@@ -1,17 +1,29 @@
-using System.Numerics;
 using Content.Client.Stylesheets;
 using Content.Shared.Ember.Skills;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface.Controls;
-using Robust.Client.UserInterface.CustomControls;
-using Robust.Shared.Maths;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client.Ember.Skills;
 
-public sealed class SkillSetupWindow : DefaultWindow
+/// <summary>
+/// The character's skills, as a panel that lives beside the post list.
+/// </summary>
+/// <remarks>
+/// Ember: this was a modal window opened from a button, and that was the third of the three
+/// complaints the editor rework exists to answer. Finding out what a post was missing meant
+/// closing the window, finding the row, reading it, and opening the window again - a
+/// look-forget-return cycle repeated once per post the player was considering. A skill set is one
+/// per character rather than one per post, so it has no business being modal in the first place;
+/// as a column, the requirement and its fulfilment are on screen at the same time.
+/// </remarks>
+public sealed class EmberSkillPanel : BoxContainer
 {
-    private readonly Label _hintLabel;
+    /// <summary>
+    /// Room for the longest skill name there is - "Внекорабельная деятельность".
+    /// </summary>
+    private const int SkillNameWidth = 245;
+
     private readonly Label _pointsLabel;
     private readonly ProgressBar _pointsBar;
     private readonly BoxContainer _content;
@@ -20,64 +32,69 @@ public sealed class SkillSetupWindow : DefaultWindow
     private Func<ProtoId<SkillCategoryPrototype>, string>? _getCategoryName;
     private Action<SkillPrototype, SkillLevel>? _onSelected;
 
-    public SkillSetupWindow()
+    public EmberSkillPanel()
     {
-        MinWidth = 900;
-        MinHeight = 540;
-        SetSize = new Vector2(1000, 640);
-        Resizable = true;
-        AllowOffScreen = DirectionFlag.None;
+        Orientation = LayoutOrientation.Vertical;
+        HorizontalExpand = true;
+        VerticalExpand = true;
 
-        var root = new BoxContainer
+        // Stated here because it cannot be inferred. The rows live inside a ScrollContainer with
+        // horizontal scrolling off, and such a container reports no minimum width of its own - so
+        // however wide a row needs to be, the panel asks for none of it, gets whatever is left
+        // after the post list, and clips the rows from the left, showing their last few letters.
+        // The number is the row: name + meter + level name + margins.
+        MinWidth = SkillNameWidth + 8 + SkillLevelBar.MeterWidth + 18;
+
+        AddChild(new Label
         {
-            Orientation = BoxContainer.LayoutOrientation.Vertical,
+            Text = Loc.GetString("humanoid-profile-editor-skills-window-title"),
+            HorizontalAlignment = HAlignment.Center,
             HorizontalExpand = true,
-            VerticalExpand = true,
-        };
+            StyleClasses = { StyleBase.StyleClassLabelHeading },
+        });
 
-        _hintLabel = new Label
+        // A RichTextLabel rather than a Label, and not for markup: a Label's minimum width is its
+        // entire string, so this one sentence claimed six hundred pixels of the section and took
+        // them out of the post list beside it.
+        //
+        // MaxWidth is what actually makes it wrap. Given no upper bound a RichTextLabel measures
+        // itself on one line and asks for the whole sentence too, which is the same six hundred
+        // pixels by another route - the bound is the wrap point, not a cosmetic limit.
+        var hint = new RichTextLabel { MaxWidth = 320, Margin = new Thickness(4, 0) };
+        hint.SetMessage(Loc.GetString("humanoid-profile-editor-skills-hint"));
+        AddChild(hint);
+
+        AddChild(_pointsLabel = new Label
         {
             HorizontalAlignment = HAlignment.Center,
             HorizontalExpand = true,
-            Text = Loc.GetString("humanoid-profile-editor-skills-hint"),
-        };
-        root.AddChild(_hintLabel);
+        });
 
-        _pointsLabel = new Label
-        {
-            HorizontalAlignment = HAlignment.Center,
-            HorizontalExpand = true,
-        };
-        root.AddChild(_pointsLabel);
-
-        _pointsBar = new ProgressBar
+        AddChild(_pointsBar = new ProgressBar
         {
             MaxValue = 1,
             Value = 0,
             MaxHeight = 8,
             Margin = new Thickness(0, 5),
-        };
-        root.AddChild(_pointsBar);
+        });
 
         var scroll = new ScrollContainer
         {
             HorizontalExpand = true,
             VerticalExpand = true,
-            HScrollEnabled = true,
+            HScrollEnabled = false,
             VScrollEnabled = true,
         };
 
-        _content = new BoxContainer
+        scroll.AddChild(_content = new BoxContainer
         {
-            Orientation = BoxContainer.LayoutOrientation.Vertical,
-            Margin = new Thickness(8),
+            Orientation = LayoutOrientation.Vertical,
+            Margin = new Thickness(4),
             HorizontalExpand = true,
             VerticalExpand = true,
-        };
+        });
 
-        scroll.AddChild(_content);
-        root.AddChild(scroll);
-        Contents.AddChild(root);
+        AddChild(scroll);
     }
 
     public void SetSkills(
@@ -91,7 +108,6 @@ public sealed class SkillSetupWindow : DefaultWindow
         _getCategoryName = getCategoryName;
         _onSelected = onSelected;
 
-        Title = Loc.GetString("humanoid-profile-editor-skills-window-title");
         Rebuild(allocation, skillPointBudget);
     }
 
@@ -152,7 +168,7 @@ public sealed class SkillSetupWindow : DefaultWindow
 
         var box = new BoxContainer
         {
-            Orientation = BoxContainer.LayoutOrientation.Vertical,
+            Orientation = LayoutOrientation.Vertical,
             HorizontalExpand = true,
         };
 
@@ -165,7 +181,7 @@ public sealed class SkillSetupWindow : DefaultWindow
 
         var rows = new BoxContainer
         {
-            Orientation = BoxContainer.LayoutOrientation.Vertical,
+            Orientation = LayoutOrientation.Vertical,
             HorizontalExpand = true,
         };
 
@@ -183,7 +199,7 @@ public sealed class SkillSetupWindow : DefaultWindow
     {
         var row = new BoxContainer
         {
-            Orientation = BoxContainer.LayoutOrientation.Horizontal,
+            Orientation = LayoutOrientation.Horizontal,
             HorizontalExpand = true,
             SeparationOverride = 8,
             Margin = new Thickness(0, 2),
@@ -191,8 +207,8 @@ public sealed class SkillSetupWindow : DefaultWindow
 
         var labelBox = new BoxContainer
         {
-            Orientation = BoxContainer.LayoutOrientation.Vertical,
-            MinWidth = 280,
+            Orientation = LayoutOrientation.Vertical,
+            MinWidth = SkillNameWidth,
             HorizontalExpand = true,
         };
 

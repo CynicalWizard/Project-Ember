@@ -13,6 +13,7 @@ using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Roles;
 using Content.Shared.Traits;
 using Robust.Shared.Configuration;
+using Content.Shared.Ember.Humanoid;
 using Robust.Shared.Enums;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -338,17 +339,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             age = random.Next(speciesPrototype.MinAge, speciesPrototype.OldAge); // people don't look and keep making 119 year old characters with zero rp, cap it at middle aged
         }
 
-        var gender = Gender.Epicene;
-
-        switch (sex)
-        {
-            case Sex.Male:
-                gender = Gender.Male;
-                break;
-            case Sex.Female:
-                gender = Gender.Female;
-                break;
-        }
+        var gender = EmberPronouns.GenderFor(sex); // Ember: see EnsureValid.
 
         var name = GetName(species, gender);
 
@@ -610,14 +601,11 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
 
         var age = Math.Clamp(Age, speciesPrototype.MinAge, speciesPrototype.MaxAge);
 
-        var gender = Gender switch
-        {
-            Gender.Epicene => Gender.Epicene,
-            Gender.Female => Gender.Female,
-            Gender.Male => Gender.Male,
-            Gender.Neuter => Gender.Neuter,
-            _ => Gender.Epicene // Invalid enum values.
-        };
+        // Ember: derived, not validated. Gender used to be its own stored choice, which meant a
+        // profile could hold any pairing of sex and pronouns and the editor offered no reason why
+        // one would follow from the other. Deriving it here is what makes the field impossible to
+        // desync, including for profiles that were saved before the pronoun list was removed.
+        var gender = EmberPronouns.GenderFor(sex);
 
         string name;
         if (string.IsNullOrEmpty(Name))

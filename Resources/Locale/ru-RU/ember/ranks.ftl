@@ -129,7 +129,6 @@ character-skill-requirement-entry = {$skill} ({$level})
 
 ## Редактор персонажа
 
-humanoid-profile-editor-service-heading = Служба
 humanoid-profile-editor-branch-label = Ветвь
 humanoid-profile-editor-rank-label = Звание
 humanoid-profile-editor-branch-none = Без принадлежности

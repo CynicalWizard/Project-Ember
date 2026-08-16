@@ -1,4 +1,4 @@
-skill-level-unskilled = Без навыка
+﻿skill-level-unskilled = Без навыка
 skill-level-basic = Базовый
 skill-level-trained = Обученный
 skill-level-experienced = Опытный
@@ -16,8 +16,6 @@ skill-antag-summary-locked = Вы не можете повторно выбра�
 skill-antag-remaining-entry = {$level}: {$count}
 skill-antag-submit = Подтвердить выбор
 
-humanoid-profile-editor-job-skills-button = Навыки
-humanoid-profile-editor-job-skills-button-tooltip = Изменить навыки персонажа
 humanoid-profile-editor-skills-tab = Навыки
 humanoid-profile-editor-skills-window-title = Навыки
 humanoid-profile-editor-skills-no-profile = Выберите профиль персонажа, чтобы настроить навыки.

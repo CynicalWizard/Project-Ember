@@ -79,13 +79,21 @@ public sealed class SharedEmberBackgroundSystem : EntitySystem
     }
 
     /// <summary>
-    /// The stored choice if it is still a valid answer on this axis, and the fallback otherwise.
+    /// The stored choice if it is still a valid answer on this axis, and something this character
+    /// can actually hold otherwise.
     /// </summary>
     /// <remarks>
     /// A choice goes invalid three ways: the prototype was deleted, it was moved to another axis,
     /// or the character's species changed out from under it. All three end the same way, because a
     /// profile that names a background it cannot hold is a profile that will be rejected somewhere
     /// less convenient later.
+    ///
+    /// The fallback is checked against the species too, and that is not belt and braces - it is the
+    /// whole difficulty. The default homeworld is Mars, which is human and IPC only, so handing it
+    /// to a tajaran replaces one invalid answer with another. The lobby then tries to correct the
+    /// correction, and since the result is invalid again it corrects it again: this recursed until
+    /// the client hung. Where the fallback does not fit either, the heaviest entry the species can
+    /// hold is taken instead, which is the top of the list they would have been offered.
     /// </remarks>
     public static ProtoId<EmberBackgroundPrototype> Resolve(
         IPrototypeManager prototypes,
@@ -94,13 +102,31 @@ public sealed class SharedEmberBackgroundSystem : EntitySystem
         ProtoId<SpeciesPrototype>? species,
         ProtoId<EmberBackgroundPrototype> fallback)
     {
-        if (prototypes.TryIndex(chosen, out var background)
-            && background.Axis == axis
-            && IsSelectable(background, species))
-        {
+        if (IsValidFor(prototypes, chosen, axis, species))
             return chosen;
-        }
 
-        return fallback;
+        if (IsValidFor(prototypes, fallback, axis, species))
+            return fallback;
+
+        var selectable = GetSelectable(prototypes, axis, species);
+
+        // Nothing at all on this axis is open to the species. Keeping the fallback is then the
+        // least bad answer: it is at least a real prototype, and inventing a different wrong one
+        // would only move the problem.
+        return selectable.Count > 0 ? selectable[0].ID : fallback;
+    }
+
+    /// <summary>
+    /// Whether this id names a background on this axis that this species may hold.
+    /// </summary>
+    public static bool IsValidFor(
+        IPrototypeManager prototypes,
+        ProtoId<EmberBackgroundPrototype> id,
+        EmberBackgroundAxis axis,
+        ProtoId<SpeciesPrototype>? species)
+    {
+        return prototypes.TryIndex(id, out var background)
+            && background.Axis == axis
+            && IsSelectable(background, species);
     }
 }
