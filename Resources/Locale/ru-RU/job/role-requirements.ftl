@@ -1,4 +1,5 @@
-﻿role-timer-department-too-high = Вам потребуется на [color=yellow]{TOSTRING($time, "0")}[/color] меньше минут в [color={$departmentColor}]{$department}[/color], чтобы играть за эту роль. (Вы пытаетесь сыграть за роль новичка?)
+﻿role-timer-department-insufficient = Вам потребуется на [color=yellow]{TOSTRING($time, "0")}[/color] больше минут в [color={$departmentColor}]{$department}[/color], чтобы играть на этой роли.
+role-timer-department-too-high = Вам потребуется на [color=yellow]{TOSTRING($time, "0")}[/color] меньше минут в [color={$departmentColor}]{$department}[/color], чтобы играть за эту роль. (Вы пытаетесь сыграть за роль новичка?)
 
 role-timer-overall-insufficient = Вам потребуется на [color=yellow]{TOSTRING($time, "0")}[/color] больше минут игрового времени, чтобы сыграть эту роль.
 

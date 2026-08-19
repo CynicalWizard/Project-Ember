@@ -5,6 +5,7 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Clothing.Loadouts.Systems;
 using Content.Shared.Database;
 using Content.Shared.Examine;
+using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Inventory;
 using Content.Shared.Item;
@@ -62,7 +63,18 @@ public class SharedPassportSystem : EntitySystem
         args.PushMarkup(Loc.GetString("passport-examine-name", ("name", profile.Name)), 50);
         args.PushMarkup(Loc.GetString("passport-examine-species",
             ("species", Loc.GetString(species.Name))), 49);
-        args.PushMarkup(Loc.GetString("passport-examine-sex", ("sex", profile.Gender)), 48);
+        // Ember: the sex, localised, and not the Gender enum. This printed "Male" or "Neuter" in
+        // every language - a raw enum name handed to Fluent - under a label that says "sex" while
+        // naming the pronouns. Pronouns are derived from sex here (see EmberPronouns), so the two
+        // no longer even differ in content; what remains is that a document should print words.
+        var sex = profile.Sex switch
+        {
+            Sex.Male => "humanoid-profile-editor-sex-male-text",
+            Sex.Female => "humanoid-profile-editor-sex-female-text",
+            _ => "humanoid-profile-editor-sex-unsexed-text",
+        };
+
+        args.PushMarkup(Loc.GetString("passport-examine-sex", ("sex", Loc.GetString(sex))), 48);
         args.PushMarkup(Loc.GetString("passport-examine-height",
             ("height", MathF.Round(profile.Height * species.AverageHeight))), 47);
         args.PushMarkup(Loc.GetString("passport-examine-birth-year",

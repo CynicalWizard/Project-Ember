@@ -1,4 +1,4 @@
-# A character's background, on four axes: where they live, how they were raised, who they belong
+﻿# A character's background, on four axes: where they live, how they were raised, who they belong
 # to, what they believe. Ported from SierraBay12's culture descriptor.
 #
 # Descriptions are Bay's own text where Bay wrote it in English, and translated from the Sierra
@@ -223,7 +223,7 @@ ember-homeworld-yuklit-details = Capital: Grindeer. Distance from Sol: 30 light 
 ember-homeworld-yuklit-desc =
     Yuklit is a large rocky planet worked by Gilthari Exports and Aether Atmospherics and Recycling. The former archaeological camp of Grindeer is a full domed city now and the planet's de facto capital. Gilthari handles agriculture, mining and xenoarchaeology; Aether Atmospherics keeps the atmosphere and the gravity generators running — which is to say, everything the population breathes and stands on.{"\u000A\u000A"}That used to mean the planet belonged to the companies outright: Nyx has no laws of its own and the SCG does not reach this far. Since Trasengate it reaches far enough — not to the system, but to the companies, which are SCG-registered and therefore obliged to work to SCG rules wherever they happen to be. Rents and the taxes on air, water and transport are set against the mandate now rather than against an internal schedule, and living here has become noticeably cheaper and noticeably duller. Yuklit is still the most populous colony in the system and still its de facto capital; it is simply the capital of a place that is now being watched.
 
-## Upbringing - the Sol system
+## Culture - the Sol system
 
 ember-culture-martian-surfacer = Martian, surfacer
 ember-culture-martian-surfacer-desc =
@@ -269,7 +269,7 @@ ember-culture-plutonian = Plutonian
 ember-culture-plutonian-desc =
     You are from Pluto, one of the many inhabitants of that harsh and unforgiving world. The planet has been in slow decay for years, which has left much of its infrastructure unstable or collapsed outright. That, together with rampant corruption and the influence of criminal organisations, has given Plutonians a bad name. They themselves mostly dream of leaving for somewhere quieter. Unfortunately, and despite the SCG's efforts, many keep their criminal connections well after they go.
 
-## Upbringing - a way of living rather than a place
+## Culture - a way of living rather than a place
 
 ember-culture-spacer = Spacer
 ember-culture-spacer-desc =
@@ -287,7 +287,7 @@ ember-culture-other = Other culture
 ember-culture-other-desc =
     You were raised in one of the many small and relatively unknown cultures scattered across the galaxy.
 
-## Upbringing - human space outside Sol
+## Culture - human space outside Sol
 
 ember-culture-ceti-north = Epsilonite, north
 ember-culture-ceti-north-desc =
@@ -361,7 +361,7 @@ ember-culture-gaia = Gaian
 ember-culture-gaia-desc =
     Gaia is the sole planet of the Galilei system and the demilitarised zone between the SCG and the GCC. It is an agricultural world, and the fighting went across its surface thoroughly. The planet is divided between the Sol-controlled Gaian Administrative Area and the Independent-Guided Protectorate of Gaia, with the International City of New Venice remaining a neutral zone inside the DMZ that circles the equator. More than ten years on the population is as divided as ever, and the Mayor of New Venice serves as the vital mediator between the superpowers. Gaians are tired of war and want to see their families again; they suffered enough twenty years ago and will not let it happen twice.
 
-## Upbringing - the Confederation
+## Culture - the Confederation
 
 ember-culture-terran = Terran
 ember-culture-terran-desc =
@@ -375,7 +375,7 @@ ember-culture-confederate-emigre = Confederate, émigré
 ember-culture-confederate-emigre-desc =
     Your family left the Confederation and the Confederation stayed with you. The two-fingered cross, the liturgy from the pre-reform books, the icon in the corner of a rented flat on Mars and the spelling that identifies you in one line - all of it travels with people and holds harder in the diaspora than it does at home. In Sol space you are called an Indie, hired reluctantly and vetted longer than most. Émigré children usually grow up between two answers to the question of where they are from, and are satisfied by neither.
 
-## Upbringing - Moghes and the Unathi
+## Culture - Moghes and the Unathi
 
 ember-culture-unathi-peaks = Unathi of the Diamond Peaks
 ember-culture-unathi-peaks-desc =
@@ -405,7 +405,7 @@ ember-culture-unathi-tersten = Unathi of Tersten
 ember-culture-unathi-tersten-desc =
     The sinta clans that settled on Tersten are a peculiar thing. Many arrived at the very start of the planet's golden age. Remaining independent, they keep close relations with the people of Tersten and have formed a hegemony of their own, aimed at the unity of the clans and at good relations with the locals. Their beliefs are traditional still, and they integrated well. Some Moghes clans regard the Tersten clans as traitors who abandoned their homeland; the Tersten unathi themselves enjoy a peace that the harsh surface of Moghes cannot provide.
 
-## Upbringing - the clans of Ahdomai
+## Culture - the clans of Ahdomai
 
 ember-culture-tajaran-jan-khazan = Jan-Khazan clan
 ember-culture-tajaran-jan-khazan-desc =
@@ -447,7 +447,7 @@ ember-culture-tajaran-other = Minor clan
 ember-culture-tajaran-other-desc =
     You belong to one of the lesser clans of Ahdomai, or to none at all.
 
-## Upbringing - positronic
+## Culture - positronic
 
 ember-culture-positronic-gen2 = Positronic, second generation
 ember-culture-positronic-gen2-desc =
@@ -461,7 +461,7 @@ ember-culture-positronic-gen1 = Positronic, first generation
 ember-culture-positronic-gen1-desc =
     Against modern machines the first generation looks simplistic, inflexible and failure-prone. They have not been produced in a long time and every survivor is very old. The first generation were the first machines to be given a simulation of self-awareness - and were not given any hardware understanding that they are not alive, which became the subject of arguments, fatal incidents and court cases. A good many sympathetic people hold them to be sapient, whatever the science says.
 
-## Upbringing - diona
+## Culture - diona
 
 ember-culture-diona = Chorus
 ember-culture-diona-desc =
@@ -700,7 +700,7 @@ ember-homeworld-providence-desc =
     Providence is a transit system called a confederation within the Confederation: four inhabited places, none of them like the others. Its colonisation began just after the Ares campaign, when the economic boom made private colonial ventures profitable and the frontier made them free of obligation to anyone. Atlas Resources, an independent rare-metals company, bet on the system as a transport hub, and the bet came in.{"\u000A\u000A"}The system was admitted to the Confederation in 2289 by referendum. The view that the vote was rigged has never gone away; no direct evidence was found, the result could not be overturned, and today it comes up only in private argument. There is no separatism: the benefits of membership outweigh it.
 
 
-## Upbringing - the worlds of the Confederation
+## Culture - the worlds of the Confederation
 
 ember-culture-novaya-zemlya = Novaya Zemlyan
 ember-culture-novaya-zemlya-desc =
@@ -733,7 +733,7 @@ ember-culture-bloodrun-desc =
 # The background axes in the character editor, and what a passport prints.
 
 humanoid-profile-editor-homeworld-label = Homeworld
-humanoid-profile-editor-culture-label = Upbringing
+humanoid-profile-editor-culture-label = Culture
 humanoid-profile-editor-faction-label = Allegiance
 humanoid-profile-editor-religion-label = Belief
 

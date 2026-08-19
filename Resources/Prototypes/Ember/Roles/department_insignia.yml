@@ -1,4 +1,4 @@
-# Which department patch each department issues, per cut of garment.
+﻿# Which department patch each department issues, per cut of garment.
 #
 # The id is the department's own id. Nothing points here from the department prototype and nothing
 # points from here back to it: the join is the shared name, so adding a department means adding one
@@ -14,9 +14,16 @@
 # rating cannot reach the others, so a Fleet patch for Engineering would be an entity nothing can
 # ever be wearing.
 #
-# Unattached Personnel gets the blank patch rather than no patch. Bay draws an undyed one and
-# issues it, which is the correct answer to "no department": a rating with no posting is still in
-# uniform, and a bare sleeve would read as a missing sprite rather than as a fact about them.
+# Unattached Personnel has no entry, and that is a departure from Bay. Bay draws an undyed patch
+# and issues it to a rating with no posting; we issue nothing. A blank patch on the sleeve does not
+# read as "no department", it reads as membership of some department whose colour failed to load -
+# and the two posts here are the two that most need to be read correctly. The Off-Duty Watch keeps
+# their branch and their rank boards, so the sleeve already says who they are; what a day off takes
+# away is the billet, and the patch is the billet. The Passenger is not crew and never had one.
+#
+# The blank patches in accessories_departments.yml are therefore drawn and unissued, same as the
+# gold Oversight ones below. Kept, because an undyed patch is what a quartermaster hands over
+# before anyone has been posted, and that is a thing the ship will want to be able to do.
 #
 # State Oversight has no entry, and that covers both posts in it. The department patch is service
 # insignia: it says which part of the ship's organisation you belong to, and neither of these two
@@ -95,9 +102,3 @@
     Utility: EmberClothingAccessoryDeptHousekeeping
     Service: EmberClothingAccessoryDeptHousekeepingService
 
-- type: emberInsignia
-  id: EmberUnattached
-  cuts:
-    Utility: EmberClothingAccessoryDeptBlank
-    Service: EmberClothingAccessoryDeptBlankService
-    Fleet: EmberClothingAccessoryDeptBlankFleet
