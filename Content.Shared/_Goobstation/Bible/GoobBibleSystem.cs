@@ -1,5 +1,3 @@
-using Content.Shared._Goobstation.Devil;
-using Content.Shared._Goobstation.Devil.Contract;
 using Content.Shared._Goobstation.Exorcism;
 using Content.Shared._Goobstation.Religion;
 using Content.Server.Bible.Components;
@@ -29,14 +27,9 @@ public sealed partial class GoobBibleSystem : EntitySystem
         if (args.Target is not { } target || !HasComp<WeakToHolyComponent>(args.Target) || !HasComp<BibleUserComponent>(args.User))
             return;
 
+        // Ember: the devil-specific multiplier and exorcism branch went with the Devil
+        // antagonist. The ordinary smite against anything WeakToHoly is unchanged.
         var multiplier = 1f;
-        var isDevil = false;
-
-        if (TryComp<DevilComponent>(target, out var devil))
-        {
-            isDevil = true;
-            multiplier = devil.BibleUserDamageMultiplier;
-        }
 
         if (!_mobStateSystem.IsIncapacitated(target))
         {
@@ -47,26 +40,6 @@ public sealed partial class GoobBibleSystem : EntitySystem
             _damageableSystem.TryChangeDamage(target, component.SmiteDamage * multiplier, true, origin: uid);
             _stun.TryParalyze(target, component.SmiteStunDuration * multiplier, false);
             _delay.TryResetDelay((args.Used, useDelay));
-        }
-        else if (isDevil && HasComp<BibleUserComponent>(args.User))
-        {
-            var doAfterArgs = new DoAfterArgs(
-                EntityManager,
-                args.User,
-                10f,
-                new ExorcismDoAfterEvent(),
-                eventTarget: target,
-                target: target)
-            {
-                BreakOnMove = true,
-                NeedHand = true,
-                BlockDuplicate = true,
-                BreakOnDropItem = true,
-            };
-
-            _doAfter.TryStartDoAfter(doAfterArgs);
-            var popup = Loc.GetString("devil-banish-begin", ("target", target), ("user", target));
-            _popupSystem.PopupEntity(popup, target, PopupType.LargeCaution);
         }
     }
 }

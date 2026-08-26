@@ -3,7 +3,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._Goobstation.Devil.Condemned;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
@@ -20,7 +19,8 @@ public sealed class EnchantSacrificeSystem : EntitySystem
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
 
-    private EntityQuery<CondemnedComponent> _condemnedQuery;
+    // Ember: CondemnedComponent removed with the Devil antagonist. The rest of this
+    // system is already commented out upstream, so nothing here is live.
 
     // public override void Initialize()
     // {

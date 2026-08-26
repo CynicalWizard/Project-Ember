@@ -1,5 +1,4 @@
 using Content.Shared._Goobstation.Paper;
-using Content.Shared._Goobstation.Devil;
 using Content.Server.Access.Systems;
 using Content.Server.Paper;
 using Content.Server.Popups;
@@ -77,22 +76,23 @@ public sealed class SignatureSystem : EntitySystem
 
         if (!comp.StampedBy.Contains(stampInfo) && _paper.TryStamp((paper, comp), stampInfo, SignatureStampState))
         {
-            // Show popups and play a paper writing sound
-            if (!HasComp<DevilComponent>(signer)) // Goobstation - Don't display popups for devils, it covers the others.
-            {
-                var signedOtherMessage = Loc.GetString("paper-signed-other", ("user", signer), ("target", paper.Owner));
-                _popup.PopupEntity(signedOtherMessage, signer, Filter.PvsExcept(signer, entityManager: EntityManager), true);
+            // Show popups and play a paper writing sound.
+            // Ember: the suppression here existed only so devil contracts could show their
+            // own popups instead. It went with the Devil antagonist.
+            var signedOtherMessage = Loc.GetString("paper-signed-other", ("user", signer), ("target", paper.Owner));
+            _popup.PopupEntity(signedOtherMessage, signer, Filter.PvsExcept(signer, entityManager: EntityManager), true);
 
-                var signedSelfMessage = Loc.GetString("paper-signed-self", ("target", paper.Owner));
-                _popup.PopupEntity(signedSelfMessage, signer, signer);
-            }
+            var signedSelfMessage = Loc.GetString("paper-signed-self", ("target", paper.Owner));
+            _popup.PopupEntity(signedSelfMessage, signer, signer);
 
             _audio.PlayPvs(comp.Sound, signer);
 
             _paper.UpdateUserInterface((paper, comp));
 
-            var evSignSucessfulEvent = new SignSuccessfulEvent(paper, signer); // Goobstation - Devil Antagonist
-            RaiseLocalEvent(paper, ref evSignSucessfulEvent); // Goobstation - Devil Antagonist
+            // Ember: kept as a generic "paper was signed" hook; the Devil contract that
+            // used to subscribe is gone, but the event lives in _Goobstation/Paper.
+            var evSignSucessfulEvent = new SignSuccessfulEvent(paper, signer);
+            RaiseLocalEvent(paper, ref evSignSucessfulEvent);
 
             return true;
         }
@@ -107,10 +107,6 @@ public sealed class SignatureSystem : EntitySystem
 
     private string DetermineEntitySignature(EntityUid uid)
     {
-        // Goobstation - Allow devils to sign their true name.
-        if (TryComp<DevilComponent>(uid, out var devilComp) && !string.IsNullOrWhiteSpace(devilComp.TrueName))
-            return devilComp.TrueName;
-
         // If the entity has an ID, use the name on it.
         if (_idCard.TryFindIdCard(uid, out var id) && !string.IsNullOrWhiteSpace(id.Comp.FullName))
             return id.Comp.FullName;
