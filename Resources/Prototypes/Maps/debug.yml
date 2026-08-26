@@ -29,12 +29,6 @@
             # Ember: the dev map offers exactly one post, so it may as well be one of ours —
             # it is the cheapest way to exercise branch, rank, skills and job titles end to end.
             EmberCaptain: [ -1, -1 ]
-        # Goobstation blob-config-start DEBUG
-        - type: StationBlobConfig
-          stageBegin: 20
-          stageCritical: 50
-          stageTheEnd: 100
-        # Goobstation blob-config-end
 
 - type: gameMap
   id: TestTeg

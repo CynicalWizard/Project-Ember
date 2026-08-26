@@ -30,5 +30,4 @@ public enum PathFlags : byte
     /// </summary>
     Interact = 1 << 4,
 
-    Blob = 1 << 5,  // Goobstation - Blob
 }

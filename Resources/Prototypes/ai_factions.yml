@@ -16,7 +16,6 @@
   - GladiabotYellow
   - SAN
   - Changeling
-  - Blob # Goobstation - Blob
 
 - type: npcFaction
   id: NanoTrasen
@@ -30,7 +29,6 @@
   - AllHostile
   - Wizard
   - SAN
-  - Blob # Goobstation - Blob
 
 - type: npcFaction
   id: Mouse
@@ -51,7 +49,6 @@
   - Xeno
   - AllHostile
   - Wizard
-  - Blob # Goobstation - Blob
 
 - type: npcFaction
   id: SimpleHostile
@@ -73,7 +70,6 @@
   - GladiabotYellow
   - SAN
   - Changeling
-  - Blob # Goobstation - Blob
 
 - type: npcFaction
   id: SimpleNeutral
@@ -91,7 +87,6 @@
   - Wizard
   - SAN
   - Changeling
-  - Blob # Goobstation - Blob
 
 - type: npcFaction
   id: Xeno
@@ -111,7 +106,6 @@
   - GladiabotYellow
   - SAN
   - Changeling
-  - Blob # Goobstation - Blob
 
 - type: npcFaction
   id: Zombie
@@ -132,7 +126,6 @@
   - GladiabotYellow
   - SAN
   - Changeling
-  - Blob # Goobstation - Blob
 
 - type: npcFaction
   id: Revolutionary
@@ -161,7 +154,6 @@
   - Revolutionary
   - Wizard
   - Changeling # goob edit - changelings
-  - Blob # Goobstation - Blob
 
 - type: npcFaction
   id: Wizard
@@ -179,7 +171,6 @@
   - Revolutionary
   - AllHostile
   - Changeling # goob edit - changelings
-  - Blob # Goobstation - Blob
 
 - type: npcFaction
   id: Pibble

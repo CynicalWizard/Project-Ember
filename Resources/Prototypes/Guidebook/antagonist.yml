@@ -12,9 +12,7 @@
   - Zombies
   - MinorAntagonists
   - Changelings # Goobstation - changelings
-  - Blob # Goobstation - Blob
   - Abductors # Shitmed - Abductors
-  - BloodCult
 
 - type: guideEntry
   id: Traitors
@@ -56,7 +54,3 @@
   name: guide-entry-wizard
   text: "/ServerInfo/Guidebook/Antagonist/Wizard.xml"
 
-- type: guideEntry
-  id: BloodCult
-  name: guide-entry-blood-cult
-  text: "/ServerInfo/Guidebook/Antagonist/BloodCult.xml"
