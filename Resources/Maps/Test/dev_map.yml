@@ -3749,28 +3749,6 @@ entities:
     - type: Transform
       pos: -0.6474335,-10.27245
       parent: 179
-- proto: ClownPDA
-  entities:
-  - uid: 91
-    components:
-    - type: Transform
-      pos: -15.5,2.5
-      parent: 179
-  - uid: 762
-    components:
-    - type: Transform
-      pos: -14.5,1.5
-      parent: 179
-  - uid: 864
-    components:
-    - type: Transform
-      pos: -14.5,2.5
-      parent: 179
-  - uid: 912
-    components:
-    - type: Transform
-      pos: -15.5,1.5
-      parent: 179
 - proto: ComputerAnalysisConsole
   entities:
   - uid: 1083

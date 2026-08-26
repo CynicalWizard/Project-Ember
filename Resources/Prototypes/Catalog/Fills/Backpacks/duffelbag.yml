@@ -175,7 +175,6 @@
       - id: ClothingShoesClown
       - id: ClothingMaskClown
       - id: BikeHorn
-      - id: ClownPDA
       - id: ClothingHeadsetService
 
 - type: entity

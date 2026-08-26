@@ -1194,20 +1194,6 @@
   - FoodCheese
 
 - type: startingGear
-  id: VisitorClown
-  subGear:
-  - BoxSurvivalClown
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitClown
-    shoes: ClothingShoesClown
-    id: VisitorPDA
-    back: ClothingBackpackClown
-    ears: ClothingHeadsetService
-    mask: ClothingMaskClown
-    pocket1: BikeHorn
-    pocket2: ClownRecorder
-
-- type: startingGear
   id: VisitorJanitor
   subGear:
   - BoxSurvival
@@ -1646,43 +1632,6 @@
     pocket2: FoodSnackSus
   inhand:
   - AcousticGuitarInstrument
-
-- type: startingGear
-  id: VisitorMime
-  subGear:
-  - BoxSurvival
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMime
-    shoes: ClothingShoesColorWhite
-    gloves: ClothingHandsGlovesColorWhite
-    head: ClothingHeadBandBlack
-    mask: ClothingMaskMime
-    id: VisitorPDA
-    back: ClothingBackpackMime
-    eyes: ClothingEyesGlassesCheapSunglasses
-    ears: ClothingHeadsetService
-    pocket1: CrayonMime
-    pocket2: RubberStampMime
-
-- type: startingGear
-  id: VisitorMimeAlt
-  subGear:
-  - BoxSurvival
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMime
-    shoes: ClothingShoesColorWhite
-    gloves: ClothingHandsGlovesColorWhite
-    head: ClothingHeadHatAnimalCatBlack
-    mask: ClothingMaskMime
-    id: VisitorPDA
-    back: ClothingBackpackMime
-    eyes: ClothingEyesGlassesCheapSunglasses
-    ears: ClothingHeadsetService
-    outerClothing: ClothingOuterWinterMime
-    pocket1: CrayonMime
-    pocket2: RubberStampMime
-  inhand:
-  - FoodBurgerMime
 
 - type: startingGear
   id: VisitorReporter

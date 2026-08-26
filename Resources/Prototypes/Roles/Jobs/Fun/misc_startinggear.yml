@@ -180,21 +180,6 @@
 
 #Banana Clown
 - type: startingGear
-  id: BananaClown
-  subGear:
-  - BoxSurvivalClown
-  - ClownPlasmamanGear # TODO: Banana clown plasmaman starting gear
-  equipment:
-    id: VisitorPDA
-    back: ClothingBackpackClown
-    shoes: ClothingShoesClownBanana
-    jumpsuit: ClothingUniformJumpsuitClownBanana
-    mask: ClothingMaskClownBanana
-    pocket1: BikeHorn
-    pocket2: ClownRecorder
-
-# Passenger but without the ID, bag, or headset
-- type: startingGear
   id: LimitedPassengerGear
   subGear:
   - PassengerPlasmamanGear

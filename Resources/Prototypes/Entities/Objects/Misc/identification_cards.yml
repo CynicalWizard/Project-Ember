@@ -332,37 +332,6 @@
 
 - type: entity
   parent: IDCardStandard
-  id: ClownIDCard
-  name: clown ID card
-  components:
-  - type: Sprite
-    layers:
-    - state: rainbow
-    - state: department
-      color: "#FF00FF"
-    - state: subdepartment
-      color: "#58C800"
-    - state: clown
-  - type: PresetIdCard
-    job: Clown
-
-- type: entity
-  parent: IDCardStandard
-  id: MimeIDCard
-  name: mime ID card
-  components:
-  - type: Sprite
-    layers:
-    - state: default
-    - state: department
-      color: "#878787"
-    - state: subdepartment
-    - state: mime
-  - type: PresetIdCard
-    job: Mime
-
-- type: entity
-  parent: IDCardStandard
   id: ChaplainIDCard
   name: chaplain ID card
   components:

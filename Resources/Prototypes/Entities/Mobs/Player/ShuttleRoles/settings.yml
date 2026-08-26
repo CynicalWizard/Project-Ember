@@ -382,19 +382,6 @@
       prototypes: [ VisitorChef, VisitorChefAlt ]
 
 - type: randomHumanoidSettings
-  id: VisitorClown
-  parent: VisitorCivilian
-  randomizeName: false
-  components:
-    - type: GhostRole
-      name: job-name-clown
-    - type: Loadout
-      prototypes: [ VisitorClown ]
-    - type: RandomMetadata
-      nameSegments:
-      - names_clown
-
-- type: randomHumanoidSettings
   id: VisitorJanitor
   parent: VisitorCivilian
   components:
@@ -459,16 +446,6 @@
       prototypes: [ VisitorMusicianRelaxedAltA, VisitorMusicianRelaxedAltB, VisitorMusicianRelaxedAltC, VisitorMusicianRelaxedAltD, VisitorMusicianRelaxedAltE, VisitorMusicianRelaxedAltF, VisitorMusicianMariachi ]
 
 - type: randomHumanoidSettings
-  id: VisitorMime
-  parent: VisitorCivilian
-  components:
-    - type: MimePowers
-    - type: GhostRole
-      name: job-name-mime
-    - type: Loadout
-      prototypes: [ VisitorMime, VisitorMimeAlt ]
-
-- type: randomHumanoidSettings
   id: VisitorReporter
   parent: VisitorCivilian
   components:
@@ -494,24 +471,6 @@
       name: job-name-zookeeper
     - type: Loadout
       prototypes: [ VisitorZookeeper, VisitorZookeeperAlt ]
-
-- type: randomHumanoidSettings
-  id: ClownTroupeBanana
-  parent: VisitorClown
-  randomizeName: false
-  components:
-    - type: Loadout
-      prototypes: [ BananaClown ]
-
-# Misc
-
-### Visitors missing equipment for challenges
-# CHALLENGE #
-# these are specifically missing QOL equipment and have settings to make them harder.
-# making changes to these should be done with care to avoid unbalancing challenging scenarios.
-
-# Command
-# Following use EventHumanoidMindShielded since they are heads and probably should have mindshields
 
 - type: randomHumanoidSettings
   id: ChallengeVictimCaptain

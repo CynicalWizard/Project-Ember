@@ -1,4 +1,3 @@
-using Content.Server.Abilities.Mime;
 using Content.Server.Chat.Systems;
 using Content.Server.Language;
 using Content.Server.Popups;
@@ -42,11 +41,7 @@ namespace Content.Server.Speech.Muting
             if (args.Handled || !_config.GetCVar(CCVars.AllowScreamAction))
                 return;
 
-            if (HasComp<MimePowersComponent>(uid))
-                _popupSystem.PopupEntity(Loc.GetString("mime-cant-speak"), uid, uid);
-
-            else
-                _popupSystem.PopupEntity(Loc.GetString("speech-muted"), uid, uid);
+            _popupSystem.PopupEntity(Loc.GetString("speech-muted"), uid, uid);
             args.Handled = true;
         }
 
@@ -57,9 +52,7 @@ namespace Content.Server.Speech.Muting
             if (!language.SpeechOverride.RequireSpeech)
                 return; // Cannot mute if there's no speech involved
 
-            if (HasComp<MimePowersComponent>(uid))
-                _popupSystem.PopupEntity(Loc.GetString("mime-cant-speak"), uid, uid);
-            else if (HasComp<VentriloquistPuppetComponent>(uid))
+            if (HasComp<VentriloquistPuppetComponent>(uid))
                 _popupSystem.PopupEntity(Loc.GetString("ventriloquist-puppet-cant-speak"), uid, uid);
             else
                 _popupSystem.PopupEntity(Loc.GetString("speech-muted"), uid, uid);

@@ -1,4 +1,3 @@
-using Content.Server.Abilities.Mime;
 using Content.Server.Chat.Systems;
 using Content.Server.Speech.Components;
 using Content.Shared.Chat;
@@ -14,7 +13,6 @@ public sealed class AACTabletSystem : EntitySystem
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly MimePowersSystem _mimePowers = default!;
 
     public override void Initialize()
     {
@@ -34,9 +32,6 @@ public sealed class AACTabletSystem : EntitySystem
 
         if (!_prototype.TryIndex(message.PhraseId, out var phrase))
             return;
-
-        if (HasComp<MimePowersComponent>(message.Actor))
-            _mimePowers.BreakVow(message.Actor);
 
         EnsureComp<VoiceOverrideComponent>(ent).NameOverride = speakerName;
 

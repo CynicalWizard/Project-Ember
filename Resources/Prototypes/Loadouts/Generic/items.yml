@@ -491,10 +491,6 @@
          - Security
          - Medical
          - Engineering
-    - !type:CharacterJobRequirement
-       inverted: true
-       jobs:
-         - Clown
     - !type:CharacterItemGroupRequirement
       group: LoadoutBoxKits
 
@@ -561,9 +557,6 @@
   items:
     - BoxHug
   requirements:
-    - !type:CharacterJobRequirement
-       jobs:
-         - Clown
     - !type:CharacterItemGroupRequirement
       group: LoadoutBoxKits
 

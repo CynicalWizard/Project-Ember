@@ -107,7 +107,6 @@
       jobs:
         - Borg
         - MedicalBorg
-        - Mime
   functions:
     - !type:TraitAddComponent
       components:
@@ -330,10 +329,6 @@
   category: Physical
   points: 5
   requirements:
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - Clown # This trait functions exactly as is for the Clown's trait.
     - !type:CharacterDepartmentRequirement
       inverted: true
       departments:

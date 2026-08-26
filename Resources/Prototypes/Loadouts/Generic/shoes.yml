@@ -212,9 +212,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutShoes
-    - !type:CharacterJobRequirement
-      jobs:
-        - Clown
 
 - type: loadout
   id: LoadoutShoesLeather

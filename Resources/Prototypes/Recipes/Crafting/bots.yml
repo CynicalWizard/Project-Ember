@@ -64,19 +64,6 @@
     state: medibot
 
 - type: construction
-  name: mimebot
-  id: mimebot
-  graph: MimeBot
-  startNode: start
-  targetNode: bot
-  category: construction-category-utilities
-  objectType: Item
-  description: This bot knows how to wave.
-  icon:
-    sprite: Mobs/Silicon/Bots/mimebot.rsi
-    state: mimebot
-
-- type: construction
   name: supplybot
   id: supplybot
   graph: SupplyBot

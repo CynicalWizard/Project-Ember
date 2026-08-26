@@ -1,24 +1,4 @@
-- type: construction
-  name: clown vacsuit
-  id: ClownHardsuit
-  graph: ClownHardsuit
-  startNode: start
-  targetNode: clownHardsuit
-  category: construction-category-clothing
-  description: A modified vacsuit fit for a clown.
-  icon: { sprite: Clothing/OuterClothing/Hardsuits/clown.rsi, state: icon }
-  objectType: Item
 
-- type: construction
-  name: mime vacsuit
-  id: MimeHardsuit
-  graph: MimeHardsuit
-  startNode: start
-  targetNode: mimeHardsuit
-  category: construction-category-clothing
-  description: A modified vacsuit fit for a mime.
-  icon: { sprite: Clothing/OuterClothing/Hardsuits/mime.rsi, state: icon }
-  objectType: Item
 
 - type: construction
   name: bone armor

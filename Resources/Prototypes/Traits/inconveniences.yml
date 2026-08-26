@@ -55,10 +55,6 @@
       traits:
         - Foreigner
         - Muted
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - Mime
   functions:
     - !type:TraitAddComponent
       components:
@@ -76,10 +72,6 @@
       traits:
         - ForeignerLight
         - Muted
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - Mime
   functions:
     - !type:TraitAddComponent
       components:
