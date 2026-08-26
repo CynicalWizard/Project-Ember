@@ -71,9 +71,6 @@
     - id: TrashMimanaPeel
       prob: 0.1
       orGroup: Junk
-    - id: TrashBananiumPeel
-      prob: 0.1
-      orGroup: Junk
     #canisters
     - id: AirCanister
       prob: 0.001

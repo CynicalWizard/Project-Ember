@@ -82,14 +82,6 @@
   maxGroupSize: 7
 
 - type: oreDunGen
-  id: OreBananium
-  replacement: AsteroidRock
-  entity: AsteroidRockBananium
-  count: 6
-  minGroupSize: 3
-  maxGroupSize: 6
-
-- type: oreDunGen
   id: OreArtifactFragment
   replacement: AsteroidRock
   entity: AsteroidRockArtifactFragment

@@ -96,8 +96,6 @@
         - id: Poison
     - type: Butcherable
       spawned:
-        - id: MaterialBananium1
-          amount: 2
         - id: WeaponBehonkerLaser
           amount: 1
     - type: MeleeWeapon
@@ -109,7 +107,7 @@
           Slash: 10
     - type: Anomaly
       pulseSound:
-        collection: BananiumHorn
+        collection: BikeHorn
         params:
           volume: 5
     - type: Input

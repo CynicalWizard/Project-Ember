@@ -441,21 +441,6 @@
     launchForwardsMultiplier: 1.6
 
 - type: entity
-  name: bananium peel
-  parent: TrashBananaPeel
-  id: TrashBananiumPeel
-  components:
-  - type: Sprite
-    sprite: Objects/Materials/materials.rsi
-    state: peel
-  - type: Item
-    sprite: Objects/Materials/materials.rsi
-    heldPrefix: peel
-  - type: Slippery
-    paralyzeTime: 4
-    launchForwardsMultiplier: 2
-
-- type: entity
   name: carrot
   parent: FoodProduceBase
   id: FoodCarrot

@@ -57,56 +57,6 @@
 # H.O.N.K.
 - type: latheRecipe
   parent: BaseMechPartRecipe
-  id: HonkerHarness
-  result: HonkerHarness
-  category: Honker # Goobstation
-  materials:
-    Steel: 3000
-    Glass: 1200
-    Bananium: 500
-
-- type: latheRecipe
-  parent: BaseMechPartRecipe
-  id: HonkerLArm
-  result: HonkerLArm
-  category: Honker # Goobstation
-  materials:
-    Steel: 3000
-    Glass: 1200
-    Bananium: 500
-
-- type: latheRecipe
-  parent: HonkerLArm
-  id: HonkerLLeg
-  result: HonkerLLeg
-  category: Honker # Goobstation
-
-- type: latheRecipe
-  parent: HonkerLLeg
-  id: HonkerRLeg
-  result: HonkerRLeg
-  category: Honker # Goobstation
-
-- type: latheRecipe
-  parent: HonkerLArm
-  id: HonkerRArm
-  result: HonkerRArm
-  category: Honker # Goobstation
-
-- type: latheRecipe
-  parent: BaseMechPartRecipe
-  id: MechEquipmentHorn
-  result: MechEquipmentHorn
-  category: MechEquipment # Goobstation
-  completetime: 10
-  materials:
-    Steel: 3000
-    Glass: 1200
-    Bananium: 500
-
-# HAMTR
-- type: latheRecipe
-  parent: BaseMechPartRecipe
   id: HamtrHarness
   result: HamtrHarness
   category: Hamptr # Goobstation

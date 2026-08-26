@@ -155,20 +155,6 @@
       - PowerCellHigh
 
 - type: entity
-  parent: MechHonkerBattery
-  id: MechHonkerFilled
-  suffix: Battery, Filled
-  components:
-  - type: Mech
-    startingEquipment:
-      - WeaponMechSpecialBananaMortar
-      - WeaponMechSpecialMousetrapMortar
-      - MechEquipmentHorn
-
-# Combat-Station Mechs
-
-# Gygax
-- type: entity
   id: MechGygax
   parent: [ BaseMech, CombatMech ]
   name: Gygax

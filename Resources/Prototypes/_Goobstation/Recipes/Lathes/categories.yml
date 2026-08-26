@@ -4,10 +4,6 @@
   name: lathe-category-mechs-vim
 
 - type: latheCategory
-  id: Honker
-  name: lathe-category-mechs-honker
-
-- type: latheCategory
   id: Hamptr
   name: lathe-category-mechs-hamptr
 

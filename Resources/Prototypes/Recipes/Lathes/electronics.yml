@@ -53,17 +53,6 @@
     Silver: 100
 
 - type: latheRecipe
-  abstract: true
-  parent: BaseCircuitboardRecipe
-  id: BaseBananiumCircuitboardRecipe
-  materials:
-    Steel: 100
-    Glass: 500
-    Bananium: 100
-
-# Recipes
-
-- type: latheRecipe
   parent: BaseCheapElectronicsRecipe
   id: FirelockElectronics
   result: FirelockElectronics
@@ -373,21 +362,6 @@
   parent: BaseGoldCircuitboardRecipe
   id: RipleyPeripheralsElectronics
   result: RipleyPeripheralsElectronics
-
-- type: latheRecipe
-  parent: BaseBananiumCircuitboardRecipe
-  id: HonkerCentralElectronics
-  result: HonkerCentralElectronics
-
-- type: latheRecipe
-  parent: BaseBananiumCircuitboardRecipe
-  id: HonkerPeripheralsElectronics
-  result: HonkerPeripheralsElectronics
-
-- type: latheRecipe
-  parent: BaseBananiumCircuitboardRecipe
-  id: HonkerTargetingElectronics
-  result: HonkerTargetingElectronics
 
 - type: latheRecipe
   parent: BaseGoldCircuitboardRecipe

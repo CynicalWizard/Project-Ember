@@ -300,9 +300,6 @@
     sprite: Clothing/Uniforms/Jumpsuit/clown_banana.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/clown_banana.rsi
-  - type: Construction
-    graph: BananaClownJumpsuit
-    node: jumpsuit
   - type: Armor
     modifiers:
       coefficients:

@@ -209,26 +209,6 @@
     node: silverDoor
 
 - type: entity
-  id: BananiumDoor
-  name: bananium door
-  parent: BaseMaterialDoorNavMap
-  description: A door, where will it lead?
-  components:
-  - type: Sprite
-    sprite: Structures/Doors/MineralDoors/bananium_door.rsi
-    layers:
-    - state: closed
-      map: ["enum.DoorVisualLayers.Base"]
-  - type: Construction
-    graph: DoorGraph
-    node: bananiumDoor
-  - type: Door
-    openSound:
-      path: /Audio/Items/bikehorn.ogg
-    closeSound:
-      path: /Audio/Items/bikehorn.ogg
-
-- type: entity
   id: WebDoor
   name: web door
   parent: BaseMaterialDoorNavMap

@@ -112,33 +112,3 @@
     energy: 1
     castShadows: false
     color: "#eef066"
-
-- type: entity
-  parent: BikeHorn
-  id: BananiumHorn
-  name: bananium horn
-  description: An air horn made from bananium.
-  components:
-  - type: Sprite
-    sprite: Objects/Fun/bananiumhorn.rsi
-    state: icon
-  - type: Item
-    sprite: Objects/Fun/bananiumhorn.rsi
-    size: Small
-  - type: Clothing
-    sprite: Objects/Fun/bananiumhorn.rsi
-    slots: [Belt]
-    quickEquip: false
-  - type: EmitSoundOnUse
-    sound:
-      collection: BananiumHorn
-      params:
-        variation: 0.246
-  - type: EmitSoundOnTrigger
-    sound:
-      collection: BananiumHorn
-      params:
-        variation: 0.246
-  - type: Construction
-    graph: BananiumHorn
-    node: bananiumHorn

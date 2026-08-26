@@ -194,13 +194,6 @@
     RawSilver: 3000
 
 - type: latheRecipe
-  id: MaterialBananium10
-  result: MaterialBananium
-  completetime: 2
-  materials:
-    RawBananium: 3000
-
-- type: latheRecipe
   id: MaterialDiamond
   result: MaterialDiamond1
   completetime: 0.026 # 0.8 over 30
@@ -239,14 +232,6 @@
   completetime: 0
   materials:
     Plastic: 100
-
-- type: latheRecipe
-  id: MaterialBananium1
-  result: MaterialBananium1
-  completetime: 0.1 # 1 over 10
-  miningPoints: 60
-  materials:
-    RawBananium: 100
 
 - type: latheRecipe
   id: MaterialSheetMeat

@@ -13,21 +13,6 @@
       - MechRipley2Battery
 
 - type: entity
-  name: H.O.N.K. Spawner
-  suffix: Filled
-  id: SpawnMechHonkerFilled
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: Objects/Specific/Mech/mecha.rsi
-        state: honker
-  - type: ConditionalSpawner
-    prototypes:
-      - MechHonkerFilled
-
-- type: entity
   name: Clarke Spawner
   id: SpawnMechClarke
   parent: MarkerBase

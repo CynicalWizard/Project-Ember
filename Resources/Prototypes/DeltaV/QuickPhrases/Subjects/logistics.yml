@@ -141,11 +141,6 @@
   text: phrase-uranium
 
 - type: quickPhrase
-  id: PhraseLogisticsBananium
-  parent: BaseLogisticsSubjectPhrase
-  text: phrase-bananium
-
-- type: quickPhrase
   id: PhraseLogisticsArtifactFragment
   parent: BaseLogisticsSubjectPhrase
   text: phrase-artifact-fragment

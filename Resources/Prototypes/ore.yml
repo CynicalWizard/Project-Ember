@@ -1,5 +1,7 @@
 # Ember: the *Unprocessed ore tier came from Lavaland and went with it; veins drop
 # the ordinary ore entities again.
+# Ember: the *Unprocessed ore tier came from Lavaland and went with it; veins drop
+# the ordinary ore entities again.
 # TODO: Kill ore veins
 # Split it into 2 components, 1 for "spawn XYZ on destruction" and 1 for "randomly select one of these for spawn on destruction"
 
@@ -51,12 +53,6 @@
 - type: ore
   id: OreUranium
   oreEntity: UraniumOre1
-  minOreYield: 1
-  maxOreYield: 2
-
-- type: ore
-  id: OreBananium
-  oreEntity: BananiumOre1
   minOreYield: 1
   maxOreYield: 2
 
@@ -196,7 +192,6 @@
     OrePlasma: 4
     OreSilver: 1
     OreUranium: 1
-    OreBananium: 0.5
     OreArtifactFragment: 0.5
     OreBluespace: 0.5
     OreNormality: 0.3
@@ -228,7 +223,6 @@
     OrePlasma: 0.32
     OreSilver: 0.8
     OreUranium: 0.8
-    OreBananium: 0.8
     OreArtifactFragment: 0.8
     OreBluespace: 0.5
     OreNormality: 0.3

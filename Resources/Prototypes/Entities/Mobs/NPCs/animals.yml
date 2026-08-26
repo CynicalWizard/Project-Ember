@@ -2871,10 +2871,6 @@
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: clown
       sprite: Mobs/Animals/clownspider.rsi
-  - type: Butcherable
-    spawned:
-    - id: MaterialBananium1
-      amount: 1
   - type: DamageStateVisuals
     states:
       Alive:

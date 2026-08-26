@@ -401,11 +401,6 @@
       - id: MaterialDiamond1
     - !type:GroupSelector
       children:
-      - id: MaterialBananium1
-        weight: 2
-      - id: MaterialBananium
-    - !type:GroupSelector
-      children:
       - id: IngotGold1
         weight: 2
       - id: IngotGold

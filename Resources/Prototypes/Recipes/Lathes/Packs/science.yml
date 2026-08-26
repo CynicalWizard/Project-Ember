@@ -130,9 +130,6 @@
   recipes:
   - RipleyCentralElectronics
   - RipleyPeripheralsElectronics
-  - HonkerCentralElectronics
-  - HonkerPeripheralsElectronics
-  - HonkerTargetingElectronics
   - HamtrCentralElectronics
   - HamtrPeripheralsElectronics
   # EE EDIT START

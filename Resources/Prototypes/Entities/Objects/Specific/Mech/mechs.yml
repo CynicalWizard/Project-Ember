@@ -188,44 +188,6 @@
       - PowerCellHigh
 
 - type: entity
-  parent: [ BaseMech, SpecialMech ] # Goobstation
-  id: MechHonker
-  name: H.O.N.K.
-  description: "Produced by \"Tyranny of Honk, INC\", this exosuit is designed as heavy clown-support. Used to spread the fun and joy of life. HONK!"
-  components:
-  - type: Sprite
-    drawdepth: Mobs
-    noRot: true
-    sprite: Objects/Specific/Mech/mecha.rsi
-    layers:
-    - map: [ "enum.MechVisualLayers.Base" ]
-      state: honker
-  - type: FootstepModifier
-    footstepSoundCollection:
-      collection: FootstepClown
-      params:
-        variation: 0.17
-  - type: Mech
-    baseState: honker
-    openState: honker-open
-    brokenState: honker-broken
-    mechToPilotDamageMultiplier: 0.5
-    airtight: true # Goobstation - Space Honk is real.
-    pilotWhitelist:
-      components:
-      - HumanoidAppearance
-
-- type: entity
-  parent: MechHonker
-  id: MechHonkerBattery
-  suffix: Battery
-  components:
-  - type: ContainerFill
-    containers:
-      mech-battery-slot:
-      - PowerCellHigh
-
-- type: entity
   parent: [ BaseMech, SmallMech ] # Goobstation
   id: MechHamtr
   name: HAMTR

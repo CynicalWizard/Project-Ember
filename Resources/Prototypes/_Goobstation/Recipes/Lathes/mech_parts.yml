@@ -210,25 +210,6 @@
     Diamond: 150
 
 - type: latheRecipe
-  id: MechEquipmentHonkerBananaMortar
-  result: WeaponMechSpecialBananaMortar
-  category: MechEquipment
-  completetime: 10
-  materials:
-    Steel: 1150
-    Bananium: 800
-
-- type: latheRecipe
-  id: MechEquipmentHonkerMousetrapMortar
-  result: WeaponMechSpecialMousetrapMortar
-  category: MechEquipment
-  completetime: 10
-  materials:
-    Steel: 1200
-    Bananium: 300
-
-# Misc
-- type: latheRecipe
   id: MechAirTank
   result: MechAirTank
   category: MechEquipment

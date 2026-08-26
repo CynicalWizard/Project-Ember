@@ -55,13 +55,6 @@
   maxCount: 30
 
 - type: stack
-  id: BananiumOre
-  name: bananium ore
-  icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: bananium }
-  spawn: BananiumOre1
-  maxCount: 30
-
-- type: stack
   id: Coal
   name: graphite
   icon: { sprite: /Textures/Ember/Objects/Materials/ore.rsi, state: lump }

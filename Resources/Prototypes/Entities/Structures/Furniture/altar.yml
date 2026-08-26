@@ -465,16 +465,3 @@
     graph: Altar
     node: fanged
 
-
-- type: entity
-  id: AltarBananium
-  parent: AltarBase
-  name: honkmother altar
-  description: A bananium altar dedicated to the honkmother.
-  components:
-  - type: Sprite
-    sprite: Structures/Furniture/Altars/Cults/bananium.rsi
-    state: full
-  - type: Construction
-    graph: BananiumAltarGraph
-    node: bananiumAltar

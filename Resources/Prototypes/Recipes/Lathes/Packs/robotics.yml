@@ -69,11 +69,6 @@
   - RipleyRArm
   - RipleyLLeg
   - RipleyRLeg
-  - HonkerHarness
-  - HonkerLArm
-  - HonkerRArm
-  - HonkerLLeg
-  - HonkerRLeg
   - HamtrHarness
   - HamtrLArm
   - HamtrRArm
@@ -106,7 +101,6 @@
   id: MechEquipment
   recipes:
     - MechEquipmentGrabber
-    - MechEquipmentHorn
     - MechEquipmentGrabberSmall
     # EE EDIT START
     - PowerCageMedium
@@ -116,6 +110,4 @@
     - MechEquipmentDrill
     - MechEquipmentDrillDiamond
     - MechEquipmentKineticAccelerator
-    - MechEquipmentHonkerBananaMortar
-    - MechEquipmentHonkerMousetrapMortar
     # EE EDIT END

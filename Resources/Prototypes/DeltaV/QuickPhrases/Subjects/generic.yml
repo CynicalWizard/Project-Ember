@@ -237,11 +237,6 @@
   text: phrase-uranium
 
 - type: quickPhrase
-  id: BananiumPhrase
-  parent: BaseMaterialPhrase
-  text: phrase-bananium
-
-- type: quickPhrase
   id: WoodPhrase
   parent: BaseMaterialPhrase
   text: phrase-wood

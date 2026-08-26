@@ -128,9 +128,6 @@
       - RipleyPeripheralsElectronics
       - HamtrCentralElectronics
       - HamtrPeripheralsElectronics
-      - HonkerCentralElectronics
-      - HonkerPeripheralsElectronics
-      - HonkerTargetingElectronics
       - RemoteSignallerAdvanced
       - SignalTimerElectronics
       - LogProbeCartridge

@@ -295,7 +295,6 @@
   components:
   - type: OreVein
     oreChance: 1.0
-    currentOre: OreBananium
   - type: Sprite
     layers:
     - state: rock_asteroid
@@ -736,7 +735,6 @@
   components:
   - type: OreVein
     oreChance: 1.0
-    currentOre: OreBananium
   - type: Sprite
     layers:
     - state: ironrock
@@ -1225,36 +1223,6 @@
 
 
 - type: entity
-  id: WallRockBananium
-  parent: WallRock
-  description: An ore vein rich with bananium.
-  suffix: Bananium
-  components:
-  - type: EntityRemap
-    mask:
-      AsteroidRock: AsteroidRockBananium
-      WallRockBasalt: WallRockBasaltBananium
-      WallRockChromite: WallRockChromiteBananium
-      WallRockSand: WallRockSandBananium
-      WallRockSnow: WallRockSnowBananium
-  - type: OreVein
-    oreChance: 1.0
-    currentOre: OreBananium
-  - type: Sprite
-    layers:
-    - state: rock
-    - map: [ "enum.EdgeLayer.South" ]
-      state: rock_south
-    - map: [ "enum.EdgeLayer.East" ]
-      state: rock_east
-    - map: [ "enum.EdgeLayer.North" ]
-      state: rock_north
-    - map: [ "enum.EdgeLayer.West" ]
-      state: rock_west
-    - state: rock_bananium
-      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
-
-- type: entity
   id: WallRockArtifactFragment
   parent: WallRock
   description: A rock wall. What's that sticking out of it?
@@ -1709,7 +1677,6 @@
   components:
   - type: OreVein
     oreChance: 1.0
-    currentOre: OreBananium
   - type: Sprite
     layers:
     - state: rock_wall
@@ -2123,7 +2090,6 @@
   components:
   - type: OreVein
     oreChance: 1.0
-    currentOre: OreBananium
   - type: Sprite
     layers:
     - state: rock_snow
@@ -2536,7 +2502,6 @@
   components:
   - type: OreVein
     oreChance: 1.0
-    currentOre: OreBananium
   - type: Sprite
     layers:
     - state: rock_sand
@@ -2950,7 +2915,6 @@
   components:
   - type: OreVein
     oreChance: 1.0
-    currentOre: OreBananium
   - type: Sprite
     layers:
     - state: rock_chromite
@@ -3364,7 +3328,6 @@
   components:
   - type: OreVein
     oreChance: 1.0
-    currentOre: OreBananium
   - type: Sprite
     layers:
     - state: rock_andesite

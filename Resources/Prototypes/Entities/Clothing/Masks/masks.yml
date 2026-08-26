@@ -245,9 +245,6 @@
     sprite: Clothing/Mask/clown_banana.rsi
   - type: Clothing
     sprite: Clothing/Mask/clown_banana.rsi
-  - type: Construction
-    graph: BananaClownMask
-    node: mask
 
 - type: entity
   parent: [ClothingMaskClown, BaseRestrictedContraband]
