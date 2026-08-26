@@ -16,7 +16,6 @@
   - GladiabotYellow
   - SAN
   - Changeling
-  - Shadowling
   - Blob # Goobstation - Blob
 
 - type: npcFaction
@@ -75,7 +74,6 @@
   - GladiabotYellow
   - SAN
   - Changeling
-  - Shadowling
   - Blob # Goobstation - Blob
 
 - type: npcFaction
@@ -94,7 +92,6 @@
   - Wizard
   - SAN
   - Changeling
-  - Shadowling
   - Blob # Goobstation - Blob
 
 - type: npcFaction
@@ -136,7 +133,6 @@
   - GladiabotYellow
   - SAN
   - Changeling
-  - Shadowling
   - Blob # Goobstation - Blob
 
 - type: npcFaction
@@ -165,7 +161,6 @@
   - Zombie
   - Revolutionary
   - Wizard
-  - Shadowling
   - Changeling # goob edit - changelings
   - Blob # Goobstation - Blob
 
@@ -184,7 +179,6 @@
   - Zombie
   - Revolutionary
   - AllHostile
-  - Shadowling
   - Changeling # goob edit - changelings
   - Blob # Goobstation - Blob
 
@@ -284,5 +278,4 @@
   - Revolutionary
   - Dragon
   - Changeling
-  - Shadowling
 
