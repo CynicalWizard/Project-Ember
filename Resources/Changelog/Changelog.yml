@@ -16899,3 +16899,16 @@ Entries:
   id: 7324
   time: '2026-08-12T10:21:12.0000000+00:00'
   url: https://github.com/Misanthropic-Wizards/Project-Ember/pull/9
+- author: CynicalWizard
+  changes:
+    - type: Add
+      message: Форма ЦПСС, фракции ЦПСС, должности.
+    - type: Tweak
+      message: Изменения интерфейса создания персонажа.
+    - type: Remove
+      message: Пронаунсы
+    - type: Tweak
+      message: Что-то ещё изменено, но я не помню что именно.
+  id: 7325
+  time: '2026-08-26T16:23:32.0000000+00:00'
+  url: https://github.com/Misanthropic-Wizards/Project-Ember/pull/10
