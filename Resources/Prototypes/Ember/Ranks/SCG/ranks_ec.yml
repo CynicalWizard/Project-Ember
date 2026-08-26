@@ -1,0 +1,134 @@
+# Ranks of the SCG Expeditionary Corps, ported from SierraBay12's maps/torch/torch_ranks.dm.
+#
+# The ladder is deliberately shorter than the Fleet's: E-1, E-3, E-5, E-7 and O-1, O-3, O-5,
+# O-6, O-8, O-10. The gaps are not omissions, the Corps simply has no grades there.
+#
+# EMBER-TODO: the species blacklists below name the two xeno species that exist today. The rule
+# behind them — a non-citizen never holds a commission — is meant to live in code, so that a
+# species added later is covered without anyone remembering to edit this file.
+
+# `accessories` is the shoulder board each grade wears, converted from Bay's
+# `accessory/solgov/rank/ec/*`. One per grade — the Corps has no specialty badge, unlike the
+# Fleet, so one entry is the whole of it.
+
+- type: emberRank
+  id: EmberRankCorpsE1
+  accessories:
+  - EmberClothingAccessoryEcrankE1
+  minAge: 18
+  maxAge: 21
+  name: ember-rank-corps-e1-name
+  shortName: ember-rank-corps-e1-short
+  sortOrder: 10
+
+- type: emberRank
+  id: EmberRankCorpsE3
+  accessories:
+  - EmberClothingAccessoryEcrankE3
+  minAge: 19
+  maxAge: 26
+  name: ember-rank-corps-e3-name
+  shortName: ember-rank-corps-e3-short
+  sortOrder: 30
+
+- type: emberRank
+  id: EmberRankCorpsE5
+  accessories:
+  - EmberClothingAccessoryEcrankE5
+  minAge: 24
+  maxAge: 36
+  name: ember-rank-corps-e5-name
+  shortName: ember-rank-corps-e5-short
+  sortOrder: 50
+
+# Xeno personnel top out at E-5. Chief Explorer is a leadership grade.
+- type: emberRank
+  id: EmberRankCorpsE7
+  accessories:
+  - EmberClothingAccessoryEcrankE7
+  minAge: 32
+  maxAge: 50
+  name: ember-rank-corps-e7-name
+  shortName: ember-rank-corps-e7-short
+  sortOrder: 70
+  speciesBlacklist:
+  - Reptilian
+  - Tajaran
+
+- type: emberRank
+  id: EmberRankCorpsO1
+  accessories:
+  - EmberClothingAccessoryEcrankO1
+  minAge: 26
+  maxAge: 32
+  name: ember-rank-corps-o1-name
+  shortName: ember-rank-corps-o1-short
+  sortOrder: 110
+  speciesBlacklist:
+  - Reptilian
+  - Tajaran
+
+- type: emberRank
+  id: EmberRankCorpsO3
+  accessories:
+  - EmberClothingAccessoryEcrankO3
+  minAge: 31
+  maxAge: 40
+  name: ember-rank-corps-o3-name
+  shortName: ember-rank-corps-o3-short
+  sortOrder: 130
+  speciesBlacklist:
+  - Reptilian
+  - Tajaran
+
+- type: emberRank
+  id: EmberRankCorpsO5
+  accessories:
+  - EmberClothingAccessoryEcrankO5
+  minAge: 39
+  maxAge: 50
+  name: ember-rank-corps-o5-name
+  shortName: ember-rank-corps-o5-short
+  sortOrder: 150
+  speciesBlacklist:
+  - Reptilian
+  - Tajaran
+
+- type: emberRank
+  id: EmberRankCorpsO6
+  accessories:
+  - EmberClothingAccessoryEcrankO6
+  minAge: 45
+  maxAge: 58
+  name: ember-rank-corps-o6-name
+  shortName: ember-rank-corps-o6-short
+  sortOrder: 160
+  speciesBlacklist:
+  - Reptilian
+  - Tajaran
+
+- type: emberRank
+  id: EmberRankCorpsO8
+  accessories:
+  - EmberClothingAccessoryEcrankO8
+  minAge: 52
+  maxAge: 65
+  name: ember-rank-corps-o8-name
+  shortName: ember-rank-corps-o8-short
+  sortOrder: 180
+  speciesBlacklist:
+  - Reptilian
+  - Tajaran
+
+- type: emberRank
+  id: EmberRankCorpsO10
+  accessories:
+  - EmberClothingAccessoryEcrankO10
+  minAge: 58
+  maxAge: 70
+  name: ember-rank-corps-o10-name
+  shortName: ember-rank-corps-o10-short
+  sortOrder: 200
+  speciesBlacklist:
+  - Reptilian
+  - Tajaran

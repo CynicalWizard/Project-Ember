@@ -29,7 +29,7 @@
         - ForeignerLight
     - !type:CharacterEmployerRequirement
       employers:
-      - IdrisIncorporated
+      - ExpeditionaryCorpsOrganisation
       - NanoTrasen
   startingGear: AdminAssistantGear
   icon: "JobIconAdminAssitant"

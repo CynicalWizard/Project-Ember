@@ -1,9 +1,10 @@
-humanoid-profile-editor-randomize-everything-button = Сгенерировать случайного
+﻿humanoid-profile-editor-randomize-everything-button = Сгенерировать случайного
 
 humanoid-profile-editor-name-label = Имя:
 
 humanoid-profile-editor-name-random-button = Случайно
 
+humanoid-profile-editor-identity-tab = Личность
 humanoid-profile-editor-appearance-tab = Внешность
 
 humanoid-profile-editor-background-tab = Предыстория
@@ -60,7 +61,7 @@ humanoid-profile-editor-spawn-priority-label = Приоритет появлен
 
 humanoid-profile-editor-eyes-label = Цвет глаз:
 
-humanoid-profile-editor-jobs-tab = Должности
+humanoid-profile-editor-jobs-tab = Назначение
 
 humanoid-profile-editor-preference-unavailable-stay-in-lobby-button = Остаться в лобби, если должность недоступна.
 
@@ -164,3 +165,37 @@ humanoid-profile-editor-loadouts-heirloom-tooltip = При спавне, есл�
 humanoid-profile-editor-markings-tab = Черты внешности
 
 humanoid-profile-editor-flavortext-tab = Описание
+
+# Ember: постоянная сводка по персонажу, которая остаётся на виду, пока меняется всё остальное.
+ember-dossier-heading = Личное дело
+ember-dossier-empty = [color=#888888]В этом слоте нет персонажа.[/color]
+ember-dossier-unset = не задано
+ember-dossier-name = Имя
+ember-dossier-species = Лицо
+ember-dossier-species-line = {$species}, {$sex}, {$age}
+ember-dossier-homeworld = Рождение
+ember-dossier-culture = Культура
+ember-dossier-faction = Гражданство
+ember-dossier-religion = Вера
+ember-dossier-branch = Служба
+ember-dossier-employer = Работодатель
+ember-dossier-rank = Звание
+ember-dossier-post = Должность
+ember-dossier-post-more = {$post} +{$count}
+ember-dossier-ready = [color=#7A9A5B]Готов к выходу в смену.[/color]
+ember-dossier-not-ready = [color=#B4553F]Не готов:[/color] {$missing}
+ember-dossier-missing-rank = не выбрано звание
+ember-dossier-missing-post = не выбрана должность
+
+# Ключи есть в HumanoidProfileEditor.xaml и не были определены ни в одной локали — редактор
+# печатал игроку сам идентификатор.
+humanoid-profile-editor-station-ai-name-label = Имя ИИ станции:
+humanoid-profile-editor-cyborg-name-label = Имя киборга:
+
+# Ember: служба — один вопрос, кто направил персонажа на борт. Государство назначает, компания
+# нанимает, и это альтернативы, а не слои.
+humanoid-profile-editor-service-tab = Служба
+humanoid-profile-editor-service-question = Кто вас сюда направил?
+humanoid-profile-editor-service-note-posted = Государство назначает своих. Работодателя указывать не нужно.
+humanoid-profile-editor-service-note-hired = Гражданскому платят, а не назначают его, поэтому работодатель обязателен.
+humanoid-profile-editor-legacy-jobs-button = Показать унаследованные должности

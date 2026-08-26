@@ -1,0 +1,10 @@
+mapping-template-embermainshipjobs = SEV Ember Jobs
+mapping-template-emberjobscommand = Command
+mapping-template-emberjobsoversight = State Oversight
+mapping-template-emberjobssecurity = Security
+mapping-template-emberjobsengineering = Engineering
+mapping-template-emberjobsmedical = Medical
+mapping-template-emberjobsscience = Science
+mapping-template-emberjobssupply = Supply
+mapping-template-emberjobshousekeeping = Housekeeping
+mapping-template-emberjobsunattached = Unattached Personnel

@@ -1,8 +1,10 @@
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using System.Numerics;
 using Content.Shared._EE.Contractors.Prototypes;
+using Content.Shared.Ember.Background;
 using Content.Shared.Examine;
+using Content.Shared.Ember.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared._Shitmed.Humanoid.Events; // Shitmed Change
@@ -47,13 +49,23 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
     public const string DefaultSpecies = "Human";
 
     [ValidatePrototypeId<EmployerPrototype>]
-    public const string DefaultEmployer = "NanoTrasen";
+    public const string DefaultEmployer = "Unemployed"; // Ember: a new character owes nobody anything until they say so.
 
-    [ValidatePrototypeId<NationalityPrototype>]
-    public const string DefaultNationality = "Bieselite";
+    // Ember: the four background axes replace the Contractors module's nationality and lifepath.
+    // Defaults are the least committal entry on each axis that every species can hold, so a fresh
+    // profile is valid before the player has answered anything - except the homeworld, where Mars
+    // is both the capital and the answer most characters give.
+    [ValidatePrototypeId<EmberBackgroundPrototype>]
+    public const string DefaultHomeworld = "EmberHomeworldMars";
 
-    [ValidatePrototypeId<LifepathPrototype>]
-    public const string DefaultLifepath = "Spacer";
+    [ValidatePrototypeId<EmberBackgroundPrototype>]
+    public const string DefaultCulture = "EmberCultureOther";
+
+    [ValidatePrototypeId<EmberBackgroundPrototype>]
+    public const string DefaultFaction = "EmberFactionOther";
+
+    [ValidatePrototypeId<EmberBackgroundPrototype>]
+    public const string DefaultReligion = "EmberReligionUnstated";
 
     public override void Initialize()
     {
@@ -291,7 +303,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
     }
 
     /// <summary>
-    ///     Set a humanoid mob's sex. This will not change their gender.
+    ///     Set a humanoid mob's sex. Ember: this also sets their gender, which follows from it.
     /// </summary>
     /// <param name="uid">The humanoid mob's UID.</param>
     /// <param name="sex">The sex to set the mob to.</param>
@@ -305,6 +317,10 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         var oldSex = humanoid.Sex;
         humanoid.Sex = sex;
         humanoid.MarkingSet.EnsureSexes(sex, _markingManager);
+        // Ember: pronouns are no longer a separate choice, so anything that changes sex during a
+        // round has to carry them along - otherwise the one path that can change sex mid-round
+        // leaves behind exactly the mismatch the editor no longer permits.
+        SetGender(uid, EmberPronouns.GenderFor(sex), humanoid);
         RaiseLocalEvent(uid, new SexChangedEvent(oldSex, sex));
 
         if (sync)
@@ -390,9 +406,12 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         SetSpecies(uid, profile.Species, false, humanoid);
         SetSex(uid, profile.Sex, false, humanoid);
 
-        humanoid.Gender = profile.Gender;
+        // Ember: from the sex rather than from the stored field, so a profile written before the
+        // pronoun list was removed cannot bring an old pairing back in with it.
+        var gender = EmberPronouns.GenderFor(profile.Sex);
+        humanoid.Gender = gender;
         if (TryComp<GrammarComponent>(uid, out var grammar))
-            grammar.Gender = profile.Gender;
+            grammar.Gender = gender;
 
         humanoid.DisplayPronouns = profile.DisplayPronouns;
         humanoid.StationAiName = profile.StationAiName;

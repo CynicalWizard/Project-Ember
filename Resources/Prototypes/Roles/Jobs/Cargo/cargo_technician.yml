@@ -15,7 +15,7 @@
   requirements:
   - !type:CharacterEmployerRequirement
     employers:
-    - OrionExpress
+    - GraysonManufactories
     - NanoTrasen
 
 - type: startingGear

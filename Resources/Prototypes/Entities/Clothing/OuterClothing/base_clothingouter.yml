@@ -10,11 +10,17 @@
     state: icon
   # Ember: coats and jackets take the decorative half of the accessory categories, the way Bay's
   # labcoats and job suits do. Armour plating stays opt-in on the prototypes that should have it.
+  #
+  # Flash is here because it is the category Bay files department insignia under, and a jacket
+  # that would not take one left a crewman with a department on the uniform and none on the coat
+  # worn over it - which is the layer everybody actually sees. Bay's own SCG service jacket lists
+  # ACCESSORY_SLOT_FLASH for the same reason.
   - type: EmberAccessoryHolder
     validSlots:
     - Decor
     - Armband
     - Rank
+    - Flash
     - Medal
     - Insignia
     slotLimits:

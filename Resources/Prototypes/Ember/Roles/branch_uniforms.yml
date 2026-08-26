@@ -1,0 +1,106 @@
+# What each service puts its people in.
+#
+# A uniform belongs to the organisation and not to the post. The medical technician's coverall is
+# Corps black or contractor grey depending on who employs the technician; the job is the same job
+# either way. SierraBay12 says the same thing as `allowed_branches = list(branch = outfit)` on the
+# job - a whole second outfit per service, with the tool list copied into both.
+#
+# These are `subGear` instead. A sub-gear whose `requirements` pass overwrites the slots it names
+# and leaves everything else alone, so a job writes its tools, its radio and its ID once and hangs
+# the four services off the same list. `SharedStationSpawningSystem.ApplySubGear` runs on the
+# lobby preview as well as at spawn, so the character in the lobby is wearing what will actually
+# be issued.
+#
+# Only `jumpsuit` and `shoes` are set here. Sub-gears are applied after the job's own equipment, so
+# anything named in this file wins over the job - and an engineer's hard hat or a security
+# officer's helmet is a decision about the work rather than about the service. Headgear therefore
+# stays with the job, which is also how Bay's job outfits do it.
+#
+# Order matters: sub-gears are applied in the order the job lists them, later ones overwriting
+# earlier. Every Ember job lists the crew cut before the officer cut for that reason.
+#
+# EMBER-TODO: no jacket at round start, and that is Bay's arrangement rather than an omission -
+# its job outfits issue the utility uniform and its service jackets live in the wardrobe. Once the
+# uniform vendor exists this is where a "service dress" alternative would hang.
+#
+# EMBER-TODO: no department insignia and no rank boards. Both depend on the character rather than
+# on the kit - the patch on the sleeve is the department the job belongs to, the boards are the
+# rank the character holds - so they need attaching at spawn rather than listing in a slot. The
+# accessories are all drawn and named; see accessories_departments.yml and the `accessories` field
+# on each rank.
+#
+# EMBER-TODO: the employer axis is not consulted, only the branch. Bay's Torch is the same and its
+# corporate lab coats exist in the item data unused, so a Zeng-Hu physician in a Zeng-Hu coat is a
+# fifth entry in this file rather than a new mechanism.
+
+# The Corps, enlisted and warrant. Silver trim.
+- type: startingGear
+  id: EmberSubGearCorps
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+  equipment:
+    jumpsuit: EmberClothingUniformUtilityExpeditionary
+    shoes: EmberClothingShoesDutyBoots
+
+# The Corps, commissioned. Gold trim, and hung off the rank rather than off the post: a lieutenant
+# filling in as a watch officer is still a lieutenant, and Bay draws the two cuts for exactly this
+# distinction.
+- type: startingGear
+  id: EmberSubGearCorpsOfficer
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsO1
+    - EmberRankCorpsO3
+    - EmberRankCorpsO5
+    - EmberRankCorpsO6
+    - EmberRankCorpsO8
+    - EmberRankCorpsO10
+  equipment:
+    jumpsuit: EmberClothingUniformUtilityExpeditionaryOfficer
+    shoes: EmberClothingShoesDutyBoots
+
+# The Fleet. One cut for everybody, which is Bay's: the coveralls have no officer variant, and the
+# grade is read off the boards rather than off the trim.
+- type: startingGear
+  id: EmberSubGearFleet
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchFleet
+  equipment:
+    jumpsuit: EmberClothingUniformUtilityFleet
+    shoes: EmberClothingShoesDutyBoots
+
+# Contractors. The undyed SolGov utility uniform - the same cut with the service taken off it,
+# which is precisely what a contractor is.
+- type: startingGear
+  id: EmberSubGearCivilian
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchCivilian
+  equipment:
+    jumpsuit: EmberClothingUniformUtility
+    shoes: EmberClothingShoesDutyBoots
+
+# The civil service. Not a uniformed branch and not dressed like one.
+#
+# EMBER-TODO: vanilla clothing, because SCG civil service dress was never drawn - Bay puts its
+# Representative in a generic black suit for the same reason. A cut of its own is worth having,
+# since the Representative and the Liaison Officer are the two people aboard whose authority comes
+# from not being in the chain of command, and looking like it is half the job.
+- type: startingGear
+  id: EmberSubGearGovernment
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchSCGGovernment
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerBlack
+    shoes: EmberClothingShoesDress

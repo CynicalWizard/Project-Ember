@@ -1,0 +1,319 @@
+# Security aboard the SEV Ember.
+#
+# The whole department is Fleet, and the reason is duller than it looks: the SCG declined to pay
+# for a second armed service. The Fleet already existed, so when the Expeditionary Corps needed
+# people who may lawfully use force aboard its ships, it got them on secondment rather than
+# getting an armed wing of its own. That single fact does most of the work here — it sets the
+# rank ladder, it decides the uniform, and it closes the entire department to xeno personnel
+# without a rule saying so, because the Fleet takes citizens and non-citizens are not citizens.
+#
+# It also bounds what the secondment covers. The Fleet is aboard to be the armed force and
+# nothing else, because that is the line the SCG was unwilling to fund twice. Every other post
+# on the ship is the Corps' own, which is why the survey pilot is Corps or hired rather than
+# Fleet — flying is not an armed-force function and was never in the package.
+#
+# **Aboard, authority runs by billet, not by rank or by service.** The Chief of Security answers
+# to the Captain, who is a Corps officer and not in his chain of promotion at all, and there is
+# nothing anomalous about that: a ship is commanded by whoever holds command of it, and everyone
+# embarked answers to that person whatever uniform they arrived in. Real navies work the same
+# way. So this file's `supervisors` lines mean exactly what they say, and the Fleet ladder in the
+# `requirements` blocks is about who a character *is*, not about who gives them orders.
+#
+# EMBER-TODO: "in normal conditions" is doing real work in that paragraph. Bay changes the
+# answer under alert — `maps/torch/torch_security_state.dm` — and so should we eventually. When
+# the ship is at a security state where the detachment stops taking the Captain's word for it,
+# that is a mechanic and a good one, and it only reads as dramatic because the ordinary case is
+# so firmly the other way.
+#
+# The Federal Marshal is deliberately not in this file. He is police rather than ship's security
+# and answers to Sol, so he sits in EmberOversight next to the SolGov Representative. Putting him
+# here would say the Chief of Security runs him, which is exactly backwards.
+#
+# EMBER-TODO: `startingGear` and `icon` point at existing vanilla content on purpose, same as in
+# command.yml. Nothing else here is placeholder.
+#
+# `startingGear` points at an Ember kit in job_gear.yml, which inherits the vanilla kit named
+# above it for the tools and hangs the branch uniforms off it as sub-gear. The uniform therefore
+# comes from the service and the tools from the post, and a post open to three services is still
+# one post. See Resources/Prototypes/Ember/Roles/branch_uniforms.yml.
+#
+# EMBER-TODO: none of the Ember jobs carry vanilla's `special` blocks yet — the `CommandStaff`
+# component on department heads, and the mindshield implant on security. The first is a plain
+# omission to fix in one pass across all departments; the second is not, because handing out
+# mindshields is a statement about which antagonists this game has, and that is not settled.
+#
+# On minimum age. The rank band already carries one, so a job states its own only where the post
+# needs something the grade does not imply — schooling, or a command's worth of judgement. Two
+# jobs here do: the Chief of Security and the Investigator. The rest are gated by rank alone,
+# which is the honest answer for posts you are trained into on the job.
+#
+# On the enlisted floor. The Fleet grants a rate — a qualification in a speciality — no earlier
+# than E-4, and two posts here are rates: the Investigator and the Corpsman. Neither band starts
+# below it. The Master-at-Arms does start at E-3, and the difference is deliberate: a detachment
+# trains its own on post, and you may stand an armed watch before you have a rate. You may not
+# work a scene or treat a casualty before you have one.
+#
+# The Fleet's own floor — `hauling`, `weapons` and `EVA` at Basic — is not repeated below. It
+# lives on the branch and is merged in when a job's requirements are checked, so a posting here
+# never has to say "and knows how to work a voidsuit". Only what a job asks for *beyond* its
+# service is written down.
+#
+# On skills, the question asked of every line is "who cannot do their work without whom". The
+# Master-at-Arms has no forensics floor and the Investigator has no weapons floor beyond the
+# Fleet's own — so a scene needs the Investigator, an armed response needs the Master-at-Arms,
+# and neither can quietly become the other. The Corpsman is the sharpest case: `medical` Trained
+# without `anatomy` Trained means he stabilises and cannot operate. The patient reaches the
+# infirmary or the patient dies, and no rule had to be written to say it.
+
+- type: department
+  id: EmberSecurity
+  name: department-EmberSecurity
+  description: department-EmberSecurity-description
+  color: "#a9403a"
+  weight: 19
+  roles:
+  - EmberChiefOfSecurity
+  - EmberBrigChief
+  - EmberInvestigator
+  - EmberMasterAtArms
+  - EmberCorpsman
+  - EmberSecurityCadet
+
+- type: playTimeTracker
+  id: JobEmberChiefOfSecurity
+
+- type: playTimeTracker
+  id: JobEmberBrigChief
+
+- type: playTimeTracker
+  id: JobEmberInvestigator
+
+- type: playTimeTracker
+  id: JobEmberMasterAtArms
+
+- type: playTimeTracker
+  id: JobEmberCorpsman
+
+- type: playTimeTracker
+  id: JobEmberSecurityCadet
+
+# Heads the Fleet detachment and answers to the ship's command, which is the ordinary state of
+# affairs rather than a tension: he is embarked, so he answers to whoever commands the ship. His
+# service decides what he wears and how he is promoted, and the Captain decides what he does.
+#
+# A Sub-Lieutenant or a Lieutenant: the detachment is a handful of people, so this is a junior
+# officer's command and not a senior one. Age 25 on top of the grade, because an O-2 can be made
+# at 24 and a department cannot be handed to one.
+- type: job
+  id: EmberChiefOfSecurity
+  name: job-name-ember-chief-of-security
+  description: job-description-ember-chief-of-security
+  playTimeTracker: JobEmberChiefOfSecurity
+  startingGear: EmberGearChiefOfSecurity
+  icon: JobIconHeadOfSecurity
+  supervisors: job-supervisors-ember-command
+  weight: 18
+  requireAdminNotify: true
+  canBeAntag: false
+  access:
+  - HeadOfSecurity
+  - Command
+  - Security
+  - Armory
+  - Brig
+  - Detective
+  - Maintenance
+  - External
+  - Cryogenics
+  minSkills:
+    bureaucracy: Trained
+    weapons: Trained
+    combat: Basic
+    forensics: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchFleet
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankFleetO2
+    - EmberRankFleetO3
+  - !type:CharacterAgeRequirement
+    min: 25
+  - !type:CharacterSkillRequirement
+
+# Keeps the brig, the armoury, and the paperwork that has to survive being read back at an
+# inquiry. The senior rating of the detachment, which is why the band is E-6 to E-8 and why no
+# age is stated: nobody reaches Petty Officer First Class early, and the grade already says 28.
+- type: job
+  id: EmberBrigChief
+  name: job-name-ember-brig-chief
+  description: job-description-ember-brig-chief
+  playTimeTracker: JobEmberBrigChief
+  startingGear: EmberGearBrigChief
+  icon: JobIconWarden
+  supervisors: job-supervisors-ember-chief-of-security
+  weight: 15
+  canBeAntag: false
+  access:
+  - Security
+  - Armory
+  - Brig
+  - Maintenance
+  - External
+  - Cryogenics
+  minSkills:
+    bureaucracy: Trained
+    weapons: Trained
+    combat: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchFleet
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankFleetE6
+    - EmberRankFleetE7
+    - EmberRankFleetE8
+  - !type:CharacterSkillRequirement
+
+# Investigates: scenes, evidence, statements, and the report a court will read. Age 23 on top of
+# the E-4 floor, because the rate is only the service half of it — the school comes after, and a
+# Petty Officer Third Class can be twenty-one.
+- type: job
+  id: EmberInvestigator
+  name: job-name-ember-investigator
+  description: job-description-ember-investigator
+  playTimeTracker: JobEmberInvestigator
+  startingGear: EmberGearInvestigator
+  icon: JobIconDetective
+  supervisors: job-supervisors-ember-chief-of-security
+  weight: 12
+  access:
+  - Security
+  - Brig
+  - Detective
+  - Maintenance
+  - External
+  - Cryogenics
+  minSkills:
+    forensics: Trained
+    bureaucracy: Basic
+    computer: Basic
+    combat: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchFleet
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankFleetE4
+    - EmberRankFleetE5
+    - EmberRankFleetE6
+  - !type:CharacterAgeRequirement
+    min: 23
+  - !type:CharacterSkillRequirement
+
+# The detachment's working strength: patrols, responses, escorts, and standing at the airlock
+# when something is coming through it. Trained on weapons and on nothing else in particular,
+# which is the post being honest about itself.
+- type: job
+  id: EmberMasterAtArms
+  name: job-name-ember-master-at-arms
+  description: job-description-ember-master-at-arms
+  playTimeTracker: JobEmberMasterAtArms
+  startingGear: EmberGearMasterAtArms
+  icon: JobIconSecurityOfficer
+  supervisors: job-supervisors-ember-chief-of-security
+  weight: 10
+  access:
+  - Security
+  - Brig
+  - Maintenance
+  - External
+  - Cryogenics
+  minSkills:
+    weapons: Trained
+    combat: Basic
+    bureaucracy: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchFleet
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankFleetE3
+    - EmberRankFleetE4
+    - EmberRankFleetE5
+  - !type:CharacterSkillRequirement
+
+# Fleet medicine attached to the detachment rather than to the infirmary — the one who goes out
+# with the boarding party and comes back with what is left of it. Under the Chief of Security for
+# orders and under the Chief Medical Officer for anything clinical, which is a real friction and
+# is meant to be.
+#
+# Enlisted, and that is the word rather than a slight: a corpsman is a rated specialist who goes
+# forward, which is precisely what a commissioned physician does not do. The education argument
+# is sound and it belongs to the infirmary — the Physician is a Corps officer and the ship's
+# actual doctor. What the argument earns here is the floor: E-4 rather than E-3, because
+# corpsman school is a rate like any other.
+- type: job
+  id: EmberCorpsman
+  name: job-name-ember-corpsman
+  description: job-description-ember-corpsman
+  playTimeTracker: JobEmberCorpsman
+  startingGear: EmberGearCorpsman
+  icon: JobIconBrigmedic
+  supervisors: job-supervisors-ember-corpsman
+  weight: 10
+  access:
+  - Security
+  - Brig
+  - Medical
+  - Maintenance
+  - External
+  - Cryogenics
+  minSkills:
+    medical: Trained
+    anatomy: Basic
+    combat: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchFleet
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankFleetE4
+    - EmberRankFleetE5
+    - EmberRankFleetE6
+  - !type:CharacterSkillRequirement
+
+# Learning the job by doing it under supervision. One grade rather than a band, which is the
+# exception the rest of this file explains away: a trainee post is one step by definition, and
+# Crewman Apprentice is that step. E-1 is not aboard — recruits are still ashore — so there is
+# nothing below it to open.
+- type: job
+  id: EmberSecurityCadet
+  name: job-name-ember-security-cadet
+  description: job-description-ember-security-cadet
+  playTimeTracker: JobEmberSecurityCadet
+  startingGear: EmberGearSecurityCadet
+  icon: JobIconSecurityCadet
+  supervisors: job-supervisors-ember-security
+  weight: 5
+  canBeAntag: false
+  access:
+  - Security
+  - Brig
+  - Maintenance
+  - Cryogenics
+  # No minSkills at all, and that is the post: a cadet is asked for nothing beyond being in the
+  # Fleet. The branch floor still applies, so `CharacterSkillRequirement` is not a no-op here.
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchFleet
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankFleetE2
+  - !type:CharacterSkillRequirement

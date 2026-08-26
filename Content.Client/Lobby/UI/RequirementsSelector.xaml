@@ -1,15 +1,22 @@
-<BoxContainer xmlns="https://spacestation14.io"
+﻿<BoxContainer xmlns="https://spacestation14.io"
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
               Orientation="Horizontal">
+    <!-- Ember: clipped, so the row's width is set by the titleSize passed to Setup and not by
+         whichever post happens to have the longest name. "Старший советник неофицерского
+         состава" is 375 pixels of minimum width that every other row then had to live with,
+         and the section it shares with the skill panel does not have them to give. -->
     <Label Name="TitleLabel"
            Margin="0 0 5 0"
+           ClipText="True"
+           HorizontalExpand="True"
            MouseFilter="Stop"/>
-
-    <Control HorizontalExpand="True"/>
 
     <!--21 was the height of OptionsContainer at the time that this button was added. So I am limiting the texture to 21x21-->
     <Control SetSize="21 21">
         <TextureButton Name="Help" StyleClasses="HelpButton"/>
     </Control>
-    <BoxContainer Name="OptionsContainer" SetWidth="400"/>
+    <!-- Ember: 400 was a fixed width with slack in it, and the row now shares its section with
+         the skill panel. The four named buttons measure about 340 together; a row set up compact
+         overwrites this from Setup with the width its bar actually needs. -->
+    <BoxContainer Name="OptionsContainer" SetWidth="350"/>
 </BoxContainer>

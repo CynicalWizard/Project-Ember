@@ -12,7 +12,7 @@
   requirements:
     - !type:CharacterEmployerRequirement
       employers:
-      - IdrisIncorporated
+      - ExpeditionaryCorpsOrganisation
       - NanoTrasen
   access:
   - Command

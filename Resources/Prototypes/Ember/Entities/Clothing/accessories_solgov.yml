@@ -1,0 +1,1201 @@
+# Accessories of the SCG Expeditionary Corps and Fleet, converted from SierraBay12.
+#
+# Eighty-six of them, and the rank insignia among them are what the rank system has been waiting
+# for: `EmberRankPrototype.Accessories` has been empty on all forty ranks with an EMBER-TODO
+# pointing at `accessory/solgov/rank/*`, which is this file.
+#
+# `equipped-ACCESSORY` is the sprite drawn on the wearer, `item` the one drawn on the garment's
+# own icon. Bay draws both and calls the second `"[state]_tie"`; where it exists it is used, and
+# where it does not the wearer sprite stands in — approximately, because that art is positioned
+# for a body rather than for a folded uniform.
+#
+# EMBER-TODO: the department flashes carry `rolled-equipped-ACCESSORY` and
+# `down-equipped-ACCESSORY`, converted from Bay's `_sleeves` and `_rolled` states, and nothing
+# reads them yet. An accessory on a uniform with its sleeves up should follow the uniform, which
+# means EmberAccessoryComponent needs to see the holder's EmberRollableClothingComponent. The
+# art is here so that work is a code change and not another conversion pass.
+#
+# EMBER-TODO: no armour, temperature or speed values on any of these. Effects relay to
+# accessories for free through InventoryRelayedEvent, so the plate carrier attachments will work
+# the moment somebody fills the numbers in from Bay's own files.
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryAgenttag
+  name: "SFP AGENT tag"
+  description: "An armor tag with the words SFP AGENT printed in gold lettering on it."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/agenttag.rsi
+  - type: EmberAccessory
+    slot: ArmorMisc
+    equippedState: equipped-ACCESSORY
+    # Bay draws this one for the garment's own icon; most accessories have no
+    # such sprite and fall back to the on-mob art.
+    itemState: item
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryComtag
+  name: "SCG tag"
+  description: "An armor tag with the words SOL CENTRAL GOVERNMENT printed in gold lettering on it."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/comtag.rsi
+  - type: EmberAccessory
+    slot: ArmorMisc
+    equippedState: equipped-ACCESSORY
+    # Bay draws this one for the garment's own icon; most accessories have no
+    # such sprite and fall back to the on-mob art.
+    itemState: item
+
+# The three department-insignia sprites are deliberately not entities here. Bay draws one blank
+# patch per uniform cut and recolours it per department at runtime, so a converter that makes one
+# entity per sprite produces three patches called "command insignia" and loses the other seven
+# departments. They are written out by hand in accessories_departments.yml instead.
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryEcflag
+  name: "Expeditionary Corps crest"
+  description: "An emblem depicting the crest of the SCG Expeditionary Corps."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ecflag.rsi
+  - type: EmberAccessory
+    slot: ArmorMisc
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryEcpatch1
+  name: "Observatory patch"
+  description: "A laminated shoulder patch, carrying the symbol of the Sol Central Government Expeditionary Corpss Observatory, or SCGEO for short, the eyes and ears of the Expeditionary Corps' missions."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ecpatch1.rsi
+  - type: EmberAccessory
+    slot: Insignia
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryEcpatch2
+  name: "Field Operations patch"
+  description: "A radiation-shielded shoulder patch, carrying the symbol of the Sol Central Government Expeditionary Corps Field Operations, or SCGECFO for short, the hands-on workers of every Expeditionary Corps mission."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ecpatch2.rsi
+  - type: EmberAccessory
+    slot: Insignia
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryEcpatch3
+  name: "Cultural Exchange patch"
+  # Bay's own line reads "in the the Sol Central Government"; the stutter is not carried across.
+  description: "A radiation-shielded shoulder patch, denoting service in the Sol Central Government Expeditionary Corps Cultural Exchange program."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ecpatch3.rsi
+  - type: EmberAccessory
+    slot: Insignia
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryEcrankE1
+  name: "explorer ranks"
+  description: "Insignia denoting rank of some kind. These appear blank."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ecrank_e1.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryEcrankE3
+  name: "ranks (E-3 explorer)"
+  description: "Insignia denoting the rank of Explorer."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ecrank_e3.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryEcrankE5
+  name: "ranks (E-5 senior explorer)"
+  description: "Insignia denoting the rank of Senior Explorer."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ecrank_e5.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryEcrankE7
+  name: "ranks (E-7 chief explorer)"
+  description: "Insignia denoting the rank of Chief Explorer."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ecrank_e7.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryEcrankO1
+  name: "ranks (O-1 ensign)"
+  description: "Insignia denoting the rank of Ensign."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ecrank_o1.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryEcrankO10
+  name: "ranks (O-10 commandant of the expeditionary corps)"
+  description: "Insignia denoting the rank of Commandant of the Expeditonary Corps."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ecrank_o10.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryEcrankO3
+  name: "ranks (O-3 lieutenant)"
+  description: "Insignia denoting the rank of Lieutenant."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ecrank_o3.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryEcrankO5
+  name: "ranks (O-5 commander)"
+  description: "Insignia denoting the rank of Commander."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ecrank_o5.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryEcrankO6
+  name: "ranks (O-6 captain)"
+  description: "Insignia denoting the rank of Captain."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ecrank_o6.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryEcrankO8
+  name: "ranks (O-8 admiral)"
+  description: "Insignia denoting the rank of Admiral."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ecrank_o8.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetflag
+  name: "Fleet crest"
+  description: "An emblem depicting the crest of the SCG Fleet."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetflag.rsi
+  - type: EmberAccessory
+    slot: ArmorMisc
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetpatch1
+  name: "First Fleet patch"
+  description: "A fancy shoulder patch carrying insignia of First Fleet, the Sol Guard, stationed in Sol."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetpatch1.rsi
+  - type: EmberAccessory
+    slot: Insignia
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetpatch2
+  name: "Second Fleet patch"
+  description: "A well-worn shoulder patch carrying insignia of Second Fleet, the Home Defense Group, tasked with defense of Sol territories."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetpatch2.rsi
+  - type: EmberAccessory
+    slot: Insignia
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetpatch3
+  name: "Third Fleet patch"
+  description: "A scuffed shoulder patch carrying insignia of Third Fleet, the Border Guard, guarding borders of Sol territory against Vox and pirates."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetpatch3.rsi
+  - type: EmberAccessory
+    slot: Insignia
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetpatch4
+  name: "Fourth Fleet patch"
+  description: "A pristine shoulder patch carrying insignia of Fourth Fleet, stationed on Skrell border."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetpatch4.rsi
+  - type: EmberAccessory
+    slot: Insignia
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetpatch5
+  name: "Fifth Fleet patch"
+  description: "A tactical shoulder patch carrying insignia of Fifth Fleet, the Quick Reaction Force, recently formed and outfited with the latest tech."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetpatch5.rsi
+  - type: EmberAccessory
+    slot: Insignia
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetpinEnlisted
+  name: "enlisted qualification pin"
+  description: "An iron pin denoting some special qualification."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetpin_enlisted.rsi
+  - type: EmberAccessory
+    slot: Insignia
+    # A qualification is worn so that other people can read it. Bay leaves these
+    # unflagged and flags the voidsuit stripe that duplicates them, which is an
+    # inconsistency rather than a rule.
+    flags: [ Removable, HighVisibility ]
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetpinOfficer
+  name: "officer's qualification pin"
+  description: "A golden pin denoting some special qualification."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetpin_officer.rsi
+  - type: EmberAccessory
+    slot: Insignia
+    # A qualification is worn so that other people can read it. Bay leaves these
+    # unflagged and flags the voidsuit stripe that duplicates them, which is an
+    # inconsistency rather than a rule.
+    flags: [ Removable, HighVisibility ]
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetrankE1
+  name: "ranks (E-1 crewman recruit)"
+  description: "Insignia denoting the rank of Crewman Recruit."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetrank_e1.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetrankE2
+  name: "ranks (E-2 crewman apprentice)"
+  description: "Insignia denoting the rank of Crewman Apprentice."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetrank_e2.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetrankE3
+  name: "ranks (E-3 crewman)"
+  description: "Insignia denoting the rank of Crewman."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetrank_e3.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetrankE4
+  name: "ranks (E-4 petty officer third class)"
+  description: "Insignia denoting the rank of Petty Officer Third Class."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetrank_e4.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetrankE5
+  name: "ranks (E-5 petty officer second class)"
+  description: "Insignia denoting the rank of Petty Officer Second Class."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetrank_e5.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetrankE6
+  name: "ranks (E-6 petty officer first class)"
+  description: "Insignia denoting the rank of Petty Officer First Class."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetrank_e6.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetrankE7
+  name: "ranks (E-7 chief petty officer)"
+  description: "Insignia denoting the rank of Chief Petty Officer."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetrank_e7.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetrankE8
+  name: "ranks (E-8 senior chief petty officer)"
+  description: "Insignia denoting the rank of Senior Chief Petty Officer."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetrank_e8.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetrankE9
+  name: "ranks (E-9 master chief petty officer)"
+  description: "Insignia denoting the rank of Master Chief Petty Officer."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetrank_e9.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetrankO1
+  name: "ranks (O-1 ensign)"
+  description: "Insignia denoting the rank of Ensign."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetrank_o1.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetrankO10
+  name: "ranks (O-10 admiral)"
+  description: "Insignia denoting the rank of Admiral."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetrank_o10.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetrankO2
+  name: "ranks (O-2 sub-lieutenant)"
+  description: "Insignia denoting the rank of Sub-lieutenant."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetrank_o2.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetrankO3
+  name: "ranks (O-3 lieutenant)"
+  description: "Insignia denoting the rank of Lieutenant."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetrank_o3.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetrankO4
+  name: "ranks (O-4 lieutenant commander)"
+  description: "Insignia denoting the rank of Lieutenant Commander."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetrank_o4.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetrankO5
+  name: "ranks (O-5 commander)"
+  description: "Insignia denoting the rank of Commander."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetrank_o5.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetrankO6
+  name: "ranks (O-6 captain)"
+  description: "Insignia denoting the rank of Captain."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetrank_o6.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetrankO7
+  name: "ranks (O-7 commodore)"
+  description: "Insignia denoting the rank of Commodore."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetrank_o7.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetrankO8
+  name: "ranks (O-8 rear admiral)"
+  description: "Insignia denoting the rank of Rear Admiral."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetrank_o8.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetrankO9
+  name: "ranks (O-9 vice admiral)"
+  description: "Insignia denoting the rank of Vice Admiral."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetrank_o9.rsi
+  - type: EmberAccessory
+    slot: Rank
+    # Bay: ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY. Rank is the one thing a passer-by
+    # is expected to read, so it is named when you look at the person and not only at the shirt.
+    flags: [ Removable, HighVisibility ]
+    # A jacket covers the shirt outright, which is why the boards are issued to both.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryFleetspec
+  name: "speciality blaze"
+  description: "A color blaze denoting fleet personnel in some special role. This one is silver."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/fleetspec.rsi
+  - type: EmberAccessory
+    slot: Insignia
+    # A qualification is worn so that other people can read it. Bay leaves these
+    # unflagged and flags the voidsuit stripe that duplicates them, which is an
+    # inconsistency rather than a rule.
+    flags: [ Removable, HighVisibility ]
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryLeadtag
+  name: "LEAD tag"
+  description: "An armor tag denoting the leader of a fireteam."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/leadtag.rsi
+  - type: EmberAccessory
+    slot: ArmorMisc
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryMaband
+  name: "box of spare military police armbands"
+  description: "A box full of security armbands. For use in emergencies when provisional security personnel are needed."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/maband.rsi
+  - type: EmberAccessory
+    slot: Decor
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryMedalArmedForces
+  name: "Armed Forces Medal"
+  description: "A brass medal awarded by the SCG for members of the SCG Defense Forces who have performed distinguishing acts outside of direct combat with an enemy."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/medal_armed_forces.rsi
+  - type: EmberAccessory
+    slot: Decor
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryMedalBronzeHeart
+  name: "Bronze Heart medal"
+  description: "A bronze heart awarded by the SCG for members of the SCG Defense Forces who suffer injury or death in a combat zone."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/medal_bronze_heart.rsi
+  - type: EmberAccessory
+    slot: Decor
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryMedalExpeditionary
+  name: "Expeditionary Medal"
+  description: "An iron medal awarded by the SCG for individuals who have participated in missions outside the borders of the Sol Central Government."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/medal_expeditionary.rsi
+  - type: EmberAccessory
+    slot: Decor
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryMedalHomeGuard
+  name: "Home Guard medal"
+  description: "A bronze medal awarded by the SCG for members of the SCG Defense Forces who have helped defend the border regions of Sol."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/medal_home_guard.rsi
+  - type: EmberAccessory
+    slot: Decor
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryMedalIronStar
+  name: "Iron Star medal"
+  description: "An iron star awarded by the SCG to members of the SCG Defense Forces who have performed acts of 'meritorious achievements or service.'"
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/medal_iron_star.rsi
+  - type: EmberAccessory
+    slot: Decor
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryMedalMedical
+  name: "Combat Medical Award"
+  description: "An electrum heart medal with a Staff of Hermes and sanguine cross, awarded by the SCG to individuals who have served as medical personnel in an active combat zone."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/medal_medical.rsi
+  - type: EmberAccessory
+    slot: Decor
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryMedalOfHonor
+  name: "Medal of Honor"
+  description: "An ornate golden medal awarded and conferred by the SCG Secretary-General to members of the SCG Defense Forces who have committed acts of 'conspicuous gallantry beyond the call of duty.'"
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/medal_of_honor.rsi
+  - type: EmberAccessory
+    slot: Decor
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryMedalSapientarian
+  name: "Sapientarian Peace Award"
+  description: "A copper medal awarded by the SCG for individuals who have contributed substantially to sapient rights or fostered greater brotherhood between sapient species. It is embossed with a date, text, and an image of famous Expeditionary Corps sapientarian, Samuel Carr."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/medal_sapientarian.rsi
+  - type: EmberAccessory
+    slot: Decor
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryMedalServiceCross
+  name: "Superior Service Cross"
+  description: "A copper cross awarded by the SCG for members of the SCG Defense Forces who have performed acts of incredible valor against an enemy of Sol."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/medal_service_cross.rsi
+  - type: EmberAccessory
+    slot: Decor
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryMedalSilverSword
+  name: "Silver Sword medal"
+  description: "A silver medal awarded by the SCG for members of the SCG Defense Forces who have demonstrated exceptional valor in combat."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/medal_silver_sword.rsi
+  - type: EmberAccessory
+    slot: Decor
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryMedictag
+  name: "MEDIC tag"
+  description: "An armor tag with the word MEDIC printed in red lettering on it."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/medictag.rsi
+  - type: EmberAccessory
+    slot: ArmorMisc
+    equippedState: equipped-ACCESSORY
+    # Bay draws this one for the garment's own icon; most accessories have no
+    # such sprite and fall back to the on-mob art.
+    itemState: item
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryMpband
+  name: "military police brassard"
+  description: "An armlet, worn by the crew to display which department they're assigned to. This one is black with 'MP' in white."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/mpband.rsi
+  - type: EmberAccessory
+    slot: Decor
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryPinPilot
+  name: "pilot's qualification pin"
+  description: "An iron pin denoting the qualification to fly SCG spacecraft."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/pin_pilot.rsi
+  - type: EmberAccessory
+    slot: Insignia
+    # A qualification is worn so that other people can read it. Bay leaves these
+    # unflagged and flags the voidsuit stripe that duplicates them, which is an
+    # inconsistency rather than a rule.
+    flags: [ Removable, HighVisibility ]
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryRibbonCombat
+  name: "combat action ribbon"
+  description: "A military ribbon awarded to members of the SCG Defense Forces for serving in active combat. Colloquially known as 'blood gold.'"
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ribbon_combat.rsi
+  - type: EmberAccessory
+    slot: Medal
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryRibbonDistinguishedUnit
+  name: "distinguished unit ribbon"
+  description: "A military ribbon awarded to members of the SCG Defense Forces for service as part of a unit that has performed a distinguishing act of valor."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ribbon_distinguished_unit.rsi
+  - type: EmberAccessory
+    slot: Medal
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryRibbonFrontier
+  name: "frontier ribbon"
+  description: "A military ribbon awarded to members of the SCG Defense Forces for service along the frontier."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ribbon_frontier.rsi
+  - type: EmberAccessory
+    slot: Medal
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryRibbonGaiaconflict
+  name: "Gaia Conflict ribbon"
+  description: "A military ribbon awarded to members of the SCG Defense Forces for serving in the Gaia Conflict."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ribbon_gaiaconflict.rsi
+  - type: EmberAccessory
+    slot: Medal
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryRibbonInstructor
+  name: "instructor ribbon"
+  description: "A military ribbon awarded to members of the SCG Defense Forces for service as an instructor or professional development agent."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ribbon_instructor.rsi
+  - type: EmberAccessory
+    slot: Medal
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryRibbonMarksman
+  name: "ribbon"
+  description: "A simple military decoration."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ribbon_marksman.rsi
+  - type: EmberAccessory
+    slot: Medal
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryRibbonMedalArmedForces
+  name: "Armed Forces ribbon"
+  description: "A military ribbon awarded by the SCG alongside the Armed Forces Medal. To be worn when it is impossible or undesirable to wear the Armed Forces Medal."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ribbon_medal_armed_forces.rsi
+  - type: EmberAccessory
+    slot: Medal
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryRibbonMedalBronzeHeart
+  name: "Bronze Heart ribbon"
+  description: "A military ribbon awarded by the SCG alongside the Bronze Heart. To be worn when it is impossible or undesirable to wear the Bronze Heart."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ribbon_medal_bronze_heart.rsi
+  - type: EmberAccessory
+    slot: Medal
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryRibbonMedalExpeditionary
+  name: "Expeditionary Ribbon"
+  description: "A military ribbon awarded by the SCG alongside the Expeditionary Medal. To be worn when it is impossible or undesirable to wear the Expeditionary Medal."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ribbon_medal_expeditionary.rsi
+  - type: EmberAccessory
+    slot: Medal
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryRibbonMedalHomeGuard
+  name: "Home Guard ribbon"
+  description: "A military ribbon awarded by the SCG alongside the Home Guard medal. To be worn when it is impossible or undesirable to wear the Home Guard medal."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ribbon_medal_home_guard.rsi
+  - type: EmberAccessory
+    slot: Medal
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryRibbonMedalIronStar
+  name: "Iron Star ribbon"
+  description: "A military ribbon awarded by the SCG alongside the Iron Star medal. To be worn when it is impossible or undesirable to wear the Iron Star."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ribbon_medal_iron_star.rsi
+  - type: EmberAccessory
+    slot: Medal
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryRibbonMedalMedical
+  name: "Combat Medical ribbon"
+  description: "A military ribbon awarded by the SCG alongside the Combat Medical Award. To be worn when it is impossible or undesirable to wear the Combat Medical Award."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ribbon_medal_medical.rsi
+  - type: EmberAccessory
+    slot: Medal
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryRibbonMedalOfHonor
+  name: "Medal of Honor ribbon"
+  description: "A military ribbon awarded by the SCG alongside the Medal of Honor. To be worn when it is impossible or undesirable to wear the Medal of Honor."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ribbon_medal_of_honor.rsi
+  - type: EmberAccessory
+    slot: Medal
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryRibbonMedalSapientarian
+  name: "Sapientarian ribbon"
+  description: "A military ribbon awarded by the SCG alongside the Sapientarian Peace Award. To be worn when it is impossible or undesirable to wear the Sapientarian Award."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ribbon_medal_sapientarian.rsi
+  - type: EmberAccessory
+    slot: Medal
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryRibbonMedalService
+  name: "Distinguished Service ribbon"
+  description: "A military ribbon awarded by the SCG alongside the Distinguished Service Medal. To be worn when it is impossible or undesirable to wear the Distinguished Service Medal."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ribbon_medal_service.rsi
+  - type: EmberAccessory
+    slot: Medal
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryRibbonMedalServiceCross
+  name: "Superior Service ribbon"
+  description: "A military ribbon awarded by the SCG alongside the Superior Service Cross. To be worn when it is impossible or undesirable to wear the Service Cross."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ribbon_medal_service_cross.rsi
+  - type: EmberAccessory
+    slot: Medal
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryRibbonMedalSilverSword
+  name: "Silver Sword ribbon"
+  description: "A military ribbon awarded by the SCG alongside the Silver Sword medal. To be worn when it is impossible or undesirable to wear the Silver Sword."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ribbon_medal_silver_sword.rsi
+  - type: EmberAccessory
+    slot: Medal
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryRibbonPeace
+  name: "peacekeeping ribbon"
+  description: "A military ribbon awarded to members of the SCG Defense Forces for service during a peacekeeping operation."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/ribbon_peace.rsi
+  - type: EmberAccessory
+    slot: Medal
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessorySectag
+  name: "POLICE tag"
+  description: "An armor tag with the word POLICE printed in silver lettering on it."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/sectag.rsi
+  - type: EmberAccessory
+    slot: ArmorMisc
+    equippedState: equipped-ACCESSORY
+    # Bay draws this one for the garment's own icon; most accessories have no
+    # such sprite and fall back to the on-mob art.
+    itemState: item
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessorySilverbadge
+  name: "security forces badge"
+  description: "A silver law enforcement badge. Stamped with the words 'Master at Arms'."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/silverbadge.rsi
+  - type: EmberAccessory
+    slot: Decor
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessorySolbadge
+  name: "representative's badge"
+  description: "A leather-backed plastic badge with a variety of information printed on it. Belongs to a representative of the Sol Central Government."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/solbadge.rsi
+  - type: EmberAccessory
+    slot: Decor
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessorySolflag
+  name: "SCG Flag"
+  description: "An emblem depicting the Sol Central Government's flag."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/solflag.rsi
+  - type: EmberAccessory
+    slot: ArmorMisc
+    equippedState: equipped-ACCESSORY
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryTags
+  name: "dog tags"
+  # Bay builds this description at runtime from the wearer's name, species, branch,
+  # religion and blood type. That is a read-the-tag mechanic rather than a description,
+  # so it is an EMBER-TODO and not something to translate.
+  description: "Stamped with a name, a service, and a blood type. The last one is the point."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/tags.rsi
+  - type: EmberAccessory
+    slot: Decor
+
+- type: entity
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryTorchpatch
+  name: "Torch mission patch"
+  description: "A fire resistant shoulder patch, worn by the personnel involved in the Torch Project."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/torchpatch.rsi
+  - type: EmberAccessory
+    slot: Insignia
+    equippedState: equipped-ACCESSORY

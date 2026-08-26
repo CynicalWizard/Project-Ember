@@ -1,8 +1,9 @@
-using Content.Client.Clothing;
+﻿using Content.Client.Clothing;
 using Content.Shared.Clothing;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Ember.Clothing;
 using Content.Shared.Inventory;
+using Content.Shared.Inventory.Events;
 using Content.Shared.Item;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -72,6 +73,45 @@ public sealed class EmberAccessoryVisualsSystem : EntitySystem
         SubscribeLocalEvent<EmberAccessoryHolderComponent, ComponentShutdown>(OnHolderShutdown);
 
         SubscribeLocalEvent<EmberAccessoryComponent, ComponentShutdown>(OnAccessoryShutdown);
+
+        SubscribeLocalEvent<InventoryComponent, DidEquipEvent>(OnWearerEquipped);
+        SubscribeLocalEvent<InventoryComponent, DidUnequipEvent>(OnWearerUnequipped);
+    }
+
+    private void OnWearerEquipped(Entity<InventoryComponent> wearer, ref DidEquipEvent args)
+    {
+        OuterLayerChanged(wearer, args.Slot);
+    }
+
+    private void OnWearerUnequipped(Entity<InventoryComponent> wearer, ref DidUnequipEvent args)
+    {
+        OuterLayerChanged(wearer, args.Slot);
+    }
+
+    /// <summary>
+    /// Redraws the garments underneath when the outer layer comes on or off.
+    /// </summary>
+    /// <remarks>
+    /// <see cref="HideUnderOuterClothing"/> is decided while drawing the garment it is attached to,
+    /// and nothing redraws that garment when a *different* slot changes. Without this the answer is
+    /// simply whatever it was when the uniform was last equipped: put a vest on over a decorated
+    /// uniform and the accessories stay visible through it; take the uniform off and put it back on
+    /// under the same vest and they disappear and stay gone, because the next thing to redraw them
+    /// is taking the uniform off again.
+    /// </remarks>
+    private void OuterLayerChanged(Entity<InventoryComponent> wearer, string slot)
+    {
+        if (slot != OuterClothingSlot)
+            return;
+
+        var enumerator = _inventory.GetSlotEnumerator((wearer.Owner, wearer.Comp));
+        while (enumerator.NextItem(out var garment, out var definition))
+        {
+            if (definition.Name == OuterClothingSlot || !HasComp<EmberAccessoryHolderComponent>(garment))
+                continue;
+
+            _item.VisualsChanged(garment);
+        }
     }
 
     /// <summary>
@@ -255,6 +295,7 @@ public sealed class EmberAccessoryVisualsSystem : EntitySystem
             {
                 RsiPath = rsi.Path.ToString(),
                 State = state,
+                Color = Tint(uid),
             },
         };
     }
@@ -281,6 +322,10 @@ public sealed class EmberAccessoryVisualsSystem : EntitySystem
         var coveredByOuter = args.Slot != OuterClothingSlot
             && _inventory.TryGetSlotEntity(args.Equipee, OuterClothingSlot, out _, inventory);
 
+        // What the garment underneath is doing with its sleeves. An accessory sewn to a uniform
+        // moves with the cloth it is sewn to, so this is the holder's state and not the wearer's.
+        var roll = CompOrNull<EmberRollableClothingComponent>(uid)?.Roll ?? EmberClothingRoll.None;
+
         var i = 0;
         foreach (var accessory in container.ContainedEntities)
         {
@@ -290,7 +335,7 @@ public sealed class EmberAccessoryVisualsSystem : EntitySystem
             if (coveredByOuter && comp.HideUnderOuterClothing)
                 continue;
 
-            if (!TryGetLayers(accessory, comp, args.Slot, speciesKey, inventory.SpeciesId, out var layers))
+            if (!TryGetLayers(accessory, comp, args.Slot, speciesKey, inventory.SpeciesId, roll, out var layers))
                 continue;
 
             foreach (var layer in layers)
@@ -315,12 +360,16 @@ public sealed class EmberAccessoryVisualsSystem : EntitySystem
         string slot,
         string? speciesKey,
         string? speciesId,
+        EmberClothingRoll roll,
         out List<PrototypeLayerData> layers)
     {
         // Species-qualified whenever the wearer has a species, even when the resolved sprite turns
         // out to be the generic one: caching a generic result under the bare slot would let it
-        // short-circuit the species lookup for a different species later.
-        var cacheKey = speciesKey ?? slot;
+        // short-circuit the species lookup for a different species later. The roll is in the key
+        // for the same reason - three states of one garment resolve to three different sprites.
+        var cacheKey = roll == EmberClothingRoll.None
+            ? speciesKey ?? slot
+            : $"{speciesKey ?? slot}|{roll}";
 
         if (!_resolved.TryGetValue(uid, out var perSlot))
         {
@@ -331,12 +380,14 @@ public sealed class EmberAccessoryVisualsSystem : EntitySystem
         if (perSlot.TryGetValue(cacheKey, out layers!))
             return true;
 
-        var resolved = ResolveLayers(uid, component, slot, speciesKey, speciesId);
+        var resolved = ResolveLayers(uid, component, slot, speciesKey, speciesId, roll);
         if (resolved == null)
         {
             // Deliberately not remembered. Resolution reads the accessory's own sprite, and the
             // first time this runs can be while the client is still applying state, before that
-            // sprite exists - caching the miss would blank the accessory for good.
+            // sprite exists - caching the miss would blank the accessory for good. An accessory
+            // that is meant to be invisible in this roll state comes back as an empty list
+            // instead, which is a real answer and is remembered like any other.
             layers = NoLayers;
             return false;
         }
@@ -351,7 +402,8 @@ public sealed class EmberAccessoryVisualsSystem : EntitySystem
         EmberAccessoryComponent component,
         string slot,
         string? speciesKey,
-        string? speciesId)
+        string? speciesId,
+        EmberClothingRoll roll)
     {
         if (speciesKey != null && component.Visuals.TryGetValue(speciesKey, out var authored))
             return authored;
@@ -372,10 +424,12 @@ public sealed class EmberAccessoryVisualsSystem : EntitySystem
         if (rsi == null)
             return null;
 
-        if (speciesId != null && rsi.TryGetState($"{state}-{speciesId}", out _))
-            state = $"{state}-{speciesId}";
-        else if (!rsi.TryGetState(state, out _))
-            return null;
+        if (!TryResolveState(rsi, state, speciesId, roll, component.VisibleWhenRolledDown, out var worn))
+        {
+            // Nothing to draw is a real answer when the garment is open to the waist, and an
+            // unresolved one when the sprite simply is not loaded yet.
+            return roll == EmberClothingRoll.Down ? NoLayers : null;
+        }
 
         // Deliberately not a collection expression: the compiler lowers those to
         // CollectionsMarshal.SetCount, which the sandbox rejects.
@@ -384,8 +438,86 @@ public sealed class EmberAccessoryVisualsSystem : EntitySystem
             new()
             {
                 RsiPath = rsi.Path.ToString(),
-                State = state,
+                State = worn,
+                Color = component.EquippedColor ?? Tint(uid),
             },
         };
+    }
+
+    /// <summary>
+    /// The state to draw for an accessory on a garment in this roll state, or false for one that
+    /// is not drawn at all.
+    /// </summary>
+    /// <remarks>
+    /// Bay composes the same three answers out of <c>on_rolled_down</c> and
+    /// <c>on_rolled_sleeves</c>, written by hand on each accessory. Ours are read off the sprite
+    /// sheet instead: the conversion carried Bay's <c>_sleeves</c> and <c>_rolled</c> variants
+    /// across as <c>rolled-</c> and <c>down-</c> states, so an accessory with art for the state
+    /// uses it and one without falls back a prefix at a time - the same degrade-in-pieces rule
+    /// <see cref="ClientClothingSystem"/> applies to the garment itself.
+    ///
+    /// The asymmetry at the end is the one judgement call. Rolled sleeves change the forearms, so
+    /// a badge with no rolled art is still in the right place. A garment pulled to the waist
+    /// leaves bare skin where the badge was, so the fallback there is to draw nothing unless the
+    /// accessory says it sits below the fold.
+    /// </remarks>
+    private static bool TryResolveState(
+        RSI rsi,
+        string state,
+        string? speciesId,
+        EmberClothingRoll roll,
+        bool visibleWhenRolledDown,
+        out string worn)
+    {
+        var prefix = roll switch
+        {
+            EmberClothingRoll.Sleeves => "rolled-",
+            EmberClothingRoll.Down => "down-",
+            _ => null,
+        };
+
+        if (prefix != null)
+        {
+            if (speciesId != null && rsi.TryGetState($"{prefix}{state}-{speciesId}", out _))
+            {
+                worn = $"{prefix}{state}-{speciesId}";
+                return true;
+            }
+
+            if (rsi.TryGetState($"{prefix}{state}", out _))
+            {
+                worn = $"{prefix}{state}";
+                return true;
+            }
+
+            if (roll == EmberClothingRoll.Down && !visibleWhenRolledDown)
+            {
+                worn = state;
+                return false;
+            }
+        }
+
+        if (speciesId != null && rsi.TryGetState($"{state}-{speciesId}", out _))
+        {
+            worn = $"{state}-{speciesId}";
+            return true;
+        }
+
+        worn = state;
+        return rsi.TryGetState(state, out _);
+    }
+
+    /// <summary>
+    /// The accessory's own sprite colour, so that a tinted accessory is tinted on the wearer too.
+    /// </summary>
+    /// <remarks>
+    /// SierraBay12 draws every department insignia from one blank sheet and recolours it per
+    /// department - <c>overlay_image(sheet, state, color, RESET_COLOR)</c>. Without this the eight
+    /// departments are eight identical white patches on the mob and eight coloured ones in the
+    /// inventory slot, which reads as a missing sprite rather than as a missing colour.
+    /// </remarks>
+    private Color? Tint(EntityUid uid)
+    {
+        return CompOrNull<SpriteComponent>(uid)?.Color;
     }
 }

@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from SierraBay12 at commit 31591476d5769d2af16c60da3dc6997436d5ef21, converted with RSIEdit for Project Ember",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "equipped-INNERCLOTHING",
+      "directions": 4
+    },
+    {
+      "name": "female-equipped-INNERCLOTHING",
+      "directions": 4
+    },
+    {
+      "name": "rolled-equipped-INNERCLOTHING",
+      "directions": 4
+    },
+    {
+      "name": "female-rolled-equipped-INNERCLOTHING",
+      "directions": 4
+    }
+  ]
+}

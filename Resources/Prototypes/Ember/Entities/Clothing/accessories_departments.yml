@@ -1,0 +1,282 @@
+# Department insignia of the SCG Expeditionary Corps and Fleet.
+#
+# Hand-written rather than converted, because this art does not survive a converter. SierraBay12
+# draws exactly three patches - one per uniform cut - and gets eight departments out of them by
+# tinting the same sprite at draw time: `overlay_image(sheet, state, color, RESET_COLOR)`. One
+# entity per sprite therefore yields three identical white patches and loses seven departments,
+# which is exactly what the first pass produced. The tint is honoured on the wearer as well as on
+# the item by the `Tint` path in Content.Client/Ember/Clothing/EmberAccessoryVisualsSystem.cs.
+#
+# Three cuts, because the patch is sewn to a different place on each garment:
+#   dept_exped          the Corps utility uniform. Has rolled and pulled-down variants.
+#   dept_exped_service  the Corps service uniform and jacket. Neither of those rolls.
+#   dept_fleet          Fleet dress. Has rolled and pulled-down variants.
+#
+# Each department is one entity carrying its colour, and the other cuts inherit from it and swap
+# the sprite. The colour is then written once per department rather than once per garment.
+#
+# Colours are ours, not Bay's. The patch is the department's colour on the manifest, on the ID and
+# on the crew monitor, and one palette across all four is worth more than fidelity to a hue Bay
+# picked for a department list that is not ours.
+#
+# EMBER-TODO: no Science sub-department split. Bay draws research and exploration as separate
+# departments and the mock-up divides our Science along the same seam, so a second patch is one
+# entity and one colour if that split should ever show on a sleeve.
+#
+# EMBER-TODO: nothing issues these yet. They are attached by hand until the branch kits and the
+# uniform vendor exist.
+
+- type: entity
+  abstract: true
+  parent: EmberClothingAccessoryBase
+  id: EmberClothingAccessoryDeptBase
+  name: "department insignia"
+  description: "Insignia denoting assignment to a department. These appear blank."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/dept_exped.rsi
+  - type: EmberAccessory
+    # Bay files these under ACCESSORY_SLOT_FLASH, a category that has nothing to do with flash
+    # protection and everything to do with being the one slot a uniform allows exactly one of.
+    slot: Flash
+    # Bay: FLAGS_OFF. The patch is sewn on rather than pinned, so it does not come off by hand and
+    # is not announced on the wearer - a department is what the corridor you are standing in says,
+    # not something anyone reads off a sleeve.
+    flags: None
+    # The jacket gets its own patch in the Service cut, so the one on the shirt underneath is only
+    # ever the wrong sprite showing through.
+    hideUnderOuterClothing: true
+    equippedState: equipped-ACCESSORY
+    # Bay draws a separate sprite for the patch as it appears on the garment's own icon, and looks
+    # for it as "[state]_tie" before falling back to the on-mob art. Only seven exist in the whole
+    # sheet and three of them are these, so this is one of the few places the tidy path is
+    # available at all - the on-mob sprite is positioned for a body and reads wrong on a folded
+    # uniform, which is exactly what it looked like.
+    itemState: item
+
+# The undyed patch. Bay issues it as a blank and it is what an unattached rating wears, so it is
+# an item in its own right rather than an abstract parent nobody spawns.
+
+- type: entity
+  parent: EmberClothingAccessoryDeptBase
+  id: EmberClothingAccessoryDeptBlank
+  suffix: Utility, blank
+
+- type: entity
+  parent: EmberClothingAccessoryDeptBlank
+  id: EmberClothingAccessoryDeptBlankService
+  suffix: Service, blank
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/dept_exped_service.rsi
+
+- type: entity
+  parent: EmberClothingAccessoryDeptBlank
+  id: EmberClothingAccessoryDeptBlankFleet
+  suffix: Fleet, blank
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/dept_fleet.rsi
+
+# Command.
+
+- type: entity
+  parent: EmberClothingAccessoryDeptBase
+  id: EmberClothingAccessoryDeptCommand
+  name: "command insignia"
+  description: "Insignia denoting assignment to the command department."
+  suffix: Utility
+  components:
+  - type: Sprite
+    color: "#4b8fc4"
+
+- type: entity
+  parent: EmberClothingAccessoryDeptCommand
+  id: EmberClothingAccessoryDeptCommandService
+  suffix: Service
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/dept_exped_service.rsi
+
+- type: entity
+  parent: EmberClothingAccessoryDeptCommand
+  id: EmberClothingAccessoryDeptCommandFleet
+  suffix: Fleet
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/dept_fleet.rsi
+
+# State oversight. No Fleet cut: the Representative and the Liaison Officer are SCG Government and
+# the Fleet holds no post in the department.
+
+- type: entity
+  parent: EmberClothingAccessoryDeptBase
+  id: EmberClothingAccessoryDeptOversight
+  name: "oversight insignia"
+  description: "Insignia denoting assignment to the state oversight department."
+  suffix: Utility
+  components:
+  - type: Sprite
+    color: "#c9a227"
+
+- type: entity
+  parent: EmberClothingAccessoryDeptOversight
+  id: EmberClothingAccessoryDeptOversightService
+  suffix: Service
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/dept_exped_service.rsi
+
+# Security. The one department where the Fleet cut is the common case rather than the exception -
+# six of its posts are Fleet secondments.
+
+- type: entity
+  parent: EmberClothingAccessoryDeptBase
+  id: EmberClothingAccessoryDeptSecurity
+  name: "security insignia"
+  description: "Insignia denoting assignment to the security department."
+  suffix: Utility
+  components:
+  - type: Sprite
+    color: "#a9403a"
+
+- type: entity
+  parent: EmberClothingAccessoryDeptSecurity
+  id: EmberClothingAccessoryDeptSecurityService
+  suffix: Service
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/dept_exped_service.rsi
+
+- type: entity
+  parent: EmberClothingAccessoryDeptSecurity
+  id: EmberClothingAccessoryDeptSecurityFleet
+  suffix: Fleet
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/dept_fleet.rsi
+
+# Engineering.
+
+- type: entity
+  parent: EmberClothingAccessoryDeptBase
+  id: EmberClothingAccessoryDeptEngineering
+  name: "engineering insignia"
+  description: "Insignia denoting assignment to the engineering department."
+  suffix: Utility
+  components:
+  - type: Sprite
+    color: "#c8a445"
+
+- type: entity
+  parent: EmberClothingAccessoryDeptEngineering
+  id: EmberClothingAccessoryDeptEngineeringService
+  suffix: Service
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/dept_exped_service.rsi
+
+# Medical.
+
+- type: entity
+  parent: EmberClothingAccessoryDeptBase
+  id: EmberClothingAccessoryDeptMedical
+  name: "medical insignia"
+  description: "Insignia denoting assignment to the medical department."
+  suffix: Utility
+  components:
+  - type: Sprite
+    color: "#5ba8c4"
+
+- type: entity
+  parent: EmberClothingAccessoryDeptMedical
+  id: EmberClothingAccessoryDeptMedicalService
+  suffix: Service
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/dept_exped_service.rsi
+
+# Science.
+
+- type: entity
+  parent: EmberClothingAccessoryDeptBase
+  id: EmberClothingAccessoryDeptScience
+  name: "science insignia"
+  description: "Insignia denoting assignment to the science department."
+  suffix: Utility
+  components:
+  - type: Sprite
+    color: "#9a63b0"
+
+- type: entity
+  parent: EmberClothingAccessoryDeptScience
+  id: EmberClothingAccessoryDeptScienceService
+  suffix: Service
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/dept_exped_service.rsi
+
+# Exploration. The science service's field group rather than a department of its own: the same
+# service, but the half of it that goes outside. Bay draws research and exploration as two separate
+# departments and the mock-up divides ours along the same seam, so the patch splits where the work
+# splits and the department does not. Deeper purple than the lab's, which is Bay's own choice of
+# hue for it and reads at four pixels.
+
+- type: entity
+  parent: EmberClothingAccessoryDeptBase
+  id: EmberClothingAccessoryDeptExploration
+  name: "exploration insignia"
+  description: "Insignia denoting assignment to the field group of the science service."
+  suffix: Utility
+  components:
+  - type: Sprite
+    color: "#68099e"
+
+- type: entity
+  parent: EmberClothingAccessoryDeptExploration
+  id: EmberClothingAccessoryDeptExplorationService
+  suffix: Service
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/dept_exped_service.rsi
+
+# Supply.
+
+- type: entity
+  parent: EmberClothingAccessoryDeptBase
+  id: EmberClothingAccessoryDeptSupply
+  name: "supply insignia"
+  description: "Insignia denoting assignment to the supply department."
+  suffix: Utility
+  components:
+  - type: Sprite
+    color: "#b08040"
+
+- type: entity
+  parent: EmberClothingAccessoryDeptSupply
+  id: EmberClothingAccessoryDeptSupplyService
+  suffix: Service
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/dept_exped_service.rsi
+
+# Housekeeping. Bay calls this department "service", which collides with the name of a uniform
+# cut; ours is named after the department it belongs to.
+
+- type: entity
+  parent: EmberClothingAccessoryDeptBase
+  id: EmberClothingAccessoryDeptHousekeeping
+  name: "housekeeping insignia"
+  description: "Insignia denoting assignment to the housekeeping department."
+  suffix: Utility
+  components:
+  - type: Sprite
+    color: "#6f9e5a"
+
+- type: entity
+  parent: EmberClothingAccessoryDeptHousekeeping
+  id: EmberClothingAccessoryDeptHousekeepingService
+  suffix: Service
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Accessories/dept_exped_service.rsi

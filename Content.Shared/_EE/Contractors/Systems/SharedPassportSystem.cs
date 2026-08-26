@@ -1,11 +1,12 @@
-using Content.Shared._EE.Contractors.Components;
+﻿using Content.Shared._EE.Contractors.Components;
 using Content.Shared._EE.Contractors.Prototypes;
+using Content.Shared.Ember.Background;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Clothing.Loadouts.Systems;
 using Content.Shared.Database;
 using Content.Shared.Examine;
+using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
-using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
 using Content.Shared.Item;
 using Content.Shared.Preferences;
@@ -23,7 +24,15 @@ namespace Content.Shared._EE.Contractors.Systems;
 
 public class SharedPassportSystem : EntitySystem
 {
-    public const int CurrentYear = 2450;
+    /// <summary>
+    /// Ember's present, minus the real one. The chronology picks 2331 because it is
+    /// calendar-identical to 2026 - same weekday for 1 January, both common years - so a date on a
+    /// terminal lands on the right day of the week without anyone arranging it. Keeping that as an
+    /// offset rather than a constant is what makes the property survive the year turning over.
+    /// </summary>
+    public const int YearOffset = 305;
+
+    public static int CurrentYear => DateTime.UtcNow.Year + YearOffset;
     const string PIDChars = "ABCDEFGHJKLMNPQRSTUVWXYZ0123456789";
 
     [Dependency] private readonly IGameTiming _timing = default!;
@@ -39,32 +48,53 @@ public class SharedPassportSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<PassportComponent, UseInHandEvent>(OnUseInHand);
         SubscribeLocalEvent<PlayerLoadoutAppliedEvent>(OnPlayerLoadoutApplied);
         SubscribeLocalEvent<PassportComponent, ExaminedEvent>(OnExamined);
     }
 
     private void OnExamined(EntityUid uid, PassportComponent component, ExaminedEvent args)
     {
-        if (!args.IsInDetailsRange
-            || component.IsClosed
-            || component.OwnerProfile == null)
+        if (!args.IsInDetailsRange || component.OwnerProfile == null)
             return;
 
-        var species = _prototypeManager.Index<SpeciesPrototype>(component.OwnerProfile.Species);
+        var profile = component.OwnerProfile;
+        var species = _prototypeManager.Index<SpeciesPrototype>(profile.Species);
 
-        args.PushMarkup($"Registered to: {component.OwnerProfile.Name}", 50);
-        args.PushMarkup($"Species: {Loc.GetString(species.Name)}", 49);
-        args.PushMarkup($"Sex: {component.OwnerProfile.Gender}", 48);
-        args.PushMarkup($"Height: {MathF.Round(component.OwnerProfile.Height * species.AverageHeight)} cm", 47);
-        args.PushMarkup($"Year of Birth: {CurrentYear - component.OwnerProfile.Age}", 46);
+        args.PushMarkup(Loc.GetString("passport-examine-name", ("name", profile.Name)), 50);
+        args.PushMarkup(Loc.GetString("passport-examine-species",
+            ("species", Loc.GetString(species.Name))), 49);
+        // Ember: the sex, localised, and not the Gender enum. This printed "Male" or "Neuter" in
+        // every language - a raw enum name handed to Fluent - under a label that says "sex" while
+        // naming the pronouns. Pronouns are derived from sex here (see EmberPronouns), so the two
+        // no longer even differ in content; what remains is that a document should print words.
+        var sex = profile.Sex switch
+        {
+            Sex.Male => "humanoid-profile-editor-sex-male-text",
+            Sex.Female => "humanoid-profile-editor-sex-female-text",
+            _ => "humanoid-profile-editor-sex-unsexed-text",
+        };
+
+        args.PushMarkup(Loc.GetString("passport-examine-sex", ("sex", Loc.GetString(sex))), 48);
+        args.PushMarkup(Loc.GetString("passport-examine-height",
+            ("height", MathF.Round(profile.Height * species.AverageHeight))), 47);
+        args.PushMarkup(Loc.GetString("passport-examine-birth-year",
+            ("year", CurrentYear - profile.Age)), 46);
+
+        // Ember: the homeworld is the one axis a passport prints rather than is issued by, and it
+        // is what makes splitting the two visible in play - an Amelian with SCG citizenship holds a
+        // Sol passport that says where they were actually born.
+        if (_prototypeManager.TryIndex(profile.Homeworld, out EmberBackgroundPrototype? homeworld))
+        {
+            args.PushMarkup(Loc.GetString("passport-examine-birthplace",
+                ("place", Loc.GetString(homeworld.Name))), 46);
+        }
 
         args.PushMarkup(
-            $"PID: {GenerateIdentityString(component.OwnerProfile.Name
-            + component.OwnerProfile.Height
-            + component.OwnerProfile.Age
-            + component.OwnerProfile.Height
-            + component.OwnerProfile.FlavorText)}",
+            Loc.GetString("passport-examine-pid", ("pid", GenerateIdentityString(profile.Name
+                + profile.Height
+                + profile.Age
+                + profile.Height
+                + profile.FlavorText))),
             45);
     }
 
@@ -82,9 +112,12 @@ public class SharedPassportSystem : EntitySystem
             || !ShouldSpawnPassports)
             return;
 
-        if (!_prototypeManager.TryIndex(
-            profile.Nationality,
-            out NationalityPrototype? nationalityPrototype) || !_prototypeManager.TryIndex(nationalityPrototype.PassportPrototype, out EntityPrototype? entityPrototype))
+        // Ember: issued by citizenship rather than by birthplace. A faction whose Passport is null
+        // issues none at all, which is not an oversight - it is what the stateless entry means, and
+        // the missing document is the point of it.
+        if (!_prototypeManager.TryIndex(profile.Faction, out EmberBackgroundPrototype? faction)
+            || faction.Passport is not { } passportId
+            || !_prototypeManager.TryIndex(passportId, out EntityPrototype? entityPrototype))
             return;
 
         var passportEntity = _entityManager.SpawnEntity(entityPrototype.ID, _sharedTransformSystem.GetMapCoordinates(mob));
@@ -116,20 +149,6 @@ public class SharedPassportSystem : EntitySystem
     public void UpdatePassportProfile(Entity<PassportComponent> passport, HumanoidCharacterProfile profile)
     {
         passport.Comp.OwnerProfile = profile;
-        var evt = new PassportProfileUpdatedEvent(profile);
-        RaiseLocalEvent(passport, ref evt);
-    }
-
-    private void OnUseInHand(Entity<PassportComponent> passport, ref UseInHandEvent evt)
-    {
-        if (evt.Handled || !_timing.IsFirstTimePredicted)
-            return;
-
-        evt.Handled = true;
-        passport.Comp.IsClosed = !passport.Comp.IsClosed;
-
-        var passportEvent = new PassportToggleEvent();
-        RaiseLocalEvent(passport, ref passportEvent);
     }
 
     private static string GenerateIdentityString(string seed)
@@ -150,14 +169,5 @@ public class SharedPassportSystem : EntitySystem
         }
 
         return new string(result);
-    }
-
-    [ByRefEvent]
-    public sealed class PassportToggleEvent : HandledEntityEventArgs {}
-
-    [ByRefEvent]
-    public sealed class PassportProfileUpdatedEvent(HumanoidCharacterProfile profile) : HandledEntityEventArgs
-    {
-        public HumanoidCharacterProfile Profile { get; } = profile;
     }
 }

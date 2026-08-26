@@ -1,3 +1,4 @@
+using Content.Shared.Ember.Roles;
 using System.Diagnostics.CodeAnalysis;
 using Content.Server.Access.Systems;
 using Content.Server.Forensics;
@@ -161,7 +162,8 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
         {
             Name = name,
             Age = age,
-            JobTitle = jobPrototype.LocalizedName,
+            // Ember: the manifest shows the name the character actually holds the post under.
+            JobTitle = SharedEmberJobTitleSystem.GetLocalizedName(jobPrototype, profile.GetJobTitle(jobId), gender),
             JobIcon = jobPrototype.Icon,
             JobPrototype = jobId,
             Species = species,

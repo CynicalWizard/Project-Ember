@@ -820,10 +820,19 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("INTEGER")
                         .HasColumnName("age");
 
+                    b.Property<string>("Branch")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("branch");
+
                     b.Property<string>("CharacterName")
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("char_name");
+
+                    b.Property<string>("Culture")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("culture");
 
                     b.Property<string>("CustomSpecieName")
                         .IsRequired()
@@ -858,6 +867,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("facial_hair_name");
 
+                    b.Property<string>("Faction")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("faction");
+
                     b.Property<string>("FlavorText")
                         .IsRequired()
                         .HasColumnType("TEXT")
@@ -882,19 +896,14 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("REAL")
                         .HasColumnName("height");
 
-                    b.Property<string>("Lifepath")
+                    b.Property<string>("Homeworld")
                         .IsRequired()
                         .HasColumnType("TEXT")
-                        .HasColumnName("lifepath");
+                        .HasColumnName("homeworld");
 
                     b.Property<byte[]>("Markings")
                         .HasColumnType("jsonb")
                         .HasColumnName("markings");
-
-                    b.Property<string>("Nationality")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("nationality");
 
                     b.Property<int>("PreferenceId")
                         .HasColumnType("INTEGER")
@@ -903,6 +912,15 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Property<int>("PreferenceUnavailable")
                         .HasColumnType("INTEGER")
                         .HasColumnName("pref_unavailable");
+
+                    b.Property<string>("Rank")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("rank");
+
+                    b.Property<string>("Religion")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("religion");
 
                     b.Property<string>("Sex")
                         .IsRequired()
@@ -945,6 +963,65 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .IsUnique();
 
                     b.ToTable("profile", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ProfileJobTitle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("profile_job_title_id");
+
+                    b.Property<string>("JobName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("job_name");
+
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("profile_id");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("title");
+
+                    b.HasKey("Id")
+                        .HasName("PK_profile_job_title");
+
+                    b.HasIndex("ProfileId", "JobName")
+                        .IsUnique();
+
+                    b.ToTable("profile_job_title", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ProfileSkill", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("profile_skill_id");
+
+                    b.Property<byte>("Level")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("level");
+
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("profile_id");
+
+                    b.Property<string>("SkillName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("skill_name");
+
+                    b.HasKey("Id")
+                        .HasName("PK_profile_skill");
+
+                    b.HasIndex("ProfileId", "SkillName")
+                        .IsUnique();
+
+                    b.ToTable("profile_skill", (string)null);
                 });
 
             modelBuilder.Entity("Content.Server.Database.RoleWhitelist", b =>
@@ -1691,6 +1768,30 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Preference");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.ProfileJobTitle", b =>
+                {
+                    b.HasOne("Content.Server.Database.Profile", "Profile")
+                        .WithMany("JobTitles")
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_profile_job_title_profile_profile_id");
+
+                    b.Navigation("Profile");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ProfileSkill", b =>
+                {
+                    b.HasOne("Content.Server.Database.Profile", "Profile")
+                        .WithMany("Skills")
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_profile_skill_profile_profile_id");
+
+                    b.Navigation("Profile");
+                });
+
             modelBuilder.Entity("Content.Server.Database.RoleWhitelist", b =>
                 {
                     b.HasOne("Content.Server.Database.Player", "Player")
@@ -1972,9 +2073,13 @@ namespace Content.Server.Database.Migrations.Sqlite
                 {
                     b.Navigation("Antags");
 
+                    b.Navigation("JobTitles");
+
                     b.Navigation("Jobs");
 
                     b.Navigation("Loadouts");
+
+                    b.Navigation("Skills");
 
                     b.Navigation("Traits");
                 });

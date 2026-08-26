@@ -1,0 +1,194 @@
+# Supply aboard the SEV Ember.
+#
+# Two kinds of work that look alike from outside and are not. The Supply Technician keeps the
+# stores — what is aboard, what is left, who signed for it. The Deck Technician works the hangar
+# — moving craft, securing loads, and being outside in a suit while a shuttle comes in. The
+# mock-up separates them and it is right to: a ship with a flight deck has a flight deck crew,
+# and it is not the storeroom crew with a different hat.
+#
+# EMBER-TODO: `startingGear` and `icon` point at existing vanilla content on purpose, same as in
+# the other department files.
+#
+# `startingGear` points at an Ember kit in job_gear.yml, which inherits the vanilla kit named
+# above it for the tools and hangs the branch uniforms off it as sub-gear. The uniform therefore
+# comes from the service and the tools from the post, and a post open to three services is still
+# one post. See Resources/Prototypes/Ember/Roles/branch_uniforms.yml.
+#
+# The Corps floor — `hauling`, `science` and `EVA` at Basic — is not repeated below.
+#
+# Prospecting is the one whole job aboard that is contracted out and not staffed by the service
+# at all, and that is the Torch's arrangement kept deliberately. The Corps' mandate is to find
+# things; digging them up for money is a different business, and Grayson is in it. It also means
+# the department's most dangerous work is done by people the Captain employs rather than
+# commands, which is a fact worth having on a ship.
+
+- type: department
+  id: EmberSupply
+  name: department-EmberSupply
+  description: department-EmberSupply-description
+  color: "#b08040"
+  weight: 13
+  roles:
+  - EmberSupplyChief
+  - EmberSupplyTechnician
+  - EmberDeckTechnician
+  - EmberProspector
+
+- type: playTimeTracker
+  id: JobEmberSupplyChief
+
+- type: playTimeTracker
+  id: JobEmberSupplyTechnician
+
+- type: playTimeTracker
+  id: JobEmberDeckTechnician
+
+- type: playTimeTracker
+  id: JobEmberProspector
+
+# Answers for everything aboard that was bought, shipped or signed for, and for the hangar deck
+# on top of it. `bureaucracy` Trained and `finance` Basic are the post: this is a paperwork job
+# that happens to involve a flight deck. Age 27, because E-5 is reachable at 24 and the ship's
+# entire manifest is not handed to someone that new.
+- type: job
+  id: EmberSupplyChief
+  name: job-name-ember-supply-chief
+  description: job-description-ember-supply-chief
+  playTimeTracker: JobEmberSupplyChief
+  startingGear: EmberGearSupplyChief
+  icon: JobIconQuarterMaster
+  supervisors: job-supervisors-ember-executive-officer
+  weight: 18
+  canBeAntag: false
+  access:
+  - Quartermaster
+  - Cargo
+  - Salvage
+  - Maintenance
+  - External
+  - Cryogenics
+  minSkills:
+    bureaucracy: Trained
+    finance: Basic
+    pilot: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsE5
+    - EmberRankCorpsE7
+  - !type:CharacterAgeRequirement
+    min: 27
+  - !type:CharacterSkillRequirement
+
+# The storeroom. Knowing where a thing is and who has it is the whole trade, which is why the
+# floors are `bureaucracy` and `hauling` rather than anything technical.
+- type: job
+  id: EmberSupplyTechnician
+  name: job-name-ember-supply-technician
+  description: job-description-ember-supply-technician
+  playTimeTracker: JobEmberSupplyTechnician
+  startingGear: EmberGearSupplyTechnician
+  icon: JobIconCargoTechnician
+  supervisors: job-supervisors-ember-supply
+  weight: 12
+  access:
+  - Cargo
+  - Maintenance
+  - Cryogenics
+  minSkills:
+    bureaucracy: Basic
+    finance: Basic
+    hauling: Trained
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+    - EmberBranchCivilian
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsE1
+    - EmberRankCorpsE3
+    - EmberRankContractor
+  - !type:CharacterAgeRequirement
+    min: 18
+  - !type:CharacterSkillRequirement
+
+# The flight deck. `EVA` Trained because the work is outside as often as in, and `exosuit` Basic
+# because somebody has to run the loader — this is the only post below the roboticist that
+# carries it, and the prerequisite chain (`exosuit` needs `EVA` Trained) means it could not have
+# gone anywhere cheaper.
+- type: job
+  id: EmberDeckTechnician
+  name: job-name-ember-deck-technician
+  description: job-description-ember-deck-technician
+  playTimeTracker: JobEmberDeckTechnician
+  startingGear: EmberGearDeckTechnician
+  icon: JobIconCargoTechnician
+  supervisors: job-supervisors-ember-supply
+  weight: 12
+  access:
+  - Cargo
+  - Maintenance
+  - External
+  - Cryogenics
+  minSkills:
+    hauling: Trained
+    EVA: Trained
+    exosuit: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+    - EmberBranchCivilian
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsE3
+    - EmberRankCorpsE5
+    - EmberRankContractor
+  - !type:CharacterAgeRequirement
+    min: 19
+  - !type:CharacterSkillRequirement
+
+# Contractors only, which is the one place in these files where a whole job has no service route
+# at all. Grayson sends them; the Corps signs the paperwork and stays out of the shaft.
+#
+# No stated age. The contractor rank's own eighteen is the floor and that is correct here rather
+# than lazy: this is the trade you enter straight out of nothing, and pretending it needs a
+# qualification would be a worse lie than admitting it does not.
+- type: job
+  id: EmberProspector
+  name: job-name-ember-prospector
+  description: job-description-ember-prospector
+  playTimeTracker: JobEmberProspector
+  startingGear: EmberGearProspector
+  icon: JobIconCargoTechnician
+  supervisors: job-supervisors-ember-supply
+  weight: 10
+  access:
+  - Salvage
+  - Cargo
+  - Maintenance
+  - External
+  - Cryogenics
+  minSkills:
+    hauling: Trained
+    EVA: Trained
+  altTitles:
+  # Same suit, same tools, opposite direction: one takes things out of rock, the other takes
+  # them out of wreckage. The cutting is what differs, so that is what the name asks for.
+  - id: Salvager
+    name: job-name-ember-prospector-salvager
+    description: job-description-ember-prospector-salvager
+    minSkills:
+      construction: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchCivilian
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankContractor
+  - !type:CharacterSkillRequirement

@@ -1,0 +1,42 @@
+# Statuses for people aboard who serve in no organisation, and for machines, which serve in
+# one but hold no rank in it.
+#
+# None of these are graded, so sortOrder stays 0 and `category` resolves to None. None of them
+# prefixes a name either, so `shortName` is left unset: the manifest reads "Ivanov, Passenger",
+# not "Civ Ivanov".
+#
+# Not under SCG/, because none of it belongs to the SCG. A civilian is a civilian anywhere.
+
+# A bare legal floor and nothing more. `minAge` on a service rank means "the service does not
+# promote you sooner"; here it can only mean "nobody employs a child", because a company rank is
+# a job title rather than a career and says nothing about what its holder has learned.
+#
+# So this is a backstop, not a gate. Any post open to contractors states its own education floor
+# with a `CharacterAgeRequirement`, and that is what actually does the work — see the ladder at
+# the top of Roles/Jobs/medical.yml. This is here so that a post which forgets is merely wrong
+# rather than open to an eighteen-year-old surgeon.
+- type: emberRank
+  id: EmberRankCivilian
+  minAge: 18
+  name: ember-rank-civilian-name
+
+- type: emberRank
+  id: EmberRankContractor
+  minAge: 18
+  name: ember-rank-contractor-name
+
+# Bay has a `/datum/mil_rank/civ/offduty` and we deliberately do not. Being off shift changes no
+# fact about a person: a commodore on his day off is still a commodore, and putting him in an
+# "off duty" rank would take away the one thing that does not go away. What he loses is the billet
+# and everything that hung off it, and a billet is a job. See EmberOffDutyWatch in unattached.yml.
+
+# A machine is property, not a person, and property is not commissioned. Instead of a rank it
+# carries an assignment: a unit designation, the department it is attached to, and an owner.
+# That is why sortOrder is 0 here and why this is the only entry an IPC may hold — a graded
+# rank issued to a machine would be the state conceding that it is someone.
+- type: emberRank
+  id: EmberRankMachineAssigned
+  name: ember-rank-machine-assigned-name
+  shortName: ember-rank-machine-assigned-short
+  speciesWhitelist:
+  - IPC

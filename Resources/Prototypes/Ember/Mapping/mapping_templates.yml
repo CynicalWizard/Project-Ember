@@ -1,0 +1,129 @@
+# Where a mapper finds the Ember job spawners.
+#
+# One root rather than a section per department: vanilla already contributes eight top-level
+# sections and will keep them until its jobs are removed, so adding nine more would double the
+# list for a while. Departments live one level down, which is where they belong anyway.
+#
+# The group ids here are not entity prototypes. A `mappingTemplate` id that matches no entity
+# becomes a folder named from `mapping-template-<id lowercased>`, which is why the locale file
+# has an entry per department.
+
+- type: mappingTemplate
+  id: EmberMainShipJobs
+  rootType: Entity
+  children:
+    - !type:MappingTemplatePrototype
+      id: EmberJobsCommand
+      children:
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberCaptain
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberExecutiveOfficer
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberWatchOfficer
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberSeniorEnlistedAdvisor
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberLiaisonOfficer
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberAdjutant
+    - !type:MappingTemplatePrototype
+      id: EmberJobsOversight
+      children:
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberSCGRepresentative
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberFederalMarshal
+    - !type:MappingTemplatePrototype
+      id: EmberJobsSecurity
+      children:
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberChiefOfSecurity
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberBrigChief
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberInvestigator
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberMasterAtArms
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberCorpsman
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberSecurityCadet
+    - !type:MappingTemplatePrototype
+      id: EmberJobsEngineering
+      children:
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberChiefEngineer
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberSeniorEngineer
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberEngineer
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberRoboticist
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberEngineerTrainee
+    - !type:MappingTemplatePrototype
+      id: EmberJobsMedical
+      children:
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberChiefMedicalOfficer
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberPhysician
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberMedicalResident
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberPharmacist
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberMedicalTechnician
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberEmergencyTechnician
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberMedicalTrainee
+    - !type:MappingTemplatePrototype
+      id: EmberJobsScience
+      children:
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberChiefScienceOfficer
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberSeniorResearcher
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberResearcher
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberLabTechnician
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberFieldTeamLeader
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberShuttlePilot
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberFieldSpecialist
+    - !type:MappingTemplatePrototype
+      id: EmberJobsSupply
+      children:
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberSupplyChief
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberSupplyTechnician
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberDeckTechnician
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberProspector
+    - !type:MappingTemplatePrototype
+      id: EmberJobsHousekeeping
+      children:
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberChiefSteward
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberSteward
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberCook
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberSanitationTechnician
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberCrewman
+    - !type:MappingTemplatePrototype
+      id: EmberJobsUnattached
+      children:
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberPassenger
+        - !type:MappingTemplatePrototype
+          id: SpawnPointEmberOffDutyWatch

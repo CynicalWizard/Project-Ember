@@ -1,0 +1,226 @@
+# What a character believes, if anything. Ported from SierraBay12's
+# /singleton/cultural_info/religion (code/modules/culture_descriptor/religion/), with the Russian
+# translations from mods/expanded_culture_descriptor.
+#
+# One entry is ours. Canon section 5 founds the Gilgamesh Colonial Confederation on Old Believer
+# communities that refused the Nikonian reform, and its Pact of Independence calls the Almighty as
+# witness in the text itself. Folding that into "Christianity" would hide the largest political
+# fact in human space on the one axis where it should be visible.
+#
+# Two of Bay's unathi faiths are not here. The Precursor cult rests on an ancient civilisation
+# Ember does not have, and Aga-Eakhe belongs to the yeosa sub-race, which is not ported either -
+# same cut as the yeosa cultures and factions.
+#
+# Only the Moghes clan faiths carry a species requirement, because they are clan practice rather
+# than doctrine anyone may adopt. Everything else is open to every species: conversion happens, and
+# the answers that mean "none of your business" have to be available to everyone by definition.
+#
+# EMBER-TODO: no tajaran faith exists here, because neither Bay nor the Sierra tajara mod wrote
+# one. Authoring one is not porting, so it waits for a decision about whether Ember wants it.
+
+
+- type: emberBackground
+  id: EmberReligionUnstated
+  axis: Religion
+  weight: 100
+  name: ember-religion-unstated
+  description: ember-religion-unstated-desc
+
+- type: emberBackground
+  id: EmberReligionAtheism
+  axis: Religion
+  weight: 99
+  name: ember-religion-atheism
+  description: ember-religion-atheism-desc
+
+- type: emberBackground
+  id: EmberReligionAgnosticism
+  axis: Religion
+  weight: 98
+  name: ember-religion-agnosticism
+  description: ember-religion-agnosticism-desc
+
+- type: emberBackground
+  id: EmberReligionChristianity
+  axis: Religion
+  weight: 90
+  name: ember-religion-christianity
+  description: ember-religion-christianity-desc
+
+- type: emberBackground
+  id: EmberReligionOldBelief
+  axis: Religion
+  weight: 89
+  name: ember-religion-old-belief
+  description: ember-religion-old-belief-desc
+
+- type: emberBackground
+  id: EmberReligionIslam
+  axis: Religion
+  weight: 88
+  name: ember-religion-islam
+  description: ember-religion-islam-desc
+
+- type: emberBackground
+  id: EmberReligionJudaism
+  axis: Religion
+  weight: 87
+  name: ember-religion-judaism
+  description: ember-religion-judaism-desc
+
+- type: emberBackground
+  id: EmberReligionHinduism
+  axis: Religion
+  weight: 86
+  name: ember-religion-hinduism
+  description: ember-religion-hinduism-desc
+
+- type: emberBackground
+  id: EmberReligionBuddhism
+  axis: Religion
+  weight: 85
+  name: ember-religion-buddhism
+  description: ember-religion-buddhism-desc
+
+- type: emberBackground
+  id: EmberReligionSikhism
+  axis: Religion
+  weight: 84
+  name: ember-religion-sikhism
+  description: ember-religion-sikhism-desc
+
+- type: emberBackground
+  id: EmberReligionJainism
+  axis: Religion
+  weight: 83
+  name: ember-religion-jainism
+  description: ember-religion-jainism-desc
+
+- type: emberBackground
+  id: EmberReligionBahai
+  axis: Religion
+  weight: 82
+  name: ember-religion-bahai
+  description: ember-religion-bahai-desc
+
+- type: emberBackground
+  id: EmberReligionShinto
+  axis: Religion
+  weight: 81
+  name: ember-religion-shinto
+  description: ember-religion-shinto-desc
+
+- type: emberBackground
+  id: EmberReligionTaoism
+  axis: Religion
+  weight: 80
+  name: ember-religion-taoism
+  description: ember-religion-taoism-desc
+
+- type: emberBackground
+  id: EmberReligionDeism
+  axis: Religion
+  weight: 79
+  name: ember-religion-deism
+  description: ember-religion-deism-desc
+
+- type: emberBackground
+  id: EmberReligionSpiritualism
+  axis: Religion
+  weight: 78
+  name: ember-religion-spiritualism
+  description: ember-religion-spiritualism-desc
+
+- type: emberBackground
+  id: EmberReligionThelema
+  axis: Religion
+  weight: 77
+  name: ember-religion-thelema
+  description: ember-religion-thelema-desc
+
+- type: emberBackground
+  id: EmberReligionUnathiVines
+  axis: Religion
+  weight: 60
+  name: ember-religion-unathi-vines
+  description: ember-religion-unathi-vines-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+- type: emberBackground
+  id: EmberReligionUnathiLights
+  axis: Religion
+  weight: 59
+  name: ember-religion-unathi-lights
+  description: ember-religion-unathi-lights-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+- type: emberBackground
+  id: EmberReligionUnathiStratagem
+  axis: Religion
+  weight: 58
+  name: ember-religion-unathi-stratagem
+  description: ember-religion-unathi-stratagem-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+- type: emberBackground
+  id: EmberReligionUnathiAncestors
+  axis: Religion
+  weight: 57
+  name: ember-religion-unathi-ancestors
+  description: ember-religion-unathi-ancestors-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+- type: emberBackground
+  id: EmberReligionUnathiMarkesh
+  axis: Religion
+  weight: 56
+  name: ember-religion-unathi-markesh
+  description: ember-religion-unathi-markesh-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+# Tajaran belief. Two entries rather than one because the split is the political fault line of the
+# planet: the same spirits, read two ways, and the difference is visible from across a corridor.
+
+- type: emberBackground
+  id: EmberReligionTajaranSpirits
+  axis: Religion
+  weight: 42
+  name: ember-religion-tajaran-spirits
+  description: ember-religion-tajaran-spirits-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberReligionTajaranKaytam
+  axis: Religion
+  weight: 41
+  name: ember-religion-tajaran-kaytam
+  description: ember-religion-tajaran-kaytam-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberReligionOther
+  axis: Religion
+  weight: 1
+  name: ember-religion-other
+  description: ember-religion-other-desc

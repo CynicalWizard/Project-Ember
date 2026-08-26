@@ -15,7 +15,7 @@
       min: 36000 # 10 hours
     - !type:CharacterEmployerRequirement
       employers:
-      - IdrisIncorporated
+      - ExpeditionaryCorpsOrganisation
       - NanoTrasen
 
 

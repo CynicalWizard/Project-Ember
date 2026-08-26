@@ -304,12 +304,6 @@
     - !type:CharacterDepartmentRequirement
       departments:
         - Security
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Bieselite
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
   items:
     - ClothingHeadHelmetTCFLHeavy
 
@@ -325,12 +319,6 @@
     - !type:CharacterDepartmentRequirement
       departments:
         - Security
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Bieselite
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
   items:
     - ClothingHeadHelmetTCFLNoVisor
 
@@ -346,12 +334,6 @@
     - !type:CharacterDepartmentRequirement
       departments:
         - Security
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Bieselite
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
   items:
     - ClothingHeadHelmetTCFLVisor
 
@@ -477,12 +459,6 @@
     - !type:CharacterDepartmentRequirement
       departments:
         - Security
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Bieselite
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
   items:
     - ClothingOuterArmorTCFLHeavy
 
@@ -498,12 +474,6 @@
     - !type:CharacterDepartmentRequirement
       departments:
         - Security
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Bieselite
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
   items:
     - ClothingOuterArmorTCFLLight
 
@@ -535,7 +505,7 @@
         - Security
     - !type:CharacterEmployerRequirement
       employers:
-        - ZavodskoiInterstellar
+        - GraysonManufactories
   items:
   - ClothingOuterJacketZavSecurity
 
@@ -553,7 +523,7 @@
         - Security
     - !type:CharacterEmployerRequirement
       employers:
-        - ZavodskoiInterstellar
+        - GraysonManufactories
   items:
   - ClothingOuterJacketZavSecurityAlt
 
@@ -721,7 +691,7 @@
         - Security
     - !type:CharacterEmployerRequirement
       employers:
-        - ZavodskoiInterstellar
+        - GraysonManufactories
   items:
     - ClothingUniformJumpsuitZavodSecurityOfficer
 
@@ -739,7 +709,7 @@
         - Security
     - !type:CharacterEmployerRequirement
       employers:
-        - ZavodskoiInterstellar
+        - GraysonManufactories
   items:
     - ClothingUniformJumpsuitZavodSecurityOfficerAlt1
 
@@ -757,7 +727,7 @@
         - Security
     - !type:CharacterEmployerRequirement
       employers:
-        - ZavodskoiInterstellar
+        - GraysonManufactories
   items:
     - ClothingUniformJumpsuitZavodSecurityOfficerAlt2
 
@@ -775,7 +745,7 @@
         - Detective
     - !type:CharacterEmployerRequirement
       employers:
-        - ZavodskoiInterstellar
+        - GraysonManufactories
   items:
     - ClothingUniformJumpsuitZavodCadet
 
@@ -789,7 +759,7 @@
       group: LoadoutSecurityUniforms
     - !type:CharacterEmployerRequirement
       employers:
-      - EastOrionCompany
+      - GraysonManufactories
     - !type:CharacterDepartmentRequirement
       departments:
       - Security
@@ -806,7 +776,7 @@
       group: LoadoutSecurityUniforms
     - !type:CharacterEmployerRequirement
       employers:
-      - EastOrionCompany
+      - GraysonManufactories
     - !type:CharacterDepartmentRequirement
       departments:
       - Security

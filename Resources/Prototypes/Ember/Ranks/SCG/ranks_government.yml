@@ -1,0 +1,58 @@
+# Appointments in the civil arms of the SCG: the government itself and the Federal Police.
+#
+# These are not military ranks and have no grade, so sortOrder stays 0 and `category` resolves
+# to None on its own. Their insignia is a badge rather than shoulder boards, which changes
+# nothing mechanically — it is still one accessory in the Insignia slot.
+#
+# `accessories` is set only on the Representative, whose badge exists in Bay's art and says
+# exactly that on it. The rest are bare and that is not an omission to fix by reaching for the
+# nearest sprite: the Federal Police is ours rather than Bay's, so no badge for a Marshal or an
+# Agent has been drawn by anyone. The Master-at-Arms' silver badge is the ship's own security
+# and would be the wrong service.
+#
+# EMBER-TODO: Federal Police insignia has to be drawn rather than converted.
+#
+# Bay has only `/datum/mil_rank/sol/gov`, `/sol/agent` and `/sol/scientist`
+# (maps/torch/torch_ranks.dm). The Federal Police structure below is ours: Marshal and Agent
+# are different functions rather than steps of one ladder — the Marshal works openly and on the
+# record, the Agent does not — so neither outranks the other and both sit at 0.
+
+- type: emberRank
+  id: EmberRankSCGRepresentative
+  accessories:
+  - EmberClothingAccessorySolbadge
+  minAge: 30
+  name: ember-rank-scg-representative-name
+  shortName: ember-rank-scg-representative-short
+
+# The one civil appointment here that is a qualification rather than an office, so it is the one
+# with an education floor of its own: a degree, and then the civil service.
+- type: emberRank
+  id: EmberRankSCGScientist
+  minAge: 22
+  name: ember-rank-scg-scientist-name
+
+# Federal Police of the Solar System. Founded around 2231 as the single state law-enforcement
+# agency; its Territorial Support Division embeds investigators aboard Expeditionary Corps
+# ships, who keep their powers of arrest because the ship counts as SCG territory.
+- type: emberRank
+  id: EmberRankFederalMarshal
+  minAge: 27
+  maxAge: 60
+  name: ember-rank-federal-marshal-name
+  shortName: ember-rank-federal-marshal-short
+
+- type: emberRank
+  id: EmberRankFederalAgent
+  minAge: 21
+  maxAge: 60
+  name: ember-rank-federal-agent-name
+  shortName: ember-rank-federal-agent-short
+
+# Supervising agents are not normally attached to a ship. Here for events and admins.
+- type: emberRank
+  id: EmberRankFederalSupervisor
+  minAge: 32
+  maxAge: 60
+  name: ember-rank-federal-supervisor-name
+  shortName: ember-rank-federal-supervisor-short

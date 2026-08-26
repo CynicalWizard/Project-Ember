@@ -1,3 +1,4 @@
+﻿role-timer-department-insufficient = Вам потребуется на [color=yellow]{TOSTRING($time, "0")}[/color] больше минут в [color={$departmentColor}]{$department}[/color], чтобы играть на этой роли.
 role-timer-department-too-high = Вам потребуется на [color=yellow]{TOSTRING($time, "0")}[/color] меньше минут в [color={$departmentColor}]{$department}[/color], чтобы играть за эту роль. (Вы пытаетесь сыграть за роль новичка?)
 
 role-timer-overall-insufficient = Вам потребуется на [color=yellow]{TOSTRING($time, "0")}[/color] больше минут игрового времени, чтобы сыграть эту роль.
@@ -16,7 +17,7 @@ role-timer-whitelisted-species = Для игры на этой роли ваш �
 
 role-timer-blacklisted-species = Для игры на этой роли ваш персонаж не должен быть одной из следующих рас:
 
-role-timer-locked = Заблокировано (наведитесь для деталей)
+role-timer-locked = Заблокировано
 
 role-timer-department-unknown = Неизвестный Департамент
 

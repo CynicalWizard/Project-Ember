@@ -70,8 +70,7 @@
       group: LoadoutSmokes
     - !type:CharacterEmployerRequirement
       employers:
-      - Interdyne
-
+      - ZengHuPharmaceuticals
 - type: loadout
   id: LoadoutItemLighter
   category: Items

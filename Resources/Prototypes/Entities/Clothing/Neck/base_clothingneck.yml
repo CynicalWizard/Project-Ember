@@ -45,6 +45,9 @@
     # drawn below the outer clothing layer anyway - so under a coat it is a layer nobody sees.
     # Flip this off if an open jacket ought to show the scarf through it.
     hideUnderOuterClothing: true
+    # A uniform pulled down to the waist bares the chest, which is why most accessories stop
+    # being drawn there. A scarf is round the neck and does not go anywhere.
+    visibleWhenRolledDown: true
   - type: TemperatureProtection
     heatingCoefficient: 1.025
     coolingCoefficient: 0.8

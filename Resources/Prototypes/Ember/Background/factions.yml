@@ -1,0 +1,261 @@
+# Who a character belongs to: a state, a hegemony, a clan, an owner. Ported from SierraBay12's
+# /singleton/cultural_info/faction (code/modules/culture_descriptor/faction/), with the Russian
+# additions from mods/expanded_culture_descriptor and mods/tajara.
+#
+# Bay's version of this axis also holds the services and the corporations. Ember records those on
+# the branch and the employer, both chosen in the same screen, so porting them here would give the
+# game three fields for one fact. Citizenship is what is left, and citizenship is what a passport
+# is made of.
+#
+# Two departures from Bay worth knowing before editing:
+#
+# SCG citizenship is human-only, per canon section 5 - a xeno resident is a resident. That is a
+# requirement rather than a sentence in a description because the player then meets the rule while
+# building a character instead of reading about it.
+#
+# The positronic entries record an owner rather than a nation. Bay has an independent machine
+# polity; Ember has an IPC as property of a state, a company or a person, which is the same premise
+# that takes military rank away from them in the ranks system.
+#
+# EMBER-TODO: nothing selects these yet, same as the other three axes. The profile still carries
+# the Contractors module's `nationality`, and the swap is one schema change and one migration, so
+# it waits until all four axes have their data.
+
+
+- type: emberBackground
+  id: EmberFactionSCG
+  passport: EmberPassportSCG
+  axis: Faction
+  weight: 100
+  name: ember-faction-scg
+  description: ember-faction-scg-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberFactionSCGResident
+  passport: EmberPassportSCGResidence
+  axis: Faction
+  weight: 99
+  name: ember-faction-scg-resident
+  description: ember-faction-scg-resident-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+    - Tajaran
+    - Diona
+
+- type: emberBackground
+  id: EmberFactionGCC
+  passport: EmberPassportGCC
+  axis: Faction
+  weight: 98
+  name: ember-faction-gcc
+  description: ember-faction-gcc-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberFactionFrontierAlliance
+  passport: EmberPassportFrontierAlliance
+  axis: Faction
+  weight: 97
+  name: ember-faction-frontier-alliance
+  description: ember-faction-frontier-alliance-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberFactionMagnitka
+  passport: EmberPassportMagnitka
+  axis: Faction
+  weight: 96
+  name: ember-faction-magnitka
+  description: ember-faction-magnitka-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberFactionMirania
+  passport: EmberPassportMirania
+  axis: Faction
+  weight: 95
+  name: ember-faction-mirania
+  description: ember-faction-mirania-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberFactionLordanianRepublic
+  passport: EmberPassportLordania
+  axis: Faction
+  weight: 94
+  name: ember-faction-lordanian-republic
+  description: ember-faction-lordanian-republic-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberFactionUnathiHegemony
+  passport: EmberPassportHegemony
+  axis: Faction
+  weight: 70
+  name: ember-faction-unathi-hegemony
+  description: ember-faction-unathi-hegemony-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+- type: emberBackground
+  id: EmberFactionUnathiGresis
+  passport: EmberPassportHegemony
+  axis: Faction
+  weight: 69
+  name: ember-faction-unathi-gresis
+  description: ember-faction-unathi-gresis-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+- type: emberBackground
+  id: EmberFactionUnathiBaask
+  passport: EmberPassportHegemony
+  axis: Faction
+  weight: 68
+  name: ember-faction-unathi-baask
+  description: ember-faction-unathi-baask-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+- type: emberBackground
+  id: EmberFactionUnathiSsenUuma
+  passport: EmberPassportSsenUuma
+  axis: Faction
+  weight: 67
+  name: ember-faction-unathi-ssen-uuma
+  description: ember-faction-unathi-ssen-uuma-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+- type: emberBackground
+  id: EmberFactionUnathiIndependent
+  axis: Faction
+  weight: 66
+  name: ember-faction-unathi-independent
+  description: ember-faction-unathi-independent-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+# Ahdomai carries two states, and which of them issued your papers is the whole of the tajaran
+# entry on this axis. The clans are not here: they moved to the culture axis, where a clan says
+# what a nationality says - where you are from and how you were raised - rather than who you are a
+# subject of. Sierra keeps them as factions because Sierra's Ahdomai never unified; ours did, in a
+# war, and that is exactly what stopped a clan from being a state.
+#
+# The exception is the clan the war was against.
+
+- type: emberBackground
+  id: EmberFactionAhdomaiCommonwealth
+  passport: EmberPassportAhdomai
+  axis: Faction
+  weight: 60
+  name: ember-faction-ahdomai-commonwealth
+  description: ember-faction-ahdomai-commonwealth-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberFactionKaytam
+  passport: EmberPassportKaytam
+  axis: Faction
+  weight: 59
+  name: ember-faction-kaytam
+  description: ember-faction-kaytam-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberFactionPositronicState
+  passport: EmberPassportPositronicRegistration
+  axis: Faction
+  weight: 50
+  name: ember-faction-positronic-state
+  description: ember-faction-positronic-state-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - IPC
+
+- type: emberBackground
+  id: EmberFactionPositronicCorporate
+  passport: EmberPassportPositronicRegistration
+  axis: Faction
+  weight: 49
+  name: ember-faction-positronic-corp
+  description: ember-faction-positronic-corp-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - IPC
+
+- type: emberBackground
+  id: EmberFactionPositronicPrivate
+  passport: EmberPassportPositronicRegistration
+  axis: Faction
+  weight: 48
+  name: ember-faction-positronic-private
+  description: ember-faction-positronic-private-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - IPC
+
+- type: emberBackground
+  id: EmberFactionDionaChorus
+  axis: Faction
+  weight: 45
+  name: ember-faction-diona-chorus
+  description: ember-faction-diona-chorus-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Diona
+
+- type: emberBackground
+  id: EmberFactionStateless
+  axis: Faction
+  weight: 2
+  name: ember-faction-stateless
+  description: ember-faction-stateless-desc
+
+- type: emberBackground
+  id: EmberFactionOther
+  axis: Faction
+  weight: 1
+  name: ember-faction-other
+  description: ember-faction-other-desc

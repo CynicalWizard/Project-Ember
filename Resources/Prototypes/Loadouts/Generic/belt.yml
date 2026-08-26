@@ -97,10 +97,4 @@
        inverted: true
        jobs:
          - Prisoner
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Bieselite
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
 

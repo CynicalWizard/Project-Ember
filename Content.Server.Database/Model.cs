@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.ComponentModel.DataAnnotations;
@@ -9,6 +9,7 @@ using System.Net;
 using System.Text.Json;
 using Content.Shared._EE.Contractors.Prototypes;
 using Content.Shared.Database;
+using Content.Shared.Ember.Skills;
 using Microsoft.EntityFrameworkCore;
 using NpgsqlTypes;
 using Robust.Shared.Prototypes;
@@ -71,6 +72,16 @@ namespace Content.Server.Database
 
             modelBuilder.Entity<Loadout>()
                 .HasIndex(p => new { HumanoidProfileId = p.ProfileId, p.LoadoutName })
+                .IsUnique();
+
+            // Ember: a character holds one level per skill and one title per post, so both are
+            // unique on the pair rather than merely indexed by profile.
+            modelBuilder.Entity<ProfileSkill>()
+                .HasIndex(p => new { HumanoidProfileId = p.ProfileId, p.SkillName })
+                .IsUnique();
+
+            modelBuilder.Entity<ProfileJobTitle>()
+                .HasIndex(p => new { HumanoidProfileId = p.ProfileId, p.JobName })
                 .IsUnique();
 
             modelBuilder.Entity<Job>()
@@ -392,9 +403,16 @@ namespace Content.Server.Database
         [Column("char_name")] public string CharacterName { get; set; } = null!;
         public string FlavorText { get; set; } = null!;
         public string CustomSpecieName { get; set; } = null!;
-        public string Nationality { get; set; } = null!;
         public string Employer { get; set; } = null!;
-        public string Lifepath { get; set; } = null!;
+        // Ember: the four background axes, replacing the Contractors module's nationality and
+        // lifepath. Branch and Rank sit here too - they were on the profile from the ranks work
+        // and never reached the database, so a posting did not survive a reconnect.
+        public string Homeworld { get; set; } = null!;
+        public string Culture { get; set; } = null!;
+        public string Faction { get; set; } = null!;
+        public string Religion { get; set; } = null!;
+        public string? Branch { get; set; }
+        public string? Rank { get; set; }
         public int Age { get; set; }
         public string Sex { get; set; } = null!;
         public string Gender { get; set; } = null!;
@@ -416,6 +434,8 @@ namespace Content.Server.Database
         public List<Antag> Antags { get; } = new();
         public List<Trait> Traits { get; } = new();
         public List<Loadout> Loadouts { get; } = new();
+        public List<ProfileSkill> Skills { get; } = new(); // Ember
+        public List<ProfileJobTitle> JobTitles { get; } = new(); // Ember
 
         [Column("pref_unavailable")] public DbPreferenceUnavailableMode PreferenceUnavailable { get; set; }
 
@@ -449,6 +469,32 @@ namespace Content.Server.Database
         public int ProfileId { get; set; }
 
         public string AntagName { get; set; } = null!;
+    }
+
+    /// <summary>
+    /// Ember: one skill a character has trained, and how far.
+    /// </summary>
+    public class ProfileSkill
+    {
+        public int Id { get; set; }
+        public Profile Profile { get; set; } = null!;
+        public int ProfileId { get; set; }
+
+        public string SkillName { get; set; } = null!;
+        public SkillLevel Level { get; set; }
+    }
+
+    /// <summary>
+    /// Ember: the title a character wears in one post, where they chose one other than the default.
+    /// </summary>
+    public class ProfileJobTitle
+    {
+        public int Id { get; set; }
+        public Profile Profile { get; set; } = null!;
+        public int ProfileId { get; set; }
+
+        public string JobName { get; set; } = null!;
+        public string Title { get; set; } = null!;
     }
 
     public class Trait

@@ -1,0 +1,340 @@
+# Command aboard the SEV Ember.
+#
+# One file per department rather than one per job, which departs from the upstream layout. With
+# forty-odd new jobs arriving at once, a department reads as a unit and reviews as a unit; the
+# upstream convention would scatter that across forty files for no gain.
+#
+# EMBER-TODO: `icon` points at existing vanilla content on purpose. A job does not need its own
+# sprites to exist, and every one of these is a one-line change later. Nothing else here is
+# placeholder.
+#
+# `startingGear` points at an Ember kit in job_gear.yml, which inherits the vanilla kit for the
+# tools and hangs the branch uniforms off it as sub-gear. The uniform therefore comes from the
+# service and the tools from the post, and a post open to three services is still one post. See
+# Resources/Prototypes/Ember/Roles/branch_uniforms.yml.
+#
+# **Authority aboard runs by billet, not by rank or by service.** This is the single most
+# load-bearing sentence in the job files and it is easy to get backwards, because the rank data
+# is so much more visible than the `supervisors` lines. The Captain commands the ship; everyone
+# embarked answers to him whatever uniform they arrived in and whatever grade they hold. The
+# Chief of Security is a Fleet officer with no career connection to a Corps captain and takes his
+# orders anyway. The Senior Enlisted Advisor sits in this department while belonging to another
+# service entirely. Neither is an anomaly — real navies work this way, and a ship that ran on
+# seniority instead of billet would stop being a ship.
+#
+# So: `requirements` says who a character *is*. `supervisors` says who gives them orders. The two
+# are independent, and where they seem to disagree, `supervisors` wins.
+#
+# The oversight department below is the exception that shows the rule. The Representative answers
+# to nobody aboard precisely because he holds no billet aboard — he is not in the ship's
+# organisation at all, which is a different thing from being high up in it.
+#
+# Note what does the gating. Command posts ask for almost nothing in skills — the Captain wants
+# nine points' worth — because the thing that keeps people out is the commission, not the
+# competence. Requiring a commission excludes every xeno species automatically, since none may
+# hold a rank above E-5, and no separate rule is needed to say so. Technical departments are the
+# other way round: their skill floors are the gate and their ranks are broad.
+#
+# A branch's own floor is not repeated in these jobs. Each service states what everyone in it is
+# expected to know — the Corps `hauling`/`science`/`EVA`, the Fleet `hauling`/`weapons`/`EVA` —
+# and that is merged in when requirements are checked. Only what a post asks for beyond its
+# service is written down here.
+#
+# A post names a *band* of ranks, not one. Real billets are filled by whoever the service has:
+# a ship of this size is commanded by a Commander or a Captain depending on who was available
+# and how the appointment was written, and the bands overlap between neighbouring posts for the
+# same reason. Pinning each job to a single grade would be a tidiness the service does not have.
+#
+# EMBER-TODO: acting appointments — a Lieutenant standing in as Executive Officer because the
+# proper one is dead or unreachable — are a separate mechanic, not a wider band. Bay has the
+# shape for it: `/datum/mil_rank/civ/acting` with `name_short_job_prefix`, which puts the prefix
+# on the post rather than the person ("Acting Captain Ivanov", not "Capt Ivanov").
+
+- type: department
+  id: EmberCommand
+  name: department-EmberCommand
+  description: department-EmberCommand-description
+  color: "#4b8fc4"
+  weight: 20
+  roles:
+  - EmberCaptain
+  - EmberExecutiveOfficer
+  - EmberWatchOfficer
+  - EmberSeniorEnlistedAdvisor
+  - EmberLiaisonOfficer
+  - EmberAdjutant
+
+# Aboard, senior, and deliberately outside the ship's chain of command. Keeping these in their
+# own department is not cosmetic: the department is what tells a player who answers to whom, and
+# listing the government's observer under Command would say the Captain commands him, which is
+# the one thing that is not true of the post.
+#
+# The Federal Marshal sits here rather than in Security, and that supersedes the earlier plan to
+# make him a second branch on the Investigator job. A job sits in one department, and putting a
+# police officer under the Chief of Security would say the Chief of Security runs him.
+- type: department
+  id: EmberOversight
+  name: department-EmberOversight
+  description: department-EmberOversight-description
+  color: "#c9a227"
+  weight: 21
+  roles:
+  - EmberSCGRepresentative
+  - EmberFederalMarshal
+
+- type: playTimeTracker
+  id: JobEmberCaptain
+
+- type: playTimeTracker
+  id: JobEmberExecutiveOfficer
+
+- type: playTimeTracker
+  id: JobEmberWatchOfficer
+
+- type: playTimeTracker
+  id: JobEmberSeniorEnlistedAdvisor
+
+- type: playTimeTracker
+  id: JobEmberSCGRepresentative
+
+- type: playTimeTracker
+  id: JobEmberFederalMarshal
+
+- type: playTimeTracker
+  id: JobEmberLiaisonOfficer
+
+- type: playTimeTracker
+  id: JobEmberAdjutant
+
+# Commanding officer, and the only post aboard that answers to nobody on it. A Commander or a
+# Captain: the ship is large but its complement is not, which is the shape of a submarine rather
+# than a surface ship, and submarines of this size are commanded from either grade.
+- type: job
+  id: EmberCaptain
+  name: job-name-ember-captain
+  description: job-description-ember-captain
+  playTimeTracker: JobEmberCaptain
+  startingGear: EmberGearCaptain
+  icon: JobIconCaptain
+  supervisors: job-supervisors-ember-observatory
+  weight: 20
+  requireAdminNotify: true
+  joinNotifyCrew: true
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  minSkills:
+    bureaucracy: Basic
+    science: Trained
+    pilot: Trained
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsO5
+    - EmberRankCorpsO6
+  - !type:CharacterSkillRequirement
+
+# Second in command. "Executive officer" is Fleet phrasing kept on purpose — the post came from
+# the Fleet and the wording says so.
+- type: job
+  id: EmberExecutiveOfficer
+  name: job-name-ember-executive-officer
+  description: job-description-ember-executive-officer
+  playTimeTracker: JobEmberExecutiveOfficer
+  startingGear: EmberGearExecutiveOfficer
+  icon: JobIconHeadOfPersonnel
+  supervisors: job-supervisors-ember-captain
+  weight: 19
+  requireAdminNotify: true
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  minSkills:
+    bureaucracy: Trained
+    computer: Basic
+    pilot: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsO3
+    - EmberRankCorpsO5
+  - !type:CharacterSkillRequirement
+
+# Stands the watch on the bridge. The junior commission, and where officers start.
+- type: job
+  id: EmberWatchOfficer
+  name: job-name-ember-watch-officer
+  description: job-description-ember-watch-officer
+  playTimeTracker: JobEmberWatchOfficer
+  startingGear: EmberGearWatchOfficer
+  icon: JobIconHeadOfPersonnel
+  supervisors: job-supervisors-ember-command
+  weight: 15
+  minSkills:
+    bureaucracy: Basic
+    pilot: Trained
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsO1
+    - EmberRankCorpsO3
+  - !type:CharacterSkillRequirement
+
+# The senior rating aboard: speaks for the enlisted to the officers, and is the one person in
+# command who came up through the Fleet rather than the Corps.
+- type: job
+  id: EmberSeniorEnlistedAdvisor
+  name: job-name-ember-senior-enlisted-advisor
+  description: job-description-ember-senior-enlisted-advisor
+  playTimeTracker: JobEmberSeniorEnlistedAdvisor
+  startingGear: EmberGearSeniorEnlistedAdvisor
+  icon: JobIconHeadOfPersonnel
+  supervisors: job-supervisors-ember-command
+  weight: 15
+  minSkills:
+    combat: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchFleet
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankFleetE7
+    - EmberRankFleetE8
+    - EmberRankFleetE9
+    - EmberRankFleetE9Command
+  - !type:CharacterSkillRequirement
+
+# Government observer. Not in the chain of command and cannot be given an order by it, which is
+# the entire point of the post.
+- type: job
+  id: EmberSCGRepresentative
+  name: job-name-ember-scg-representative
+  description: job-description-ember-scg-representative
+  playTimeTracker: JobEmberSCGRepresentative
+  startingGear: EmberGearSCGRepresentative
+  icon: JobIconHeadOfPersonnel
+  supervisors: job-supervisors-ember-scg
+  weight: 15
+  canBeAntag: false
+  access:
+  - Command
+  - Maintenance
+  minSkills:
+    bureaucracy: Experienced
+    finance: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchSCGGovernment
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankSCGRepresentative
+  - !type:CharacterSkillRequirement
+
+# Sol Federal Police, Territorial Support Division, embedded aboard because an Expeditionary Corps
+# ship is SCG territory and a crime committed on it is a federal one. He is not the ship's security
+# and not its investigator: those two answer to the Chief of Security and enforce the Captain's
+# authority, and the Marshal enforces the law whether or not the Captain agrees. Nobody aboard
+# outranks him in that, and he commands nobody in anything else.
+#
+# `bureaucracy` Experienced rather than `investigation`: what a marshal actually does differently
+# from the ship's investigator is produce a case that survives a court on Luna. The evidence work
+# is the same work; the paperwork is the whole difference, and it is why the age floor is high.
+#
+# Deliberately no weapon in the kit and no Security access. Powers of arrest are not powers of
+# entry, and a marshal who could walk into the brig unaccompanied would be the Chief of Security
+# with a better hat. He asks, and being refused is the interesting half of the post.
+#
+# EMBER-TODO: `access` gives him nothing Security has, which is right, and nothing to hold a
+# prisoner in either, which is not - a federal arrest aboard has nowhere to go today. That is a
+# question about brig procedure rather than about this job.
+- type: job
+  id: EmberFederalMarshal
+  name: job-name-ember-federal-marshal
+  description: job-description-ember-federal-marshal
+  playTimeTracker: JobEmberFederalMarshal
+  startingGear: EmberGearFederalMarshal
+  icon: JobIconDetective
+  supervisors: job-supervisors-ember-federal-police
+  weight: 14
+  canBeAntag: false
+  access:
+  - Command
+  - Maintenance
+  - External
+  minSkills:
+    bureaucracy: Experienced
+    forensics: Trained
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchSCGGovernment
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankFederalMarshal
+  - !type:CharacterSkillRequirement
+
+# EMBER-TODO: mechanically thin until the telecommunications work lands — NTSL and a shipboard
+# network give this post an actual job. Kept in the list because that growth is planned, not
+# hoped for. See "08 — Должности, зависящие от взаимодействия" in the design vault.
+- type: job
+  id: EmberLiaisonOfficer
+  name: job-name-ember-liaison-officer
+  description: job-description-ember-liaison-officer
+  playTimeTracker: JobEmberLiaisonOfficer
+  startingGear: EmberGearLiaisonOfficer
+  icon: JobIconHeadOfPersonnel
+  supervisors: job-supervisors-ember-command
+  weight: 10
+  access:
+  - Command
+  - Maintenance
+  minSkills:
+    bureaucracy: Experienced
+    computer: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsO1
+    - EmberRankCorpsO3
+  - !type:CharacterSkillRequirement
+
+# Aide to the command staff. In the command department but not a command post, which is why it
+# is the one place here a xeno crewman can reach: E-3 and E-5 are within their ceiling.
+- type: job
+  id: EmberAdjutant
+  name: job-name-ember-adjutant
+  description: job-description-ember-adjutant
+  playTimeTracker: JobEmberAdjutant
+  startingGear: EmberGearAdjutant
+  icon: JobIconHeadOfPersonnel
+  supervisors: job-supervisors-ember-command
+  weight: 10
+  access:
+  - Command
+  - Maintenance
+  minSkills:
+    bureaucracy: Basic
+    pilot: Trained
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsE3
+    - EmberRankCorpsE5
+  - !type:CharacterSkillRequirement

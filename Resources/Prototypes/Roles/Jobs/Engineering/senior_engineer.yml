@@ -15,9 +15,8 @@
       min: 216000 # 60 hrs
     - !type:CharacterEmployerRequirement
       employers:
-      - HephaestusIndustries
-      - ZavodskoiInterstellar
-      - EinsteinEngines
+      - GraysonManufactories
+      - ExpeditionaryCorpsOrganisation
       - NanoTrasen
   startingGear: SeniorEngineerGear
   icon: "JobIconSeniorEngineer"

@@ -92,7 +92,7 @@
         - CargoTechnician
     - !type:CharacterEmployerRequirement
       employers:
-        - HephaestusIndustries
+        - GraysonManufactories
   items:
     - ClothingUniformJumpsuitHephCargoTech
 
@@ -110,7 +110,7 @@
         - CargoTechnician
     - !type:CharacterEmployerRequirement
       employers:
-        - HephaestusIndustries
+        - GraysonManufactories
   items:
     - ClothingUniformJumpsuitHephCargoTechAlt
 

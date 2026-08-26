@@ -9,9 +9,8 @@
     min: 14400 #4 hrs
   - !type:CharacterEmployerRequirement
     employers:
-    - HephaestusIndustries
-    - ZavodskoiInterstellar
-    - EinsteinEngines
+    - GraysonManufactories
+    - ExpeditionaryCorpsOrganisation
     - NanoTrasen
   startingGear: StationEngineerGear
   icon: "JobIconStationEngineer"

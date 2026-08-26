@@ -24,6 +24,9 @@ ember-accessory-out-of-reach = You can't reach the {$clothing}.
 
 # Examine
 ember-accessory-examine = [color=lightgray]{CAPITALIZE($accessory)} is attached to it.[/color]
+# On the wearer rather than on the garment: rank boards and qualification badges are meant to be
+# read across a corridor, so they are named when you look at the person.
+ember-accessory-examine-wearer = [color=lightgray]{ CAPITALIZE(SUBJECT($wearer)) } { CONJUGATE-BE($wearer) } wearing { $accessories }.[/color]
 
 # Verbs and menus
 ember-accessory-remove-verb = Remove accessory

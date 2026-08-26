@@ -1,4 +1,4 @@
-using Content.Server.Access.Systems;
+﻿using Content.Server.Access.Systems;
 using Content.Server.DetailExaminable;
 using Content.Server.Humanoid;
 using Content.Server.IdentityManagement;
@@ -16,6 +16,9 @@ using Content.Shared.Customization.Systems;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.PDA;
+using Content.Shared.Ember.Clothing;
+using Content.Shared.Ember.Roles;
+using Robust.Shared.Enums;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Random;
@@ -48,6 +51,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
     [Dependency] private readonly IdentitySystem _identity = default!;
     [Dependency] private readonly MetaDataSystem _metaSystem = default!;
     [Dependency] private readonly InternalEncryptionKeySpawner _internalEncryption = default!;
+    [Dependency] private readonly EmberInsigniaSystem _insignia = default!; // Ember
 
     private bool _randomizeCharacters;
 
@@ -137,9 +141,11 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         if (_randomizeCharacters)
             profile = HumanoidCharacterProfile.RandomWithSpecies(speciesId);
 
-        if (prototype?.StartingGear != null)
+        var gearId = prototype?.StartingGear;
+
+        if (gearId != null)
         {
-            var startingGear = _prototypeManager.Index<StartingGearPrototype>(prototype.StartingGear);
+            var startingGear = _prototypeManager.Index<StartingGearPrototype>(gearId);
             if (profile != null)
                 startingGear = ApplySubGear(startingGear, profile, prototype);
 
@@ -150,10 +156,15 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         var gearEquippedEv = new StartingGearEquippedEvent(entity.Value);
         RaiseLocalEvent(entity.Value, ref gearEquippedEv);
 
+        // Ember: rank boards and the department patch depend on the character rather than on the
+        // post, so they cannot be listed in the kit and are sewn on once the kit is worn.
+        if (profile != null && prototype != null)
+            _insignia.IssueInsignia(entity.Value, prototype, profile);
+
         if (profile != null)
         {
             if (prototype != null)
-                SetPdaAndIdCardData(entity.Value, profile.Name, prototype, station);
+                SetPdaAndIdCardData(entity.Value, profile.Name, prototype, station, profile); // Ember: profile carries the chosen job title
 
             _humanoidSystem.LoadProfile(entity.Value, profile, loadExtensions: false, generateLoadouts: false);
             _metaSystem.SetEntityName(entity.Value, profile.Name);
@@ -181,7 +192,17 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
     /// <param name="characterName">Character name to use for the ID.</param>
     /// <param name="jobPrototype">Job prototype to use for the PDA and ID.</param>
     /// <param name="station">The station this player is being spawned on.</param>
-    public void SetPdaAndIdCardData(EntityUid entity, string characterName, JobPrototype jobPrototype, EntityUid? station)
+    /// <param name="profile">
+    ///     Ember: the character's profile, for the name they hold the job under. A job with only
+    ///     one name ignores it, and so does every caller that has no profile to hand — a preset
+    ///     ID has no character behind it.
+    /// </param>
+    public void SetPdaAndIdCardData(
+        EntityUid entity,
+        string characterName,
+        JobPrototype jobPrototype,
+        EntityUid? station,
+        HumanoidCharacterProfile? profile = null)
     {
         if (!InventorySystem.TryGetSlotEntity(entity, "id", out var idUid))
             return;
@@ -194,7 +215,13 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             return;
 
         _cardSystem.TryChangeFullName(cardId, characterName, card);
-        _cardSystem.TryChangeJobTitle(cardId, jobPrototype.LocalizedName, card);
+        _cardSystem.TryChangeJobTitle(
+            cardId,
+            SharedEmberJobTitleSystem.GetLocalizedName(
+                jobPrototype,
+                profile?.GetJobTitle(jobPrototype.ID),
+                profile?.Gender ?? Gender.Epicene), // Ember
+            card);
 
         if (_prototypeManager.TryIndex(jobPrototype.Icon, out var jobIcon))
             _cardSystem.TryChangeJobIcon(cardId, jobIcon, card);

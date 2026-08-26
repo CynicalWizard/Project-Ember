@@ -1,0 +1,619 @@
+# Headgear of the SCG Expeditionary Corps and Fleet, converted from SierraBay12.
+#
+# Berets carry the department colour that a patch carries elsewhere — Bay draws a separate beret
+# per department rather than one beret with an accessory, and that is kept: a beret's colour is
+# the beret, not something sewn to it.
+#
+# Soft caps can be worn peak-backwards. That is vanilla's `Foldable` with a `flipped` prefix,
+# and Bay's `_flipped` states drop straight into it.
+#
+# EMBER-TODO: `startingGear` does not reference any of these yet, and neither does a vendor.
+# They exist as items so the uniform vendor and the branch kits have something to point at.
+#
+# EMBER-TODO: no in-hand sprites, and no armour or temperature values — everything here is
+# cosmetic until the kit pass. Bay's numbers are in the same files these came from.
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretBlack
+  name: "expeditionary beret"
+  description: "A black beret belonging to the SCG Expeditionary Corps. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_black.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_black.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretBlackCommand
+  name: "expeditionary officer's beret"
+  description: "An SCG Expeditionary Corps beret with a golden crest. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_black_command.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_black_command.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretBlackEngineering
+  name: "expeditionary engineering beret"
+  description: "An SCG Expeditionary Corps beret with an engineering crest. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_black_engineering.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_black_engineering.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretBlackExploration
+  name: "expeditionary exploration beret"
+  description: "An SCG Expeditionary Corps beret with an exploration crest. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_black_exploration.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_black_exploration.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretBlackFieldops
+  name: "Field Operations beret"
+  description: "An SCG Expeditionary Corps beret carrying the insignia of the Field Operations section. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_black_fieldOps.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_black_fieldOps.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretBlackMedical
+  name: "expeditionary medical beret"
+  description: "An SCG Expeditionary Corps beret with a medical crest. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_black_medical.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_black_medical.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretBlackObservatory
+  name: "Observatory beret"
+  description: "An SCG Expeditionary Corps beret carrying the insignia of the Observatory section. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_black_observatory.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_black_observatory.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretBlackSecurity
+  name: "expeditionary security beret"
+  description: "An SCG Expeditionary Corps beret with a security crest. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_black_security.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_black_security.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretBlackService
+  name: "expeditionary service beret"
+  description: "An SCG Expeditionary Corps beret with a service crest. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_black_service.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_black_service.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretBlackSupply
+  name: "expeditionary supply beret"
+  description: "An SCG Expeditionary Corps beret with a supply crest. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_black_supply.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_black_supply.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretBlue
+  name: "orbital assault beret"
+  description: "A blue beret denoting orbital assault training. For helljumpers that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_blue.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_blue.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretGraysilver
+  name: "STRATCOM beret"
+  description: "A grey beret with a silver insignia, denoting service in the SCGDF Strategic Command. For intelligence personnel who are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_graysilver.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_graysilver.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretGreen
+  name: "government research beret"
+  description: "A green beret denoting service in the Bureau of Research. For scientists that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_green.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_green.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretGreensilver
+  name: "border security beret"
+  description: "A green beret with a silver emblem, denoting service in the Bureau of Border Security. For border guards who are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_greensilver.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_greensilver.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretLightblue
+  name: "peacekeeper beret"
+  description: "A beret in Sol Central Government colors. For peacekeepers that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_lightblue.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_lightblue.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretNavy
+  name: "fleet beret"
+  description: "A navy blue beret belonging to the SCG Fleet. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_navy.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_navy.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretNavyCommand
+  name: "fleet officer's beret"
+  description: "An SCG Fleet beret with a golden crest. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_navy_command.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_navy_command.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretNavyEngineering
+  name: "fleet engineering beret"
+  description: "An SCG Fleet with an engineering crest. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_navy_engineering.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_navy_engineering.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretNavyExploration
+  name: "fleet exploration beret"
+  description: "An SCG Fleet beret with an exploration crest. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_navy_exploration.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_navy_exploration.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretNavyFifth
+  name: "fifth fleet beret"
+  description: "An SCG Fleet beret carrying the insignia of the Fifth Fleet, the Quick Reaction Force, recently formed and outfitted with the latest tech. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_navy_fifth.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_navy_fifth.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretNavyFirst
+  name: "first fleet beret"
+  description: "An SCG Fleet beret carrying the insignia of the First Fleet, the Sol Guard, stationed in Sol. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_navy_first.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_navy_first.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretNavyFourth
+  name: "fourth fleet beret"
+  description: "An SCG Fleet beret carrying the insignia of the Fourth Fleet, stationed on Skrell border. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_navy_fourth.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_navy_fourth.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretNavyMedical
+  name: "fleet medical beret"
+  description: "An SCG Fleet beret with a medical crest. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_navy_medical.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_navy_medical.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretNavySecond
+  name: "second fleet beret"
+  description: "An SCG Fleet beret carrying the insignia of the Second Fleet, the Home Defense Group, tasked with defense of Sol territories. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_navy_second.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_navy_second.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretNavySecurity
+  name: "fleet security beret"
+  description: "An SCG Fleet beret with a security crest. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_navy_security.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_navy_security.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretNavyService
+  name: "fleet service beret"
+  description: "An SCG Fleet beret with a service crest. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_navy_service.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_navy_service.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretNavySupply
+  name: "fleet supply beret"
+  description: "An SCG Fleet beret with a supply crest. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_navy_supply.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_navy_supply.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretNavyThird
+  name: "third fleet beret"
+  description: "An SCG Fleet beret carrying the insignia of the Third Fleet, the Border Guard, guarding borders of Sol territory against Vox and pirates. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_navy_third.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_navy_third.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretOrange
+  name: "gateway administration beret"
+  description: "An orange beret denoting service in the Gateway Administration. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_orange.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_orange.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretPurpleyellow
+  name: "customs and trade beret"
+  description: "A purple beret denoting service in the Customs and Trade Bureau. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_purpleyellow.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_purpleyellow.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretRed
+  name: "home guard beret"
+  description: "A red beret denoting service in the Sol Home Guard. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_red.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_red.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretRedgold
+  name: "MARSCOM beret"
+  description: "A red beret with a gold insignia, denoting service in the SCGDF Mars Central Command. For brass who are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_redgold.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_redgold.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretWhite
+  name: "health service beret"
+  description: "A white beret denoting service in the Interstellar Health Service. For medics that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_white.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_white.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretWhiterim
+  name: "fleet dress beret"
+  description: "A white SCG Fleet beret. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_whiterim.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_whiterim.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadBeretWhiterimCom
+  name: "fleet officer's dress beret"
+  description: "A white SCG Fleet beret with a golden crest. For personnel that are more inclined towards style than safety."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/beret_whiterim_com.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/beret_whiterim_com.rsi
+
+- type: entity
+  parent: ClothingHeadHeadHatBaseFlippable
+  id: EmberClothingHeadCapVeteran
+  name: "veteran hat"
+  description: "It's a tacky black ballcap bearing the yellow service ribbon of the Gaia Conflict."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/cap_veteran.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/cap_veteran.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadEcdresscap
+  name: "expeditionary peaked cap"
+  description: "A peaked black uniform cap belonging to the SCG Expeditionary Corps."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/ecdresscap.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/ecdresscap.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadEcdresscapCapt
+  name: "expeditionary captain's peaked cap"
+  description: "A gold-trimmed peaked black uniform cap belonging to a Captain of the SCG Expeditionary Corps."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/ecdresscap_capt.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/ecdresscap_capt.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadEcdresscapCdr
+  name: "senior expedition officer's peaked cap"
+  description: "A peaked grey uniform cap belonging to the SCG Expeditionary Corps. This one is trimmed in gold and blue."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/ecdresscap_cdr.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/ecdresscap_cdr.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadEcdresscapOfcr
+  name: "expeditionary officer's peaked cap"
+  description: "A peaked black uniform cap belonging to the SCG Expeditionary Corps. This one is trimmed in gold."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/ecdresscap_ofcr.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/ecdresscap_ofcr.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadEcushankadown
+  name: "expeditionary fur hat"
+  description: "An SCG Expeditionary Corps synthfur-lined hat for operating in cold environments."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/ecushankadown.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/ecushankadown.rsi
+
+- type: entity
+  parent: ClothingHeadHeadHatBaseFlippable
+  id: EmberClothingHeadExpeditioncomsoft
+  name: "Expeditionary Corps captain's cap"
+  description: "It's a black ballcap bearing the Expeditonary Corps crest. The brim has gold trim."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/expeditioncomsoft.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/expeditioncomsoft.rsi
+
+- type: entity
+  parent: ClothingHeadHeadHatBaseFlippable
+  id: EmberClothingHeadExpeditionsoft
+  name: "Expeditionary Corps cap"
+  description: "It's a black ballcap bearing the Expeditonary Corps crest."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/expeditionsoft.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/expeditionsoft.rsi
+
+- type: entity
+  parent: ClothingHeadHeadHatBaseFlippable
+  id: EmberClothingHeadFleetsoft
+  name: "fleet cap"
+  description: "It's a navy blue field cap with the SCG Fleet crest in a silver colour."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/fleetsoft.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/fleetsoft.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadFlushankadown
+  name: "fleet fur hat"
+  description: "An SCG Fleet synthfur-lined hat for operating in cold environments."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/flushankadown.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/flushankadown.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadHelmetCommand
+  name: "command helmet"
+  description: "A helmet with 'SOL CENTRAL GOVERNMENT' printed on the back in gold lettering."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/helmet_command.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/helmet_command.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadHelmetSecurity
+  name: "security helmet"
+  description: "A helmet with 'POLICE' printed on the back in silver lettering."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/helmet_security.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/helmet_security.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadNavyutility
+  name: "fleet utility cover"
+  description: "A navy blue utility cover bearing the crest of the SCG Fleet."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/navyutility.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/navyutility.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadPilotfleet
+  name: "fleet pilot's helmet"
+  description: "A pilot's helmet for operating the cockpit in style. This one is worn by members of the SCG Fleet."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/pilotfleet.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/pilotfleet.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadRig0Command
+  name: "command voidsuit helmet"
+  description: "A light, radiation resistant voidsuit helmet commonly used among SCG uniformed services."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/rig0_command.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/rig0_command.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadRig0Explorer
+  name: "exploration voidsuit helmet"
+  description: "A helmet of Exoplanet Exploration Unit, standard issue for Expeditionary Corps away missions. It has an armored glass dome for superiour visibility and extra anti-radiation lining."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/rig0_explorer.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/rig0_explorer.rsi
+
+- type: entity
+  parent: ClothingHeadHeadHatBaseFlippable
+  id: EmberClothingHeadSolsoft
+  name: "Sol Central Government cap"
+  description: "It's a ballcap in SCG colors."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/solsoft.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/solsoft.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadWhitegarrisoncap
+  name: "fleet garrison cap"
+  description: "A white dress uniform cap. The classic sailor's choice."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/whitegarrisoncap.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/whitegarrisoncap.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadWhitepeakcap
+  name: "fleet dress wheel cover"
+  description: "A white dress uniform cover. This one has an SCG Fleet crest."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/whitepeakcap.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/whitepeakcap.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: EmberClothingHeadWhitepeakcapCom
+  name: "fleet officer's dress wheel cover"
+  description: "A white dress uniform cover. This one has a gold stripe and an SCG Fleet crest."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Head/whitepeakcap_com.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Head/whitepeakcap_com.rsi

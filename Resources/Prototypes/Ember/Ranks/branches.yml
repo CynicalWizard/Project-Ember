@@ -1,0 +1,174 @@
+# Branches: the organisations a character can serve in.
+#
+# Ported from SierraBay12's maps/torch/torch_ranks.dm. The SEV Torch rather than the Sierra:
+# the Sierra is a corporate ship whose "ranks" are employment statuses, while the Torch is an
+# Expeditionary Corps vessel and its branch structure is the one we want.
+#
+# `minSkills` here is what everyone in the branch knows regardless of job — it answers "why
+# does any crewman know how to work a voidsuit" without repeating it in thirty job prototypes.
+#
+# `assistantJob` points at the Crewman where a branch has one — Bay does the same with its
+# `/datum/job/crew`. Note that nothing reads the field yet: it is declared on the prototype and
+# no system consults it. Set anyway, because the answer is now known and leaving it blank would
+# mean rediscovering it later.
+
+- type: emberBranch
+  id: EmberBranchExpeditionaryCorps
+  name: ember-branch-corps-name
+  shortName: ember-branch-corps-short
+  emailDomain: ec.scg
+  # Not an armed force. It explores, and that is the whole reason non-citizens can serve in it
+  # while the Fleet stays shut to them.
+  military: false
+  minSkills:
+    hauling: Basic
+    science: Basic
+    EVA: Basic
+  speciesBlacklist:
+  - Diona
+  - Vox
+  # The Cultural Exchange Programme patch. A xeno in the Corps is here because their government
+  # and the SCG signed for it, and this is the mark that says so - issued at spawn rather than
+  # offered in the loadout, which is how Bay has it.
+  #
+  # Diona are barred from the branch outright, so the question does not arise for them. An IPC is
+  # left out on purpose: the patch marks participation in a programme between two states, and
+  # property is not a party to one. Their equivalent is the plate with the owner's name on it.
+  speciesAccessories:
+    Tajaran:
+    - EmberClothingAccessoryEcpatch3
+    Reptilian:
+    - EmberClothingAccessoryEcpatch3
+  ranks:
+  - EmberRankCorpsE1
+  - EmberRankCorpsE3
+  - EmberRankCorpsE5
+  - EmberRankCorpsE7
+  - EmberRankCorpsO1
+  - EmberRankCorpsO3
+  - EmberRankCorpsO5
+  - EmberRankCorpsO6
+  - EmberRankCorpsO8
+  - EmberRankCorpsO10
+  - EmberRankMachineAssigned
+  assistantJob: EmberCrewman
+  spawnRanks:
+  # E-1 is not selectable on the Torch, but our junior technician and sanitation technician sit
+  # there, so it is open here.
+  - EmberRankCorpsE1
+  - EmberRankCorpsE3
+  - EmberRankCorpsE5
+  - EmberRankCorpsE7
+  - EmberRankCorpsO1
+  - EmberRankCorpsO3
+  - EmberRankCorpsO5
+  - EmberRankCorpsO6
+  - EmberRankMachineAssigned
+  # Off duty is a selectable status rather than a rank to be promoted to, and the Off-Duty Watch
+  # job is the only thing that asks for it. Every branch carries it for the same reason.
+
+- type: emberBranch
+  id: EmberBranchFleet
+  name: ember-branch-fleet-name
+  shortName: ember-branch-fleet-short
+  emailDomain: fleet.mil.scg
+  military: true
+  minSkills:
+    hauling: Basic
+    weapons: Basic
+    EVA: Basic
+  # The armed forces of the SCG take citizens. Xeno personnel are civilian persons rather than
+  # citizens, so no branch of the armed forces is open to them.
+  #
+  # EMBER-TODO: this list names the species that exist today. The rule is meant to be enforced
+  # in code off `military`, so that a species added later is covered without editing this file.
+  #
+  # EMBER-TODO: whether an IPC belongs here at all is unsettled. Property does not serve, it is
+  # used — but a combat drone sets no precedent, whereas a combat drone with a rank does, and
+  # a machine holds no graded rank in any case.
+  speciesBlacklist:
+  - Reptilian
+  - Tajaran
+  - Diona
+  - Vox
+  ranks:
+  - EmberRankFleetE1
+  - EmberRankFleetE2
+  - EmberRankFleetE3
+  - EmberRankFleetE4
+  - EmberRankFleetE5
+  - EmberRankFleetE6
+  - EmberRankFleetE7
+  - EmberRankFleetE8
+  - EmberRankFleetE9
+  - EmberRankFleetE9Command
+  - EmberRankFleetE9Fleet
+  - EmberRankFleetE9Force
+  - EmberRankFleetE9OfTheFleet
+  - EmberRankFleetO1
+  - EmberRankFleetO2
+  - EmberRankFleetO3
+  - EmberRankFleetO4
+  - EmberRankFleetO5
+  - EmberRankFleetO6
+  - EmberRankFleetO7
+  - EmberRankFleetO8
+  - EmberRankFleetO9
+  - EmberRankFleetO10
+  - EmberRankFleetO10Admiral
+  - EmberRankMachineAssigned
+  spawnRanks:
+  - EmberRankFleetE2
+  - EmberRankFleetE3
+  - EmberRankFleetE4
+  - EmberRankFleetE5
+  - EmberRankFleetE6
+  - EmberRankFleetE7
+  - EmberRankFleetE8
+  - EmberRankFleetE9
+  - EmberRankFleetE9Command
+  - EmberRankFleetO1
+  - EmberRankFleetO2
+  - EmberRankFleetO3
+  - EmberRankFleetO4
+  - EmberRankFleetO5
+
+- type: emberBranch
+  id: EmberBranchSCGGovernment
+  name: ember-branch-scg-government-name
+  shortName: ember-branch-scg-government-short
+  emailDomain: scg
+  military: false
+  # An agency that exercises the authority of the state is staffed by its citizens.
+  speciesWhitelist:
+  - Human
+  ranks:
+  - EmberRankSCGRepresentative
+  - EmberRankSCGScientist
+  - EmberRankFederalMarshal
+  - EmberRankFederalAgent
+  - EmberRankFederalSupervisor
+  spawnRanks:
+  - EmberRankSCGRepresentative
+  - EmberRankSCGScientist
+  - EmberRankFederalMarshal
+
+- type: emberBranch
+  id: EmberBranchCivilian
+  name: ember-branch-civilian-name
+  shortName: ember-branch-civilian-short
+  emailDomain: freemail.net
+  allowCustomEmail: true
+  military: false
+  # The only branch with an employer: contractors and company staff serve nobody, they are paid.
+  allowsEmployer: true
+  speciesBlacklist:
+  - Vox
+  ranks:
+  - EmberRankCivilian
+  - EmberRankContractor
+  - EmberRankMachineAssigned
+  spawnRanks:
+  - EmberRankCivilian
+  - EmberRankContractor
+  - EmberRankMachineAssigned

@@ -4,6 +4,12 @@
   description: job-description-warden
   playTimeTracker: JobWarden
   requirements:
+  # EMBER-TODO: probe. Security is a Fleet posting under the SCG structure, and this is here to
+  # exercise the branch gate on a job that already exists. These vanilla jobs are replaced
+  # wholesale by the Ember job pass, and this requirement goes with them.
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchFleet
   - !type:CharacterPlaytimeRequirement
     tracker: JobSecurityOfficer
     min: 43200 # DeltaV - 12 hrs
@@ -22,8 +28,7 @@
     - BrittleBoneDisease
   - !type:CharacterEmployerRequirement
     employers:
-    - ZavodskoiInterstellar
-    - PMCG
+    - GraysonManufactories
     - NanoTrasen
   startingGear: WardenGear
   icon: "JobIconWarden"

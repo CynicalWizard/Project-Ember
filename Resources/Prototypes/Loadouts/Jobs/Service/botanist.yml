@@ -13,7 +13,7 @@
   requirements:
     - !type:CharacterEmployerRequirement
       employers:
-      - EastOrionCompany
+      - GraysonManufactories
     - !type:CharacterJobRequirement
       jobs:
         - Botanist
@@ -88,7 +88,7 @@
       group: LoadoutBotanistUniforms
     - !type:CharacterEmployerRequirement
       employers:
-      - IdrisIncorporated
+      - ExpeditionaryCorpsOrganisation
     - !type:CharacterJobRequirement
       jobs:
         - Botanist
@@ -105,7 +105,7 @@
       group: LoadoutBotanistUniforms
     - !type:CharacterEmployerRequirement
       employers:
-      - OrionExpress
+      - GraysonManufactories
     - !type:CharacterJobRequirement
       jobs:
         - Botanist
@@ -122,7 +122,7 @@
       group: LoadoutBotanistUniforms
     - !type:CharacterEmployerRequirement
       employers:
-      - EastOrionCompany
+      - GraysonManufactories
     - !type:CharacterJobRequirement
       jobs:
         - Botanist
@@ -139,7 +139,7 @@
       group: LoadoutBotanistUniforms
     - !type:CharacterEmployerRequirement
       employers:
-      - EastOrionCompany
+      - GraysonManufactories
     - !type:CharacterJobRequirement
       jobs:
         - Botanist

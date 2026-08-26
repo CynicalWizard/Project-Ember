@@ -1,0 +1,10 @@
+mapping-template-embermainshipjobs = Должности ГЭК «Ember»
+mapping-template-emberjobscommand = Командование
+mapping-template-emberjobsoversight = Государственный надзор
+mapping-template-emberjobssecurity = Служба безопасности
+mapping-template-emberjobsengineering = Инженерная служба
+mapping-template-emberjobsmedical = Медицинская служба
+mapping-template-emberjobsscience = Научная служба
+mapping-template-emberjobssupply = Служба снабжения
+mapping-template-emberjobshousekeeping = Хозяйственная служба
+mapping-template-emberjobsunattached = Неприкреплённый персонал

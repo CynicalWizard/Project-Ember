@@ -9,8 +9,7 @@
     min: 21600
   - !type:CharacterEmployerRequirement
     employers:
-    - OrionExpress
-    - PMCG
+    - GraysonManufactories
     - NanoTrasen
   icon: "JobIconShaftMiner"
   startingGear: SalvageSpecialistGear

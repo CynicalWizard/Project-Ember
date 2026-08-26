@@ -1,0 +1,71 @@
+# Employers: who pays the character, as opposed to who they serve in.
+#
+# Kept deliberately short. Ember is a government ship, not a corporate one, and a long list of
+# corporations tells the player "this is a corporate world" before they have read a single
+# description. Six entries plus "unemployed".
+#
+# The test for being here is not size but work: what does this employer's person do aboard? A
+# corporation with no job to fill belongs on a label — Ward-Takahashi on the terminal bezels,
+# Hephaestus on the sidearms, Gilthari on the bottles — where it does more for the world than a
+# line in a dropdown ever would.
+#
+# Only the civilian branch may have an employer at all; see Content.Shared/Ember/Ranks.
+#
+# EMBER-TODO: Deimos Advanced Information Systems joins this list when there is a network for
+# their people to run. Until then there is no job for them either.
+
+# The state-owned company through which all corporate participation in state exploration is
+# arranged. Founded as a joint platform, in practice a leash.
+- type: employer
+  id: ExpeditionaryCorpsOrganisation
+  nameKey: employer_name_eco
+  descriptionKey: employer_description_eco
+  primaryColour: "#2f4858"
+  secondaryColour: "#c9a227"
+
+- type: employer
+  id: GraysonManufactories
+  nameKey: employer_name_grayson
+  descriptionKey: employer_description_grayson
+  primaryColour: "#6b6255"
+  secondaryColour: "#2b2b2b"
+
+- type: employer
+  id: AetherAtmospherics
+  nameKey: employer_name_aether
+  descriptionKey: employer_description_aether
+  primaryColour: "#3c6e71"
+  secondaryColour: "#d9d9d9"
+
+- type: employer
+  id: Xynergy
+  nameKey: employer_name_xynergy
+  descriptionKey: employer_description_xynergy
+  primaryColour: "#5b4b8a"
+  secondaryColour: "#e0d7ef"
+
+- type: employer
+  id: ZengHuPharmaceuticals
+  nameKey: employer_name_zenghu
+  descriptionKey: employer_description_zenghu
+  primaryColour: "#7a1f2b"
+  secondaryColour: "#e8e0d5"
+
+# Present, but diminished. The reason is the Treisengate, which the description deliberately
+# does not spell out: a character-creation screen is not where the setting explains its own
+# plot. See Лор/02 in the design vault.
+- type: employer
+  id: NanoTrasen
+  nameKey: employer_name_nanotrasen
+  descriptionKey: employer_description_nanotrasen
+  primaryColour: "#3d4f66"
+  secondaryColour: "#282828"
+
+# Not an employer, but this is where it belongs: passengers, off-duty crew, anyone aboard on
+# something other than a contract.
+- type: employer
+  id: Unemployed
+  nameKey: employer_name_unemployed
+  descriptionKey: employer_description_unemployed
+  primaryColour: "#FFFFFF"
+  secondaryColour: "#000000"

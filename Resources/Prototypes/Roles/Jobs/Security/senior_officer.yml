@@ -28,10 +28,8 @@
         - BrittleBoneDisease
     - !type:CharacterEmployerRequirement
       employers:
-      - ZavodskoiInterstellar
-      - PMCG
+      - GraysonManufactories
       - NanoTrasen
-      - EastOrionCompany
   startingGear: SeniorOfficerGear
   icon: "JobIconSeniorOfficer"
   supervisors: job-supervisors-hos

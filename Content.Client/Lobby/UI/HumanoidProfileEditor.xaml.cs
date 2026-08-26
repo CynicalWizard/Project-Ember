@@ -1,4 +1,4 @@
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using System.Numerics;
 using Content.Client.Administration.UI;
@@ -18,9 +18,14 @@ using Content.Shared.Clothing.Loadouts.Prototypes;
 using Content.Shared.Clothing.Loadouts.Systems;
 using Content.Shared.Customization.Systems;
 using Content.Shared.Dataset;
+using Content.Shared.Ember.Localization;
+using Content.Shared.Ember.Background;
+using Content.Shared.Ember.Ranks;
+using Content.Shared.Ember.Roles;
 using Content.Shared.Ember.Skills;
 using Content.Shared.GameTicking;
 using Content.Shared.Guidebook;
+using Content.Shared.Ember.Humanoid;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
@@ -90,16 +95,38 @@ namespace Content.Client.Lobby.UI
         /// </summary>
         public int? CharacterSlot;
 
+        private HumanoidCharacterProfile? _profile;
+
         /// <summary>
         /// The work in progress profile being edited.
         /// </summary>
-        public HumanoidCharacterProfile? Profile;
+        /// <remarks>
+        /// Ember: a property rather than a field so the personnel record redraws wherever the
+        /// profile is written. Hanging that off a preview method instead looked equivalent and was
+        /// not: there are two of them, most edits call one, and picking a service called neither -
+        /// so the record quietly disagreed with the controls right beside it.
+        /// </remarks>
+        public HumanoidCharacterProfile? Profile
+        {
+            get => _profile;
+            set
+            {
+                _profile = value;
+                Dossier?.Update(value);
+            }
+        }
 
         private List<SpeciesPrototype> _species = new();
         // EE - Contractor System Changes Start
-        private List<NationalityPrototype> _nationalies = new();
         private List<EmployerPrototype> _employers = new();
-        private List<LifepathPrototype> _lifepaths = new();
+
+        // Ember: one list per background axis, keyed by the axis, so the four dropdowns share a
+        // code path instead of each one owning a copy of the previous one's hundred lines.
+        private readonly Dictionary<EmberBackgroundAxis, List<EmberBackgroundPrototype>> _backgrounds = new();
+
+        // Ember: branches and the ranks selectable inside the currently chosen one.
+        private List<EmberBranchPrototype> _branches = new();
+        private List<EmberRankPrototype> _ranks = new();
         // EE - Contractor System Changes End
 
         private Dictionary<Button, ConfirmationData> _confirmationData = new();
@@ -112,8 +139,6 @@ namespace Content.Client.Lobby.UI
         private bool _customizeBorgName;
 
         private List<(string, RequirementsSelector)> _jobPriorities = new();
-        private SkillSetupWindow? _skillSetupWindow;
-        private JobPrototype? _skillSetupJob;
 
         private readonly Dictionary<string, BoxContainer> _jobCategories;
 
@@ -200,8 +225,12 @@ namespace Content.Client.Lobby.UI
 
             #region Appearance
 
-            Appearance.Orphan();
-            CTabContainer.AddTab(Appearance, Loc.GetString("humanoid-profile-editor-appearance-tab"));
+            // Ember: sections are added in the order the questions depend on each other - who
+            // the character is, where they come from, who posted them, what they do, and only
+            // then what they look like and what they carry. Appearance is added further down,
+            // after the antagonist section, for that reason.
+            Identity.Orphan();
+            CTabContainer.AddTab(Identity, Loc.GetString("humanoid-profile-editor-identity-tab"));
 
             #region Sex
 
@@ -224,24 +253,6 @@ namespace Content.Client.Lobby.UI
             };
 
             #endregion Age
-
-            #region Gender
-
-            PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-male-text"), (int) Gender.Male);
-            PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-female-text"), (int) Gender.Female);
-            PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-epicene-text"), (int) Gender.Epicene);
-            PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-neuter-text"), (int) Gender.Neuter);
-
-            PronounsButton.OnItemSelected += args =>
-            {
-                PronounsButton.SelectId(args.Id);
-                SetGender((Gender) args.Id);
-
-                if (Profile?.DisplayPronouns == null)
-                    UpdateDisplayPronounsControls();
-            };
-
-            #endregion Gender
 
             #region Cosmetic Pronouns
 
@@ -297,26 +308,23 @@ namespace Content.Client.Lobby.UI
                 Background.Orphan();
                 CTabContainer.AddTab(Background, Loc.GetString("humanoid-profile-editor-background-tab"));
 
-                RefreshNationalities();
+                RefreshBackgrounds();
                 RefreshEmployers();
-                RefreshLifepaths();
 
-                NationalityButton.OnItemSelected += args =>
+                foreach (var (axis, button) in BackgroundButtons)
                 {
-                    NationalityButton.SelectId(args.Id);
-                    SetNationality(_nationalies[args.Id].ID);
-                };
+                    var boundAxis = axis;
+                    button.OnItemSelected += args =>
+                    {
+                        button.SelectId(args.Id);
+                        SetBackground(boundAxis, _backgrounds[boundAxis][args.Id].ID);
+                    };
+                }
 
                 EmployerButton.OnItemSelected += args =>
                 {
                     EmployerButton.SelectId(args.Id);
                     SetEmployer(_employers[args.Id].ID);
-                };
-
-                LifepathButton.OnItemSelected += args =>
-                {
-                    LifepathButton.SelectId(args.Id);
-                    SetLifepath(_lifepaths[args.Id].ID);
                 };
             }
             else
@@ -503,6 +511,29 @@ namespace Content.Client.Lobby.UI
             #region Jobs
 
             Jobs.Orphan();
+            LegacyJobsToggle.OnToggled += args => LegacyJobList.Visible = args.Pressed;
+
+            BranchButton.OnItemSelected += args =>
+            {
+                BranchButton.SelectId(args.Id);
+                SetBranch(args.Id == 0 ? null : _branches[args.Id - 1].ID);
+            };
+
+            RankButton.OnItemSelected += args =>
+            {
+                RankButton.SelectId(args.Id);
+                SetRank(args.Id == 0 ? null : _ranks[args.Id - 1].ID);
+            };
+
+            RefreshBranches();
+
+            // Ember: service comes before the post list, because who posted you decides which
+            // posts you can be given. Orphaned first like every other tab - XAML parents these to
+            // the container and AddTab re-adds them, which throws on a control that still has a
+            // parent.
+            Service.Orphan();
+            CTabContainer.AddTab(Service, Loc.GetString("humanoid-profile-editor-service-tab"));
+
             CTabContainer.AddTab(Jobs, Loc.GetString("humanoid-profile-editor-jobs-tab"));
 
             PreferenceUnavailableButton.AddItem(
@@ -531,20 +562,27 @@ namespace Content.Client.Lobby.UI
             Antags.Orphan();
             CTabContainer.AddTab(Antags, Loc.GetString("humanoid-profile-editor-antags-tab"));
 
+            Appearance.Orphan(); // Ember: added here, not where it is declared - see above.
+            CTabContainer.AddTab(Appearance, Loc.GetString("humanoid-profile-editor-appearance-tab"));
+
             #endregion Antags
 
             #region Traits
 
-            // Set up the traits tab
-            TraitsTab.Orphan();
-            CTabContainer.AddTab(TraitsTab, Loc.GetString("humanoid-profile-editor-traits-tab"));
+            // Set up the traits column. Ember: traits and loadouts share one tab now, so the
+            // section is added once, here, and each column hides itself on its own CVar.
+            Outfit.Orphan();
+            CTabContainer.AddTab(Outfit, Loc.GetString("humanoid-profile-editor-loadouts-tab"));
             _traitPreferences = new List<TraitPreferenceSelector>();
 
-            // Show/Hide the traits tab if they ever get enabled/disabled
+            // Show/Hide the traits column if they ever get enabled/disabled
             var traitsEnabled = cfgManager.GetCVar(CCVars.GameTraitsEnabled);
-            CTabContainer.SetTabVisible(3, traitsEnabled);
-            cfgManager.OnValueChanged(CCVars.GameTraitsEnabled,
-                enabled => CTabContainer.SetTabVisible(3, enabled));
+            TraitsTab.Visible = traitsEnabled;
+            cfgManager.OnValueChanged(CCVars.GameTraitsEnabled, enabled =>
+            {
+                TraitsTab.Visible = enabled;
+                UpdateOutfitVisible();
+            });
 
             TraitsShowUnusableButton.OnToggled += args => UpdateTraits(args.Pressed);
             TraitsRemoveUnusableButton.OnPressed += _ => TryRemoveUnusableTraits();
@@ -555,15 +593,14 @@ namespace Content.Client.Lobby.UI
 
             #region Loadouts
 
-            // Set up the loadouts tab
-            LoadoutsTab.Orphan();
-            CTabContainer.AddTab(LoadoutsTab, Loc.GetString("humanoid-profile-editor-loadouts-tab"));
+            // Set up the loadouts column
             _loadoutPreferences = new();
 
-            // Show/Hide the loadouts tab if they ever get enabled/disabled
+            // Show/Hide the loadouts column if they ever get enabled/disabled
             var loadoutsEnabled = cfgManager.GetCVar(CCVars.GameLoadoutsEnabled);
-            CTabContainer.SetTabVisible(4, loadoutsEnabled);
+            LoadoutsTab.Visible = loadoutsEnabled;
             ShowLoadouts.Visible = loadoutsEnabled;
+            UpdateOutfitVisible();
             cfgManager.OnValueChanged(CCVars.GameLoadoutsEnabled, LoadoutsChanged);
 
             LoadoutsShowUnusableButton.OnToggled += args => UpdateLoadouts(args.Pressed);
@@ -575,9 +612,8 @@ namespace Content.Client.Lobby.UI
 
             #region Markings
 
-            MarkingsTab.Orphan();
-            CTabContainer.AddTab(MarkingsTab, Loc.GetString("humanoid-profile-editor-markings-tab"));
-
+            // Ember: no tab of its own any more - the marking picker sits in Appearance, beside
+            // the hair pickers it was always the other half of.
             Markings.OnMarkingAdded += OnMarkingChange;
             Markings.OnMarkingRemoved += OnMarkingChange;
             Markings.OnMarkingColorChange += OnMarkingChange;
@@ -604,7 +640,14 @@ namespace Content.Client.Lobby.UI
         /// </summary>
         public void RefreshFlavorText()
         {
-            if (_cfgManager.GetCVar(CCVars.FlavorText))
+            // Ember: the description is a column of the identity section now, not a tab of its
+            // own, so the heading has to be hidden by hand - as a tab it went away with the CVar,
+            // and a caption over an empty half of the section is not a disabled feature. Set
+            // before the early returns, because the very first call arrives with nothing built.
+            var enabled = _cfgManager.GetCVar(CCVars.FlavorText);
+            FlavorTextColumn.Visible = enabled;
+
+            if (enabled)
             {
                 if (_flavorText != null)
                     return;
@@ -613,14 +656,20 @@ namespace Content.Client.Lobby.UI
                 _flavorText.OnFlavorTextChanged += OnFlavorTextChange;
                 _flavorTextEdit = _flavorText.CFlavorTextInput;
 
-                CTabContainer.AddTab(_flavorText, Loc.GetString("humanoid-profile-editor-flavortext-tab"));
+                // Prose about a character belongs next to the fields it elaborates on, and a text
+                // box is the one control glad to take whatever width the form does not want.
+                // The control's own root does not expand - as a tab it was given the whole
+                // pane and never needed to - so as a column it has to be told, or the text box
+                // stays at its hundred-pixel minimum and clips the second sentence.
+                _flavorText.VerticalExpand = true;
+                FlavorTextContainer.AddChild(_flavorText);
             }
             else
             {
                 if (_flavorText == null)
                     return;
 
-                CTabContainer.RemoveChild(_flavorText);
+                FlavorTextContainer.RemoveChild(_flavorText);
                 _flavorText.OnFlavorTextChanged -= OnFlavorTextChange;
                 _flavorText.Dispose();
                 _flavorText = null;
@@ -672,38 +721,148 @@ namespace Content.Client.Lobby.UI
                 SetSpecies(SharedHumanoidAppearanceSystem.DefaultSpecies);
         }
 
-                public void RefreshNationalities()
+        /// <summary>
+        /// The dropdown that answers each axis. Ember: paired here rather than in four fields so
+        /// that adding a fifth axis is one line in two places instead of a new copy of everything.
+        /// </summary>
+        private IEnumerable<(EmberBackgroundAxis, OptionButton)> BackgroundButtons
         {
-            NationalityButton.Clear();
-            _nationalies.Clear();
-
-            _nationalies.AddRange(_prototypeManager.EnumeratePrototypes<NationalityPrototype>()
-                .Where(o => _characterRequirementsSystem.CheckRequirementsValid(o.Requirements,
-                    _controller.GetPreferredJob(Profile ?? HumanoidCharacterProfile.DefaultWithSpecies()),
-                    Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(),
-                    _requirements.GetRawPlayTimeTrackers(),
-                    _requirements.IsWhitelisted(),
-                    o,
-                    _entManager,
-                    _prototypeManager,
-                    _cfgManager, out _)));
-
-            var nationalityIds = _nationalies.Select(o => o.ID).ToList();
-
-            for (var i = 0; i < _nationalies.Count; i++)
+            get
             {
-                NationalityButton.AddItem(Loc.GetString(_nationalies[i].NameKey), i);
+                yield return (EmberBackgroundAxis.Homeworld, HomeworldButton);
+                yield return (EmberBackgroundAxis.Culture, CultureButton);
+                yield return (EmberBackgroundAxis.Faction, FactionButton);
+                yield return (EmberBackgroundAxis.Religion, ReligionButton);
+            }
+        }
 
-                if (Profile?.Nationality == _nationalies[i].ID)
-                    NationalityButton.SelectId(i);
+        private RichTextLabel BackgroundDescriptionLabel(EmberBackgroundAxis axis) => axis switch
+        {
+            EmberBackgroundAxis.Homeworld => HomeworldDescriptionLabel,
+            EmberBackgroundAxis.Culture => CultureDescriptionLabel,
+            EmberBackgroundAxis.Faction => FactionDescriptionLabel,
+            EmberBackgroundAxis.Religion => ReligionDescriptionLabel,
+            _ => throw new ArgumentOutOfRangeException(nameof(axis), axis, null),
+        };
+
+        private ProtoId<EmberBackgroundPrototype> ProfileBackground(EmberBackgroundAxis axis) => axis switch
+        {
+            EmberBackgroundAxis.Homeworld => Profile!.Homeworld,
+            EmberBackgroundAxis.Culture => Profile!.Culture,
+            EmberBackgroundAxis.Faction => Profile!.Faction,
+            EmberBackgroundAxis.Religion => Profile!.Religion,
+            _ => throw new ArgumentOutOfRangeException(nameof(axis), axis, null),
+        };
+
+        private static ProtoId<EmberBackgroundPrototype> DefaultBackground(EmberBackgroundAxis axis) => axis switch
+        {
+            EmberBackgroundAxis.Homeworld => SharedHumanoidAppearanceSystem.DefaultHomeworld,
+            EmberBackgroundAxis.Culture => SharedHumanoidAppearanceSystem.DefaultCulture,
+            EmberBackgroundAxis.Faction => SharedHumanoidAppearanceSystem.DefaultFaction,
+            EmberBackgroundAxis.Religion => SharedHumanoidAppearanceSystem.DefaultReligion,
+            _ => throw new ArgumentOutOfRangeException(nameof(axis), axis, null),
+        };
+
+        public void RefreshBackgrounds()
+        {
+            foreach (var (axis, button) in BackgroundButtons)
+                RefreshBackground(axis, button);
+        }
+
+        private void RefreshBackground(EmberBackgroundAxis axis, OptionButton button)
+        {
+            button.Clear();
+
+            // The species filter runs here rather than through the requirement system because it
+            // is the only requirement that can be answered without a job, and it is the one that
+            // decides whether the row is offered at all.
+            var available = SharedEmberBackgroundSystem.GetSelectable(
+                _prototypeManager, axis, Profile?.Species);
+
+            _backgrounds[axis] = available;
+
+            for (var i = 0; i < available.Count; i++)
+            {
+                button.AddItem(Loc.GetString(available[i].Name), i);
+
+                if (Profile != null && ProfileBackground(axis) == available[i].ID)
+                    button.SelectId(i);
             }
 
-            // If our nationality isn't available, reset it to default
-            if (Profile != null && !nationalityIds.Contains(Profile.Nationality))
-                SetNationality(SharedHumanoidAppearanceSystem.DefaultNationality);
+            if (Profile == null)
+                return;
 
-            if(Profile != null)
-                UpdateNationalityDescription(Profile.Nationality);
+            // A saved choice the character can no longer hold - most often because the species
+            // changed - falls back rather than leaving the dropdown showing something it does not
+            // have. EnsureValid does the same on load; this is the lobby's half of it.
+            //
+            // Corrected in place rather than through SetBackground, which raises the whole
+            // character-changed cascade and lands back in here. With a fallback that did not fit
+            // the species either - Mars for a tajaran - the two took turns correcting each other
+            // until the client hung. Resolve now guarantees an answer the species can hold, and
+            // this path no longer re-enters even if it could not.
+            var current = ProfileBackground(axis);
+            var resolved = SharedEmberBackgroundSystem.Resolve(
+                _prototypeManager, current, axis, Profile.Species, DefaultBackground(axis));
+
+            if (resolved != current)
+            {
+                AssignBackground(axis, resolved);
+                IsDirty = true;
+                ReloadProfilePreview();
+
+                for (var i = 0; i < available.Count; i++)
+                {
+                    if (available[i].ID == resolved)
+                        button.SelectId(i);
+                }
+            }
+
+            UpdateBackgroundDescription(axis, resolved);
+        }
+
+        private void UpdateBackgroundDescription(EmberBackgroundAxis axis, ProtoId<EmberBackgroundPrototype> id)
+        {
+            if (!_prototypeManager.TryIndex(id, out EmberBackgroundPrototype? prototype))
+                return;
+
+            // The details line - capital, distance, who governs it - reads as a header above the
+            // prose rather than as part of it, which is how Bay formats the same three facts.
+            var text = prototype.Details is { } details
+                ? $"[color=#888888]{Loc.GetString(details)}[/color]" + "\n" + Loc.GetString(prototype.Description)
+                : Loc.GetString(prototype.Description);
+
+            BackgroundDescriptionLabel(axis).SetMessage(FormattedMessage.FromMarkupOrThrow(text));
+        }
+
+        /// <summary>
+        /// Writes one axis onto the profile and does nothing else.
+        /// </summary>
+        /// <remarks>
+        /// Split out of <see cref="SetBackground"/> so a correction made while the dropdowns are
+        /// being rebuilt can store its answer without asking for another rebuild from inside the
+        /// one already running.
+        /// </remarks>
+        private void AssignBackground(EmberBackgroundAxis axis, ProtoId<EmberBackgroundPrototype> id)
+        {
+            Profile = axis switch
+            {
+                EmberBackgroundAxis.Homeworld => Profile?.WithHomeworld(id),
+                EmberBackgroundAxis.Culture => Profile?.WithCulture(id),
+                EmberBackgroundAxis.Faction => Profile?.WithFaction(id),
+                EmberBackgroundAxis.Religion => Profile?.WithReligion(id),
+                _ => throw new ArgumentOutOfRangeException(nameof(axis), axis, null),
+            };
+        }
+
+        private void SetBackground(EmberBackgroundAxis axis, ProtoId<EmberBackgroundPrototype> id)
+        {
+            AssignBackground(axis, id);
+
+            UpdateCharacterRequired();
+            IsDirty = true;
+            ReloadProfilePreview();
+            UpdateBackgroundDescription(axis, id);
         }
 
         public void RefreshEmployers()
@@ -732,58 +891,163 @@ namespace Content.Client.Lobby.UI
                     EmployerButton.SelectId(i);
             }
 
-            // If our employer isn't available, reset it to default
+            // If our employer isn't available, reset it to default.
+            //
+            // Ember: assigned rather than set, for the reason the background axes were changed -
+            // SetEmployer raises the character-changed cascade, which refreshes employers, which
+            // lands back here. It survives today only because the default happens to pass its own
+            // requirements; the day it does not, this hangs the client exactly as the homeworld
+            // axis did.
             if (Profile != null && !employerIds.Contains(Profile.Employer))
-                SetEmployer(SharedHumanoidAppearanceSystem.DefaultEmployer);
+            {
+                Profile = Profile.WithEmployer(SharedHumanoidAppearanceSystem.DefaultEmployer);
+                IsDirty = true;
+                ReloadProfilePreview();
+                ReloadClothes();
+                UpdateEmployerDescription(SharedHumanoidAppearanceSystem.DefaultEmployer);
+            }
 
             if(Profile != null)
                 UpdateEmployerDescription(Profile.Employer);
         }
 
-        public void RefreshLifepaths()
+        /// <summary>
+        /// Ember: branches the character's species may join. An unaffiliated character is a
+        /// legal state, so the list always carries a "none" entry at the top.
+        /// </summary>
+        public void RefreshBranches()
         {
-            LifepathButton.Clear();
-            _lifepaths.Clear();
+            BranchButton.Clear();
+            _branches.Clear();
 
-            _lifepaths.AddRange(_prototypeManager.EnumeratePrototypes<LifepathPrototype>()
-                .Where(o => _characterRequirementsSystem.CheckRequirementsValid(o.Requirements,
-                _controller.GetPreferredJob(Profile ?? HumanoidCharacterProfile.DefaultWithSpecies()),
-                Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(),
-                _requirements.GetRawPlayTimeTrackers(),
-                _requirements.IsWhitelisted(),
-                o,
-                _entManager,
-                _prototypeManager,
-                _cfgManager, out _)));
+            var species = Profile?.Species;
 
-            var lifepathIds = _lifepaths.Select(o => o.ID).ToList();
+            _branches.AddRange(_prototypeManager.EnumeratePrototypes<EmberBranchPrototype>()
+                .Where(branch => SharedEmberRanksSystem.IsBranchAllowed(branch, species))
+                .OrderBy(branch => Loc.GetString(branch.Name)));
 
-            for (var i = 0; i < _lifepaths.Count; i++)
+            BranchButton.AddItem(Loc.GetString("humanoid-profile-editor-branch-none"), 0);
+            BranchButton.SelectId(0);
+
+            for (var i = 0; i < _branches.Count; i++)
             {
-                LifepathButton.AddItem(Loc.GetString(_lifepaths[i].NameKey), i);
+                BranchButton.AddItem(Loc.GetString(_branches[i].Name), i + 1);
 
-                if (Profile?.Lifepath == _lifepaths[i].ID)
-                    LifepathButton.SelectId(i);
+                if (Profile?.Branch == _branches[i].ID)
+                    BranchButton.SelectId(i + 1);
             }
 
-            // If our lifepath isn't available, reset it to default
-            if (Profile != null && !lifepathIds.Contains(Profile.Lifepath))
-                SetLifepath(SharedHumanoidAppearanceSystem.DefaultLifepath);
-
-            if(Profile != null)
-                UpdateLifepathDescription(Profile.Lifepath);
+            // A branch that stopped being available takes the rank with it: a rank only means
+            // anything inside its own branch.
+            if (Profile?.Branch is { } current && _branches.All(branch => branch.ID != current))
+            {
+                SetBranch(null);
+            }
+            else
+            {
+                RefreshRanks();
+                UpdateEmployerAvailability();
+            }
         }
 
-        private void UpdateNationalityDescription(string nationality)
+        /// <summary>
+        /// Ember: ranks selectable in the chosen branch. Empty and disabled without a branch,
+        /// because a rank outside one is meaningless.
+        /// </summary>
+        public void RefreshRanks()
         {
-            var prototype = _prototypeManager.Index<NationalityPrototype>(nationality);
-            NationalityDescriptionLabel.SetMessage(Loc.GetString(prototype.DescriptionKey));
+            RankButton.Clear();
+            _ranks.Clear();
+
+            RankButton.AddItem(Loc.GetString("humanoid-profile-editor-rank-none"), 0);
+            RankButton.SelectId(0);
+
+            var branchId = Profile?.Branch;
+            if (branchId is null || !_prototypeManager.TryIndex(branchId.Value, out var branch))
+            {
+                RankButton.Disabled = true;
+                return;
+            }
+
+            RankButton.Disabled = false;
+            var species = Profile?.Species;
+
+            _ranks.AddRange(branch.Ranks
+                .Select(id => _prototypeManager.TryIndex(id, out var rank) ? rank : null)
+                .Where(rank => rank != null
+                    && SharedEmberRanksSystem.IsRankSelectable(branch, rank, species, Profile?.Age))
+                .Select(rank => rank!)
+                .OrderBy(rank => rank.SortOrder)
+                .ThenBy(rank => Loc.GetString(rank.Name)));
+
+            for (var i = 0; i < _ranks.Count; i++)
+            {
+                RankButton.AddItem(GetRankLabel(_ranks[i]), i + 1);
+
+                if (Profile?.Rank == _ranks[i].ID)
+                    RankButton.SelectId(i + 1);
+            }
+
+            if (Profile?.Rank is { } currentRank && _ranks.All(rank => rank.ID != currentRank))
+                SetRank(null);
         }
 
-        private void UpdateLifepathDescription(string lifepath)
+        /// <summary>
+        /// "E-5 Petty Officer Second Class" — the grade is what people actually compare, so it
+        /// leads. Ungraded appointments simply show their name.
+        /// </summary>
+        private static string GetRankLabel(EmberRankPrototype rank)
         {
-            var prototype = _prototypeManager.Index<LifepathPrototype>(lifepath);
-            LifepathDescriptionLabel.SetMessage(Loc.GetString(prototype.DescriptionKey));
+            var name = Loc.GetString(rank.Name);
+            return rank.Grade.Length == 0 ? name : $"{rank.Grade} {name}";
+        }
+
+        private void SetBranch(ProtoId<EmberBranchPrototype>? branch)
+        {
+            Profile = Profile?.WithBranch(branch);
+            IsDirty = true;
+            RefreshRanks();
+            UpdateEmployerAvailability();
+            UpdateJobPriorities();
+        }
+
+        /// <summary>
+        /// Ember: a posting and a payroll are alternatives, and the section says which one applies
+        /// rather than leaving a greyed-out control for the player to wonder about.
+        /// </summary>
+        /// <remarks>
+        /// The employer row is hidden rather than disabled. A disabled dropdown states that the
+        /// option exists and is being withheld, which is the wrong claim: a person the state
+        /// posted has no employer to choose, and the line explaining that says more than a grey
+        /// control ever did.
+        /// </remarks>
+        private void UpdateEmployerAvailability()
+        {
+            EmberBranchPrototype? branch = null;
+            if (Profile?.Branch is { } branchId)
+                _prototypeManager.TryIndex(branchId, out branch);
+
+            var allowed = SharedEmberRanksSystem.AllowsEmployer(branch);
+
+            EmployerRow.Visible = allowed;
+            EmployerDescriptionLabel.Visible = allowed;
+            EmployerButton.Disabled = !allowed;
+
+            BranchDescriptionLabel.SetMessage(branch == null
+                ? string.Empty
+                : Loc.GetString(allowed
+                    ? "humanoid-profile-editor-service-note-hired"
+                    : "humanoid-profile-editor-service-note-posted"));
+
+            if (!allowed && Profile?.Employer != SharedEmberRanksSystem.NoEmployer)
+                SetEmployer(SharedEmberRanksSystem.NoEmployer);
+        }
+
+        private void SetRank(ProtoId<EmberRankPrototype>? rank)
+        {
+            Profile = Profile?.WithRank(rank);
+            IsDirty = true;
+            UpdateJobPriorities();
         }
 
         private void UpdateEmployerDescription(string employer)
@@ -934,7 +1198,6 @@ namespace Content.Client.Lobby.UI
             UpdateNameEdit();
             UpdateFlavorTextEdit();
             UpdateSexControls();
-            UpdateGenderControls();
             UpdateDisplayPronounsControls();
             UpdateStationAiControls();
             UpdateCyborgControls();
@@ -957,9 +1220,9 @@ namespace Content.Client.Lobby.UI
             RefreshJobs();
             UpdateSkills();
             RefreshSpecies();
-            RefreshNationalities();
+            RefreshBackgrounds();
             RefreshEmployers();
-            RefreshLifepaths();
+            RefreshBranches(); // Ember
             RefreshFlavorText();
             ReloadPreview();
 
@@ -994,8 +1257,22 @@ namespace Content.Client.Lobby.UI
 
         private void LoadoutsChanged(bool enabled)
         {
-            CTabContainer.SetTabVisible(4, enabled);
+            LoadoutsTab.Visible = enabled;
             ShowLoadouts.Visible = enabled;
+            UpdateOutfitVisible();
+        }
+
+        /// <summary>
+        /// The merged traits-and-loadouts section is worth showing while either half is enabled.
+        /// </summary>
+        /// <remarks>
+        /// Ember: these were two tabs with a CVar each, so each one simply hid itself. Merged, an
+        /// empty tab is possible for the first time - both CVars off - and a tab holding nothing
+        /// reads as a broken editor rather than as a disabled feature.
+        /// </remarks>
+        private void UpdateOutfitVisible()
+        {
+            CTabContainer.SetTabVisible(Outfit, TraitsTab.Visible || LoadoutsTab.Visible);
         }
 
         private void OnSpeciesInfoButtonPressed(BaseButton.ButtonEventArgs args)
@@ -1025,8 +1302,10 @@ namespace Content.Client.Lobby.UI
         public void RefreshJobs()
         {
             JobList.DisposeAllChildren();
+            LegacyJobList.DisposeAllChildren();
             _jobCategories.Clear();
             _jobPriorities.Clear();
+            var legacyCount = 0;
 
             // Get all displayed departments
             var departments = new List<DepartmentPrototype>();
@@ -1053,6 +1332,15 @@ namespace Content.Client.Lobby.UI
             {
                 var departmentName = Loc.GetString(department.Name);
 
+                // Ember: everything of ours is prefixed, so anything that is not is a department
+                // inherited from an upstream fork - another station's crew, on a ship that has
+                // none of those posts. They are folded away rather than deleted because maps and
+                // round-start spawners still name them; the prefix test disappears on its own
+                // once those go, because the fold will have nothing left to hold.
+                var legacy = !department.ID.StartsWith("Ember", StringComparison.Ordinal);
+                if (legacy)
+                    legacyCount++;
+
                 if (!_jobCategories.TryGetValue(department.ID, out var category))
                 {
                     category = new AlternatingBGContainer
@@ -1076,7 +1364,7 @@ namespace Content.Client.Lobby.UI
 
                     firstCategory = false;
                     _jobCategories[department.ID] = category;
-                    JobList.AddChild(category);
+                    (legacy ? LegacyJobList : JobList).AddChild(category);
                 }
 
                 var jobs = department.Roles.Select(jobId => _prototypeManager.Index(jobId))
@@ -1090,17 +1378,6 @@ namespace Content.Client.Lobby.UI
                     var jobContainer = new BoxContainer { Orientation = LayoutOrientation.Horizontal, HorizontalExpand = true, };
                     var selector = new RequirementsSelector { Margin = new(3f, 3f, 3f, 0f), HorizontalExpand = true, };
                     selector.OnOpenGuidebook += OnOpenGuidebook;
-                    var skillsButton = new Button
-                    {
-                        Text = Loc.GetString("humanoid-profile-editor-job-skills-button"),
-                        MinWidth = 90,
-                        Margin = new(3f, 3f, 3f, 0f),
-                        VerticalAlignment = VAlignment.Center,
-                        ToolTip = Loc.GetString("humanoid-profile-editor-job-skills-button-tooltip",
-                            ("job", job.LocalizedName)),
-                    };
-                    skillsButton.OnPressed += _ => OpenSkillSetup(job);
-
                     var icon = new TextureRect
                     {
                         TextureScale = new(2, 2),
@@ -1108,24 +1385,14 @@ namespace Content.Client.Lobby.UI
                     };
                     var jobIcon = _prototypeManager.Index(job.Icon);
                     icon.Texture = jobIcon.Icon.Frame0();
-                    selector.Setup(items, job.LocalizedName, 200, job.LocalizedDescription, icon, job.Guides);
+                    // Ember: compact - forty-four rows of four named buttons cost 360 pixels each
+                    // and left the posts' own names clipped. Antagonists keep the named form:
+                    // "yes" and "no" are not a scale, and there are few enough rows to afford it.
+                    selector.Setup(items, job.LocalizedName, 200, job.LocalizedDescription, icon,
+                        job.Guides, compact: true);
+                    SetupJobTitles(job, selector); // Ember
 
-                    if (!_requirements.CheckJobWhitelist(job, out var reason))
-                        selector.LockRequirements(reason);
-                    else if (!_characterRequirementsSystem.CheckRequirementsValid(
-                        _roleSystem.GetJobRequirement(job) ?? new(),
-                        job,
-                        Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(),
-                        _requirements.GetRawPlayTimeTrackers(),
-                        _requirements.IsWhitelisted(),
-                        job,
-                        _entManager,
-                        _prototypeManager,
-                        _cfgManager,
-                        out var reasons))
-                        selector.LockRequirements(_characterRequirementsSystem.GetRequirementsText(reasons));
-                    else
-                        selector.UnlockRequirements();
+                    UpdateJobLock(job, selector);
 
                     selector.OnSelected += selectedPrio =>
                     {
@@ -1159,12 +1426,98 @@ namespace Content.Client.Lobby.UI
 
                     _jobPriorities.Add((job.ID, selector));
                     jobContainer.AddChild(selector);
-                    jobContainer.AddChild(skillsButton);
                     category.AddChild(jobContainer);
                 }
             }
 
+            // Nothing to fold away means no reason to offer the fold.
+            LegacyJobsToggle.Visible = legacyCount > 0;
+            if (legacyCount == 0)
+            {
+                LegacyJobsToggle.Pressed = false;
+                LegacyJobList.Visible = false;
+            }
+
             UpdateJobPriorities();
+        }
+
+        /// <summary>
+        /// Locks a job's row and says why, or unlocks it.
+        /// </summary>
+        /// <remarks>
+        /// Ember: pulled out of <see cref="RefreshJobs"/> so that a change which affects one row
+        /// can redo one row. Rebuilding the whole list from inside a control's own event handler
+        /// disposes the control mid-callback, which is a crash waiting for someone to click the
+        /// wrong thing.
+        /// </remarks>
+        private void UpdateJobLock(JobPrototype job, RequirementsSelector selector)
+        {
+            if (!_requirements.CheckJobWhitelist(job, out var reason))
+                selector.LockRequirements(reason);
+            else if (!_characterRequirementsSystem.CheckRequirementsValid(
+                _roleSystem.GetJobRequirement(job) ?? new(),
+                job,
+                Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(),
+                _requirements.GetRawPlayTimeTrackers(),
+                _requirements.IsWhitelisted(),
+                job,
+                _entManager,
+                _prototypeManager,
+                _cfgManager,
+                out var reasons))
+                selector.LockRequirements(_characterRequirementsSystem.GetRequirementsText(reasons));
+            else
+                selector.UnlockRequirements();
+        }
+
+        /// <summary>
+        /// Ember: turns a job's row name into a dropdown when the job has more than one name.
+        /// </summary>
+        /// <remarks>
+        /// The job's own name is the first entry rather than a blank one. "Engineer" is a real
+        /// answer, it reads better than an empty box, and it keeps the stored value honest —
+        /// picking it means no entry in the profile at all.
+        ///
+        /// Jobs with no alternate names are left exactly as they were: the list comes back empty
+        /// and the plain label stays.
+        /// </remarks>
+        private void SetupJobTitles(JobPrototype job, RequirementsSelector selector)
+        {
+            var titles = SharedEmberJobTitleSystem
+                .GetSelectableTitles(job, Profile?.Species, Profile?.Age)
+                .ToArray();
+
+            if (titles.Length == 0)
+                return;
+
+            var entries = new List<(string, string?)>(titles.Length + 1)
+            {
+                (job.LocalizedName, job.LocalizedDescription),
+            };
+
+            var gender = Profile?.Gender ?? Gender.Epicene;
+
+            foreach (var title in titles)
+            {
+                entries.Add((
+                    EmberGenderedName.Localize(title.Name, title.NameMale, title.NameFemale, gender),
+                    title.Description is { } description
+                        ? Loc.GetString(description)
+                        : job.LocalizedDescription));
+            }
+
+            var stored = Profile?.GetJobTitle(job.ID);
+            selector.SetupTitles(entries, Array.FindIndex(titles, title => title.Id == stored) + 1);
+
+            selector.OnTitleSelected += index =>
+            {
+                Profile = Profile?.WithJobTitle(job.ID, index == 0 ? null : titles[index - 1].Id);
+
+                // A name may ask for skills the job does not, so the row can lock or unlock on
+                // this alone. Only this row can change, and only this row is redone.
+                UpdateJobLock(job, selector);
+                SetDirty();
+            };
         }
 
         private void OnFlavorTextChange(string content)
@@ -1279,9 +1632,6 @@ namespace Content.Client.Lobby.UI
             if (!disposing)
                 return;
 
-            _skillSetupWindow?.Close();
-            _skillSetupWindow = null;
-            _skillSetupJob = null;
 
             _entManager.DeleteEntity(PreviewDummy);
             PreviewDummy = EntityUid.Invalid;
@@ -1293,35 +1643,26 @@ namespace Content.Client.Lobby.UI
         {
             Profile = Profile?.WithAge(newAge);
             UpdateSkills();
+            // Ember: ranks carry an age floor and the point budget moves with age, but so do the
+            // jobs themselves — a post may state a minimum, and a job title may stand for years
+            // of schooling. Age is the one field that reaches all three.
+            RefreshRanks();
+            RefreshJobs();
             ReloadPreview();
         }
 
         private void SetSex(Sex newSex)
         {
-            Profile = Profile?.WithSex(newSex);
-            // for convenience, default to most common gender when new sex is selected
-            switch (newSex)
-            {
-                case Sex.Male:
-                    Profile = Profile?.WithGender(Gender.Male);
-                    break;
-                case Sex.Female:
-                    Profile = Profile?.WithGender(Gender.Female);
-                    break;
-                default:
-                    Profile = Profile?.WithGender(Gender.Epicene);
-                    break;
-            }
+            // Ember: sex carries the pronouns with it - there is no separate choice to keep in
+            // step any more, and EmberPronouns is the same mapping the server applies on load.
+            Profile = Profile?.WithSex(newSex).WithGender(EmberPronouns.GenderFor(newSex));
 
-            UpdateGenderControls();
+            UpdateDisplayPronounsControls();
+            // Ember: a job title may have a form per gender — «медсестра» against «медбрат» — so
+            // the words in the job list change with sex, now that gender follows from it.
+            RefreshJobs();
             Markings.SetSex(newSex);
             ReloadProfilePreview();
-        }
-
-        private void SetGender(Gender newGender)
-        {
-            Profile = Profile?.WithGender(newGender);
-            ReloadPreview();
         }
 
         private void SetDisplayPronouns(string? displayPronouns)
@@ -1370,18 +1711,9 @@ namespace Content.Client.Lobby.UI
             UpdateWeight();
             UpdateSpeciesGuidebookIcon();
             UpdateSkills();
+            RefreshBranches(); // Ember: a species may not be admitted to the current branch.
             ReloadProfilePreview();
             ReloadClothes(); // Species may have job-specific gear, reload the clothes
-        }
-
-        private void SetNationality(string newNationality)
-        {
-            Profile = Profile?.WithNationality(newNationality);
-            UpdateCharacterRequired();
-            IsDirty = true;
-            ReloadProfilePreview();
-            ReloadClothes(); // Nationalities may have specific gear, reload the clothes
-            UpdateNationalityDescription(newNationality);
         }
 
         private void SetEmployer(string newEmployer)
@@ -1392,16 +1724,6 @@ namespace Content.Client.Lobby.UI
             ReloadProfilePreview();
             ReloadClothes(); // Employers may have specific gear, reload the clothes
             UpdateEmployerDescription(newEmployer);
-        }
-
-        private void SetLifepath(string newLifepath)
-        {
-            Profile = Profile?.WithLifepath(newLifepath);
-            UpdateCharacterRequired();
-            IsDirty = true;
-            ReloadProfilePreview();
-            ReloadClothes(); // Lifepaths may have specific gear, reload the clothes
-            UpdateLifepathDescription(newLifepath);
         }
 
         private void SetName(string newName)
@@ -1485,55 +1807,39 @@ namespace Content.Client.Lobby.UI
             }
         }
 
-        private void UpdateSkills()
+        /// <summary>
+        /// Re-checks every post's requirements against the character as it now stands.
+        /// </summary>
+        /// <remarks>
+        /// Ember: this is what the merged section is for. Raising a skill has to change the posts
+        /// it opens while both are on screen, or the panel is a window that merely lost its
+        /// frame. It re-locks the existing rows rather than rebuilding the list, because the call
+        /// arrives from inside a control's own event handler and rebuilding would dispose the
+        /// control mid-callback - see <see cref="UpdateJobLock"/>.
+        /// </remarks>
+        private void UpdateJobLocks()
         {
-            RefreshSkillSetupWindow();
+            foreach (var (jobId, selector) in _jobPriorities)
+            {
+                if (_prototypeManager.TryIndex<JobPrototype>(jobId, out var job))
+                    UpdateJobLock(job, selector);
+            }
         }
 
-        private void OpenSkillSetup(JobPrototype job)
+        private void UpdateSkills()
         {
             if (Profile == null)
                 return;
 
-            _skillSetupJob = job;
-
-            if (_skillSetupWindow == null)
-            {
-                var window = new SkillSetupWindow();
-                window.OnClose += () =>
-                {
-                    if (_skillSetupWindow != window)
-                        return;
-
-                    _skillSetupWindow = null;
-                    _skillSetupJob = null;
-                };
-
-                _skillSetupWindow = window;
-            }
-
-            RefreshSkillSetupWindow();
-
-            if (!_skillSetupWindow.IsOpen)
-                _skillSetupWindow.OpenCentered();
-        }
-
-        private void RefreshSkillSetupWindow()
-        {
-            if (_skillSetupWindow == null || _skillSetupJob == null || Profile == null)
-                return;
+            UpdateJobLocks();
 
             var skills = GetOrderedSkills();
-            var allocation = Profile.SkillPreferences.TryGetValue(_skillSetupJob.ID, out var stored)
-                ? new Dictionary<ProtoId<SkillPrototype>, byte>(stored)
-                : new Dictionary<ProtoId<SkillPrototype>, byte>();
 
             _prototypeManager.TryIndex(Profile.Species, out SpeciesPrototype? speciesPrototype);
-            var skillPointBudget = SharedSkillsSystem.GetSkillPointBudget(_skillSetupJob, speciesPrototype, Profile.Age);
-            allocation = SharedSkillsSystem.SanitizeAllocation(_skillSetupJob, skills, allocation, skillPointBudget);
+            var skillPointBudget = SharedSkillsSystem.GetSkillPointBudget(speciesPrototype, Profile.Age);
+            var allocation = SharedSkillsSystem.SanitizeAllocation(skills, Profile.Skills, skillPointBudget);
 
-            _skillSetupWindow.SetSkills(
-                _skillSetupJob,
+            SkillPanel.SetSkills(
                 skills,
                 allocation,
                 skillPointBudget,
@@ -1541,13 +1847,12 @@ namespace Content.Client.Lobby.UI
                 SetSkillLevel);
         }
 
-        private void SetSkillLevel(JobPrototype job, SkillPrototype skill, SkillLevel target, SkillLevel min)
+        private void SetSkillLevel(SkillPrototype skill, SkillLevel target)
         {
             if (Profile == null)
                 return;
 
-            var allocation = (byte) Math.Max(0, (int) target - (int) min);
-            Profile = Profile.WithSkillAllocation(job.ID, skill.ID, allocation);
+            Profile = Profile.WithSkill(skill.ID, target);
             IsDirty = true;
             UpdateSkills();
         }
@@ -1694,14 +1999,6 @@ namespace Content.Client.Lobby.UI
 
             Markings.SetData(Profile.Appearance.Markings, Profile.Species, Profile.Sex, Profile.Appearance.SkinColor,
                 Profile.Appearance.EyeColor);
-        }
-
-        private void UpdateGenderControls()
-        {
-            if (Profile == null)
-                return;
-
-            PronounsButton.SelectId((int) Profile.Gender);
         }
 
         private void UpdateDisplayPronounsControls()
@@ -2773,9 +3070,9 @@ namespace Content.Client.Lobby.UI
 
         private void UpdateCharacterRequired()
         {
-            RefreshNationalities();
+            RefreshBackgrounds();
             RefreshEmployers();
-            RefreshLifepaths();
+            RefreshBranches(); // Ember
             RefreshJobs();
             UpdateTraits(TraitsShowUnusableButton.Pressed);
             UpdateLoadouts(LoadoutsShowUnusableButton.Pressed);

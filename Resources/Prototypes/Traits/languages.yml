@@ -31,10 +31,6 @@
       inverted: true
       species:
         - Human
-    - !type:CharacterNationalityRequirement
-      inverted: true
-      nationalities:
-        - Solarian
   functions:
     - !type:TraitModifyLanguages
       languagesSpoken:
@@ -84,13 +80,8 @@
   points: 0
   # slots: 1
   # itemGroupSlots: 0
-  requirements:
     # - !type:CharacterItemGroupRequirement
     #   group: TraitsLanguagesBasic
-    - !type:CharacterNationalityRequirement
-      inverted: true
-      nationalities:
-        - Elyran
   functions:
     - !type:TraitModifyLanguages
       languagesSpoken:
@@ -107,10 +98,6 @@
   requirements:
     # - !type:CharacterItemGroupRequirement
     #   group: TraitsLanguagesBasic
-    - !type:CharacterNationalityRequirement
-      inverted: true
-      nationalities:
-        - Valyrian
     - !type:CharacterSpeciesRequirement
       inverted: true
       species:
@@ -128,13 +115,8 @@
   points: 0
   # slots: 1
   # itemGroupSlots: 0
-  requirements:
     # - !type:CharacterItemGroupRequirement
     #   group: TraitsLanguagesBasic
-    - !type:CharacterNationalityRequirement
-      inverted: true
-      nationalities:
-        - Nederlandic
   functions:
     - !type:TraitModifyLanguages
       languagesSpoken:

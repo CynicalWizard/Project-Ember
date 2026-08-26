@@ -1,0 +1,142 @@
+# Travel documents, issued from the faction axis.
+#
+# Bay hangs the passport off the location axis because Bay's location axis is its citizenship axis.
+# Ours are separate questions, so the document comes from the state and the homeworld is printed
+# inside it as the place of birth - see EmberBackgroundPrototype.Passport and the examine text in
+# SharedPassportSystem.
+#
+# Not every allegiance issues one, and the gaps are the point rather than an omission:
+#   - a stateless character carries nothing, which is what stateless means;
+#   - a diona belongs to no state at all, which is the difficulty its faction entry describes;
+#   - an unathi of an independent clan has no polity above it to issue anything;
+#   - an SCG resident who is not a citizen gets a residence permit, not a passport, because the
+#     SCG does not naturalise non-humanoids;
+#   - a positronic gets ownership papers, because it is property rather than a person.
+#
+# Sprites are Bay's, merged from its three passport sheets into one RSI. Several documents share the
+# plain cover, which is what Bay does too - it draws a distinct one only where a state is a major
+# power, and the rest carry the generic booklet.
+
+- type: entity
+  parent: BaseItem
+  id: EmberPassportBase
+  abstract: true
+  name: passport
+  description: A travel document naming its bearer, their citizenship and their place of birth.
+  components:
+  - type: Passport
+  - type: Sprite
+    sprite: Ember/Objects/Misc/passports.rsi
+    state: passport
+  - type: Appearance
+  - type: EmitSoundOnPickup
+    sound: /Audio/SimpleStation14/Items/Handling/book_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound: /Audio/SimpleStation14/Items/Handling/book_drop.ogg
+  - type: EmitSoundOnLand
+    sound: /Audio/SimpleStation14/Items/Handling/book_drop.ogg
+
+- type: entity
+  parent: EmberPassportBase
+  id: EmberPassportSCG
+  name: SCG passport
+  description: A passport from the Sol Central Government.
+  components:
+  - type: Sprite
+    sprite: Ember/Objects/Misc/passports.rsi
+    state: passport_scg
+
+- type: entity
+  parent: EmberPassportBase
+  id: EmberPassportSCGResidence
+  name: SCG residence permit
+  description: A residence permit. It records a right to live and work, and says nothing about citizenship.
+  components:
+  - type: Sprite
+    sprite: Ember/Objects/Misc/passports.rsi
+    state: passport_scg2
+
+- type: entity
+  parent: EmberPassportBase
+  id: EmberPassportLordania
+  name: Lordanian Republic passport
+  description: A passport from the Second Lordanian Republic, a member state of the Sol Central Government.
+  components:
+  - type: Sprite
+    sprite: Ember/Objects/Misc/passports.rsi
+    state: passport_scg2
+
+- type: entity
+  parent: EmberPassportBase
+  id: EmberPassportGCC
+  name: GCC passport
+  description: A passport from the Independent Colonial Confederation of Gilgamesh.
+  components:
+  - type: Sprite
+    sprite: Ember/Objects/Misc/passports.rsi
+    state: passport_iccg
+
+- type: entity
+  parent: EmberPassportBase
+  id: EmberPassportMirania
+  name: Miranian passport
+  description: A passport from the Federative Republic of Mirania, independent since its secession from the SCG.
+  components:
+  - type: Sprite
+    sprite: Ember/Objects/Misc/passports.rsi
+    state: passport_mir
+
+- type: entity
+  parent: EmberPassportBase
+  id: EmberPassportHegemony
+  name: Hegemony registration document
+  description: A document identifying its bearer as a registered denizen of the Clan Hegemony.
+  components:
+  - type: Sprite
+    sprite: Ember/Objects/Misc/passports.rsi
+    state: passport_unathi_heg
+
+- type: entity
+  parent: EmberPassportBase
+  id: EmberPassportSsenUuma
+  name: Ssen-Uuma Convent registration document
+  description: A document identifying its bearer as a registered denizen of the Ssen-Uuma Convent.
+  components:
+  - type: Sprite
+    sprite: Ember/Objects/Misc/passports.rsi
+    state: passport_unathi_conv
+
+- type: entity
+  parent: EmberPassportBase
+  id: EmberPassportAhdomai
+  name: Ahdomai passport
+  description: A passport from the Commonwealth of Ahdomai.
+  components:
+  - type: Sprite
+    sprite: Ember/Objects/Misc/passports.rsi
+    state: passport_taj
+
+# The plain booklet, for the states Bay never drew a cover for.
+- type: entity
+  parent: EmberPassportBase
+  id: EmberPassportKaytam
+  name: Kaytam travel document
+  description: A travel document issued on the Etari archipelago. It is a passport where Etari's word is good for one, and a curiosity everywhere else.
+
+- type: entity
+  parent: EmberPassportBase
+  id: EmberPassportFrontierAlliance
+  name: Frontier Alliance passport
+  description: A travel document younger than most of the people carrying it. Not everyone accepts it.
+
+- type: entity
+  parent: EmberPassportBase
+  id: EmberPassportMagnitka
+  name: Magnar Republic passport
+  description: A passport from the Magnar Republic, an independent colony.
+
+- type: entity
+  parent: EmberPassportBase
+  id: EmberPassportPositronicRegistration
+  name: positronic registration
+  description: Ownership papers. They record a manufacturer, an owner and a serial, in that order of prominence.

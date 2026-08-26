@@ -5,6 +5,7 @@ using Content.Client.DisplacementMap;
 using Content.Client.Inventory;
 using Content.Shared.Clothing;
 using Content.Shared.Clothing.Components;
+using Content.Shared.Ember.Clothing;
 using Content.Shared.Clothing.EntitySystems;
 using Content.Shared.DisplacementMap;
 using Content.Shared.Humanoid;
@@ -117,7 +118,8 @@ public sealed class ClientClothingSystem : ClothingSystem
         if (layers == null && !item.ClothingVisuals.TryGetValue(args.Slot, out layers))
         {
             // No generic data either. Attempt to generate defaults from the item's RSI & item-prefixes
-            if (!TryGetDefaultVisuals(uid, item, args.Slot, inventory.SpeciesId, out layers))
+            // Ember: the wearer is passed too, because the worn state now depends on their sex.
+            if (!TryGetDefaultVisuals(uid, item, args.Slot, inventory.SpeciesId, args.Equipee, out layers))
                 return;
         }
 
@@ -145,6 +147,7 @@ public sealed class ClientClothingSystem : ClothingSystem
     ///     Useful for lazily adding clothing sprites without modifying yaml. And for backwards compatibility.
     /// </remarks>
     private bool TryGetDefaultVisuals(EntityUid uid, ClothingComponent clothing, string slot, string? speciesId,
+        EntityUid equipee,
         [NotNullWhen(true)] out List<PrototypeLayerData>? layers)
     {
         layers = null;
@@ -172,6 +175,11 @@ public sealed class ClientClothingSystem : ClothingSystem
         if (clothing.EquippedState != null)
             state = $"{clothing.EquippedState}";
 
+        // Ember: garments ported from SierraBay12 carry their own rolled and female artwork, so
+        // the name gains up to two more prefixes. See EmberTryGetVariantState for the order and
+        // for why each one degrades on its own.
+        state = EmberTryGetVariantState(uid, rsi, state, equipee);
+
         // species specific
         if (speciesId != null && rsi.TryGetState($"{state}-{speciesId}", out _))
             state = $"{state}-{speciesId}";
@@ -185,6 +193,74 @@ public sealed class ClientClothingSystem : ClothingSystem
 
         return true;
     }
+
+    #region Ember
+
+    /// <summary>
+    ///     Ember: the worn state with the female and rolled variants applied, where the sprite
+    ///     has them.
+    /// </summary>
+    /// <remarks>
+    ///     Order is <c>female-roll-equipped-SLOT</c>, matching SierraBay12, which composes its
+    ///     worn state as base + gender + roll. Each prefix is tried and dropped on its own, so a
+    ///     garment that has a rolled variant but no female art still rolls, and one with female
+    ///     art but no rolled variant still gets the female art. Falling back a prefix at a time
+    ///     rather than all at once is what lets the port land in pieces.
+    /// </remarks>
+    private string EmberTryGetVariantState(EntityUid uid, RSI rsi, string state, EntityUid equipee)
+    {
+        var roll = CompOrNull<EmberRollableClothingComponent>(uid)?.Roll ?? EmberClothingRoll.None;
+        var rollPrefix = roll switch
+        {
+            EmberClothingRoll.Sleeves => "rolled",
+            EmberClothingRoll.Down => "down",
+            _ => null,
+        };
+
+        var female = CompOrNull<HumanoidAppearanceComponent>(equipee)?.Sex == Sex.Female;
+
+        if (female && rollPrefix != null && rsi.TryGetState($"female-{rollPrefix}-{state}", out _))
+            return $"female-{rollPrefix}-{state}";
+
+        if (rollPrefix != null && rsi.TryGetState($"{rollPrefix}-{state}", out _))
+            return $"{rollPrefix}-{state}";
+
+        if (female && rsi.TryGetState($"female-{state}", out _))
+            return $"female-{state}";
+
+        return state;
+    }
+
+    /// <summary>
+    ///     Ember: whether this garment supplies its own female artwork for the slot.
+    /// </summary>
+    /// <remarks>
+    ///     Used to decide which displacement map applies, which is the subtle half of the
+    ///     feature. Displacement is not only about sex: the maps live on the species' own
+    ///     inventory, and a lamia or a chitinid has a body that ordinary clothing has to be bent
+    ///     around whatever the wearer's sex. So a garment with female art does <em>not</em> stop
+    ///     being displaced — it falls back from the species' female map to the species' plain
+    ///     one, keeping the body correction and dropping only the part the artwork already did.
+    /// </remarks>
+    private bool EmberHasFemaleArt(EntityUid uid, ClothingComponent clothing, string slot)
+    {
+        RSI? rsi = null;
+
+        if (clothing.Sprite != null)
+            rsi = _cache.GetResource<RSIResource>(SpriteSpecifierSerializer.TextureRoot / clothing.Sprite).RSI;
+        else if (TryComp(uid, out SpriteComponent? sprite))
+            rsi = sprite.BaseRSI;
+
+        if (rsi == null)
+            return false;
+
+        var correctedSlot = slot;
+        TemporarySlotMap.TryGetValue(correctedSlot, out correctedSlot);
+
+        return rsi.TryGetState($"female-equipped-{correctedSlot}", out _);
+    }
+
+    #endregion
 
     private void OnVisualsChanged(EntityUid uid, InventoryComponent component, VisualsChangedEvent args)
     {
@@ -287,7 +363,10 @@ public sealed class ClientClothingSystem : ClothingSystem
                         displacementData = inventory.MaleDisplacements.GetValueOrDefault(slot);
                     break;
                 case Sex.Female:
-                    if (inventory.FemaleDisplacements.Count > 0)
+                    // Ember: a garment that ships its own female artwork has already done the
+                    // shaping this map exists to do, so applying both would bend it twice. The
+                    // species' plain map still applies — see EmberHasFemaleArt.
+                    if (inventory.FemaleDisplacements.Count > 0 && !EmberHasFemaleArt(equipment, clothingComponent, slot))
                         displacementData = inventory.FemaleDisplacements.GetValueOrDefault(slot);
                     break;
             }

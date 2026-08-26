@@ -1,6 +1,7 @@
-humanoid-profile-editor-randomize-everything-button = Randomize everything
+﻿humanoid-profile-editor-randomize-everything-button = Randomize everything
 humanoid-profile-editor-name-label = Name:
 humanoid-profile-editor-name-random-button = Randomize
+humanoid-profile-editor-identity-tab = Identity
 humanoid-profile-editor-appearance-tab = Appearance
 humanoid-profile-editor-background-tab = Background
 humanoid-profile-editor-clothing = Preview job equipment:
@@ -29,7 +30,7 @@ humanoid-profile-editor-save-button = Save Changes
 humanoid-profile-editor-reset-button = Undo Changes
 humanoid-profile-editor-spawn-priority-label = Spawn priority:
 humanoid-profile-editor-eyes-label = Eye color:
-humanoid-profile-editor-jobs-tab = Jobs
+humanoid-profile-editor-jobs-tab = Assignment
 humanoid-profile-editor-preference-unavailable-stay-in-lobby-button = Stay in lobby if preference unavailable.
 humanoid-profile-editor-preference-unavailable-spawn-as-overflow-button = Be {INDEFINITE($overflowJob)} {$overflowJob} if preference unavailable.
 humanoid-profile-editor-preference-jumpsuit = Jumpsuit
@@ -106,3 +107,37 @@ humanoid-profile-editor-loadouts-heirloom-tooltip = Whichever loadouts you choos
 
 humanoid-profile-editor-markings-tab = Markings
 humanoid-profile-editor-flavortext-tab = Description
+
+# Ember: the standing summary of the character, kept in view while the editor changes under it.
+ember-dossier-heading = Personnel record
+ember-dossier-empty = [color=#888888]No character in this slot.[/color]
+ember-dossier-unset = not set
+ember-dossier-name = Name
+ember-dossier-species = Person
+ember-dossier-species-line = {$species}, {$sex}, {$age}
+ember-dossier-homeworld = Born
+ember-dossier-culture = Culture
+ember-dossier-faction = Citizenship
+ember-dossier-religion = Belief
+ember-dossier-branch = Service
+ember-dossier-employer = Employer
+ember-dossier-rank = Rank
+ember-dossier-post = Post
+ember-dossier-post-more = {$post} +{$count}
+ember-dossier-ready = [color=#7A9A5B]Ready for the shift.[/color]
+ember-dossier-not-ready = [color=#B4553F]Not ready:[/color] {$missing}
+ember-dossier-missing-rank = no rank
+ember-dossier-missing-post = no post
+
+# Referenced from HumanoidProfileEditor.xaml and previously undefined in any locale, so these
+# rendered as raw fluent ids in the editor.
+humanoid-profile-editor-station-ai-name-label = Station AI name:
+humanoid-profile-editor-cyborg-name-label = Cyborg name:
+
+# Ember: service is one question - who put this character aboard - because a state posts people
+# and a company hires them, and the two are alternatives rather than layers.
+humanoid-profile-editor-service-tab = Service
+humanoid-profile-editor-service-question = Who sent you here?
+humanoid-profile-editor-service-note-posted = The state assigns its own people. There is no employer to name.
+humanoid-profile-editor-service-note-hired = A civilian is paid rather than posted, so an employer is required.
+humanoid-profile-editor-legacy-jobs-button = Show inherited posts

@@ -1,4 +1,6 @@
 using Content.Shared.Access;
+using Content.Shared.Ember.Ranks;
+using Content.Shared.Ember.Roles;
 using Content.Shared.Ember.Skills;
 using Content.Shared.Guidebook;
 using Content.Shared.Customization.Systems;
@@ -25,17 +27,27 @@ namespace Content.Shared.Roles
         [DataField("playTimeTracker", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<PlayTimeTrackerPrototype>))]
         public string PlayTimeTracker { get; private set; } = string.Empty;
 
-        [DataField]
-        public int SkillPoints { get; set; } = 16;
-
+        /// <summary>
+        /// Skill floors a character must already clear to take this job.
+        /// </summary>
+        /// <remarks>
+        /// Ember departs from SierraBay12 here. In Bay these are levels the job hands out for
+        /// free, on top of a per-job point budget. With one set of skills per character there is
+        /// nothing to hand out: the job states a requirement, and the character either meets it
+        /// or cannot take the job. That is also what makes overlapping roles fall out of the
+        /// data — two jobs that ask for the same things are interchangeable without anyone
+        /// writing down that they are.
+        /// </remarks>
         [DataField]
         public Dictionary<ProtoId<SkillPrototype>, SkillLevel> MinSkills { get; set; } = new();
 
+        /// <summary>
+        ///     Ember: alternate names this job may be held under. See <see cref="EmberJobTitle"/>
+        ///     — one job, several titles, so that four flavours of engineer are one line in the
+        ///     job list rather than four.
+        /// </summary>
         [DataField]
-        public Dictionary<ProtoId<SkillPrototype>, SkillLevel> MaxSkills { get; set; } = new();
-
-        [DataField]
-        public bool NoSkillBuffs { get; set; }
+        public List<EmberJobTitle> AltTitles { get; set; } = new();
 
         /// <summary>
         ///     Who is the supervisor for this job.
@@ -138,8 +150,10 @@ namespace Content.Shared.Roles
         [DataField("antagAdvantage")]
         public int AntagAdvantage = 0;
 
+        // Ember: settable so unit tests can build a job without a prototype manager, same as
+        // MinSkills and AltTitles above. Nothing but the serialiser writes it in game code.
         [DataField("startingGear", customTypeSerializer: typeof(PrototypeIdSerializer<StartingGearPrototype>))]
-        public string? StartingGear { get; private set; }
+        public string? StartingGear { get; set; }
 
         /// <summary>
         ///     If this has a value, it will randomly set the entity name of the

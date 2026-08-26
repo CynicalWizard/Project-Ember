@@ -1,4 +1,4 @@
-using System.Collections.Immutable;
+﻿using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net;
@@ -11,6 +11,7 @@ using Content.Server.Administration.Managers;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Clothing.Loadouts.Systems;
 using Content.Shared.Database;
+using Content.Shared.Ember.Skills;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Preferences;
@@ -50,6 +51,8 @@ namespace Content.Server.Database
                 .Include(p => p.Profiles).ThenInclude(h => h.Antags)
                 .Include(p => p.Profiles).ThenInclude(h => h.Traits)
                 .Include(p => p.Profiles).ThenInclude(h => h.Loadouts)
+                .Include(p => p.Profiles).ThenInclude(h => h.Skills) // Ember
+                .Include(p => p.Profiles).ThenInclude(h => h.JobTitles) // Ember
                 .AsSingleQuery()
                 .SingleOrDefaultAsync(p => p.UserId == userId.UserId, cancel);
 
@@ -99,6 +102,8 @@ namespace Content.Server.Database
                 .Include(p => p.Antags)
                 .Include(p => p.Traits)
                 .Include(p => p.Loadouts)
+                .Include(p => p.Skills) // Ember
+                .Include(p => p.JobTitles) // Ember
                 .AsSplitQuery()
                 .SingleOrDefault(h => h.Slot == slot);
 
@@ -186,6 +191,11 @@ namespace Content.Server.Database
             var antags = profile.Antags.Select(a => new ProtoId<AntagPrototype>(a.AntagName));
             var traits = profile.Traits.Select(t => new ProtoId<TraitPrototype>(t.TraitName));
             var loadouts = profile.Loadouts.Select(Shared.Clothing.Loadouts.Systems.Loadout (l) => l);
+            // Ember
+            var skills = profile.Skills.ToDictionary(
+                s => new ProtoId<SkillPrototype>(s.SkillName), s => s.Level);
+            var jobTitles = profile.JobTitles.ToDictionary(
+                t => new ProtoId<JobPrototype>(t.JobName), t => t.Title);
 
             var sex = Sex.Male;
             if (Enum.TryParse<Sex>(profile.Sex, true, out var sexVal))
@@ -218,9 +228,7 @@ namespace Content.Server.Database
                 profile.FlavorText,
                 profile.Species,
                 profile.CustomSpecieName,
-                profile.Nationality,
                 profile.Employer,
-                profile.Lifepath,
                 profile.Height,
                 profile.Width,
                 profile.Age,
@@ -247,7 +255,15 @@ namespace Content.Server.Database
                 {
                     CustomName = l.CustomName, CustomDescription = l.CustomDescription,
                     CustomColorTint = l.CustomColorTint, CustomHeirloom = l.CustomHeirloom, Selected = true,
-                }).ToHashSet()
+                }).ToHashSet(),
+                skills, // Ember
+                profile.Branch,
+                profile.Rank,
+                jobTitles, // Ember
+                profile.Homeworld,
+                profile.Culture,
+                profile.Faction,
+                profile.Religion
             );
         }
 
@@ -266,9 +282,13 @@ namespace Content.Server.Database
             profile.FlavorText = humanoid.FlavorText;
             profile.Species = humanoid.Species;
             profile.CustomSpecieName = humanoid.Customspeciename;
-            profile.Nationality = humanoid.Nationality;
             profile.Employer = humanoid.Employer;
-            profile.Lifepath = humanoid.Lifepath;
+            profile.Homeworld = humanoid.Homeworld;
+            profile.Culture = humanoid.Culture;
+            profile.Faction = humanoid.Faction;
+            profile.Religion = humanoid.Religion;
+            profile.Branch = humanoid.Branch;
+            profile.Rank = humanoid.Rank;
             profile.Age = humanoid.Age;
             profile.Sex = humanoid.Sex.ToString();
             profile.Gender = humanoid.Gender.ToString();
@@ -310,6 +330,23 @@ namespace Content.Server.Database
             profile.Loadouts.Clear();
             profile.Loadouts.AddRange(humanoid.LoadoutPreferences
                 .Select(l => new Loadout(l.LoadoutName, l.CustomName, l.CustomDescription, l.CustomColorTint, l.CustomHeirloom)));
+
+            // Ember: unskilled is the absence of training rather than a level of it, and the profile
+            // already drops those entries in WithSkill and EnsureValid rather than holding them.
+            // The filter repeats that invariant here so a profile built some other way cannot write
+            // a row per skill per character carrying no information.
+            profile.Skills.Clear();
+            profile.Skills.AddRange(
+                humanoid.Skills
+                    .Where(s => s.Value != SkillLevel.Unskilled)
+                    .Select(s => new ProfileSkill { SkillName = s.Key, Level = s.Value })
+            );
+
+            profile.JobTitles.Clear();
+            profile.JobTitles.AddRange(
+                humanoid.JobTitles
+                    .Select(t => new ProfileJobTitle { JobName = t.Key, Title = t.Value })
+            );
 
             return profile;
         }

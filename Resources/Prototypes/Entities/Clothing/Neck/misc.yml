@@ -103,3 +103,21 @@
     sprite: Clothing/Neck/Misc/dogtags.rsi
   - type: Clothing
     sprite: Clothing/Neck/Misc/dogtags.rsi
+
+# Ember: the Sol Federal Police warrant badge. One badge for the whole force - a marshal and an
+# agent carry the same one, because it is the authority that is being shown and not a grade.
+#
+# EMBER-TODO: the art is vanilla's lawyer badge. Bay has no SFP badge to convert - the only Federal
+# Police art it draws is the SFP AGENT armour tag - and the Master-at-Arms' silver badge is the
+# ship's own security, which is the wrong service to borrow from. A gold shield is the right shape
+# and the wrong lettering, so this is a placeholder that reads correctly until one is drawn.
+- type: entity
+  parent: ClothingNeckBase
+  id: EmberClothingNeckFederalPoliceBadge
+  name: federal police badge
+  description: A warrant badge of the Sol Federal Police. Behind the shield is a card naming the bearer and the division that issued it.
+  components:
+  - type: Sprite
+    sprite: Clothing/Neck/Misc/lawyerbadge.rsi
+  - type: Clothing
+    sprite: Clothing/Neck/Misc/lawyerbadge.rsi

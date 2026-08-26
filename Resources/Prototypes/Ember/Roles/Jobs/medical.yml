@@ -1,0 +1,400 @@
+# Medicine aboard the SEV Ember.
+#
+# Expeditionary Corps, with the civilian door open wider than anywhere else: Zeng-Hu staffs a
+# good part of the infirmary under contract. Five of the seven posts admit a contractor, which is
+# more than engineering and is meant to be — a government exploration service can train its own
+# electricians far more easily than its own physicians.
+#
+# That has a consequence worth stating, because it is the only place aboard where it happens.
+# **This is where a xeno can practise medicine.** A commission is closed to non-citizens, so a
+# Unathi or Tajaran cannot be the Physician as a serviceman — but the same post held under
+# contract has no commission in it, and the Medical Technician is enlisted at a grade they can
+# reach. The route exists; it simply is not the service's route.
+#
+# EMBER-TODO: `startingGear` and `icon` point at existing vanilla content on purpose, same as in
+# the other department files.
+#
+# `startingGear` points at an Ember kit in job_gear.yml, which inherits the vanilla kit named
+# above it for the tools and hangs the branch uniforms off it as sub-gear. The uniform therefore
+# comes from the service and the tools from the post, and a post open to three services is still
+# one post. See Resources/Prototypes/Ember/Roles/branch_uniforms.yml.
+#
+# The Corps floor — `hauling`, `science` and `EVA` at Basic — is not repeated below. Note what
+# that does here: a contractor carries no floor, so the hired physician is four points cheaper
+# than the commissioned one and spends them on medicine instead. The company sent a doctor; the
+# Corps sent an officer who is also a doctor.
+#
+# EMBER-LEGACY of a sort — worth writing down rather than discovering later. Bay caps the
+# Pharmacist at `medical` and `anatomy` Basic, so that the person who brews cannot treat and the
+# division of labour is unbreakable. We removed per-job ceilings when skills moved to the
+# character, and there is nothing to put that cap on any more. A pharmacist who also buys
+# medicine is a pharmacist who can treat, and only the points bill discourages it. If the
+# separation turns out to matter in play, it needs a ceiling mechanic, not a rule.
+#
+# Every post here states a minimum age, and they form a ladder rather than a scatter: emergency
+# technician 18, medical technician 19, paramedic 22, resident 24, pharmacist 25, physician 27,
+# surgeon 30. That is the education, and it is written on the job rather than left to the grade
+# because most of these posts admit a contractor.
+# A commission encodes schooling — the Corps does not make an officer of someone without a
+# degree — and a company rank encodes nothing at all, so without a stated floor the contractor
+# route has none.
+#
+# The Medical Resident is not the Torch's. On the Torch it asks for exactly what the Physician
+# asks for and differs only in grade, which worked because Bay handed a job its minimums free.
+# Here it earns its place by being genuinely cheaper: `medical` Trained against the Physician's
+# Experienced. That is the post doing what the post is for — a player saying "I want to try
+# medicine, go easy" out of character, and a character who is qualified for the basics and
+# honest about it in character.
+
+- type: department
+  id: EmberMedical
+  name: department-EmberMedical
+  description: department-EmberMedical-description
+  color: "#5ba8c4"
+  weight: 16
+  roles:
+  - EmberChiefMedicalOfficer
+  - EmberPhysician
+  - EmberMedicalResident
+  - EmberPharmacist
+  - EmberMedicalTechnician
+  - EmberEmergencyTechnician
+  - EmberMedicalTrainee
+
+- type: playTimeTracker
+  id: JobEmberChiefMedicalOfficer
+
+- type: playTimeTracker
+  id: JobEmberPhysician
+
+- type: playTimeTracker
+  id: JobEmberMedicalResident
+
+- type: playTimeTracker
+  id: JobEmberPharmacist
+
+- type: playTimeTracker
+  id: JobEmberMedicalTechnician
+
+- type: playTimeTracker
+  id: JobEmberEmergencyTechnician
+
+- type: playTimeTracker
+  id: JobEmberMedicalTrainee
+
+# Runs the infirmary and answers for everyone in it. One grade rather than a band, and no stated
+# age: O-3 already means thirty-one, and the Corps does not commission a physician below O-1 in
+# the first place, so the education has been paid for twice over by the time anyone reaches this.
+#
+# `anatomy` stops at Trained against the Physician's Surgeon at Experienced. The head of the
+# department is its best diagnostician and not its best pair of hands, which is both true of real
+# medicine and the only thing keeping him from being the whole department by himself.
+- type: job
+  id: EmberChiefMedicalOfficer
+  name: job-name-ember-chief-medical-officer
+  description: job-description-ember-chief-medical-officer
+  playTimeTracker: JobEmberChiefMedicalOfficer
+  startingGear: EmberGearChiefMedicalOfficer
+  icon: JobIconChiefMedicalOfficer
+  supervisors: job-supervisors-ember-command
+  weight: 18
+  requireAdminNotify: true
+  canBeAntag: false
+  access:
+  - ChiefMedicalOfficer
+  - Medical
+  - Chemistry
+  - Paramedic
+  - Command
+  - Maintenance
+  - Cryogenics
+  minSkills:
+    bureaucracy: Basic
+    medical: Experienced
+    anatomy: Trained
+    chemistry: Basic
+    devices: Trained
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsO3
+  - !type:CharacterSkillRequirement
+
+# The ship's doctor. Age 27 rather than the commission's 26, because the commission says
+# "graduate" and this post says "graduate who then finished an internship and may practise
+# alone" — and because the contractor route has no grade to say it at all.
+#
+# No `chemistry` floor at all, which is the pharmacist's whole reason to exist. A physician who
+# wants a compound asks for it.
+- type: job
+  id: EmberPhysician
+  name: job-name-ember-physician
+  description: job-description-ember-physician
+  playTimeTracker: JobEmberPhysician
+  startingGear: EmberGearPhysician
+  icon: JobIconSeniorPhysician
+  supervisors: job-supervisors-ember-chief-medical-officer
+  weight: 15
+  access:
+  - Medical
+  - Chemistry
+  - Maintenance
+  - Cryogenics
+  minSkills:
+    bureaucracy: Basic
+    medical: Experienced
+    anatomy: Trained
+    devices: Basic
+  altTitles:
+  # Three more years than the physician: a degree, an internship, then surgical training.
+  #
+  # On the blacklist, and it is worth being exact about what it says, because the obvious
+  # reading is wrong. It is not "these hands cannot operate" — a Tajaran surgeon plainly exists,
+  # on Ahdomai, on Tajaran patients, and is presumably good at it. It is that *this theatre* has
+  # a protocol: human sterile practice, human instruments, and an SCG board that certifies
+  # against them. A shedding coat and a set of claws are outside that protocol, and nobody has
+  # written a variant of it that is not.
+  #
+  # The distinction matters because it decides what fixes it. If it were biology, nothing would.
+  # Being procedure, the answers are ordinary content: species-fitted scrubs and gloves, or a
+  # recognition agreement with a xeno board. See "11 — Ксеновиды в хирургии" in the design vault.
+  #
+  # EMBER-TODO: this list names the two xeno species that exist today, and unlike the commission
+  # rule it does not generalise — a species added later has to be argued on its own rather than
+  # swept in by a flag. It is also the stopgap for two planned mechanics: fur carrying infection
+  # risk, and claws costing manipulation precision. Once those exist the blanket refusal should
+  # become a cost the player can see and work around, which is the better shape for it.
+  - id: Surgeon
+    name: job-name-ember-physician-surgeon
+    description: job-description-ember-physician-surgeon
+    minAge: 30
+    speciesBlacklist:
+    - Reptilian
+    - Tajaran
+    minSkills:
+      anatomy: Experienced
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+    - EmberBranchCivilian
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsO1
+    - EmberRankContractor
+  - !type:CharacterAgeRequirement
+    min: 27
+  - !type:CharacterSkillRequirement
+
+# A qualified doctor who is still learning to be one. Cheaper than the Physician on the one axis
+# that matters — `medical` Trained rather than Experienced — while carrying the same `anatomy`,
+# because a resident does assist and does close, and is simply not the one making the call.
+#
+# Age 24: the degree is done, the rest is not. That is below the Corps commission's own 26, so
+# the Corps route starts at 26 anyway and the four-year gap belongs to the contractor — which is
+# exactly the shape of a company sending someone straight out of school.
+- type: job
+  id: EmberMedicalResident
+  name: job-name-ember-medical-resident
+  description: job-description-ember-medical-resident
+  playTimeTracker: JobEmberMedicalResident
+  startingGear: EmberGearMedicalResident
+  icon: JobIconMedicalDoctor
+  supervisors: job-supervisors-ember-medical
+  weight: 12
+  access:
+  - Medical
+  - Maintenance
+  - Cryogenics
+  minSkills:
+    medical: Trained
+    anatomy: Trained
+    devices: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+    - EmberBranchCivilian
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsO1
+    - EmberRankContractor
+  - !type:CharacterAgeRequirement
+    min: 24
+  - !type:CharacterSkillRequirement
+
+# Makes the medicine the rest of them use, and is not a doctor. `medical` at Basic is the whole
+# statement: enough to know what a drug is for, not enough to be the one administering it.
+- type: job
+  id: EmberPharmacist
+  name: job-name-ember-pharmacist
+  description: job-description-ember-pharmacist
+  playTimeTracker: JobEmberPharmacist
+  startingGear: EmberGearPharmacist
+  icon: JobIconChemist
+  supervisors: job-supervisors-ember-medical
+  weight: 12
+  access:
+  - Medical
+  - Chemistry
+  - Maintenance
+  - Cryogenics
+  minSkills:
+    medical: Basic
+    chemistry: Trained
+  altTitles:
+  # Same bench, different remit: one dispenses to a formulary, the other mixes what is asked for.
+  # Nothing mechanical separates them, and nothing should — this is the case where a name really
+  # is only a name, which is worth having in the file as the counterexample to the Surgeon.
+  - id: Chemist
+    name: job-name-ember-pharmacist-chemist
+    description: job-description-ember-pharmacist-chemist
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+    - EmberBranchCivilian
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsO1
+    - EmberRankContractor
+  - !type:CharacterAgeRequirement
+    min: 25
+  - !type:CharacterSkillRequirement
+
+# The infirmary's hands, and the ward rather than the ambulance — the response tier is its own
+# post below. Treats, dresses, monitors, and hands the surgeon what the surgeon asks for.
+# `anatomy` Basic against the Physician's Trained: the same wall the security corpsman runs into,
+# in the other direction — a technician keeps a patient alive and does not open one.
+- type: job
+  id: EmberMedicalTechnician
+  name: job-name-ember-medical-technician
+  description: job-description-ember-medical-technician
+  playTimeTracker: JobEmberMedicalTechnician
+  startingGear: EmberGearMedicalTechnician
+  icon: JobIconMedicalDoctor
+  supervisors: job-supervisors-ember-medical
+  weight: 10
+  access:
+  - Medical
+  - Maintenance
+  - Cryogenics
+  minSkills:
+    medical: Trained
+    anatomy: Basic
+  altTitles:
+  # One entry, not two. No skills and no age — this exists because the ward's own word for the
+  # post is "nurse", and Russian has no ungendered form of it. The billet keeps the neutral name
+  # the service uses; the character gets the word that fits them.
+  #
+  # Which word is not the player's choice. `nameMale` and `nameFemale` are picked from the
+  # character's gender, so a man selecting this sees «Медбрат» and cannot see «Медсестра».
+  # Offering both would let him pick the wrong one, which is the whole thing being avoided.
+  # English has no distinction and all three keys read "Nurse", which is the correct outcome
+  # rather than a duplication to tidy up.
+  - id: Nurse
+    name: job-name-ember-medical-technician-nurse
+    nameMale: job-name-ember-medical-technician-nurse-male
+    nameFemale: job-name-ember-medical-technician-nurse-female
+    description: job-description-ember-medical-technician-nurse
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+    - EmberBranchCivilian
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsE3
+    - EmberRankCorpsE5
+    - EmberRankContractor
+  - !type:CharacterAgeRequirement
+    min: 19
+  - !type:CharacterSkillRequirement
+
+# Emergency response, and the one post here that is a *tier* rather than a job. The two names are
+# the American ladder and they run in the direction alternate titles actually run — the base name
+# is the cheap one and the alternate raises the bar, which is the opposite of everywhere else in
+# these files and is exactly right here.
+#
+# **Emergency Technician** is the floor: `medical` Basic, a voidsuit and a stretcher. No degree,
+# no diagnosis. Someone who can work a defibrillator, stop a bleed and get the casualty to the
+# infirmary breathing. That is a genuinely useful person and it is genuinely not a doctor.
+#
+# **Paramedic** adds `medical` Trained and `anatomy` Basic, and twenty-two years to have learned
+# them. The difference the qualification buys is judgement: a paramedic may form a working
+# diagnosis and act on it before the infirmary sees the patient. The technician may not, and the
+# data says so rather than the rules.
+#
+# Both stop below the Medical Technician's `anatomy`, which keeps the ward and the ambulance from
+# collapsing into each other. Nobody in this pair opens anyone.
+- type: job
+  id: EmberEmergencyTechnician
+  name: job-name-ember-emergency-technician
+  description: job-description-ember-emergency-technician
+  playTimeTracker: JobEmberEmergencyTechnician
+  startingGear: EmberGearEmergencyTechnician
+  icon: JobIconParamedic
+  supervisors: job-supervisors-ember-medical
+  weight: 8
+  access:
+  - Medical
+  - Paramedic
+  - Maintenance
+  - External
+  - Cryogenics
+  minSkills:
+    medical: Basic
+    EVA: Trained
+    hauling: Trained
+  altTitles:
+  - id: Paramedic
+    name: job-name-ember-paramedic
+    description: job-description-ember-paramedic
+    minAge: 22
+    minSkills:
+      medical: Trained
+      anatomy: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+    - EmberBranchCivilian
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsE1
+    - EmberRankCorpsE3
+    - EmberRankCorpsE5
+    - EmberRankContractor
+  - !type:CharacterAgeRequirement
+    min: 18
+  - !type:CharacterSkillRequirement
+
+# Aboard to learn, on the same terms as the engineering trainee: the cheapest post in the
+# department, asked for the one thing that makes an apprentice useful rather than present.
+- type: job
+  id: EmberMedicalTrainee
+  name: job-name-ember-medical-trainee
+  description: job-description-ember-medical-trainee
+  playTimeTracker: JobEmberMedicalTrainee
+  startingGear: EmberGearMedicalTrainee
+  icon: JobIconMedicalIntern
+  supervisors: job-supervisors-ember-medical
+  weight: 5
+  access:
+  - Medical
+  - Maintenance
+  - Cryogenics
+  minSkills:
+    medical: Basic
+  requirements:
+  - !type:CharacterBranchRequirement
+    branches:
+    - EmberBranchExpeditionaryCorps
+  - !type:CharacterRankRequirement
+    ranks:
+    - EmberRankCorpsE1
+    - EmberRankCorpsE3
+  - !type:CharacterSkillRequirement

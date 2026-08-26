@@ -1,8 +1,11 @@
-using System.Linq;
+﻿using System.Linq;
 using System.Text.RegularExpressions;
 using Content.Shared.CCVar;
 using Content.Shared.Clothing.Loadouts.Prototypes;
 using Content.Shared.Clothing.Loadouts.Systems;
+using Content.Shared.Ember.Background;
+using Content.Shared.Ember.Ranks;
+using Content.Shared.Ember.Roles;
 using Content.Shared.Ember.Skills;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
@@ -10,6 +13,7 @@ using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Roles;
 using Content.Shared.Traits;
 using Robust.Shared.Configuration;
+using Content.Shared.Ember.Humanoid;
 using Robust.Shared.Enums;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -55,8 +59,16 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     [DataField]
     private HashSet<LoadoutPreference> _loadoutPreferences = new();
 
+    // Ember: one set of skills for the character, not one per job. See SharedSkillsSystem.
     [DataField]
-    private Dictionary<ProtoId<JobPrototype>, Dictionary<ProtoId<SkillPrototype>, byte>> _skillPreferences = new();
+    private Dictionary<ProtoId<SkillPrototype>, SkillLevel> _skills = new();
+
+    // Ember: which of a job's names this character holds it under, for the jobs that have more
+    // than one. Keyed by job because job preferences are a list — a character may be an engine
+    // technician when taken as an engineer and a porter when taken as a porter. Absent means the
+    // job's own name, which is also what an unrecognised entry falls back to.
+    [DataField]
+    private Dictionary<ProtoId<JobPrototype>, string> _jobTitles = new();
 
     [DataField]
     public string Name { get; set; } = "John Doe";
@@ -71,14 +83,34 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
 
     // EE -- Contractors Change Start
     [DataField]
-    public string Nationality { get; set; } = SharedHumanoidAppearanceSystem.DefaultNationality;
-
-    [DataField]
     public string Employer { get; set; } = SharedHumanoidAppearanceSystem.DefaultEmployer;
+    // EE -- Contractors Change End
+
+    // Ember: the four background axes, replacing the Contractors module's single `nationality`
+    // dropdown and its `lifepath`. That one field asked "which passport do you hold" and answered
+    // several other questions by implication; these ask them separately, because they come apart.
+    // Faction is the one a passport is issued from - see EmberBackgroundPrototype.Passport.
+    [DataField]
+    public ProtoId<EmberBackgroundPrototype> Homeworld { get; set; } = SharedHumanoidAppearanceSystem.DefaultHomeworld;
 
     [DataField]
-    public string Lifepath { get; set; } = SharedHumanoidAppearanceSystem.DefaultLifepath;
-    // EE -- Contractors Change End
+    public ProtoId<EmberBackgroundPrototype> Culture { get; set; } = SharedHumanoidAppearanceSystem.DefaultCulture;
+
+    [DataField]
+    public ProtoId<EmberBackgroundPrototype> Faction { get; set; } = SharedHumanoidAppearanceSystem.DefaultFaction;
+
+    [DataField]
+    public ProtoId<EmberBackgroundPrototype> Religion { get; set; } = SharedHumanoidAppearanceSystem.DefaultReligion;
+
+    // Ember: which organisation the character serves in, and their rank inside it. Kept apart
+    // from Employer above on purpose — branch is who you serve, employer is who pays you, and
+    // for a contractor those are different answers. Null means unaffiliated, which is Bay's
+    // "None" branch. See Content.Shared/Ember/Ranks.
+    [DataField]
+    public ProtoId<EmberBranchPrototype>? Branch { get; set; }
+
+    [DataField]
+    public ProtoId<EmberRankPrototype>? Rank { get; set; }
 
     [DataField]
     public string Customspeciename { get; set; } = "";
@@ -127,7 +159,10 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     /// <see cref="_traitPreferences"/>
     public IReadOnlySet<ProtoId<TraitPrototype>> TraitPreferences => _traitPreferences;
 
-    public IReadOnlyDictionary<ProtoId<JobPrototype>, Dictionary<ProtoId<SkillPrototype>, byte>> SkillPreferences => _skillPreferences;
+    public IReadOnlyDictionary<ProtoId<SkillPrototype>, SkillLevel> Skills => _skills;
+
+    /// <see cref="_jobTitles"/>
+    public IReadOnlyDictionary<ProtoId<JobPrototype>, string> JobTitles => _jobTitles;
 
     /// If we're unable to get one of our preferred jobs do we spawn as a fallback job or do we stay in lobby
     [DataField]
@@ -139,11 +174,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         string flavortext,
         string species,
         string customspeciename,
-        // EE -- Contractors Change Start
-        string nationality,
         string employer,
-        string lifepath,
-        // EE -- Contractors Change End
         float height,
         float width,
         int age,
@@ -159,17 +190,25 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         HashSet<ProtoId<AntagPrototype>> antagPreferences,
         HashSet<ProtoId<TraitPrototype>> traitPreferences,
         HashSet<LoadoutPreference> loadoutPreferences,
-        Dictionary<ProtoId<JobPrototype>, Dictionary<ProtoId<SkillPrototype>, byte>>? skillPreferences = null)
+        Dictionary<ProtoId<SkillPrototype>, SkillLevel>? skills = null,
+        // Ember: trailing and optional so the seven existing call sites stay untouched.
+        ProtoId<EmberBranchPrototype>? branch = null,
+        ProtoId<EmberRankPrototype>? rank = null,
+        Dictionary<ProtoId<JobPrototype>, string>? jobTitles = null,
+        ProtoId<EmberBackgroundPrototype>? homeworld = null,
+        ProtoId<EmberBackgroundPrototype>? culture = null,
+        ProtoId<EmberBackgroundPrototype>? faction = null,
+        ProtoId<EmberBackgroundPrototype>? religion = null)
     {
         Name = name;
         FlavorText = flavortext;
         Species = species;
         Customspeciename = customspeciename;
-        // EE -- Contractors Change Start
-        Nationality = nationality;
         Employer = employer;
-        Lifepath = lifepath;
-        // EE -- Contractors Change End
+        Homeworld = homeworld ?? SharedHumanoidAppearanceSystem.DefaultHomeworld;
+        Culture = culture ?? SharedHumanoidAppearanceSystem.DefaultCulture;
+        Faction = faction ?? SharedHumanoidAppearanceSystem.DefaultFaction;
+        Religion = religion ?? SharedHumanoidAppearanceSystem.DefaultReligion;
         Height = height;
         Width = width;
         Age = age;
@@ -185,7 +224,10 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         _antagPreferences = antagPreferences;
         _traitPreferences = traitPreferences;
         _loadoutPreferences = loadoutPreferences;
-        _skillPreferences = DeepCopySkillPreferences(skillPreferences);
+        _skills = skills == null ? new() : new(skills);
+        Branch = branch;
+        Rank = rank;
+        _jobTitles = jobTitles == null ? new() : new(jobTitles);
 
         var hasHighPrority = false;
         foreach (var (key, value) in _jobPriorities)
@@ -209,11 +251,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             other.FlavorText,
             other.Species,
             other.Customspeciename,
-            // EE -- Contractors Change Start
-            other.Nationality,
             other.Employer,
-            other.Lifepath,
-            // EE -- Contractors Change End
             other.Height,
             other.Width,
             other.Age,
@@ -229,7 +267,14 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             new HashSet<ProtoId<AntagPrototype>>(other.AntagPreferences),
             new HashSet<ProtoId<TraitPrototype>>(other.TraitPreferences),
             new HashSet<LoadoutPreference>(other.LoadoutPreferences),
-            DeepCopySkillPreferences(other.SkillPreferences))
+            new Dictionary<ProtoId<SkillPrototype>, SkillLevel>(other.Skills),
+            other.Branch,
+            other.Rank,
+            new Dictionary<ProtoId<JobPrototype>, string>(other.JobTitles),
+            other.Homeworld,
+            other.Culture,
+            other.Faction,
+            other.Religion)
     {
     }
 
@@ -262,9 +307,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             {
                 SkinColor = skinColor,
             },
-            Nationality = SharedHumanoidAppearanceSystem.DefaultNationality,
             Employer = SharedHumanoidAppearanceSystem.DefaultEmployer,
-            Lifepath = SharedHumanoidAppearanceSystem.DefaultLifepath,
         };
     }
 
@@ -296,17 +339,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             age = random.Next(speciesPrototype.MinAge, speciesPrototype.OldAge); // people don't look and keep making 119 year old characters with zero rp, cap it at middle aged
         }
 
-        var gender = Gender.Epicene;
-
-        switch (sex)
-        {
-            case Sex.Male:
-                gender = Gender.Male;
-                break;
-            case Sex.Female:
-                gender = Gender.Female;
-                break;
-        }
+        var gender = EmberPronouns.GenderFor(sex); // Ember: see EnsureValid.
 
         var name = GetName(species, gender);
 
@@ -318,9 +351,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             Gender = gender,
             Species = species,
             Appearance = HumanoidCharacterAppearance.Random(species, sex),
-            Nationality = SharedHumanoidAppearanceSystem.DefaultNationality,
             Employer = SharedHumanoidAppearanceSystem.DefaultEmployer,
-            Lifepath = SharedHumanoidAppearanceSystem.DefaultLifepath,
         };
     }
 
@@ -328,9 +359,29 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     public HumanoidCharacterProfile WithFlavorText(string flavorText) => new(this) { FlavorText = flavorText };
     public HumanoidCharacterProfile WithAge(int age) => new(this) { Age = age };
     // EE - Contractors Change Start
-    public HumanoidCharacterProfile WithNationality(string nationality) => new(this) { Nationality = nationality };
     public HumanoidCharacterProfile WithEmployer(string employer) => new(this) { Employer = employer };
-    public HumanoidCharacterProfile WithLifepath(string lifepath) => new(this) { Lifepath = lifepath };
+
+    // Ember: one setter per axis. Changing one never touches another - a character who emigrates
+    // keeps the homeworld they were born on, which is the entire reason the axes are separate.
+    public HumanoidCharacterProfile WithHomeworld(ProtoId<EmberBackgroundPrototype> homeworld) =>
+        new(this) { Homeworld = homeworld };
+
+    public HumanoidCharacterProfile WithCulture(ProtoId<EmberBackgroundPrototype> culture) =>
+        new(this) { Culture = culture };
+
+    public HumanoidCharacterProfile WithFaction(ProtoId<EmberBackgroundPrototype> faction) =>
+        new(this) { Faction = faction };
+
+    public HumanoidCharacterProfile WithReligion(ProtoId<EmberBackgroundPrototype> religion) =>
+        new(this) { Religion = religion };
+
+    // Ember: changing branch drops the rank, because a rank only means anything inside the
+    // branch it belongs to. The caller picks the new one.
+    public HumanoidCharacterProfile WithBranch(ProtoId<EmberBranchPrototype>? branch) =>
+        new(this) { Branch = branch, Rank = null };
+
+    public HumanoidCharacterProfile WithRank(ProtoId<EmberRankPrototype>? rank) =>
+        new(this) { Rank = rank };
     // EE - Contractors Change End
     public HumanoidCharacterProfile WithSex(Sex sex) => new(this) { Sex = sex };
     public HumanoidCharacterProfile WithGender(Gender gender) => new(this) { Gender = gender };
@@ -439,47 +490,51 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         return new HumanoidCharacterProfile(this) { _loadoutPreferences = list };
     }
 
-    public byte GetSkillAllocation(ProtoId<JobPrototype> jobId, ProtoId<SkillPrototype> skillId)
+    public SkillLevel GetSkill(ProtoId<SkillPrototype> skillId)
     {
-        return _skillPreferences.TryGetValue(jobId, out var jobSkills)
-            ? jobSkills.GetValueOrDefault(skillId)
-            : (byte) 0;
+        return _skills.GetValueOrDefault(skillId, SkillLevels.Min);
     }
 
-    public HumanoidCharacterProfile WithSkillAllocation(
-        ProtoId<JobPrototype> jobId,
-        ProtoId<SkillPrototype> skillId,
-        byte allocation)
+    /// <summary>
+    /// Ember: which of the job's names this character holds it under, or null for the job's own.
+    /// </summary>
+    public string? GetJobTitle(ProtoId<JobPrototype> jobId)
     {
-        var skills = DeepCopySkillPreferences(_skillPreferences);
+        return _jobTitles.GetValueOrDefault(jobId);
+    }
 
-        if (allocation == 0)
-        {
-            if (skills.TryGetValue(jobId, out var existing))
-            {
-                existing.Remove(skillId);
-                if (existing.Count == 0)
-                    skills.Remove(jobId);
-            }
-        }
+    public HumanoidCharacterProfile WithJobTitle(ProtoId<JobPrototype> jobId, string? titleId)
+    {
+        var titles = new Dictionary<ProtoId<JobPrototype>, string>(_jobTitles);
+
+        if (titleId == null)
+            titles.Remove(jobId);
         else
-        {
-            if (!skills.TryGetValue(jobId, out var existing))
-            {
-                existing = new Dictionary<ProtoId<SkillPrototype>, byte>();
-                skills[jobId] = existing;
-            }
+            titles[jobId] = titleId;
 
-            existing[skillId] = allocation;
-        }
-
-        return new(this) { _skillPreferences = skills };
+        return new(this) { _jobTitles = titles };
     }
 
-    public HumanoidCharacterProfile WithSkillAllocations(
-        IReadOnlyDictionary<ProtoId<JobPrototype>, Dictionary<ProtoId<SkillPrototype>, byte>> skillPreferences)
+    public HumanoidCharacterProfile WithSkill(ProtoId<SkillPrototype> skillId, SkillLevel level)
     {
-        return new(this) { _skillPreferences = DeepCopySkillPreferences(skillPreferences) };
+        var skills = new Dictionary<ProtoId<SkillPrototype>, SkillLevel>(_skills);
+
+        if (level <= SkillLevels.Min)
+            skills.Remove(skillId);
+        else
+            skills[skillId] = level;
+
+        return new(this) { _skills = skills };
+    }
+
+    public HumanoidCharacterProfile WithSkills(IReadOnlyDictionary<ProtoId<SkillPrototype>, SkillLevel> skills)
+    {
+        return new(this)
+        {
+            _skills = skills
+                .Where(pair => pair.Value > SkillLevels.Min)
+                .ToDictionary(pair => pair.Key, pair => pair.Value),
+        };
     }
 
     public string Summary =>
@@ -499,17 +554,22 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             && Gender == other.Gender
             && Species == other.Species
             // EE - Contractors Change Start
-            && Nationality == other.Nationality
             && Employer == other.Employer
-            && Lifepath == other.Lifepath
+            && Homeworld == other.Homeworld
+            && Culture == other.Culture
+            && Faction == other.Faction
+            && Religion == other.Religion
             // EE - Contractors Change End
+            && Branch == other.Branch // Ember
+            && Rank == other.Rank // Ember
             && PreferenceUnavailable == other.PreferenceUnavailable
             && SpawnPriority == other.SpawnPriority
             && _jobPriorities.SequenceEqual(other._jobPriorities)
             && _antagPreferences.SequenceEqual(other._antagPreferences)
             && _traitPreferences.SequenceEqual(other._traitPreferences)
             && LoadoutPreferences.SequenceEqual(other.LoadoutPreferences)
-            && SkillPreferencesEqual(_skillPreferences, other._skillPreferences)
+            && _skills.OrderBy(pair => pair.Key.Id).SequenceEqual(other._skills.OrderBy(pair => pair.Key.Id))
+            && _jobTitles.OrderBy(pair => pair.Key.Id).SequenceEqual(other._jobTitles.OrderBy(pair => pair.Key.Id)) // Ember
             && Appearance.MemberwiseEquals(other.Appearance)
             && FlavorText == other.FlavorText;
     }
@@ -541,14 +601,11 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
 
         var age = Math.Clamp(Age, speciesPrototype.MinAge, speciesPrototype.MaxAge);
 
-        var gender = Gender switch
-        {
-            Gender.Epicene => Gender.Epicene,
-            Gender.Female => Gender.Female,
-            Gender.Male => Gender.Male,
-            Gender.Neuter => Gender.Neuter,
-            _ => Gender.Epicene // Invalid enum values.
-        };
+        // Ember: derived, not validated. Gender used to be its own stored choice, which meant a
+        // profile could hold any pairing of sex and pronouns and the editor offered no reason why
+        // one would follow from the other. Deriving it here is what makes the field impossible to
+        // desync, including for profiles that were saved before the pronoun list was removed.
+        var gender = EmberPronouns.GenderFor(sex);
 
         string name;
         if (string.IsNullOrEmpty(Name))
@@ -653,7 +710,46 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             .Distinct()
             .ToList();
 
-        var skills = SharedSkillsSystem.SanitizeAllocations(prototypeManager, _skillPreferences, speciesPrototype, age);
+        var skills = SharedSkillsSystem.SanitizeAllocation(prototypeManager, _skills, speciesPrototype, age);
+
+        // Ember: a title only exists inside its job, so an entry for a job that is gone, or for
+        // a name that job no longer offers, goes with it. A title this character may not hold —
+        // wrong species, or not enough years for the schooling it stands for — is dropped rather
+        // than refused: winding the age back should demote a surgeon to a doctor, not reject the
+        // character. Age is already sanitised above, so it is safe to check against.
+        var jobTitles = new Dictionary<ProtoId<JobPrototype>, string>();
+
+        foreach (var (jobId, titleId) in _jobTitles)
+        {
+            if (!priorities.ContainsKey(jobId) || !prototypeManager.TryIndex(jobId, out JobPrototype? jobProto))
+                continue;
+
+            if (SharedEmberJobTitleSystem.SanitizeTitle(jobProto, titleId, Species, age) is { } valid)
+                jobTitles[jobId] = valid;
+        }
+
+        // Ember: a branch this species may not join, or a rank that is not selectable inside it,
+        // falls back to unaffiliated. Species is already sanitised above, so it is safe to check
+        // against. A rank only means something inside its branch, so losing the branch loses the
+        // rank with it.
+        var branch = Branch;
+        var rank = Rank;
+        EmberBranchPrototype? branchProto = null;
+
+        if (branch is not { } branchId
+            || !prototypeManager.TryIndex(branchId, out branchProto)
+            || !SharedEmberRanksSystem.IsBranchAllowed(branchProto, Species))
+        {
+            branch = null;
+            rank = null;
+            branchProto = null;
+        }
+        else if (rank is not { } rankId
+                 || !prototypeManager.TryIndex(rankId, out var rankProto)
+                 || !SharedEmberRanksSystem.IsRankSelectable(branchProto, rankProto, Species, age))
+        {
+            rank = null;
+        }
 
         Name = name;
         Customspeciename = customspeciename;
@@ -663,6 +759,22 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         Gender = gender;
         Appearance = appearance;
         SpawnPriority = spawnPriority;
+        Branch = branch; // Ember
+        Rank = rank; // Ember
+
+        // Ember: a background can go invalid after the fact, most often because the species
+        // changed under it. Each axis falls back to its own default rather than to the others.
+        Homeworld = SharedEmberBackgroundSystem.Resolve(prototypeManager, Homeworld,
+            EmberBackgroundAxis.Homeworld, Species, SharedHumanoidAppearanceSystem.DefaultHomeworld);
+        Culture = SharedEmberBackgroundSystem.Resolve(prototypeManager, Culture,
+            EmberBackgroundAxis.Culture, Species, SharedHumanoidAppearanceSystem.DefaultCulture);
+        Faction = SharedEmberBackgroundSystem.Resolve(prototypeManager, Faction,
+            EmberBackgroundAxis.Faction, Species, SharedHumanoidAppearanceSystem.DefaultFaction);
+        Religion = SharedEmberBackgroundSystem.Resolve(prototypeManager, Religion,
+            EmberBackgroundAxis.Religion, Species, SharedHumanoidAppearanceSystem.DefaultReligion);
+        // Ember: service and employment are alternatives. Taking a posting clears the payroll
+        // entry rather than the two sitting side by side.
+        Employer = SharedEmberRanksSystem.ResolveEmployer(branchProto, Employer);
 
         _jobPriorities.Clear();
 
@@ -682,10 +794,18 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         _loadoutPreferences.Clear();
         _loadoutPreferences.UnionWith(loadouts);
 
-        _skillPreferences.Clear();
-        foreach (var (job, allocation) in skills)
+        _skills.Clear();
+        foreach (var (skill, level) in skills)
         {
-            _skillPreferences[job] = allocation;
+            if (level > SkillLevels.Min)
+                _skills[skill] = level;
+        }
+
+        // Ember
+        _jobTitles.Clear();
+        foreach (var (jobId, titleId) in jobTitles)
+        {
+            _jobTitles[jobId] = titleId;
         }
     }
 
@@ -716,15 +836,19 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         hashCode.Add(_antagPreferences);
         hashCode.Add(_traitPreferences);
         hashCode.Add(_loadoutPreferences);
-        // EMBER-TODO: Skill preferences are compared deeply but hashed by dictionary reference here.
+        // EMBER-TODO: Skills are compared deeply but hashed by dictionary reference here.
         // Rewrite this to stable content hashing if profiles become hash keys.
-        hashCode.Add(_skillPreferences);
+        hashCode.Add(_skills);
         hashCode.Add(Name);
         hashCode.Add(FlavorText);
         hashCode.Add(Species);
         hashCode.Add(Employer);
-        hashCode.Add(Nationality);
-        hashCode.Add(Lifepath);
+        hashCode.Add(Homeworld);
+        hashCode.Add(Culture);
+        hashCode.Add(Faction);
+        hashCode.Add(Religion);
+        hashCode.Add(Branch); // Ember
+        hashCode.Add(Rank); // Ember
         hashCode.Add(Age);
         hashCode.Add((int) Sex);
         hashCode.Add((int) Gender);
@@ -740,39 +864,4 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         return new HumanoidCharacterProfile(this);
     }
 
-    private static Dictionary<ProtoId<JobPrototype>, Dictionary<ProtoId<SkillPrototype>, byte>> DeepCopySkillPreferences(
-        IReadOnlyDictionary<ProtoId<JobPrototype>, Dictionary<ProtoId<SkillPrototype>, byte>>? skillPreferences)
-    {
-        var copy = new Dictionary<ProtoId<JobPrototype>, Dictionary<ProtoId<SkillPrototype>, byte>>();
-
-        if (skillPreferences == null)
-            return copy;
-
-        foreach (var (job, skills) in skillPreferences)
-        {
-            copy[job] = new Dictionary<ProtoId<SkillPrototype>, byte>(skills);
-        }
-
-        return copy;
-    }
-
-    private static bool SkillPreferencesEqual(
-        IReadOnlyDictionary<ProtoId<JobPrototype>, Dictionary<ProtoId<SkillPrototype>, byte>> left,
-        IReadOnlyDictionary<ProtoId<JobPrototype>, Dictionary<ProtoId<SkillPrototype>, byte>> right)
-    {
-        if (left.Count != right.Count)
-            return false;
-
-        foreach (var (job, leftSkills) in left)
-        {
-            if (!right.TryGetValue(job, out var rightSkills))
-                return false;
-
-            if (!leftSkills.OrderBy(pair => pair.Key.ToString())
-                    .SequenceEqual(rightSkills.OrderBy(pair => pair.Key.ToString())))
-                return false;
-        }
-
-        return true;
-    }
 }

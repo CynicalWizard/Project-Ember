@@ -41,37 +41,24 @@ public sealed class SkillsSystem : EntitySystem
         InitializeAntagSkills(mob, ev.Mind, true);
     }
 
+    /// <summary>
+    /// Applies the character's own skills. The job is no longer part of this: a character
+    /// carries one set of skills whatever post they are filling, and the job's minimums are a
+    /// requirement they already met rather than levels handed out on spawn.
+    /// </summary>
     public void ApplyProfileSkills(
         EntityUid mob,
         string? jobId,
         HumanoidCharacterProfile profile)
     {
-        JobPrototype? job = null;
-        Dictionary<ProtoId<SkillPrototype>, byte>? allocation = null;
-        SpeciesPrototype? species = null;
+        _prototype.TryIndex(profile.Species, out SpeciesPrototype? species);
 
-        _prototype.TryIndex(profile.Species, out species);
+        var finalValues = SharedSkillsSystem.SanitizeAllocation(
+            _prototype,
+            profile.Skills,
+            species,
+            profile.Age);
 
-        if (jobId != null && _prototype.TryIndex<JobPrototype>(jobId, out var indexedJob))
-        {
-            job = indexedJob;
-            profile.SkillPreferences.TryGetValue(jobId, out allocation);
-        }
-
-        var skills = _prototype.EnumeratePrototypes<SkillPrototype>()
-            .OrderBy(skill => skill.ID)
-            .ToArray();
-        var cleanAllocation = allocation ?? new Dictionary<ProtoId<SkillPrototype>, byte>();
-        if (job != null)
-        {
-            var budget = SharedSkillsSystem.GetSkillPointBudget(job, species, profile.Age);
-            cleanAllocation = SharedSkillsSystem.SanitizeAllocation(job, skills, cleanAllocation, budget);
-        }
-
-        var finalValues = SharedSkillsSystem.GetFinalSkillValues(
-            job,
-            skills,
-            cleanAllocation);
         var component = EnsureComp<SkillSetComponent>(mob);
 
         component.BaseSkills.Clear();

@@ -1,0 +1,802 @@
+# How a character was raised. Ported from SierraBay12's /singleton/cultural_info/culture
+# (code/modules/culture_descriptor/culture/), with the Russian additions from
+# mods/expanded_culture_descriptor.
+#
+# Culture is deliberately not the same question as homeworld, and the pairs come apart often
+# enough to be worth asking twice: a Martian tunneller who now lives on Luna is two different
+# answers, and so is a Tajaran raised in a human household on Mars.
+#
+# Two things Bay hangs off this prototype are not carried across. Name generation keys off culture
+# there, and we have no name generator; economic power scales loadout budgets there, and we have no
+# economy. Both would be data that lies about being used.
+#
+# Species requirements read the axis as "raised among these people". The human planetary cultures
+# therefore admit Reptilian and Tajaran - a xeno born in SCG space is raised by whoever is around,
+# and the SCG has plenty of them even though it will not make them citizens. IPC and Diona are
+# excluded from all of them: a positronic is assembled and trained rather than raised, and a diona
+# gestalt is not raised by anyone at all. Both get their own entries in a later batch.
+#
+# Batch 1: the Sol system, plus the three answers that describe a way of living rather than a place.
+# The rest of human space, the Confederation, and the non-human cultures follow.
+
+# Sol. Where most of the crew grew up, so it sorts first.
+- type: emberBackground
+  id: EmberCultureMartianSurfacer
+  axis: Culture
+  weight: 100
+  name: ember-culture-martian-surfacer
+  description: ember-culture-martian-surfacer-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureMartianTunneller
+  axis: Culture
+  weight: 99
+  name: ember-culture-martian-tunneller
+  description: ember-culture-martian-tunneller-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureEarther
+  axis: Culture
+  weight: 98
+  name: ember-culture-earther
+  description: ember-culture-earther-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureLunaOldMoney
+  axis: Culture
+  weight: 97
+  name: ember-culture-luna-old-money
+  description: ember-culture-luna-old-money-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureLunaWorking
+  axis: Culture
+  weight: 96
+  name: ember-culture-luna-working
+  description: ember-culture-luna-working-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureVenusOrbital
+  axis: Culture
+  weight: 95
+  name: ember-culture-venus-orbital
+  description: ember-culture-venus-orbital-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureVenusSurface
+  axis: Culture
+  weight: 94
+  name: ember-culture-venus-surface
+  description: ember-culture-venus-surface-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureBelter
+  axis: Culture
+  weight: 93
+  name: ember-culture-belter
+  description: ember-culture-belter-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureKuiperInsider
+  axis: Culture
+  weight: 92
+  name: ember-culture-kuiper-insider
+  description: ember-culture-kuiper-insider-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureKuiperOutsider
+  axis: Culture
+  weight: 91
+  name: ember-culture-kuiper-outsider
+  description: ember-culture-kuiper-outsider-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCulturePlutonian
+  axis: Culture
+  weight: 90
+  name: ember-culture-plutonian
+  description: ember-culture-plutonian-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+# Ways of living rather than places. A spacer is from no planet by definition, an offworlder from
+# one nobody has mapped, and a vatgrown from nowhere at all.
+- type: emberBackground
+  id: EmberCultureSpacer
+  axis: Culture
+  weight: 89
+  name: ember-culture-spacer
+  description: ember-culture-spacer-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureOffworlder
+  axis: Culture
+  weight: 88
+  name: ember-culture-offworlder
+  description: ember-culture-offworlder-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureVatgrown
+  axis: Culture
+  weight: 87
+  name: ember-culture-vatgrown
+  description: ember-culture-vatgrown-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+# The catch-all sorts last on purpose - it is the answer for a character the list does not cover,
+# not a default.
+- type: emberBackground
+  id: EmberCultureOther
+  axis: Culture
+  weight: 1
+  name: ember-culture-other
+  description: ember-culture-other-desc
+
+# Batch 2: human space outside Sol. SCG colonies first, then the frontier worlds that have left it
+# or never joined.
+
+- type: emberBackground
+  id: EmberCultureCetiNorth
+  axis: Culture
+  weight: 86
+  name: ember-culture-ceti-north
+  description: ember-culture-ceti-north-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureCetiSouth
+  axis: Culture
+  weight: 85
+  name: ember-culture-ceti-south
+  description: ember-culture-ceti-south-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureCetiInterstate
+  axis: Culture
+  weight: 84
+  name: ember-culture-ceti-interstate
+  description: ember-culture-ceti-interstate-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureFoster
+  axis: Culture
+  weight: 83
+  name: ember-culture-foster
+  description: ember-culture-foster-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureTadmor
+  axis: Culture
+  weight: 82
+  name: ember-culture-tadmor
+  description: ember-culture-tadmor-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureEos
+  axis: Culture
+  weight: 81
+  name: ember-culture-eos
+  description: ember-culture-eos-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureLordaniaHigh
+  axis: Culture
+  weight: 80
+  name: ember-culture-lordania-high
+  description: ember-culture-lordania-high-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureLordaniaLow
+  axis: Culture
+  weight: 79
+  name: ember-culture-lordania-low
+  description: ember-culture-lordania-low-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureLorriman
+  axis: Culture
+  weight: 78
+  name: ember-culture-lorriman
+  description: ember-culture-lorriman-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCulturePirxLord
+  axis: Culture
+  weight: 77
+  name: ember-culture-pirx-lord
+  description: ember-culture-pirx-lord-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCulturePirxBug
+  axis: Culture
+  weight: 76
+  name: ember-culture-pirx-bug
+  description: ember-culture-pirx-bug-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCulturePirxFrontier
+  axis: Culture
+  weight: 75
+  name: ember-culture-pirx-frontier
+  description: ember-culture-pirx-frontier-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureBrahe
+  axis: Culture
+  weight: 74
+  name: ember-culture-brahe
+  description: ember-culture-brahe-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureIolaus
+  axis: Culture
+  weight: 73
+  name: ember-culture-iolaus
+  description: ember-culture-iolaus-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureNyx
+  axis: Culture
+  weight: 72
+  name: ember-culture-nyx
+  description: ember-culture-nyx-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureMirania
+  axis: Culture
+  weight: 71
+  name: ember-culture-mirania
+  description: ember-culture-mirania-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureMagnitka
+  axis: Culture
+  weight: 70
+  name: ember-culture-magnitka
+  description: ember-culture-magnitka-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureGaia
+  axis: Culture
+  weight: 69
+  name: ember-culture-gaia
+  description: ember-culture-gaia-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Reptilian
+    - Tajaran
+
+# Batch 3: the Confederation, and the cultures that are not human.
+
+- type: emberBackground
+  id: EmberCultureTerran
+  axis: Culture
+  weight: 68
+  name: ember-culture-terran
+  description: ember-culture-terran-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberCultureConfederateColony
+  axis: Culture
+  weight: 67
+  name: ember-culture-confederate-colony
+  description: ember-culture-confederate-colony-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberCultureConfederateEmigre
+  axis: Culture
+  weight: 66
+  name: ember-culture-confederate-emigre
+  description: ember-culture-confederate-emigre-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberCultureUnathiDiamondPeaks
+  axis: Culture
+  weight: 60
+  name: ember-culture-unathi-peaks
+  description: ember-culture-unathi-peaks-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+- type: emberBackground
+  id: EmberCultureUnathiSaltSwamp
+  axis: Culture
+  weight: 59
+  name: ember-culture-unathi-swamp
+  description: ember-culture-unathi-swamp-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+- type: emberBackground
+  id: EmberCultureUnathiSavannah
+  axis: Culture
+  weight: 58
+  name: ember-culture-unathi-savannah
+  description: ember-culture-unathi-savannah-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+- type: emberBackground
+  id: EmberCultureUnathiPolar
+  axis: Culture
+  weight: 57
+  name: ember-culture-unathi-polar
+  description: ember-culture-unathi-polar-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+- type: emberBackground
+  id: EmberCultureUnathiDesert
+  axis: Culture
+  weight: 56
+  name: ember-culture-unathi-desert
+  description: ember-culture-unathi-desert-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+- type: emberBackground
+  id: EmberCultureUnathiSpace
+  axis: Culture
+  weight: 55
+  name: ember-culture-unathi-space
+  description: ember-culture-unathi-space-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+- type: emberBackground
+  id: EmberCultureUnathiTersten
+  axis: Culture
+  weight: 54
+  name: ember-culture-unathi-tersten
+  description: ember-culture-unathi-tersten-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Reptilian
+
+# The clans of Ahdomai. They were on the faction axis until the Commonwealth was written, and this
+# is where they belong: a clan is where a tajaran is from, in the sense a nationality is, and since
+# the Unification War there has been exactly one clan that is also a state.
+#
+# Weights overlap the positronic block below on purpose. Order only has to hold inside what one
+# character can see, and no character is both a tajaran and a machine, so the two runs never appear
+# in the same list.
+
+- type: emberBackground
+  id: EmberCultureTajaranJanKhazan
+  axis: Culture
+  weight: 53
+  name: ember-culture-tajaran-jan-khazan
+  description: ember-culture-tajaran-jan-khazan-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureTajaranHadii
+  axis: Culture
+  weight: 52
+  name: ember-culture-tajaran-hadii
+  description: ember-culture-tajaran-hadii-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureTajaranVadya
+  axis: Culture
+  weight: 51
+  name: ember-culture-tajaran-vadya
+  description: ember-culture-tajaran-vadya-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureTajaranHadhim
+  axis: Culture
+  weight: 50
+  name: ember-culture-tajaran-hadhim
+  description: ember-culture-tajaran-hadhim-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureTajaranJarr
+  axis: Culture
+  weight: 49
+  name: ember-culture-tajaran-jarr
+  description: ember-culture-tajaran-jarr-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureTajaranShishi
+  axis: Culture
+  weight: 48
+  name: ember-culture-tajaran-shishi
+  description: ember-culture-tajaran-shishi-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureTajaranNazkiin
+  axis: Culture
+  weight: 47
+  name: ember-culture-tajaran-nazkiin
+  description: ember-culture-tajaran-nazkiin-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureTajaranKsd
+  axis: Culture
+  weight: 46
+  name: ember-culture-tajaran-ksd
+  description: ember-culture-tajaran-ksd-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureTajaranKaytam
+  axis: Culture
+  weight: 45
+  name: ember-culture-tajaran-kaytam
+  description: ember-culture-tajaran-kaytam-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCultureTajaranOther
+  axis: Culture
+  weight: 44
+  name: ember-culture-tajaran-other
+  description: ember-culture-tajaran-other-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Tajaran
+
+- type: emberBackground
+  id: EmberCulturePositronicGen2
+  axis: Culture
+  weight: 45
+  name: ember-culture-positronic-gen2
+  description: ember-culture-positronic-gen2-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - IPC
+
+- type: emberBackground
+  id: EmberCulturePositronicGen3
+  axis: Culture
+  weight: 44
+  name: ember-culture-positronic-gen3
+  description: ember-culture-positronic-gen3-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - IPC
+
+- type: emberBackground
+  id: EmberCulturePositronicGen1
+  axis: Culture
+  weight: 43
+  name: ember-culture-positronic-gen1
+  description: ember-culture-positronic-gen1-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - IPC
+
+- type: emberBackground
+  id: EmberCultureDiona
+  axis: Culture
+  weight: 40
+  name: ember-culture-diona
+  description: ember-culture-diona-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Diona
+
+# Batch 4: the Confederation's member worlds, restored. Human-only like the rest of the GCC set.
+
+- type: emberBackground
+  id: EmberCultureNovayaZemlya
+  axis: Culture
+  weight: 65
+  name: ember-culture-novaya-zemlya
+  description: ember-culture-novaya-zemlya-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberCultureAmelia
+  axis: Culture
+  weight: 64
+  name: ember-culture-amelia
+  description: ember-culture-amelia-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberCultureSevois
+  axis: Culture
+  weight: 63
+  name: ember-culture-sevois
+  description: ember-culture-sevois-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberCulturePutkari
+  axis: Culture
+  weight: 62
+  name: ember-culture-putkari
+  description: ember-culture-putkari-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberCultureQabil
+  axis: Culture
+  weight: 61
+  name: ember-culture-qabil
+  description: ember-culture-qabil-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberCultureAtlantis
+  axis: Culture
+  weight: 60
+  name: ember-culture-atlantis
+  description: ember-culture-atlantis-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+
+- type: emberBackground
+  id: EmberCultureBloodrun
+  axis: Culture
+  weight: 59
+  name: ember-culture-bloodrun
+  description: ember-culture-bloodrun-desc
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human

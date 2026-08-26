@@ -18,7 +18,7 @@
         - Muted
     - !type:CharacterEmployerRequirement
       employers:
-      - IdrisIncorporated
+      - ExpeditionaryCorpsOrganisation
       - NanoTrasen
   weight: 20
   startingGear: MagistrateGear

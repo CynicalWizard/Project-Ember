@@ -128,11 +128,5 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutGloves
-    - !type:CharacterNationalityRequirement
-      nationalities:
-        - Bieselite
-    - !type:CharacterLifepathRequirement
-      lifepaths:
-        - WarVet
   items:
     - ClothingHandsGlovesCombatTCAF

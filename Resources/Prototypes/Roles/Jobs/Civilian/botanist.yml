@@ -18,8 +18,7 @@
     employers:
     - NanoTrasen
     - ZengHuPharmaceuticals
-    - EastOrionCompany
-
+    - GraysonManufactories
 - type: startingGear
   id: BotanistGear
   subGear:

@@ -1,0 +1,234 @@
+# Uniforms of the SCG Expeditionary Corps and Fleet, converted from SierraBay12.
+#
+# Fourteen jumpsuits and six skirts stand in for SierraBay12's seventy-six uniform definitions.
+# The other sixty-two exist there only to sew a department patch onto the same garment — Bay
+# writes `accessories = list(/obj/item/clothing/accessory/solgov/department/engineering)` and
+# calls it a new item. We have an accessory system, so a patch is a patch and a uniform is a
+# uniform, and the engineering and medical versions of a coverall stop being two prototypes.
+#
+# `canRollSleeves` and `canRollDown` are not guesses: they are set from which states the RSI
+# actually has, which is how Bay decides it too. Dress uniforms have sleeves and no waist, which
+# is why the parade kit refuses to be pulled down.
+#
+# EMBER-TODO: the four senior service uniforms — officer, commodore, flag officer, and their
+# skirts — are drawn in Bay and referenced by nothing in it. We have ranks from O-6 to O-10 with
+# nothing to wear, so they are wired up here. Worth a second look if it turns out they were left
+# unused for a reason rather than by omission.
+#
+# EMBER-TODO: no in-hand sprites. Bay points its uniforms at a shared `bl_suit` in-hand sheet
+# that has no equivalent here, so a uniform carried rather than worn falls back to whatever the
+# base prototype gives it.
+
+- type: entity
+  parent: ClothingUniformBase
+  id: EmberClothingUniformPt
+  name: "PT uniform"
+  description: "Shorts, shirt, and no dignity whatsoever. Regulation nonetheless."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/pt.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/pt.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: EmberClothingUniformPtExpeditionary
+  name: "expeditionary PT uniform"
+  description: "A baggy shirt bearing the seal of the SCG Expeditionary Corps, and some dorky looking blue shorts."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/pt_expeditionary.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/pt_expeditionary.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: EmberClothingUniformPtFleet
+  name: "fleet PT uniform"
+  description: "A tight-fitting navy blue shirt paired with black shorts. For when you need to get physical."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/pt_fleet.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/pt_fleet.rsi
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingUniformBase
+  id: EmberClothingUniformUtility
+  name: "utility uniform"
+  description: "A comfortable turtleneck and black utility trousers. No insignia, no service, no questions."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/utility.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/utility.rsi
+  - type: EmberRollableClothing
+    canRollSleeves: true
+    canRollDown: true
+
+- type: entity
+  parent: ClothingUniformBase
+  id: EmberClothingUniformUtilityExpeditionary
+  name: "expeditionary uniform"
+  description: "The utility uniform of the SCG Expeditionary Corps, made from biohazard resistant material. This one has silver trim."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/utility_expeditionary.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/utility_expeditionary.rsi
+  - type: EmberRollableClothing
+    canRollSleeves: true
+    canRollDown: true
+
+- type: entity
+  parent: ClothingUniformBase
+  id: EmberClothingUniformUtilityExpeditionaryOfficer
+  name: "expeditionary officer's uniform"
+  description: "The utility uniform of the SCG Expeditionary Corps, made from biohazard resistant material. This one has gold trim."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/utility_expeditionary_officer.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/utility_expeditionary_officer.rsi
+  - type: EmberRollableClothing
+    canRollSleeves: true
+    canRollDown: true
+
+- type: entity
+  parent: ClothingUniformBase
+  id: EmberClothingUniformUtilityFleet
+  name: "fleet coveralls"
+  description: "The utility uniform of the SCG Fleet, made from an insulated material."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/utility_fleet.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/utility_fleet.rsi
+  - type: EmberRollableClothing
+    canRollSleeves: true
+    canRollDown: true
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingUniformBase
+  id: EmberClothingUniformFatiguesFleet
+  name: "fleet fatigues"
+  description: "The alternative utility uniform of the SCG Fleet, for when coveralls are impractical."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/fatigues_fleet.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/fatigues_fleet.rsi
+  - type: EmberRollableClothing
+    canRollSleeves: true
+    canRollDown: true
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingUniformBase
+  id: EmberClothingUniformService
+  name: "fleet service uniform"
+  description: "The service uniform of the SCG Fleet, made from immaculate white fabric. Impossible to keep that way."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/service.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/service.rsi
+  - type: EmberRollableClothing
+    canRollSleeves: true
+    canRollDown: false
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingUniformBase
+  id: EmberClothingUniformServiceOfficer
+  name: "fleet officer's service uniform"
+  description: "The service uniform of the SCG Fleet, cut for a commissioned officer and trimmed to say so."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/service_officer.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/service_officer.rsi
+  - type: EmberRollableClothing
+    canRollSleeves: true
+    canRollDown: false
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingUniformBase
+  id: EmberClothingUniformServiceCommodore
+  name: "fleet commodore's service uniform"
+  description: "The service uniform of a Fleet officer senior enough that the trim has stopped being subtle."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/service_commodore.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/service_commodore.rsi
+  - type: EmberRollableClothing
+    canRollSleeves: true
+    canRollDown: false
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingUniformBase
+  id: EmberClothingUniformServiceFlag
+  name: "fleet flag officer's service uniform"
+  description: "The service uniform of a Fleet flag officer. Very white, very heavy, and worn by perhaps a dozen people alive."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/service_flag.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/service_flag.rsi
+  - type: EmberRollableClothing
+    canRollSleeves: true
+    canRollDown: false
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Fleet
+
+- type: entity
+  parent: ClothingUniformBase
+  id: EmberClothingUniformDressExpeditionary
+  name: "expeditionary dress uniform"
+  description: "The dress uniform of the SCG Expeditionary Corps in silver trim."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/dress_expeditionary.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/dress_expeditionary.rsi
+  - type: EmberRollableClothing
+    canRollSleeves: true
+    canRollDown: false
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Service
+
+- type: entity
+  parent: ClothingUniformBase
+  id: EmberClothingUniformDressExpeditionaryOfficer
+  name: "expeditionary officer's dress uniform"
+  description: "The dress uniform of the SCG Expeditionary Corps in gold trim."
+  components:
+  - type: Sprite
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/dress_expeditionary_officer.rsi
+  - type: Clothing
+    sprite: Ember/Clothing/Uniforms/Jumpsuit/dress_expeditionary_officer.rsi
+  - type: EmberRollableClothing
+    canRollSleeves: true
+    canRollDown: false
+  # This cut sews the department patch somewhere else, so it takes a different sprite.
+  - type: EmberAccessoryHolder
+    insigniaCut: Service

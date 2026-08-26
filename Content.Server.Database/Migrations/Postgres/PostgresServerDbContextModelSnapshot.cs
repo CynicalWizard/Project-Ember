@@ -870,10 +870,19 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("integer")
                         .HasColumnName("age");
 
+                    b.Property<string>("Branch")
+                        .HasColumnType("text")
+                        .HasColumnName("branch");
+
                     b.Property<string>("CharacterName")
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("char_name");
+
+                    b.Property<string>("Culture")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("culture");
 
                     b.Property<string>("CustomSpecieName")
                         .IsRequired()
@@ -908,6 +917,11 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("facial_hair_name");
 
+                    b.Property<string>("Faction")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("faction");
+
                     b.Property<string>("FlavorText")
                         .IsRequired()
                         .HasColumnType("text")
@@ -932,19 +946,14 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("real")
                         .HasColumnName("height");
 
-                    b.Property<string>("Lifepath")
+                    b.Property<string>("Homeworld")
                         .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("lifepath");
+                        .HasColumnName("homeworld");
 
                     b.Property<JsonDocument>("Markings")
                         .HasColumnType("jsonb")
                         .HasColumnName("markings");
-
-                    b.Property<string>("Nationality")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("nationality");
 
                     b.Property<int>("PreferenceId")
                         .HasColumnType("integer")
@@ -953,6 +962,15 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Property<int>("PreferenceUnavailable")
                         .HasColumnType("integer")
                         .HasColumnName("pref_unavailable");
+
+                    b.Property<string>("Rank")
+                        .HasColumnType("text")
+                        .HasColumnName("rank");
+
+                    b.Property<string>("Religion")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("religion");
 
                     b.Property<string>("Sex")
                         .IsRequired()
@@ -995,6 +1013,69 @@ namespace Content.Server.Database.Migrations.Postgres
                         .IsUnique();
 
                     b.ToTable("profile", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ProfileJobTitle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("profile_job_title_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("JobName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("job_name");
+
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("integer")
+                        .HasColumnName("profile_id");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("title");
+
+                    b.HasKey("Id")
+                        .HasName("PK_profile_job_title");
+
+                    b.HasIndex("ProfileId", "JobName")
+                        .IsUnique();
+
+                    b.ToTable("profile_job_title", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ProfileSkill", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("profile_skill_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<byte>("Level")
+                        .HasColumnType("smallint")
+                        .HasColumnName("level");
+
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("integer")
+                        .HasColumnName("profile_id");
+
+                    b.Property<string>("SkillName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("skill_name");
+
+                    b.HasKey("Id")
+                        .HasName("PK_profile_skill");
+
+                    b.HasIndex("ProfileId", "SkillName")
+                        .IsUnique();
+
+                    b.ToTable("profile_skill", (string)null);
                 });
 
             modelBuilder.Entity("Content.Server.Database.RoleWhitelist", b =>
@@ -1763,6 +1844,30 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Preference");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.ProfileJobTitle", b =>
+                {
+                    b.HasOne("Content.Server.Database.Profile", "Profile")
+                        .WithMany("JobTitles")
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_profile_job_title_profile_profile_id");
+
+                    b.Navigation("Profile");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ProfileSkill", b =>
+                {
+                    b.HasOne("Content.Server.Database.Profile", "Profile")
+                        .WithMany("Skills")
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_profile_skill_profile_profile_id");
+
+                    b.Navigation("Profile");
+                });
+
             modelBuilder.Entity("Content.Server.Database.RoleWhitelist", b =>
                 {
                     b.HasOne("Content.Server.Database.Player", "Player")
@@ -2044,9 +2149,13 @@ namespace Content.Server.Database.Migrations.Postgres
                 {
                     b.Navigation("Antags");
 
+                    b.Navigation("JobTitles");
+
                     b.Navigation("Jobs");
 
                     b.Navigation("Loadouts");
+
+                    b.Navigation("Skills");
 
                     b.Navigation("Traits");
                 });

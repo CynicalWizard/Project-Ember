@@ -77,7 +77,7 @@
         - Detective
     - !type:CharacterEmployerRequirement
       employers:
-        - ZavodskoiInterstellar
+        - GraysonManufactories
   items:
     - ClothingOuterJacketZavDetective
 
@@ -98,7 +98,7 @@
         - Detective
     - !type:CharacterEmployerRequirement
       employers:
-        - ZavodskoiInterstellar
+        - GraysonManufactories
   items:
     - ClothingUniformJumpsuitZavodDetective
 
@@ -116,6 +116,6 @@
         - Detective
     - !type:CharacterEmployerRequirement
       employers:
-        - ZavodskoiInterstellar
+        - GraysonManufactories
   items:
     - ClothingUniformJumpsuitZavodDetectiveAlt
