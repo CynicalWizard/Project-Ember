@@ -88,7 +88,7 @@ namespace Content.IntegrationTests.Tests
             await pair.CleanReturnAsync();
         }
 
-        private const string TestMap = "Maps/pebble.yml";
+        private const string TestMap = "Maps/Test/dev_map.yml"; // Ember: pebble was removed with the upstream station maps
 
         /// <summary>
         ///     Loads the default map, runs it for 5 ticks, then assert that it did not change.

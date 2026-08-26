@@ -50,16 +50,6 @@ namespace Content.IntegrationTests.Tests
         {
             "/Maps/CentralCommand/main.yml",
             "/Maps/CentralCommand/harmony.yml",
-            "/Maps/anchor.yml",
-            "/Maps/arena.yml",
-            "/Maps/bagel.yml",
-            "/Maps/gax.yml",
-            "/Maps/hammurabi.yml",
-            "/Maps/hive.yml",
-            "/Maps/lambda.yml",
-            "/Maps/radstation.yml",
-            "/Maps/submarine.yml",
-            "/Maps/tortuga.yml",
             "/Maps/Shuttles/pirateradio.yml",
             "/Maps/Shuttles/ShuttleEvent/cruiser.yml",
             "/Maps/Shuttles/ShuttleEvent/honki.yml",
@@ -70,34 +60,14 @@ namespace Content.IntegrationTests.Tests
 
         private static readonly string[] GameMaps =
         {
+            // Ember: the upstream station maps were removed; what is left is the test and
+            // functional maps that game systems still need.
             "Dev",
             "TestTeg",
             "CentCommMain",
             "CentCommHarmony",
             "MeteorArena",
-            "Core", // No current maintainer. In need of a rework...
-            "Pebble", // Maintained by Plyushune
-            // "Edge", // De-rotated, no current maintainer.
-            "Saltern", // Maintained by the Sin Mapping Team, ODJ, and TCJ.
-            "Shoukou", // Maintained by Violet
-            // "Tortuga", // De-rotated, no current maintainer.
-            "Arena", // Maintained by astriloqua.
-            "Asterisk", // Maintained by mrs.
-            "Glacier", // Maintained by Violet
-            "TheHive", // Maintained by dootythefrooty
-            // "Hammurabi", // De-rotated, maintained by Ichai.
-            "Lighthouse", // Maintained by Violet
-            // "Submarine", // De-rotated, no current maintainer.
-            "Gax", // Maintained by Ichaai
             "Lavatest", // Lavaland Change
-            "Rad", // Maintained by Ichai
-            // "Europa", // De-rotated, has significant issues.
-            "Meta", // Maintained by Ichai
-            "Cyberiad", // Maintained by Ichai
-            "Lambda", // Maintained by Ichai
-            "Bagel", // Maintained by Ichai
-            "Northway", // Maintained by Violet
-            "Anchor" // Maintained by the SiN Mapping Team.
         };
 
         /// <summary>
