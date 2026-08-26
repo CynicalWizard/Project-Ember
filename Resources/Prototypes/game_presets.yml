@@ -85,7 +85,6 @@
   - Revolutionary
   - Zombie
   - Changeling
-  - BloodCult
   - KesslerSyndromeScheduler
   - RampingStationEventScheduler
   - SpaceTrafficControlEventScheduler
@@ -108,7 +107,6 @@
   - Revolutionary
   - Zombie
   - Changeling
-  - BloodCult
   - BasicStationEventScheduler
   - KesslerSyndromeScheduler
   - MeteorSwarmMildScheduler

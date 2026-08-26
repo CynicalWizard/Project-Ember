@@ -32,7 +32,6 @@
   special:
   - !type:AddComponentSpecial
     components:
-    - type: BibleUser
     - type: Psionic
       powerRollMultiplier: 3
       baselinePowerCost: 150

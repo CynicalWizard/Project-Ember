@@ -58,7 +58,6 @@
     - Research
   - type: MindContainer
     showExamineInfo: true
-  - type: Familiar
   - type: Dispellable
   - type: Damageable
     damageContainer: ManifestedSpirit

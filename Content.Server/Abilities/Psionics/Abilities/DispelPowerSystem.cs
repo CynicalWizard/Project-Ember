@@ -3,7 +3,6 @@ using Content.Shared.Abilities.Psionics;
 using Content.Shared.Damage;
 using Content.Shared.Revenant.Components;
 using Content.Server.Guardian;
-using Content.Server.Bible.Components;
 using Content.Server.Popups;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
@@ -32,7 +31,6 @@ namespace Content.Server.Abilities.Psionics
             SubscribeLocalEvent<DamageOnDispelComponent, DispelledEvent>(OnDmgDispelled);
             // Upstream stuff we're just gonna handle here
             SubscribeLocalEvent<GuardianComponent, DispelledEvent>(OnGuardianDispelled);
-            SubscribeLocalEvent<FamiliarComponent, DispelledEvent>(OnFamiliarDispelled);
             SubscribeLocalEvent<RevenantComponent, DispelledEvent>(OnRevenantDispelled);
         }
 
@@ -79,13 +77,6 @@ namespace Content.Server.Abilities.Psionics
             args.Handled = true;
         }
 
-        private void OnFamiliarDispelled(EntityUid uid, FamiliarComponent component, DispelledEvent args)
-        {
-            if (component.Source != null)
-                EnsureComp<SummonableRespawningComponent>(component.Source.Value);
-
-            args.Handled = true;
-        }
 
         private void OnRevenantDispelled(EntityUid uid, RevenantComponent component, DispelledEvent args)
         {

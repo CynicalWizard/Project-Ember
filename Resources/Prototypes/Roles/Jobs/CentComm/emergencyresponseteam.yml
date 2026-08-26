@@ -114,10 +114,6 @@
   - AllAccess
   access:
   - CentralCommand
-  special:
-  - !type:AddComponentSpecial
-    components:
-    - type: BibleUser #Lets them heal with bibles
 
 - type: startingGear
   id: ERTChaplainGear
@@ -145,7 +141,6 @@
     - DrinkWaterMelonJuiceJug
     - Lantern
     - Lantern
-    - Bible
     - CrowbarRed
     - FoodBakedBunHotX
     - FoodBakedBunHotX
@@ -180,7 +175,6 @@
     - DrinkWaterMelonJuiceJug
     - Lantern
     - Lantern
-    - Bible
     - CrowbarRed
     - FoodBakedBunHotX
     - FoodBakedBunHotX

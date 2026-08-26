@@ -50,7 +50,6 @@
         powersToAdd:
           - MetapsionicPower
           - TelepathyPower
-          - MantisSummonBlackBlade
 
 
 - type: startingGear

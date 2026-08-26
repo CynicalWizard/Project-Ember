@@ -1134,7 +1134,6 @@
     head: ClothingHeadHatPlaguedoctor
     mask: ClothingMaskPlague
     id: VisitorPDA
-    belt: Bible
     ears: ClothingHeadsetService
     outerClothing: ClothingOuterPlagueSuit
     pocket1: PlushieSharkGrey
@@ -1149,7 +1148,6 @@
     shoes: ClothingShoesColorBlack
     head: ClothingHeadHatHoodNunHood
     id: VisitorPDA
-    belt: Bible
     ears: ClothingHeadsetService
     outerClothing: ClothingOuterNunRobe
     pocket1: PlushiePenguin

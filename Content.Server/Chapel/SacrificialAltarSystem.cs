@@ -1,4 +1,3 @@
-using Content.Server.Bible.Components;
 using Content.Shared.Abilities.Psionics;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Body.Components;
@@ -77,7 +76,8 @@ public sealed class SacrificialAltarSystem : SharedSacrificialAltarSystem
         }
 
         // you need to be psionic OR bible user
-        if (!HasComp<PsionicComponent>(user) && !HasComp<BibleUserComponent>(user))
+        // Ember: the BibleUser branch went with the chaplain's bible.
+        if (!HasComp<PsionicComponent>(user))
         {
             _popup.PopupEntity(Loc.GetString("altar-failure-reason-user"), ent, user, PopupType.SmallCaution);
             return;

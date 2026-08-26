@@ -79,6 +79,3 @@
     guides:
     - Cyborgs
     - Robotics
-  - type: TwistedConstructionTarget
-    replacementProto: ConstructShell
-    doAfterDelay: 5

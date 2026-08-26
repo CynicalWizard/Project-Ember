@@ -42,7 +42,6 @@
   special:
   - !type:AddComponentSpecial
     components:
-    - type: BibleUser
     - type: Psionic
       powerSlots: 3
       baselinePowerCost: 75
@@ -72,7 +71,6 @@
     id: RnDPDA
     ears: ClothingHeadsetAltScience
     pocket1: BookPsionicsGuidebook
-    pocket2: BibleMystagogue
   storage:
     back:
     - Flash

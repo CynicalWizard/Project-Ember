@@ -38,7 +38,6 @@
     factions:
     - PsionicInterloper
   - type: Alerts
-  - type: Familiar
   - type: Psionic
     removable: false
     roller: false
@@ -192,7 +191,6 @@
     - Chapel
   - type: MindContainer
     showExamineInfo: true
-  - type: Familiar
   - type: Dispellable
   - type: Psionic
     removable: false
