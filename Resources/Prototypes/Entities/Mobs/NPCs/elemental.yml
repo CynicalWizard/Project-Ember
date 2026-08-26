@@ -74,7 +74,6 @@
   - type: ZombieImmune
   - type: ProtectedFromStepTriggers
   - type: Dispellable
-  - type: Fauna # Lavaland Change
 
 - type: entity
   abstract: true
@@ -316,7 +315,6 @@
   - type: InnatePsionicPowers
     powersToAdd:
     - TelepathyPower
-  - type: Fauna # Lavaland Change
 
 - type: entity
   name: Reagent Slime Spawner

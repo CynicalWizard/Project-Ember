@@ -32,5 +32,7 @@ public sealed partial class DamageMarkerOnCollideComponent : Component
     ///     Lavaland Change: Whether the marker can only be applied to fauna.
     /// </summary>
     [DataField]
+    // Ember: FaunaComponent went with Lavaland, so this now blocks the marker outright
+    // rather than restricting it to fauna. Nothing sets it true.
     public bool OnlyWorkOnFauna = false;
 }

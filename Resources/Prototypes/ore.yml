@@ -1,35 +1,37 @@
+# Ember: the *Unprocessed ore tier came from Lavaland and went with it; veins drop
+# the ordinary ore entities again.
 # TODO: Kill ore veins
 # Split it into 2 components, 1 for "spawn XYZ on destruction" and 1 for "randomly select one of these for spawn on destruction"
 
 # High yields
 - type: ore
   id: OreSteel
-  oreEntity: SteelOre1Unprocessed
+  oreEntity: SteelOre1
   minOreYield: 1
   maxOreYield: 5
 
 - type: ore
   id: OreSpaceQuartz
-  oreEntity: SpaceQuartz1Unprocessed
+  oreEntity: SpaceQuartz1
   minOreYield: 1
   maxOreYield: 5
 
 - type: ore
   id: OreCoal
-  oreEntity: Coal1Unprocessed
+  oreEntity: Coal1
   minOreYield: 1
   maxOreYield: 5
 
 # Medium yields
 - type: ore
   id: OreGold
-  oreEntity: GoldOre1Unprocessed
+  oreEntity: GoldOre1
   minOreYield: 1
   maxOreYield: 3
 
 - type: ore
   id: OreSilver
-  oreEntity: SilverOre1Unprocessed
+  oreEntity: SilverOre1
   minOreYield: 1
   maxOreYield: 3
 
@@ -42,25 +44,25 @@
 # Low yields
 - type: ore
   id: OrePlasma
-  oreEntity: PlasmaOre1Unprocessed
+  oreEntity: PlasmaOre1
   minOreYield: 1
   maxOreYield: 2
 
 - type: ore
   id: OreUranium
-  oreEntity: UraniumOre1Unprocessed
+  oreEntity: UraniumOre1
   minOreYield: 1
   maxOreYield: 2
 
 - type: ore
   id: OreBananium
-  oreEntity: BananiumOre1Unprocessed
+  oreEntity: BananiumOre1
   minOreYield: 1
   maxOreYield: 2
 
 - type: ore
   id: OreDiamond
-  oreEntity: DiamondOre1Unprocessed
+  oreEntity: DiamondOre1
   minOreYield: 1
   maxOreYield: 2
 

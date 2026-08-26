@@ -67,7 +67,6 @@
   - type: GhostTakeoverAvailable
   - type: Speech
     speechVerb: LargeMob
-  - type: Fauna # Lavaland Change
 
 - type: entity
   name: space bear

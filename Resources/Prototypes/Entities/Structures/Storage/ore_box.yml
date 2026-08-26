@@ -82,7 +82,6 @@
         layer:
         - MachineLayer
   # Lavaland Change Start
-  - type: OreBag
   - type: MagnetPickup
   - type: ItemToggle
   # Lavaland Change End

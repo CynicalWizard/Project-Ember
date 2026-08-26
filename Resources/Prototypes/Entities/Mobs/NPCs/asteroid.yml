@@ -92,7 +92,6 @@
       amount: 3
     - id: MaterialGoliathHide1
       amount: 3
-  - type: Fauna # Lavaland Change
 
 - type: entity
   id: ActionGoliathTentacle

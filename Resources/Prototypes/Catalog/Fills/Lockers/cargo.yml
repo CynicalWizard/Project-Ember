@@ -32,8 +32,6 @@
     - id: WeaponProtoKineticAccelerator
     - id: OreBag
     - id: Pickaxe
-    - id: LavalandEquipmentExplorerSuit
-    - id: ShelterCapsule
     - id: ClothingMaskGasExplorer
     - id: FlashlightSeclite
     - id: ClothingEyesGlassesGarMeson
