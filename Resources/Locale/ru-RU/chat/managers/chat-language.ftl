@@ -40,8 +40,6 @@ chat-language-Marish-name = Маришский
 
 chat-language-Chittin-name = Хитинидский
 
-chat-language-Xeeplian-name = Xeeplian
-
 chat-language-Cat-name = Кошачий
 
 chat-language-Chicken-name = Куриный

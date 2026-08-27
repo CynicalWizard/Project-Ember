@@ -48,7 +48,6 @@ verb-categories-power-level = Power Level
 
 verb-categories-interaction = Взаимодействовать
 
-verb-categories-blood-cult = Культ Крови
 
 verb-common-toggle-light = Переключить свет
 

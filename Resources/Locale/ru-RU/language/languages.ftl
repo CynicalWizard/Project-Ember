@@ -107,12 +107,6 @@ language-Chittin-description =
     Язык, состоящий из щелчков, жужжания и различных резких звуков, напоминающих насекомых.
     Большая часть их речи исходит от усиков, что делает его практически невозможным для изучения теми, у кого их нет.
 
-language-Xeeplian-name = Xeeplian
-
-language-Xeeplian-description =
-    Our language is highly advanced, efficient and to the point.
-    We have taken a liking to mimic some of the inferior lifeforms' babbling in the further pursuit of Our goals.
-
 language-Cat-name = Кошачий
 
 language-Cat-description = Мяу

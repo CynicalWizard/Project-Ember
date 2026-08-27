@@ -5,8 +5,6 @@ using Content.Shared.Interaction;
 using Content.Shared.Physics;
 using Robust.Shared.Utility;
 
-// Shitmed Change
-using Content.Shared._Shitmed.Antags.Abductor;
 using Content.Shared.Silicons.StationAi;
 
 namespace Content.Shared.DoAfter;
@@ -241,7 +239,7 @@ public abstract partial class SharedDoAfterSystem : EntitySystem
                 return true;
         }
 
-        var hasNoSpecificComponents = !HasComp<StationAiOverlayComponent>(args.User) && !HasComp<AbductorScientistComponent>(args.User); // Shitmed Change
+        var hasNoSpecificComponents = !HasComp<StationAiOverlayComponent>(args.User); // Ember: station AI acts through its overlay
         if (args.RequireCanInteract && !_actionBlocker.CanInteract(args.User, args.Target) && hasNoSpecificComponents) // Shitmed Change
             return true;
 

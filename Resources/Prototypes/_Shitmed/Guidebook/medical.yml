@@ -6,7 +6,6 @@
   - PartManipulation
   - OrganManipulation
   - UtilitySurgeries
-  - Autodoc
 
 - type: guideEntry
   id: PartManipulation
@@ -26,7 +25,3 @@
   text: "/ServerInfo/_Shitmed/Guidebook/Medical/UtilitySurgeries.xml"
   filterEnabled: true
 
-- type: guideEntry
-  id: Autodoc
-  name: guide-entry-autodoc
-  text: "/ServerInfo/_Shitmed/Guidebook/Medical/Autodoc.xml"

@@ -114,7 +114,7 @@ public sealed class NetworkConfiguratorSystem : SharedNetworkConfiguratorSystem
             _configurator = configurator;
             _keyBindingName = keyBindingName;
             _label = new RichTextLabel { StyleClasses = { StyleNano.StyleClassItemStatus } };
-            if (_configurator.ShowLabel) // Shitmed - Starlight Abductors: Allow hiding the label on multitools that dont need List mode.
+            if (_configurator.ShowLabel) // Ember: lets a multitool without List mode hide the label.
                 AddChild(_label);
         }
 
@@ -127,7 +127,7 @@ public sealed class NetworkConfiguratorSystem : SharedNetworkConfiguratorSystem
 
             _linkModeActive = _configurator.LinkModeActive;
 
-            if (!_configurator.ShowLabel) // Shitmed - Starlight Abductors: Allow hiding the label on multitools that dont need List mode.
+            if (!_configurator.ShowLabel) // Ember: lets a multitool without List mode hide the label.
                 return;
 
             var modeLocString = _linkModeActive??false

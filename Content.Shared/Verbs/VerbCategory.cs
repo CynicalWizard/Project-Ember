@@ -106,11 +106,9 @@ namespace Content.Shared.Verbs
 
         public static readonly VerbCategory Interaction = new("verb-categories-interaction");
 
-        public static readonly VerbCategory BloodSpells = new("verb-categories-blood-cult",
-            new SpriteSpecifier.Rsi(new ResPath("/Textures/WhiteDream/BloodCult/actions.rsi"), "blood_spells"));
         public static readonly VerbCategory PowerLevel = new("verb-categories-power-level");
 
-        // Shitmed - Starlight Abductors
+        // Ember: category for items that switch modes.
         public static readonly VerbCategory Switch = new("verb-categories-switch", "/Textures/Interface/VerbIcons/group.svg.192dpi.png");
 
         public static readonly VerbCategory GenderChange = new("verb-categories-gender-change");

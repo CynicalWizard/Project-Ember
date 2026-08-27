@@ -1,6 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Content.Shared._Shitmed.Antags.Abductor;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions.Events;
 using Content.Shared.Administration.Logs;
@@ -538,7 +537,7 @@ public abstract class SharedActionsSystem : EntitySystem
                 break;
             }
             case InstantActionComponent instantAction:
-                var hasNoSpecificComponents = !HasComp<StationAiOverlayComponent>(user) && !HasComp<AbductorScientistComponent>(user); // Shitmed Change
+                var hasNoSpecificComponents = !HasComp<StationAiOverlayComponent>(user); // Ember: station AI acts through its overlay
                 if (action.CheckCanInteract && !_actionBlockerSystem.CanInteract(user, null) && hasNoSpecificComponents) // Shitmed Change
                     return;
 
@@ -634,7 +633,7 @@ public abstract class SharedActionsSystem : EntitySystem
         if (entityCoordinates is not { } coords)
             return false;
 
-        var hasNoSpecificComponents = !HasComp<StationAiOverlayComponent>(user) && !HasComp<AbductorScientistComponent>(user); // Shitmed Change
+        var hasNoSpecificComponents = !HasComp<StationAiOverlayComponent>(user); // Ember: station AI acts through its overlay
         if (checkCanInteract && !_actionBlockerSystem.CanInteract(user, null) && hasNoSpecificComponents) // Shitmed Change
             return false;
 
@@ -1197,27 +1196,4 @@ public abstract class SharedActionsSystem : EntitySystem
     {
         return action is { Charges: < 1, RenewCharges: true };
     }
-
-    // Shitmed Change Start - Starlight Abductors
-    public EntityUid[] HideActions(EntityUid performer, ActionsComponent? comp = null)
-    {
-        if (!Resolve(performer, ref comp, false))
-            return [];
-
-        var actions = comp.Actions.ToArray();
-        comp.Actions.Clear();
-        Dirty(performer, comp);
-        return actions;
-    }
-
-    public void UnHideActions(EntityUid performer, EntityUid[] actions, ActionsComponent? comp = null)
-    {
-        if (!Resolve(performer, ref comp, false))
-            return;
-
-        foreach (var action in actions)
-            comp.Actions.Add(action);
-        Dirty(performer, comp);
-    }
-    // Shitmed Change End
 }
