@@ -127,7 +127,7 @@
         Blunt: -15
         Piercing: -15
         Slash: -15
-  # Shitmed Change
+  # Ember
   - type: EmberCautery
     speed: 0.7
   - type: EmberSurgeryTool

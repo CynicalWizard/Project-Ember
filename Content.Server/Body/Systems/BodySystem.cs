@@ -23,7 +23,7 @@ public sealed class BodySystem : SharedBodySystem
     [Dependency] private readonly GhostSystem _ghostSystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly HumanoidAppearanceSystem _humanoidSystem = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!; // Shitmed Change
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!; // Ember
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
 
@@ -76,7 +76,7 @@ public sealed class BodySystem : SharedBodySystem
             {
                 var layers = HumanoidVisualLayersExtension.Sublayers(layer.Value);
                 _humanoidSystem.SetLayersVisibility(
-                    bodyEnt, new[] { layer.Value }, visible: true, permanent: true, humanoid); // Shitmed Change
+                    bodyEnt, new[] { layer.Value }, visible: true, permanent: true, humanoid); // Ember
             }
         }
     }
@@ -99,7 +99,7 @@ public sealed class BodySystem : SharedBodySystem
         var layers = HumanoidVisualLayersExtension.Sublayers(layer.Value);
         _humanoidSystem.SetLayersVisibility(
             bodyEnt, layers, visible: false, permanent: true, humanoid);
-        _appearance.SetData(bodyEnt, layer, true); // Shitmed Change
+        _appearance.SetData(bodyEnt, layer, true); // Ember
     }
 
     public override HashSet<EntityUid> GibBody(
@@ -111,7 +111,7 @@ public sealed class BodySystem : SharedBodySystem
         float splatModifier = 1,
         Angle splatCone = default,
         SoundSpecifier? gibSoundOverride = null,
-        // Shitmed Change
+        // Ember
         GibType gib = GibType.Gib,
         GibContentsOption contents = GibContentsOption.Drop)
     {
@@ -128,7 +128,7 @@ public sealed class BodySystem : SharedBodySystem
 
         var gibs = base.GibBody(bodyId, gibOrgans, body, launchGibs: launchGibs,
             splatDirection: splatDirection, splatModifier: splatModifier, splatCone: splatCone,
-            gib: gib, contents: contents); // Shitmed Change
+            gib: gib, contents: contents); // Ember
 
         var ev = new BeingGibbedEvent(gibs);
         RaiseLocalEvent(bodyId, ref ev);
@@ -138,7 +138,7 @@ public sealed class BodySystem : SharedBodySystem
         return gibs;
     }
 
-    // Shitmed Change Start
+    // Ember Start
     public override HashSet<EntityUid> GibPart(
         EntityUid partId,
         BodyPartComponent? part = null,
@@ -192,5 +192,5 @@ public sealed class BodySystem : SharedBodySystem
         Dirty(target, bodyAppearance);
     }
 
-    // Shitmed Change End
+    // Ember End
 }

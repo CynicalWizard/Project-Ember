@@ -15,13 +15,13 @@ public sealed partial class SharpComponent : Component
 
 
     /// <summary>
-    ///     Shitmed: Whether this item had <c>EmberScalpelComponent</c> before sharp was added.
+    ///     Ember: Whether this item had <c>EmberScalpelComponent</c> before sharp was added.
     /// </summary>
     [DataField]
     public bool HadScalpel;
 
     /// <summary>
-    ///     Shitmed: Whether this item had <c>EmberBoneSawComponent</c> before sharp was added.
+    ///     Ember: Whether this item had <c>EmberBoneSawComponent</c> before sharp was added.
     /// </summary>
     [DataField]
     public bool HadBoneSaw;

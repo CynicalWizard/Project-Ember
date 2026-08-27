@@ -10,7 +10,7 @@ using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Power;
-using Content.Shared.Tag; // Shitmed Change
+using Content.Shared.Tag; // Ember
 using Content.Shared.Tools.Components;
 using Content.Shared.Wires;
 using Robust.Server.GameObjects;
@@ -29,7 +29,7 @@ public sealed class WiresSystem : SharedWiresSystem
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ConstructionSystem _construction = default!;
-    [Dependency] private readonly TagSystem _tags = default!; // Shitmed Change
+    [Dependency] private readonly TagSystem _tags = default!; // Ember
 
     // This is where all the wire layouts are stored.
     [ViewVariables] private readonly Dictionary<string, WireLayout> _layouts = new();
@@ -456,14 +456,14 @@ public sealed class WiresSystem : SharedWiresSystem
         {
             if (TryComp(args.User, out ActorComponent? actor))
             {
-                // Shitmed Change Start
+                // Ember Start
                 if (_tags.HasTag(args.Used, component.ShowWiresTag))
                     component.ViewWires = true;
                 else
                     component.ViewWires = false;
 
                 UpdateUserInterface(uid);
-                // Shitmed Change End
+                // Ember End
 
                 _uiSystem.OpenUi(uid, WiresUiKey.Key, actor.PlayerSession);
                 args.Handled = true;
@@ -559,7 +559,7 @@ public sealed class WiresSystem : SharedWiresSystem
         var statuses = new List<(int position, object key, object value)>();
         foreach (var (key, value) in wires.Statuses)
         {
-            // Shitmed Change Start
+            // Ember Start
             var tempValue = value;
             var lightData = (((int, StatusLightData?)) tempValue);
             if (lightData.Item2 != null && lightData.Item2 is StatusLightData data)
@@ -578,7 +578,7 @@ public sealed class WiresSystem : SharedWiresSystem
 
                 statuses.Add((lightData.Item1, key, data));
             }
-            // Shitmed Change End
+            // Ember End
         }
 
         statuses.Sort((a, b) => a.position.CompareTo(b.position));

@@ -58,5 +58,5 @@ public sealed partial class NetworkConfiguratorComponent : Component
     public SoundSpecifier SoundSwitchMode = new SoundPathSpecifier("/Audio/Machines/quickbeep.ogg");
 
     [DataField]
-    public bool ShowLabel = true; // Shitmed - Starlight Abductors Change
+    public bool ShowLabel = true; // Ember - Starlight Abductors Change
 }

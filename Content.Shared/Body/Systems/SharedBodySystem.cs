@@ -37,11 +37,11 @@ public abstract partial class SharedBodySystem : EntitySystem
         InitializeBody();
         InitializeParts();
         InitializeOrgans();
-        // Shitmed Change Start
+        // Ember Start
         // To try and mitigate the server load due to integrity checks, we set up a Job Queue.
         InitializeIntegrityQueue();
         InitializePartAppearances();
-        // Shitmed Change End
+        // Ember End
     }
 
     /// <summary>

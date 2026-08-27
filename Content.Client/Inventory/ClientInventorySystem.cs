@@ -251,7 +251,7 @@ namespace Content.Client.Inventory
 
         public sealed class SlotData
         {
-            [ViewVariables] // Shitmed Change - Mostly for debugging.
+            [ViewVariables] // Ember - Mostly for debugging.
             public SlotDefinition SlotDef;
             public EntityUid? HeldEntity => Container?.ContainedEntity;
             public bool Blocked;

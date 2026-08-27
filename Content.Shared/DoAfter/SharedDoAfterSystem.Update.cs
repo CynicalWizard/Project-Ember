@@ -240,7 +240,7 @@ public abstract partial class SharedDoAfterSystem : EntitySystem
         }
 
         var hasNoSpecificComponents = !HasComp<StationAiOverlayComponent>(args.User); // Ember: station AI acts through its overlay
-        if (args.RequireCanInteract && !_actionBlocker.CanInteract(args.User, args.Target) && hasNoSpecificComponents) // Shitmed Change
+        if (args.RequireCanInteract && !_actionBlocker.CanInteract(args.User, args.Target) && hasNoSpecificComponents) // Ember
             return true;
 
 

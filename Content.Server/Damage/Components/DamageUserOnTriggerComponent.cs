@@ -1,5 +1,5 @@
 using Content.Shared.Damage;
-using Content.Shared.Ember.Medical.Targeting; // Shitmed
+using Content.Shared.Ember.Medical.Targeting; // Ember
 
 namespace Content.Server.Damage.Components;
 
@@ -12,7 +12,7 @@ public sealed partial class DamageUserOnTriggerComponent : Component
     public DamageSpecifier Damage = default!;
 
     /// <summary>
-    /// Shitmed Change: Lets mousetraps, etc. target the feet.
+    /// Ember: Lets mousetraps, etc. target the feet.
     /// </summary>
     [DataField]
     public EmberTargetBodyPart? TargetPart = EmberTargetBodyPart.Feet;

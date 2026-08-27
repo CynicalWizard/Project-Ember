@@ -22,7 +22,7 @@
       - left arm
       - right leg
       - left leg
-      - head # Shitmed
+      - head # Ember
       organs:
         heart: OrganHumanHeart
         lungs: OrganHumanLungs

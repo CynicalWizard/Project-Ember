@@ -38,7 +38,7 @@
     - Slicing
     useSound:
       path: /Audio/Items/Culinary/chop.ogg
-  # Shitmed Change
+  # Ember
   - type: EmberScalpel
     speed: 0.65
   - type: EmberSurgeryTool
@@ -100,7 +100,7 @@
     guides:
     - Chef
     - FoodRecipes
-  # Shitmed Change
+  # Ember
   - type: EmberScalpel
     speed: 0.3
   - type: EmberBoneSaw

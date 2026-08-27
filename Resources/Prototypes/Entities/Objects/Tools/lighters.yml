@@ -100,7 +100,7 @@
     radius: 1.1 #smallest possible
     color: orange
   - type: ItemTogglePointLight
-  # Shitmed Change
+  # Ember
   - type: EmberCautery
     speed: 0.45
   - type: EmberSurgeryTool

@@ -9,13 +9,13 @@ using Content.Server.Popups;
 using Content.Shared.Alert;
 using Content.Shared.Atmos;
 using Content.Shared.Body.Components;
-using Content.Shared.Ember.Medical.Body; // Shitmed Change
+using Content.Shared.Ember.Medical.Body; // Ember
 using Content.Shared.Ember.Medical.Body.Organ;
 using Content.Shared.Body.Prototypes;
 using Content.Shared.Chat;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Chemistry.Reagent; // Shitmed Change
+using Content.Shared.Chemistry.Reagent; // Ember
 using Content.Shared.Damage;
 using Content.Shared.Database;
 using Content.Shared.EntityEffects;
@@ -93,7 +93,7 @@ public sealed class RespiratorSystem : EntitySystem
 
             respirator.NextUpdate += respirator.UpdateInterval;
 
-            if (_mobState.IsDead(uid) || HasComp<BreathingImmunityComponent>(uid)) // Shitmed: BreathingImmunity
+            if (_mobState.IsDead(uid) || HasComp<BreathingImmunityComponent>(uid)) // Ember: BreathingImmunity
                 continue;
 
             if (HasComp<RespiratorImmuneComponent>(uid))
@@ -101,7 +101,7 @@ public sealed class RespiratorSystem : EntitySystem
 
             UpdateSaturation(uid, -(float) respirator.UpdateInterval.TotalSeconds, respirator);
 
-            if (!_mobState.IsIncapacitated(uid) && !HasComp<DebrainedComponent>(uid)) // Shitmed: cannot breathe in crit or when no brain.
+            if (!_mobState.IsIncapacitated(uid) && !HasComp<DebrainedComponent>(uid)) // Ember: cannot breathe in crit or when no brain.
             {
                 switch (respirator.Status)
                 {

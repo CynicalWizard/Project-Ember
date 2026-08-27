@@ -80,7 +80,7 @@
         type: HumanoidMarkingModifierBoundUserInterface
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
-      # Shitmed
+      # Ember
       enum.EmberSurgeryUIKey.Key:
         type: EmberSurgeryBui
   - type: Inventory

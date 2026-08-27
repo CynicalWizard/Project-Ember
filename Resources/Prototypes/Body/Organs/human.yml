@@ -45,8 +45,8 @@
   - type: Sprite
     state: brain
   - type: Organ
-    slotId: brain # Shitmed Change
-  - type: Food # Shitmed Change
+    slotId: brain # Ember
+  - type: Food # Ember
     delay: 5
     forceFeedDelay: 6
     popupOnEat: true
@@ -86,9 +86,9 @@
   name: eyes
   description: "I see you!"
   components:
-  - type: Organ # Shitmed Change
-    slotId: eyes # Shitmed Change
-  - type: Eyes # Shitmed Change
+  - type: Organ # Ember
+    slotId: eyes # Ember
+  - type: Eyes # Ember
   - type: Sprite
     layers:
       - state: eyeball-l
@@ -122,7 +122,7 @@
   components:
   - type: Sprite
     state: ears
-  - type: Ears # Shitmed Change
+  - type: Ears # Ember
 
 - type: entity
   id: OrganHumanLungs
@@ -130,8 +130,8 @@
   name: lungs
   description: "Filters oxygen from an atmosphere, which is then sent into the bloodstream to be used as an electron carrier."
   components:
-  - type: Organ # Shitmed Change
-    slotId: lungs # Shitmed Change
+  - type: Organ # Ember
+    slotId: lungs # Ember
   - type: Sprite
     layers:
       - state: lung-l
@@ -166,9 +166,9 @@
   name: heart
   description: "I feel bad for the heartless bastard who lost this."
   components:
-  - type: Heart # Shitmed Change
-  - type: Organ # Shitmed Change
-    slotId: heart # Shitmed Change
+  - type: Heart # Ember
+  - type: Organ # Ember
+    slotId: heart # Ember
   - type: Sprite
     state: heart-on
   # The heart 'metabolizes' medicines and poisons that aren't filtered out by other organs.
@@ -188,8 +188,8 @@
   name: stomach
   description: "Gross. This is hard to stomach."
   components:
-  - type: Organ # Shitmed Change
-    slotId: stomach # Shitmed Change
+  - type: Organ # Ember
+    slotId: stomach # Ember
   - type: Sprite
     state: stomach
   - type: SolutionContainerManager
@@ -219,9 +219,9 @@
   name: liver
   description: "Pairing suggestion: chianti and fava beans."
   components:
-  - type: Liver # Shitmed Change
-  - type: Organ # Shitmed Change
-    slotId: liver # Shitmed Change
+  - type: Liver # Ember
+  - type: Organ # Ember
+    slotId: liver # Ember
   - type: Sprite
     state: liver
   - type: Metabolizer # The liver metabolizes certain chemicals only, like alcohol.
@@ -237,7 +237,7 @@
   name: kidneys
   description: "Filters toxins from the bloodstream."
   components:
-  - type: Organ # Shitmed
+  - type: Organ # Ember
     slotId: kidneys
   - type: Sprite
     layers:

@@ -565,7 +565,7 @@ public abstract class SharedMindSystem : EntitySystem
 public record struct GetCharactedDeadIcEvent(bool? Dead);
 
 /// <summary>
-///     Shitmed Change: Raised on an entity to notify that an objective has been added to the mind.
+///     Ember: Raised on an entity to notify that an objective has been added to the mind.
 /// </summary>
 /// <param name="Objective"></param>
 public record struct ObjectiveAddedEvent(EntityUid Objective);

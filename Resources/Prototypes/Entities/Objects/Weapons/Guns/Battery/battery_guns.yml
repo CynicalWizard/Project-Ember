@@ -49,7 +49,7 @@
         Blunt: 2.5
   - type: DamageOtherOnHit
     staminaCost: 7
-  # Shitmed Change
+  # Ember
   - type: EmberCautery
     speed: 0.9
   - type: EmberSurgeryTool
@@ -108,7 +108,7 @@
         Blunt: 2.5
   - type: DamageOtherOnHit
     staminaCost: 7
-  # Shitmed Change
+  # Ember
   - type: EmberCautery
     speed: 0.9
   - type: EmberSurgeryTool

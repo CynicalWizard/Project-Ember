@@ -1,15 +1,15 @@
 using Content.Shared.Body.Systems;
 using Content.Shared.Traits;
 using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes; // Shitmed Change
-using Content.Shared.Ember.Medical.Surgery; // Shitmed Change
-using Content.Shared.Ember.Medical.Surgery.Tools; // Shitmed Change
+using Robust.Shared.Prototypes; // Ember
+using Content.Shared.Ember.Medical.Surgery; // Ember
+using Content.Shared.Ember.Medical.Surgery.Tools; // Ember
 
 namespace Content.Shared.Body.Organ;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(SharedBodySystem), typeof(SharedEmberSurgerySystem))] // Shitmed Change
-public sealed partial class OrganComponent : Component, IEmberSurgeryToolComponent // Shitmed Change
+[Access(typeof(SharedBodySystem), typeof(SharedEmberSurgerySystem))] // Ember
+public sealed partial class OrganComponent : Component, IEmberSurgeryToolComponent // Ember
 {
     /// <summary>
     /// Relevant body this organ is attached to.
@@ -18,15 +18,15 @@ public sealed partial class OrganComponent : Component, IEmberSurgeryToolCompone
     public EntityUid? Body;
 
     /// <summary>
-    ///     Shitmed Change:Relevant body this organ originally belonged to.
+    ///     Ember:Relevant body this organ originally belonged to.
     ///     FOR WHATEVER FUCKING REASON AUTONETWORKING THIS CRASHES GIBTEST AAAAAAAAAAAAAAA
     /// </summary>
     [DataField]
     public EntityUid? OriginalBody;
 
-    // Shitmed Change Start
+    // Ember Start
     /// <summary>
-    ///     Shitmed Change: Shitcodey solution to not being able to know what name corresponds to each organ's slot ID
+    ///     Ember: Shitcodey solution to not being able to know what name corresponds to each organ's slot ID
     ///     without referencing the prototype or hardcoding.
     /// </summary>
 
@@ -40,7 +40,7 @@ public sealed partial class OrganComponent : Component, IEmberSurgeryToolCompone
     public float Speed { get; set; } = 1f;
 
     /// <summary>
-    ///     Shitmed Change: If true, the organ will not heal an entity when transplanted into them.
+    ///     Ember: If true, the organ will not heal an entity when transplanted into them.
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool? Used { get; set; }
@@ -69,7 +69,7 @@ public sealed partial class OrganComponent : Component, IEmberSurgeryToolCompone
     /// </summary>
     [DataField]
     public bool CanEnable = true;
-    // Shitmed Change End
+    // Ember End
 
     /// <summary>
     ///     These functions are called when this organ is added/implanted to an entity.

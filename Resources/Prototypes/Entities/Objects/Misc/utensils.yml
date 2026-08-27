@@ -8,7 +8,7 @@
   - type: Item # TODO add inhand sprites for all utensils
     sprite: Objects/Misc/utensils.rsi
   - type: SpaceGarbage
-  # Shitmed Change
+  # Ember
   - type: EmberTweezers # Any utensil can poorly remove organs
     speed: 0.2
   - type: EmberSurgeryTool
@@ -58,7 +58,7 @@
     damage:
       types:
         Piercing: 5
-  # Shitmed Change
+  # Ember
   - type: EmberTweezers # Forks are better than spoons
     speed: 0.35
   - type: DamageOtherOnHit
@@ -81,7 +81,7 @@
   - type: Utensil
     types:
     - Fork
-  # Shitmed Change
+  # Ember
   - type: EmberTweezers # Forks are better than spoons
     speed: 0.35
 

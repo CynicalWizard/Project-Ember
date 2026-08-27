@@ -6,7 +6,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
-// Shitmed Change
+// Ember
 using Content.Shared.Random;
 
 namespace Content.Shared.Inventory;
@@ -15,7 +15,7 @@ public partial class InventorySystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IViewVariablesManager _vvm = default!;
-    [Dependency] private readonly RandomHelperSystem _randomHelper = default!; // Shitmed Change
+    [Dependency] private readonly RandomHelperSystem _randomHelper = default!; // Ember
 
     private void InitializeSlots()
     {
@@ -314,7 +314,7 @@ public partial class InventorySystem : EntitySystem
         }
     }
 
-    // Shitmed Change Start
+    // Ember Start
     public void DropSlotContents(EntityUid uid, string slotName, InventoryComponent? inventory = null)
     {
         if (!Resolve(uid, ref inventory))
@@ -339,5 +339,5 @@ public partial class InventorySystem : EntitySystem
 
         Dirty(uid, inventory);
     }
-    // Shitmed Change End
+    // Ember End
 }

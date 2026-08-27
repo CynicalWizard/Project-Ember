@@ -1530,12 +1530,12 @@
   components:
   - type: Absorbable
   - type: CombatMode
-  # Shitmed Change Start
+  # Ember Start
   - type: EmberSurgeryTarget
   - type: EmberTargeting
   - type: HumanoidAppearance
     species: Monkey
-  # Shitmed Change End
+  # Ember End
   - type: Inventory
     templateId: monkey
     speciesId: monkey
@@ -1566,7 +1566,7 @@
   - type: Sprite
     drawdepth: Mobs
     layers:
-    # Shitmed Change Start
+    # Ember Start
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
     - map: [ "enum.HumanoidVisualLayers.Head" ]
     - map: [ "enum.HumanoidVisualLayers.Snout" ]
@@ -1605,7 +1605,7 @@
     - map: [ "head" ]
     - map: [ "pocket1" ]
     - map: [ "pocket2" ]
-    # Shitmed Change End
+    # Ember End
   - type: Carriable
   - type: Hands
   - type: ComplexInteraction
@@ -1615,7 +1615,7 @@
         clownedon:
           True: {visible: true}
           False: {visible: false}
-  - type: Body # Shitmed Change
+  - type: Body # Ember
     prototype: Monkey
     requiredLegs: 2
   - type: CreamPied
@@ -1851,13 +1851,13 @@
   - type: RandomBark
     barkMultiplier: 0.65
     barkType: kobold
-  # Shitmed Change Start
+  # Ember Start
   - type: HumanoidAppearance
     species: Kobold
   - type: Body
     prototype: Kobold
     requiredLegs: 2
-  # Shitmed Change End
+  # Ember End
 
 - type: entity
   name: kobold

@@ -20,7 +20,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 
-// Shitmed Change
+// Ember
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
 using Content.Shared.Ember.Medical.Targeting;
@@ -34,7 +34,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
     [Dependency] private readonly PowerCellSystem _cell = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-    [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Shitmed Change
+    [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Ember
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
     [Dependency] private readonly TransformSystem _transformSystem = default!;
@@ -48,12 +48,12 @@ public sealed class HealthAnalyzerSystem : EntitySystem
         SubscribeLocalEvent<HealthAnalyzerComponent, EntGotInsertedIntoContainerMessage>(OnInsertedIntoContainer);
         SubscribeLocalEvent<HealthAnalyzerComponent, ItemToggledEvent>(OnToggled);
         SubscribeLocalEvent<HealthAnalyzerComponent, DroppedEvent>(OnDropped);
-        // Shitmed Change Start
+        // Ember Start
         Subs.BuiEvents<HealthAnalyzerComponent>(HealthAnalyzerUiKey.Key, subs =>
         {
             subs.Event<HealthAnalyzerPartMessage>(OnHealthAnalyzerPartSelected);
         });
-        // Shitmed Change End
+        // Ember End
     }
 
     public override void Update(float frameTime)
@@ -74,7 +74,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
                 continue;
             }
 
-            // Shitmed Change Start
+            // Ember Start
             if (component.CurrentBodyPart != null
                 && (Deleted(component.CurrentBodyPart)
                 || TryComp(component.CurrentBodyPart, out BodyPartComponent? bodyPartComponent)
@@ -83,7 +83,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
                 BeginAnalyzingEntity((uid, component), patient, null);
                 continue;
             }
-            // Shitmed Change End
+            // Ember End
 
             component.NextUpdate = _timing.CurTime + component.UpdateInterval;
 
@@ -96,7 +96,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
                 continue;
             }
 
-            UpdateScannedUser(uid, patient, true, component.CurrentBodyPart); // Shitmed Change
+            UpdateScannedUser(uid, patient, true, component.CurrentBodyPart); // Ember
         }
     }
 
@@ -176,15 +176,15 @@ public sealed class HealthAnalyzerSystem : EntitySystem
     /// </summary>
     /// <param name="healthAnalyzer">The health analyzer that should receive the updates</param>
     /// <param name="target">The entity to start analyzing</param>
-    /// <param name="part">Shitmed Change: The body part to analyze, if any</param>
+    /// <param name="part">Ember: The body part to analyze, if any</param>
     private void BeginAnalyzingEntity(Entity<HealthAnalyzerComponent> healthAnalyzer, EntityUid target, EntityUid? part = null)
     {
         //Link the health analyzer to the scanned entity
         healthAnalyzer.Comp.ScannedEntity = target;
-        healthAnalyzer.Comp.CurrentBodyPart = part; // Shitmed Change
+        healthAnalyzer.Comp.CurrentBodyPart = part; // Ember
         _cell.SetDrawEnabled(healthAnalyzer.Owner, true);
 
-        UpdateScannedUser(healthAnalyzer, target, true, part); // Shitmed Change
+        UpdateScannedUser(healthAnalyzer, target, true, part); // Ember
     }
 
     /// <summary>
@@ -196,15 +196,15 @@ public sealed class HealthAnalyzerSystem : EntitySystem
     {
         //Unlink the analyzer
         healthAnalyzer.Comp.ScannedEntity = null;
-        healthAnalyzer.Comp.CurrentBodyPart = null; // Shitmed Change
+        healthAnalyzer.Comp.CurrentBodyPart = null; // Ember
         _cell.SetDrawEnabled(healthAnalyzer.Owner, false);
 
         UpdateScannedUser(healthAnalyzer, target, false);
     }
 
-    // Shitmed Change Start
+    // Ember Start
     /// <summary>
-    /// Shitmed Change: Handle the selection of a body part on the health analyzer
+    /// Ember: Handle the selection of a body part on the health analyzer
     /// </summary>
     /// <param name="healthAnalyzer">The health analyzer that's receiving the updates</param>
     /// <param name="args">The message containing the selected part</param>
@@ -224,7 +224,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
                 BeginAnalyzingEntity(healthAnalyzer, owner.Value, part.FirstOrDefault().Id);
         }
     }
-    // Shitmed Change End
+    // Ember End
 
     /// <summary>
     /// Send an update for the target to the healthAnalyzer
@@ -232,7 +232,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
     /// <param name="healthAnalyzer">The health analyzer</param>
     /// <param name="target">The entity being scanned</param>
     /// <param name="scanMode">True makes the UI show ACTIVE, False makes the UI show INACTIVE</param>
-    /// <param name="part">Shitmed Change: The body part being scanned, if any</param>
+    /// <param name="part">Ember: The body part being scanned, if any</param>
     public void UpdateScannedUser(EntityUid healthAnalyzer, EntityUid target, bool scanMode, EntityUid? part = null)
     {
         if (!_uiSystem.HasUi(healthAnalyzer, HealthAnalyzerUiKey.Key))
@@ -257,11 +257,11 @@ public sealed class HealthAnalyzerSystem : EntitySystem
             bleeding = bloodstream.BleedAmount > 0;
         }
 
-        // Shitmed Change Start
+        // Ember Start
         Dictionary<EmberTargetBodyPart, EmberTargetIntegrity>? body = null;
         if (HasComp<EmberTargetingComponent>(target))
             body = _bodySystem.GetBodyPartStatus(target);
-        // Shitmed Change End
+        // Ember End
 
         _uiSystem.ServerSendUiMessage(healthAnalyzer, HealthAnalyzerUiKey.Key, new HealthAnalyzerScannedUserMessage(
             GetNetEntity(target),
@@ -270,8 +270,8 @@ public sealed class HealthAnalyzerSystem : EntitySystem
             scanMode,
             bleeding,
             unrevivable,
-            body, // Shitmed Change
-            part != null ? GetNetEntity(part) : null // Shitmed Change
+            body, // Ember
+            part != null ? GetNetEntity(part) : null // Ember
         ));
     }
 }

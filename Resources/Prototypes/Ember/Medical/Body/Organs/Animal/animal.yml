@@ -46,9 +46,9 @@
   name: animal eyes
   description: "I see you!"
   components:
-  - type: Organ # Shitmed Change
+  - type: Organ # Ember
     slotId: eyes
-  - type: Eyes # Shitmed Change
+  - type: Eyes # Ember
   - type: Sprite
     layers:
       - state: eyeball-l

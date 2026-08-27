@@ -83,7 +83,7 @@
       accent: genericAggressive
     - type: Speech
       speechVerb: LargeMob
-    - type: Body # Shitmed - Adds carp organs.
+    - type: Body # Ember - Adds carp organs.
       prototype: Carp
     - type: EmberSurgeryTarget
     - type: UserInterface

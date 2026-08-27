@@ -40,13 +40,13 @@
   components:
   - type: Sprite
     state: brain
-  - type: Organ # Shitmed
+  - type: Organ # Ember
     slotId: brain
-  - type: Food # Shitmed Change
+  - type: Food # Ember
     delay: 5
     forceFeedDelay: 6
     popupOnEat: true
-  - type: Brain # Shitmed
+  - type: Brain # Ember
   - type: SolutionContainerManager
     solutions:
       organ:
@@ -73,7 +73,7 @@
     layers:
       - state: eyeball-l
       - state: eyeball-r
-  - type: Organ # Shitmed
+  - type: Organ # Ember
     slotId: eyes
   - type: Eyes
 
@@ -94,7 +94,7 @@
         reagents:
         - ReagentId: UncookedAnimalProteins
           Quantity: 5
-  - type: Organ # Shitmed
+  - type: Organ # Ember
     slotId: stomach
   - type: Stomach
   - type: Metabolizer
@@ -121,8 +121,8 @@
     layers:
       - state: lung-l
       - state: lung-r
-  - type: Lung # Shitmed
-  - type: Organ # Shitmed
+  - type: Lung # Ember
+  - type: Organ # Ember
     slotId: lungs
   - type: Metabolizer
     removeEmpty: true

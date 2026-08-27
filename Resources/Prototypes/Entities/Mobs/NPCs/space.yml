@@ -288,7 +288,7 @@
   parent: MobSpaceBasic
   description: Long fangs and a glowing hood, and the alluring look begs to come closer.
   components:
-    - type: Body # Shitmed Change
+    - type: Body # Ember
       prototype: SpaceCobra
     - type: Sprite
       drawdepth: Mobs

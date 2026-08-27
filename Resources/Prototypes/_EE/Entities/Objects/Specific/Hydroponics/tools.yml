@@ -27,7 +27,7 @@
   - type: Item
     sprite: _EE/Objects/Tools/Hydroponics/clippers-eoc.rsi
     storedRotation: -90
-  # Shitmed Change
+  # Ember
   - type: EmberRetractor
     speed: 0.38
   - type: EmberHemostat

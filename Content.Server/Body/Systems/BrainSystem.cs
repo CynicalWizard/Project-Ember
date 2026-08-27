@@ -6,7 +6,7 @@ using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Pointing;
 
-// Shitmed Change
+// Ember
 using Content.Shared.Ember.Medical.Body.Organ;
 using Content.Shared.Body.Systems;
 using Content.Shared.Silicons.Borgs.Components;
@@ -16,13 +16,13 @@ namespace Content.Server.Body.Systems
     public sealed class BrainSystem : EntitySystem
     {
         [Dependency] private readonly SharedMindSystem _mindSystem = default!;
-        [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Shitmed Change
+        [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Ember
         public override void Initialize()
         {
             base.Initialize();
 
             SubscribeLocalEvent<BrainComponent, OrganAddedToBodyEvent>(HandleAddition);
-        // Shitmed Change Start
+        // Ember Start
             SubscribeLocalEvent<BrainComponent, OrganRemovedFromBodyEvent>(HandleRemoval);
             SubscribeLocalEvent<BrainComponent, PointAttemptEvent>(OnPointAttempt);
         }
@@ -100,7 +100,7 @@ namespace Content.Server.Body.Systems
             return hasOtherBrains;
         }
 
-        // Shitmed Change End
+        // Ember End
         private void OnPointAttempt(Entity<BrainComponent> ent, ref PointAttemptEvent args)
         {
             args.Cancel();

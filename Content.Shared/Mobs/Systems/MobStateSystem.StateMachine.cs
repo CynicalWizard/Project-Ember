@@ -1,7 +1,7 @@
 ﻿using Content.Shared.Database;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Body.Organ;
-using Content.Shared.Ember.Medical.Body.Organ; // Shitmed Change
+using Content.Shared.Ember.Medical.Body.Organ; // Ember
 namespace Content.Shared.Mobs.Systems;
 
 public partial class MobStateSystem

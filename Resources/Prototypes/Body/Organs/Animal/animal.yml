@@ -41,7 +41,7 @@
     - state: lung-l
     - state: lung-r
   - type: Organ
-    slotId: lungs # Shitmed
+    slotId: lungs # Ember
   - type: Lung
   - type: Metabolizer
     removeEmpty: true
@@ -71,7 +71,7 @@
   - type: Sprite
     state: stomach
   - type: Organ
-    slotId: stomach # Shitmed
+    slotId: stomach # Ember
   - type: SolutionContainerManager
     solutions:
       stomach:
@@ -109,14 +109,14 @@
   - type: Sprite
     state: liver
   - type: Organ
-    slotId: liver # Shitmed
+    slotId: liver # Ember
   - type: Metabolizer
     maxReagents: 1
     metabolizerTypes: [ Animal ]
     groups:
     - id: Alcohol
       rateModifier: 0.1
-  - type: Liver # Shitmed
+  - type: Liver # Ember
 
 - type: entity
   id: OrganAnimalHeart
@@ -127,7 +127,7 @@
   - type: Sprite
     state: heart-on
   - type: Organ
-    slotId: heart # Shitmed
+    slotId: heart # Ember
   - type: Metabolizer
     maxReagents: 2
     metabolizerTypes: [ Animal ]
@@ -135,7 +135,7 @@
     - id: Medicine
     - id: Poison
     - id: Narcotic
-  - type: Heart # Shitmed
+  - type: Heart # Ember
 
 
 - type: entity
@@ -149,7 +149,7 @@
     - state: kidney-l
     - state: kidney-r
   - type: Organ
-    slotId: kidneys # Shitmed
+    slotId: kidneys # Ember
   - type: Metabolizer
     maxReagents: 5
     metabolizerTypes: [ Animal ]

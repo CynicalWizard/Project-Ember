@@ -3,7 +3,7 @@ using Content.Shared.Body.Part;
 using JetBrains.Annotations;
 
 // Leaving this one in the default namespace because I am afraid to test it 
-// in the Shitmed namespace lmao.
+// in the Ember namespace lmao.
 namespace Content.Server.Destructible.Thresholds.Behaviors;
 
 [UsedImplicitly]

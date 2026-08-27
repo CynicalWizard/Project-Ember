@@ -1,5 +1,5 @@
 ﻿using Content.Shared.MedicalScanner;
-using Content.Shared.Ember.Medical.Targeting; // Shitmed Change
+using Content.Shared.Ember.Medical.Targeting; // Ember
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 
@@ -20,7 +20,7 @@ namespace Content.Client.HealthAnalyzer.UI
             base.Open();
 
             _window = this.CreateWindow<HealthAnalyzerWindow>();
-            _window.OnBodyPartSelected += SendBodyPartMessage; // Shitmed Change
+            _window.OnBodyPartSelected += SendBodyPartMessage; // Ember
             _window.Title = EntMan.GetComponent<MetaDataComponent>(Owner).EntityName;
         }
 
@@ -36,7 +36,7 @@ namespace Content.Client.HealthAnalyzer.UI
             _window.Populate(cast);
         }
 
-        // Shitmed Change Start
+        // Ember Start
         private void SendBodyPartMessage(EmberTargetBodyPart? part, EntityUid target) => SendMessage(new HealthAnalyzerPartMessage(EntMan.GetNetEntity(target), part ?? null));
         protected override void Dispose(bool disposing)
         {
@@ -50,6 +50,6 @@ namespace Content.Client.HealthAnalyzer.UI
             _window?.Dispose();
         }
 
-        // Shitmed Change End
+        // Ember End
     }
 }

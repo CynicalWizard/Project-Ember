@@ -5,7 +5,7 @@ using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Timing;
-using Content.Shared.Ember.Spawners; // Shitmed Change
+using Content.Shared.Ember.Spawners; // Ember
 
 namespace Content.Shared.Friends.Systems;
 
@@ -27,7 +27,7 @@ public sealed class PettableFriendSystem : EntitySystem
 
         SubscribeLocalEvent<PettableFriendComponent, UseInHandEvent>(OnUseInHand);
         SubscribeLocalEvent<PettableFriendComponent, GotRehydratedEvent>(OnRehydrated);
-        SubscribeLocalEvent<PettableFriendComponent, SpawnerSpawnedEvent>(OnSpawned); // Shitmed Change
+        SubscribeLocalEvent<PettableFriendComponent, SpawnerSpawnedEvent>(OnSpawned); // Ember
     }
 
     private void OnUseInHand(Entity<PettableFriendComponent> ent, ref UseInHandEvent args)
@@ -62,7 +62,7 @@ public sealed class PettableFriendSystem : EntitySystem
         _factionException.IgnoreEntities(args.Target, comp.Ignored);
     }
 
-    // Shitmed Change
+    // Ember
     private void OnSpawned(Entity<PettableFriendComponent> ent, ref SpawnerSpawnedEvent args)
     {
         if (!TryComp<FactionExceptionComponent>(ent, out var comp))

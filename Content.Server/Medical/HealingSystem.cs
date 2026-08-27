@@ -40,7 +40,7 @@ public sealed class HealingSystem : EntitySystem
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private readonly SharedEmberTargetingSystem _targetingSystem = default!; // Ember: body-part targeting
-    [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Shitmed Change
+    [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Ember
 
     public override void Initialize()
     {
@@ -87,7 +87,7 @@ public sealed class HealingSystem : EntitySystem
         if (healing.ModifyBloodLevel != 0)
             _bloodstreamSystem.TryModifyBloodLevel(entity.Owner, healing.ModifyBloodLevel);
 
-        var healed = _damageable.TryChangeDamage(entity.Owner, healing.Damage * _damageable.UniversalTopicalsHealModifier, true, origin: args.User, canSever: false); // Shitmed Change
+        var healed = _damageable.TryChangeDamage(entity.Owner, healing.Damage * _damageable.UniversalTopicalsHealModifier, true, origin: args.User, canSever: false); // Ember
 
         if (healed == null && healing.BloodlossModifier != 0)
             return;
@@ -122,7 +122,7 @@ public sealed class HealingSystem : EntitySystem
         _audio.PlayPvs(healing.HealingEndSound, entity.Owner, AudioHelpers.WithVariation(0.125f, _random).WithVolume(-5f));
 
         // Logic to determine the whether or not to repeat the healing action
-        args.Repeat = HasDamage(entity, healing) && !dontRepeat || IsPartDamaged(args.User, entity); // Shitmed Change
+        args.Repeat = HasDamage(entity, healing) && !dontRepeat || IsPartDamaged(args.User, entity); // Ember
         if (!args.Repeat && !dontRepeat)
             _popupSystem.PopupEntity(Loc.GetString("medical-item-finished-using", ("item", args.Used)), entity.Owner, args.User);
         args.Handled = true;
@@ -160,7 +160,7 @@ public sealed class HealingSystem : EntitySystem
         return false;
     }
 
-    // Shitmed Change Start
+    // Ember Start
     private bool IsPartDamaged(EntityUid user, EntityUid target)
     {
         if (!TryComp(user, out EmberTargetingComponent? targeting))
@@ -175,7 +175,7 @@ public sealed class HealingSystem : EntitySystem
         return false;
     }
 
-    // Shitmed Change End
+    // Ember End
 
     private void OnHealingUse(Entity<HealingComponent> entity, ref UseInHandEvent args)
     {
@@ -213,7 +213,7 @@ public sealed class HealingSystem : EntitySystem
         if (TryComp<StackComponent>(uid, out var stack) && stack.Count < 1)
             return false;
 
-        if (!(HasDamage((target, targetDamage), component) || IsPartDamaged(user, target))) // Shitmed Change
+        if (!(HasDamage((target, targetDamage), component) || IsPartDamaged(user, target))) // Ember
         {
             _popupSystem.PopupEntity(Loc.GetString("medical-item-cant-use", ("item", uid)), uid, user);
             return false;

@@ -130,7 +130,7 @@ public abstract partial class SharedMoverController : VirtualController
         {
             if (_mobState.IsIncapacitated(relayTarget.Source) ||
                 TryComp<SleepingComponent>(relayTarget.Source, out _) ||
-                // Shitmed Change
+                // Ember
                 !PhysicsQuery.TryGetComponent(relayTarget.Source, out var relayedPhysicsComponent) ||
                 !MoverQuery.TryGetComponent(relayTarget.Source, out var relayedMover) ||
                 !XformQuery.TryGetComponent(relayTarget.Source, out var relayedXform))
@@ -148,7 +148,7 @@ public abstract partial class SharedMoverController : VirtualController
         }
 
         // Update relative movement
-        // Shitmed Change Start
+        // Ember Start
         else
         {
             if (mover.LerpTarget < Timing.CurTime)
@@ -168,7 +168,7 @@ public abstract partial class SharedMoverController : VirtualController
 
             LerpRotation(uid, mover, frameTime);
         }
-        // Shitmed Change End
+        // Ember End
 
         if (!canMove
             || physicsComponent.BodyStatus != BodyStatus.OnGround && !CanMoveInAirQuery.HasComponent(uid)

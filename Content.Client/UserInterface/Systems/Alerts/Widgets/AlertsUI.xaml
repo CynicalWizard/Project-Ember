@@ -2,12 +2,12 @@
                   xmlns:widgets="clr-namespace:Content.Client.UserInterface.Systems.Alerts.Widgets"
                   xmlns:partStatus="clr-namespace:Content.Client.Ember.Medical.PartStatus.Widgets"
                   MinSize="64 64">
-    <!-- Shitmed Change Start - TODO: Refactor this godforsaken abomination -->
+    <!-- Ember Start - TODO: Refactor this godforsaken abomination -->
     <GridContainer Columns="1" HorizontalAlignment="Right" VerticalAlignment="Top">
         <PanelContainer >
             <GridContainer Name="AlertContainer" Columns="1" HorizontalAlignment="Right" VerticalAlignment="Center" Access="Public" />
         </PanelContainer>
         <partStatus:EmberPartStatusControl Name="PartStatus" Access="Protected"/>
     </GridContainer>
-    <!-- Shitmed Change End -->
+    <!-- Ember End -->
 </widgets:AlertsUI>

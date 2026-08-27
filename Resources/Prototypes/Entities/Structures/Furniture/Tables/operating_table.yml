@@ -2,7 +2,7 @@
   id: OperatingTable
   parent: Bed
   name: operating table
-  description: Used for advanced medical procedures. # Shitmed
+  description: Used for advanced medical procedures. # Ember
   components:
   - type: Sprite
     sprite: Structures/Furniture/Tables/optable.rsi
@@ -12,7 +12,7 @@
     sprite: Structures/Furniture/Tables/optable.rsi
     state: operating_table
   - type: EmberOperatingTable
-  # Begin Shitmed Changes
+  # Begin Embers
   # - type: Construction
   #   graph: Machine
   #   node: machine
@@ -35,4 +35,4 @@
     range: 2
     ports:
     - OperatingTable
-  # End Shitmed Changes
+  # End Embers

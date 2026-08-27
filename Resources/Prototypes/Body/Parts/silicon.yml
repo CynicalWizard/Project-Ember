@@ -26,14 +26,14 @@
     guides:
     - Cyborgs
     - Robotics
-  # Shitmed Change Start
+  # Ember Start
   - type: EmberSurgeryTool
     startSound:
       path: /Audio/Ember/Medical/Surgery/organ1.ogg
     endSound:
       path: /Audio/Ember/Medical/Surgery/organ2.ogg
   - type: Gibbable
-  # Shitmed Change End
+  # Ember End
 
 - type: entity
   id: LeftArmBorg
@@ -41,14 +41,14 @@
   name: cyborg left arm
   components:
   - type: BodyPart
-    partType: Arm # Shitmed Change
+    partType: Arm # Ember
     symmetry: Left
   - type: Sprite
     state: borg_l_arm
   - type: Icon
     state: borg_l_arm
-    toolName: "a left arm" # Shitmed Change
-    children: # Shitmed Change
+    toolName: "a left arm" # Ember
+    children: # Ember
       left hand:
         id: "left hand"
         type: Hand
@@ -64,14 +64,14 @@
   name: cyborg right arm
   components:
   - type: BodyPart
-    partType: Arm # Shitmed Change
+    partType: Arm # Ember
     symmetry: Right
   - type: Sprite
     state: borg_r_arm
   - type: Icon
     state: borg_r_arm
-    toolName: "a right arm" # Shitmed Change
-    children: # Shitmed Change
+    toolName: "a right arm" # Ember
+    children: # Ember
       right hand:
         id: "right hand"
         type: Hand
@@ -93,8 +93,8 @@
     state: borg_l_leg
   - type: Icon
     state: borg_l_leg
-    toolName: "a left leg" # Shitmed Change
-    children: # Shitmed Change
+    toolName: "a left leg" # Ember
+    children: # Ember
       left foot:
         id: "left foot"
         type: Foot
@@ -117,8 +117,8 @@
     state: borg_r_leg
   - type: Icon
     state: borg_r_leg
-    toolName: "a right leg" # Shitmed Change
-    children: # Shitmed Change
+    toolName: "a right leg" # Ember
+    children: # Ember
       right foot:
         id: "right foot"
         type: Foot
@@ -140,7 +140,7 @@
     state: borg_head
   - type: Icon
     state: borg_head
-    toolName: "a head" # Shitmed Change
+    toolName: "a head" # Ember
   - type: Tag
     tags:
     - Trash
@@ -157,7 +157,7 @@
     state: borg_chest
   - type: Icon
     state: borg_chest
-    toolName: "a torso" # Shitmed Change
+    toolName: "a torso" # Ember
   - type: Tag
     tags:
     - Trash

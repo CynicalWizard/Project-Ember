@@ -1,4 +1,4 @@
-# This file is moreso for any base parts from Shitmed that dont fall under any particular umbrella.
+# This file is moreso for any base parts from Ember that dont fall under any particular umbrella.
 - type: humanoidBaseSprite
   id: MobPizzaLArm
   baseSprite:

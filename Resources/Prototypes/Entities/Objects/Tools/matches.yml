@@ -41,7 +41,7 @@
     unlitIcon: match_unlit
     litIcon: match_lit
     burntIcon: match_burnt
-  # Shitmed Change
+  # Ember
   - type: EmberCautery
     speed: 0.2
   - type: EmberSurgeryTool

@@ -1,18 +1,18 @@
 ﻿using Content.Shared.Body.Systems;
-// Shitmed Change Start
+// Ember Start
 using Content.Shared.Ember.Medical.Body.Part;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Robust.Client.GameObjects;
 using Robust.Shared.Utility;
 using Content.Shared.Body.Components;
-// Shitmed Change End
+// Ember End
 
 namespace Content.Client.Body.Systems;
 
 public sealed class BodySystem : SharedBodySystem
 {
-    // Shitmed Change Start
+    // Ember Start
     [Dependency] private readonly MarkingManager _markingManager = default!;
 
     private void ApplyMarkingToPart(MarkingPrototype markingPrototype,
@@ -76,5 +76,5 @@ public sealed class BodySystem : SharedBodySystem
     {
         return;
     }
-    // Shitmed Change End
+    // Ember End
 }

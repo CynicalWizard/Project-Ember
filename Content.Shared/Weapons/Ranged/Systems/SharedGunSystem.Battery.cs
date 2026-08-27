@@ -36,23 +36,23 @@ public abstract partial class SharedGunSystem
         component.Capacity = state.MaxShots;
         component.FireCost = state.FireCost;
 
-        if (component is HitscanBatteryAmmoProviderComponent hitscan && state.Prototype != null) // Shitmed Change
+        if (component is HitscanBatteryAmmoProviderComponent hitscan && state.Prototype != null) // Ember
             hitscan.Prototype = state.Prototype;
     }
 
     private void OnBatteryGetState(EntityUid uid, BatteryAmmoProviderComponent component, ref ComponentGetState args)
     {
-        var state = new BatteryAmmoProviderComponentState() // Shitmed Change
+        var state = new BatteryAmmoProviderComponentState() // Ember
         {
             Shots = component.Shots,
             MaxShots = component.Capacity,
             FireCost = component.FireCost,
         };
 
-        if (TryComp<HitscanBatteryAmmoProviderComponent>(uid, out var hitscan)) // Shitmed Change
+        if (TryComp<HitscanBatteryAmmoProviderComponent>(uid, out var hitscan)) // Ember
            state.Prototype = hitscan.Prototype;
 
-        args.State = state; // Shitmed Change
+        args.State = state; // Ember
     }
 
     private void OnBatteryExamine(EntityUid uid, BatteryAmmoProviderComponent component, ExaminedEvent args)
@@ -120,6 +120,6 @@ public abstract partial class SharedGunSystem
         public int Shots;
         public int MaxShots;
         public float FireCost;
-        public string? Prototype; // Shitmed Change
+        public string? Prototype; // Ember
     }
 }

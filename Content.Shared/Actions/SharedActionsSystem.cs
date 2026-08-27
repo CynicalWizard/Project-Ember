@@ -35,7 +35,7 @@ public abstract class SharedActionsSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!; // Shitmed Change
+    [Dependency] private readonly SharedPopupSystem _popup = default!; // Ember
     [Dependency] private readonly IPrototypeManager _protoMan = default!;
 
     public override void Initialize()
@@ -538,7 +538,7 @@ public abstract class SharedActionsSystem : EntitySystem
             }
             case InstantActionComponent instantAction:
                 var hasNoSpecificComponents = !HasComp<StationAiOverlayComponent>(user); // Ember: station AI acts through its overlay
-                if (action.CheckCanInteract && !_actionBlockerSystem.CanInteract(user, null) && hasNoSpecificComponents) // Shitmed Change
+                if (action.CheckCanInteract && !_actionBlockerSystem.CanInteract(user, null) && hasNoSpecificComponents) // Ember
                     return;
 
                 _adminLogger.Add(LogType.Action,
@@ -634,7 +634,7 @@ public abstract class SharedActionsSystem : EntitySystem
             return false;
 
         var hasNoSpecificComponents = !HasComp<StationAiOverlayComponent>(user); // Ember: station AI acts through its overlay
-        if (checkCanInteract && !_actionBlockerSystem.CanInteract(user, null) && hasNoSpecificComponents) // Shitmed Change
+        if (checkCanInteract && !_actionBlockerSystem.CanInteract(user, null) && hasNoSpecificComponents) // Ember
             return false;
 
         if (!checkCanAccess)

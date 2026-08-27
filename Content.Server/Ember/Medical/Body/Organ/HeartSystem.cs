@@ -34,5 +34,5 @@ public sealed class HeartSystem : EntitySystem
         if (_bodySystem.TryGetBodyOrganEntityComps<BrainComponent>(args.Body, out var _))
             RemComp<DelayedDeathComponent>(args.Body);
     }
-    // Shitmed-End
+    // Ember-End
 }

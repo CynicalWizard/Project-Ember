@@ -54,7 +54,7 @@ public abstract partial class SharedHandsSystem
 
         var newHand = new Hand(handName, handLocation, container);
         handsComp.Hands.Add(handName, newHand);
-        AddToSortedHands(handsComp, handName, handLocation); // Shitmed Change
+        AddToSortedHands(handsComp, handName, handLocation); // Ember
 
         if (handsComp.ActiveHand == null)
             SetActiveHand(uid, newHand, handsComp);
@@ -327,7 +327,7 @@ public abstract partial class SharedHandsSystem
     }
 
     /// <summary>
-    /// Shitmed Change: This function checks when adding a hand for symmetries to determine where to add it in the sorted hands array.
+    /// Ember: This function checks when adding a hand for symmetries to determine where to add it in the sorted hands array.
     /// </summary>
     /// <param name="handsComp">The hands component that we're modifying.</param>
     /// <param name="handName">The name of the hand we're adding.</param>

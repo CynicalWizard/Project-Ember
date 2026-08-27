@@ -201,7 +201,7 @@ public abstract class ClothingSystem : EntitySystem
     }
 
     // Yes, this is exclusive C# just so that high heels selected from loadouts still hide the feet layers
-    // after Shitmed (SharedBodySystem.PartAppearance) initializes the feet parts setting their layer visibility to true.
+    // after Ember (SharedBodySystem.PartAppearance) initializes the feet parts setting their layer visibility to true.
     private void OnPartAttachedToBody(Entity<HumanoidAppearanceComponent> ent, ref BodyPartAddedEvent args)
     {
         var enumerator = _invSystem.GetSlotEnumerator(ent.Owner);

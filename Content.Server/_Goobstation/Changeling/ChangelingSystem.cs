@@ -757,7 +757,7 @@ public sealed partial class ChangelingSystem : SharedChangelingSystem
         // make their blood unreal
         _blood.ChangeBloodReagent(uid, "BloodChangeling");
 
-        // Shitmed: Prevent changelings from getting their body parts severed
+        // Ember: Prevent changelings from getting their body parts severed
         foreach (var (id, part) in _bodySystem.GetBodyChildren(uid))
         {
             part.CanSever = false;

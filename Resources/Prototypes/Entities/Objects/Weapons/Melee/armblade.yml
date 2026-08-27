@@ -22,7 +22,7 @@
   - type: Utensil
     types:
     - Knife
-  # Shitmed Change
+  # Ember
   - type: EmberScalpel
     speed: 0.3
   - type: EmberBoneSaw

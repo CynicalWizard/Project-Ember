@@ -7,7 +7,7 @@
     - type: BodyPart
       partType: Arm
       symmetry: Right
-      toolName: "a right arm" # Shitmed Change
+      toolName: "a right arm" # Ember
       canSever: false
     - type: Sprite
       sprite: Mobs/Customization/cyberlimbs/bishop/bishop_main.rsi
@@ -22,7 +22,7 @@
     - type: BodyPart
       partType: Hand
       symmetry: Right
-      toolName: "a right hand" # Shitmed Change
+      toolName: "a right hand" # Ember
       canSever: false
     - type: Sprite
       sprite: Mobs/Customization/cyberlimbs/bishop/bishop_main.rsi

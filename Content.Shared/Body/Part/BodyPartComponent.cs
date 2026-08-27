@@ -4,7 +4,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
-// Shitmed Change
+// Ember
 
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.FixedPoint;
@@ -15,8 +15,8 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared.Body.Part;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-//[Access(typeof(SharedBodySystem))] // Shitmed Change - all access :godo:
-public sealed partial class BodyPartComponent : Component, IEmberSurgeryToolComponent // Shitmed Change
+//[Access(typeof(SharedBodySystem))] // Ember - all access :godo:
+public sealed partial class BodyPartComponent : Component, IEmberSurgeryToolComponent // Ember
 {
     // Need to set this on container changes as it may be several transform parents up the hierarchy.
     /// <summary>
@@ -25,13 +25,13 @@ public sealed partial class BodyPartComponent : Component, IEmberSurgeryToolComp
     [DataField, AutoNetworkedField]
     public EntityUid? Body;
 
-    // Shitmed Change Start
+    // Ember Start
 
     [DataField, AutoNetworkedField]
     public BodyPartSlot? ParentSlot;
 
     /// <summary>
-    ///     Shitmed Change: Amount of damage to deal when the part gets removed.
+    ///     Ember: Amount of damage to deal when the part gets removed.
     ///     Only works if IsVital is true.
     /// </summary>
     [DataField, AutoNetworkedField]
@@ -50,7 +50,7 @@ public sealed partial class BodyPartComponent : Component, IEmberSurgeryToolComp
     public float Speed { get; set; } = 1f;
 
     /// <summary>
-    /// Shitmed Change: What's the max health this body part can have?
+    /// Ember: What's the max health this body part can have?
     /// </summary>
     [DataField]
     public float MinIntegrity;
@@ -62,13 +62,13 @@ public sealed partial class BodyPartComponent : Component, IEmberSurgeryToolComp
     public bool CanSever = true;
 
     /// <summary>
-    ///     Shitmed Change: Whether this body part is enabled or not.
+    ///     Ember: Whether this body part is enabled or not.
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool Enabled = true;
 
     /// <summary>
-    ///     Shitmed Change: Whether this body part can be enabled or not. Used for non-functional prosthetics.
+    ///     Ember: Whether this body part can be enabled or not. Used for non-functional prosthetics.
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool CanEnable = true;
@@ -80,50 +80,50 @@ public sealed partial class BodyPartComponent : Component, IEmberSurgeryToolComp
     public bool CanAttachChildren = true;
 
     /// <summary>
-    ///     Shitmed Change: How long it takes to run another self heal tick on the body part.
+    ///     Ember: How long it takes to run another self heal tick on the body part.
     /// </summary>
     [DataField]
     public float HealingTime = 30;
 
     /// <summary>
-    ///     Shitmed Change: How long it has been since the last self heal tick on the body part.
+    ///     Ember: How long it has been since the last self heal tick on the body part.
     /// </summary>
     public float HealingTimer;
 
     /// <summary>
-    ///     Shitmed Change: How much health to heal on the body part per tick.
+    ///     Ember: How much health to heal on the body part per tick.
     /// </summary>
     [DataField]
     public float SelfHealingAmount = 5;
 
     /// <summary>
-    ///     Shitmed Change: The name of the container for this body part. Used in insertion surgeries.
+    ///     Ember: The name of the container for this body part. Used in insertion surgeries.
     /// </summary>
     [DataField]
     public string ContainerName { get; set; } = "part_slot";
 
     /// <summary>
-    ///     Shitmed Change: The slot for item insertion.
+    ///     Ember: The slot for item insertion.
     /// </summary>
     [DataField, AutoNetworkedField]
     public ItemSlot ItemInsertionSlot = new();
 
 
     /// <summary>
-    ///     Shitmed Change: Current species. Dictates things like body part sprites.
+    ///     Ember: Current species. Dictates things like body part sprites.
     /// </summary>
     [DataField, AutoNetworkedField]
     public string Species { get; set; } = "";
 
     /// <summary>
-    ///     Shitmed Change: The total damage that has to be dealt to a body part
+    ///     Ember: The total damage that has to be dealt to a body part
     ///     to make possible severing it.
     /// </summary>
     [DataField, AutoNetworkedField]
     public float SeverIntegrity = 90;
 
     /// <summary>
-    ///     Shitmed Change: The ID of the base layer for this body part.
+    ///     Ember: The ID of the base layer for this body part.
     /// </summary>
     [DataField, AutoNetworkedField]
     public string? BaseLayerId;
@@ -173,7 +173,7 @@ public sealed partial class BodyPartComponent : Component, IEmberSurgeryToolComp
     [DataField, AlwaysPushInheritance]
     public ComponentRegistry? OnRemove;
 
-    // Shitmed Change End
+    // Ember End
 
     /// <summary>
     /// Child body parts attached to this body part.

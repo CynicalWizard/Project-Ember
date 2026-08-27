@@ -1819,7 +1819,7 @@ namespace Content.Client.Stylesheets
                     {
                         new StyleProperty(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Bwoink/un_pinned.png"))
                     }),
-                // Shitmed Change Start
+                // Ember Start
                 Element<TextureButton>().Class("TargetDollButtonHead")
                     .Pseudo(TextureButton.StylePseudoClassHover)
                     .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Ember/Interface/Targeting/Doll/head_hover.png")),
@@ -1871,7 +1871,7 @@ namespace Content.Client.Stylesheets
                 Element<TextureButton>().Class("TargetDollButtonMouth")
                     .Pseudo(TextureButton.StylePseudoClassHover)
                     .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Ember/Interface/Targeting/Doll/mouth_hover.png")),
-                // Shitmed Change End
+                // Ember End
 
             }).ToList());
         }

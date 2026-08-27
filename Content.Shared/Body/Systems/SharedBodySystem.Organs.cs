@@ -5,7 +5,7 @@ using Content.Shared.Body.Organ;
 using Content.Shared.Body.Part;
 using Robust.Shared.Containers;
 
-// Shitmed Change
+// Ember
 
 using Content.Shared.Damage;
 using Content.Shared.Ember.Medical.BodyEffects;
@@ -17,7 +17,7 @@ namespace Content.Shared.Body.Systems;
 
 public partial class SharedBodySystem
 {
-    // Shitmed Change Start
+    // Ember Start
     [Dependency] private readonly IComponentFactory _componentFactory = default!;
     [Dependency] private readonly ISerializationManager _serializationManager = default!;
     private void InitializeOrgans()
@@ -32,7 +32,7 @@ public partial class SharedBodySystem
             EnsureComp<OrganEffectComponent>(ent);
     }
 
-    // Shitmed Change End
+    // Ember End
 
     private void AddOrgan(
         Entity<OrganComponent> organEnt,
@@ -45,14 +45,14 @@ public partial class SharedBodySystem
 
         if (organEnt.Comp.Body is not null)
         {
-            // Shitmed Change Start
+            // Ember Start
             var addedInBodyEv = new OrganAddedToBodyEvent(bodyUid, parentPartUid);
             RaiseLocalEvent(organEnt, ref addedInBodyEv);
             var organEnabledEv = new OrganEnableChangedEvent(true);
             RaiseLocalEvent(organEnt, ref organEnabledEv);
             AddFunctions(bodyUid, organEnt.Comp);
         }
-        // Shitmed Change End
+        // Ember End
 
         Dirty(organEnt, organEnt.Comp);
     }
@@ -74,11 +74,11 @@ public partial class SharedBodySystem
 
         if (organEnt.Comp.Body is { Valid: true } bodyUid)
         {
-            // Shitmed Change Start
+            // Ember Start
             organEnt.Comp.OriginalBody = organEnt.Comp.Body;
             var organDisabledEv = new OrganEnableChangedEvent(false);
             RaiseLocalEvent(organEnt, ref organDisabledEv);
-            // Shitmed Change End
+            // Ember End
             var removedInBodyEv = new OrganRemovedFromBodyEvent(bodyUid, parentPartUid);
             RaiseLocalEvent(organEnt, ref removedInBodyEv);
             RemoveFunctions(bodyUid, organEnt.Comp);
@@ -136,13 +136,13 @@ public partial class SharedBodySystem
         Containers.EnsureContainer<ContainerSlot>(parent.Value, GetOrganContainerId(slotId));
         slot = new OrganSlot(slotId);
 
-        // Shitmed Change Start
+        // Ember Start
         if (!part.Organs.ContainsKey(slotId)
             && !part.Organs.TryAdd(slotId, slot.Value))
             return false;
 
         return true;
-        // Shitmed Change End
+        // Ember End
     }
 
     /// <summary>
@@ -278,7 +278,7 @@ public partial class SharedBodySystem
         return false;
     }
 
-    // Shitmed Change Start
+    // Ember Start
 
     public bool TrySetOrganUsed(EntityUid organId, bool used, OrganComponent? organ = null)
     {
@@ -335,5 +335,5 @@ public partial class SharedBodySystem
         }
     }
 
-    // Shitmed Change End
+    // Ember End
 }

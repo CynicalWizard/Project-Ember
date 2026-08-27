@@ -22,11 +22,11 @@ public sealed partial class OverlayChatGameScreen : InGameScreen
         SetAnchorAndMarginPreset(Hotbar, LayoutPreset.BottomWide, margin: 5);
         SetAnchorAndMarginPreset(Chat, LayoutPreset.TopRight, margin: 10);
         SetAnchorAndMarginPreset(Alerts, LayoutPreset.TopRight, margin: 10);
-        SetAnchorAndMarginPreset(Targeting, LayoutPreset.BottomRight, margin: 5); // Shitmed Change
+        SetAnchorAndMarginPreset(Targeting, LayoutPreset.BottomRight, margin: 5); // Ember
 
         Chat.OnResized += ChatOnResized;
         Chat.OnChatResizeFinish += ChatOnResizeFinish;
-        MainViewport.OnResized += ResizeAlertsContainer; // Shitmed Change
+        MainViewport.OnResized += ResizeAlertsContainer; // Ember
         Actions.ActionsContainer.Columns = 1;
     }
 

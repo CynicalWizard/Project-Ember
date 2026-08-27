@@ -1,6 +1,6 @@
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
-using Content.Shared.Tag; // Shitmed Change - Starlight Abductors
+using Content.Shared.Tag; // Ember - Starlight Abductors
 
 namespace Content.Server.Wires;
 
@@ -69,11 +69,11 @@ public sealed partial class WiresComponent : Component
     [DataField]
     public SoundSpecifier PulseSound = new SoundPathSpecifier("/Audio/Effects/multitool_pulse.ogg");
 
-    // Shitmed Change - Starlight Abductors
+    // Ember - Starlight Abductors
     [ViewVariables]
     public bool ViewWires = false;
 
     [DataField]
     public ProtoId<TagPrototype> ShowWiresTag = "ShowWires";
-    // Shitmed Change End
+    // Ember End
 }

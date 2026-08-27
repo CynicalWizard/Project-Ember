@@ -5,7 +5,7 @@
   abstract: true
   components:
   - type: Damageable
-    damageContainer: OrganicPart # Shitmed Change
+    damageContainer: OrganicPart # Ember
   - type: BodyPart
   - type: Gibbable
   - type: ContainerContainer
@@ -17,7 +17,7 @@
   - type: Tag
     tags:
       - Trash
-  # Shitmed Change Start
+  # Ember Start
   - type: EmberSurgeryTool
     startSound:
       path: /Audio/Ember/Medical/Surgery/organ1.ogg
@@ -52,7 +52,7 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MeatLaserImpact
-  # Shitmed Change End
+  # Ember End
 
 - type: entity
   id: BaseTorso
@@ -62,7 +62,7 @@
   components:
   - type: BodyPart
     partType: Torso
-    # Shitmed Change Start
+    # Ember Start
     toolName: "a torso"
     containerName: "torso_slot"
   - type: ContainerContainer
@@ -97,7 +97,7 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MeatLaserImpact
-    # Shitmed Change End
+    # Ember End
   - type: DamageOtherOnHit
     damage:
       types:
@@ -112,7 +112,7 @@
   components:
   - type: BodyPart
     partType: Head
-    toolName: "a head" # Shitmed Change
+    toolName: "a head" # Ember
     vital: true
   - type: Input
     context: "ghost"
@@ -134,7 +134,7 @@
   - type: BodyPart
     partType: Arm
     symmetry: Left
-    toolName: "a left arm" # Shitmed Change
+    toolName: "a left arm" # Ember
   - type: DamageOtherOnHit
     damage:
       types:
@@ -150,7 +150,7 @@
   - type: BodyPart
     partType: Arm
     symmetry: Right
-    toolName: "a right arm" # Shitmed Change
+    toolName: "a right arm" # Ember
   - type: DamageOtherOnHit
     damage:
       types:
@@ -166,7 +166,7 @@
   - type: BodyPart
     partType: Hand
     symmetry: Left
-    toolName: "a left hand" # Shitmed Change
+    toolName: "a left hand" # Ember
   - type: DamageOtherOnHit
     damage:
       types:
@@ -181,7 +181,7 @@
   - type: BodyPart
     partType: Hand
     symmetry: Right
-    toolName: "a right hand" # Shitmed Change
+    toolName: "a right hand" # Ember
   - type: DamageOtherOnHit
     damage:
       types:
@@ -196,7 +196,7 @@
   - type: BodyPart
     partType: Leg
     symmetry: Left
-    toolName: "a left leg" # Shitmed Change
+    toolName: "a left leg" # Ember
   - type: MovementBodyPart
   - type: DamageOtherOnHit
     damage:
@@ -213,7 +213,7 @@
   - type: BodyPart
     partType: Leg
     symmetry: Right
-    toolName: "a right leg" # Shitmed Change
+    toolName: "a right leg" # Ember
   - type: MovementBodyPart
   - type: DamageOtherOnHit
     damage:
@@ -230,7 +230,7 @@
   - type: BodyPart
     partType: Foot
     symmetry: Left
-    toolName: "a left foot" # Shitmed Change
+    toolName: "a left foot" # Ember
   - type: DamageOtherOnHit
     damage:
       types:
@@ -245,7 +245,7 @@
   - type: BodyPart
     partType: Foot
     symmetry: Right
-    toolName: "a right foot" # Shitmed Change
+    toolName: "a right foot" # Ember
   - type: DamageOtherOnHit
     damage:
       types:

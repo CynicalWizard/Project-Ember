@@ -14,7 +14,7 @@
       - left arm
       - right leg
       - left leg
-      - head # Shitmed
+      - head # Ember
       organs:
         core: SentientSlimeCore
         lungs: OrganSlimeLungs

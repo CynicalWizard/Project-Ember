@@ -10,7 +10,7 @@ using Content.Shared.Movement.Components;
 using Robust.Shared.Containers;
 using Robust.Shared.Utility;
 
-// Shitmed Change Start
+// Ember Start
 using Content.Shared.Ember.Medical.Body;
 using Content.Shared.Ember.Medical.Body.Part;
 using Content.Shared.Ember.Medical.BodyEffects;
@@ -22,7 +22,7 @@ namespace Content.Shared.Body.Systems;
 
 public partial class SharedBodySystem
 {
-    [Dependency] private readonly RandomHelperSystem _randomHelper = default!; // Shitmed Change
+    [Dependency] private readonly RandomHelperSystem _randomHelper = default!; // Ember
     private void InitializeParts()
     {
         // TODO: This doesn't handle comp removal on child ents.
@@ -31,7 +31,7 @@ public partial class SharedBodySystem
         SubscribeLocalEvent<BodyPartComponent, EntInsertedIntoContainerMessage>(OnBodyPartInserted);
         SubscribeLocalEvent<BodyPartComponent, EntRemovedFromContainerMessage>(OnBodyPartRemoved);
 
-        // Shitmed Change Start
+        // Ember Start
         SubscribeLocalEvent<BodyPartComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<BodyPartComponent, ComponentRemove>(OnBodyPartRemove);
         SubscribeLocalEvent<BodyPartComponent, AmputateAttemptEvent>(OnAmputateAttempt);
@@ -114,7 +114,7 @@ public partial class SharedBodySystem
     }
 
     /// <summary>
-    ///     Shitmed Change: This function handles dropping the items in an entity's slots if they lose all of a given part.
+    ///     Ember: This function handles dropping the items in an entity's slots if they lose all of a given part.
     ///     Such as their hands, feet, head, etc.
     /// </summary>
     public void DropSlotContents(Entity<BodyPartComponent> partEnt)
@@ -210,7 +210,7 @@ public partial class SharedBodySystem
     private void OnAmputateAttempt(Entity<BodyPartComponent> partEnt, ref AmputateAttemptEvent args) =>
         DropPart(partEnt);
 
-    // Shitmed Change End
+    // Ember End
     private void OnBodyPartInserted(Entity<BodyPartComponent> ent, ref EntInsertedIntoContainerMessage args)
     {
         // Body part inserted into another body part.
@@ -220,14 +220,14 @@ public partial class SharedBodySystem
         if (ent.Comp.Body is null)
             return;
 
-        if (TryComp(insertedUid, out BodyPartComponent? part) && slotId.Contains(PartSlotContainerIdPrefix + GetSlotFromBodyPart(part))) // Shitmed Change
+        if (TryComp(insertedUid, out BodyPartComponent? part) && slotId.Contains(PartSlotContainerIdPrefix + GetSlotFromBodyPart(part))) // Ember
         {
             AddPart(ent.Comp.Body.Value, (insertedUid, part), slotId);
             RecursiveBodyUpdate((insertedUid, part), ent.Comp.Body.Value);
-            CheckBodyPart((insertedUid, part), GetTargetBodyPart(part), false); // Shitmed Change
+            CheckBodyPart((insertedUid, part), GetTargetBodyPart(part), false); // Ember
         }
 
-        if (TryComp(insertedUid, out OrganComponent? organ) && slotId.Contains(OrganSlotContainerIdPrefix + organ.SlotId)) // Shitmed Change
+        if (TryComp(insertedUid, out OrganComponent? organ) && slotId.Contains(OrganSlotContainerIdPrefix + organ.SlotId)) // Ember
         {
             AddOrgan((insertedUid, organ), ent.Comp.Body.Value, ent);
         }
@@ -239,7 +239,7 @@ public partial class SharedBodySystem
         var removedUid = args.Entity;
         var slotId = args.Container.ID;
 
-        // Shitmed Change Start
+        // Ember Start
         if (TryComp(removedUid, out BodyPartComponent? part))
         {
             if (!slotId.Contains(PartSlotContainerIdPrefix + GetSlotFromBodyPart(part)))
@@ -264,7 +264,7 @@ public partial class SharedBodySystem
 
             RemoveOrgan((removedUid, organ), ent);
         }
-        // Shitmed Change End
+        // Ember End
     }
 
     private void RecursiveBodyUpdate(Entity<BodyPartComponent> ent, EntityUid? bodyUid)
@@ -322,7 +322,7 @@ public partial class SharedBodySystem
         Dirty(partEnt, partEnt.Comp);
         partEnt.Comp.Body = bodyEnt;
 
-        if (partEnt.Comp.Enabled && partEnt.Comp.Body is { Valid: true } body) // Shitmed Change
+        if (partEnt.Comp.Enabled && partEnt.Comp.Body is { Valid: true } body) // Ember
             RaiseLocalEvent(partEnt, new BodyPartComponentsModifyEvent(body, true));
 
         var ev = new BodyPartAddedEvent(slotId, partEnt);
@@ -339,17 +339,17 @@ public partial class SharedBodySystem
         Resolve(bodyEnt, ref bodyEnt.Comp, logMissing: false);
         Dirty(partEnt, partEnt.Comp);
 
-        // Shitmed Change Start
+        // Ember Start
         if (partEnt.Comp.Body is { Valid: true } body)
             RaiseLocalEvent(partEnt, new BodyPartComponentsModifyEvent(body, false));
         partEnt.Comp.ParentSlot = null;
-        // Shitmed Change End
+        // Ember End
 
         var ev = new BodyPartRemovedEvent(slotId, partEnt);
         RaiseLocalEvent(bodyEnt, ref ev);
 
         RemoveLeg(partEnt, bodyEnt);
-        RemovePartEffect(partEnt, bodyEnt); // Shitmed Change
+        RemovePartEffect(partEnt, bodyEnt); // Ember
         PartRemoveDamage(bodyEnt, partEnt);
     }
 
@@ -376,7 +376,7 @@ public partial class SharedBodySystem
             bodyEnt.Comp.LegEntities.Remove(legEnt);
             UpdateMovementSpeed(bodyEnt);
             Dirty(bodyEnt, bodyEnt.Comp);
-            _standing.Down(bodyEnt); // Shitmed Change
+            _standing.Down(bodyEnt); // Ember
         }
     }
 
@@ -390,8 +390,8 @@ public partial class SharedBodySystem
             && !GetBodyChildrenOfType(bodyEnt, partEnt.Comp.PartType, bodyEnt.Comp).Any()
         )
         {
-            var damage = new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Bloodloss"), partEnt.Comp.VitalDamage); // Shitmed Change
-            _damageable.TryChangeDamage(bodyEnt, damage, partMultiplier: 0f); // Shitmed Change
+            var damage = new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Bloodloss"), partEnt.Comp.VitalDamage); // Ember
+            _damageable.TryChangeDamage(bodyEnt, damage, partMultiplier: 0f); // Ember
         }
     }
 
@@ -500,7 +500,7 @@ public partial class SharedBodySystem
         Containers.EnsureContainer<ContainerSlot>(partId.Value, GetPartSlotContainerId(slotId));
         slot = new BodyPartSlot(slotId, partType);
 
-        if (!part.Children.ContainsKey(slotId) // Shitmed Change
+        if (!part.Children.ContainsKey(slotId) // Ember
             && !part.Children.TryAdd(slotId, slot.Value))
             return false;
 
@@ -603,7 +603,7 @@ public partial class SharedBodySystem
     }
 
     /// <summary>
-    /// Shitmed Change: Returns true if this parentId supports attaching a new part to the specified slot.
+    /// Ember: Returns true if this parentId supports attaching a new part to the specified slot.
     /// </summary>
     public bool CanAttachToSlot(
         EntityUid parentId,
@@ -890,12 +890,12 @@ public partial class SharedBodySystem
         EntityUid bodyId,
         BodyPartType type,
         BodyComponent? body = null,
-        // Shitmed Change
+        // Ember
         BodyPartSymmetry? symmetry = null)
     {
         foreach (var part in GetBodyChildren(bodyId, body))
         {
-            if (part.Component.PartType == type && (symmetry == null || part.Component.Symmetry == symmetry)) // Shitmed Change
+            if (part.Component.PartType == type && (symmetry == null || part.Component.Symmetry == symmetry)) // Ember
                 yield return part;
         }
     }
@@ -957,7 +957,7 @@ public partial class SharedBodySystem
         return false;
     }
 
-    // Shitmed Change Start
+    // Ember Start
     /// <summary>
     ///     Tries to get a list of ValueTuples of EntityUid and OrganComponent on each organ
     ///     in the given part.
@@ -1057,7 +1057,7 @@ public partial class SharedBodySystem
             return slotName;
     }
 
-    // Shitmed Change End
+    // Ember End
 
     /// <summary>
     /// Gets the parent body part and all immediate child body parts for the partId.

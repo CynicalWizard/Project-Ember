@@ -15,7 +15,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Utility;
 
-// Shitmed Change
+// Ember
 using Content.Shared.Ember.Medical.Body;
 using Content.Shared.Ember.Medical.Body.Part;
 using Content.Shared.Ember.Humanoid;
@@ -40,8 +40,8 @@ public partial class SharedBodySystem
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly GibbingSystem _gibbingSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
-    [Dependency] private readonly ItemSlotsSystem _slots = default!; // Shitmed Change
-    [Dependency] private readonly IGameTiming _gameTiming = default!; // Shitmed Change
+    [Dependency] private readonly ItemSlotsSystem _slots = default!; // Ember
+    [Dependency] private readonly IGameTiming _gameTiming = default!; // Ember
 
     private const float GibletLaunchImpulse = 8;
     private const float GibletLaunchImpulseVariance = 3;
@@ -55,9 +55,9 @@ public partial class SharedBodySystem
         SubscribeLocalEvent<BodyComponent, ComponentInit>(OnBodyInit);
         SubscribeLocalEvent<BodyComponent, MapInitEvent>(OnBodyMapInit);
         SubscribeLocalEvent<BodyComponent, CanDragEvent>(OnBodyCanDrag);
-        SubscribeLocalEvent<BodyComponent, StandAttemptEvent>(OnStandAttempt); // Shitmed Change
-        SubscribeLocalEvent<BodyComponent, ProfileLoadFinishedEvent>(OnProfileLoadFinished); // Shitmed change
-        SubscribeLocalEvent<BodyComponent, IsEquippingAttemptEvent>(OnBeingEquippedAttempt); // Shitmed Change
+        SubscribeLocalEvent<BodyComponent, StandAttemptEvent>(OnStandAttempt); // Ember
+        SubscribeLocalEvent<BodyComponent, ProfileLoadFinishedEvent>(OnProfileLoadFinished); // Ember
+        SubscribeLocalEvent<BodyComponent, IsEquippingAttemptEvent>(OnBeingEquippedAttempt); // Ember
 
     }
 
@@ -136,7 +136,7 @@ public partial class SharedBodySystem
 
         // Setup the rest of the body entities.
         SetupOrgans((rootPartUid, rootPart), protoRoot.Organs);
-        MapInitParts(rootPartUid, rootPart, prototype); // Shitmed Change
+        MapInitParts(rootPartUid, rootPart, prototype); // Ember
     }
 
     private void OnBodyCanDrag(Entity<BodyComponent> ent, ref CanDragEvent args)
@@ -147,7 +147,7 @@ public partial class SharedBodySystem
     /// <summary>
     /// Sets up all of the relevant body parts for a particular body entity and root part.
     /// </summary>
-    private void MapInitParts(EntityUid rootPartId, BodyPartComponent rootPart, BodyPrototype prototype) // Shitmed Change
+    private void MapInitParts(EntityUid rootPartId, BodyPartComponent rootPart, BodyPrototype prototype) // Ember
     {
         // Start at the root part and traverse the body graph, setting up parts as we go.
         // Basic BFS pathfind.
@@ -185,10 +185,10 @@ public partial class SharedBodySystem
 
                 var childPartComponent = Comp<BodyPartComponent>(childPart);
                 TryCreatePartSlot(parentEntity, connection, childPartComponent.PartType, out var partSlot, parentPartComponent);
-                // Shitmed Change Start
+                // Ember Start
                 childPartComponent.ParentSlot = partSlot;
                 Dirty(childPart, childPartComponent);
-                // Shitmed Change End
+                // Ember End
                 var cont = Containers.GetContainer(parentEntity, GetPartSlotContainerId(connection));
 
                 if (partSlot is null || !Containers.Insert(childPart, cont))
@@ -211,7 +211,7 @@ public partial class SharedBodySystem
     {
         foreach (var (organSlotId, organProto) in organs)
         {
-            TryCreateOrganSlot(ent, organSlotId, out var slot); // Shitmed Change
+            TryCreateOrganSlot(ent, organSlotId, out var slot); // Ember
             SpawnInContainerOrDrop(organProto, ent, GetOrganContainerId(organSlotId));
 
             if (slot is null)
@@ -255,8 +255,8 @@ public partial class SharedBodySystem
         if (id is null
             || !Resolve(id.Value, ref body, logMissing: false)
             || body.RootContainer.ContainedEntity is null
-            || body is null // Shitmed Change
-            || body.RootContainer == default // Shitmed Change
+            || body is null // Ember
+            || body.RootContainer == default // Ember
             || !Resolve(body.RootContainer.ContainedEntity.Value, ref rootPart))
         {
             yield break;
@@ -315,7 +315,7 @@ public partial class SharedBodySystem
         float splatModifier = 1,
         Angle splatCone = default,
         SoundSpecifier? gibSoundOverride = null,
-        // Shitmed Change
+        // Ember
         GibType gib = GibType.Gib,
         GibContentsOption contents = GibContentsOption.Drop)
     {
@@ -334,7 +334,7 @@ public partial class SharedBodySystem
         foreach (var part in parts)
         {
 
-            _gibbingSystem.TryGibEntityWithRef(bodyId, part.Id, gib, contents, ref gibs, // Shitmed Change
+            _gibbingSystem.TryGibEntityWithRef(bodyId, part.Id, gib, contents, ref gibs, // Ember
                 playAudio: false, launchGibs: true, launchDirection: splatDirection, launchImpulse: GibletLaunchImpulse * splatModifier,
                 launchImpulseVariance: GibletLaunchImpulseVariance, launchCone: splatCone);
 
@@ -362,7 +362,7 @@ public partial class SharedBodySystem
         return gibs;
     }
 
-    // Shitmed Change Start
+    // Ember Start
 
     public virtual HashSet<EntityUid> GibPart(
         EntityUid partId,
@@ -487,5 +487,5 @@ public partial class SharedBodySystem
         }
     }
 
-    // Shitmed Change End
+    // Ember End
 }

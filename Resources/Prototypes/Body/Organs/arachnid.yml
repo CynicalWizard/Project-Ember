@@ -34,7 +34,7 @@
   - type: Sprite
     sprite: Mobs/Species/Arachnid/organs.rsi
     state: stomach
-  - type: Organ # Shitmed
+  - type: Organ # Ember
     slotId: stomach
   - type: Stomach
     updateInterval: 1.5
@@ -60,7 +60,7 @@
     layers:
       - state: lung-l
       - state: lung-r
-  - type: Organ # Shitmed
+  - type: Organ # Ember
     slotId: lungs
   - type: Lung
   - type: Metabolizer
@@ -103,9 +103,9 @@
     - id: Medicine
     - id: Poison
     - id: Narcotic
-  - type: Organ # Shitmed
+  - type: Organ # Ember
     slotId: heart
-  - type: Heart # Shitmed: Lets you transplant spider hearts into other species
+  - type: Heart # Ember: Lets you transplant spider hearts into other species
 
 - type: entity
   id: OrganArachnidLiver
@@ -123,9 +123,9 @@
     groups:
     - id: Alcohol
       rateModifier: 0.1 # removes alcohol very slowly along with the stomach removing it as a drink
-  - type: Organ # Shitmed
+  - type: Organ # Ember
     slotId: liver
-  - type: Liver # Shitmed
+  - type: Liver # Ember
 
 - type: entity
   id: OrganArachnidKidneys
@@ -134,7 +134,7 @@
   description: "Filters toxins from the bloodstream."
   categories: [ HideSpawnMenu ]
   components:
-  - type: Organ # Shitmed
+  - type: Organ # Ember
     slotId: kidneys
   - type: Sprite
     layers:
@@ -157,9 +157,9 @@
     layers:
       - state: eyeball-l
       - state: eyeball-r
-  - type: Organ # Shitmed
+  - type: Organ # Ember
     slotId: eyes
-  - type: Eyes # Shitmed
+  - type: Eyes # Ember
 
 - type: entity
   id: OrganArachnidTongue

@@ -98,7 +98,7 @@ namespace Content.Server.Body.Commands
                 return;
             }
 
-            // Shitmed Change Start
+            // Ember Start
             var slotId = "";
             if (part.Symmetry != BodyPartSymmetry.None)
                 slotId = $"{part.Symmetry.ToString().ToLower()} {part.GetHashCode().ToString()}";
@@ -106,7 +106,7 @@ namespace Content.Server.Body.Commands
                 slotId = $"{part.GetHashCode().ToString()}";
 
             part.SlotId = part.GetHashCode().ToString();
-            // Shitmed Change End
+            // Ember End
             // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
             if (body.RootContainer.ContainedEntity != null)
             {

@@ -27,7 +27,7 @@ namespace Content.Shared.Damage
         [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
         [Dependency] private readonly IConfigurationManager _config = default!;
         [Dependency] private readonly SharedChemistryGuideDataSystem _chemistryGuideData = default!;
-        [Dependency] private readonly SharedBodySystem _body = default!; // Shitmed Change
+        [Dependency] private readonly SharedBodySystem _body = default!; // Ember
 
         private EntityQuery<AppearanceComponent> _appearanceQuery;
         private EntityQuery<DamageableComponent> _damageableQuery;
@@ -146,7 +146,7 @@ namespace Content.Shared.Damage
         ///     The damage changed event is used by other systems, such as damage thresholds.
         /// </remarks>
         public void DamageChanged(EntityUid uid, DamageableComponent component, DamageSpecifier? damageDelta = null,
-            bool interruptsDoAfters = true, EntityUid? origin = null, bool? canSever = null) // Shitmed Change
+            bool interruptsDoAfters = true, EntityUid? origin = null, bool? canSever = null) // Ember
         {
             component.Damage.GetDamagePerGroup(_prototypeManager, component.DamagePerGroup);
             component.TotalDamage = component.Damage.GetTotal();
@@ -157,7 +157,7 @@ namespace Content.Shared.Damage
                 var data = new DamageVisualizerGroupData(component.DamagePerGroup.Keys.ToList());
                 _appearance.SetData(uid, DamageVisualizerKeys.DamageUpdateGroups, data, appearance);
             }
-            RaiseLocalEvent(uid, new DamageChangedEvent(component, damageDelta, interruptsDoAfters, origin, canSever ?? true)); // Shitmed Change
+            RaiseLocalEvent(uid, new DamageChangedEvent(component, damageDelta, interruptsDoAfters, origin, canSever ?? true)); // Ember
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Content.Shared.Damage
         /// </returns>
         public DamageSpecifier? TryChangeDamage(EntityUid? uid, DamageSpecifier damage, bool ignoreResistances = false,
             bool interruptsDoAfters = true, DamageableComponent? damageable = null, EntityUid? origin = null,
-            // Shitmed Change
+            // Ember
             bool? canSever = true, bool? canEvade = false, float? partMultiplier = 1.00f, EmberTargetBodyPart? targetPart = null, bool doPartDamage = true)
         {
             if (!uid.HasValue || !_damageableQuery.Resolve(uid.Value, ref damageable, false))
@@ -188,13 +188,13 @@ namespace Content.Shared.Damage
                 return damage;
             }
 
-            var before = new BeforeDamageChangedEvent(damage, origin, targetPart, canEvade ?? false); // Shitmed Change
+            var before = new BeforeDamageChangedEvent(damage, origin, targetPart, canEvade ?? false); // Ember
             RaiseLocalEvent(uid.Value, ref before);
 
             if (before.Cancelled)
                 return null;
 
-            // Shitmed Change Start
+            // Ember Start
             if (doPartDamage)
             {
                 var partDamage = new TryChangePartDamageEvent(damage, origin, targetPart, ignoreResistances, canSever ?? true, canEvade ?? false, partMultiplier ?? 1.00f);
@@ -204,7 +204,7 @@ namespace Content.Shared.Damage
                     return null;
             }
 
-            // Shitmed Change End
+            // Ember End
 
             // Apply resistances
             if (!ignoreResistances)
@@ -224,7 +224,7 @@ namespace Content.Shared.Damage
                         if (_prototypeManager.TryIndex<DamageModifierSetPrototype>(enumerableModifierSet, out var enumerableModifier))
                             damage = DamageSpecifier.ApplyModifierSet(damage, enumerableModifier);
 
-                var ev = new DamageModifyEvent(damage, origin, targetPart); // Shitmed Change
+                var ev = new DamageModifyEvent(damage, origin, targetPart); // Ember
                 RaiseLocalEvent(uid.Value, ev);
                 damage = ev.Damage;
 
@@ -258,7 +258,7 @@ namespace Content.Shared.Damage
             }
 
             if (delta.DamageDict.Count > 0)
-                DamageChanged(uid.Value, damageable, delta, interruptsDoAfters, origin, canSever); // Shitmed Change
+                DamageChanged(uid.Value, damageable, delta, interruptsDoAfters, origin, canSever); // Ember
 
             return delta;
         }
@@ -317,7 +317,7 @@ namespace Content.Shared.Damage
             // empty damage delta.
             DamageChanged(uid, component, new DamageSpecifier());
 
-            // Shitmed Change Start
+            // Ember Start
             if (HasComp<EmberTargetingComponent>(uid))
             {
                 foreach (var (part, _) in _body.GetBodyChildren(uid))
@@ -328,7 +328,7 @@ namespace Content.Shared.Damage
                     SetAllDamage(part, damageComp, newValue);
                 }
             }
-            // Shitmed Change End
+            // Ember End
         }
 
         /// <summary>
@@ -350,7 +350,7 @@ namespace Content.Shared.Damage
             // empty damage delta.
             DamageChanged(uid, component, new DamageSpecifier());
 
-            // Shitmed Change Start
+            // Ember Start
             if (!HasComp<EmberTargetingComponent>(uid))
                 return;
 
@@ -361,7 +361,7 @@ namespace Content.Shared.Damage
 
                 ChangeAllDamage(part, damageComp, addedValue);
             }
-            // Shitmed Change End
+            // Ember End
         }
 
         public void SetDamageModifierSetId(EntityUid uid, string? damageModifierSetId, DamageableComponent? comp = null)
@@ -444,7 +444,7 @@ namespace Content.Shared.Damage
         bool Cancelled = false);
 
     /// <summary>
-    ///     Shitmed Change: Raised on parts before damage is done so we can cancel the damage if they evade.
+    ///     Ember: Raised on parts before damage is done so we can cancel the damage if they evade.
     /// </summary>
     [ByRefEvent]
     public record struct TryChangePartDamageEvent(
@@ -480,7 +480,7 @@ namespace Content.Shared.Damage
             OriginalDamage = damage;
             Damage = damage;
             Origin = origin;
-            TargetPart = targetPart; // Shitmed Change
+            TargetPart = targetPart; // Ember
         }
     }
 
@@ -520,16 +520,16 @@ namespace Content.Shared.Damage
         public readonly EntityUid? Origin;
 
         /// <summary>
-        ///     Shitmed Change: Can this damage event sever parts?
+        ///     Ember: Can this damage event sever parts?
         /// </summary>
         public readonly bool CanSever;
 
-        public DamageChangedEvent(DamageableComponent damageable, DamageSpecifier? damageDelta, bool interruptsDoAfters, EntityUid? origin, bool canSever = true) // Shitmed Change
+        public DamageChangedEvent(DamageableComponent damageable, DamageSpecifier? damageDelta, bool interruptsDoAfters, EntityUid? origin, bool canSever = true) // Ember
         {
             Damageable = damageable;
             DamageDelta = damageDelta;
             Origin = origin;
-            CanSever = canSever; // Shitmed Change
+            CanSever = canSever; // Ember
             if (DamageDelta == null)
                 return;
 

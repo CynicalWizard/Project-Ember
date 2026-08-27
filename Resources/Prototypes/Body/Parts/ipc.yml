@@ -5,7 +5,7 @@
   abstract: true
   components:
   - type: Damageable
-    damageContainer: Inorganic # Shitmed Change
+    damageContainer: Inorganic # Ember
   - type: BodyPart
   - type: Gibbable
   - type: ContainerContainer

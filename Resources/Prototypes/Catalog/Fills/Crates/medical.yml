@@ -65,9 +65,9 @@
       - id: Retractor
       - id: Cautery
       - id: Drill
-      - id: SawElectric # Shitmed Change
+      - id: SawElectric # Ember
       - id: Hemostat
-      # Shitmed Change
+      # Ember
       - id: BoneGel
       - id: BoxLatexGloves
       - id: BoxSterileMask

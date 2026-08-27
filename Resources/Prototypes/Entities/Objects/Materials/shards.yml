@@ -84,7 +84,7 @@
   - type: DeleteOnTrigger
   - type: StaticPrice
     price: 0
-  # Shitmed Change
+  # Ember
   - type: EmberScalpel
     speed: 0.45
   - type: EmberSurgeryTool

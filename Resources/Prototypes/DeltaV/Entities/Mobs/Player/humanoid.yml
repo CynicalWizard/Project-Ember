@@ -12,8 +12,8 @@
   id: SyndicateListener
   speciesBlacklist:
     - Shadowkin
-    - Monkey # Shitmed Change
-    - Kobold # Shitmed Change
+    - Monkey # Ember
+    - Kobold # Ember
   components:
     - type: Loadout
       prototypes: [SyndicateListenerGear]
@@ -40,8 +40,8 @@
   randomizeName: false
   speciesBlacklist:
     - Shadowkin
-    - Monkey # Shitmed Change
-    - Kobold # Shitmed Change
+    - Monkey # Ember
+    - Kobold # Ember
   components:
     - type: GhostRole
       name: Mobster
@@ -75,8 +75,8 @@
   randomizeName: false
   speciesBlacklist:
     - Shadowkin
-    - Monkey # Shitmed Change
-    - Kobold # Shitmed Change
+    - Monkey # Ember
+    - Kobold # Ember
   components:
     - type: GhostRole
       name: Mobster

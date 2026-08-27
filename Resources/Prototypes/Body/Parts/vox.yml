@@ -7,7 +7,7 @@
   abstract: true
   components:
   - type: Damageable
-    damageContainer: OrganicPart # Shitmed Change
+    damageContainer: OrganicPart # Ember
   - type: BodyPart
   - type: ContainerContainer
     containers:
@@ -25,7 +25,7 @@
         Quantity: 3
       - ReagentId: Blood
         Quantity: 10
-  # Shitmed Change Start
+  # Ember Start
   - type: Gibbable
   - type: EmberSurgeryTool
     startSound:
@@ -61,7 +61,7 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MeatLaserImpact
-  # Shitmed Change End
+  # Ember End
 
 - type: entity
   id: TorsoVox
@@ -81,7 +81,7 @@
           Quantity: 3
         - ReagentId: Blood
           Quantity: 10
-    # Shitmed Change Start
+    # Ember Start
     - type: BodyPart
       partType: Torso
       toolName: "a torso"
@@ -118,7 +118,7 @@
         - !type:PlaySoundBehavior
           sound:
             collection: MeatLaserImpact
-    # Shitmed Change End
+    # Ember End
 
 - type: entity
   id: HeadVox
@@ -134,7 +134,7 @@
     - type: BodyPart
       partType: Head
       vital: true
-      toolName: "a head" # Shitmed Change
+      toolName: "a head" # Ember
     - type: Input
       context: "ghost"
     - type: Tag
@@ -162,7 +162,7 @@
     - type: BodyPart
       partType: Arm
       symmetry: Left
-      toolName: "a left arm" # Shitmed Change
+      toolName: "a left arm" # Ember
 
 - type: entity
   id: RightArmVox
@@ -178,7 +178,7 @@
     - type: BodyPart
       partType: Arm
       symmetry: Right
-      toolName: "a right arm" # Shitmed Change
+      toolName: "a right arm" # Ember
 
 - type: entity
   id: LeftHandVox
@@ -194,7 +194,7 @@
     - type: BodyPart
       partType: Hand
       symmetry: Left
-      toolName: "a left hand" # Shitmed Change
+      toolName: "a left hand" # Ember
 
 - type: entity
   id: RightHandVox
@@ -210,7 +210,7 @@
     - type: BodyPart
       partType: Hand
       symmetry: Right
-      toolName: "a right hand" # Shitmed Change
+      toolName: "a right hand" # Ember
 
 - type: entity
   id: LeftLegVox
@@ -226,7 +226,7 @@
     - type: BodyPart
       partType: Leg
       symmetry: Left
-      toolName: "a left leg" # Shitmed Change
+      toolName: "a left leg" # Ember
     - type: MovementBodyPart
 
 - type: entity
@@ -243,7 +243,7 @@
     - type: BodyPart
       partType: Leg
       symmetry: Right
-      toolName: "a right leg" # Shitmed Change
+      toolName: "a right leg" # Ember
     - type: MovementBodyPart
 
 - type: entity
@@ -260,7 +260,7 @@
     - type: BodyPart
       partType: Foot
       symmetry: Left
-      toolName: "a left foot" # Shitmed Change
+      toolName: "a left foot" # Ember
 
 - type: entity
   id: RightFootVox
@@ -276,4 +276,4 @@
     - type: BodyPart
       partType: Foot
       symmetry: Right
-      toolName: "a right foot" # Shitmed Change
+      toolName: "a right foot" # Ember

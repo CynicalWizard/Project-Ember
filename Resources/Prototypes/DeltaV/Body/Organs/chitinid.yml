@@ -4,8 +4,8 @@
   name: stomach
   description: "Gross. This is hard to stomach."
   components:
-  - type: Organ # Shitmed Change
-    slotId: stomach # Shitmed Change
+  - type: Organ # Ember
+    slotId: stomach # Ember
   - type: Sprite
     state: stomach
   - type: Item
@@ -39,7 +39,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Organ
-    slotId: liver # Shitmed
+    slotId: liver # Ember
     onAdd:
     - type: UnpoweredFlashlight
     - type: PointLight
@@ -56,7 +56,7 @@
     groups:
     - id: Alcohol
       rateModifier: 0.1
-  - type: Liver # Shitmed
+  - type: Liver # Ember
   - type: Tag # goob edit
     tags:
     - Meat

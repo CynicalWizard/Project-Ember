@@ -59,7 +59,7 @@
   - type: Item
     sprite: Objects/Tools/Hydroponics/clippers.rsi
     storedRotation: -90
-  # Shitmed Change
+  # Ember
   - type: EmberRetractor # Same as wirecutters
     speed: 0.35
   - type: EmberHemostat
@@ -140,7 +140,7 @@
   - type: EmbedPassiveDamage
   - type: Item
     sprite: Objects/Tools/Hydroponics/hatchet.rsi
-  # Shitmed Change
+  # Ember
   - type: EmberBoneSaw
     speed: 0.35
   - type: EmberSurgeryTool

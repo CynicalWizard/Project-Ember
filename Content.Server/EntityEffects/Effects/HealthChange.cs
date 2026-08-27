@@ -166,11 +166,11 @@ namespace Content.Server.EntityEffects.Effects
                     damageSpec * scale,
                     IgnoreResistances,
                     interruptsDoAfters: false,
-                    // Shitmed Change Start
+                    // Ember Start
                     targetPart: EmberTargetBodyPart.All,
                     partMultiplier: 0.5f,
                     canSever: false);
-                    // Shitmed Change End
+                    // Ember End
         }
     }
 }

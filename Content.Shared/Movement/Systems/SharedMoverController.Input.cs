@@ -14,7 +14,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Robust.Shared.Maths; // Shitmed Change
+using Robust.Shared.Maths; // Ember
 
 namespace Content.Shared.Movement.Systems
 {
@@ -92,12 +92,12 @@ namespace Content.Shared.Movement.Systems
 
             // Relay the fact we had any movement event.
             // TODO: Ideally we'd do these in a tick instead of out of sim.
-            // Shitmed Change Start
+            // Ember Start
             Vector2 vector2 = DirVecForButtons(buttons);
             Vector2i vector2i = new Vector2i((int) vector2.X, (int) vector2.Y);
             Direction dir = (vector2i == Vector2i.Zero) ? Direction.Invalid : vector2i.AsDirection();
             var moveEvent = new MoveInputEvent(entity, buttons, dir, buttons != 0);
-            // Shitmed Change End
+            // Ember End
             entity.Comp.HeldMoveButtons = buttons;
             RaiseLocalEvent(entity, ref moveEvent);
             Dirty(entity, entity.Comp);
@@ -122,14 +122,14 @@ namespace Content.Shared.Movement.Systems
             // Reset
             entity.Comp.LastInputTick = GameTick.Zero;
             entity.Comp.LastInputSubTick = 0;
-             // Shitmed Change Start
+             // Ember Start
             Vector2 vector2 = DirVecForButtons(entity.Comp.HeldMoveButtons);
             Vector2i vector2i = new Vector2i((int) vector2.X, (int) vector2.Y);
             Direction dir = (vector2i == Vector2i.Zero) ? Direction.Invalid : vector2i.AsDirection();
-            // Shitmed Change End
+            // Ember End
             if (entity.Comp.HeldMoveButtons != state.HeldMoveButtons)
             {
-                var moveEvent = new MoveInputEvent(entity, entity.Comp.HeldMoveButtons, dir, state.HeldMoveButtons != 0); // Shitmed Change
+                var moveEvent = new MoveInputEvent(entity, entity.Comp.HeldMoveButtons, dir, state.HeldMoveButtons != 0); // Ember
                 entity.Comp.HeldMoveButtons = state.HeldMoveButtons;
                 RaiseLocalEvent(entity.Owner, ref moveEvent);
 
@@ -178,7 +178,7 @@ namespace Content.Shared.Movement.Systems
                 return;
             }
 
-            // Shitmed Change Start
+            // Ember Start
             var xform = XformQuery.GetComponent(uid);
             if (TryComp(uid, out RelayInputMoverComponent? relay)
                  && TryComp(relay.RelayEntity, out TransformComponent? relayXform)
@@ -188,7 +188,7 @@ namespace Content.Shared.Movement.Systems
             // If we updated parent then cancel the accumulator and force it now.
             if (!TryUpdateRelative(mover, xform) && mover.TargetRelativeRotation.Equals(Angle.Zero))
                 return;
-            // Shitmed Change End
+            // Ember End
 
             mover.LerpTarget = TimeSpan.Zero;
             mover.TargetRelativeRotation = Angle.Zero;
@@ -335,11 +335,11 @@ namespace Content.Shared.Movement.Systems
             if (!MoverQuery.TryGetComponent(entity, out var moverComp))
                 return;
 
-            // Shitmed Change Start
+            // Ember Start
             var moverEntity = new Entity<InputMoverComponent>(entity, moverComp);
             var moveEvent = new MoveInputEvent(moverEntity, moverComp.HeldMoveButtons, dir, state);
             RaiseLocalEvent(entity, ref moveEvent);
-            // Shitmed Change End
+            // Ember End
 
             // For stuff like "Moving out of locker" or the likes
             // We'll relay a movement input to the parent.

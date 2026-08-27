@@ -4,9 +4,9 @@
   name: "thaven body part"
   abstract: true
   components:
-  - type: Sprite # Shitmed Change
+  - type: Sprite # Ember
     sprite: _Impstation/Mobs/Species/Thaven/parts.rsi
-  - type: BodyPart # Shitmed Change
+  - type: BodyPart # Ember
     species: Thaven
 
 - type: entity
