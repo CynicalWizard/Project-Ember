@@ -1,4 +1,4 @@
-using Content.Shared._Shitmed.Body.Events;
+using Content.Shared.Ember.Medical.Body;
 
 namespace Content.Server._EE.DeleteOnMapInit
 {

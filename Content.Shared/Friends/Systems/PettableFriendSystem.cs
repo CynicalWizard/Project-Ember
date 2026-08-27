@@ -5,7 +5,7 @@ using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Timing;
-using Content.Shared._Shitmed.Spawners.EntitySystems; // Shitmed Change
+using Content.Shared.Ember.Spawners; // Shitmed Change
 
 namespace Content.Shared.Friends.Systems;
 

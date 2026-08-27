@@ -4,7 +4,7 @@ using Content.Client.DisplacementMap;
 using Content.Client.Examine;
 using Content.Client.Strip;
 using Content.Client.Verbs.UI;
-using Content.Shared._Shitmed.Body.Events; // Shitmed Change
+using Content.Shared.Ember.Medical.Body; // Shitmed Change
 using Content.Shared.Body.Part; // Shitmed Change
 using Content.Shared.Hands;
 using Content.Shared.Hands.Components;

@@ -1,5 +1,5 @@
 using Content.Shared.Traits.Assorted.Components;
-using Content.Shared._Shitmed.Body.Events;
+using Content.Shared.Ember.Medical.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
 

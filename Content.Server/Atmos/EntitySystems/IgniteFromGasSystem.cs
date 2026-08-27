@@ -3,7 +3,7 @@ using Content.Server.Atmos.Components;
 using Content.Server.Bed.Components;
 using Content.Server.Cloning.Components;
 using Content.Shared.Ember.Medical.Targeting;
-using Content.Shared._Shitmed.Body.Events;
+using Content.Shared.Ember.Medical.Body;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
 using Content.Shared.Inventory;

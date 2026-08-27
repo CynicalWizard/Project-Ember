@@ -1,7 +1,7 @@
 using Content.Server.Body.Components;
 using Content.Server.Ghost;
 using Content.Server.Humanoid;
-using Content.Shared._Shitmed.Body.Part;
+using Content.Shared.Ember.Medical.Body.Part;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;

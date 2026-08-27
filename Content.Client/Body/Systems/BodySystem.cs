@@ -1,6 +1,6 @@
 ﻿using Content.Shared.Body.Systems;
 // Shitmed Change Start
-using Content.Shared._Shitmed.Body.Part;
+using Content.Shared.Ember.Medical.Body.Part;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Robust.Client.GameObjects;

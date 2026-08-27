@@ -11,9 +11,9 @@ using Robust.Shared.Containers;
 using Robust.Shared.Utility;
 
 // Shitmed Change Start
-using Content.Shared._Shitmed.Body.Events;
-using Content.Shared._Shitmed.Body.Part;
-using Content.Shared._Shitmed.BodyEffects;
+using Content.Shared.Ember.Medical.Body;
+using Content.Shared.Ember.Medical.Body.Part;
+using Content.Shared.Ember.Medical.BodyEffects;
 using Content.Shared.Humanoid;
 using Content.Shared.Inventory;
 using Content.Shared.Random;

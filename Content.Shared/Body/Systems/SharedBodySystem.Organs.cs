@@ -8,8 +8,8 @@ using Robust.Shared.Containers;
 // Shitmed Change
 
 using Content.Shared.Damage;
-using Content.Shared._Shitmed.BodyEffects;
-using Content.Shared._Shitmed.Body.Organ;
+using Content.Shared.Ember.Medical.BodyEffects;
+using Content.Shared.Ember.Medical.Body.Organ;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Network;
 

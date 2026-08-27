@@ -7,7 +7,7 @@ using Content.Shared.Mind.Components;
 using Content.Shared.Pointing;
 
 // Shitmed Change
-using Content.Shared._Shitmed.Body.Organ;
+using Content.Shared.Ember.Medical.Body.Organ;
 using Content.Shared.Body.Systems;
 using Content.Shared.Silicons.Borgs.Components;
 

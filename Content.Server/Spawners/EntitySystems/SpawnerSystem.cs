@@ -2,7 +2,7 @@ using System.Threading;
 using Content.Server.Spawners.Components;
 using Robust.Shared.Random;
 using Content.Shared.Friends.Components; // Shitmed Change
-using Content.Shared._Shitmed.Spawners.EntitySystems; // Shitmed Change
+using Content.Shared.Ember.Spawners; // Shitmed Change
 
 namespace Content.Server.Spawners.EntitySystems;
 
