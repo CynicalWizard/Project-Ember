@@ -217,7 +217,7 @@
     - type: Strippable
     - type: ComplexInteraction
     - type: SurgeryTarget
-    - type: Targeting
+    - type: EmberTargeting
     - type: UserInterface
       interfaces:
         enum.HumanoidMarkingModifierKey.Key:

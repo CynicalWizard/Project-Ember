@@ -1,4 +1,4 @@
-namespace Content.Shared._Shitmed.Targeting;
+namespace Content.Shared.Ember.Medical.Targeting;
 
 
 /// <summary>
@@ -6,10 +6,10 @@ namespace Content.Shared._Shitmed.Targeting;
 /// </summary>
 /// <remarks>
 /// To get all body parts as an Array, use static
-/// method in SharedTargetingSystem GetValidParts.
+/// method in SharedEmberTargetingSystem GetValidParts.
 /// </remarks>
 [Flags]
-public enum TargetBodyPart : ushort
+public enum EmberTargetBodyPart : ushort
 {
     Head = 1,
     Torso = 1 << 1,

@@ -10,8 +10,8 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Standing;
-using Content.Shared._Shitmed.Targeting;
-using Content.Shared._Shitmed.Targeting.Events;
+using Content.Shared.Ember.Medical.Targeting;
+using Content.Shared.Ember.Medical.Targeting.Events;
 using Robust.Shared.CPUJob.JobQueues;
 using Robust.Shared.CPUJob.JobQueues.Queues;
 using Robust.Shared.Network;
@@ -61,10 +61,10 @@ public partial class SharedBodySystem
         }
     }
 
-    private EntityQuery<TargetingComponent> _queryTargeting;
+    private EntityQuery<EmberTargetingComponent> _queryTargeting;
     private void InitializeIntegrityQueue()
     {
-        _queryTargeting = GetEntityQuery<TargetingComponent>();
+        _queryTargeting = GetEntityQuery<EmberTargetingComponent>();
         SubscribeLocalEvent<BodyComponent, TryChangePartDamageEvent>(OnTryChangePartDamage);
         SubscribeLocalEvent<BodyComponent, DamageModifyEvent>(OnBodyDamageModify);
         SubscribeLocalEvent<BodyPartComponent, DamageModifyEvent>(OnPartDamageModify);
@@ -80,7 +80,7 @@ public partial class SharedBodySystem
 
         if (entity.Comp is { Body: { } body }
             && damage > entity.Comp.MinIntegrity
-            && damage <= entity.Comp.IntegrityThresholds[TargetIntegrity.HeavilyWounded]
+            && damage <= entity.Comp.IntegrityThresholds[EmberTargetIntegrity.HeavilyWounded]
             && _queryTargeting.HasComp(body)
             && !_mobState.IsDead(body))
             _damageable.TryChangeDamage(entity, GetHealingSpecifier(entity), canSever: false, targetPart: GetTargetBodyPart(entity));
@@ -110,12 +110,12 @@ public partial class SharedBodySystem
 
     private void OnTryChangePartDamage(Entity<BodyComponent> ent, ref TryChangePartDamageEvent args)
     {
-        // If our target has a TargetingComponent, that means they will take limb damage
+        // If our target has a EmberTargetingComponent, that means they will take limb damage
         // And if their attacker also has one, then we use that part.
         if (_queryTargeting.TryComp(ent, out var targetEnt))
         {
             var damage = args.Damage;
-            TargetBodyPart? targetPart = null;
+            EmberTargetBodyPart? targetPart = null;
 
             if (args.TargetPart != null)
             {
@@ -125,7 +125,7 @@ public partial class SharedBodySystem
             {
                 targetPart = targeter.Target;
                 // If the target is Torso then have a 33% chance to hit another part
-                if (targetPart.Value == TargetBodyPart.Torso)
+                if (targetPart.Value == EmberTargetBodyPart.Torso)
                 {
                     var additionalPart = GetRandomPartSpread(10);
                     targetPart = targetPart.Value | additionalPart;
@@ -133,19 +133,19 @@ public partial class SharedBodySystem
             }
             else
             {
-                // If there's an origin in this case, that means it comes from an entity without TargetingComponent,
+                // If there's an origin in this case, that means it comes from an entity without EmberTargetingComponent,
                 // such as an animal, so we attack a random part.
                 if (args.Origin.HasValue)
                 {
                     // Evasion would trigger constantly if we don't target torso
-                    targetPart = args.CanEvade ? TargetBodyPart.Torso : GetRandomBodyPart(ent, targetEnt);
+                    targetPart = args.CanEvade ? EmberTargetBodyPart.Torso : GetRandomBodyPart(ent, targetEnt);
                 }
                 // Otherwise we damage all parts equally (barotrauma, explosions, etc).
                 else if (damage != null)
                 {
                     // Division by 2 cuz damaging all parts by the same damage by default is too much.
                     damage /= 2;
-                    targetPart = TargetBodyPart.All;
+                    targetPart = EmberTargetBodyPart.All;
                 }
             }
 
@@ -190,7 +190,7 @@ public partial class SharedBodySystem
         bool canSever,
         bool canEvade,
         float partMultiplier,
-        TargetBodyPart targetParts,
+        EmberTargetBodyPart targetParts,
         out bool evaded)
     {
         evaded = false;
@@ -199,7 +199,7 @@ public partial class SharedBodySystem
             return false;
 
         var landed = false;
-        var targets = SharedTargetingSystem.GetValidParts();
+        var targets = SharedEmberTargetingSystem.GetValidParts();
         foreach (var target in targets)
         {
             if (!targetParts.HasFlag(target))
@@ -255,7 +255,7 @@ public partial class SharedBodySystem
     /// Torso if the result is 9 or more. The higher torsoWeight is, the higher chance to return it.
     /// By default, the chance to return Torso is 50%.
     /// </summary>
-    private TargetBodyPart GetRandomPartSpread(ushort torsoWeight = 9)
+    private EmberTargetBodyPart GetRandomPartSpread(ushort torsoWeight = 9)
     {
         var rand = new System.Random((int) _gameTiming.CurTick.Value);
 
@@ -263,20 +263,20 @@ public partial class SharedBodySystem
         // 5 = amount of target parts except Torso
         return rand.Next(1, targetPartsAmount + torsoWeight) switch
         {
-            1 => TargetBodyPart.Head,
-            2 => TargetBodyPart.RightArm,
-            3 => TargetBodyPart.RightHand,
-            4 => TargetBodyPart.LeftArm,
-            5 => TargetBodyPart.LeftHand,
-            6 => TargetBodyPart.RightLeg,
-            7 => TargetBodyPart.RightFoot,
-            8 => TargetBodyPart.LeftLeg,
-            9 => TargetBodyPart.LeftFoot,
-            _ => TargetBodyPart.Torso,
+            1 => EmberTargetBodyPart.Head,
+            2 => EmberTargetBodyPart.RightArm,
+            3 => EmberTargetBodyPart.RightHand,
+            4 => EmberTargetBodyPart.LeftArm,
+            5 => EmberTargetBodyPart.LeftHand,
+            6 => EmberTargetBodyPart.RightLeg,
+            7 => EmberTargetBodyPart.RightFoot,
+            8 => EmberTargetBodyPart.LeftLeg,
+            9 => EmberTargetBodyPart.LeftFoot,
+            _ => EmberTargetBodyPart.Torso,
         };
     }
 
-    public TargetBodyPart? GetRandomBodyPart(EntityUid uid, TargetingComponent? target = null)
+    public EmberTargetBodyPart? GetRandomBodyPart(EntityUid uid, EmberTargetingComponent? target = null)
     {
         if (!Resolve(uid, ref target, false))
             return null;
@@ -293,7 +293,7 @@ public partial class SharedBodySystem
             randomValue -= weight;
         }
 
-        return TargetBodyPart.Torso; // Default to torso if something goes wrong
+        return EmberTargetBodyPart.Torso; // Default to torso if something goes wrong
     }
 
     /// <summary>
@@ -301,7 +301,7 @@ public partial class SharedBodySystem
     /// </summary>
     public void CheckBodyPart(
         Entity<BodyPartComponent> partEnt,
-        TargetBodyPart? targetPart,
+        EmberTargetBodyPart? targetPart,
         bool severed,
         DamageableComponent? damageable = null)
     {
@@ -311,7 +311,7 @@ public partial class SharedBodySystem
         var integrity = damageable.TotalDamage;
 
         // KILL the body part
-        if (partEnt.Comp.Enabled && integrity >= partEnt.Comp.IntegrityThresholds[TargetIntegrity.CriticallyWounded])
+        if (partEnt.Comp.Enabled && integrity >= partEnt.Comp.IntegrityThresholds[EmberTargetIntegrity.CriticallyWounded])
         {
             var ev = new BodyPartEnableChangedEvent(false);
             RaiseLocalEvent(partEnt, ref ev);
@@ -331,34 +331,34 @@ public partial class SharedBodySystem
             // We need to check if the part is dead to prevent the UI from showing dead parts as alive.
             if (targetPart is not null &&
                 targeting.BodyStatus.ContainsKey(targetPart.Value) &&
-                targeting.BodyStatus[targetPart.Value] != TargetIntegrity.Dead)
+                targeting.BodyStatus[targetPart.Value] != EmberTargetIntegrity.Dead)
             {
                 targeting.BodyStatus[targetPart.Value] = newIntegrity;
-                if (targetPart.Value == TargetBodyPart.Torso)
-                    targeting.BodyStatus[TargetBodyPart.Groin] = newIntegrity;
+                if (targetPart.Value == EmberTargetBodyPart.Torso)
+                    targeting.BodyStatus[EmberTargetBodyPart.Groin] = newIntegrity;
 
                 Dirty(partEnt.Comp.Body.Value, targeting);
             }
             // Revival events are handled by the server, so we end up being locked to a network event.
             // I hope you like the _net.IsServer, Remuchi :)
             if (_net.IsServer)
-                RaiseNetworkEvent(new TargetIntegrityChangeEvent(GetNetEntity(partEnt.Comp.Body.Value)), partEnt.Comp.Body.Value);
+                RaiseNetworkEvent(new EmberTargetIntegrityChangeEvent(GetNetEntity(partEnt.Comp.Body.Value)), partEnt.Comp.Body.Value);
         }
     }
 
     /// <summary>
     /// Gets the integrity of all body parts in the entity.
     /// </summary>
-    public Dictionary<TargetBodyPart, TargetIntegrity> GetBodyPartStatus(EntityUid entityUid)
+    public Dictionary<EmberTargetBodyPart, EmberTargetIntegrity> GetBodyPartStatus(EntityUid entityUid)
     {
-        var result = new Dictionary<TargetBodyPart, TargetIntegrity>();
+        var result = new Dictionary<EmberTargetBodyPart, EmberTargetIntegrity>();
 
         if (!TryComp<BodyComponent>(entityUid, out var body))
             return result;
 
-        foreach (var part in SharedTargetingSystem.GetValidParts())
+        foreach (var part in SharedEmberTargetingSystem.GetValidParts())
         {
-            result[part] = TargetIntegrity.Severed;
+            result[part] = EmberTargetIntegrity.Severed;
         }
 
         foreach (var partComponent in GetBodyChildren(entityUid, body))
@@ -370,31 +370,31 @@ public partial class SharedBodySystem
         }
 
         // Hardcoded shitcode for Groin :)
-        result[TargetBodyPart.Groin] = result[TargetBodyPart.Torso];
+        result[EmberTargetBodyPart.Groin] = result[EmberTargetBodyPart.Torso];
 
         return result;
     }
 
-    public TargetBodyPart? GetTargetBodyPart(Entity<BodyPartComponent> part) => GetTargetBodyPart(part.Comp.PartType, part.Comp.Symmetry);
-    public TargetBodyPart? GetTargetBodyPart(BodyPartComponent part) => GetTargetBodyPart(part.PartType, part.Symmetry);
+    public EmberTargetBodyPart? GetTargetBodyPart(Entity<BodyPartComponent> part) => GetTargetBodyPart(part.Comp.PartType, part.Comp.Symmetry);
+    public EmberTargetBodyPart? GetTargetBodyPart(BodyPartComponent part) => GetTargetBodyPart(part.PartType, part.Symmetry);
 
     /// <summary>
     /// Converts Enums from BodyPartType to their Targeting system equivalent.
     /// </summary>
-    public TargetBodyPart? GetTargetBodyPart(BodyPartType type, BodyPartSymmetry symmetry)
+    public EmberTargetBodyPart? GetTargetBodyPart(BodyPartType type, BodyPartSymmetry symmetry)
     {
         return (type, symmetry) switch
         {
-            (BodyPartType.Head, _) => TargetBodyPart.Head,
-            (BodyPartType.Torso, _) => TargetBodyPart.Torso,
-            (BodyPartType.Arm, BodyPartSymmetry.Left) => TargetBodyPart.LeftArm,
-            (BodyPartType.Arm, BodyPartSymmetry.Right) => TargetBodyPart.RightArm,
-            (BodyPartType.Hand, BodyPartSymmetry.Left) => TargetBodyPart.LeftHand,
-            (BodyPartType.Hand, BodyPartSymmetry.Right) => TargetBodyPart.RightHand,
-            (BodyPartType.Leg, BodyPartSymmetry.Left) => TargetBodyPart.LeftLeg,
-            (BodyPartType.Leg, BodyPartSymmetry.Right) => TargetBodyPart.RightLeg,
-            (BodyPartType.Foot, BodyPartSymmetry.Left) => TargetBodyPart.LeftFoot,
-            (BodyPartType.Foot, BodyPartSymmetry.Right) => TargetBodyPart.RightFoot,
+            (BodyPartType.Head, _) => EmberTargetBodyPart.Head,
+            (BodyPartType.Torso, _) => EmberTargetBodyPart.Torso,
+            (BodyPartType.Arm, BodyPartSymmetry.Left) => EmberTargetBodyPart.LeftArm,
+            (BodyPartType.Arm, BodyPartSymmetry.Right) => EmberTargetBodyPart.RightArm,
+            (BodyPartType.Hand, BodyPartSymmetry.Left) => EmberTargetBodyPart.LeftHand,
+            (BodyPartType.Hand, BodyPartSymmetry.Right) => EmberTargetBodyPart.RightHand,
+            (BodyPartType.Leg, BodyPartSymmetry.Left) => EmberTargetBodyPart.LeftLeg,
+            (BodyPartType.Leg, BodyPartSymmetry.Right) => EmberTargetBodyPart.RightLeg,
+            (BodyPartType.Foot, BodyPartSymmetry.Left) => EmberTargetBodyPart.LeftFoot,
+            (BodyPartType.Foot, BodyPartSymmetry.Right) => EmberTargetBodyPart.RightFoot,
             _ => null
         };
     }
@@ -402,21 +402,21 @@ public partial class SharedBodySystem
     /// <summary>
     /// Converts Enums from Targeting system to their BodyPartType equivalent.
     /// </summary>
-    public (BodyPartType Type, BodyPartSymmetry Symmetry) ConvertTargetBodyPart(TargetBodyPart targetPart)
+    public (BodyPartType Type, BodyPartSymmetry Symmetry) ConvertTargetBodyPart(EmberTargetBodyPart targetPart)
     {
         return targetPart switch
         {
-            TargetBodyPart.Head => (BodyPartType.Head, BodyPartSymmetry.None),
-            TargetBodyPart.Torso => (BodyPartType.Torso, BodyPartSymmetry.None),
-            TargetBodyPart.Groin => (BodyPartType.Torso, BodyPartSymmetry.None), // TODO: Groin is not a part type yet
-            TargetBodyPart.LeftArm => (BodyPartType.Arm, BodyPartSymmetry.Left),
-            TargetBodyPart.LeftHand => (BodyPartType.Hand, BodyPartSymmetry.Left),
-            TargetBodyPart.RightArm => (BodyPartType.Arm, BodyPartSymmetry.Right),
-            TargetBodyPart.RightHand => (BodyPartType.Hand, BodyPartSymmetry.Right),
-            TargetBodyPart.LeftLeg => (BodyPartType.Leg, BodyPartSymmetry.Left),
-            TargetBodyPart.LeftFoot => (BodyPartType.Foot, BodyPartSymmetry.Left),
-            TargetBodyPart.RightLeg => (BodyPartType.Leg, BodyPartSymmetry.Right),
-            TargetBodyPart.RightFoot => (BodyPartType.Foot, BodyPartSymmetry.Right),
+            EmberTargetBodyPart.Head => (BodyPartType.Head, BodyPartSymmetry.None),
+            EmberTargetBodyPart.Torso => (BodyPartType.Torso, BodyPartSymmetry.None),
+            EmberTargetBodyPart.Groin => (BodyPartType.Torso, BodyPartSymmetry.None), // TODO: Groin is not a part type yet
+            EmberTargetBodyPart.LeftArm => (BodyPartType.Arm, BodyPartSymmetry.Left),
+            EmberTargetBodyPart.LeftHand => (BodyPartType.Hand, BodyPartSymmetry.Left),
+            EmberTargetBodyPart.RightArm => (BodyPartType.Arm, BodyPartSymmetry.Right),
+            EmberTargetBodyPart.RightHand => (BodyPartType.Hand, BodyPartSymmetry.Right),
+            EmberTargetBodyPart.LeftLeg => (BodyPartType.Leg, BodyPartSymmetry.Left),
+            EmberTargetBodyPart.LeftFoot => (BodyPartType.Foot, BodyPartSymmetry.Left),
+            EmberTargetBodyPart.RightLeg => (BodyPartType.Leg, BodyPartSymmetry.Right),
+            EmberTargetBodyPart.RightFoot => (BodyPartType.Foot, BodyPartSymmetry.Right),
             _ => (BodyPartType.Torso, BodyPartSymmetry.None)
         };
 
@@ -460,16 +460,16 @@ public partial class SharedBodySystem
     }
 
     /// <summary>
-    /// Fetches the TargetIntegrity equivalent of the current integrity value for the body part.
+    /// Fetches the EmberTargetIntegrity equivalent of the current integrity value for the body part.
     /// </summary>
-    public static TargetIntegrity GetIntegrityThreshold(BodyPartComponent component, float integrity, bool severed)
+    public static EmberTargetIntegrity GetIntegrityThreshold(BodyPartComponent component, float integrity, bool severed)
     {
         if (severed)
-            return TargetIntegrity.Severed;
+            return EmberTargetIntegrity.Severed;
         else if (!component.Enabled)
-            return TargetIntegrity.Disabled;
+            return EmberTargetIntegrity.Disabled;
 
-        var targetIntegrity = TargetIntegrity.Healthy;
+        var targetIntegrity = EmberTargetIntegrity.Healthy;
         foreach (var threshold in component.IntegrityThresholds)
         {
             if (integrity <= threshold.Value)

@@ -279,7 +279,7 @@ AirlockServiceCaptainLocked: AirlockCaptainLocked
 #2024-06-05
 DisasterVictimSpawner: CommandVisitorSpawner
 LostCargoTechnicianSpawner: VisitorCargoTechnicianSpawner
-ClownTroupeSpawner: VisitorClownSpawner
+ClownTroupeSpawner: null # Ember: the clown role went with the meme content
 TravelingChefSpawner: VisitorChefSpawner
 SyndieDisasterVictimSpawner: SyndieVisitorSpawner
 

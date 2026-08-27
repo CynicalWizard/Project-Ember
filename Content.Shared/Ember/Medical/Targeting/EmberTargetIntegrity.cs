@@ -1,5 +1,5 @@
-namespace Content.Shared._Shitmed.Targeting;
-public enum TargetIntegrity
+namespace Content.Shared.Ember.Medical.Targeting;
+public enum EmberTargetIntegrity
 {
     Healthy = 0,
     LightlyWounded = 1,

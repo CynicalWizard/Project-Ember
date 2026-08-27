@@ -1,5 +1,5 @@
 ﻿using Content.Shared.MedicalScanner;
-using Content.Shared._Shitmed.Targeting; // Shitmed Change
+using Content.Shared.Ember.Medical.Targeting; // Shitmed Change
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 
@@ -37,7 +37,7 @@ namespace Content.Client.HealthAnalyzer.UI
         }
 
         // Shitmed Change Start
-        private void SendBodyPartMessage(TargetBodyPart? part, EntityUid target) => SendMessage(new HealthAnalyzerPartMessage(EntMan.GetNetEntity(target), part ?? null));
+        private void SendBodyPartMessage(EmberTargetBodyPart? part, EntityUid target) => SendMessage(new HealthAnalyzerPartMessage(EntMan.GetNetEntity(target), part ?? null));
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);

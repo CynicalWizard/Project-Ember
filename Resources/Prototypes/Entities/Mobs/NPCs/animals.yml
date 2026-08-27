@@ -1532,7 +1532,7 @@
   - type: CombatMode
   # Shitmed Change Start
   - type: SurgeryTarget
-  - type: Targeting
+  - type: EmberTargeting
   - type: HumanoidAppearance
     species: Monkey
   # Shitmed Change End

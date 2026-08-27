@@ -1,8 +1,8 @@
-<widgets:PartStatusControl
+<widgets:EmberPartStatusControl
     xmlns="https://spacestation14.io"
     xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-    xmlns:widgets="clr-namespace:Content.Client._Shitmed.UserInterface.Systems.PartStatus.Widgets"
+    xmlns:widgets="clr-namespace:Content.Client.Ember.Medical.PartStatus.Widgets"
     Name="PartStatusIndicator"
     VerticalAlignment="Center"
     HorizontalAlignment="Center">
@@ -54,4 +54,4 @@
                 SetSize="64 64"/>
         </PanelContainer>
     </Control>
-</widgets:PartStatusControl>
+</widgets:EmberPartStatusControl>

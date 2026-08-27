@@ -2,7 +2,7 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs.Components;
-using Content.Shared._Shitmed.Targeting;
+using Content.Shared.Ember.Medical.Targeting;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.GameStates;
 
@@ -36,7 +36,7 @@ public sealed partial class EmbedPassiveDamageComponent : Component
     ///   The body part to apply damage to.
     /// </summary>
     [ViewVariables(VVAccess.ReadOnly)]
-    public TargetBodyPart? EmbeddedBodyPart = null;
+    public EmberTargetBodyPart? EmbeddedBodyPart = null;
 
     /// <summary>
     ///   Damage per interval dealt to the entity every interval.

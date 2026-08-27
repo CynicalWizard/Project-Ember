@@ -245,7 +245,7 @@
     - FootstepSound
     - DoorBumpOpener
     - AnomalyHost
-  - type: Targeting
+  - type: EmberTargeting
   - type: SurgeryTarget
   - type: MovedByPressure
     cutoffTime: 1.0

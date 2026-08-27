@@ -9,7 +9,7 @@ using Robust.Shared.Serialization;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.FixedPoint;
 using Content.Shared._Shitmed.Medical.Surgery.Tools;
-using Content.Shared._Shitmed.Targeting;
+using Content.Shared.Ember.Medical.Targeting;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Body.Part;
@@ -129,20 +129,20 @@ public sealed partial class BodyPartComponent : Component, ISurgeryToolComponent
     public string? BaseLayerId;
 
     /// <summary>
-    ///     Shitmed Change: On what TargetIntegrity we should re-enable the part.
+    ///     Ember: on what EmberTargetIntegrity we should re-enable the part.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public TargetIntegrity EnableIntegrity = TargetIntegrity.ModeratelyWounded;
+    public EmberTargetIntegrity EnableIntegrity = EmberTargetIntegrity.ModeratelyWounded;
 
     [DataField, AutoNetworkedField]
-    public Dictionary<TargetIntegrity, float> IntegrityThresholds = new()
+    public Dictionary<EmberTargetIntegrity, float> IntegrityThresholds = new()
     {
-        { TargetIntegrity.CriticallyWounded, 90 },
-        { TargetIntegrity.HeavilyWounded, 75 },
-        { TargetIntegrity.ModeratelyWounded, 60 },
-        { TargetIntegrity.SomewhatWounded, 40},
-        { TargetIntegrity.LightlyWounded, 20 },
-        { TargetIntegrity.Healthy, 10 },
+        { EmberTargetIntegrity.CriticallyWounded, 90 },
+        { EmberTargetIntegrity.HeavilyWounded, 75 },
+        { EmberTargetIntegrity.ModeratelyWounded, 60 },
+        { EmberTargetIntegrity.SomewhatWounded, 40},
+        { EmberTargetIntegrity.LightlyWounded, 20 },
+        { EmberTargetIntegrity.Healthy, 10 },
     };
 
 

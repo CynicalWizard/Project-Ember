@@ -1,31 +1,31 @@
 using Content.Shared.Body.Systems;
 using Content.Shared.Mobs;
-using Content.Shared._Shitmed.Targeting;
-using Content.Shared._Shitmed.Targeting.Events;
+using Content.Shared.Ember.Medical.Targeting;
+using Content.Shared.Ember.Medical.Targeting.Events;
 using Content.Shared.Body.Part;
 
-namespace Content.Server._Shitmed.Targeting;
-public sealed class TargetingSystem : SharedTargetingSystem
+namespace Content.Server.Ember.Medical.Targeting;
+public sealed class EmberTargetingSystem : SharedEmberTargetingSystem
 {
     [Dependency] private readonly SharedBodySystem _bodySystem = default!;
 
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeNetworkEvent<TargetChangeEvent>(OnTargetChange);
-        SubscribeLocalEvent<TargetingComponent, MobStateChangedEvent>(OnMobStateChange);
+        SubscribeNetworkEvent<EmberTargetChangeEvent>(OnTargetChange);
+        SubscribeLocalEvent<EmberTargetingComponent, MobStateChangedEvent>(OnMobStateChange);
     }
 
-    private void OnTargetChange(TargetChangeEvent message, EntitySessionEventArgs args)
+    private void OnTargetChange(EmberTargetChangeEvent message, EntitySessionEventArgs args)
     {
-        if (!TryComp<TargetingComponent>(GetEntity(message.Uid), out var target))
+        if (!TryComp<EmberTargetingComponent>(GetEntity(message.Uid), out var target))
             return;
 
         target.Target = message.BodyPart;
         Dirty(GetEntity(message.Uid), target);
     }
 
-    private void OnMobStateChange(EntityUid uid, TargetingComponent component, MobStateChangedEvent args)
+    private void OnMobStateChange(EntityUid uid, EmberTargetingComponent component, MobStateChangedEvent args)
     {
         // Revival is handled by the server, so we're keeping all of this here.
         var changed = false;
@@ -34,11 +34,11 @@ public sealed class TargetingSystem : SharedTargetingSystem
         {
             foreach (var part in GetValidParts())
             {
-                component.BodyStatus[part] = TargetIntegrity.Dead;
+                component.BodyStatus[part] = EmberTargetIntegrity.Dead;
                 changed = true;
             }
             // I love groin shitcode.
-            component.BodyStatus[TargetBodyPart.Groin] = TargetIntegrity.Dead;
+            component.BodyStatus[EmberTargetBodyPart.Groin] = EmberTargetIntegrity.Dead;
         }
         else if (args.OldMobState == MobState.Dead && (args.NewMobState == MobState.Alive || args.NewMobState == MobState.Critical))
         {
@@ -49,7 +49,7 @@ public sealed class TargetingSystem : SharedTargetingSystem
         if (changed)
         {
             Dirty(uid, component);
-            RaiseNetworkEvent(new TargetIntegrityChangeEvent(GetNetEntity(uid)), uid);
+            RaiseNetworkEvent(new EmberTargetIntegrityChangeEvent(GetNetEntity(uid)), uid);
         }
     }
 }

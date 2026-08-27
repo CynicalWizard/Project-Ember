@@ -1,5 +1,5 @@
 using System.Linq;
-using Content.Shared._Shitmed.Targeting;
+using Content.Shared.Ember.Medical.Targeting;
 using Content.Shared.Body.Systems;
 using Content.Shared.CCVar;
 using Content.Shared.Chemistry;
@@ -175,7 +175,7 @@ namespace Content.Shared.Damage
         public DamageSpecifier? TryChangeDamage(EntityUid? uid, DamageSpecifier damage, bool ignoreResistances = false,
             bool interruptsDoAfters = true, DamageableComponent? damageable = null, EntityUid? origin = null,
             // Shitmed Change
-            bool? canSever = true, bool? canEvade = false, float? partMultiplier = 1.00f, TargetBodyPart? targetPart = null, bool doPartDamage = true)
+            bool? canSever = true, bool? canEvade = false, float? partMultiplier = 1.00f, EmberTargetBodyPart? targetPart = null, bool doPartDamage = true)
         {
             if (!uid.HasValue || !_damageableQuery.Resolve(uid.Value, ref damageable, false))
             {
@@ -318,7 +318,7 @@ namespace Content.Shared.Damage
             DamageChanged(uid, component, new DamageSpecifier());
 
             // Shitmed Change Start
-            if (HasComp<TargetingComponent>(uid))
+            if (HasComp<EmberTargetingComponent>(uid))
             {
                 foreach (var (part, _) in _body.GetBodyChildren(uid))
                 {
@@ -351,7 +351,7 @@ namespace Content.Shared.Damage
             DamageChanged(uid, component, new DamageSpecifier());
 
             // Shitmed Change Start
-            if (!HasComp<TargetingComponent>(uid))
+            if (!HasComp<EmberTargetingComponent>(uid))
                 return;
 
             foreach (var (part, _) in _body.GetBodyChildren(uid))
@@ -439,7 +439,7 @@ namespace Content.Shared.Damage
     public record struct BeforeDamageChangedEvent(
         DamageSpecifier Damage,
         EntityUid? Origin = null,
-        TargetBodyPart? TargetPart = null, // Shitmed Change
+        EmberTargetBodyPart? TargetPart = null, // Ember: body-part targeting
         bool CanEvade = false, // Lavaland Change
         bool Cancelled = false);
 
@@ -450,7 +450,7 @@ namespace Content.Shared.Damage
     public record struct TryChangePartDamageEvent(
         DamageSpecifier Damage,
         EntityUid? Origin = null,
-        TargetBodyPart? TargetPart = null,
+        EmberTargetBodyPart? TargetPart = null,
         bool IgnoreResistances = false,
         bool CanSever = true,
         bool CanEvade = false,
@@ -473,9 +473,9 @@ namespace Content.Shared.Damage
         public readonly DamageSpecifier OriginalDamage;
         public DamageSpecifier Damage;
         public EntityUid? Origin;
-        public readonly TargetBodyPart? TargetPart; // Shitmed Change
+        public readonly EmberTargetBodyPart? TargetPart; // Ember: body-part targeting
 
-        public DamageModifyEvent(DamageSpecifier damage, EntityUid? origin = null, TargetBodyPart? targetPart = null) // Shitmed Change
+        public DamageModifyEvent(DamageSpecifier damage, EntityUid? origin = null, EmberTargetBodyPart? targetPart = null) // Ember: body-part targeting
         {
             OriginalDamage = damage;
             Damage = damage;

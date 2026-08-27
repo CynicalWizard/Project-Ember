@@ -2,7 +2,7 @@ using System.Linq;
 using Content.Server.Atmos.Components;
 using Content.Server.Bed.Components;
 using Content.Server.Cloning.Components;
-using Content.Shared._Shitmed.Targeting;
+using Content.Shared.Ember.Medical.Targeting;
 using Content.Shared._Shitmed.Body.Events;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
@@ -90,7 +90,7 @@ public sealed class IgniteFromGasSystem : EntitySystem
         if (!Resolve(ent, ref ent.Comp1, ref ent.Comp2, false))
             return;
 
-        var exposedBodyParts = new Dictionary<TargetBodyPart, float>(ent.Comp1.IgnitableBodyParts);
+        var exposedBodyParts = new Dictionary<EmberTargetBodyPart, float>(ent.Comp1.IgnitableBodyParts);
 
         var containerSlotEnumerator = _inventory.GetSlotEnumerator((ent, ent.Comp2));
         while (containerSlotEnumerator.NextItem(out var item, out _))

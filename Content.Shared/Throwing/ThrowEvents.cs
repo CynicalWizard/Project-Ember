@@ -1,4 +1,4 @@
-using Content.Shared._Shitmed.Targeting;
+using Content.Shared.Ember.Medical.Targeting;
 
 namespace Content.Shared.Throwing
 {
@@ -16,9 +16,9 @@ namespace Content.Shared.Throwing
         public readonly EntityUid Thrown;
         public readonly EntityUid Target;
         public ThrownItemComponent Component;
-        public TargetBodyPart? TargetPart;
+        public EmberTargetBodyPart? TargetPart;
 
-        public ThrowEvent(EntityUid? user, EntityUid thrown, EntityUid target, ThrownItemComponent component, TargetBodyPart? targetPart) //Nyano - Summary: User added.
+        public ThrowEvent(EntityUid? user, EntityUid thrown, EntityUid target, ThrownItemComponent component, EmberTargetBodyPart? targetPart) //Nyano - Summary: User added.
         {
             User = user; //Nyano - Summary: User added.
             Thrown = thrown;
@@ -33,7 +33,7 @@ namespace Content.Shared.Throwing
     /// </summary>
     public sealed class ThrowHitByEvent : ThrowEvent
     {
-        public ThrowHitByEvent(EntityUid? user, EntityUid thrown, EntityUid target, ThrownItemComponent component, TargetBodyPart? targetPart) : base(user, thrown, target, component, targetPart) //Nyano - Summary: User added.
+        public ThrowHitByEvent(EntityUid? user, EntityUid thrown, EntityUid target, ThrownItemComponent component, EmberTargetBodyPart? targetPart) : base(user, thrown, target, component, targetPart) //Nyano - Summary: User added.
         {
         }
     }
@@ -43,7 +43,7 @@ namespace Content.Shared.Throwing
     /// </summary>
     public sealed class ThrowDoHitEvent : ThrowEvent
     {
-        public ThrowDoHitEvent(EntityUid thrown, EntityUid target, ThrownItemComponent component, TargetBodyPart? targetPart) : base(null, thrown, target, component, targetPart) //Nyano - Summary: User added.
+        public ThrowDoHitEvent(EntityUid thrown, EntityUid target, ThrownItemComponent component, EmberTargetBodyPart? targetPart) : base(null, thrown, target, component, targetPart) //Nyano - Summary: User added.
         {
         }
     }

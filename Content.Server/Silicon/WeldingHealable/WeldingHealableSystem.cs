@@ -7,7 +7,7 @@ using Content.Shared.Damage;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Tools;
-using Content.Shared._Shitmed.Targeting;
+using Content.Shared.Ember.Medical.Targeting;
 using Content.Shared.Body.Systems;
 using Content.Shared.Tools.Components;
 using SharedToolSystem = Content.Shared.Tools.Systems.SharedToolSystem;
@@ -104,7 +104,7 @@ public sealed class WeldingHealableSystem : SharedWeldingHealableSystem
                 return true;
 
         // In case the healer is a humanoid entity with targeting, we run the check on the targeted parts.
-        if (!TryComp(user, out TargetingComponent? targeting))
+        if (!TryComp(user, out EmberTargetingComponent? targeting))
             return false;
 
         var (targetType, targetSymmetry) = _bodySystem.ConvertTargetBodyPart(targeting.Target);

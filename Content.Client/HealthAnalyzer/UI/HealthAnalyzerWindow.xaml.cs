@@ -2,7 +2,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Shared.Atmos;
 using Content.Client.UserInterface.Controls;
-using Content.Shared._Shitmed.Targeting; // Shitmed
+using Content.Shared.Ember.Medical.Targeting; // Shitmed
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.FixedPoint;
@@ -32,13 +32,13 @@ namespace Content.Client.HealthAnalyzer.UI
         private readonly IResourceCache _cache;
 
         // Shitmed Change Start
-        public event Action<TargetBodyPart?, EntityUid>? OnBodyPartSelected;
+        public event Action<EmberTargetBodyPart?, EntityUid>? OnBodyPartSelected;
         private EntityUid _spriteViewEntity;
 
         [ValidatePrototypeId<EntityPrototype>]
         private readonly EntProtoId _bodyView = "AlertSpriteView";
 
-        private readonly Dictionary<TargetBodyPart, TextureButton> _bodyPartControls;
+        private readonly Dictionary<EmberTargetBodyPart, TextureButton> _bodyPartControls;
         private EntityUid? _target;
         // Shitmed Change End
 
@@ -52,19 +52,19 @@ namespace Content.Client.HealthAnalyzer.UI
             _prototypes = dependencies.Resolve<IPrototypeManager>();
             _cache = dependencies.Resolve<IResourceCache>();
             // Shitmed Change Start
-            _bodyPartControls = new Dictionary<TargetBodyPart, TextureButton>
+            _bodyPartControls = new Dictionary<EmberTargetBodyPart, TextureButton>
             {
-                { TargetBodyPart.Head, HeadButton },
-                { TargetBodyPart.Torso, ChestButton },
-                { TargetBodyPart.Groin, GroinButton },
-                { TargetBodyPart.LeftArm, LeftArmButton },
-                { TargetBodyPart.LeftHand, LeftHandButton },
-                { TargetBodyPart.RightArm, RightArmButton },
-                { TargetBodyPart.RightHand, RightHandButton },
-                { TargetBodyPart.LeftLeg, LeftLegButton },
-                { TargetBodyPart.LeftFoot, LeftFootButton },
-                { TargetBodyPart.RightLeg, RightLegButton },
-                { TargetBodyPart.RightFoot, RightFootButton },
+                { EmberTargetBodyPart.Head, HeadButton },
+                { EmberTargetBodyPart.Torso, ChestButton },
+                { EmberTargetBodyPart.Groin, GroinButton },
+                { EmberTargetBodyPart.LeftArm, LeftArmButton },
+                { EmberTargetBodyPart.LeftHand, LeftHandButton },
+                { EmberTargetBodyPart.RightArm, RightArmButton },
+                { EmberTargetBodyPart.RightHand, RightHandButton },
+                { EmberTargetBodyPart.LeftLeg, LeftLegButton },
+                { EmberTargetBodyPart.LeftFoot, LeftFootButton },
+                { EmberTargetBodyPart.RightLeg, RightLegButton },
+                { EmberTargetBodyPart.RightFoot, RightFootButton },
             };
 
             foreach (var bodyPartButton in _bodyPartControls)
@@ -77,13 +77,13 @@ namespace Content.Client.HealthAnalyzer.UI
         }
 
         // Shitmed Change Start
-        public void SetActiveBodyPart(TargetBodyPart part, TextureButton button)
+        public void SetActiveBodyPart(EmberTargetBodyPart part, TextureButton button)
         {
             if (_target == null)
                 return;
 
             // Bit of the ole shitcode until we have Groins in the prototypes.
-            OnBodyPartSelected?.Invoke(part == TargetBodyPart.Groin ? TargetBodyPart.Torso : part, _target.Value);
+            OnBodyPartSelected?.Invoke(part == EmberTargetBodyPart.Groin ? EmberTargetBodyPart.Torso : part, _target.Value);
         }
 
         public void ResetBodyPart()
@@ -115,7 +115,7 @@ namespace Content.Client.HealthAnalyzer.UI
                 return;
             }
 
-            SetActiveButtons(_entityManager.HasComponent<TargetingComponent>(_target.Value));
+            SetActiveButtons(_entityManager.HasComponent<EmberTargetingComponent>(_target.Value));
 
             ReturnButton.Visible = isPart;
             PartNameLabel.Visible = isPart;
@@ -316,7 +316,7 @@ namespace Content.Client.HealthAnalyzer.UI
         /// <summary>
         /// Sets up the Body Doll using Alert Entity to use in Health Analyzer.
         /// </summary>
-        private EntityUid? SetupIcon(Dictionary<TargetBodyPart, TargetIntegrity>? body)
+        private EntityUid? SetupIcon(Dictionary<EmberTargetBodyPart, EmberTargetIntegrity>? body)
         {
             if (body is null)
                 return null;
@@ -332,10 +332,10 @@ namespace Content.Client.HealthAnalyzer.UI
             int layer = 0;
             foreach (var (bodyPart, integrity) in body)
             {
-                // TODO: PartStatusUIController and make it use layers instead of TextureRects when EE refactors alerts.
-                string enumName = Enum.GetName(typeof(TargetBodyPart), bodyPart) ?? "Unknown";
+                // TODO: EmberPartStatusUIController and make it use layers instead of TextureRects when EE refactors alerts.
+                string enumName = Enum.GetName(typeof(EmberTargetBodyPart), bodyPart) ?? "Unknown";
                 int enumValue = (int) integrity;
-                var rsi = new SpriteSpecifier.Rsi(new ResPath($"/Textures/_Shitmed/Interface/Targeting/Status/{enumName.ToLowerInvariant()}.rsi"), $"{enumName.ToLowerInvariant()}_{enumValue}");
+                var rsi = new SpriteSpecifier.Rsi(new ResPath($"/Textures/Ember/Interface/Targeting/Status/{enumName.ToLowerInvariant()}.rsi"), $"{enumName.ToLowerInvariant()}_{enumValue}");
                 // Shitcode with love from Russia :)
                 if (!sprite.TryGetLayer(layer, out _))
                     sprite.AddLayer(_spriteSystem.Frame0(rsi));

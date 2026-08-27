@@ -6,7 +6,7 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
-using Content.Shared._Shitmed.Targeting;
+using Content.Shared.Ember.Medical.Targeting;
 using Content.Shared.Item.ItemToggle;
 using Content.Shared.UserInterface;
 using Content.Shared.Throwing;
@@ -128,7 +128,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         RaiseLocalEvent(uid, ref ev);
     }
 
-    private bool TryEmbed(EntityUid uid, EntityUid target, EntityUid? user, EmbeddableProjectileComponent component, TargetBodyPart? targetPart = null)
+    private bool TryEmbed(EntityUid uid, EntityUid target, EntityUid? user, EmbeddableProjectileComponent component, EmberTargetBodyPart? targetPart = null)
     {
         if (!TryComp(uid, out PhysicsComponent? physics))
             return false;
@@ -150,7 +150,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
 
         _audio.PlayPredicted(component.Sound, uid, null);
 
-        component.TargetBodyPart = targetPart;
+        component.EmberTargetBodyPart = targetPart;
         component.EmbeddedIntoUid = target;
         var ev = new EmbedEvent(user, target, targetPart);
         RaiseLocalEvent(uid, ref ev);
@@ -166,7 +166,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
     {
         component.AutoRemoveTime = null;
         component.EmbeddedIntoUid = null;
-        component.TargetBodyPart = null;
+        component.EmberTargetBodyPart = null;
         RemCompDeferred<ActiveEmbeddableProjectileComponent>(uid);
 
         var ev = new RemoveEmbedEvent(remover);
@@ -239,7 +239,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
             : Loc.GetString("throwing-examine-embedded-part",
             ("embedded", uid),
             ("target", targetIdentity),
-            ("targetPart", Loc.GetString($"body-part-{component.TargetBodyPart.ToString()}")));
+            ("targetPart", Loc.GetString($"body-part-{component.EmberTargetBodyPart.ToString()}")));
 
         args.PushMarkup(loc);
     }

@@ -1,5 +1,5 @@
 using Content.Shared.Damage;
-using Content.Shared._Shitmed.Targeting;
+using Content.Shared.Ember.Medical.Targeting;
 
 
 // Damages the entity by a set amount when it hits someone.
@@ -24,5 +24,5 @@ public sealed partial class DamageOnHitComponent : Component
     // </summary>
     [DataField]
     [ViewVariables(VVAccess.ReadWrite)]
-    public List<TargetBodyPart>? TargetParts = null;
+    public List<EmberTargetBodyPart>? TargetParts = null;
 }

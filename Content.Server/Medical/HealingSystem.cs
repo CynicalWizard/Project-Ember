@@ -4,7 +4,7 @@ using Content.Server.Body.Systems;
 using Content.Server.Medical.Components;
 using Content.Server.Popups;
 using Content.Server.Stack;
-using Content.Shared._Shitmed.Targeting;
+using Content.Shared.Ember.Medical.Targeting;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Audio;
 using Content.Shared.Body.Systems;
@@ -39,7 +39,7 @@ public sealed class HealingSystem : EntitySystem
     [Dependency] private readonly MobThresholdSystem _mobThresholdSystem = default!;
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
-    [Dependency] private readonly SharedTargetingSystem _targetingSystem = default!; // Shitmed Change
+    [Dependency] private readonly SharedEmberTargetingSystem _targetingSystem = default!; // Ember: body-part targeting
     [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Shitmed Change
 
     public override void Initialize()
@@ -163,7 +163,7 @@ public sealed class HealingSystem : EntitySystem
     // Shitmed Change Start
     private bool IsPartDamaged(EntityUid user, EntityUid target)
     {
-        if (!TryComp(user, out TargetingComponent? targeting))
+        if (!TryComp(user, out EmberTargetingComponent? targeting))
             return false;
 
         var (targetType, targetSymmetry) = _bodySystem.ConvertTargetBodyPart(targeting.Target);

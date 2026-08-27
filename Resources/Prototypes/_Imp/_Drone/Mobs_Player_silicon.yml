@@ -70,7 +70,7 @@
   - type: StandingState
   - type: Alerts
   - type: ProtectedFromStepTriggers
-  - type: Targeting # Shitmed Change
+  - type: EmberTargeting
 
 - type: entity
   name: drone

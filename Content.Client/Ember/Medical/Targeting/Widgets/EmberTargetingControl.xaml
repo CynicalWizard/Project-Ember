@@ -1,6 +1,6 @@
-<widgets:TargetingControl
+<widgets:EmberTargetingControl
     xmlns="https://spacestation14.io"
-    xmlns:widgets="clr-namespace:Content.Client._Shitmed.UserInterface.Systems.Targeting.Widgets"
+    xmlns:widgets="clr-namespace:Content.Client.Ember.Medical.Targeting.Widgets"
     Name="TargetingButton"
     VerticalExpand="True"
     VerticalAlignment="Bottom"
@@ -25,7 +25,7 @@
                         StyleClasses="TargetDollButtonRightArm"
                         VerticalAlignment="Top">
                         <TextureRect
-                            TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/rightarm.png"
+                            TexturePath="/Textures/Ember/Interface/Targeting/Doll/rightarm.png"
                             Stretch="KeepAspectCentered"
                             SetSize="12 24"
                             VerticalAlignment="Center"
@@ -37,7 +37,7 @@
                         VerticalAlignment="Bottom"
                         StyleClasses="TargetDollButtonRightHand">
                         <TextureRect
-                            TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/righthand.png"
+                            TexturePath="/Textures/Ember/Interface/Targeting/Doll/righthand.png"
                             Stretch="KeepAspectCentered"
                             SetSize="12 12"
                             VerticalAlignment="Center"
@@ -56,7 +56,7 @@
                         HorizontalAlignment="Center"
                         StyleClasses="TargetDollButtonHead">
                         <TextureRect
-                            TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/head.png"
+                            TexturePath="/Textures/Ember/Interface/Targeting/Doll/head.png"
                             Stretch="KeepAspectCentered"
                             SetSize="27 21"
                             VerticalAlignment="Center"
@@ -71,7 +71,7 @@
                                 VerticalAlignment="Top"
                                 StyleClasses="TargetDollButtonEyes">
                                 <TextureRect
-                                    TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/eyes.png"
+                                    TexturePath="/Textures/Ember/Interface/Targeting/Doll/eyes.png"
                                     Stretch="KeepAspectCentered"
                                     SetSize="15 9"/>
                             </TextureButton>
@@ -81,7 +81,7 @@
                                 VerticalAlignment="Bottom"
                                 StyleClasses="TargetDollButtonMouth">
                                 <TextureRect
-                                    TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/mouth.png"
+                                    TexturePath="/Textures/Ember/Interface/Targeting/Doll/mouth.png"
                                     Stretch="KeepAspectCentered"
                                     SetSize="9 6"/>
                             </TextureButton>
@@ -95,7 +95,7 @@
                         HorizontalAlignment="Center"
                         StyleClasses="TargetDollButtonChest">
                         <TextureRect
-                            TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/torso.png"
+                            TexturePath="/Textures/Ember/Interface/Targeting/Doll/torso.png"
                             Stretch="KeepAspectCentered"
                             SetSize="27 30"
                             VerticalAlignment="Center"
@@ -112,7 +112,7 @@
                             HorizontalAlignment="Center"
                             StyleClasses="TargetDollButtonGroin">
                             <TextureRect
-                                TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/groin.png"
+                                TexturePath="/Textures/Ember/Interface/Targeting/Doll/groin.png"
                                 Stretch="KeepAspectCentered"
                                 SetSize="27 12"
                                 VerticalAlignment="Center"
@@ -129,7 +129,7 @@
                                 HorizontalAlignment="Left"
                                 StyleClasses="TargetDollButtonLeftLeg">
                                 <TextureRect
-                                    TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/leftleg.png"
+                                    TexturePath="/Textures/Ember/Interface/Targeting/Doll/leftleg.png"
                                     Stretch="KeepAspectCentered"
                                     SetSize="12 27"
                                     VerticalAlignment="Center"
@@ -141,7 +141,7 @@
                                 VerticalAlignment="Bottom"
                                 StyleClasses="TargetDollButtonLeftFoot">
                                     <TextureRect
-                                        TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/leftfoot.png"
+                                        TexturePath="/Textures/Ember/Interface/Targeting/Doll/leftfoot.png"
                                         Stretch="KeepAspectCentered"
                                         SetSize="18 9"
                                         VerticalAlignment="Center"
@@ -159,7 +159,7 @@
                                 HorizontalAlignment="Right"
                                 StyleClasses="TargetDollButtonRightLeg">
                                 <TextureRect
-                                    TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/rightleg.png"
+                                    TexturePath="/Textures/Ember/Interface/Targeting/Doll/rightleg.png"
                                     Stretch="KeepAspectCentered"
                                     SetSize="12 27"
                                     VerticalAlignment="Center"
@@ -172,7 +172,7 @@
                                 HorizontalAlignment="Center"
                                 StyleClasses="TargetDollButtonRightFoot">
                                 <TextureRect
-                                    TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/rightfoot.png"
+                                    TexturePath="/Textures/Ember/Interface/Targeting/Doll/rightfoot.png"
                                     Stretch="KeepAspectCentered"
                                     SetSize="18 9"
                                     VerticalAlignment="Center"
@@ -191,7 +191,7 @@
                         StyleClasses="TargetDollButtonLeftArm"
                         VerticalAlignment="Top">
                         <TextureRect
-                            TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/leftarm.png"
+                            TexturePath="/Textures/Ember/Interface/Targeting/Doll/leftarm.png"
                             Stretch="KeepAspectCentered"
                             SetSize="12 24"
                             VerticalAlignment="Center"
@@ -203,7 +203,7 @@
                         VerticalAlignment="Bottom"
                         StyleClasses="TargetDollButtonLeftHand">
                         <TextureRect
-                            TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/lefthand.png"
+                            TexturePath="/Textures/Ember/Interface/Targeting/Doll/lefthand.png"
                             Stretch="KeepAspectCentered"
                             SetSize="12 12"
                             VerticalAlignment="Center"
@@ -213,4 +213,4 @@
             </PanelContainer>
         </TextureRect>
     </Control>
-</widgets:TargetingControl>
+</widgets:EmberTargetingControl>

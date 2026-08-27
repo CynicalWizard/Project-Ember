@@ -1,4 +1,4 @@
-# Locale values for TargetBodyPart
+# Locale values for EmberTargetBodyPart
 
 body-part-Head = head
 body-part-Torso = torso

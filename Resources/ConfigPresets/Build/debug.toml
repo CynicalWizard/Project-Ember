@@ -9,8 +9,5 @@ auto_call_time = 0
 map_autovote_enabled = false
 preset_autovote_enabled = false
 
-[lavaland]
-enabled = false
-
 [rules]
 exempt_local = true

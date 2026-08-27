@@ -36,8 +36,5 @@ see_own_notes = true
 map_autovote_enabled = false
 preset_autovote_enabled = false
 
-[lavaland] # Lavaland Change
-enabled = false
-
 [rules]
 exempt_local = true

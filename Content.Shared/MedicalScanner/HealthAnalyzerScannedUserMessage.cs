@@ -1,4 +1,4 @@
-using Content.Shared._Shitmed.Targeting; // Shitmed Change
+using Content.Shared.Ember.Medical.Targeting; // Shitmed Change
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.MedicalScanner;
@@ -15,9 +15,9 @@ public sealed class HealthAnalyzerScannedUserMessage : BoundUserInterfaceMessage
     public bool? ScanMode;
     public bool? Bleeding;
     public bool? Unrevivable;
-    public Dictionary<TargetBodyPart, TargetIntegrity>? Body; // Shitmed Change
+    public Dictionary<EmberTargetBodyPart, EmberTargetIntegrity>? Body; // Ember: body-part targeting
     public NetEntity? Part; // Shitmed Change
-    public HealthAnalyzerScannedUserMessage(NetEntity? targetEntity, float temperature, float bloodLevel, bool? scanMode, bool? bleeding, bool? unrevivable, Dictionary<TargetBodyPart, TargetIntegrity>? body, NetEntity? part = null) // Shitmed Change
+    public HealthAnalyzerScannedUserMessage(NetEntity? targetEntity, float temperature, float bloodLevel, bool? scanMode, bool? bleeding, bool? unrevivable, Dictionary<EmberTargetBodyPart, EmberTargetIntegrity>? body, NetEntity? part = null) // Ember: body-part targeting
     {
         TargetEntity = targetEntity;
         Temperature = temperature;
@@ -32,10 +32,10 @@ public sealed class HealthAnalyzerScannedUserMessage : BoundUserInterfaceMessage
 
 // Shitmed Change Start
 [Serializable, NetSerializable]
-public sealed class HealthAnalyzerPartMessage(NetEntity? owner, TargetBodyPart? bodyPart) : BoundUserInterfaceMessage
+public sealed class HealthAnalyzerPartMessage(NetEntity? owner, EmberTargetBodyPart? bodyPart) : BoundUserInterfaceMessage
 {
     public readonly NetEntity? Owner = owner;
-    public readonly TargetBodyPart? BodyPart = bodyPart;
+    public readonly EmberTargetBodyPart? BodyPart = bodyPart;
 
 }
 // Shitmed Change End

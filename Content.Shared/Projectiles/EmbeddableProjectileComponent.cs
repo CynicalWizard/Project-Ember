@@ -1,4 +1,4 @@
-using Content.Shared._Shitmed.Targeting;
+using Content.Shared.Ember.Medical.Targeting;
 using System.Numerics;
 using Robust.Shared.Audio;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
@@ -71,5 +71,5 @@ public sealed partial class EmbeddableProjectileComponent : Component
     ///   The body part of the target this embeddable is attached to.
     /// </summary>
     [ViewVariables, AutoNetworkedField]
-    public TargetBodyPart? TargetBodyPart = null;
+    public EmberTargetBodyPart? EmberTargetBodyPart = null;
 }

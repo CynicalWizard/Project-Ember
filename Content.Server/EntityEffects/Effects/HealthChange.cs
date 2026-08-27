@@ -1,4 +1,4 @@
-using Content.Shared._Shitmed.Targeting;
+using Content.Shared.Ember.Medical.Targeting;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.EntityEffects;
@@ -167,7 +167,7 @@ namespace Content.Server.EntityEffects.Effects
                     IgnoreResistances,
                     interruptsDoAfters: false,
                     // Shitmed Change Start
-                    targetPart: TargetBodyPart.All,
+                    targetPart: EmberTargetBodyPart.All,
                     partMultiplier: 0.5f,
                     canSever: false);
                     // Shitmed Change End

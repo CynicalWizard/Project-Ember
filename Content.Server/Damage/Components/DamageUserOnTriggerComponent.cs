@@ -1,5 +1,5 @@
 using Content.Shared.Damage;
-using Content.Shared._Shitmed.Targeting; // Shitmed
+using Content.Shared.Ember.Medical.Targeting; // Shitmed
 
 namespace Content.Server.Damage.Components;
 
@@ -15,5 +15,5 @@ public sealed partial class DamageUserOnTriggerComponent : Component
     /// Shitmed Change: Lets mousetraps, etc. target the feet.
     /// </summary>
     [DataField]
-    public TargetBodyPart? TargetPart = TargetBodyPart.Feet;
+    public EmberTargetBodyPart? TargetPart = EmberTargetBodyPart.Feet;
 }

@@ -23,7 +23,7 @@ using Robust.Shared.Timing;
 // Shitmed Change
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
-using Content.Shared._Shitmed.Targeting;
+using Content.Shared.Ember.Medical.Targeting;
 using System.Linq;
 
 namespace Content.Server.Medical;
@@ -258,8 +258,8 @@ public sealed class HealthAnalyzerSystem : EntitySystem
         }
 
         // Shitmed Change Start
-        Dictionary<TargetBodyPart, TargetIntegrity>? body = null;
-        if (HasComp<TargetingComponent>(target))
+        Dictionary<EmberTargetBodyPart, EmberTargetIntegrity>? body = null;
+        if (HasComp<EmberTargetingComponent>(target))
             body = _bodySystem.GetBodyPartStatus(target);
         // Shitmed Change End
 
