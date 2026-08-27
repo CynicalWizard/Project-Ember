@@ -128,9 +128,9 @@
         Piercing: -15
         Slash: -15
   # Shitmed Change
-  - type: Cautery
+  - type: EmberCautery
     speed: 0.7
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
       collection: Welder
     endSound:

@@ -621,14 +621,14 @@
   - type: FireVisuals
     sprite: Mobs/Effects/onfire.rsi
     normalState: Mouse_burning
-  - type: SurgeryTarget
+  - type: EmberSurgeryTarget
   - type: Strippable
   - type: UserInterface
     interfaces:
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
-      enum.SurgeryUIKey.Key:
-        type: SurgeryBui
+      enum.EmberSurgeryUIKey.Key:
+        type: EmberSurgeryBui
   - type: InventorySlots
   - type: Inventory
     speciesId: hamster
@@ -819,11 +819,11 @@
   - type: FootPrints
     leftBarePrint: "footprint-left-bare-lizard"
     rightBarePrint: "footprint-right-bare-lizard"
-  - type: SurgeryTarget
+  - type: EmberSurgeryTarget
   - type: UserInterface
     interfaces:
-      enum.SurgeryUIKey.Key:
-        type: SurgeryBui
+      enum.EmberSurgeryUIKey.Key:
+        type: EmberSurgeryBui
       enum.InstrumentUiKey.Key:
         type: InstrumentBoundUserInterface
         requireInputValidation: false
@@ -925,11 +925,11 @@
   - type: RandomBark
     barkType: chicken # Duh
     barkMultiplier: 0.7
-  - type: SurgeryTarget
+  - type: EmberSurgeryTarget
   - type: UserInterface
     interfaces:
-      enum.SurgeryUIKey.Key:
-        type: SurgeryBui
+      enum.EmberSurgeryUIKey.Key:
+        type: EmberSurgeryBui
 
 - type: entity
   name: white duck #Quack
@@ -1197,11 +1197,11 @@
     prototype: AnimalHemocyanin
   - type: RandomBark
     barkType: crab
-  - type: SurgeryTarget
+  - type: EmberSurgeryTarget
   - type: UserInterface
     interfaces:
-      enum.SurgeryUIKey.Key:
-        type: SurgeryBui
+      enum.EmberSurgeryUIKey.Key:
+        type: EmberSurgeryBui
 
 - type: entity
   name: goat
@@ -1306,11 +1306,11 @@
   - type: HTN
     rootTask:
       task: RuminantHostileCompound
-  - type: SurgeryTarget
+  - type: EmberSurgeryTarget
   - type: UserInterface
     interfaces:
-      enum.SurgeryUIKey.Key:
-        type: SurgeryBui
+      enum.EmberSurgeryUIKey.Key:
+        type: EmberSurgeryBui
 
 # Note that we gotta make this bitch vomit someday when you feed it anthrax or sumthin. Needs to be a small item thief too and aggressive if attacked.
 - type: entity
@@ -1531,7 +1531,7 @@
   - type: Absorbable
   - type: CombatMode
   # Shitmed Change Start
-  - type: SurgeryTarget
+  - type: EmberSurgeryTarget
   - type: EmberTargeting
   - type: HumanoidAppearance
     species: Monkey
@@ -1561,8 +1561,8 @@
     interfaces:
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
-      enum.SurgeryUIKey.Key:
-        type: SurgeryBui
+      enum.EmberSurgeryUIKey.Key:
+        type: EmberSurgeryBui
   - type: Sprite
     drawdepth: Mobs
     layers:
@@ -2095,11 +2095,11 @@
     whitelist:
       types:
       - Landmine
-  - type: SurgeryTarget
+  - type: EmberSurgeryTarget
   - type: UserInterface
     interfaces:
-      enum.SurgeryUIKey.Key:
-        type: SurgeryBui
+      enum.EmberSurgeryUIKey.Key:
+        type: EmberSurgeryBui
   - type: FoodSequenceElement
     entries:
       Taco: RatTaco
@@ -2781,11 +2781,11 @@
   - type: BloodSucker
     webRequired: true
   - type: Cocooner
-  - type: SurgeryTarget
+  - type: EmberSurgeryTarget
   - type: UserInterface
     interfaces:
-      enum.SurgeryUIKey.Key:
-        type: SurgeryBui
+      enum.EmberSurgeryUIKey.Key:
+        type: EmberSurgeryBui
 
 - type: entity
   parent: MobSpiderBase

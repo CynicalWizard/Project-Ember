@@ -11,7 +11,7 @@
   - type: Tag
     tags:
     - SurgeryTool
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
 
 # Cautery
 
@@ -22,10 +22,10 @@
   description: A surgical tool used to cauterize open wounds.
   components:
   - type: Sprite
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/cautery.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/cautery.rsi
     state: cautery
   - type: Item
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/cautery.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/cautery.rsi
     storedRotation: 90
   - type: MeleeWeapon
     damage:
@@ -37,12 +37,12 @@
   - type: DamageOtherOnHit
   - type: ThrowingAngle
     angle: 45
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/cautery1.ogg
+      path: /Audio/Ember/Medical/Surgery/cautery1.ogg
     endSound:
-      path: /Audio/_Shitmed/Medical/Surgery/cautery2.ogg
-  - type: Cautery
+      path: /Audio/Ember/Medical/Surgery/cautery2.ogg
+  - type: EmberCautery
 
 # Drill
 
@@ -53,10 +53,10 @@
   description: A surgical drill for making holes into hard material.
   components:
   - type: Sprite
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/drill.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/drill.rsi
     state: drill
   - type: Item
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/drill.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/drill.rsi
     shape:
     - 0,0,1,0
     - 1,1,1,1
@@ -86,10 +86,10 @@
   - type: StaticPrice
     price: 40
   # Shitmed Change
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/saw.ogg
-  - type: Drill
+      path: /Audio/Ember/Medical/Surgery/saw.ogg
+  - type: EmberDrill
 
 # Scalpel
 
@@ -109,10 +109,10 @@
     types:
     - Knife
   - type: Sprite
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/scalpel.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/scalpel.rsi
     state: scalpel
   - type: Item
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/scalpel.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/scalpel.rsi
     storedRotation: 90
   - type: MeleeWeapon
     wideAnimationRotation: 90
@@ -137,12 +137,12 @@
   - type: ThrowingAngle
     angle: 90
   # Shitmed Change
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/scalpel1.ogg
+      path: /Audio/Ember/Medical/Surgery/scalpel1.ogg
     endSound:
-      path: /Audio/_Shitmed/Medical/Surgery/scalpel2.ogg
-  - type: Scalpel
+      path: /Audio/Ember/Medical/Surgery/scalpel2.ogg
+  - type: EmberScalpel
   - type: Tag
     tags:
     - Knife
@@ -178,7 +178,7 @@
     damage:
       types:
         Slash: 8
-  - type: Scalpel # Shitmed
+  - type: EmberScalpel # Shitmed
     speed: 1.25
   - type: Tag
     tags:
@@ -202,9 +202,9 @@
       types:
         Slash: 6.5
         Heat: 1
-  - type: Scalpel
+  - type: EmberScalpel
     speed: 1.25 # These shouldnt be obtainable but yknow they are better.
-  - type: Cautery
+  - type: EmberCautery
     speed: 1.25
   - type: Tag
     tags:
@@ -219,10 +219,10 @@
   description: A surgical tool used to hold open incisions.
   components:
   - type: Sprite
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/retractor.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/retractor.rsi
     state: retractor
   - type: Item
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/retractor.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/retractor.rsi
     storedRotation: 90
   # Shitmed Change
   - type: MeleeWeapon
@@ -246,12 +246,12 @@
     angle: 315
   - type: EmbeddableProjectile
   - type: EmbedPassiveDamage
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/retractor1.ogg
+      path: /Audio/Ember/Medical/Surgery/retractor1.ogg
     endSound:
-      path: /Audio/_Shitmed/Medical/Surgery/retractor2.ogg
-  - type: Retractor
+      path: /Audio/Ember/Medical/Surgery/retractor2.ogg
+  - type: EmberRetractor
 
 # Hemostat
 
@@ -262,11 +262,11 @@
   description: A surgical tool used to compress blood vessels to prevent bleeding.
   components:
   - type: Sprite
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/hemostat.rsi # Shitmed Change
+    sprite: Ember/Objects/Specific/Medical/Surgery/hemostat.rsi # Shitmed Change
     state: hemostat
   - type: Item
     heldPrefix: hemostat
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/hemostat.rsi # Shitmed Change
+    sprite: Ember/Objects/Specific/Medical/Surgery/hemostat.rsi # Shitmed Change
     storedRotation: 90
   - type: MeleeWeapon
     wideAnimationRotation: 90
@@ -289,14 +289,14 @@
   - type: ThrowingAngle
     angle: 35
   # Shitmed Change
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/retractor1.ogg
+      path: /Audio/Ember/Medical/Surgery/retractor1.ogg
     endSound:
-      path: /Audio/_Shitmed/Medical/Surgery/hemostat1.ogg
-  - type: Hemostat
-  - type: Tweezers # Shitmed
-  - type: Tending # Shitmed
+      path: /Audio/Ember/Medical/Surgery/hemostat1.ogg
+  - type: EmberHemostat
+  - type: EmberTweezers # Shitmed
+  - type: EmberTending # Shitmed
 
 # Bone setter - Shitmed Change
 - type: entity
@@ -306,14 +306,14 @@
   description: Used for setting bones back into place.
   components:
   - type: Sprite
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/bonesetter.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/bonesetter.rsi
     state: bonesetter
   - type: Item
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/bonesetter.rsi
-  - type: BoneSetter
-  - type: SurgeryTool
+    sprite: Ember/Objects/Specific/Medical/Surgery/bonesetter.rsi
+  - type: EmberBoneSetter
+  - type: EmberSurgeryTool
     startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/bone_setter.ogg
+      path: /Audio/Ember/Medical/Surgery/bone_setter.ogg
 
 # Bone Gel - Shitmed Change
 - type: entity
@@ -323,9 +323,9 @@
   description: A container for bone gel that often needs to be refilled from a specialized machine.
   components:
   - type: Sprite
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/bone-gel.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/bone-gel.rsi
     state: bone-gel
-  - type: BoneGel
+  - type: EmberBoneGel
 
 # Saws
 
@@ -370,10 +370,10 @@
   - type: ThrowingAngle
     angle: 0
   # Shitmed Change
-  - type: BoneSaw
-  - type: SurgeryTool
+  - type: EmberBoneSaw
+  - type: EmberSurgeryTool
     startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/saw.ogg
+      path: /Audio/Ember/Medical/Surgery/saw.ogg
 
 - type: entity
   name: choppa
@@ -404,7 +404,7 @@
     angle: 90
   - type: Tool
     speedModifier: 0.5
-  - type: BoneSaw # Shitmed
+  - type: EmberBoneSaw # Shitmed
     speed: 0.5
 
 - type: entity
@@ -414,11 +414,11 @@
   description: For heavy duty cutting.
   components:
   - type: Sprite
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/circular-saw.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/circular-saw.rsi
     state: circular-saw
   - type: Item
     size: Normal
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/circular-saw.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/circular-saw.rsi
     storedRotation: 90
   - type: MeleeWeapon
     attackRate: .8
@@ -447,11 +447,11 @@
     qualities:
     - Sawing
     speedModifier: 1.5
-  - type: BoneSaw # Shitmed
+  - type: EmberBoneSaw # Shitmed
     speed: 1.5
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/saw.ogg
+      path: /Audio/Ember/Medical/Surgery/saw.ogg
 
 - type: entity
   name: advanced circular saw
@@ -491,7 +491,7 @@
     angle: 90
   - type: Tool
     speedModifier: 2.0
-  - type: BoneSaw # Shitmed
+  - type: EmberBoneSaw # Shitmed
     speed: 2
 
 # Shitmed Tools
@@ -503,20 +503,20 @@
   description: A cautery with an energy tip, also serves as a drill in its powered state.
   components:
   - type: Sprite
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-cautery.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/e-cautery.rsi
     state: e-cautery-on
   - type: Item
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-cautery.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/e-cautery.rsi
     inhandVisuals:
       left:
       - state: on-inhand-left
       right:
       - state: on-inhand-right
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/cautery1.ogg
+      path: /Audio/Ember/Medical/Surgery/cautery1.ogg
     endSound:
-      path: /Audio/_Shitmed/Medical/Surgery/cautery2.ogg
+      path: /Audio/Ember/Medical/Surgery/cautery2.ogg
   - type: MeleeWeapon
     damage:
       types:
@@ -534,10 +534,10 @@
       cautery: !type:ItemSwitchState
         verb: cautery
         sprite:
-          sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-cautery.rsi
+          sprite: Ember/Objects/Specific/Medical/Surgery/e-cautery.rsi
           state: e-cautery
         components:
-        - type: Cautery
+        - type: EmberCautery
           speed: 1.5
         soundStateActivate:
           collection: WelderOn
@@ -548,10 +548,10 @@
       drill: !type:ItemSwitchState
         verb: drill
         sprite:
-          sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-cautery.rsi
+          sprite: Ember/Objects/Specific/Medical/Surgery/e-cautery.rsi
           state: e-cautery-on
         components:
-        - type: Drill
+        - type: EmberDrill
           speed: 1.5
         soundStateActivate:
           collection: sparks
@@ -566,20 +566,20 @@
   description: A scalpel which uses an energy blade, also serves as a saw in its powered state.
   components:
   - type: Sprite
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-scalpel.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/e-scalpel.rsi
     state: e-scalpel-on
   - type: Item
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-scalpel.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/e-scalpel.rsi
     inhandVisuals:
       left:
       - state: on-inhand-left
       right:
       - state: on-inhand-right
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/scalpel1.ogg
+      path: /Audio/Ember/Medical/Surgery/scalpel1.ogg
     endSound:
-      path: /Audio/_Shitmed/Medical/Surgery/scalpel2.ogg
+      path: /Audio/Ember/Medical/Surgery/scalpel2.ogg
   - type: MeleeWeapon
     damage:
       types:
@@ -597,10 +597,10 @@
       scalpel: !type:ItemSwitchState
         verb: scalpel
         sprite:
-          sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-scalpel.rsi
+          sprite: Ember/Objects/Specific/Medical/Surgery/e-scalpel.rsi
           state: e-scalpel
         components:
-        - type: Scalpel
+        - type: EmberScalpel
           speed: 1.5
         soundStateActivate:
           collection: sparks
@@ -611,10 +611,10 @@
       saw: !type:ItemSwitchState
         verb: saw
         sprite:
-          sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-scalpel.rsi
+          sprite: Ember/Objects/Specific/Medical/Surgery/e-scalpel.rsi
           state: e-scalpel-on
         components:
-        - type: BoneSaw
+        - type: EmberBoneSaw
           speed: 1.5
         soundStateActivate:
           collection: sparks
@@ -629,20 +629,20 @@
   description: A retractor with mechanical pinches, also serves as a hemostat in its powered state.
   components:
   - type: Sprite
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/adv-retractor.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/adv-retractor.rsi
     state: adv-retractor-on
   - type: Item
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/adv-retractor.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/adv-retractor.rsi
     inhandVisuals:
       left:
       - state: on-inhand-left
       right:
       - state: on-inhand-right
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/retractor1.ogg
+      path: /Audio/Ember/Medical/Surgery/retractor1.ogg
     endSound:
-      path: /Audio/_Shitmed/Medical/Surgery/retractor2.ogg
+      path: /Audio/Ember/Medical/Surgery/retractor2.ogg
   - type: MeleeWeapon
     damage:
       types:
@@ -660,10 +660,10 @@
       retractor: !type:ItemSwitchState
         verb: retractor
         sprite:
-          sprite: _Shitmed/Objects/Specific/Medical/Surgery/adv-retractor.rsi
+          sprite: Ember/Objects/Specific/Medical/Surgery/adv-retractor.rsi
           state: adv-retractor
         components:
-        - type: Retractor
+        - type: EmberRetractor
           speed: 1.5
         soundStateActivate:
           collection: sparks
@@ -674,14 +674,14 @@
       hemostat: !type:ItemSwitchState
         verb: hemostat
         sprite:
-          sprite: _Shitmed/Objects/Specific/Medical/Surgery/adv-retractor.rsi
+          sprite: Ember/Objects/Specific/Medical/Surgery/adv-retractor.rsi
           state: adv-retractor-on
         components:
-        - type: Hemostat
+        - type: EmberHemostat
           speed: 1.5
-        - type: Tweezers
+        - type: EmberTweezers
           speed: 1.5
-        - type: Tending
+        - type: EmberTending
           speed: 1.5
         soundStateActivate:
           collection: sparks
@@ -696,32 +696,32 @@
   parent: BaseToolSurgery
   components:
   - type: Sprite
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/omnimed.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/omnimed.rsi
     state: omnimed
   - type: Item
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/omnimed.rsi
-  - type: SurgeryTool
+    sprite: Ember/Objects/Specific/Medical/Surgery/omnimed.rsi
+  - type: EmberSurgeryTool
     startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/saw.ogg
-  - type: Hemostat
+      path: /Audio/Ember/Medical/Surgery/saw.ogg
+  - type: EmberHemostat
     speed: 2
-  - type: Scalpel
+  - type: EmberScalpel
     speed: 2
-  - type: Drill
+  - type: EmberDrill
     speed: 2
-  - type: BoneSetter
+  - type: EmberBoneSetter
     speed: 2
-  - type: Retractor
+  - type: EmberRetractor
     speed: 2
-  - type: Cautery
+  - type: EmberCautery
     speed: 2
-  - type: BoneGel
+  - type: EmberBoneGel
     speed: 2
-  - type: BoneSaw
+  - type: EmberBoneSaw
     speed: 2
-  - type: Tweezers
+  - type: EmberTweezers
     speed: 2
-  - type: Tending
+  - type: EmberTending
     speed: 2
 
 - type: entity
@@ -744,24 +744,24 @@
     state: cmotool
   - type: Item
     heldPrefix: cmotool
-  - type: SurgeryTool
-  - type: Hemostat
+  - type: EmberSurgeryTool
+  - type: EmberHemostat
     speed: 1.25
-  - type: Scalpel
+  - type: EmberScalpel
     speed: 1.25
-  - type: Drill
+  - type: EmberDrill
     speed: 1.25
-  - type: BoneSetter
+  - type: EmberBoneSetter
     speed: 1.25
-  - type: Retractor
+  - type: EmberRetractor
     speed: 1.25
-  - type: Cautery
+  - type: EmberCautery
     speed: 1.25
-  - type: BoneGel
+  - type: EmberBoneGel
     speed: 1.25
-  - type: BoneSaw
+  - type: EmberBoneSaw
     speed: 1.25
-  - type: Tweezers
+  - type: EmberTweezers
     speed: 1.25
-  - type: Tending
+  - type: EmberTending
     speed: 1.25

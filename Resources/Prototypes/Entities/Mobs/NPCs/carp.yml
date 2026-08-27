@@ -85,11 +85,11 @@
       speechVerb: LargeMob
     - type: Body # Shitmed - Adds carp organs.
       prototype: Carp
-    - type: SurgeryTarget
+    - type: EmberSurgeryTarget
     - type: UserInterface
       interfaces:
-        enum.SurgeryUIKey.Key:
-          type: SurgeryBui
+        enum.EmberSurgeryUIKey.Key:
+          type: EmberSurgeryBui
     - type: NightVision
       isActive: true
       toggleAction: null
@@ -281,11 +281,11 @@
         types:
           Slash: 10
           Bloodloss: 5
-    - type: SurgeryTarget
+    - type: EmberSurgeryTarget
     - type: UserInterface
       interfaces:
-        enum.SurgeryUIKey.Key:
-          type: SurgeryBui
+        enum.EmberSurgeryUIKey.Key:
+          type: EmberSurgeryBui
 
 - type: entity
   id: MobSharkSalvage

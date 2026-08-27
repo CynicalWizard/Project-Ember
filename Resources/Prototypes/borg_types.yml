@@ -177,11 +177,11 @@
     actions:
     - ActionFabricateLollipop
     - ActionFabricateGumball
-  - type: SurgeryIgnoreClothing
-  - type: SurgerySpeedModifier
+  - type: EmberSurgeryIgnoreClothing
+  - type: EmberSurgerySpeedModifier
     speedModifier: 1.5
-  - type: SurgeryTarget
-  - type: Sanitized
+  - type: EmberSurgeryTarget
+  - type: EmberSanitized
 
   # Visual
   inventoryTemplateId: borgDutch

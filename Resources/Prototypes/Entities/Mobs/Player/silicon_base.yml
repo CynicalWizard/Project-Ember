@@ -216,7 +216,7 @@
     - type: Stripping
     - type: Strippable
     - type: ComplexInteraction
-    - type: SurgeryTarget
+    - type: EmberSurgeryTarget
     - type: EmberTargeting
     - type: UserInterface
       interfaces:
@@ -231,8 +231,8 @@
           type: RadialSelectorMenuBUI
         enum.ListViewSelectorUiKey.Key:
           type: ListViewSelectorBUI
-        enum.SurgeryUIKey.Key:
-          type: SurgeryBui
+        enum.EmberSurgeryUIKey.Key:
+          type: EmberSurgeryBui
     - type: Emoting
     - type: Grammar
       attributes:

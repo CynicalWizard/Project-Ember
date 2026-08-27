@@ -39,9 +39,9 @@
     useSound:
       path: /Audio/Items/Culinary/chop.ogg
   # Shitmed Change
-  - type: Scalpel
+  - type: EmberScalpel
     speed: 0.65
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
       path: /Audio/Medical/Surgery/scalpel1.ogg
     endSound:
@@ -101,9 +101,9 @@
     - Chef
     - FoodRecipes
   # Shitmed Change
-  - type: Scalpel
+  - type: EmberScalpel
     speed: 0.3
-  - type: BoneSaw
+  - type: EmberBoneSaw
     speed: 0.5
 
 - type: entity

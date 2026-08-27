@@ -27,13 +27,13 @@
   - type: UseDelay
     delay: 1.5
   # Shitmed Change
-  - type: Tending
+  - type: EmberTending
     speed: 0.55
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/retractor1.ogg
+      path: /Audio/Ember/Medical/Surgery/retractor1.ogg
     endSound:
-      path: /Audio/_Shitmed/Medical/Surgery/hemostat1.ogg
+      path: /Audio/Ember/Medical/Surgery/hemostat1.ogg
   - type: EmbeddableProjectile
     offset: 0.3,0.0
     removalTime: 0.0

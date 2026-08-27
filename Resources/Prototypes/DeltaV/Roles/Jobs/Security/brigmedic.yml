@@ -43,7 +43,7 @@
   - !type:AddComponentSpecial
     components:
     - type: CPRTraining
-    - type: SurgerySpeedModifier
+    - type: EmberSurgerySpeedModifier
       speedModifier: 2.0
   afterLoadoutSpecial:
   - !type:ModifyEnvirosuitSpecial

@@ -213,8 +213,8 @@
         type: RadialSelectorMenuBUI
       enum.ListViewSelectorUiKey.Key:
         type: ListViewSelectorBUI
-      enum.SurgeryUIKey.Key:
-        type: SurgeryBui
+      enum.EmberSurgeryUIKey.Key:
+        type: EmberSurgeryBui
   - type: Puller
   - type: Speech
     speechSounds: Alto
@@ -246,7 +246,7 @@
     - DoorBumpOpener
     - AnomalyHost
   - type: EmberTargeting
-  - type: SurgeryTarget
+  - type: EmberSurgeryTarget
   - type: MovedByPressure
     cutoffTime: 1.0
 

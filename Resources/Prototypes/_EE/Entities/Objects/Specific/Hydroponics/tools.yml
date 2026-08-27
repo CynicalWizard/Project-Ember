@@ -28,12 +28,12 @@
     sprite: _EE/Objects/Tools/Hydroponics/clippers-eoc.rsi
     storedRotation: -90
   # Shitmed Change
-  - type: Retractor
+  - type: EmberRetractor
     speed: 0.38
-  - type: Hemostat
+  - type: EmberHemostat
     speed: 0.63
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/retractor1.ogg
+      path: /Audio/Ember/Medical/Surgery/retractor1.ogg
     endSound:
-      path: /Audio/_Shitmed/Medical/Surgery/retractor2.ogg
+      path: /Audio/Ember/Medical/Surgery/retractor2.ogg

@@ -62,11 +62,11 @@
   - type: IgniteOnMeleeHit
     fireStacks: -4
   # Shitmed Change
-  - type: Scalpel
+  - type: EmberScalpel
     speed: 0.3
-  - type: BoneSaw
+  - type: EmberBoneSaw
     speed: 0.5
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
       path: /Audio/Medical/Surgery/saw.ogg
 

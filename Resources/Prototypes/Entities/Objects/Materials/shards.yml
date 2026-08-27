@@ -85,13 +85,13 @@
   - type: StaticPrice
     price: 0
   # Shitmed Change
-  - type: Scalpel
+  - type: EmberScalpel
     speed: 0.45
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/scalpel1.ogg
+      path: /Audio/Ember/Medical/Surgery/scalpel1.ogg
     endSound:
-      path: /Audio/_Shitmed/Medical/Surgery/scalpel2.ogg
+      path: /Audio/Ember/Medical/Surgery/scalpel2.ogg
 
 - type: entity
   parent: ShardBase

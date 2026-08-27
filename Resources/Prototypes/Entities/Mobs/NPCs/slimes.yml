@@ -113,11 +113,11 @@
     speechSounds: Slime
   - type: TypingIndicator
     proto: slime
-  - type: SurgeryTarget
+  - type: EmberSurgeryTarget
   - type: UserInterface
     interfaces:
-      enum.SurgeryUIKey.Key:
-        type: SurgeryBui
+      enum.EmberSurgeryUIKey.Key:
+        type: EmberSurgeryBui
 
 - type: entity
   name: basic slime

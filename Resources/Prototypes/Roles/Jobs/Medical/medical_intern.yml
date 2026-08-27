@@ -18,7 +18,7 @@
   - !type:AddComponentSpecial
     components:
     - type: CPRTraining
-    - type: SurgerySpeedModifier
+    - type: EmberSurgerySpeedModifier
       speedModifier: 1.5
 
 - type: startingGear

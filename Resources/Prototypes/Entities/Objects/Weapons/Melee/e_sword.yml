@@ -80,11 +80,11 @@
   - type: Reflect
   - type: IgnitionSource
     temperature: 700
-  - type: Scalpel
+  - type: EmberScalpel
     speed: 0.75
-  - type: Cautery
+  - type: EmberCautery
     speed: 0.2
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
       path: /Audio/Weapons/ebladehum.ogg
     endSound:

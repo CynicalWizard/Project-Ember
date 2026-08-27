@@ -8,7 +8,7 @@ using Robust.Shared.Serialization;
 
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.FixedPoint;
-using Content.Shared._Shitmed.Medical.Surgery.Tools;
+using Content.Shared.Ember.Medical.Surgery.Tools;
 using Content.Shared.Ember.Medical.Targeting;
 using Robust.Shared.Prototypes;
 
@@ -16,7 +16,7 @@ namespace Content.Shared.Body.Part;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 //[Access(typeof(SharedBodySystem))] // Shitmed Change - all access :godo:
-public sealed partial class BodyPartComponent : Component, ISurgeryToolComponent // Shitmed Change
+public sealed partial class BodyPartComponent : Component, IEmberSurgeryToolComponent // Shitmed Change
 {
     // Need to set this on container changes as it may be several transform parents up the hierarchy.
     /// <summary>

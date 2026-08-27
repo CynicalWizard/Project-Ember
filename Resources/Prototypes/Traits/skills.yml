@@ -260,7 +260,7 @@
   functions:
     - !type:TraitAddComponent
       components:
-        - type: SurgerySpeedModifier
+        - type: EmberSurgerySpeedModifier
           speedModifier: 1.6
   requirements:
     - !type:CharacterJobRequirement
@@ -281,7 +281,7 @@
   functions:
     - !type:TraitReplaceComponent
       components:
-      - type: SurgerySpeedModifier
+      - type: EmberSurgerySpeedModifier
         speedModifier: 2.3
   requirements:
     - !type:CharacterJobRequirement

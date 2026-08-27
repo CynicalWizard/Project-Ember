@@ -19,11 +19,11 @@
       - Trash
   # Shitmed Change Start
   - type: Gibbable
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/organ1.ogg
+      path: /Audio/Ember/Medical/Surgery/organ1.ogg
     endSound:
-      path: /Audio/_Shitmed/Medical/Surgery/organ2.ogg
+      path: /Audio/Ember/Medical/Surgery/organ2.ogg
   - type: Destructible
     thresholds:
     - trigger:

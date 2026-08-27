@@ -101,9 +101,9 @@
     color: orange
   - type: ItemTogglePointLight
   # Shitmed Change
-  - type: Cautery
+  - type: EmberCautery
     speed: 0.45
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
       collection: lighterOnSounds
     endSound:

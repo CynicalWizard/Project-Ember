@@ -188,11 +188,11 @@
   - type: IsDeadIC
   - type: Body
     prototype: AnimalNymphBrain
-  - type: SurgeryTarget
+  - type: EmberSurgeryTarget
   - type: UserInterface
     interfaces:
-      enum.SurgeryUIKey.Key:
-        type: SurgeryBui
+      enum.EmberSurgeryUIKey.Key:
+        type: EmberSurgeryBui
 
 - type: entity
   id: OrganDionaNymphStomach
@@ -205,11 +205,11 @@
   - type: IsDeadIC
   - type: Body
     prototype: AnimalNymphStomach
-  - type: SurgeryTarget
+  - type: EmberSurgeryTarget
   - type: UserInterface
     interfaces:
-      enum.SurgeryUIKey.Key:
-        type: SurgeryBui
+      enum.EmberSurgeryUIKey.Key:
+        type: EmberSurgeryBui
 
 - type: entity
   id: OrganDionaNymphLungs
@@ -222,8 +222,8 @@
   - type: IsDeadIC
   - type: Body
     prototype: AnimalNymphLungs
-  - type: SurgeryTarget
+  - type: EmberSurgeryTarget
   - type: UserInterface
     interfaces:
-      enum.SurgeryUIKey.Key:
-        type: SurgeryBui
+      enum.EmberSurgeryUIKey.Key:
+        type: EmberSurgeryBui

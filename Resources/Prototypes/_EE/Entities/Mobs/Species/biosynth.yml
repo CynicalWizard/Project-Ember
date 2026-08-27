@@ -32,8 +32,8 @@
         type: RadialSelectorMenuBUI
       enum.ListViewSelectorUiKey.Key:
         type: ListViewSelectorBUI
-      enum.SurgeryUIKey.Key:
-        type: SurgeryBui
+      enum.EmberSurgeryUIKey.Key:
+        type: EmberSurgeryBui
       enum.SharedRenamableInterfaceKey.Key:
         type: RenamableBoundUserInterface
   - type: NameIdentifier

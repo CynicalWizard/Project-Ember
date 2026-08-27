@@ -2,14 +2,14 @@ using Content.Shared.Body.Systems;
 using Content.Shared.Traits;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes; // Shitmed Change
-using Content.Shared._Shitmed.Medical.Surgery; // Shitmed Change
-using Content.Shared._Shitmed.Medical.Surgery.Tools; // Shitmed Change
+using Content.Shared.Ember.Medical.Surgery; // Shitmed Change
+using Content.Shared.Ember.Medical.Surgery.Tools; // Shitmed Change
 
 namespace Content.Shared.Body.Organ;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(SharedBodySystem), typeof(SharedSurgerySystem))] // Shitmed Change
-public sealed partial class OrganComponent : Component, ISurgeryToolComponent // Shitmed Change
+[Access(typeof(SharedBodySystem), typeof(SharedEmberSurgerySystem))] // Shitmed Change
+public sealed partial class OrganComponent : Component, IEmberSurgeryToolComponent // Shitmed Change
 {
     /// <summary>
     /// Relevant body this organ is attached to.

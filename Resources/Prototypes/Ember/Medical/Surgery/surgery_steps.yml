@@ -1,0 +1,655 @@
+- type: entity
+  id: SurgeryStepBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepOpenIncisionScalpel
+  name: Cut with a scalpel
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberScalpel
+    add:
+    - type: EmberIncisionOpen
+    duration: 2
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/scalpel.rsi
+    state: scalpel
+  - type: EmberSurgeryDamageChangeEffect
+    damage:
+      types:
+        Bloodloss: 10
+    sleepModifier: 0.5
+  - type: EmberSurgeryStepEmoteEffect
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepClampBleeders
+  name: Clamp the bleeders
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberHemostat
+    add:
+    - type: EmberBleedersClamped
+    duration: 2
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/hemostat.rsi
+    state: hemostat
+  - type: EmberSurgeryDamageChangeEffect
+    damage:
+      types:
+        Bloodloss: -5
+    sleepModifier: 2
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepRetractSkin
+  name: Retract the skin
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberRetractor
+    add:
+    - type: EmberSkinRetracted
+    duration: 2
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/retractor.rsi
+    state: retractor
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepSawBones
+  name: Saw through bones
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberBoneSaw
+    add:
+    - type: EmberRibcageSawed
+    duration: 4
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/circular-saw.rsi
+    state: circular-saw
+  - type: EmberSurgeryStepEmoteEffect
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepPriseOpenBones
+  name: Prise the bones open
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberRetractor
+    add:
+    - type: EmberRibcageOpen
+    duration: 2
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/retractor.rsi
+    state: retractor
+
+#- type: entity
+#  parent: SurgeryStepBase
+#  id: SurgeryStepCutLarvaRoots
+#  name: Cut larva roots
+#  categories: [ HideSpawnMenu ]
+#  components:
+#  - type: EmberSurgeryStep
+#    skill: 2
+#    tool:
+#    - type: EmberScalpel
+#  - type: EmberSurgeryCutLarvaRootsStep
+#  - type: Sprite
+#    sprite: Objects/Specific/Medical/Surgery/scalpel.rsi
+#    state: scalpel
+#  - type: EmberSurgeryOperatingTableCondition
+
+#- type: entity
+#  parent: SurgeryStepBase
+#  id: SurgeryStepRemoveLarva
+#  name: Remove larva
+#  categories: [ HideSpawnMenu ]
+#  components:
+#  - type: EmberSurgeryStep
+#    skill: 2
+#    tool:
+#    - type: EmberHemostat
+#    bodyRemove:
+#    - type: VictimInfected
+#  - type: Sprite
+#    sprite: Objects/Specific/Medical/Surgery/scissors.rsi
+#    state: hemostat
+#  - type: EmberSurgeryOperatingTableCondition
+#  - type: EmberSurgeryStepSpawnEffect
+#    entity: XenoEmbryo
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepCloseBones
+  name: Close bones
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberRetractor
+    remove:
+    - type: EmberRibcageOpen
+    duration: 2
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/retractor.rsi
+    state: retractor
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepMendRibcage
+  name: Mend ribcage
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberBoneGel
+    remove:
+    - type: EmberRibcageSawed
+    duration: 2
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/bone-gel.rsi
+    state: bone-gel
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepCloseIncision
+  name: Close incision
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberCautery
+    remove:
+    # This surgery removes a bunch of components that might be leftover from other surgeries in unintended cases.
+    # Essentially a bit of a fallback for endusers :)
+    - type: EmberSkinRetracted
+    - type: EmberBleedersClamped
+    - type: EmberIncisionOpen
+    - type: EmberBodyPartReattached
+    - type: EmberInternalBleedersClamped
+    duration: 2
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/cautery.rsi
+    state: cautery
+  - type: EmberSurgeryDamageChangeEffect
+    damage:
+      types:
+        Heat: -5
+    sleepModifier: 2
+  - type: EmberSurgeryStepEmoteEffect
+
+# Feature Insertion
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepInsertFeature
+  name: Insert part
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: BodyPart
+    duration: 6
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/manipulation.rsi
+    state: insertion
+  - type: EmberSurgeryAddPartStep
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepSealWounds
+  name: Seal wounds
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberCautery
+    remove:
+    - type: EmberSkinRetracted
+    - type: EmberBleedersClamped
+    - type: EmberIncisionOpen
+    - type: EmberInternalBleedersClamped
+    duration: 2
+  - type: EmberSurgeryAffixPartStep
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/cautery.rsi
+    state: cautery
+  - type: EmberSurgeryStepEmoteEffect
+  - type: EmberSurgeryDamageChangeEffect
+    damage:
+      types:
+        Heat: -5
+    sleepModifier: 2
+
+# Feature Removal
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepSawFeature
+  name: Saw through bones
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberBoneSaw
+    add:
+    - type: EmberBodyPartSawed
+    duration: 4
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/circular-saw.rsi
+    state: circular-saw
+  - type: EmberSurgeryStepEmoteEffect
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepClampInternalBleeders
+  name: Clamp internal bleeders
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberHemostat
+    add:
+    - type: EmberInternalBleedersClamped
+    duration: 2
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/hemostat.rsi
+    state: hemostat
+  - type: EmberSurgeryDamageChangeEffect
+    damage:
+      types:
+        Bloodloss: -5
+    sleepModifier: 2
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepRemoveFeature
+  name: Amputate part
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberBoneSaw
+    remove:
+    # We remove these components to force people to go through all the steps again lol, otherwise you can just keep chopping.
+    - type: EmberSkinRetracted
+    - type: EmberBleedersClamped
+    - type: EmberInternalBleedersClamped
+    - type: EmberIncisionOpen
+    duration: 8
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/circular-saw.rsi
+    state: circular-saw
+  - type: EmberSurgeryRemovePartStep
+  - type: EmberSurgeryStepEmoteEffect
+
+# Tend Wounds
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepCarefulIncisionScalpel
+  name: Make a careful incision
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberScalpel
+    add:
+    - type: EmberIncisionOpen
+    duration: 3
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/scalpel.rsi
+    state: scalpel
+  - type: EmberSurgeryStepEmoteEffect
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepRepairBruteTissue
+  name: Repair damaged tissue
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberTending
+    duration: 2
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/hemostat.rsi
+    state: hemostat
+  - type: EmberSurgeryTendWoundsEffect
+    damage:
+      groups:
+        Brute: -10
+  - type: EmberSurgeryRepeatableStep
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepRepairBurnTissue
+  name: Repair burnt tissue
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberTending
+    duration: 2
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/hemostat.rsi
+    state: hemostat
+  - type: EmberSurgeryTendWoundsEffect
+    mainGroup: Burn
+    damage:
+      groups:
+        Burn: -10
+  - type: EmberSurgeryRepeatableStep
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepSealTendWound
+  name: Seal the wound
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberCautery
+    remove:
+    - type: EmberIncisionOpen
+    duration: 2
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/cautery.rsi
+    state: cautery
+  - type: EmberSurgeryDamageChangeEffect
+    damage:
+      types:
+        Heat: -5
+    sleepModifier: 2
+  - type: EmberSurgeryStepEmoteEffect
+
+# Cavity Implanting
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepInsertItem
+  name: Insert item into cavity
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    duration: 4
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/manipulation.rsi
+    state: insertion
+  - type: EmberSurgeryStepCavityEffect
+    action: Insert
+  - type: EmberSurgeryStepEmoteEffect
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepRemoveItem
+  name: Remove item from cavity
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    duration: 4
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/manipulation.rsi
+    state: insertion
+  - type: EmberSurgeryStepCavityEffect
+    action: Remove
+  - type: EmberSurgeryStepEmoteEffect
+
+# Organ Manipulation
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepRemoveOrgan
+  name: Remove organ
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberTweezers
+    duration: 8
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/hemostat.rsi
+    state: hemostat
+  - type: EmberSurgeryRemoveOrganStep
+  - type: EmberSurgeryStepEmoteEffect
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepInsertOrgan
+  name: Add organ
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: Organ
+    duration: 6
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/manipulation.rsi
+    state: insertion
+  - type: EmberSurgeryAddOrganStep
+  - type: EmberSurgeryStepEmoteEffect
+
+- type: entity
+  parent: SurgeryStepInsertOrgan
+  id: SurgeryStepInsertLungs
+  name: Add lungs
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryDamageChangeEffect
+    damage:
+      types:
+        Asphyxiation: -2147483648 # Literally the max 32 bit value, if your patient has gone higher than this, maybe it's time to restart the round.
+    sleepModifier: 1
+    isConsumable: true
+
+- type: entity
+  parent: SurgeryStepInsertOrgan
+  id: SurgeryStepInsertStomach
+  name: Add stomach
+  categories: [ HideSpawnMenu ]
+  # no effect its just for minmaxing metabolism
+
+- type: entity
+  parent: SurgeryStepInsertOrgan
+  id: SurgeryStepInsertLiver
+  name: Add liver
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryDamageChangeEffect
+    damage:
+      types:
+        Poison: -2147483648 # Literally the max 32 bit value, if your patient has gone higher than this, maybe it's time to restart the round.
+    sleepModifier: 1
+    isConsumable: true
+
+- type: entity
+  parent: SurgeryStepInsertOrgan
+  id: SurgeryStepInsertEyes
+  name: Add eyes
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: SurgeryStepInsertOrgan
+  id: SurgeryStepInsertHeart
+  name: Add heart
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgerySpecialDamageChangeEffect
+    damageType: Rot
+    isConsumable: true
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepSealOrganWound
+  name: Seal wounds
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberCautery
+    duration: 2
+  - type: EmberSurgeryAffixOrganStep
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/cautery.rsi
+    state: cautery
+  - type: EmberSurgeryStepEmoteEffect
+  - type: EmberSurgeryDamageChangeEffect
+    damage:
+      types:
+        Heat: -5
+    sleepModifier: 2
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepLobotomize
+  name: Lobotomize patient
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberDrill
+    addOrganOnAdd:
+      brain:
+        - type: OhioAccent
+        - type: RatvarianLanguage
+        - type: Clumsy
+          gunShootFailDamage:
+            types:
+              Blunt: 5
+              Piercing: 4
+            groups:
+              Burn: 3
+    duration: 5
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/drill.rsi
+    state: drill
+  - type: EmberSurgeryStepEmoteEffect
+  - type: EmberSurgeryDamageChangeEffect
+    damage:
+      types:
+        Piercing: 10
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepMendBrainTissue
+  name: Mend brain tissue
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmberSurgeryStep
+    tool:
+    - type: EmberHemostat
+    duration: 4
+    removeOrganOnAdd:
+      brain:
+        - type: OhioAccent
+        - type: RatvarianLanguage
+        - type: Clumsy
+          gunShootFailDamage:
+            types:
+              Blunt: 0
+  - type: Sprite
+    sprite: Ember/Objects/Specific/Medical/Surgery/hemostat.rsi
+    state: hemostat
+  - type: EmberSurgeryStepEmoteEffect
+
+# The lengths I go to just for a joke... I HATE HARDCODING AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+# Maybe I should modify species prototypes to include tails and ears properly...
+
+#- type: entity
+#  parent: SurgeryStepBase
+#  id: SurgeryStepAddFelinidEars
+#  name: Add cat ears
+#  categories: [ HideSpawnMenu ]
+#  components:
+#  - type: EmberSurgeryStep
+#    tool:
+#    - type: Organ
+#  - type: EmberSurgeryAddMarkingStep
+#    marking: FelinidEarsBasic
+#    markingCategory: HeadTop
+#    matchString: FelinidEars
+#    organ:
+#    - type: Ears
+#    accent:
+#    - type: OwOAccent
+#  - type: Sprite
+#    sprite: Ember/Objects/Specific/Medical/Surgery/manipulation.rsi
+#    state: insertion
+
+#- type: entity
+#  parent: SurgeryStepBase
+#  id: SurgeryStepAddFelinidTail
+#  name: Add cat tail
+#  categories: [ HideSpawnMenu ]
+#  components:
+#  - type: EmberSurgeryStep
+#    tool:
+#    - type: Organ
+#  - type: EmberSurgeryAddMarkingStep
+#    marking: FelinidTailBasic
+#    markingCategory: Tail
+#    matchString: FelinidTail
+#    organ:
+#    - type: Tail
+#  - type: Sprite
+#    sprite: Ember/Objects/Specific/Medical/Surgery/manipulation.rsi
+#    state: insertion
+
+#- type: entity
+#  parent: SurgeryStepBase
+#  id: SurgeryStepRemoveFelinidEars
+#  name: Remove cat ears
+#  categories: [ HideSpawnMenu ]
+#  components:
+#  - type: EmberSurgeryStep
+#    tool:
+#    - type: Organ
+#  - type: EmberSurgeryRemoveMarkingStep
+#    markingCategory: HeadTop
+#    matchString: FelinidEars
+#  - type: Sprite
+#    sprite: Ember/Objects/Specific/Medical/Surgery/manipulation.rsi
+#    state: insertion
+
+#- type: entity
+#  parent: SurgeryStepBase
+#  id: SurgeryStepRemoveFelinidTail
+#  name: Remove cat tail
+#  categories: [ HideSpawnMenu ]
+#  components:
+#  - type: EmberSurgeryStep
+#    tool:
+#    - type: Organ
+#  - type: EmberSurgeryRemoveMarkingStep
+#    markingCategory: Tail
+#    matchString: FelinidTail
+#  - type: Sprite
+#    sprite: Ember/Objects/Specific/Medical/Surgery/manipulation.rsi
+#    state: insertion
+
+#- type: entity
+#  parent: SurgeryStepBase
+#  id: SurgeryStepWingReconstruction
+#  name: Start wing reconstruction
+#  categories: [ HideSpawnMenu ]
+#  components:
+#  - type: EmberSurgeryStep
+#    duration: 6 # On TG success chance is lower, so here the surgery slower
+#    tool:
+#    - type: EmberTending
+#  - type: ??? moth ops go here when wings can be destroyed
+#  - type: Sprite
+#    sprite: Interface/Emotes/chitter.png

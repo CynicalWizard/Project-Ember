@@ -6,7 +6,7 @@
   id: AdvancedTreatment
   name: research-technology-advanced-treatment
   icon:
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-scalpel.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/e-scalpel.rsi
     state: e-scalpel-on
   discipline: CivilianServices
   tier: 2
@@ -41,7 +41,7 @@
   id: HighEndSurgery
   name: research-technology-high-end-surgery
   icon:
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/omnimed.rsi
+    sprite: Ember/Objects/Specific/Medical/Surgery/omnimed.rsi
     state: omnimed
   discipline: CivilianServices
   tier: 3

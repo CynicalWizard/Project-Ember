@@ -794,9 +794,9 @@
     netsync: false
     radius: 1.5
     color: red
-  - type: Cautery
+  - type: EmberCautery
     speed: 0.45
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
       collection: lighterOnSounds
     endSound:
@@ -856,9 +856,9 @@
     netsync: false
     radius: 1.5
     color: blue
-  - type: Cautery
+  - type: EmberCautery
     speed: 0.45
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
       collection: lighterOnSounds
     endSound:

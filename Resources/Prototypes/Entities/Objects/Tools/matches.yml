@@ -42,9 +42,9 @@
     litIcon: match_lit
     burntIcon: match_burnt
   # Shitmed Change
-  - type: Cautery
+  - type: EmberCautery
     speed: 0.2
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
       path: /Audio/Weapons/Guns/Hits/energy_meat1.ogg
     endSound:

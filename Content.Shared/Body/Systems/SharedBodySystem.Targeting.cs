@@ -5,7 +5,7 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.FixedPoint;
 using Content.Shared.IdentityManagement;
-using Content.Shared._Shitmed.Medical.Surgery.Steps.Parts;
+using Content.Shared.Ember.Medical.Surgery.Steps.Parts;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
@@ -236,7 +236,7 @@ public partial class SharedBodySystem
             && partEnt.Comp.CanSever
             && partIdSlot is not null
             && delta != null
-            && !HasComp<BodyPartReattachedComponent>(partEnt)
+            && !HasComp<EmberBodyPartReattachedComponent>(partEnt)
             && !partEnt.Comp.Enabled
             && damageable.TotalDamage >= partEnt.Comp.SeverIntegrity
             && _severingDamageTypes.Any(damageType => delta.DamageDict.TryGetValue(damageType, out var value) && value > 0))

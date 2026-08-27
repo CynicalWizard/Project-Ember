@@ -9,13 +9,13 @@
     sprite: Objects/Misc/utensils.rsi
   - type: SpaceGarbage
   # Shitmed Change
-  - type: Tweezers # Any utensil can poorly remove organs
+  - type: EmberTweezers # Any utensil can poorly remove organs
     speed: 0.2
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/retractor1.ogg
+      path: /Audio/Ember/Medical/Surgery/retractor1.ogg
     endSound:
-      path: /Audio/_Shitmed/Medical/Surgery/hemostat1.ogg
+      path: /Audio/Ember/Medical/Surgery/hemostat1.ogg
 
 - type: entity
   parent: UtensilBase
@@ -59,7 +59,7 @@
       types:
         Piercing: 5
   # Shitmed Change
-  - type: Tweezers # Forks are better than spoons
+  - type: EmberTweezers # Forks are better than spoons
     speed: 0.35
   - type: DamageOtherOnHit
     staminaCost: 2.5
@@ -82,7 +82,7 @@
     types:
     - Fork
   # Shitmed Change
-  - type: Tweezers # Forks are better than spoons
+  - type: EmberTweezers # Forks are better than spoons
     speed: 0.35
 
 - type: entity

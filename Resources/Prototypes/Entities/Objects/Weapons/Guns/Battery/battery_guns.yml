@@ -50,9 +50,9 @@
   - type: DamageOtherOnHit
     staminaCost: 7
   # Shitmed Change
-  - type: Cautery
+  - type: EmberCautery
     speed: 0.9
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     endSound:
       path: /Audio/Weapons/Guns/Gunshots/laser.ogg
 
@@ -109,9 +109,9 @@
   - type: DamageOtherOnHit
     staminaCost: 7
   # Shitmed Change
-  - type: Cautery
+  - type: EmberCautery
     speed: 0.9
-  - type: SurgeryTool
+  - type: EmberSurgeryTool
     endSound:
       path: /Audio/Weapons/Guns/Gunshots/laser.ogg
 
